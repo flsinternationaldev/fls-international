@@ -3,6 +3,7 @@
         <div class="navbar-brand">
             <a class="navbar-item" href="../">
                 <img src="<?php echo get_bloginfo('template_directory'); ?>../img/fls-international-logo.png" alt="Logo">
+                <span class="navbar__head-copy">Explore. Learn. Excel.</span>
             </a>
             <span class="navbar-burger burger" data-target="navbarMenu">
                 <span></span>

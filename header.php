@@ -25,7 +25,7 @@
                             English Language Programs, Pathways & Specialty Tours
                         </h1>
                         <h2 class="subtitle">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            Get 2019 pricing for 2020 courses, when you pay in full before December 9th, 2019!
                         </h2>
                     </div>
                 </div>
