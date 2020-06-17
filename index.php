@@ -1,234 +1,303 @@
 <?php get_header(); ?>
-        <div class="box cta">
-            <p class="has-text-centered">
-                Live FLS classes are now online! Study in the US or in your home country! <span class="tag is-primary">Watch our video!</span>
-            </p>
-        </div>
-        <section class="container">
-            <div class="columns features">
-            </div>
-        </section>
-        <section class="container">
-            <div class="columns features">
-                <div class="column is-4">
-                    <div class="card is-shady">
-                        <div class="card-image has-text-centered">
-                            <i class="fa fa-paw"></i>
-                        </div>
-                        <div class="card-content">
-                            <div class="content">
-                                <h4>Tristique senectus et netus et. </h4>
-                                <p>Purus semper eget duis at tellus at urna condimentum mattis. Non blandit massa enim nec. Integer enim neque volutpat ac tincidunt vitae semper quis. Accumsan tortor posuere ac ut consequat semper viverra nam.</p>
-                                <p><a href="#">Learn more</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-4">
-                    <div class="card is-shady">
-                        <div class="card-image has-text-centered">
-                            <i class="fa fa-empire"></i>
-                        </div>
-                        <div class="card-content">
-                            <div class="content">
-                                <h4>Tempor orci dapibus ultrices in.</h4>
-                                <p>Ut venenatis tellus in metus vulputate. Amet consectetur adipiscing elit pellentesque. Sed arcu non odio euismod lacinia at quis risus. Faucibus turpis in eu mi bibendum neque egestas cmonsu songue. Phasellus vestibulum lorem
-                                sed risus.</p>
-                                <p><a href="#">Learn more</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-4">
-                    <div class="card is-shady">
-                        <div class="card-image has-text-centered">
-                            <i class="fa fa-apple"></i>
-                        </div>
-                        <div class="card-content">
-                            <div class="content">
-                                <h4> Leo integer malesuada nunc vel risus. </h4>
-                                <p>Imperdiet dui accumsan sit amet nulla facilisi morbi. Fusce ut placerat orci nulla pellentesque dignissim enim. Libero id faucibus nisl tincidunt eget nullam. Commodo viverra maecenas accumsan lacus vel facilisis.</p>
-                                <p><a href="#">Learn more</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="intro column is-8 is-offset-2">
-                <h2 class="title">Perfect for developers or designers!</h2><br>
-                <p class="subtitle">Vel fringilla est ullamcorper eget nulla facilisi. Nulla facilisi nullam vehicula ipsum a. Neque egestas congue quisque egestas diam in arcu cursus.</p>
-            </div>
-            <div class="sandbox">
-                <div class="tile is-ancestor">
-                    <div class="tile is-parent is-shady">
-                        <article class="tile is-child notification is-white">
-                            <p class="title">Hello World</p>
-                            <p class="subtitle">What is up?</p>
-                        </article>
-                    </div>
-                    <div class="tile is-parent is-shady">
-                        <article class="tile is-child notification is-white">
-                            <p class="title">Foo</p>
-                            <p class="subtitle">Bar</p>
-                        </article>
-                    </div>
-                    <div class="tile is-parent is-shady">
-                        <article class="tile is-child notification is-white">
-                            <p class="title">Third column</p>
-                            <p class="subtitle">With some content</p>
-                            <div class="content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-                <div class="tile is-ancestor">
-                    <div class="tile is-vertical is-8">
-                        <div class="tile">
-                            <div class="tile is-parent is-vertical">
-                                <article class="tile is-child notification is-white">
-                                    <p class="title">Vertical tiles</p>
-                                    <p class="subtitle">Top box</p>
-                                </article>
-                                <article class="tile is-child notification is-white">
-                                    <p class="title">Vertical tiles</p>
-                                    <p class="subtitle">Bottom box</p>
-                                </article>
-                            </div>
-                            <div class="tile is-parent">
-                                <article class="tile is-child notification is-white">
-                                    <p class="title">Middle box</p>
-                                    <p class="subtitle">With an image</p>
-                                    <figure class="image is-4by3">
-                                        <img src="https://picsum.photos/640/480/?random" alt="Description">
-                                    </figure>
-                                </article>
-                            </div>
-                        </div>
-                        <div class="tile is-parent is-shady">
-                            <article class="tile is-child notification is-white">
-                                <p class="title">Wide column</p>
-                                <p class="subtitle">Aligned with the right column</p>
-                                <div class="content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                    <div class="tile is-parent is-shady">
-                        <article class="tile is-child notification is-white">
-                            <div class="content">
-                                <p class="title">Tall column</p>
-                                <p class="subtitle">With even more content</p>
-                                <div class="content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Morbi maximus, leo sit amet vehicula
-                                    eleifend, nunc dui porta orci, quis semper odio felis ut quam.</p>
-                                    <p>Suspendisse varius ligula in molestie lacinia. Maecenas varius eget ligula a sagittis. Pellentesque interdum, nisl nec interdum maximus, augue diam porttitor lorem, et sollicitudin felis neque sit amet erat. Maecenas imperdiet
-                                    felis nisi, fringilla luctus felis hendrerit sit amet. Aenean vitae gravida diam, finibus dignissim turpis. Sed eget varius ligula, at volutpat tortor.</p>
-                                    <p>Integer sollicitudin, tortor a mattis commodo, velit urna rhoncus erat, vitae congue lectus dolor consequat libero. Donec leo ligula, maximus et pellentesque sed, gravida a metus. Cras ullamcorper a nunc ac porta. Aliquam
-                                    ut aliquet lacus, quis faucibus libero. Quisque non semper leo.</p>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-                <div class="tile is-ancestor">
-                    <div class="tile is-parent is-shady">
-                        <article class="tile is-child notification is-white">
-                            <p class="title">Side column</p>
-                            <p class="subtitle">With some content</p>
-                            <div class="content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="tile is-parent is-8 is-shady">
-                        <article class="tile is-child notification is-white">
-                            <p class="title">Main column</p>
-                            <p class="subtitle">With some content</p>
-                            <div class="content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-                <div class="tile is-ancestor">
-                    <div class="tile is-parent is-8 is-shady">
-                        <article class="tile is-child notification is-white">
-                            <p class="title">Murphy's law</p>
-                            <p class="subtitle">Anything that can go wrong will go wrong</p>
-                            <div class="content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="tile is-parent is-shady">
-                        <article class="tile is-child notification is-white">
-                            <p class="title">Main column</p>
-                            <p class="subtitle">With some content</p>
-                            <div class="content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <footer class="footer">
-            <div class="container">
-                <div class="columns">
-                    <div class="column is-3 is-offset-2">
-                        <h2><strong>Category</strong></h2>
-                        <ul>
-                            <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-                            <li><a href="#">Vestibulum errato isse</a></li>
-                            <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-                            <li><a href="#">Aisia caisia</a></li>
-                            <li><a href="#">Murphy's law</a></li>
-                            <li><a href="#">Flimsy Lavenrock</a></li>
-                            <li><a href="#">Maven Mousie Lavender</a></li>
-                        </ul>
-                    </div>
-                    <div class="column is-3">
-                        <h2><strong>Category</strong></h2>
-                        <ul>
-                            <li><a href="#">Labore et dolore magna aliqua</a></li>
-                            <li><a href="#">Kanban airis sum eschelor</a></li>
-                            <li><a href="#">Modular modern free</a></li>
-                            <li><a href="#">The king of clubs</a></li>
-                            <li><a href="#">The Discovery Dissipation</a></li>
-                            <li><a href="#">Course Correction</a></li>
-                            <li><a href="#">Better Angels</a></li>
-                        </ul>
-                    </div>
-                    <div class="column is-4">
-                        <h2><strong>Category</strong></h2>
-                        <ul>
-                            <li><a href="#">Objects in space</a></li>
-                            <li><a href="#">Playing cards with coyote</a></li>
-                            <li><a href="#">Goodbye Yellow Brick Road</a></li>
-                            <li><a href="#">The Garden of Forking Paths</a></li>
-                            <li><a href="#">Future Shock</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="content has-text-centered">
-                    <p>
-                        <a class="icon" href="https://github.com/BulmaTemplates/bulma-templates">
-                            <i class="fa fa-github"></i>
-                        </a>
-                    </p>
-                    <div class="control level-item">
-                        <a href="https://github.com/BulmaTemplates/bulma-templates">
-                            <div class="tags has-addons">
-                                <span class="tag is-dark">Bulma Templates</span>
-                                <span class="tag is-info">MIT license</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- <script src="../js/bulma.js"></script> -->
-        </footer>
-    </body>
-</html>
+	<section class="section">
+		<div class="container">
+			<div class="columns">
+				<div class="column is-half who-we-are__panel who-we-are__panel--copy">
+					<div class="container who-we-are__copy-container">
+						<h1 class="title">Who We Are</h1>
+						<p>With globalization increasing, it’s more important than ever to learn about other cultures. There’s no better way to understand a new culture than by learning its language. This is what FLS International has been about for over 30 years.</p>
+						<p>At FLS we invite each student to appreciate the allure of a new language and immerse themselves in a new culture. We strive to give students both the edge and motivation necessary to become part of the global marketplace and pursue endless opportunities for personal growth.</p>
+					</div>
+				</div>
+				<div class="column is-half who-we-are__panel who-we-are__panel--video"></div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section start-your-journey">
+		<div class="container">
+			<div class="columns is-centered">
+				<div class="column is-6">
+					<div class="section__title-container">
+						<h3 class="subtitle subtitle--red start-your-journey__subtitle">Welcome to Our School</h3>
+						<h2 class="title">Start Your Journey</h2>
+					</div>
+				</div>
+			</div>
+			<div class="columns">
+				<div class="column is-half">
+					<p class="start-your-journey__copy-container">FLS provides outstanding values in high quality English programs. To find your program’s price, try our easy cost tool.</p>
+				</div>
+				<div class="column is-half">
+					<div class="columns is-multiline">
+						<div class="column is-full">
+							<div class="field">
+								<div class="control">
+									<input class="input" type="text" placeholder="Choose Your Start Date">
+								</div>
+							</div>
+						</div>
+
+						<div class="column is-half">
+							<div class="field">
+								<div class="control">
+									<input class="input" type="text" placeholder="Choose Your Duration">
+								</div>
+							</div>
+						</div>
+
+						<div class="column is-half">
+							<div class="field">
+								<div class="control">
+									<input class="input" type="text" placeholder="Choose Your Center Location">
+								</div>
+							</div>
+						</div>
+
+						<div class="column is-full">
+							<div class="field">
+								<div class="control">
+									<input class="input" type="text" placeholder="Choose Your Housing">
+								</div>
+							</div>
+						</div>
+
+						<div class="column is-full">
+							<div class="field">
+								<div class="control">
+									<input class="input" type="text" placeholder="Choose Your Program">
+								</div>
+							</div>
+						</div>
+
+						<div class="column is-half">
+							<p>$ --USD</p>
+						</div>
+
+						<div class="column is-half">
+							<button class="button">Apply Now</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<div class="columns is-centered">
+				<div class="column is-6">
+					<div class="section__title-container">
+						<h3 class="subtitle subtitle--red popular-programs__subtitle">Our</h3>
+						<h2 class="title">Popular Programs</h2>
+					</div>
+
+					<p class="popular-programs__subcopy">
+						Having over 9 million students worldwide and more than 50,000 online courses available.
+					</p>
+				</div>
+			</div>
+			<div class="columns is-centered">
+				<!-- TODO: DRY this up -->
+				<div class="column">
+					<div class="popular-programs__program-container">
+						<h3 class="popular-programs__program-title">English Language Programs</h3>
+					</div>
+				</div>
+				<div class="column">
+					<div class="popular-programs__program-container">
+						<h3 class="popular-programs__program-title">Speciality Tours</h3>
+					</div>
+				</div>
+				<div class="column">
+					<div class="popular-programs__program-container">
+						<h3 class="popular-programs__program-title">High School & University Placement</h3>
+					</div>
+				</div>
+				<div class="column">
+					<div class="popular-programs__program-container">
+						<h3 class="popular-programs__program-title">College Auditing</h3>
+					</div>
+				</div>
+			</div>
+			<div class="columns is-centered">
+				<div class="column">
+					<div class="popular-programs__program-container">
+						<h3 class="popular-programs__program-title">FLS Pathways</h3>
+					</div>
+				</div>
+				<div class="column">
+					<div class="popular-programs__program-container">
+						<h3 class="popular-programs__program-title">Concurrent Enrollment</h3>
+					</div>
+				</div>
+				<div class="column">
+					<div class="popular-programs__program-container">
+						<h3 class="popular-programs__program-title">High School Completion</h3>
+					</div>
+				</div>
+				<div class="column">
+					<div class="popular-programs__program-container">
+						<h3 class="popular-programs__program-title">Study 30+</h3>
+					</div>
+				</div>
+			</div>
+			<div class="columns is-centered">
+				<div class="column is-2">
+					<button class="button is-info popular-programs__view-more">
+						View More
+					</button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section how-is-your-english">
+		<div class="container">
+			<div class="columns is-centered">
+				<div class="column is-6">
+					<div class="section__title-container">
+						<h3 class="subtitle subtitle--how-is-your-english">How Is</h3>
+						<h2 class="title title--how-is-your-english">Your English?</h2>
+					</div>
+				</div>
+			</div>
+			<div class="columns is-centered">
+				<div class="column is-half">
+					<!-- TODO: Change bullet icons -->
+					<ul>
+						<li>Test your English ability and find your approximate FLS level with our FREE test!</li>
+						<li>Sign up to take our brief test and receive your results.</li>
+						<li>An FLS representative can then help you make a study plan to meet your goals.</li>
+					</ul>
+				</div>
+				<div class="column is-half">
+					<div class="columns is-multiline">
+						<div class="column is-half">
+							<div class="field">
+								<div class="control">
+									<input class="input" type="text" placeholder="First Name">
+								</div>
+							</div>
+						</div>
+						<div class="column is-half">
+							<div class="field">
+								<div class="control">
+									<input class="input" type="text" placeholder="Family Name">
+								</div>
+							</div>
+						</div>
+						<div class="column is-half">
+							<div class="field">
+								<div class="control">
+									<input class="input" type="text" placeholder="Select a Country">
+								</div>
+							</div>
+						</div>
+						<div class="column is-half">
+							<div class="field">
+								<div class="control">
+									<input class="input" type="text" placeholder="Your Email">
+								</div>
+							</div>
+						</div>
+						<div class="column is-half">
+							<p>Are you working with an agency?</p>
+						</div>
+						<div class="column is-half">
+							<div class="control">
+								<label class="radio">
+									<input type="radio" name="answer">
+									Yes
+								</label>
+								<label class="radio">
+									<input type="radio" name="answer">
+									No
+								</label>
+							</div>
+						</div>
+						<div class="column is-full">
+							<button class="button button--how-is-your-english">
+								Begin the Test
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="section locations">
+		<div class="container">
+			<!-- TODO: _.template these carousel slides -->
+			<div class="columns is-centered">
+				<div class="column is-6">
+					<div class="section__title-container">
+						<h2 class="title">Locations</h2>
+					</div>
+				</div>
+			</div>
+			<div class="locations__carousel">
+				<div class="locations__carousel-item">
+					<div class="locations__location">
+						<div class="locations__location-image-container"></div>
+						<div class="locations__location-copy-container">
+							<h3 class="locations__location-title">Citrus College</h3>
+							<p class="locations__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="locations__carousel-item">
+					<div class="locations__location">
+						<div class="locations__location-image-container"></div>
+						<div class="locations__location-copy-container">
+							<h3 class="locations__location-title">Citrus College</h3>
+							<p class="locations__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="locations__carousel-item">
+					<div class="locations__location">
+						<div class="locations__location-image-container"></div>
+						<div class="locations__location-copy-container">
+							<h3 class="locations__location-title">Citrus College</h3>
+							<p class="locations__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="locations__carousel-item">
+					<div class="locations__location">
+						<div class="locations__location-image-container"></div>
+						<div class="locations__location-copy-container">
+							<h3 class="locations__location-title">Citrus College</h3>
+							<p class="locations__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="locations__carousel-item">
+					<div class="locations__location">
+						<div class="locations__location-image-container"></div>
+						<div class="locations__location-copy-container">
+							<h3 class="locations__location-title">Citrus College</h3>
+							<p class="locations__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="locations__carousel-item">
+					<div class="locations__location">
+						<div class="locations__location-image-container"></div>
+						<div class="locations__location-copy-container">
+							<h3 class="locations__location-title">Citrus College</h3>
+							<p class="locations__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+<?php get_footer(); ?>>
