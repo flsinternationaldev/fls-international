@@ -27,16 +27,17 @@
 					<div class="footer__affiliations">Affiliate links will go here</div>
 				</div>
 			</div>
+		</div>
+	</footer>
+	<div class="footer footer__legal">
+		<div class="container">
 			<div class="columns is-centered">
 				<div class="column">
-					<p>Copyright © 2020 FLS International | Created by Gabriel Gonzalvez</p>
-				</div>
-				<div class="column">
-					<p>Frequently Asked Questions Terms and Conditions Privacy Policy</p>
+					<p>Copyright © 2020 FLS International | Site Design & Development by <a href="https://akingdebased.github.io/" target="_blank"> Gabriel Gonzalvez</a></p>
 				</div>
 			</div>
 		</div>
-	</footer>
+	</div>
 
 	<?php if(is_front_page()): ?>
 		<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -58,6 +59,7 @@
 			});
 
 			console.log('carousels activated');
+			console.log('new theme good');
 		</script>
 	<?php endif; ?>
 	<?php wp_footer(); ?>
