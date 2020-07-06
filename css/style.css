@@ -410,6 +410,25 @@ body {
 	background-position: center;
 }
 
+.programs__navbar-item {
+	border-left: #f5f5f5 solid 3px;
+	padding: 0.5rem 1rem;
+	background-color: #f5f5f5;
+	margin-bottom: 1px;
+	height: 36px;
+	font-size: 13px;
+	transition: color 0.3s, border-color 0.3s;
+}
+
+.programs__navbar-item:hover {
+	color: #bb2125;
+	border-color: #bb2125;
+}
+
+a.programs__navbar-item {
+	color: black;
+}
+
 /* Footer */
 .footer {
 	color: white;
