@@ -383,6 +383,12 @@ body {
 	font-size: 20px;
 }
 
+.programs__post-title {
+	font-size: 29px;
+	text-transform: uppercase;
+	font-weight: 400;
+}
+
 /* English Language Programs */
 .programs__elp-card {
 	padding: 30px;
@@ -409,6 +415,8 @@ body {
 	background-size: cover;
 	background-position: center;
 }
+
+/* Programs post styles */
 
 .programs__navbar-item {
 	border-left: #f5f5f5 solid 3px;
@@ -472,6 +480,45 @@ a.programs__navbar-item {
 	display: block;
 	font-size: 12px;
 	color: #cc3333;
+}
+
+.programs__image-container {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	background-color: #f5f5f5;
+}
+
+.programs__image-container img {
+	height: 100%;
+}
+
+.programs__post-copy-container {
+	padding: 1.5rem;
+}
+
+.programs__post-copy-container p {
+	margin-bottom: 1rem;
+}
+
+.programs__post-copy-container--alt {
+	background-color: #f5f5f5;
+}
+
+.programs__post-subtitle {
+	color: #022847;
+	text-transform: uppercase;
+	font-weight: 400px;
+	font-size: 20px;
+}
+
+.programs__post-subtitle:after {
+	display: block;
+    width: 30px;
+    height: 2px;
+    margin: 12px 0;
+    border-top: 1px solid #ddd;
+    content: '';
 }
 
 /* Footer */
