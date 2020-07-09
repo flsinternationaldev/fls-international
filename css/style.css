@@ -24,9 +24,11 @@ body {
 }
 
 .navbar--fls .tabs a {
-	color: white;
+	color: #7e8085;
 	border-bottom: none;
 	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 500;
 }
 
 .navbar--fls .tabs ul {
@@ -35,6 +37,7 @@ body {
 
 .hero-body--fls {
 	z-index: 1;
+	padding-bottom: 5rem !important;
 }
 
 .subtitle--fls {
@@ -61,7 +64,7 @@ body {
 }
 
 .navbar--scrolled {
-	background-color: #f5f5f5;
+	background-color: #fff;
 }
 
 
@@ -252,15 +255,24 @@ body {
 	margin: 0 auto;
 }
 
+.locations__location--post {
+	width: 100%;
+}
+
 .locations__location-image-container {
 	background-image: url('../img/citrus-college.jpeg');
 	flex-basis: 80%;
+	border-bottom: #bb2125 solid 2px;
 }
 
 .locations__location-copy-container {
 	padding: 15px;
 	background-color: white;
 	flex-basis: 50%;
+}
+
+.locations__location-copy-container--post {
+	background-color: #f5f5f5;
 }
 
 .locations__location-title {
@@ -275,7 +287,9 @@ body {
 	font-size: .8125rem;
     color: #8d8c8c;
 	overflow: hidden;
-    text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	font-size: 12px;
+	font-weight: 500;
 }
 
 /* Programs landing styles */
@@ -505,7 +519,9 @@ a.programs__navbar-item {
 	background-color: #f5f5f5;
 }
 
-.programs__post-subtitle {
+/* TODO: Handle these duplicates */
+.programs__post-subtitle,
+.locations__post-subtitle {
 	color: #022847;
 	text-transform: uppercase;
 	font-weight: 400px;

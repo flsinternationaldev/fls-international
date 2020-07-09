@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>FLS International</title>
+		<link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">
+		<!-- TODO: Do we need font-awesome? -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!-- TODO: Transfer this font over to the WordPress implementation -->
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="../../css/bulma.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css">
+		<!-- Only necessary on front page -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha256-UK1EiopXIL+KVhfbFa8xrmAWPeBjMVdvYMYkTAEv/HI=" crossorigin="anonymous" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" integrity="sha256-4hqlsNP9KM6+2eA8VUT0kk4RsMRTeS7QGHIM+MZ5sLY=" crossorigin="anonymous" />
+
+		<style>
+			html {
+				/* TODO: Figure out what's applying a margin-top, and remove this */
+				margin-top: 0 !important;
+			}
+		</style>
+	</head>
+	<body>
+	<!-- TODO: Should start white, not translucent black -->
+	<nav class="navbar is-fixed-top navbar--fls navbar--scrolled">
+		<div class="container">
+			<div id="navbarMenu" class="navbar-menu">
+				<div class="navbar-start">
+					<div class="tabs is-left">
+						<ul>
+							<li><a href="">Home</a></li>
+							<li><a href="offline-pages/programs.html">Programs</a></li>
+							<li><a href="">Locations</a></li>
+							<li><a href="">About Us</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="navbar-brand">
+					<a class="navbar-item" href="../">
+						<img class="navbar__logo" src="../../img/fls-international-logo.png" alt="Logo">
+					</a>
+					<span class="navbar-burger burger" data-target="navbarMenu">
+						<span></span>
+						<span></span>
+						<span></span>
+					</span>
+				</div>
+				<div class="navbar-end">
+					<div class="tabs is-right">
+						<ul>
+							<li><a href="">Contact</a></li>
+							<li><a href="">Downloads</a></li>
+							<li><a href="">Login</a></li>
+							<li><a href="">Translate</a></li>
+							<!-- TODO: Maybe add back translation menu item -->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<section class="hero is-medium hero--programs">
+		<div class="hero-body hero-body--fls">
+			<div class="programs__copy-container">
+				<div class="container">
+					<div class="columns is-multiline is-centered">
+						<div class="column is-full">
+							<h1 class="programs__title">Locations</h1>
+						</div>
+						<!-- TODO: I must be using these responsive classes wrong, figure this out -->
+						<div class="column is-half-tablet-only is-one-quarter">
+							<button class="programs__hero-button">Apply Now</button>
+						</div>
+						<div class="column is-half-tablet-only is-one-quarter">
+							<button class="programs__hero-button">Contact Us</button>
+						</div>
+						<div class="column is-full-tablet-only is-one-quarter">
+							<button class="programs__hero-button">English Proficiency Test</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section programs">
+		<div class="container">
+			<!-- TODO: Obviously, this should, eventually, loop based on content from WP -->
+			<div class="columns is-multiline">
+				<div class="column is-full">
+					<h3 class="locations__post-subtitle">Year Round Campuses</h3>
+				</div>
+				<div class="column is-one-third">
+					<div class="locations__card">
+						<div class="locations__location locations__location--post">
+							<div class="locations__location-image-container"></div>
+							<div class="locations__location-copy-container locations__location-copy-container--post">
+								<h3 class="locations__location-title">Citrus College</h3>
+								<p class="locations__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="column is-one-third">
+					<div class="locations__card">
+						<div class="locations__location locations__location--post">
+							<div class="locations__location-image-container"></div>
+							<div class="locations__location-copy-container locations__location-copy-container--post">
+								<h3 class="locations__location-title">Citrus College</h3>
+								<p class="locations__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="column is-one-third">
+					<div class="locations__card">
+						<div class="locations__location locations__location--post">
+							<div class="locations__location-image-container"></div>
+							<div class="locations__location-copy-container locations__location-copy-container--post">
+								<h3 class="locations__location-title">Citrus College</h3>
+								<p class="locations__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="column is-one-third">
+					<div class="locations__card">
+						<div class="locations__location locations__location--post">
+							<div class="locations__location-image-container"></div>
+							<div class="locations__location-copy-container locations__location-copy-container--post">
+								<h3 class="locations__location-title">Citrus College</h3>
+								<p class="locations__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="column is-one-third">
+					<div class="locations__card">
+						<div class="locations__location locations__location--post">
+							<div class="locations__location-image-container"></div>
+							<div class="locations__location-copy-container locations__location-copy-container--post">
+								<h3 class="locations__location-title">Citrus College</h3>
+								<p class="locations__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<footer class="footer">
+		<div class="container">
+			<div class="columns is-centered">
+				<div class="column">
+					<div class="footer__contact">
+						<h3>FLS International</h3>
+						<p>680 E Colorado Blvd Suite 180 Second Floor Pasadena, CA 91101</p>
+						<p>(626) 795-2912</p>
+						<p>info@fls.net</p>
+					</div>
+				</div>
+				<div class="column">
+					<div class="footer__info">
+						<h3>Information</h3>
+
+						<ul class="footer__info-links">
+							<li>Home</li>
+							<li>Locations</li>
+							<li>FLS Level Correlations</li>
+							<li>Programs</li>
+							<li>BPPE Resources</li>
+							<li>Academic Calendar</li>
+						</ul>
+					</div>
+				</div>
+				<div class="column">
+					<div class="footer__affiliations">Affiliate links will go here</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<div class="footer footer__legal">
+		<div class="container">
+			<div class="columns is-centered">
+				<div class="column">
+					<p>Copyright © 2020 FLS International | Site Design & Development by <a href="https://akingdebased.github.io/" target="_blank"> Gabriel Gonzalvez</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
