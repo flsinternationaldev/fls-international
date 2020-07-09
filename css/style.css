@@ -322,11 +322,18 @@ body {
 	margin-top: 1rem;
 }
 
+
 .locations__quick-fact-container {
 	display: flex;
 	margin-bottom: 15px;
 	padding-bottom: 15px;
-	border-bottom: 1px dashed #ddd;
+	border-bottom: 1px solid #ddd;
+}
+
+.locations__quick-fact-container:last-child {
+	border-bottom: none;
+	padding-bottom: 0;
+	margin-bottom: 0;
 }
 
 .locations__quick-fact-icon {
@@ -347,7 +354,7 @@ body {
 .locations__quick-fact-item {
 	font-size: 11px;
     font-weight: 400;
-    margin-bottom: 5px;``
+    margin-bottom: 5px;
 }
 
 /* TODO: Combine this with the button class for the hero section */
@@ -372,6 +379,26 @@ body {
     background-color: #fec910;
 	border-color: #fec910;
 	color: black;
+}
+
+.locations__post-anchor-button {
+	display: block;
+	height: 46px;
+	width: 100%;
+	text-align: center;
+	font-size: 0.875rem;
+    font-weight: 400;
+    color: #fff;
+    padding: .813rem 0;
+    background-color: #999999;
+    border-radius: 0;
+	margin: 0.125rem;
+	transition: background-color 0.3s ease-in-out;
+}
+
+.locations__post-anchor-button:hover {
+	background-color: #cc3333;
+	color: white;
 }
 
 /* Programs landing styles */
@@ -578,11 +605,20 @@ a.programs__navbar-item {
 	color: #cc3333;
 }
 
-.programs__image-container {
-	display: flex;
+/* TODO: More classes in need of genericization */
+.programs__post-carousel,
+.locations__post-carousel {
+	display: flex !important;
 	justify-content: center;
 	width: 100%;
 	background-color: #f5f5f5;
+}
+
+/* TODO: These need finessing, carousel images might be cut off as is */
+.programs__post-carousel .slick-list,
+.locations__post-carousel .slick-list {
+	max-width: 560px;
+	max-height: 400px;
 }
 
 .programs__image-container img {
