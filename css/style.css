@@ -277,8 +277,8 @@ body {
 
 .locations__location-title {
 	font-size: 1rem;
-    font-weight: 600;
-    color: #363636;
+	font-weight: 600;
+	color: #363636;
 	text-transform: uppercase;
 	margin-bottom: 10px;
 }
@@ -290,6 +290,51 @@ body {
 	text-overflow: ellipsis;
 	font-size: 12px;
 	font-weight: 500;
+}
+
+.locations__price-calculator {
+	background-color: #f5f5f5;
+	padding: 1rem;
+}
+
+.locations__price-calculator-title {
+	color: #363636;
+	font-weight: 500;
+	text-transform: uppercase;
+	font-size: 20px;
+}
+
+.locations__price-calculator-title:after {
+	display: block;
+    width: 30px;
+    height: 2px;
+    margin: 12px 0;
+    border-top: 1px solid #ddd;
+    content: '';
+}
+
+/* TODO: Combine this with the button class for the hero section */
+.locations__price-calculator-button {
+	display: block;
+	width: 100%;
+	cursor: pointer;
+	background-color: #000;
+	color: white;
+	font-size: 16px;
+    text-transform: uppercase;
+    height: 50px;
+    line-height: 40px;
+	border-radius: 0;
+	border: 1px solid transparent;
+	padding: 0.375rem 0.75rem;
+	font-weight: 400;
+	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.locations__price-calculator-button:hover {
+    background-color: #fec910;
+	border-color: #fec910;
+	color: black;
 }
 
 /* Programs landing styles */
@@ -370,11 +415,11 @@ body {
 
 .programs__card-title:after {
 	display: block;
-    width: 30px;
-    height: 2px;
-    margin: 12px 0;
-    border-top: 1px solid #ddd;
-    content: '';
+	width: 30px;
+	height: 2px;
+	margin: 12px 0;
+	border-top: 1px solid #ddd;
+	content: '';
 }
 
 .programs__card-copy {
