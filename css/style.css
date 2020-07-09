@@ -297,20 +297,57 @@ body {
 	padding: 1rem;
 }
 
-.locations__price-calculator-title {
+/* TODO: Generecize this class */
+.locations__price-calculator-title,
+.locations__quick-facts-title {
 	color: #363636;
 	font-weight: 500;
 	text-transform: uppercase;
 	font-size: 20px;
 }
 
-.locations__price-calculator-title:after {
+.locations__price-calculator-title:after,
+.locations__quick-facts-title:after {
 	display: block;
     width: 30px;
     height: 2px;
     margin: 12px 0;
     border-top: 1px solid #ddd;
     content: '';
+}
+
+.locations__quick-facts {
+	padding: 30px;
+	border: 1px solid #ddd;
+	margin-top: 1rem;
+}
+
+.locations__quick-fact-container {
+	display: flex;
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+	border-bottom: 1px dashed #ddd;
+}
+
+.locations__quick-fact-icon {
+	height: 50px;
+	width: 50px;
+}
+
+.locations__quick-fact-copy {
+	margin-left: 10px;
+}
+
+.locations__quick-fact-title {
+	font-size: 14px;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+
+.locations__quick-fact-item {
+	font-size: 11px;
+    font-weight: 400;
+    margin-bottom: 5px;``
 }
 
 /* TODO: Combine this with the button class for the hero section */
