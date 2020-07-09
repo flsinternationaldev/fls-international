@@ -299,15 +299,36 @@ body {
 
 /* TODO: Generecize this class */
 .locations__price-calculator-title,
-.locations__quick-facts-title {
+.locations__quick-facts-title,
+.locations__post-title {
 	color: #363636;
 	font-weight: 500;
 	text-transform: uppercase;
 	font-size: 20px;
 }
 
+.locations__post-subtitle {
+	text-transform: none !important;
+	margin-bottom: 0.5rem;
+    font-weight: 400;
+	line-height: 1.2;
+	font-size: 1rem;
+}
+
+.locations__post-copy {
+	font-size: 14px;
+	margin-bottom: 1rem;
+}
+
+.locations__dark-post {
+	background-color: #f5f5f5;
+	padding: 1rem;
+}
+
+/* TODO: Genericize */
 .locations__price-calculator-title:after,
-.locations__quick-facts-title:after {
+.locations__quick-facts-title:after,
+.locations__post-title:after {
 	display: block;
     width: 30px;
     height: 2px;
@@ -321,7 +342,6 @@ body {
 	border: 1px solid #ddd;
 	margin-top: 1rem;
 }
-
 
 .locations__quick-fact-container {
 	display: flex;
@@ -394,6 +414,30 @@ body {
     border-radius: 0;
 	margin: 0.125rem;
 	transition: background-color 0.3s ease-in-out;
+}
+
+.locations__post-list-item {
+	position: relative;
+	font-size: 14px;
+	list-style: none;
+	padding-left: 25px;
+	margin-bottom: 10px;
+}
+
+.locations__post-list-item:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 4.5px;
+	border-radius: 100%;
+	background-color: #dbab04;
+	height: 10px;
+	width: 10px;
+}
+
+/* TODO: This is fucky as all get out. The post page stylings need genericization */
+.programs__post-copy-container--locations {
+	padding: 0 !important;
 }
 
 .locations__post-anchor-button:hover {
@@ -638,11 +682,10 @@ a.programs__navbar-item {
 }
 
 /* TODO: Handle these duplicates */
-.programs__post-subtitle,
-.locations__post-subtitle {
+.programs__post-subtitle {
 	color: #022847;
 	text-transform: uppercase;
-	font-weight: 400px;
+	font-weight: 400;
 	font-size: 20px;
 }
 
