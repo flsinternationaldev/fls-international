@@ -19,7 +19,7 @@
 			<div class="columns is-centered">
 				<div class="column is-6">
 					<div class="section__title-container">
-						<h3 class="subtitle subtitle--red start-your-journey__subtitle">Welcome to Our School</h3>
+						<h3 class="subtitle subtitle--red ">Welcome to Our School</h3>
 						<h2 class="title">Start Your Journey</h2>
 					</div>
 				</div>
@@ -152,13 +152,13 @@
 		</div>
 	</section>
 
-	<section class="section how-is-your-english">
+	<section class="section highlighted-section">
 		<div class="container">
 			<div class="columns is-centered">
 				<div class="column is-6">
 					<div class="section__title-container">
-						<h3 class="subtitle subtitle--how-is-your-english">How Is</h3>
-						<h2 class="title title--how-is-your-english">Your English?</h2>
+						<h3 class="subtitle highlighted-section__subtitle">How Is</h3>
+						<h2 class="title title--white">Your English?</h2>
 					</div>
 				</div>
 			</div>
@@ -217,7 +217,7 @@
 							</div>
 						</div>
 						<div class="column is-full">
-							<button class="button button--how-is-your-english">
+							<button class="button highlighted-section__button">
 								Begin the Test
 							</button>
 						</div>

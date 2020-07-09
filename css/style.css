@@ -13,9 +13,23 @@ body {
 	font-family: 'Montserrat', sans-serif;
 }
 
+.container {
+	max-width: 1170px;
+}
+
 .title--fls {
-	font-weight: 400;
+	font-size: 2.625rem;
+	font-weight: 300;
     text-transform: uppercase;
+}
+
+.title--underline:after {
+	display: block;
+    height: 2px;
+    content: '';
+	width: 42px;
+    margin: 30px auto 0;
+    border-top: 1px solid #fff;
 }
 
 .navbar--fls {
@@ -45,6 +59,34 @@ body {
 	font-size: 1.125rem;
     font-weight: 500;
     text-transform: uppercase;
+}
+
+.fls__list-item {
+	position: relative;
+	font-size: 16px;
+	list-style: none;
+	padding-left: 25px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.fls__list-item:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 4.5px;
+	border-radius: 100%;
+	background-color: #dbab04;
+	height: 10px;
+	width: 10px;
+}
+
+.fls__list-item--small {
+	font-size: 14px;
+}
+
+.section--alternate {
+	background-color: #f5f5f5;
 }
 
 /* Navbar styles & overrides */
@@ -156,10 +198,6 @@ body {
 }
 
 /* Start Your Journey */
-.start-your-journey {
-	background-color: #f5f5f5;
-}
-
 .start-your-journey__copy-container {
 	font-weight: 300;
     font-size: 1.875rem;
@@ -172,10 +210,20 @@ body {
 	text-align: center;
 }
 
-/* Generic section styles */
+/* Generic section styles & overrides */
+.section {
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+}
+
 .section__title-container {
 	text-align: center;
 	text-transform: uppercase;
+}
+
+.section__title-copy {
+	font-size: 0.9375rem;
+	color: #656565;
 }
 
 /* Popular programs */
@@ -220,18 +268,28 @@ body {
 	text-transform: uppercase;
 }
 
-/* How is your english? */
-.how-is-your-english {
+/* Highlighted section */
+.highlighted-section {
 	color: white;
 	background: linear-gradient(to bottom, rgba(3,95,158,1) 0%,rgba(0,51,102,1) 100%);
+	padding: 5rem 0;
 }
 
-.title--how-is-your-english,
-.subtitle--how-is-your-english {
+.highlighted-section__copy {
+	text-align: center;
+	font-size: 28px;
+    line-height: 38px;
+    text-align: center;
+    font-weight: 300;
+    /* margin-top: 30px; */
+}
+
+.title--white,
+.highlighted-section__subtitle {
 	color: white;
 }
 
-.button--how-is-your-english {
+.highlighted-section__button {
 	color: #fff;
     background-color: #bb2125;
 	border-color: #bb2125;
@@ -240,6 +298,36 @@ body {
 	border-radius: 0;
 	font-size: 16px;
 	text-transform: uppercase;
+}
+
+/* Generic post styles */
+.fls__post-title {
+	color: #363636;
+	font-weight: 500;
+	text-transform: uppercase;
+	font-size: 20px;
+}
+
+.fls__post-title:after {
+	display: block;
+    width: 30px;
+    height: 2px;
+    margin: 12px 0;
+    border-top: 1px solid #ddd;
+    content: '';
+}
+
+.fls__post-copy {
+	font-size: 15px;
+	margin-bottom: 1rem;
+}
+
+.fls__post-container {
+	padding-right: 50px;
+}
+
+.fls__post-container--left {
+	padding-left: 50px;
 }
 
 /* Locations */
@@ -297,16 +385,6 @@ body {
 	padding: 1rem;
 }
 
-/* TODO: Generecize this class */
-.locations__price-calculator-title,
-.locations__quick-facts-title,
-.locations__post-title {
-	color: #363636;
-	font-weight: 500;
-	text-transform: uppercase;
-	font-size: 20px;
-}
-
 .locations__post-subtitle {
 	text-transform: none !important;
 	margin-bottom: 0.5rem;
@@ -315,26 +393,9 @@ body {
 	font-size: 1rem;
 }
 
-.locations__post-copy {
-	font-size: 14px;
-	margin-bottom: 1rem;
-}
-
 .locations__dark-post {
 	background-color: #f5f5f5;
 	padding: 1rem;
-}
-
-/* TODO: Genericize */
-.locations__price-calculator-title:after,
-.locations__quick-facts-title:after,
-.locations__post-title:after {
-	display: block;
-    width: 30px;
-    height: 2px;
-    margin: 12px 0;
-    border-top: 1px solid #ddd;
-    content: '';
 }
 
 .locations__quick-facts {
@@ -416,23 +477,18 @@ body {
 	transition: background-color 0.3s ease-in-out;
 }
 
-.locations__post-list-item {
+.locations__video {
 	position: relative;
-	font-size: 14px;
-	list-style: none;
-	padding-left: 25px;
-	margin-bottom: 10px;
+	padding-bottom: 56.25%; /* 16:9 */
+	height: 0;
 }
 
-.locations__post-list-item:before {
-	content: '';
+.locations__video iframe {
 	position: absolute;
+	top: 0;
 	left: 0;
-	top: 4.5px;
-	border-radius: 100%;
-	background-color: #dbab04;
-	height: 10px;
-	width: 10px;
+	width: 100%;
+	height: 100%;
 }
 
 /* TODO: This is fucky as all get out. The post page stylings need genericization */
@@ -696,6 +752,81 @@ a.programs__navbar-item {
     margin: 12px 0;
     border-top: 1px solid #ddd;
     content: '';
+}
+
+/* About us page */
+.about-us__nav {
+	margin-bottom: 15px !important;
+}
+
+/* This class should be a modifier of the nav item from the programs post page */
+.about-us__nav-item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-bottom: #f5f5f5 solid 3px;
+	padding: 0.5rem 1rem;
+	background-color: #f5f5f5;
+	height: 48px;
+	font-size: 15px;
+	font-weight: 500;
+	transition: color 0.3s, border-color 0.3s;
+	text-align: center;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.about-us__nav-item:hover {
+	color: #bb2125;
+	border-color: #bb2125;
+}
+
+.about-us__welcome-copy {
+	font-size: 1.0175rem;
+    color: #616161;
+    margin-bottom: 18px;
+    line-height: 28px;
+}
+
+.about-us__affiliate-card-title {
+	font-size: 1.25rem;
+    color: #262626;
+	margin-bottom: 15px;
+	font-weight: 500;
+}
+
+.about-us__affiliate-card-copy {
+	font-size: 0.875rem;
+    line-height: 24px;
+    color: #616161;
+}
+
+.about-us__contact-card {
+    display: flex;
+    flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 245px;
+    padding: 1.875rem;
+    background-color: #fff;
+	border: #dee2e6 solid 1px;
+	border-radius: 2px;
+}
+
+.about-us__contact-card-details {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.about-us__contact-card-icon {
+	width: 75px;
+    height: 75px;
+	display: inline-block;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
 }
 
 /* Footer */
