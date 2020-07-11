@@ -20,16 +20,16 @@ body {
 .title--fls {
 	font-size: 2.625rem;
 	font-weight: 300;
-    text-transform: uppercase;
+		text-transform: uppercase;
 }
 
 .title--underline:after {
 	display: block;
-    height: 2px;
-    content: '';
+		height: 2px;
+		content: '';
 	width: 42px;
-    margin: 30px auto 0;
-    border-top: 1px solid #fff;
+		margin: 30px auto 0;
+		border-top: 1px solid #fff;
 }
 
 .navbar--fls {
@@ -57,8 +57,8 @@ body {
 .subtitle--fls {
 	color: #bb2125;
 	font-size: 1.125rem;
-    font-weight: 500;
-    text-transform: uppercase;
+		font-weight: 500;
+		text-transform: uppercase;
 }
 
 .fls__list-item {
@@ -87,6 +87,61 @@ body {
 
 .section--alternate {
 	background-color: #f5f5f5;
+}
+
+.fls__blue-gradient-bg {
+	background: linear-gradient(to bottom, rgba(3,95,158,1) 0%,rgba(0,51,102,1) 100%);
+}
+
+.icon-envelop--contact-us,
+.icon-location--contact-us {
+	font-size: 32px;
+}
+
+.icon-phone--contact-us {
+	font-size: 32px;
+}
+
+.fls__iframe-wrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	height: 0;
+}
+
+.fls__iframe-wrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.fls__iframe-wrapper--contact-us {
+	padding-bottom: 86.25%;
+}
+
+/* TODO: Combine this with the button class for the hero section */
+.fls__button {
+	display: block;
+	width: 100%;
+	cursor: pointer;
+	background-color: #000;
+	color: white;
+	font-size: 16px;
+	text-transform: uppercase;
+	height: 50px;
+	line-height: 40px;
+	border-radius: 0;
+	border: 1px solid transparent;
+	padding: 0.375rem 0.75rem;
+	font-weight: 400;
+	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.fls__button:hover {
+	background-color: #fec910;
+	border-color: #fec910;
+	color: black;
 }
 
 /* Navbar styles & overrides */
@@ -147,20 +202,20 @@ body {
 
 .subtitle:before {
 	display: inline-block;
-    content: "";
-    border-top: 1px solid white;
-    width: 2rem;
-    margin: 0 1rem;
-    transform: translateY(-0.5rem);
+		content: "";
+		border-top: 1px solid white;
+		width: 2rem;
+		margin: 0 1rem;
+		transform: translateY(-0.5rem);
 }
 
 .subtitle:after {
 	display: inline-block;
-    content: "";
-    border-top: 1px solid white;
-    width: 2rem;
-    margin: 0 1rem;
-    transform: translateY(-0.5rem);
+		content: "";
+		border-top: 1px solid white;
+		width: 2rem;
+		margin: 0 1rem;
+		transform: translateY(-0.5rem);
 }
 
 .subtitle--red:after,
@@ -200,8 +255,8 @@ body {
 /* Start Your Journey */
 .start-your-journey__copy-container {
 	font-weight: 300;
-    font-size: 1.875rem;
-    line-height: 46px;
+		font-size: 1.875rem;
+		line-height: 46px;
 }
 
 /* Popular Programs */
@@ -230,15 +285,15 @@ body {
 .popular-programs__program-container {
 	position: relative;
 	min-height: 8.5rem;
-    text-align: center;
-    vertical-align: middle;
-    background-size: cover;
-    border-radius: 0.375rem;
-    background-repeat: no-repeat;
-    background-color: #022847;
+		text-align: center;
+		vertical-align: middle;
+		background-size: cover;
+		border-radius: 0.375rem;
+		background-repeat: no-repeat;
+		background-color: #022847;
 	overflow: hidden;
 	display: flex;
-    justify-content: center;
+		justify-content: center;
 	align-items: center;
 	text-transform: uppercase;
 	color: white;
@@ -247,15 +302,15 @@ body {
 
 .popular-programs__program-container:before {
 	content: '';
-    left: 0;
-    top: 0;
-    bottom: -100%;
-    width: 100%;
-    height: 100%;
-    position: absolute;
+		left: 0;
+		top: 0;
+		bottom: -100%;
+		width: 100%;
+		height: 100%;
+		position: absolute;
 	background-color: rgba(0, 0, 0, 0.45);
 	/* TODO: Transition necessary for eventual hover state */
-    transition: all .5s ease 0s;
+		transition: all .5s ease 0s;
 }
 
 .popular-programs__program-title {
@@ -278,10 +333,9 @@ body {
 .highlighted-section__copy {
 	text-align: center;
 	font-size: 28px;
-    line-height: 38px;
-    text-align: center;
-    font-weight: 300;
-    /* margin-top: 30px; */
+	line-height: 38px;
+	text-align: center;
+	font-weight: 300;
 }
 
 .title--white,
@@ -291,10 +345,10 @@ body {
 
 .highlighted-section__button {
 	color: #fff;
-    background-color: #bb2125;
+		background-color: #bb2125;
 	border-color: #bb2125;
 	height: 50px;
-    line-height: 40px;
+		line-height: 40px;
 	border-radius: 0;
 	font-size: 16px;
 	text-transform: uppercase;
@@ -310,11 +364,11 @@ body {
 
 .fls__post-title:after {
 	display: block;
-    width: 30px;
-    height: 2px;
-    margin: 12px 0;
-    border-top: 1px solid #ddd;
-    content: '';
+		width: 30px;
+		height: 2px;
+		margin: 12px 0;
+		border-top: 1px solid #ddd;
+		content: '';
 }
 
 .fls__post-copy {
@@ -373,7 +427,7 @@ body {
 
 .locations__location-copy {
 	font-size: .8125rem;
-    color: #8d8c8c;
+		color: #8d8c8c;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	font-size: 12px;
@@ -388,7 +442,7 @@ body {
 .locations__post-subtitle {
 	text-transform: none !important;
 	margin-bottom: 0.5rem;
-    font-weight: 400;
+		font-weight: 400;
 	line-height: 1.2;
 	font-size: 1rem;
 }
@@ -434,32 +488,8 @@ body {
 
 .locations__quick-fact-item {
 	font-size: 11px;
-    font-weight: 400;
-    margin-bottom: 5px;
-}
-
-/* TODO: Combine this with the button class for the hero section */
-.locations__price-calculator-button {
-	display: block;
-	width: 100%;
-	cursor: pointer;
-	background-color: #000;
-	color: white;
-	font-size: 16px;
-    text-transform: uppercase;
-    height: 50px;
-    line-height: 40px;
-	border-radius: 0;
-	border: 1px solid transparent;
-	padding: 0.375rem 0.75rem;
 	font-weight: 400;
-	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.locations__price-calculator-button:hover {
-    background-color: #fec910;
-	border-color: #fec910;
-	color: black;
+	margin-bottom: 5px;
 }
 
 .locations__post-anchor-button {
@@ -468,27 +498,13 @@ body {
 	width: 100%;
 	text-align: center;
 	font-size: 0.875rem;
-    font-weight: 400;
-    color: #fff;
-    padding: .813rem 0;
-    background-color: #999999;
-    border-radius: 0;
+	font-weight: 400;
+	color: #fff;
+	padding: .813rem 0;
+	background-color: #999999;
+	border-radius: 0;
 	margin: 0.125rem;
 	transition: background-color 0.3s ease-in-out;
-}
-
-.locations__video {
-	position: relative;
-	padding-bottom: 56.25%; /* 16:9 */
-	height: 0;
-}
-
-.locations__video iframe {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
 }
 
 /* TODO: This is fucky as all get out. The post page stylings need genericization */
@@ -528,7 +544,7 @@ body {
 .programs__title {
 	color: white;
 	font-size: 3rem;
-    font-weight: 200;
+		font-weight: 200;
 	text-transform: uppercase;
 	text-align: center;
 }
@@ -536,17 +552,17 @@ body {
 .programs__hero-button {
 	display: block;
 	width: 100%;
-    text-align: center;
+		text-align: center;
 	background: transparent;
 	border-radius: 0.25rem;
 	cursor: pointer;
 	font-size: .80rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    color: #fff;
-    padding: .70rem 0 .45rem;
-    margin: 1rem 0;
-    line-height: 1.5rem;
+		font-weight: 500;
+		text-transform: uppercase;
+		color: #fff;
+		padding: .70rem 0 .45rem;
+		margin: 1rem 0;
+		line-height: 1.5rem;
 	border: rgba(255, 255, 255, 0.60) solid 1px;
 	/* TODO: Browser compatability for transitions */
 	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -554,8 +570,8 @@ body {
 
 .programs__hero-button:hover {
 	color: #000;
-    background-color: #fec910;
-    border-color: #fec910;
+		background-color: #fec910;
+		border-color: #fec910;
 }
 
 .programs__card {
@@ -615,8 +631,8 @@ body {
 /* English Language Programs */
 .programs__elp-card {
 	padding: 30px;
-    border: 1px solid #ddd;
-    position: relative;
+		border: 1px solid #ddd;
+		position: relative;
 	z-index: 1;
 	height: 228px;
 	width: 100%;
@@ -629,11 +645,11 @@ body {
 	display: block;
 	background-image: url('../img/elp-card-bg.jpeg');
 	bottom: 0;
-    left: 0;
-    opacity: 0.1;
-    position: absolute;
-    right: 0;
-    top: 0;
+		left: 0;
+		opacity: 0.1;
+		position: absolute;
+		right: 0;
+		top: 0;
 	z-index: 0;
 	background-size: cover;
 	background-position: center;
@@ -670,14 +686,14 @@ a.programs__navbar-item {
 .programs__testimonial-avatar {
 	display: block;
 	position: absolute;
-    left: 50%;
-    margin-left: -44px;
-    top: -45px;
-    width: 100px;
+		left: 50%;
+		margin-left: -44px;
+		top: -45px;
+		width: 100px;
 	height: 100px;
 	border: 4px solid #cc3333;
-    max-width: 100%;
-    border-radius: 50%;
+		max-width: 100%;
+		border-radius: 50%;
 }
 
 .programs__testimonial-copy {
@@ -687,11 +703,11 @@ a.programs__navbar-item {
 
 .programs__testimonial-copy:before {
 	font-size: 75px;
-    position: absolute;
-    top: -54px;
-    left: -12px;
-    color: #cc3333;
-    content: "\201C";
+		position: absolute;
+		top: -54px;
+		left: -12px;
+		color: #cc3333;
+		content: "\201C";
 }
 
 .programs__testimonial-subcopy {
@@ -747,11 +763,11 @@ a.programs__navbar-item {
 
 .programs__post-subtitle:after {
 	display: block;
-    width: 30px;
-    height: 2px;
-    margin: 12px 0;
-    border-top: 1px solid #ddd;
-    content: '';
+		width: 30px;
+		height: 2px;
+		margin: 12px 0;
+		border-top: 1px solid #ddd;
+		content: '';
 }
 
 /* About us page */
@@ -783,33 +799,33 @@ a.programs__navbar-item {
 
 .about-us__welcome-copy {
 	font-size: 1.0175rem;
-    color: #616161;
-    margin-bottom: 18px;
-    line-height: 28px;
+		color: #616161;
+		margin-bottom: 18px;
+		line-height: 28px;
 }
 
 .about-us__affiliate-card-title {
 	font-size: 1.25rem;
-    color: #262626;
+		color: #262626;
 	margin-bottom: 15px;
 	font-weight: 500;
 }
 
 .about-us__affiliate-card-copy {
 	font-size: 0.875rem;
-    line-height: 24px;
-    color: #616161;
+		line-height: 24px;
+		color: #616161;
 }
 
 .about-us__contact-card {
-    display: flex;
-    flex-direction: column;
+		display: flex;
+		flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
 	height: 245px;
-    padding: 1.875rem;
-    background-color: #fff;
+		padding: 1.875rem;
+		background-color: #fff;
 	border: #dee2e6 solid 1px;
 	border-radius: 2px;
 }
@@ -822,11 +838,64 @@ a.programs__navbar-item {
 
 .about-us__contact-card-icon {
 	width: 75px;
-    height: 75px;
+		height: 75px;
 	display: inline-block;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
-    border-radius: 100%;
+		-webkit-border-radius: 100%;
+		-moz-border-radius: 100%;
+		border-radius: 100%;
+}
+
+/* Contact Us */
+.contact-us__email-call-container {
+	display: flex;
+	flex-direction: column;
+	height: 320px;
+}
+
+.contact-us__email,
+.contact-us__call {
+	flex-basis: 50%;
+	padding: 20px 30px;
+	text-align: center;
+	color: white;
+}
+
+.contact-us__call {
+	background-color: #bb2125;
+}
+
+.contact-us__email-call-title,
+.contact-us__subtitle {
+	font-size: 1.5rem;
+}
+
+.contact-us__address-container {
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+}
+
+.contact-us__address {
+	color: black;
+	margin-bottom: 12px;
+	transition: color 0.3s;
+}
+
+.contact-us__address:hover {
+	color: #bb2125;
+}
+
+.contact-us__title {
+	font-size: 28px;
+	text-transform: uppercase;
+	font-weight: 300;
+	margin-bottom: 12px;
+}
+
+.contact-us__copy {
+	font-size: 14px;
+	color: #8c8c8c;
+	margin-bottom: 12px;
 }
 
 /* Footer */
@@ -844,8 +913,9 @@ a.programs__navbar-item {
 	background-color: #001531;
 	font-size: 14px;
 	padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+	padding-bottom: 1.5rem;
 }
+
 .footer__contact {
 	display: flex;
 	flex-direction: column;
