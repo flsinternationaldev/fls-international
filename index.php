@@ -33,7 +33,7 @@
 						<div class="column is-full">
 							<div class="field">
 								<div class="control">
-									<input class="input" type="text" placeholder="Choose Your Start Date">
+									<input class="input fls__text-input" type="text" placeholder="Choose Your Start Date">
 								</div>
 							</div>
 						</div>
@@ -41,7 +41,7 @@
 						<div class="column is-half">
 							<div class="field">
 								<div class="control">
-									<input class="input" type="text" placeholder="Choose Your Duration">
+									<input class="input fls__text-input" type="text" placeholder="Choose Your Duration">
 								</div>
 							</div>
 						</div>
@@ -49,7 +49,7 @@
 						<div class="column is-half">
 							<div class="field">
 								<div class="control">
-									<input class="input" type="text" placeholder="Choose Your Center Location">
+									<input class="input fls__text-input" type="text" placeholder="Choose Your Center Location">
 								</div>
 							</div>
 						</div>
@@ -57,7 +57,7 @@
 						<div class="column is-full">
 							<div class="field">
 								<div class="control">
-									<input class="input" type="text" placeholder="Choose Your Housing">
+									<input class="input fls__text-input" type="text" placeholder="Choose Your Housing">
 								</div>
 							</div>
 						</div>
@@ -65,7 +65,7 @@
 						<div class="column is-full">
 							<div class="field">
 								<div class="control">
-									<input class="input" type="text" placeholder="Choose Your Program">
+									<input class="input fls__text-input" type="text" placeholder="Choose Your Program">
 								</div>
 							</div>
 						</div>
@@ -176,28 +176,28 @@
 						<div class="column is-half">
 							<div class="field">
 								<div class="control">
-									<input class="input" type="text" placeholder="First Name">
+									<input class="input fls__text-input" type="text" placeholder="First Name">
 								</div>
 							</div>
 						</div>
 						<div class="column is-half">
 							<div class="field">
 								<div class="control">
-									<input class="input" type="text" placeholder="Family Name">
+									<input class="input fls__text-input" type="text" placeholder="Family Name">
 								</div>
 							</div>
 						</div>
 						<div class="column is-half">
 							<div class="field">
 								<div class="control">
-									<input class="input" type="text" placeholder="Select a Country">
+									<input class="input fls__text-input" type="text" placeholder="Select a Country">
 								</div>
 							</div>
 						</div>
 						<div class="column is-half">
 							<div class="field">
 								<div class="control">
-									<input class="input" type="text" placeholder="Your Email">
+									<input class="input fls__text-input" type="text" placeholder="Your Email">
 								</div>
 							</div>
 						</div>

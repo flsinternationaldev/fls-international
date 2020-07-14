@@ -57,8 +57,8 @@ body {
 .subtitle--fls {
 	color: #bb2125;
 	font-size: 1.125rem;
-		font-weight: 500;
-		text-transform: uppercase;
+	font-weight: 500;
+	text-transform: uppercase;
 }
 
 .fls__list-item {
@@ -120,6 +120,15 @@ body {
 	padding-bottom: 86.25%;
 }
 
+.fls__link {
+	line-height: 1.25;
+	transition: color 0.3s;
+}
+
+.fls__link:hover {
+	color:#bb2125;
+}
+
 /* TODO: Combine this with the button class for the hero section */
 .fls__button {
 	display: block;
@@ -144,6 +153,11 @@ body {
 	color: black;
 }
 
+.fls__button--login {
+	background-color: #0069d9;
+	border-color: #0069d9;
+}
+
 .fls__media-container {
 	padding: 10px;
 	border: 1px solid #e6e6e6;
@@ -156,6 +170,45 @@ body {
 	background-image: url('../img/sample-brochure.png');
 	background-size: cover;
 	height: 100%;
+}
+
+.fls__text-input {
+	line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+	border: 1px solid #ced4da;
+	border-radius: 0;
+	font-size: 0.875rem;
+    height: 50px;
+    padding: .75rem 1.25rem;
+	border-color: rgba(84, 82, 82, 0.34);
+	transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.fls__text-input:focus {
+	border-color: #bb2125;
+    box-shadow: 0 0 0 0.2rem rgba(187, 33, 37, 0.35);
+}
+
+.fls__form-copy {
+	font-size: 14px;
+    color: rgba(0, 0, 0, 0.68);
+}
+
+.fls__checkbox-container {
+	display: flex;
+	align-items: center;
+}
+
+.fls__checkbox-container input[type="checkbox"] {
+	margin-right: 6px;
+}
+
+/* TODO: Might be too niche a utility class */
+.fls__align-items-center {
+	display: flex;
+	align-items: center;
 }
 
 /* Navbar styles & overrides */
