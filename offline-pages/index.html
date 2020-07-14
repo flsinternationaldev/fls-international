@@ -13,7 +13,6 @@
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
 		<!-- Only necessary on front page -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha256-UK1EiopXIL+KVhfbFa8xrmAWPeBjMVdvYMYkTAEv/HI=" crossorigin="anonymous" />
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" integrity="sha256-4hqlsNP9KM6+2eA8VUT0kk4RsMRTeS7QGHIM+MZ5sLY=" crossorigin="anonymous" />
 
 		<style>
 			html {
@@ -24,7 +23,7 @@
 	</head>
 	
 	<body>
-		<nav class="navbar is-fixed-top navbar--fls">
+		<nav class="navbar is-fixed-top navbar--fls navbar--home">
 			<div class="container">
 				<div id="navbarMenu" class="navbar-menu">
 					<div class="navbar-start">
@@ -66,59 +65,69 @@
 			<!-- TODO: _.template these carousel slides -->
 			<div class="hero-body__carousel">
 				<div class="hero-body__carousel-item">
-					<div class="columns columns--hero is-centered">
-						<div class="column is-one-third">
-							<div class="hero__copy-container">
-								<h2 class="subtitle hero__copy-title">FLS International</h2>
-								<h1 class="hero__copy">
-									ENGLISH LANGUAGE PROGRAMS, PATHWAYS & SPECIALTY TOURS
-								</h1>
-							</div>
-						</div>
+					<div class="hero__copy-container">
+						<h2 class="subtitle hero__copy-title">FLS International</h2>
+						<h1 class="hero__copy">
+							ENGLISH LANGUAGE PROGRAMS, PATHWAYS & SPECIALTY TOURS
+						</h1>
 					</div>
 				</div>
+
 				<div class="hero-body__carousel-item">
-					<div class="columns columns--hero is-centered">
-						<div class="column is-one-third">
-							<div class="hero__copy-container">
-								<h2 class="subtitle hero__copy-title">FLS International</h2>
-								<h1 class="hero__copy">
-									ENGLISH LANGUAGE PROGRAMS, PATHWAYS & SPECIALTY TOURS
-								</h1>
-							</div>
-						</div>
+					<div class="hero__copy-container">
+						<h2 class="subtitle hero__copy-title">FLS International</h2>
+						<h1 class="hero__copy">
+							ENGLISH LANGUAGE PROGRAMS, PATHWAYS & SPECIALTY TOURS
+						</h1>
 					</div>
 				</div>
+
 				<div class="hero-body__carousel-item">
-					<div class="columns columns--hero is-centered">
-						<div class="column is-one-third">
-							<div class="hero__copy-container">
-								<h2 class="subtitle hero__copy-title">FLS International</h2>
-								<h1 class="hero__copy">
-									ENGLISH LANGUAGE PROGRAMS, PATHWAYS & SPECIALTY TOURS
-								</h1>
-							</div>
-						</div>
+					<div class="hero__copy-container">
+						<h2 class="subtitle hero__copy-title">FLS International</h2>
+						<h1 class="hero__copy">
+							ENGLISH LANGUAGE PROGRAMS, PATHWAYS & SPECIALTY TOURS
+						</h1>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="section">
-			<div class="container">
-				<div class="columns">
-					<div class="column is-half who-we-are__panel who-we-are__panel--copy">
-						<div class="container who-we-are__copy-container">
-							<h1 class="title title--fls">Who We Are</h1>
-							<p>With globalization increasing, it’s more important than ever to learn about other cultures. There’s no better way to understand a new culture than by learning its language. This is what FLS International has been about for over 30 years.</p>
-							<p>At FLS we invite each student to appreciate the allure of a new language and immerse themselves in a new culture. We strive to give students both the edge and motivation necessary to become part of the global marketplace and pursue endless opportunities for personal growth.</p>
+		<section class="section section--who-we-are">
+			<div class="columns is-multiline">
+				<div class="column is-full-tablet is-half-desktop">
+					<div class="container explore-your-world__copy-container">
+						<div class="section__title-container">
+							<h3 class="subtitle subtitle--fls subtitle--red">Study in the U.S.A.</h3>
+							<h1 class="title title--fls">Explore Your World</h1>
 						</div>
+
+						<p class="explore-your-world__copy">Choose any of our destinations in the U.S. and you'll find yourself in a great place to explore America, learn English and meet other students from around the world!</p>
 					</div>
-					<div class="column is-half who-we-are__panel who-we-are__panel--video"></div>
+				</div>
+				<div class="column is-full-tablet is-half-desktop">
+					<img src="../img/video-sample.jpeg" alt="">
 				</div>
 			</div>
 		</section>
 
+		<!-- <section class="section section--who-we-are">
+			<div class="columns">
+				<div class="column is-half">
+					<div class="container who-we-are__copy-container">
+						<h1 class="title title--fls">Who We Are</h1>
+
+						<p>With globalization increasing, it’s more important than ever to learn about other cultures. There’s no better way to understand a new culture than by learning its language. This is what FLS International has been about for over 30 years.</p>
+						<p>At FLS we invite each student to appreciate the allure of a new language and immerse themselves in a new culture. We strive to give students both the edge and motivation necessary to become part of the global marketplace and pursue endless opportunities for personal growth.</p>
+					
+						<a href="#" class="fls__button fls__button--who-we-are">View More</a>
+					</div>
+				</div>
+				<div class="column is-half">
+					<img src="../img/video-sample.jpeg" alt="">
+				</div>
+			</div>
+		</section> -->
 		<section class="section section--alternate">
 			<div class="container">
 				<div class="columns is-centered">
@@ -129,11 +138,12 @@
 						</div>
 					</div>
 				</div>
-				<div class="columns">
-					<div class="column is-half">
+
+				<div class="columns is-multiline">
+					<div class="column is-half-desktop is-full-tablet">
 						<p class="start-your-journey__copy-container">FLS provides outstanding values in high quality English programs. To find your program’s price, try our easy cost tool.</p>
 					</div>
-					<div class="column is-half">
+					<div class="column is-half-desktop is-full-tablet">
 						<div class="columns is-multiline">
 							<div class="column is-full">
 								<div class="field">
@@ -176,11 +186,11 @@
 							</div>
 
 							<div class="column is-half">
-								<p>$ --USD</p>
+								<p class="start-your-journey__price">$ --USD</p>
 							</div>
 
 							<div class="column is-half">
-								<button class="button">Apply Now</button>
+								<button class="fls__button">Apply Now</button>
 							</div>
 						</div>
 					</div>
@@ -191,9 +201,9 @@
 		<section class="section">
 			<div class="container">
 				<div class="columns is-centered">
-					<div class="column is-6">
+					<div class="column is-7">
 						<div class="section__title-container">
-							<h3 class="subtitle subtitle--red popular-programs__subtitle">Our</h3>
+							<h3 class="subtitle subtitle--fls subtitle--red">Our</h3>
 							<h2 class="title title--fls">Popular Programs</h2>
 						</div>
 
@@ -202,54 +212,57 @@
 						</p>
 					</div>
 				</div>
-				<div class="columns is-centered">
+				<div class="columns is-centered is-multiline">
 					<!-- TODO: DRY this up -->
-					<div class="column">
+					<div class="column is-one-quarter-desktop is-half-tablet is-full-mobile">
 						<div class="popular-programs__program-container">
 							<h3 class="popular-programs__program-title">English Language Programs</h3>
 						</div>
 					</div>
-					<div class="column">
+
+					<div class="column is-one-quarter-desktop is-half-tablet is-full-mobile">
 						<div class="popular-programs__program-container">
 							<h3 class="popular-programs__program-title">Speciality Tours</h3>
 						</div>
 					</div>
-					<div class="column">
+
+					<div class="column is-one-quarter-desktop is-half-tablet is-full-mobile">
 						<div class="popular-programs__program-container">
 							<h3 class="popular-programs__program-title">High School & University Placement</h3>
 						</div>
 					</div>
-					<div class="column">
+
+					<div class="column is-one-quarter-desktop is-half-tablet is-full-mobile">
 						<div class="popular-programs__program-container">
 							<h3 class="popular-programs__program-title">College Auditing</h3>
 						</div>
 					</div>
-				</div>
-				<div class="columns is-centered">
-					<div class="column">
+
+					<div class="column is-one-quarter-desktop is-half-tablet is-full-mobile">
 						<div class="popular-programs__program-container">
 							<h3 class="popular-programs__program-title">FLS Pathways</h3>
 						</div>
 					</div>
-					<div class="column">
+					<div class="column is-one-quarter-desktop is-half-tablet is-full-mobile">
 						<div class="popular-programs__program-container">
 							<h3 class="popular-programs__program-title">Concurrent Enrollment</h3>
 						</div>
 					</div>
-					<div class="column">
+					<div class="column is-one-quarter-desktop is-half-tablet is-full-mobile">
 						<div class="popular-programs__program-container">
 							<h3 class="popular-programs__program-title">High School Completion</h3>
 						</div>
 					</div>
-					<div class="column">
+					<div class="column is-one-quarter-desktop is-half-tablet is-full-mobile">
 						<div class="popular-programs__program-container">
 							<h3 class="popular-programs__program-title">Study 30+</h3>
 						</div>
 					</div>
 				</div>
+				
 				<div class="columns is-centered">
-					<div class="column is-2">
-						<button class="button is-info popular-programs__view-more">
+					<div class="column is-one-quarter-tablet is-full-mobile">
+						<button class="fls__button">
 							View More
 						</button>
 					</div>
@@ -267,42 +280,44 @@
 						</div>
 					</div>
 				</div>
-				<div class="columns is-centered">
-					<div class="column is-half">
+
+				<div class="columns is-centered is-multiline">
+					<div class="column is-half-desktop is-full-tablet">
 						<!-- TODO: Change bullet icons -->
-						<ul>
-							<li>Test your English ability and find your approximate FLS level with our FREE test!</li>
-							<li>Sign up to take our brief test and receive your results.</li>
-							<li>An FLS representative can then help you make a study plan to meet your goals.</li>
+						<ul class="hiye__list">
+							<li class="fls__list-item">Test your English ability and find your approximate FLS level with our FREE test!</li>
+							<li class="fls__list-item">Sign up to take our brief test and receive your results.</li>
+							<li class="fls__list-item">An FLS representative can then help you make a study plan to meet your goals.</li>
 						</ul>
 					</div>
-					<div class="column is-half">
+					
+					<div class="column is-half-desktop is-full-tablet">
 						<div class="columns is-multiline">
 							<div class="column is-half">
 								<div class="field">
 									<div class="control">
-										<input class="input fls__text-input" type="text" placeholder="First Name">
+										<input class="input fls__text-input fls__text-input--highlighted-section" type="text" placeholder="First Name">
 									</div>
 								</div>
 							</div>
 							<div class="column is-half">
 								<div class="field">
 									<div class="control">
-										<input class="input fls__text-input" type="text" placeholder="Family Name">
+										<input class="input fls__text-input fls__text-input--highlighted-section" type="text" placeholder="Family Name">
 									</div>
 								</div>
 							</div>
 							<div class="column is-half">
 								<div class="field">
 									<div class="control">
-										<input class="input fls__text-input" type="text" placeholder="Select a Country">
+										<input class="input fls__text-input fls__text-input--highlighted-section" type="text" placeholder="Select a Country">
 									</div>
 								</div>
 							</div>
 							<div class="column is-half">
 								<div class="field">
 									<div class="control">
-										<input class="input fls__text-input" type="text" placeholder="Your Email">
+										<input class="input fls__text-input fls__text-input--highlighted-section" type="text" placeholder="Your Email">
 									</div>
 								</div>
 							</div>
@@ -321,8 +336,9 @@
 									</label>
 								</div>
 							</div>
+
 							<div class="column is-full">
-								<button class="button highlighted-section__button">
+								<button class="button fls__button fls__button--red">
 									Begin the Test
 								</button>
 							</div>
@@ -342,6 +358,7 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="locations__carousel">
 					<div class="locations__card">
 						<div class="locations__location">
@@ -489,7 +506,8 @@
 				autoplay: true,
 				draggable: false,
 				// TODO: Weird outline borders appear when clicking on the carousel
-				focusOnSelect: false
+				focusOnSelect: false,
+				arrows: false
 			});
 
 			$('.locations__carousel').slick({
@@ -497,6 +515,21 @@
 				slidesToShow: 3,
 				slidesToScroll: 3,
 				arrows: true,
+				responsive: [
+					{
+						breakpoint: 1023,
+						settings: {
+							slidesToShow: 2
+						}
+
+					},
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 1
+						}
+					}
+				]
 			});
 		</script>
 		<script src="../js/main.js"></script>
