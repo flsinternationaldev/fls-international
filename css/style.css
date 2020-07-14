@@ -123,10 +123,15 @@ body {
 .fls__link {
 	line-height: 1.25;
 	transition: color 0.3s;
+	color: white;
 }
 
 .fls__link:hover {
 	color:#bb2125;
+}
+
+.fls__link--alt:hover {
+	color: #dbab04;
 }
 
 /* TODO: Combine this with the button class for the hero section */
@@ -985,6 +990,13 @@ a.programs__navbar-item {
 	background-color: #012846;
 }
 
+.footer__title {
+	font-size: 1.225rem;
+    font-weight: 600;
+	color: #fff;
+	margin-bottom: 12px;
+}
+
 .footer__legal {
 	background-color: #001531;
 	font-size: 14px;
@@ -992,8 +1004,63 @@ a.programs__navbar-item {
 	padding-bottom: 1.5rem;
 }
 
-.footer__contact {
+.footer__item {
+	margin-bottom: 10px;
+}
+
+.footer__copy {
+	font-size: 14px;
+}
+
+.footer__list-item {
+	padding-bottom: 0;
+}
+
+.footer__affiliations {
 	display: flex;
-	flex-direction: column;
+
+}
+
+.footer__established {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #012846;
+    background-color: #fec910;
+    right: 270px;
+    top: -7px;
+    z-index: 2;
+    position: absolute;
+    padding: 10px 15px;
+    line-height: 20px;
+}
+
+.footer__established:before {
+	content: '';
+    position: absolute;
+    top: 4px;
+    right: -10px;
+    z-index: 0;
+    transition: all .2s ease-out;
+    transform: translateY(-50%);
+    border-left: 10px solid #a77e00;
+    border-top: 7px solid transparent;
+    border-bottom: 0;
+}
+
+.footer__established:after {
+	content: '';
+    position: absolute;
+    top: 4px;
+    left: -10px;
+    z-index: 0;
+    transition: all .2s ease-out;
+    transform: translateY(-50%);
+    border-right: 10px solid #a77e00;
+    border-top: 7px solid transparent;
+    border-bottom: 0;
+}
+
+.fls__footer {
+	position: relative;
 }
 
