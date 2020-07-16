@@ -275,8 +275,6 @@ body {
 	}
 }
 
-.fls__justify-content
-
 .fls__pill {
 	display: inline-block;
     padding: 5px 15px;
@@ -590,6 +588,52 @@ a.fls__post-navbar-item {
 
 .fls--red {
 	color: #cc3333;
+}
+
+.fls__announcement-banner {
+	position: fixed;
+	cursor: pointer;
+	z-index: 100;
+	bottom: 0;
+	width: 100%;
+	min-height: 60px;
+	background-color: #fec910;
+	transition: all 0.3s ease 0s;
+	text-align: center;
+	padding: 28px;
+}
+
+.fls__announcement-banner:hover {
+	background-color: #0069d9;
+	color: white;
+}
+
+.fls__announcement-banner-close {
+	/* TODO: Needs an icon */
+	position: absolute;
+	right: 18px;
+	top: 2px;
+	font-weight: 500;
+	font-size: 22px;
+}
+
+.fls__announcement-banner-copy {
+	font-size: 20px;
+	font-weight: 500;
+}
+
+@media only screen and (max-device-width: 768px) {
+	.fls__announcement-banner-copy {
+		font-size: 16px;
+	}
+}
+
+.container--announcement-banner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
 }
 
 /* Carousel styles */
@@ -954,7 +998,6 @@ a.fls__post-navbar-item {
 	display: flex;
 	flex-direction: column;
 	height: 350px;
-	width: 350px;
 	margin: 0 auto;
 	cursor: pointer;
 }
@@ -1306,7 +1349,7 @@ a.fls__post-navbar-item {
 }
 
 /* About us page */
-.about-us__welcome-copy {
+.fls__generic-copy {
 	font-size: 1.0175rem;
 		color: #616161;
 		margin-bottom: 18px;

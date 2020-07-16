@@ -6,6 +6,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>FLS International</title>
 		<link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">
+		<!-- TODO: Do we really need all of animate.css? -->
+		<link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+		/>
 		<!-- TODO: Transfer this font over to the WordPress implementation -->
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="../css/bulma.min.css" />
@@ -111,23 +116,6 @@
 			</div>
 		</section>
 
-		<!-- <section class="section section--who-we-are">
-			<div class="columns">
-				<div class="column is-half">
-					<div class="container who-we-are__copy-container">
-						<h1 class="title title--fls">Who We Are</h1>
-
-						<p>With globalization increasing, it’s more important than ever to learn about other cultures. There’s no better way to understand a new culture than by learning its language. This is what FLS International has been about for over 30 years.</p>
-						<p>At FLS we invite each student to appreciate the allure of a new language and immerse themselves in a new culture. We strive to give students both the edge and motivation necessary to become part of the global marketplace and pursue endless opportunities for personal growth.</p>
-					
-						<a href="#" class="fls__button fls__button--who-we-are">View More</a>
-					</div>
-				</div>
-				<div class="column is-half">
-					<img src="../img/video-sample.jpeg" alt="">
-				</div>
-			</div>
-		</section> -->
 		<section class="section section--alternate">
 			<div class="container">
 				<div class="columns is-centered">
@@ -362,7 +350,10 @@
 				<div class="fls__location-carousel">
 					<div class="fls__locations-card">
 						<div class="fls__location fls__location--carousel">
-							<div class="fls__location-img-container"></div>
+							<div class="fls__location-img-container">
+								<a href="#" class="fls__button fls__button--card">Read More</a>
+							</div>
+
 							<div class="fls__location-copy-container">
 								<h3 class="fls__location-title">Citrus College</h3>
 								<p class="fls__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
@@ -372,7 +363,10 @@
 					
 					<div class="fls__locations-card">
 						<div class="fls__location fls__location--carousel">
-							<div class="fls__location-img-container"></div>
+							<div class="fls__location-img-container">
+								<a href="#" class="fls__button fls__button--card">Read More</a>
+							</div>
+
 							<div class="fls__location-copy-container">
 								<h3 class="fls__location-title">Citrus College</h3>
 								<p class="fls__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
@@ -382,7 +376,10 @@
 
 					<div class="fls__locations-card">
 						<div class="fls__location fls__location--carousel">
-							<div class="fls__location-img-container"></div>
+							<div class="fls__location-img-container">
+								<a href="#" class="fls__button fls__button--card">Read More</a>
+							</div>
+
 							<div class="fls__location-copy-container">
 								<h3 class="fls__location-title">Citrus College</h3>
 								<p class="fls__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
@@ -392,7 +389,10 @@
 
 					<div class="fls__locations-card">
 						<div class="fls__location fls__location--carousel">
-							<div class="fls__location-img-container"></div>
+							<div class="fls__location-img-container">
+								<a href="#" class="fls__button fls__button--card">Read More</a>
+							</div>
+
 							<div class="fls__location-copy-container">
 								<h3 class="fls__location-title">Citrus College</h3>
 								<p class="fls__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
@@ -402,17 +402,10 @@
 
 					<div class="fls__locations-card">
 						<div class="fls__location fls__location--carousel">
-							<div class="fls__location-img-container"></div>
-							<div class="fls__location-copy-container">
-								<h3 class="fls__location-title">Citrus College</h3>
-								<p class="fls__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
+							<div class="fls__location-img-container">
+								<a href="#" class="fls__button fls__button--card">Read More</a>
 							</div>
-						</div>
-					</div>
 
-					<div class="fls__locations-card">
-						<div class="fls__location fls__location--carousel">
-							<div class="fls__location-img-container"></div>
 							<div class="fls__location-copy-container">
 								<h3 class="fls__location-title">Citrus College</h3>
 								<p class="fls__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
@@ -492,6 +485,18 @@
 					<div class="column">
 						<p>Copyright © 2020 FLS International | Site Design & Development by <a href="https://akingdebased.github.io/" target="_blank"> Gabriel Gonzalvez</a></p>
 					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- TODO: Might be nice to have some kind of session variable that keeps track of whether or not this has been closed -->
+		<div class="fls__announcement-banner animate__animated animate__slideInUp">
+			<!-- TODO: Ensure this close button works on mobile -->
+			<span class="fls__announcement-banner-close">X</span>
+
+			<div class="container container--announcement-banner">
+				<div class="fls__announcement-banner-copy">
+					Live FLS classes are now online. Study in the US or in your home country. Click to read more!
 				</div>
 			</div>
 		</div>
