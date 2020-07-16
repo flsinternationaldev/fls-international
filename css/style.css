@@ -447,6 +447,139 @@ body {
 	margin-bottom: 16px;
 }
 
+.fls__nav {
+	margin-bottom: 15px !important;
+}
+
+/* This class should be a modifier of the nav item from the programs post page */
+.fls__nav-item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-bottom: #f5f5f5 solid 3px;
+	padding: 0.5rem 1rem;
+	background-color: #f5f5f5;
+	height: 48px;
+	font-size: 15px;
+	font-weight: 500;
+	transition: color 0.3s, border-color 0.3s, background-color 0.3s;
+	text-align: center;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.fls__nav-item:hover {
+	color: #bb2125;
+	border-color: #bb2125;
+}
+
+.fls__nav-item--downloads {
+	font-size: 12px;
+}
+
+.fls__nav-item--downloads:hover {
+	color: white;
+	background-color: #bb2125;
+}
+
+.fls__post-navbar-item {
+	display: block;
+	width: 100%;
+	border-left: #f5f5f5 solid 3px;
+	padding: 0.5rem 1rem;
+	background-color: #f5f5f5;
+	margin-bottom: 1px;
+	min-height: 36px;
+	font-size: 13px;
+	transition: color 0.3s, border-color 0.3s;
+}
+
+.fls__post-navbar-item:hover {
+	color: #bb2125;
+	border-color: #bb2125;
+}
+
+a.fls__post-navbar-item {
+	color: black;
+}
+
+.fls__footer {
+	position: relative;
+}
+
+.fls__testimonial {
+	position: relative;
+	padding: 70px 20px 30px 20px;
+	background-color: #f5f5f5;
+	margin-top: 75px;
+}
+
+.fls__testimonial-avatar {
+	display: block;
+	position: absolute;
+	left: 50%;
+	margin-left: -44px;
+	top: -45px;
+	width: 100px;
+	height: 100px;
+	border: 4px solid #cc3333;
+	max-width: 100%;
+	border-radius: 50%;
+}
+
+.fls__testimonial-copy {
+	position: relative;
+	font-size: 12px;
+}
+
+.fls__testimonial-copy:before {
+	font-size: 75px;
+		position: absolute;
+		top: -54px;
+		left: -12px;
+		color: #cc3333;
+		content: "\201C";
+}
+
+.fls__testimonial-subcopy {
+	margin-top: 15px;
+	font-size: 14px;
+}
+
+.fls__testimonial-read-more {
+	display: block;
+	font-size: 12px;
+}
+
+@media only screen and (max-device-width: 1023px) {
+	.fls__testimonial {
+		margin-top: 0;
+		height: 100%
+	}
+
+	.fls__testimonial-copy {
+		font-size: 24px;
+	}
+
+	.fls__testimonial-subcopy {
+		font-size: 18px;
+	}
+
+	.fls__testimonial-read-more {
+		font-size: 16px;
+	}
+}
+
+@media only screen and (max-device-width: 768px) {
+	.fls__testimonial {
+		margin-top: 50px;
+	}
+}
+
+.fls--red {
+	color: #cc3333;
+}
+
 /* Carousel styles */
 .slick-prev,
 .slick-next {
@@ -970,17 +1103,17 @@ body {
 .programs__hero-button {
 	display: block;
 	width: 100%;
-		text-align: center;
+	text-align: center;
 	background: transparent;
 	border-radius: 0.25rem;
 	cursor: pointer;
 	font-size: .80rem;
-		font-weight: 500;
-		text-transform: uppercase;
-		color: #fff;
-		padding: .70rem 0 .45rem;
-		margin: 1rem 0;
-		line-height: 1.5rem;
+	font-weight: 500;
+	text-transform: uppercase;
+	color: #fff;
+	padding: .70rem 0 .45rem;
+	margin: 1rem 0;
+	line-height: 1.5rem;
 	border: rgba(255, 255, 255, 0.60) solid 1px;
 	/* TODO: Browser compatability for transitions */
 	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -1075,70 +1208,6 @@ body {
 
 /* Programs post styles */
 
-.programs__navbar-item {
-	border-left: #f5f5f5 solid 3px;
-	padding: 0.5rem 1rem;
-	background-color: #f5f5f5;
-	margin-bottom: 1px;
-	height: 36px;
-	font-size: 13px;
-	transition: color 0.3s, border-color 0.3s;
-}
-
-.programs__navbar-item:hover {
-	color: #bb2125;
-	border-color: #bb2125;
-}
-
-a.programs__navbar-item {
-	color: black;
-}
-
-.programs__testimonial {
-	position: relative;
-	padding: 70px 20px 30px 20px;
-	background-color: #f5f5f5;
-	margin-top: 75px;
-}
-
-.programs__testimonial-avatar {
-	display: block;
-	position: absolute;
-	left: 50%;
-	margin-left: -44px;
-	top: -45px;
-	width: 100px;
-	height: 100px;
-	border: 4px solid #cc3333;
-	max-width: 100%;
-	border-radius: 50%;
-}
-
-.programs__testimonial-copy {
-	position: relative;
-	font-size: 12px;
-}
-
-.programs__testimonial-copy:before {
-	font-size: 75px;
-		position: absolute;
-		top: -54px;
-		left: -12px;
-		color: #cc3333;
-		content: "\201C";
-}
-
-.programs__testimonial-subcopy {
-	margin-top: 15px;
-	font-size: 14px;
-}
-
-.programs__testimonial-read-more {
-	display: block;
-	font-size: 12px;
-	color: #cc3333;
-}
-
 /* TODO: More classes in need of genericization */
 .programs__post-carousel,
 .locations__post-carousel {
@@ -1189,41 +1258,6 @@ a.programs__navbar-item {
 }
 
 /* About us page */
-.fls__nav {
-	margin-bottom: 15px !important;
-}
-
-/* This class should be a modifier of the nav item from the programs post page */
-.fls__nav-item {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-bottom: #f5f5f5 solid 3px;
-	padding: 0.5rem 1rem;
-	background-color: #f5f5f5;
-	height: 48px;
-	font-size: 15px;
-	font-weight: 500;
-	transition: color 0.3s, border-color 0.3s, background-color 0.3s;
-	text-align: center;
-	text-transform: uppercase;
-	cursor: pointer;
-}
-
-.fls__nav-item:hover {
-	color: #bb2125;
-	border-color: #bb2125;
-}
-
-.fls__nav-item--downloads {
-	font-size: 12px;
-}
-
-.fls__nav-item--downloads:hover {
-	color: white;
-	background-color: #bb2125;
-}
-
 .about-us__welcome-copy {
 	font-size: 1.0175rem;
 		color: #616161;
@@ -1386,7 +1420,7 @@ a.programs__navbar-item {
 	top: 4px;
 	right: -10px;
 	z-index: 0;
-	transition: all .tr2s ease-out;
+	transition: all .02s ease-out;
 	transform: translateY(-50%);
 	border-left: 10px solid #a77e00;
 	border-top: 7px solid transparent;
@@ -1404,9 +1438,5 @@ a.programs__navbar-item {
 	border-right: 10px solid #a77e00;
 	border-top: 7px solid transparent;
 	border-bottom: 0;
-}
-
-.fls__footer {
-	position: relative;
 }
 
