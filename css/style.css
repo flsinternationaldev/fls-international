@@ -263,10 +263,19 @@ body {
 }
 
 /* TODO: Might be too niche a utility class */
-.fls__align-items-center {
+.fls__forgot-password {
 	display: flex;
 	align-items: center;
+	justify-content: flex-end;
 }
+
+@media only screen and (max-device-width: 768px) {
+	.fls__forgot-password {
+		justify-content: flex-start;
+	}
+}
+
+.fls__justify-content
 
 .fls__pill {
 	display: inline-block;
