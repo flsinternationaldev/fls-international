@@ -193,12 +193,16 @@ body {
 	border-color: #0069d9;
 }
 
-.fls__button--program-card {
+.fls__button--card {
 	max-width: 60%;
 	position: relative;
 	z-index: 1;
 	opacity: 0;
 	transition: all .5s ease 0s;
+}
+
+.fls__button--locations-card {
+	max-width: 40%;
 }
 
 .fls__media-container {
@@ -938,37 +942,73 @@ a.fls__post-navbar-item {
 	background-color: #f5f5f5;
 }
 
-.locations__location {
+.fls__location {
 	display: flex;
 	flex-direction: column;
 	height: 350px;
 	width: 350px;
 	margin: 0 auto;
+	cursor: pointer;
+}
+
+.fls__location--carousel {
 	padding-left: 25px;
 	padding-right: 25px;
 }
 
-.locations__location--post {
+.fls__location--post {
 	width: 100%;
 }
 
-.locations__location-image-container {
+.fls__location-img-container {
+	position: relative;
 	background-image: url('../img/citrus-college.jpeg');
 	flex-basis: 80%;
 	border-bottom: #bb2125 solid 2px;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	transition: all .5s ease 0s;
 }
 
-.locations__location-copy-container {
+.fls__location-img-container:after {
+	content: '';
+    left: 0;
+    bottom: -100%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    background-color: rgba(2, 40, 71, 0.8);
+    transition: all .5s ease 0s;
+}
+
+.fls__location:hover .fls__location-img-container {
+	border-color: #fec910;
+}
+
+.fls__location:hover .fls__location-img-container:after {
+	opacity: 1;
+	bottom: 0;
+}
+
+.fls__location:hover .fls__button--card {
+	opacity: 1;
+}
+
+.fls__location-copy-container {
 	padding: 15px;
 	background-color: white;
 	flex-basis: 50%;
 }
 
-.locations__location-copy-container--post {
+.fls__location-copy-container--post {
 	background-color: #f5f5f5;
 }
 
-.locations__location-title {
+.fls__location-title {
 	font-size: 1rem;
 	font-weight: 600;
 	color: #363636;
@@ -976,7 +1016,7 @@ a.fls__post-navbar-item {
 	margin-bottom: 10px;
 }
 
-.locations__location-copy {
+.fls__location-copy {
 	font-size: .8125rem;
 		color: #8d8c8c;
 	overflow: hidden;
@@ -985,12 +1025,12 @@ a.fls__post-navbar-item {
 	font-weight: 500;
 }
 
-.locations__price-calculator {
+.fls__location-price-calculator {
 	background-color: #f5f5f5;
 	padding: 1rem;
 }
 
-.locations__post-subtitle {
+.fls__location-post-subtitle {
 	text-transform: none !important;
 	margin-bottom: 0.5rem;
 		font-weight: 400;
@@ -998,52 +1038,52 @@ a.fls__post-navbar-item {
 	font-size: 1rem;
 }
 
-.locations__dark-post {
+.fls__location-dark-post {
 	background-color: #f5f5f5;
 	padding: 1rem;
 }
 
-.locations__quick-facts {
+.fls__location-quick-facts {
 	padding: 30px;
 	border: 1px solid #ddd;
 	margin-top: 1rem;
 }
 
-.locations__quick-fact-container {
+.fls__location-quick-fact-container {
 	display: flex;
 	margin-bottom: 15px;
 	padding-bottom: 15px;
 	border-bottom: 1px solid #ddd;
 }
 
-.locations__quick-fact-container:last-child {
+.fls__location-quick-fact-container:last-child {
 	border-bottom: none;
 	padding-bottom: 0;
 	margin-bottom: 0;
 }
 
-.locations__quick-fact-icon {
+.fls__location-quick-fact-icon {
 	height: 50px;
 	width: 50px;
 }
 
-.locations__quick-fact-copy {
+.fls__location-quick-fact-copy {
 	margin-left: 10px;
 }
 
-.locations__quick-fact-title {
+.fls__location-quick-fact-title {
 	font-size: 14px;
 	font-weight: 700;
 	margin-bottom: 10px;
 }
 
-.locations__quick-fact-item {
+.fls__location-quick-fact-item {
 	font-size: 11px;
 	font-weight: 400;
 	margin-bottom: 5px;
 }
 
-.locations__post-anchor-button {
+.fls__location-post-anchor-button {
 	display: block;
 	height: 46px;
 	width: 100%;
@@ -1063,7 +1103,7 @@ a.fls__post-navbar-item {
 	padding: 0 !important;
 }
 
-.locations__post-anchor-button:hover {
+.fls__location-post-anchor-button:hover {
 	background-color: #cc3333;
 	color: white;
 }
@@ -1092,7 +1132,7 @@ a.fls__post-navbar-item {
 	background-image: url('../img/sample-bg.jpeg');
 }
 
-.programs__title {
+.fls__page-hero-title {
 	color: white;
 	font-size: 3rem;
 		font-weight: 200;
@@ -1100,7 +1140,7 @@ a.fls__post-navbar-item {
 	text-align: center;
 }
 
-.programs__hero-button {
+.fls__page-hero-button {
 	display: block;
 	width: 100%;
 	text-align: center;
@@ -1119,10 +1159,10 @@ a.fls__post-navbar-item {
 	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.programs__hero-button:hover {
+.fls__page-hero-button:hover {
 	color: #000;
-		background-color: #fec910;
-		border-color: #fec910;
+	background-color: #fec910;
+	border-color: #fec910;
 }
 
 .programs__card {
@@ -1191,11 +1231,11 @@ a.fls__post-navbar-item {
 	opacity: 1;
 }
 
-.programs__card:hover .fls__button--program-card {
+.programs__card:hover .fls__button--card {
 	opacity: 1;
 }
 
-.programs__content-header-copy {
+.fls__content-header-copy {
 	color: black;
 	font-size: 20px;
 }
@@ -1210,7 +1250,7 @@ a.fls__post-navbar-item {
 
 /* TODO: More classes in need of genericization */
 .programs__post-carousel,
-.locations__post-carousel {
+.fls__location-post-carousel {
 	display: flex !important;
 	justify-content: center;
 	width: 100%;
@@ -1219,7 +1259,7 @@ a.fls__post-navbar-item {
 
 /* TODO: These need finessing, carousel images might be cut off as is */
 .programs__post-carousel .slick-list,
-.locations__post-carousel .slick-list {
+.fls__location-post-carousel .slick-list {
 	max-width: 560px;
 	max-height: 400px;
 }
@@ -1241,14 +1281,14 @@ a.fls__post-navbar-item {
 }
 
 /* TODO: Handle these duplicates */
-.programs__post-subtitle {
+.fls__post-title {
 	color: #022847;
 	text-transform: uppercase;
 	font-weight: 400;
 	font-size: 20px;
 }
 
-.programs__post-subtitle:after {
+.fls__post-title:after {
 	display: block;
 		width: 30px;
 		height: 2px;

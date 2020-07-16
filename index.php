@@ -237,63 +237,63 @@
 					</div>
 				</div>
 			</div>
-			<div class="locations__carousel">
-				<div class="locations__carousel-item">
-					<div class="locations__location">
-						<div class="locations__location-image-container"></div>
-						<div class="locations__location-copy-container">
-							<h3 class="locations__location-title">Citrus College</h3>
-							<p class="locations__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
+			<div class="fls__location-carousel">
+				<div class="fls__location-carousel-item">
+					<div class="fls__location">
+						<div class="fls__location-img-container"></div>
+						<div class="fls__location-copy-container">
+							<h3 class="fls__location-title">Citrus College</h3>
+							<p class="fls__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
 						</div>
 					</div>
 				</div>
 				
-				<div class="locations__carousel-item">
-					<div class="locations__location">
-						<div class="locations__location-image-container"></div>
-						<div class="locations__location-copy-container">
-							<h3 class="locations__location-title">Citrus College</h3>
-							<p class="locations__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
+				<div class="fls__location-carousel-item">
+					<div class="fls__location">
+						<div class="fls__location-img-container"></div>
+						<div class="fls__location-copy-container">
+							<h3 class="fls__location-title">Citrus College</h3>
+							<p class="fls__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
 						</div>
 					</div>
 				</div>
 
-				<div class="locations__carousel-item">
-					<div class="locations__location">
-						<div class="locations__location-image-container"></div>
-						<div class="locations__location-copy-container">
-							<h3 class="locations__location-title">Citrus College</h3>
-							<p class="locations__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
+				<div class="fls__location-carousel-item">
+					<div class="fls__location">
+						<div class="fls__location-img-container"></div>
+						<div class="fls__location-copy-container">
+							<h3 class="fls__location-title">Citrus College</h3>
+							<p class="fls__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
 						</div>
 					</div>
 				</div>
 
-				<div class="locations__carousel-item">
-					<div class="locations__location">
-						<div class="locations__location-image-container"></div>
-						<div class="locations__location-copy-container">
-							<h3 class="locations__location-title">Citrus College</h3>
-							<p class="locations__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
+				<div class="fls__location-carousel-item">
+					<div class="fls__location">
+						<div class="fls__location-img-container"></div>
+						<div class="fls__location-copy-container">
+							<h3 class="fls__location-title">Citrus College</h3>
+							<p class="fls__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
 						</div>
 					</div>
 				</div>
 
-				<div class="locations__carousel-item">
-					<div class="locations__location">
-						<div class="locations__location-image-container"></div>
-						<div class="locations__location-copy-container">
-							<h3 class="locations__location-title">Citrus College</h3>
-							<p class="locations__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
+				<div class="fls__location-carousel-item">
+					<div class="fls__location">
+						<div class="fls__location-img-container"></div>
+						<div class="fls__location-copy-container">
+							<h3 class="fls__location-title">Citrus College</h3>
+							<p class="fls__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
 						</div>
 					</div>
 				</div>
 
-				<div class="locations__carousel-item">
-					<div class="locations__location">
-						<div class="locations__location-image-container"></div>
-						<div class="locations__location-copy-container">
-							<h3 class="locations__location-title">Citrus College</h3>
-							<p class="locations__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
+				<div class="fls__location-carousel-item">
+					<div class="fls__location">
+						<div class="fls__location-img-container"></div>
+						<div class="fls__location-copy-container">
+							<h3 class="fls__location-title">Citrus College</h3>
+							<p class="fls__location-copy">Study English in California! Citrus College offers a great combination of suburban comfort with access to all of the attracions and glamour of Los Angeles.</p>
 						</div>
 					</div>
 				</div>

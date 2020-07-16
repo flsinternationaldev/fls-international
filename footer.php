@@ -51,7 +51,7 @@
 				focusOnSelect: false
 			});
 
-			$('.locations__carousel').slick({
+			$('.fls__location-carousel').slick({
 				infinite: true,
 				slidesToShow: 3,
 				slidesToScroll: 3,
