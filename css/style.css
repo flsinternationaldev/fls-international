@@ -285,6 +285,17 @@ body {
 	background-color: #0069d9;
 }
 
+/* TODO: Figure out the icon */
+.fls__card-header {
+	color: #626262;
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+.fls__card-header:before {
+	content: ''
+}
+
 .fls__post-title {
 	color: #363636;
 	font-weight: 500;
@@ -294,11 +305,11 @@ body {
 
 .fls__post-title:after {
 	display: block;
-		width: 30px;
-		height: 2px;
-		margin: 12px 0;
-		border-top: 1px solid #ddd;
-		content: '';
+	width: 30px;
+	height: 2px;
+	margin: 12px 0;
+	border-top: 1px solid #ddd;
+	content: '';
 }
 
 .fls__post-copy {
@@ -321,40 +332,59 @@ body {
 	height: 228px;
 	width: 100%;
 	cursor: pointer;
+	overflow: hidden;
 }
 
 .fls__card-contents {
 	position: relative;
-	z-index: 2;
+	z-index: 3;
+}
+
+.fls__card-subtitle {
+    color: #626262;
+	font-size: 14px;
+	font-weight: 500;
+	margin-bottom: 12px;
 }
 
 .fls__card-title,
 .fls__card-copy,
-.fls__card-details {
+.fls__card-details,
+.fls__card-subtitle,
+.fls__card-header {
 	transition: all 0.3s ease 0s;
 }
 
 .fls__card:hover .fls__card-title,
 .fls__card:hover .fls__card-copy,
-.fls__card:hover .fls__card-details {
+.fls__card:hover .fls__card-details,
+.fls__card:hover .fls__card-subtitle,
+.fls__card:hover .fls__card-header {
 	color: white;
+}
+
+.fls__card-bg,
+.fls__card-bg-overlay,
+.fls__card-footer-overlay {
+	display: block;
+	position: absolute;
+	width: 100%;
+	transition: 0.3s ease 0s;
+	left: 0;
+}
+
+.fls__card-bg,
+.fls__card-bg-overlay {
+	top: 0;
 }
 
 .fls__card-bg {
 	height: 100%;
-	width: 100%;
-	display: block;
 	background-image: url('../img/elp-card-bg.jpeg');
-	bottom: 0;
-	left: 0;
 	opacity: 0.1;
-	position: absolute;
-	right: 0;
-	top: 0;
 	z-index: 0;
 	background-size: cover;
 	background-position: center;
-	transition: 0.3s ease 0s;
 }
 
 .fls__card-bg--speciality-tours {
@@ -365,19 +395,27 @@ body {
 	opacity: 0;
 	background: rgba(0, 0, 0, 0.6);
     color: #fff;
-    content: "";
     display: block;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-	width: 100%;
-	transition: 0.3s ease 0s;
+	height: 100%;
+	z-index: 1;
+}
+
+.fls__card-footer-overlay {
+	bottom: -45px;
+	opacity: 0;
+	z-index: 2;
+	background-color: #bb2125;
+	height: 45px;
 }
 
 .fls__card:hover .fls__card-bg,
-.fls__card:hover .fls__card-bg-overlay {
+.fls__card:hover .fls__card-bg-overlay,
+.fls__card:hover .fls__card-footer-overlay {
 	opacity: 1;
+}
+
+.fls__card:hover .fls__card-footer-overlay {
+	bottom: 0;
 }
 
 .fls__card-details {
@@ -387,6 +425,10 @@ body {
 
 .fls__card-details span:first-child {
     margin-right: 6px;
+}
+
+.fls__card-details--speciality-tours {
+	margin-top: 27px;
 }
 
 .fls__card-title {
