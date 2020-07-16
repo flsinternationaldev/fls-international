@@ -40,27 +40,6 @@ body {
 	border-top: 1px solid #fff;
 }
 
-.navbar--fls {
-	background-color: rgba(0, 0, 0, 0.5);
-	transition: background-color 0.3s;
-}
-
-.navbar--fls .tabs a {
-	color: #7e8085;
-	border-bottom: none;
-	text-transform: uppercase;
-	font-size: 14px;
-	font-weight: 500;
-}
-
-.navbar--fls .tabs ul {
-	border-bottom: none;
-}
-
-.navbar--home .tabs a {
-	color: white;
-}
-
 .hero-body--home {
 	z-index: 1;
 	padding-bottom: 5rem !important;
@@ -149,6 +128,10 @@ body {
 
 .fls__link--alt:hover {
 	color: #dbab04;
+}
+
+.fls__link--dark {
+	color: #2c2e30;
 }
 
 /* TODO: Combine this with the button class for the hero section */
@@ -463,6 +446,85 @@ body {
 	margin-bottom: 16px;
 }
 
+/* Navbar is at the top of the page, vs nav, which can be anywhere */
+.navbar--fls {
+	background-color: rgba(0, 0, 0, 0.5);
+	transition: background-color 0.3s;
+}
+
+.navbar--fls .tabs a {
+	color: #7e8085;
+	border-bottom: none;
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 500;
+	transition: all 0.3s ease 0s;
+}
+
+.navbar--fls .tabs a:hover {
+	color: #fec910;
+}
+
+.navbar--fls .tabs ul {
+	border-bottom: none;
+}
+
+.navbar--fls .tabs li {
+	height: 100%;
+	display: flex;
+}
+
+.navbar--home .tabs a {
+	color: white;
+}
+
+.fls__navbar-dropdown {
+	display: block;
+	opacity: 0;
+	position: fixed;
+	top: 200px;
+	left: 20px;
+	z-index: 100;
+	border: 0;
+    padding: 0.625rem 0;
+    margin: 0;
+    border-radius: 0 !important;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+	transition: .3s;
+	background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.20);
+	border-top: #fec910 solid 3px;
+	max-width: 254px;
+}
+
+.fls__navbar-dropdown:before {
+	content: '';
+    position: absolute !important;
+    top: -10px;
+    right: auto;
+    bottom: auto;
+    left: 10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fec910;
+}
+
+.fls__navbar-dropdown-item {
+	width: 100%;
+	padding: 6px 18px;
+    text-transform: capitalize;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #2c2e30;
+}
+
+.fls__navbar-dropdown-item:hover {
+	background-color: #f8f9fa;
+}
+
 .fls__nav {
 	margin-bottom: 15px !important;
 }
@@ -636,6 +698,14 @@ a.fls__post-navbar-item {
 .fls__page-hero-copy-container {
 	position: relative;
 	z-index: 1;
+}
+
+.fls--opaque {
+	opacity: 1
+}
+
+.fls--transparent {
+	opacity: 0;
 }
 
 .container--announcement-banner {

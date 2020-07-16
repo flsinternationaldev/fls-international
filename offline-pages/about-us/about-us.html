@@ -6,6 +6,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>FLS International</title>
 		<link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">
+				<!-- TODO: Do we really need all of animate.css? -->
+		<link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+		/>
 		<!-- TODO: Do we need font-awesome? -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!-- TODO: Transfer this font over to the WordPress implementation -->
@@ -25,7 +30,29 @@
 	</head>
 	
 	<body>
-		<!-- TODO: Should start white, not translucent black -->
+		<!-- TODO: This is majorly janky, and needs finessing -->
+		<ul class="fls__navbar-dropdown">
+			<li class="fls__navbar-dropdown-item">
+				<a href="#" class="fls__link fls__link--dark">Sample dropdown menu item</a>
+			</li>
+
+			<li class="fls__navbar-dropdown-item">
+				<a href="#" class="fls__link fls__link--dark">Sample dropdown menu item</a>
+			</li>
+
+			<li class="fls__navbar-dropdown-item">
+				<a href="#" class="fls__link fls__link--dark">Sample dropdown menu item</a>
+			</li>
+
+			<li class="fls__navbar-dropdown-item">
+				<a href="#" class="fls__link fls__link--dark">Sample dropdown menu item</a>
+			</li>
+
+			<li class="fls__navbar-dropdown-item">
+				<a href="#" class="fls__link fls__link--dark">Sample dropdown menu item</a>
+			</li>
+		</ul>
+
 		<nav class="navbar is-fixed-top navbar--fls navbar--scrolled">
 			<div class="container">
 				<div id="navbarMenu" class="navbar-menu">
@@ -41,7 +68,7 @@
 					</div>
 					<div class="navbar-brand">
 						<a class="navbar-item" href="../">
-							<img class="navbar__logo" src="../img/fls-international-logo.png" alt="Logo">
+							<img class="navbar__logo" src="../../img/fls-international-logo.png" alt="Logo">
 						</a>
 						<span class="navbar-burger burger" data-target="navbarMenu">
 							<span></span>
@@ -584,5 +611,7 @@
 				</div>
 			</div>
 		</footer>
+
+		<script src="../../js/main.js"></script>
 	</body>
 </html>
