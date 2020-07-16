@@ -633,6 +633,11 @@ a.fls__post-navbar-item {
 	}
 }
 
+.fls__page-hero-copy-container {
+	position: relative;
+	z-index: 1;
+}
+
 .container--announcement-banner {
 	display: flex;
 	flex-direction: column;
@@ -1521,6 +1526,12 @@ a.fls__post-navbar-item {
 	position: absolute;
 	padding: 10px 15px;
 	line-height: 20px;
+}
+
+@media only screen and (max-device-width: 768px) {
+	.footer__established {
+		right: 20px;
+	}
 }
 
 .footer__established:before {
