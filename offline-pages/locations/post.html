@@ -89,9 +89,9 @@
 
 	<section class="section programs">
 		<div class="container">
-			<div class="columns is-centered">
-				<div class="column is-3">
-					<div class="column is-full fls__location-price-calculator">
+			<div class="columns is-multiline">
+				<div class="column is-3-desktop is-full-tablet">
+					<div class="fls__location-price-calculator">
 						<h6 class="fls__post-title">Price Calculator</h6>
 						<div class="field">
 							<div class="control">
@@ -255,21 +255,18 @@
 						</div>
 					</div>
 
-					<!-- TODO: Quite obviously need to change the class names here -->
-					<div class="column is-full">
-						<div class="fls__testimonial">
-							<img src="../../img/yung-chun-testimonial.jpeg" alt="testimonial avatar" class="fls__testimonial-avatar">
-							<p class="fls__testimonial-copy">I learned that pronunciation is really important</p>
-							<div class="fls__testimonial-subcopy">
-								<span>YUNG CHUN</span> - <span class="fls-red">Korea</span>
-								<a href="" class="fls__testimonial-read-more">
-									Read more
-								</a>
-							</div>
+					<div class="fls__testimonial">
+						<img src="../../img/yung-chun-testimonial.jpeg" alt="testimonial avatar" class="fls__testimonial-avatar">
+						<p class="fls__testimonial-copy">I learned that pronunciation is really important</p>
+						<div class="fls__testimonial-subcopy">
+							<span>YUNG CHUN</span> - <span class="fls-red">Korea</span>
+							<a href="" class="fls__testimonial-read-more">
+								Read more
+							</a>
 						</div>
 					</div>
 				</div>
-				<div class="column is-9">
+				<div class="column is-9-desktop is-full-tablet">
 					<div class="columns is-multiline">
 						<div class="column is-full">
 							<!-- TODO: Again, these 'programs' classes need genericizing -->
@@ -287,28 +284,20 @@
 
 						<div class="column is-full">
 							<div class="columns is-variable is-1">
-								<div class="column is-2">
+								<div class="column">
 									<a class="fls__location-post-anchor-button">Overview</a>
 								</div>
 
-								<div class="column is-2">
+								<div class="column">
 									<a class="fls__location-post-anchor-button">Campus Profile</a>
 								</div>
 
-								<div class="column is-2">
+								<div class="column">
 									<a class="fls__location-post-anchor-button">Area Profile</a>
 								</div>
-
-								<div class="column is-2">
-									<a class="fls__location-post-anchor-button">Area Profile</a>
-								</div>
-
-								<div class="column is-2">
+								
+								<div class="column">
 									<a class="fls__location-post-anchor-button">Programs Offered</a>
-								</div>
-
-								<div class="column is-2">
-									<a class="fls__location-post-anchor-button">360 View</a>
 								</div>
 							</div>
 						</div>
@@ -516,46 +505,68 @@
 		</div>
 	</section>
 	
-	<footer class="footer">
+	<footer class="footer fls__footer">
+		<div class="footer__established">Established in 1986</div>
+		
 		<div class="container">
 			<div class="columns is-centered">
 				<div class="column">
-					<div class="footer__contact">
-						<h3>FLS International</h3>
-						<p>680 E Colorado Blvd Suite 180 Second Floor Pasadena, CA 91101</p>
-						<p>(626) 795-2912</p>
-						<p>info@fls.net</p>
-					</div>
-				</div>
-				<div class="column">
-					<div class="footer__info">
-						<h3>Information</h3>
+					<h3 class="footer__title">FLS International</h3>
 
-						<ul class="footer__info-links">
-							<li>Home</li>
-							<li>Locations</li>
-							<li>FLS Level Correlations</li>
-							<li>Programs</li>
-							<li>BPPE Resources</li>
-							<li>Academic Calendar</li>
-						</ul>
-					</div>
+					<p class="footer__copy footer__item">680 E Colorado Blvd Suite 180 Second Floor Pasadena, CA 91101</p>
+					<p class="footer__copy footer__item">(626) 795-2912</p>
+					<p class="footer__copy footer__item">info@fls.net</p>
 				</div>
+
+				<div class="column footer__info">
+					<h3 class="footer__title">Information</h3>
+
+					<ul class="columns is-multiline footer__copy">
+						<li class="column is-half footer__list-item">
+							<!-- TODO: Replace these chevrons with icons -->
+							<a href="#" class="fls__link fls__link--alt">> Home</a>
+						</li>
+						<li class="column is-half footer__list-item">
+							<a href="#" class="fls__link fls__link--alt">> Programs</a>
+						</li>
+						<li class="column is-half footer__list-item">
+							<a href="#" class="fls__link fls__link--alt">> Locations</a>
+						</li>
+						<li class="column is-half footer__list-item">
+							<a href="#" class="fls__link fls__link--alt">> BPPE Resources</a>
+						</li>
+						<li class="column is-half footer__list-item">
+							<a href="#" class="fls__link fls__link--alt">> FLS Level Correlations</a>
+						</li>
+						<li class="column is-half footer__list-item">
+							<a href="#" class="fls__link fls__link--alt">> Academic Calendar</a>
+						</li>
+					</ul>
+				</div>
+
 				<div class="column">
-					<div class="footer__affiliations">Affiliate links will go here</div>
+					<div class="footer__affiliations">
+						<a href="#">
+							<!-- TODO: Need grey scale images with backgrounds here -->
+							<img src="../../img/cea-logo.png" alt="CEA logo">
+						</a>
+
+						<a href="#">
+							<img src="../../img/bppe-logo.png" alt="BPPE logo">
+						</a>
+
+						<a href="#">
+							<img src="../../img/english-us-icon.png" alt="English US logo">
+						</a>
+					</div>
+
+					<div class="footer__social">
+						<!-- TODO: Figure this out once the icon service has been determined -->
+					</div>
 				</div>
 			</div>
 		</div>
 	</footer>
-	<div class="footer footer__legal">
-		<div class="container">
-			<div class="columns is-centered">
-				<div class="column">
-					<p>Copyright © 2020 FLS International | Site Design & Development by <a href="https://akingdebased.github.io/" target="_blank"> Gabriel Gonzalvez</a></p>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<script
 	src="https://code.jquery.com/jquery-3.5.1.min.js"

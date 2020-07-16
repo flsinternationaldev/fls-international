@@ -538,11 +538,11 @@ a.fls__post-navbar-item {
 
 .fls__testimonial-copy:before {
 	font-size: 75px;
-		position: absolute;
-		top: -54px;
-		left: -12px;
-		color: #cc3333;
-		content: "\201C";
+	position: absolute;
+	top: -54px;
+	left: -12px;
+	color: #cc3333;
+	content: "\201C";
 }
 
 .fls__testimonial-subcopy {
@@ -556,7 +556,7 @@ a.fls__post-navbar-item {
 }
 
 @media only screen and (max-device-width: 1023px) {
-	.fls__testimonial {
+	.fls__testimonial--programs {
 		margin-top: 0;
 		height: 100%
 	}
@@ -575,7 +575,7 @@ a.fls__post-navbar-item {
 }
 
 @media only screen and (max-device-width: 768px) {
-	.fls__testimonial {
+	.fls__testimonial--programs {
 		margin-top: 50px;
 	}
 }
