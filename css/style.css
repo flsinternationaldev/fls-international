@@ -61,8 +61,13 @@ body {
 	color: white;
 }
 
-.hero-body--fls {
+.hero-body--home {
 	z-index: 1;
+	padding-bottom: 5rem !important;
+}
+
+.hero-body--page {
+	padding-top: 5rem;
 	padding-bottom: 5rem !important;
 }
 
@@ -1161,7 +1166,7 @@ a.fls__post-navbar-item {
 
 /* Programs landing styles */
 /* TODO: Most likely needs to be in its own file */
-.hero--programs {
+.hero--page {
 	background: linear-gradient(
 		45deg,
 		rgba(0, 51, 51, 1) 22%,
@@ -1171,7 +1176,7 @@ a.fls__post-navbar-item {
 	min-height: 40vh;
 }
 
-.hero--programs:after {
+.hero--page:after {
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -1186,9 +1191,15 @@ a.fls__post-navbar-item {
 .fls__page-hero-title {
 	color: white;
 	font-size: 3rem;
-		font-weight: 200;
+	font-weight: 200;
 	text-transform: uppercase;
 	text-align: center;
+}
+
+@media only screen and (max-device-width: 768px) {
+	.fls__page-hero-title {
+		font-size: 2rem;
+	}
 }
 
 .fls__page-hero-button {
