@@ -72,6 +72,8 @@ body {
 	text-transform: uppercase;
 }
 
+/* Generic FLS Styles */
+
 .fls__list-item {
 	position: relative;
 	list-style: none;
@@ -260,6 +262,147 @@ body {
 .fls__align-items-center {
 	display: flex;
 	align-items: center;
+}
+
+.fls__pill {
+	display: inline-block;
+    padding: 5px 15px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 3px;
+    color: #fff;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease 0s;
+    margin-bottom: 20px;
+}
+
+.fls__pill--in-person {
+	background-color: #bb2125;
+}
+
+.fls__pill--online {
+	background-color: #0069d9;
+}
+
+.fls__post-title {
+	color: #363636;
+	font-weight: 500;
+	text-transform: uppercase;
+	font-size: 20px;
+}
+
+.fls__post-title:after {
+	display: block;
+		width: 30px;
+		height: 2px;
+		margin: 12px 0;
+		border-top: 1px solid #ddd;
+		content: '';
+}
+
+.fls__post-copy {
+	font-size: 15px;
+	margin-bottom: 1rem;
+}
+
+.fls__post-container {
+	padding-right: 50px;
+}
+
+.fls__post-container--left {
+	padding-left: 50px;
+}
+
+.fls__card {
+	position: relative;
+	padding: 30px;
+	border: 1px solid #ddd;
+	height: 228px;
+	width: 100%;
+	cursor: pointer;
+}
+
+.fls__card-contents {
+	position: relative;
+	z-index: 2;
+}
+
+.fls__card-title,
+.fls__card-copy,
+.fls__card-details {
+	transition: all 0.3s ease 0s;
+}
+
+.fls__card:hover .fls__card-title,
+.fls__card:hover .fls__card-copy,
+.fls__card:hover .fls__card-details {
+	color: white;
+}
+
+.fls__card-bg {
+	height: 100%;
+	width: 100%;
+	display: block;
+	background-image: url('../img/elp-card-bg.jpeg');
+	bottom: 0;
+	left: 0;
+	opacity: 0.1;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 0;
+	background-size: cover;
+	background-position: center;
+	transition: 0.3s ease 0s;
+}
+
+.fls__card-bg--speciality-tours {
+	background-image: url('../img/specialty-tours-bg.png');
+}
+
+.fls__card-bg-overlay {
+	opacity: 0;
+	background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+	width: 100%;
+	transition: 0.3s ease 0s;
+}
+
+.fls__card:hover .fls__card-bg,
+.fls__card:hover .fls__card-bg-overlay {
+	opacity: 1;
+}
+
+.fls__card-details {
+	color: #626262;
+    font-size: 14px;
+}
+
+.fls__card-details span:first-child {
+    margin-right: 6px;
+}
+
+.fls__card-title {
+	font-weight: 600;
+	font-size: 20px;
+}
+
+.fls__card-copy {
+	color: #626262;
+    font-size: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+	text-overflow: ellipsis;
+	margin-bottom: 16px;
 }
 
 /* Carousel styles */
@@ -601,35 +744,6 @@ body {
 .highlighted-section__subtitle {
 	color: white;
 }
-/* Generic post styles */
-.fls__post-title {
-	color: #363636;
-	font-weight: 500;
-	text-transform: uppercase;
-	font-size: 20px;
-}
-
-.fls__post-title:after {
-	display: block;
-		width: 30px;
-		height: 2px;
-		margin: 12px 0;
-		border-top: 1px solid #ddd;
-		content: '';
-}
-
-.fls__post-copy {
-	font-size: 15px;
-	margin-bottom: 1rem;
-}
-
-.fls__post-container {
-	padding-right: 50px;
-}
-
-.fls__post-container--left {
-	padding-left: 50px;
-}
 
 /* How is Your English? section */
 .hiye__list {
@@ -917,33 +1031,6 @@ body {
 	font-weight: 400;
 }
 
-/* English Language Programs */
-.programs__elp-card {
-	padding: 30px;
-		border: 1px solid #ddd;
-		position: relative;
-	z-index: 1;
-	height: 228px;
-	width: 100%;
-	background-color: transparent;
-}
-
-.programs__elp-bg {
-	height: 100%;
-	width: 100%;
-	display: block;
-	background-image: url('../img/elp-card-bg.jpeg');
-	bottom: 0;
-		left: 0;
-		opacity: 0.1;
-		position: absolute;
-		right: 0;
-		top: 0;
-	z-index: 0;
-	background-size: cover;
-	background-position: center;
-}
-
 /* Programs post styles */
 
 .programs__navbar-item {
@@ -975,14 +1062,14 @@ a.programs__navbar-item {
 .programs__testimonial-avatar {
 	display: block;
 	position: absolute;
-		left: 50%;
-		margin-left: -44px;
-		top: -45px;
-		width: 100px;
+	left: 50%;
+	margin-left: -44px;
+	top: -45px;
+	width: 100px;
 	height: 100px;
 	border: 4px solid #cc3333;
-		max-width: 100%;
-		border-radius: 50%;
+	max-width: 100%;
+	border-radius: 50%;
 }
 
 .programs__testimonial-copy {
@@ -1257,7 +1344,7 @@ a.programs__navbar-item {
 	top: 4px;
 	right: -10px;
 	z-index: 0;
-	transition: all .2s ease-out;
+	transition: all .tr2s ease-out;
 	transform: translateY(-50%);
 	border-left: 10px solid #a77e00;
 	border-top: 7px solid transparent;
