@@ -5,6 +5,8 @@ import flsLogo from '../../img/fls-international-logo.png';
 export default function Navbar(props) {
 	const [isScrolled, setIsScrolled] = useState(false);
 
+	// This React Hook allows us to set an event handler when the component mounts,
+	// then remove it when the component is unmounted
 	useEffect(() => {
 		const navbarEl = document.querySelector('.navbar'),
 			colorChangePoint = navbarEl.offsetTop,
