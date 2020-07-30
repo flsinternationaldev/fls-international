@@ -20,6 +20,8 @@
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-netlify-cms": "^4.3.11",
     "gatsby-plugin-sass": "^2.3.12",
+    "gatsby-source-filesystem": "^2.3.23",
+    "gatsby-transformer-remark": "^2.8.27",
     "netlify-cms-app": "^2.12.19",
     "node-sass": "^4.14.1",
     "react": "^16.12.0",
