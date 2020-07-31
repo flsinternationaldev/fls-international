@@ -1,9 +1,9 @@
 ---
 path: /
-title: home-page
+title: home
 carousel_settings:
-  title: FLS International!
-  copy: English Language Programs, Pathways & Specialty Tours
+  title: FLS International
+  copy: Our English Language Programs, Pathways & Specialty Tours
 explore_your_world:
   title: Explore Your World
   subtitle: Study in the U.S.A.
