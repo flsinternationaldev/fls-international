@@ -6,7 +6,7 @@ carousel_settings:
   copy: Our English Language Programs, Pathways & Specialty Tours
 explore_your_world:
   title: Explore Your World
-  subtitle: Study in the U.S.A.
+  subtitle: Study in the U.S.A. Today
   copy: Choose any of our destinations in the U.S. and you'll find yourself in a
     great place to explore America, learn English and meet other students from
     around the world!
