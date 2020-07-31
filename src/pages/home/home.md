@@ -11,10 +11,9 @@ explore_your_world:
     great place to explore America, learn English and meet other students from
     around the world!
 start_your_journey:
-  title: Start Your Journey
-  subtitle: Welcome to Our School
-  copy: FLS provides outstanding values in high quality English programs. To find
-    your program’s price, try our easy cost tool.
+  title: Begin Your Journey
+  subtitle: Come To Our School!
+  copy: FLS provides exceptional english language learning opportunities.
 our_popular_programs:
   copy: Having over 9 million students worldwide and more than 50,000 online
     courses available.
