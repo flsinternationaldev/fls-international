@@ -19,8 +19,9 @@ collections:
       label: Home Page
       folder: home-page
       delete: false
-      create: false # TODO: Should probably be false, but need to figure out how this works
+      create: true # TODO: Should probably be false, but need to figure out how this works
       fields:
+          - { name: path, label: Path }
           - { name: title, label: Title }
           - widget: 'object' # TODO: This widget needs to be expanded to allow custom carousel items
             label: 'Hero Banner Settings'
