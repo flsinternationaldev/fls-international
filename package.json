@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "fls-international",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "Website & application for FLS International, built with Gatsby and Netlify CS",
   "version": "0.1.0",
   "license": "0BSD",
   "scripts": {
@@ -34,9 +34,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+    "url": "https://github.com/AKingDebased/fls-international"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/AKingDebased/fls-international/issues"
   }
 }

@@ -6,18 +6,9 @@ backend:
 media_folder: static/assets
 public_folder: /assets
 collections:
-    - name: blog
-      label: Blog
-      folder: blog
-      create: true
-      fields:
-          - { name: path, label: Path }
-          - { name: date, label: Date, widget: datetime }
-          - { name: title, label: Title }
-          - { name: body, label: Body, widget: markdown }
     - name: home-page
       label: Home Page
-      folder: home-page
+      folder: src/pages/home-page
       delete: false
       create: true # TODO: Should probably be false, but need to figure out how this works
       fields:
@@ -40,20 +31,20 @@ collections:
             label: 'Start Your Journey'
             name: 'start_your_journey'
             fields:
-                - { label: 'Title', name: 'Title', widget: 'text' }
+                - { label: 'Title', name: 'title', widget: 'text' }
                 - { label: 'Subtitle', name: 'subtitle', widget: 'text' }
-                - { label: 'Copy', name: 'Copy', widget: 'text' }
+                - { label: 'Copy', name: 'copy', widget: 'text' }
           - widget: 'object'
             label: 'Our Popular Programs'
             name: 'our_popular_programs'
             fields:
-                - { label: 'Title', name: 'Title', widget: 'text' }
+                - { label: 'Title', name: 'title', widget: 'text' }
                 - { label: 'Subtitle', name: 'subtitle', widget: 'text' }
-                - { label: 'Copy', name: 'Copy', widget: 'text' }
+                - { label: 'Copy', name: 'copy', widget: 'text' }
           - widget: 'object'
             label: 'How Is Your English?'
             name: 'how_is_your_english'
             fields:
-                - { label: 'Title', name: 'Title', widget: 'text' }
+                - { label: 'Title', name: 'title', widget: 'text' }
                 - { label: 'Subtitle', name: 'subtitle', widget: 'text' }
-                - { label: 'Copy', name: 'Copy', widget: 'text' }
+                - { label: 'Copy', name: 'copy', widget: 'text' }

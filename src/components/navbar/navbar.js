@@ -23,7 +23,6 @@ export default function Navbar(props) {
 		};
 	});
 
-	console.log('nav', navbarStyles);
 	return (
 		<nav
 			className={`navbar is-fixed-top ${navbarStyles.navbarFls} ${

@@ -1,8 +1,10 @@
 import React, { Fragment } from 'react';
 import Slick from 'react-slick';
+import { graphql } from 'gatsby';
 
 import '../bulma/bulma.scss';
 import 'slick-carousel/slick/slick.css';
+import sectionStyles from '../components/section/section.module.scss';
 
 import Hero from '../components/hero/hero';
 import Navbar from '../components/navbar/navbar';
@@ -10,12 +12,10 @@ import AnnouncementBanner from '../components/announcement-banner/announcement-b
 import Section from '../components/section/section';
 import Footer from '../components/footer/footer';
 
-import sectionStyles from '../components/section/section.module.scss';
-
 import videoSampleImg from '../img/video-sample.jpeg';
 
-export default function Home() {
-	console.log(sectionStyles);
+export const HomePageTemplate = ({ data }) => {
+	console.log('data?', data);
 	const slickSettings = {
 		infinite: true,
 		slidesToShow: 3,
@@ -36,6 +36,14 @@ export default function Home() {
 			},
 		],
 	};
+
+	const {
+		carousel_settings,
+		explore_your_world,
+		how_is_your_english,
+		our_popular_programs,
+		start_your_journey,
+	} = data.markdownRemark.frontmatter;
 
 	return (
 		<Fragment>
@@ -59,18 +67,15 @@ export default function Home() {
 								}
 							>
 								<h3 className="subtitle subtitle--fls subtitle--red">
-									Study in the U.S.A.
+									{explore_your_world.subtitle}
 								</h3>
 								<h1 className="title title--fls">
-									Explore Your World
+									{explore_your_world.title}
 								</h1>
 							</div>
 
 							<p className={sectionStyles.exploreYourWorld__copy}>
-								Choose any of our destinations in the U.S. and
-								you'll find yourself in a great place to explore
-								America, learn English and meet other students
-								from around the world!
+								{explore_your_world.copy}
 							</p>
 						</div>
 					</div>
@@ -87,10 +92,10 @@ export default function Home() {
 					<div className="column is-6">
 						<div className={sectionStyles.section__titleContainer}>
 							<h3 className="subtitle subtitle--fls subtitle--red">
-								Welcome to Our School
+								{start_your_journey.subtitle}
 							</h3>
 							<h2 className="title title--fls">
-								Start Your Journey
+								{start_your_journey.title}
 							</h2>
 						</div>
 					</div>
@@ -103,9 +108,7 @@ export default function Home() {
 								sectionStyles.startYourJourney__copyContainer
 							}
 						>
-							FLS provides outstanding values in high quality
-							English programs. To find your program’s price, try
-							our easy cost tool.
+							{start_your_journey.copy}
 						</p>
 					</div>
 					<div className="column is-half-desktop is-full-tablet">
@@ -194,16 +197,15 @@ export default function Home() {
 					<div className="column is-7">
 						<div className={sectionStyles.section__titleContainer}>
 							<h3 className="subtitle subtitle--fls subtitle--red">
-								Our
+								{our_popular_programs.subtitle}
 							</h3>
 							<h2 className="title title--fls">
-								Popular Programs
+								{our_popular_programs.title}
 							</h2>
 						</div>
 
 						<p className={sectionStyles.popularPrograms__subcopy}>
-							Having over 9 million students worldwide and more
-							than 50,000 online courses available.
+							{our_popular_programs.copy}
 						</p>
 					</div>
 				</div>
@@ -348,10 +350,10 @@ export default function Home() {
 							<h3
 								className={`subtitle ${sectionStyles.highlightedSection__subtitle}`}
 							>
-								How Is
+								{how_is_your_english.subtitle}
 							</h3>
 							<h2 className="title title--fls title--white">
-								Your English?
+								{how_is_your_english.title}
 							</h2>
 						</div>
 					</div>
@@ -588,4 +590,41 @@ export default function Home() {
 			<AnnouncementBanner />
 		</Fragment>
 	);
-}
+};
+
+export default HomePageTemplate;
+
+// TODO: Here, all the individual fields are specified.
+// Is there a way to just say 'get all fields'?
+export const pageQuery = graphql`
+	query {
+		markdownRemark {
+			frontmatter {
+				carousel_settings {
+					copy
+					title
+				}
+				explore_your_world {
+					copy
+					subtitle
+					title
+				}
+				how_is_your_english {
+					copy
+					title
+					subtitle
+				}
+				our_popular_programs {
+					copy
+					subtitle
+					title
+				}
+				start_your_journey {
+					copy
+					title
+					subtitle
+				}
+			}
+		}
+	}
+`;

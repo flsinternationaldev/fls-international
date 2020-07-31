@@ -8,7 +8,6 @@ import bppeLogo from '../../img/bppe-logo.png';
 import englishUsLogo from '../../img/english-us-icon.png';
 
 const footer = () => {
-	console.log(footerStyles);
 	return (
 		<Fragment>
 			<footer className="footer">
