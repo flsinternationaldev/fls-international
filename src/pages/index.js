@@ -48,7 +48,7 @@ export const HomePageTemplate = ({ data }) => {
 	return (
 		<Fragment>
 			<Navbar isHome={true} />
-			<Hero />
+			<Hero carousel_settings={carousel_settings} />
 
 			<Section
 				sectionClasses={[sectionStyles.sectionWhoWeAre]}

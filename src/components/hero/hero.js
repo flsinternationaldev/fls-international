@@ -23,11 +23,10 @@ export default function Hero(props) {
 						<h2
 							className={`subtitle ${heroStyles.hero__copyTitle}`}
 						>
-							FLS International
+							{props.carousel_settings.title}
 						</h2>
 						<h1 className={heroStyles.hero__copy}>
-							ENGLISH LANGUAGE PROGRAMS, PATHWAYS & SPECIALTY
-							TOURS
+							{props.carousel_settings.copy}
 						</h1>
 					</div>
 				</div>
