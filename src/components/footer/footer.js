@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-import footerStyles from './footer.module.scss';
+import footerStyles from './Footer.module.scss';
 
 // TODO: These will likely come in from the CMS
 import ceaLogo from '../../img/cea-logo.png';

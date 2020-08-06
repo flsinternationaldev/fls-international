@@ -1,5 +1,5 @@
 import React from 'react';
-import heroStyles from './hero.module.scss';
+import heroStyles from './Hero.module.scss';
 import 'slick-carousel/slick/slick.css';
 import Slick from 'react-slick';
 
