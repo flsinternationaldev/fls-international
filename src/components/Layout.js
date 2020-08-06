@@ -46,7 +46,7 @@ import Metadata from './Metadata';
 //       }
 //     </style>
 
-const TemplateWrapper = ({ children, isHome }) => {
+const TemplateWrapper = ({ children, isHome, isScrolled }) => {
 	const { title, description } = Metadata();
 
 	return (
@@ -90,7 +90,7 @@ const TemplateWrapper = ({ children, isHome }) => {
 					content={`${withPrefix('/')}img/og-image.jpg`}
 				/> */}
 			</Helmet>
-			<Navbar isHome={isHome} />
+			<Navbar isHome={isHome} isScrolled={isScrolled} />
 			{children}
 			<Footer />
 		</Fragment>

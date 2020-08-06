@@ -10,10 +10,11 @@ import Layout from '../components/Layout';
 import Hero from '../components/hero/Hero';
 import AnnouncementBanner from '../components/announcement-banner/AnnouncementBanner';
 import Section from '../components/section/Section';
-import Footer from '../components/footer/Footer';
 
 import videoSampleImg from '../img/video-sample.jpeg';
 
+// TODO: In the gatsby-netlify starter package, all these React files are kept in /templates,
+// and pages only has Markdown files. Investigate how to do that
 export const HomePageTemplate = ({
 	carousel_settings,
 	explore_your_world,
@@ -47,10 +48,8 @@ export const HomePageTemplate = ({
 			<Hero carousel_settings={carousel_settings} />
 
 			<Section
-				sectionClasses={[sectionStyles.sectionWhoWeAre]}
-				isMultilineColumns={true}
-				isCenteredColumns={true}
-				isFullWidthContainer={true}
+				sectionClasses={['section', sectionStyles.sectionWhoWeAre]}
+				containerClasses={['']}
 			>
 				<div className="columns is-multiline">
 					<div className="column is-full-tablet is-half-desktop">
@@ -81,8 +80,7 @@ export const HomePageTemplate = ({
 				</div>
 			</Section>
 			<Section
-				sectionClasses={[sectionStyles.sectionAlternate]}
-				isCenteredColumns={true}
+				sectionClasses={['section', sectionStyles.sectionAlternate]}
 			>
 				<div className="columns is-centered">
 					<div className="column is-6">
@@ -339,7 +337,9 @@ export const HomePageTemplate = ({
 					</div>
 				</div>
 			</Section>
-			<Section sectionClasses={[sectionStyles.highlightedSection]}>
+			<Section
+				sectionClasses={['section', sectionStyles.highlightedSection]}
+			>
 				<div className="columns is-centered">
 					<div className="column is-6">
 						<div className={sectionStyles.section__titleContainer}>
@@ -445,7 +445,7 @@ export const HomePageTemplate = ({
 					</div>
 				</div>
 			</Section>
-			<Section sectionClasses={['locations']}>
+			<Section sectionClasses={['section', 'locations']}>
 				{/* template these carousel slides */}
 				<div className="columns is-centered">
 					<div className="column is-6">

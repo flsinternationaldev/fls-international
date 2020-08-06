@@ -8,20 +8,24 @@ export default function Navbar(props) {
 	// This React Hook allows us to set an event handler when the component mounts,
 	// then remove it when the component is unmounted
 	useEffect(() => {
-		const navbarEl = document.querySelector('.navbar'),
-			colorChangePoint = navbarEl.offsetTop,
-			handleScroll = () => {
-				window.pageYOffset > colorChangePoint
-					? setIsScrolled(true)
-					: setIsScrolled(false);
+		if (props.isHome) {
+			const navbarEl = document.querySelector('.navbar'),
+				colorChangePoint = navbarEl.offsetTop,
+				handleScroll = () => {
+					window.pageYOffset > colorChangePoint
+						? setIsScrolled(true)
+						: setIsScrolled(false);
+				};
+
+			window.addEventListener('scroll', handleScroll);
+
+			return () => {
+				window.removeEventListener('scroll', handleScroll);
 			};
-
-		window.addEventListener('scroll', handleScroll);
-
-		return () => {
-			window.removeEventListener('scroll', handleScroll);
-		};
-	});
+		} else {
+			setIsScrolled(true);
+		}
+	}, []);
 
 	return (
 		<nav
