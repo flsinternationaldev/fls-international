@@ -582,7 +582,6 @@ export const HomePageTemplate = ({
 					</div>
 				</Slick>
 			</Section>
-			<Footer />
 			<AnnouncementBanner />
 		</Fragment>
 	);
