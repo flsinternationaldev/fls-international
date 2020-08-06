@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import announcementBannerStyles from './announcement-banner.module.scss';
+import announcementBannerStyles from './AnnouncementBanner.module.scss';
 import 'animate.css';
 
 export default function AnnouncementBanner() {

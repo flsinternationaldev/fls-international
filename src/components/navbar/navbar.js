@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import navbarStyles from './navbar.module.scss';
+import navbarStyles from './Navbar.module.scss';
 import flsLogo from '../../img/fls-international-logo.png';
 
 export default function Navbar(props) {

@@ -7,10 +7,17 @@
 module.exports = {
 	siteMetadata: {
 		title: 'FLS International',
+		description:
+			"The official website for FLS International's programs and online services.",
 	},
 	plugins: [
 		`gatsby-plugin-sass`,
-		`gatsby-plugin-netlify-cms`,
+		{
+			resolve: 'gatsby-plugin-netlify-cms',
+			options: {
+				modulePath: `${__dirname}/src/cms/cms.js`,
+			},
+		},
 		{
 			resolve: `gatsby-plugin-google-fonts`,
 			options: {

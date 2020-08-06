@@ -3,48 +3,50 @@ backend:
     repo: akingdebased/fls-international
     branch: master # Branch to update (optional; defaults to master)
 
+local_backend: true # TODO: Check if this prohibits the CMS from running on Netlify (production)
+
 media_folder: static/assets
 public_folder: /assets
 collections:
-    - name: home
-      label: Home
-      folder: src/pages/home
-      delete: false
+    - name: pages
+      label: Pages
       create: true # TODO: Should probably be false, but need to figure out how this works
-      fields:
-          - { name: path, label: Path }
-          - { name: title, label: Title }
-          - widget: 'object' # TODO: This widget needs to be expanded to allow custom carousel items
-            label: 'Hero Banner Settings'
-            name: 'carousel_settings'
+      files:
+          - file: 'src/pages/home/home.md'
+            label: 'Home Page'
+            name: 'home'
             fields:
-                - { label: 'Title', name: 'title', widget: 'text' }
-                - { label: 'Copy', name: 'copy', widget: 'text' }
-          - widget: 'object'
-            label: 'Explore Your World'
-            name: 'explore_your_world'
-            fields:
-                - { label: 'Title', name: 'title', widget: 'text' }
-                - { label: 'Subtitle', name: 'subtitle', widget: 'text' }
-                - { label: 'Copy', name: 'copy', widget: 'text' }
-          - widget: 'object'
-            label: 'Start Your Journey'
-            name: 'start_your_journey'
-            fields:
-                - { label: 'Title', name: 'title', widget: 'text' }
-                - { label: 'Subtitle', name: 'subtitle', widget: 'text' }
-                - { label: 'Copy', name: 'copy', widget: 'text' }
-          - widget: 'object'
-            label: 'Our Popular Programs'
-            name: 'our_popular_programs'
-            fields:
-                - { label: 'Title', name: 'title', widget: 'text' }
-                - { label: 'Subtitle', name: 'subtitle', widget: 'text' }
-                - { label: 'Copy', name: 'copy', widget: 'text' }
-          - widget: 'object'
-            label: 'How Is Your English?'
-            name: 'how_is_your_english'
-            fields:
-                - { label: 'Title', name: 'title', widget: 'text' }
-                - { label: 'Subtitle', name: 'subtitle', widget: 'text' }
-                - { label: 'Copy', name: 'copy', widget: 'text' }
+                - widget: 'object' # TODO: This widget needs to be expanded to allow custom carousel items
+                  label: 'Hero Banner Settings'
+                  name: 'carousel_settings'
+                  fields:
+                      - { label: 'Title', name: 'title', widget: 'text' }
+                      - { label: 'Copy', name: 'copy', widget: 'text' }
+                - widget: 'object'
+                  label: 'Explore Your World'
+                  name: 'explore_your_world'
+                  fields:
+                      - { label: 'Title', name: 'title', widget: 'text' }
+                      - { label: 'Subtitle', name: 'subtitle', widget: 'text' }
+                      - { label: 'Copy', name: 'copy', widget: 'text' }
+                - widget: 'object'
+                  label: 'Start Your Journey'
+                  name: 'start_your_journey'
+                  fields:
+                      - { label: 'Title', name: 'title', widget: 'text' }
+                      - { label: 'Subtitle', name: 'subtitle', widget: 'text' }
+                      - { label: 'Copy', name: 'copy', widget: 'text' }
+                - widget: 'object'
+                  label: 'Our Popular Programs'
+                  name: 'our_popular_programs'
+                  fields:
+                      - { label: 'Title', name: 'title', widget: 'text' }
+                      - { label: 'Subtitle', name: 'subtitle', widget: 'text' }
+                      - { label: 'Copy', name: 'copy', widget: 'text' }
+                - widget: 'object'
+                  label: 'How Is Your English?'
+                  name: 'how_is_your_english'
+                  fields:
+                      - { label: 'Title', name: 'title', widget: 'text' }
+                      - { label: 'Subtitle', name: 'subtitle', widget: 'text' }
+                      - { label: 'Copy', name: 'copy', widget: 'text' }

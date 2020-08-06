@@ -6,16 +6,21 @@ import '../bulma/bulma.scss';
 import 'slick-carousel/slick/slick.css';
 import sectionStyles from '../components/section/section.module.scss';
 
-import Hero from '../components/hero/hero';
-import Navbar from '../components/navbar/navbar';
-import AnnouncementBanner from '../components/announcement-banner/announcement-banner';
-import Section from '../components/section/section';
-import Footer from '../components/footer/footer';
+import Layout from '../components/Layout';
+import Hero from '../components/hero/Hero';
+import AnnouncementBanner from '../components/announcement-banner/AnnouncementBanner';
+import Section from '../components/section/Section';
+import Footer from '../components/footer/Footer';
 
 import videoSampleImg from '../img/video-sample.jpeg';
 
-export const HomePageTemplate = ({ data }) => {
-	console.log('data?', data);
+export const HomePageTemplate = ({
+	carousel_settings,
+	explore_your_world,
+	how_is_your_english,
+	our_popular_programs,
+	start_your_journey,
+}) => {
 	const slickSettings = {
 		infinite: true,
 		slidesToShow: 3,
@@ -37,18 +42,9 @@ export const HomePageTemplate = ({ data }) => {
 		],
 	};
 
-	const {
-		carousel_settings,
-		explore_your_world,
-		how_is_your_english,
-		our_popular_programs,
-		start_your_journey,
-	} = data.markdownRemark.frontmatter;
-
 	return (
 		<Fragment>
-			<Navbar isHome={true} />
-			<Hero />
+			<Hero carousel_settings={carousel_settings} />
 
 			<Section
 				sectionClasses={[sectionStyles.sectionWhoWeAre]}
@@ -592,7 +588,23 @@ export const HomePageTemplate = ({ data }) => {
 	);
 };
 
-export default HomePageTemplate;
+const HomePage = ({ data }) => {
+	const { frontmatter } = data.markdownRemark;
+
+	return (
+		<Layout isHome={true}>
+			<HomePageTemplate
+				carousel_settings={frontmatter.carousel_settings}
+				explore_your_world={frontmatter.explore_your_world}
+				how_is_your_english={frontmatter.how_is_your_english}
+				our_popular_programs={frontmatter.our_popular_programs}
+				start_your_journey={frontmatter.start_your_journey}
+			/>
+		</Layout>
+	);
+};
+
+export default HomePage;
 
 // TODO: Here, all the individual fields are specified.
 // Is there a way to just say 'get all fields'?

@@ -1,5 +1,5 @@
 import React from 'react';
-import heroStyles from './hero.module.scss';
+import heroStyles from './Hero.module.scss';
 import 'slick-carousel/slick/slick.css';
 import Slick from 'react-slick';
 
@@ -23,11 +23,10 @@ export default function Hero(props) {
 						<h2
 							className={`subtitle ${heroStyles.hero__copyTitle}`}
 						>
-							FLS International
+							{props.carousel_settings.title}
 						</h2>
 						<h1 className={heroStyles.hero__copy}>
-							ENGLISH LANGUAGE PROGRAMS, PATHWAYS & SPECIALTY
-							TOURS
+							{props.carousel_settings.copy}
 						</h1>
 					</div>
 				</div>
