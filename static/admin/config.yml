@@ -5,6 +5,8 @@ backend:
 
 local_backend: true # TODO: Check if this prohibits the CMS from running on Netlify (production)
 
+publish_mode: editorial_workflow
+
 media_folder: static/assets
 public_folder: /assets
 collections:
@@ -50,3 +52,26 @@ collections:
                       - { label: 'Title', name: 'title', widget: 'text' }
                       - { label: 'Subtitle', name: 'subtitle', widget: 'text' }
                       - { label: 'Copy', name: 'copy', widget: 'text' }
+          - file: 'src/pages/programs/programs.md'
+            label: 'Programs Page'
+            name: 'programs'
+            fields:
+                - widget: 'list'
+                  name: 'program_cards'
+                  label: 'Program Cards'
+                  allow_add: true
+                  fields:
+                      - {
+                            label: 'Card Title',
+                            name: 'card_title',
+                            widget: string,
+                            default: 'English Language Programs',
+                        }
+                      - {
+                            label: 'Card Description',
+                            name: 'card_description',
+                            widget: text,
+                            default: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae tincidunt massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla malesuada finibus tincidunt. Ut maximus ipsum non ultrices mattis. Interdum et malesuada fames ac ante ipsum primis in faucibus.',
+                        }
+                      - { label: Card Image, name: card_image, widget: image }
+# TODO: Need a default image

@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import Footer from './footer/Footer';
 import Navbar from './navbar/Navbar';
 import Metadata from './Metadata';
+import NavHero from './nav-hero/NavHero';
 // import { withPrefix } from 'gatsby';
 
 // TODO: Properly implement the content of the <head> tag
@@ -46,8 +47,10 @@ import Metadata from './Metadata';
 //       }
 //     </style>
 
-const TemplateWrapper = ({ children, isHome, isScrolled }) => {
+const TemplateWrapper = ({ children, isHome, isScrolled, hasNavHero }) => {
 	const { title, description } = Metadata();
+
+	const handleHasNavHero = hasNavHero => (hasNavHero ? <NavHero /> : '');
 
 	return (
 		<Fragment>
@@ -91,6 +94,7 @@ const TemplateWrapper = ({ children, isHome, isScrolled }) => {
 				/> */}
 			</Helmet>
 			<Navbar isHome={isHome} isScrolled={isScrolled} />
+			{handleHasNavHero(hasNavHero)}
 			{children}
 			<Footer />
 		</Fragment>

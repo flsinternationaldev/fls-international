@@ -617,11 +617,6 @@ body {
 // 	color: #cc3333;
 // }
 
-// .fls__page-hero-copy-container {
-// 	position: relative;
-// 	z-index: 1;
-// }
-
 // .fls--opaque {
 // 	opacity: 1;
 // }
@@ -948,18 +943,6 @@ body {
 		content: '';
 		background-size: cover;
 		background-image: url('../img/sample-bg.jpeg');
-	}
-}
-
-.fls__page-hero-title {
-	color: white;
-	font-size: 3rem;
-	font-weight: 200;
-	text-transform: uppercase;
-	text-align: center;
-
-	@media only screen and (max-device-width: 768px) {
-		font-size: 2rem;
 	}
 }
 
