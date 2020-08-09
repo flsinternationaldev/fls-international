@@ -1,9 +1,11 @@
 import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
+
 import Footer from './footer/Footer';
 import Navbar from './navbar/Navbar';
 import Metadata from './Metadata';
 import NavHero from './nav-hero/NavHero';
+import AnnouncementBanner from './announcement-banner/AnnouncementBanner';
 // import { withPrefix } from 'gatsby';
 
 // TODO: Properly implement the content of the <head> tag
@@ -47,10 +49,17 @@ import NavHero from './nav-hero/NavHero';
 //       }
 //     </style>
 
-const TemplateWrapper = ({ children, isHome, isScrolled, hasNavHero }) => {
+const TemplateWrapper = ({
+	children,
+	isHome,
+	isScrolled,
+	hasNavHero,
+	pageTitle,
+}) => {
 	const { title, description } = Metadata();
 
-	const handleHasNavHero = hasNavHero => (hasNavHero ? <NavHero /> : '');
+	const handleHasNavHero = hasNavHero =>
+		hasNavHero ? <NavHero pageTitle={pageTitle} /> : '';
 
 	return (
 		<Fragment>
@@ -97,6 +106,7 @@ const TemplateWrapper = ({ children, isHome, isScrolled, hasNavHero }) => {
 			{handleHasNavHero(hasNavHero)}
 			{children}
 			<Footer />
+			<AnnouncementBanner />
 		</Fragment>
 	);
 };

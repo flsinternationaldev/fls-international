@@ -4,18 +4,8 @@ import Section from '../section/Section';
 
 import navHeroStyles from './NavHero.module.scss';
 
-export default function NavHero(props) {
+export default function NavHero({ pageTitle }) {
 	console.log('styles', navHeroStyles);
-	// TODO: The carousel needs to be its own component
-	const slickSettings = {
-		autoplay: true,
-		draggable: false,
-		// TODO: Weird outline borders appear when clicking on the carousel
-		focusOnSelect: false,
-		arrows: false,
-		autoplaySpeed: 4000,
-	};
-
 	return (
 		<Section
 			sectionClasses={['hero', 'is-medium', 'hero--page']}
@@ -27,7 +17,7 @@ export default function NavHero(props) {
 					<div className="columns is-multiline is-centered">
 						<div className="column is-full">
 							<h1 className={navHeroStyles.fls__pageHeroTitle}>
-								Programs
+								{pageTitle}
 							</h1>
 						</div>
 

@@ -49,7 +49,6 @@ export const ProgramsPageTemplate = ({ program_cards }) => {
 					})} */}
 				</div>
 			</Section>
-			<AnnouncementBanner />
 		</Fragment>
 	);
 };
@@ -59,7 +58,7 @@ const ProgramsPage = ({ data }) => {
 
 	console.log('data from query', data);
 	return (
-		<Layout isScrolled={true} hasNavHero={true}>
+		<Layout isScrolled={true} hasNavHero={true} pageTitle={'Programs'}>
 			<ProgramsPageTemplate program_cards={frontmatter.program_cards} />
 		</Layout>
 	);

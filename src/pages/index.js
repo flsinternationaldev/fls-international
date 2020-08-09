@@ -8,7 +8,6 @@ import sectionStyles from '../components/section/section.module.scss';
 
 import Layout from '../components/Layout';
 import Hero from '../components/hero/Hero';
-import AnnouncementBanner from '../components/announcement-banner/AnnouncementBanner';
 import Section from '../components/section/Section';
 
 import videoSampleImg from '../img/video-sample.jpeg';
@@ -582,7 +581,6 @@ export const HomePageTemplate = ({
 					</div>
 				</Slick>
 			</Section>
-			<AnnouncementBanner />
 		</Fragment>
 	);
 };
