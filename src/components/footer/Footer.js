@@ -145,7 +145,7 @@ const footer = () => {
 						<div className="column">
 							<p>
 								Copyright © 2020 FLS International | Site Design
-								& Development by
+								& Development by{' '}
 								<a
 									href="https://akingdebased.github.io/"
 									target="_blank"
