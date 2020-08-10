@@ -1,0 +1,22 @@
+.fls__post-navbar-item {
+	display: block;
+	width: 100%;
+	border-left: #f5f5f5 solid 3px;
+	padding: 0.5rem 1rem;
+	background-color: #f5f5f5;
+	margin-bottom: 1px;
+	min-height: 36px;
+	font-size: 13px;
+	transition: color 0.3s, border-color 0.3s;
+
+	&:hover {
+		color: #bb2125;
+		border-color: #bb2125;
+	}
+}
+
+a {
+	&.fls__post-navbar-item {
+		color: black;
+	}
+}

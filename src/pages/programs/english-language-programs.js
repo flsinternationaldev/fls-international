@@ -1,18 +1,7 @@
 import React from 'react';
-// import Slick from 'react-slick';
-// import { graphql } from 'gatsby';
-
-// import '../bulma/bulma.scss';
-// import 'slick-carousel/slick/slick.css';
-
-// // TODO: Eventually, css module this
-// // import programsStyles from '../styles/Programs.module.scss';
-// import '../styles/programs.scss';
 
 import Layout from '../../components/Layout';
 import Card from '../../components/card/Card';
-// import AnnouncementBanner from '../components/announcement-banner/AnnouncementBanner';
-// import Section from '../components/section/Section';
 
 export const EnglishLanguageProgramsTemplate = () => {
 	return (
@@ -69,16 +58,16 @@ export default EnglishLanguageProgramsPage;
 
 // TODO: Here, all the individual fields are specified.
 // Is there a way to just say 'get all fields'?
-export const pageQuery = graphql`
-	query {
-		markdownRemark {
-			frontmatter {
-				program_cards {
-					card_description
-					card_image
-					card_title
-				}
-			}
-		}
-	}
-`;
+// export const pageQuery = graphql`
+// 	query {
+// 		markdownRemark {
+// 			frontmatter {
+// 				program_cards {
+// 					card_description
+// 					card_image
+// 					card_title
+// 				}
+// 			}
+// 		}
+// 	}
+// `;

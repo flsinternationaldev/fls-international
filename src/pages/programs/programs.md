@@ -1,14 +1,10 @@
 ---
 program_cards:
-  - card_title: English Language Programs
-    card_description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Integer vitae tincidunt massa. Lorem ipsum dolor sit amet, consectetur
-      adipiscing elit. Nulla malesuada finibus tincidunt. Ut maximus ipsum non
-      ultrices mattis. Interdum et malesuada fames ac ante ipsum primis in
-      faucibus.
-<<<<<<< HEAD
-    card_image: /assets/specialty-tours-bg.png
-=======
-    card_image: /img/emmet.jpg
->>>>>>> 8c953ce8465a1497e93caba9c93d1188cb14c99a
+    - card_title: English Language Programs
+      card_description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Integer vitae tincidunt massa. Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit. Nulla malesuada finibus tincidunt. Ut maximus ipsum non
+          ultrices mattis. Interdum et malesuada fames ac ante ipsum primis in
+          faucibus.
+      card_image: /assets/specialty-tours-bg.png
 ---

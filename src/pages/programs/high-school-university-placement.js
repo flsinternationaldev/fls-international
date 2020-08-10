@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Layout from '../../components/Layout';
-import Card from '../../components/card/Card';
+import PostNavbar from '../../components/post-navbar/PostNavbar';
 
 export const ProgramsPostTemplate = () => {
 	return (
@@ -10,52 +10,7 @@ export const ProgramsPostTemplate = () => {
 				<div className="columns is-multiline">
 					<div className="column is-3-desktop is-full-tablet">
 						<div className="columns is-multiline">
-							<div className="column is-full-desktop is-half-tablet">
-								{/* TODO: Find a way to DRY this up  */}
-								<a href="#" className="fls__post-navbar-item">
-									<span>English Language Programs</span>
-								</a>
-
-								<a href="#" className="fls__post-navbar-item">
-									<span>Speciality Tours</span>
-								</a>
-
-								<a href="#" className="fls__post-navbar-item">
-									<span>
-										High School & University Placement
-									</span>
-								</a>
-
-								<a href="#" className="fls__post-navbar-item">
-									<span>College Auditing</span>
-								</a>
-
-								<a href="#" className="fls__post-navbar-item">
-									<span>FLS Pathways</span>
-								</a>
-
-								<a href="#" className="fls__post-navbar-item">
-									<span>Concurrent Enrollment</span>
-								</a>
-
-								<a href="#" className="fls__post-navbar-item">
-									<span>High School Completion</span>
-								</a>
-
-								<a href="#" className="fls__post-navbar-item">
-									<span>Study 30+</span>
-								</a>
-
-								<a href="#" className="fls__post-navbar-item">
-									<span>High School Immersion</span>
-								</a>
-
-								<a href="#" className="fls__post-navbar-item">
-									<span>
-										Business Speciality Skills Certificates
-									</span>
-								</a>
-							</div>
+							<PostNavbar />
 							<div className="column is-full-desktop is-half-tablet">
 								<div className="fls__testimonial fls__testimonial--programs">
 									<img
@@ -266,16 +221,16 @@ export default HighSchoolUniversityPlacementPage;
 
 // TODO: Here, all the individual fields are specified.
 // Is there a way to just say 'get all fields'?
-export const pageQuery = graphql`
-	query {
-		markdownRemark {
-			frontmatter {
-				program_cards {
-					card_description
-					card_image
-					card_title
-				}
-			}
-		}
-	}
-`;
+// export const pageQuery = graphql`
+// 	query {
+// 		markdownRemark {
+// 			frontmatter {
+// 				program_cards {
+// 					card_description
+// 					card_image
+// 					card_title
+// 				}
+// 			}
+// 		}
+// 	}
+// `;
