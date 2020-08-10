@@ -10,6 +10,7 @@ import React from 'react';
 // import '../styles/programs.scss';
 
 import Layout from '../../components/Layout';
+import Card from '../../components/card/Card';
 // import AnnouncementBanner from '../components/announcement-banner/AnnouncementBanner';
 // import Section from '../components/section/Section';
 
@@ -40,96 +41,8 @@ export const EnglishLanguageProgramsTemplate = () => {
 					</div>
 
 					<div className="column is-half">
-						<div className="fls__card">
-							<div className="fls__card-contents">
-								<span className="fls__pill fls__pill--in-person">
-									In Person
-								</span>
-								<span className="fls__pill fls__pill--online">
-									Online
-								</span>
-
-								<div className="fls__card-copy-container">
-									<h5 className="fls__card-title">
-										Academic English
-									</h5>
-									<p className="fls__card-copy">
-										Our high-powered Academic English
-										program offers the fastest way to
-										develop your English.
-									</p>
-								</div>
-
-								<div className="fls__card-details">
-									{/* TODO: Icons */}
-									<span>36 lessons per week</span>
-									<span>30 hours per week</span>
-								</div>
-							</div>
-
-							<div className="fls__card-bg"></div>
-							<div className="fls__card-bg-overlay"></div>
-						</div>
-					</div>
-
-					<div className="column is-half">
-						<div className="fls__card">
-							<div className="fls__card-contents">
-								<span className="fls__pill fls__pill--online">
-									Online
-								</span>
-
-								<div className="fls__card-copy-container">
-									<h5 className="fls__card-title">
-										Academic English
-									</h5>
-									<p className="fls__card-copy">
-										Our high-powered Academic English
-										program offers the fastest way to
-										develop your English.
-									</p>
-								</div>
-
-								<div className="fls__card-details">
-									{/* TODO: Icons */}
-									<span>36 lessons per week</span>
-									<span>30 hours per week</span>
-								</div>
-							</div>
-
-							<div className="fls__card-bg"></div>
-							<div className="fls__card-bg-overlay"></div>
-						</div>
-					</div>
-
-					<div className="column is-half">
-						<div className="fls__card">
-							<div className="fls__card-contents">
-								<span className="fls__pill fls__pill--in-person">
-									In Person
-								</span>
-
-								<div className="fls__card-copy-container">
-									<h5 className="fls__card-title">
-										Academic English
-									</h5>
-									<p className="fls__card-copy">
-										Our high-powered Academic English
-										program offers the fastest way to
-										develop your English.
-									</p>
-								</div>
-
-								<div className="fls__card-details">
-									{/* TODO: Icons */}
-									<span>36 lessons per week</span>
-									<span>30 hours per week</span>
-								</div>
-							</div>
-
-							<div className="fls__card-bg"></div>
-							<div className="fls__card-bg-overlay"></div>
-						</div>
+						{/* TODO: Bring in this card data from the CMS */}
+						<Card />
 					</div>
 				</div>
 			</div>

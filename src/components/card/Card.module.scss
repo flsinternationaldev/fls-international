@@ -1,0 +1,125 @@
+.fls__card {
+	position: relative;
+	padding: 30px;
+	border: 1px solid #ddd;
+	height: 228px;
+	width: 100%;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.fls__card-contents {
+	position: relative;
+	z-index: 3;
+}
+
+.fls__card-subtitle {
+	color: #626262;
+	font-size: 14px;
+	font-weight: 500;
+	margin-bottom: 12px;
+}
+
+.fls__card-title,
+.fls__card-copy,
+.fls__card-details,
+.fls__card-subtitle,
+.fls__card-header {
+	transition: all 0.3s ease 0s;
+}
+
+.fls__card:hover .fls__card-title,
+.fls__card:hover .fls__card-copy,
+.fls__card:hover .fls__card-details,
+.fls__card:hover .fls__card-subtitle,
+.fls__card:hover .fls__card-header {
+	color: white;
+}
+
+.fls__card-bg,
+.fls__card-bg-overlay,
+.fls__card-footer-overlay {
+	display: block;
+	position: absolute;
+	width: 100%;
+	transition: 0.3s ease 0s;
+	left: 0;
+}
+
+.fls__card-bg,
+.fls__card-bg-overlay {
+	top: 0;
+}
+
+.fls__card-bg {
+	height: 100%;
+	background-image: url('../../img/elp-card-bg.jpeg');
+	opacity: 0.1;
+	z-index: 0;
+	background-size: cover;
+	background-position: center;
+}
+
+.fls__card-bg--speciality-tours {
+	background-image: url('../../img/specialty-tours-bg.png');
+}
+
+.fls__card-bg-overlay {
+	opacity: 0;
+	background: rgba(0, 0, 0, 0.6);
+	color: #fff;
+	display: block;
+	height: 100%;
+	z-index: 1;
+}
+
+.fls__card-footer-overlay {
+	bottom: -45px;
+	opacity: 0;
+	z-index: 2;
+	background-color: #bb2125;
+	height: 45px;
+}
+
+.fls__card:hover .fls__card-bg,
+.fls__card:hover .fls__card-bg-overlay,
+.fls__card:hover .fls__card-footer-overlay {
+	opacity: 1;
+}
+
+.fls__card:hover .fls__card-footer-overlay {
+	bottom: 0;
+}
+
+.fls__card-details {
+	color: #626262;
+	font-size: 14px;
+}
+
+.fls__card-details {
+	& span {
+		&:first-child {
+			margin-right: 6px;
+		}
+	}
+}
+
+.fls__card-details--speciality-tours {
+	margin-top: 27px;
+}
+
+.fls__card-title {
+	font-weight: 600;
+	font-size: 20px;
+}
+
+.fls__card-copy {
+	color: #626262;
+	font-size: 14px;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin-bottom: 16px;
+}
