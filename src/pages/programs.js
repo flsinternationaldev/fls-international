@@ -13,14 +13,13 @@ import Section from '../components/section/Section';
 export const ProgramsPageTemplate = ({ program_cards }) => {
 	console.log('program cards?', program_cards);
 	return (
-		<Fragment>
-			<Section
-				sectionClasses={['section', 'programs']}
-				containerClasses={['container']}
-			>
-				<div className="columns is-centered is-multiline">
-					{/* TODO: Keys should not be indices */}
-					{/* {program_cards.map(program_card => {
+		<Section
+			sectionClasses={['section', 'programs']}
+			containerClasses={['container']}
+		>
+			<div className="columns is-centered is-multiline">
+				{/* TODO: Keys should not be indices */}
+				{/* {program_cards.map(program_card => {
 						return (
 							<div className="column is-half-desktop is-full-tablet">
 								<div className="programs__card">
@@ -44,9 +43,8 @@ export const ProgramsPageTemplate = ({ program_cards }) => {
 							</div>
 						);
 					})} */}
-				</div>
-			</Section>
-		</Fragment>
+			</div>
+		</Section>
 	);
 };
 

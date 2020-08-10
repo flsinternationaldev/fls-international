@@ -20,6 +20,34 @@
 	margin-bottom: 12px;
 }
 
+/* TODO: Figure out the icon */
+.fls__card-header {
+	color: #626262;
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+.fls__card-header:before {
+	content: '';
+}
+
+.fls__card-details {
+	color: #626262;
+	font-size: 14px;
+}
+
+.fls__card-details {
+	& span {
+		&:first-child {
+			margin-right: 6px;
+		}
+	}
+}
+
+.fls__card-details--speciality-tours {
+	margin-top: 27px;
+}
+
 .fls__card-title,
 .fls__card-copy,
 .fls__card-details,
@@ -89,23 +117,6 @@
 
 .fls__card:hover .fls__card-footer-overlay {
 	bottom: 0;
-}
-
-.fls__card-details {
-	color: #626262;
-	font-size: 14px;
-}
-
-.fls__card-details {
-	& span {
-		&:first-child {
-			margin-right: 6px;
-		}
-	}
-}
-
-.fls__card-details--speciality-tours {
-	margin-top: 27px;
 }
 
 .fls__card-title {
