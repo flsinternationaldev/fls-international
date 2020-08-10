@@ -2,7 +2,7 @@ import React from 'react';
 
 import postNavbarStyles from './PostNavbar.module.scss';
 
-export default function Section(props) {
+export default function PostNavbar(props) {
 	// TODO: This needs to derive from the CMS
 	const routes = [
 		'English Langauge Programs',
