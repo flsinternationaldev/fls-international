@@ -1,0 +1,41 @@
+.fls__quick-facts {
+	padding: 30px;
+	border: 1px solid #ddd;
+	margin-top: 1rem;
+}
+
+.fls__quick-fact-container {
+	display: flex;
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #ddd;
+}
+
+.fls__quick-fact-container {
+	&:last-child {
+		border-bottom: none;
+		padding-bottom: 0;
+		margin-bottom: 0;
+	}
+}
+
+.fls__quick-fact-icon {
+	height: 50px;
+	width: 50px;
+}
+
+.fls__quick-fact-copy {
+	margin-left: 10px;
+}
+
+.fls__quick-fact-title {
+	font-size: 14px;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+
+.fls__quick-fact-item {
+	font-size: 11px;
+	font-weight: 400;
+	margin-bottom: 5px;
+}
