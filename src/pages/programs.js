@@ -49,12 +49,12 @@ export const ProgramsPageTemplate = ({ program_cards }) => {
 };
 
 const ProgramsPage = ({ data }) => {
-	const { frontmatter } = data.markdownRemark;
+	// const { frontmatter } = data.markdownRemark;
 
 	console.log('data from query', data);
 	return (
 		<Layout isScrolled={true} hasNavHero={true} pageTitle={'Programs'}>
-			<ProgramsPageTemplate program_cards={frontmatter.program_cards} />
+			<ProgramsPageTemplate program_cards={''} />
 		</Layout>
 	);
 };

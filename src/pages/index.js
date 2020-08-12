@@ -9,6 +9,7 @@ import sectionStyles from '../components/section/section.module.scss';
 import Layout from '../components/Layout';
 import Hero from '../components/hero/Hero';
 import Section from '../components/section/Section';
+import Card from '../components/card/Card';
 
 import videoSampleImg from '../img/video-sample.jpeg';
 
@@ -455,130 +456,15 @@ export const HomePageTemplate = ({
 				</div>
 
 				<Slick {...slickSettings}>
-					<div className="fls__locations-card">
-						<div className="fls__location fls__location--carousel">
-							<div className="fls__location-img-container">
-								<a
-									href="#"
-									className="fls__button fls__button--card"
-								>
-									Read More
-								</a>
-							</div>
+					<Card isLocation={true} isCarouselLocation={true} />
 
-							<div className="fls__location-copy-container">
-								<h3 className="fls__location-title">
-									Citrus College
-								</h3>
-								<p className="fls__location-copy">
-									Study English in California! Citrus College
-									offers a great combination of suburban
-									comfort with access to all of the attracions
-									and glamour of Los Angeles.
-								</p>
-							</div>
-						</div>
-					</div>
+					<Card isLocation={true} isCarouselLocation={true} />
 
-					<div className="fls__locations-card">
-						<div className="fls__location fls__location--carousel">
-							<div className="fls__location-img-container">
-								<a
-									href="#"
-									className="fls__button fls__button--card"
-								>
-									Read More
-								</a>
-							</div>
+					<Card isLocation={true} isCarouselLocation={true} />
 
-							<div className="fls__location-copy-container">
-								<h3 className="fls__location-title">
-									Citrus College
-								</h3>
-								<p className="fls__location-copy">
-									Study English in California! Citrus College
-									offers a great combination of suburban
-									comfort with access to all of the attracions
-									and glamour of Los Angeles.
-								</p>
-							</div>
-						</div>
-					</div>
+					<Card isLocation={true} isCarouselLocation={true} />
 
-					<div className="fls__locations-card">
-						<div className="fls__location fls__location--carousel">
-							<div className="fls__location-img-container">
-								<a
-									href="#"
-									className="fls__button fls__button--card"
-								>
-									Read More
-								</a>
-							</div>
-
-							<div className="fls__location-copy-container">
-								<h3 className="fls__location-title">
-									Citrus College
-								</h3>
-								<p className="fls__location-copy">
-									Study English in California! Citrus College
-									offers a great combination of suburban
-									comfort with access to all of the attracions
-									and glamour of Los Angeles.
-								</p>
-							</div>
-						</div>
-					</div>
-
-					<div className="fls__locations-card">
-						<div className="fls__location fls__location--carousel">
-							<div className="fls__location-img-container">
-								<a
-									href="#"
-									className="fls__button fls__button--card"
-								>
-									Read More
-								</a>
-							</div>
-
-							<div className="fls__location-copy-container">
-								<h3 className="fls__location-title">
-									Citrus College
-								</h3>
-								<p className="fls__location-copy">
-									Study English in California! Citrus College
-									offers a great combination of suburban
-									comfort with access to all of the attracions
-									and glamour of Los Angeles.
-								</p>
-							</div>
-						</div>
-					</div>
-
-					<div className="fls__locations-card">
-						<div className="fls__location fls__location--carousel">
-							<div className="fls__location-img-container">
-								<a
-									href="#"
-									className="fls__button fls__button--card"
-								>
-									Read More
-								</a>
-							</div>
-
-							<div className="fls__location-copy-container">
-								<h3 className="fls__location-title">
-									Citrus College
-								</h3>
-								<p className="fls__location-copy">
-									Study English in California! Citrus College
-									offers a great combination of suburban
-									comfort with access to all of the attracions
-									and glamour of Los Angeles.
-								</p>
-							</div>
-						</div>
-					</div>
+					<Card isLocation={true} isCarouselLocation={true} />
 				</Slick>
 			</Section>
 		</Fragment>

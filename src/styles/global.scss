@@ -279,21 +279,21 @@ body {
 	background-color: #0069d9;
 }
 
-// .fls__post-title {
-// 	color: #363636;
-// 	font-weight: 500;
-// 	text-transform: uppercase;
-// 	font-size: 20px;
-// }
+.fls__post-title {
+	color: #363636;
+	font-weight: 500;
+	text-transform: uppercase;
+	font-size: 20px;
+}
 
-// .fls__post-title:after {
-// 	display: block;
-// 	width: 30px;
-// 	height: 2px;
-// 	margin: 12px 0;
-// 	border-top: 1px solid #ddd;
-// 	content: '';
-// }
+.fls__post-title:after {
+	display: block;
+	width: 30px;
+	height: 2px;
+	margin: 12px 0;
+	border-top: 1px solid #ddd;
+	content: '';
+}
 
 // .fls__post-copy {
 // 	font-size: 15px;
@@ -529,175 +529,10 @@ body {
 	color: white !important;
 }
 
-/* Locations */
-.locations {
-	background-color: #f5f5f5;
-}
-
-.fls__location {
-	display: flex;
-	flex-direction: column;
-	height: 350px;
-	margin: 0 auto;
-	cursor: pointer;
-}
-
-.fls__location--carousel {
-	padding-left: 25px;
-	padding-right: 25px;
-}
-
-.fls__location--post {
-	width: 100%;
-}
-
-.fls__location-img-container {
-	position: relative;
-	background-image: url('../img/citrus-college.jpeg');
-	flex-basis: 80%;
-	border-bottom: #bb2125 solid 2px;
-	overflow: hidden;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	transition: all 0.5s ease 0s;
-}
-
-.fls__location-img-container:after {
-	content: '';
-	left: 0;
-	bottom: -100%;
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	opacity: 0;
-	background-color: rgba(2, 40, 71, 0.8);
-	transition: all 0.5s ease 0s;
-}
-
-.fls__location:hover .fls__location-img-container {
-	border-color: #fec910;
-}
-
-.fls__location:hover .fls__location-img-container:after {
-	opacity: 1;
-	bottom: 0;
-}
-
-.fls__location:hover .fls__button--card {
-	opacity: 1;
-}
-
-.fls__location-copy-container {
-	padding: 15px;
-	background-color: white;
-	flex-basis: 50%;
-}
-
-.fls__location-copy-container--post {
-	background-color: #f5f5f5;
-}
-
-.fls__location-title {
-	font-size: 1rem;
-	font-weight: 600;
-	color: #363636;
-	text-transform: uppercase;
-	margin-bottom: 10px;
-}
-
-.fls__location-copy {
-	font-size: 0.8125rem;
-	color: #8d8c8c;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	font-size: 12px;
-	font-weight: 500;
-}
-
-.fls__location-price-calculator {
-	background-color: #f5f5f5;
-	padding: 1rem;
-}
-
-.fls__location-post-subtitle {
-	text-transform: none !important;
-	margin-bottom: 0.5rem;
-	font-weight: 400;
-	line-height: 1.2;
-	font-size: 1rem;
-}
-
-.fls__location-dark-post {
-	background-color: #f5f5f5;
-	padding: 1rem;
-}
-
-.fls__location-quick-facts {
-	padding: 30px;
-	border: 1px solid #ddd;
-	margin-top: 1rem;
-}
-
-.fls__location-quick-fact-container {
-	display: flex;
-	margin-bottom: 15px;
-	padding-bottom: 15px;
-	border-bottom: 1px solid #ddd;
-}
-
-.fls__location-quick-fact-container:last-child {
-	border-bottom: none;
-	padding-bottom: 0;
-	margin-bottom: 0;
-}
-
-.fls__location-quick-fact-icon {
-	height: 50px;
-	width: 50px;
-}
-
-.fls__location-quick-fact-copy {
-	margin-left: 10px;
-}
-
-.fls__location-quick-fact-title {
-	font-size: 14px;
-	font-weight: 700;
-	margin-bottom: 10px;
-}
-
-.fls__location-quick-fact-item {
-	font-size: 11px;
-	font-weight: 400;
-	margin-bottom: 5px;
-}
-
-.fls__location-post-anchor-button {
-	display: block;
-	height: 46px;
-	width: 100%;
-	text-align: center;
-	font-size: 0.875rem;
-	font-weight: 400;
-	color: #fff;
-	padding: 0.813rem 0;
-	background-color: #999999;
-	border-radius: 0;
-	margin: 0.125rem;
-	transition: background-color 0.3s ease-in-out;
-}
-
 // /* TODO: This is fucky as all get out. The post page stylings need genericization */
 // .programs__post-copy-container--locations {
 // 	padding: 0 !important;
 // }
-
-.fls__location-post-anchor-button:hover {
-	background-color: #cc3333;
-	color: white;
-}
 
 // /* Programs landing styles */
 // /* TODO: Most likely needs to be in its own file */

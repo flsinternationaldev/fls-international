@@ -2,7 +2,11 @@ import React from 'react';
 
 import cardStyles from './Card.module.scss';
 
-export default function Card({ isSpecialityTours }) {
+export default function Card({
+	isSpecialityTours,
+	isLocation,
+	isCarouselLocation,
+}) {
 	if (isSpecialityTours) {
 		return (
 			<div className={cardStyles.fls__card}>
@@ -42,6 +46,42 @@ export default function Card({ isSpecialityTours }) {
 				></div>
 				<div className={cardStyles.fls__cardBgOverlay}></div>
 				<div className={cardStyles.fls__cardFooterOverlay}></div>
+			</div>
+		);
+	} else if (isLocation) {
+		return (
+			<div>
+				<div
+					class={`fls__location ${
+						isCarouselLocation
+							? 'fls__location--carousel'
+							: 'fls__location--post'
+					}`}
+				>
+					<div class="fls__location-img-container">
+						<a
+							href="#"
+							class="fls__button fls__button--card fls__button--locations-card"
+						>
+							Read More
+						</a>
+					</div>
+
+					<div
+						class={`fls__location-copy-container ${
+							isCarouselLocation
+								? ''
+								: 'fls__location-copy-container--post'
+						}`}
+					>
+						<h3 class="fls__location-title">Citrus College</h3>
+						<p class="fls__location-copy">
+							Study English in California! Citrus College offers a
+							great combination of suburban comfort with access to
+							all of the attracions and glamour of Los Angeles.
+						</p>
+					</div>
+				</div>
 			</div>
 		);
 	} else {
