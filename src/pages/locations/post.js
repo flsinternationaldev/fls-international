@@ -8,6 +8,7 @@ import PriceCalculator from '../../components/price-calculator/PriceCalculator';
 // import Card from '../../components/card/Card';
 
 export const EnglishLanguageProgramsTemplate = () => {
+	// TODO: This all needs to come from the CMS
 	return (
 		<Section>
 			<div className="columns is-multiline">

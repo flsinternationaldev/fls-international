@@ -134,3 +134,52 @@
 	text-overflow: ellipsis;
 	margin-bottom: 16px;
 }
+
+// TODO: Think about renaming theses classes
+.about-us__affiliate-card-title {
+	font-size: 1.25rem;
+	color: #262626;
+	margin-bottom: 15px;
+	font-weight: 500;
+}
+
+.about-us__affiliate-card-copy {
+	font-size: 0.875rem;
+	line-height: 24px;
+	color: #616161;
+}
+
+.about-us__affiliate-card-icon {
+	@media only screen and (max-device-width: 768px) {
+		margin: 0 auto;
+		display: block;
+	}
+}
+
+.about-us__contact-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 245px;
+	padding: 1.875rem;
+	background-color: #fff;
+	border: #dee2e6 solid 1px;
+	border-radius: 2px;
+}
+
+.about-us__contact-card-details {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.about-us__contact-card-icon {
+	width: 75px;
+	height: 75px;
+	display: inline-block;
+	-webkit-border-radius: 100%;
+	-moz-border-radius: 100%;
+	border-radius: 100%;
+}

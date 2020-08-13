@@ -6,6 +6,8 @@ export default function Card({
 	isSpecialityTours,
 	isLocation,
 	isCarouselLocation,
+	isAffiliate,
+	isContact,
 }) {
 	if (isSpecialityTours) {
 		return (
@@ -52,34 +54,80 @@ export default function Card({
 		return (
 			<div>
 				<div
-					class={`fls__location ${
+					className={`fls__location ${
 						isCarouselLocation
 							? 'fls__location--carousel'
 							: 'fls__location--post'
 					}`}
 				>
-					<div class="fls__location-img-container">
+					<div className="fls__location-img-container">
 						<a
 							href="#"
-							class="fls__button fls__button--card fls__button--locations-card"
+							className="fls__button fls__button--card fls__button--locations-card"
 						>
 							Read More
 						</a>
 					</div>
 
 					<div
-						class={`fls__location-copy-container ${
+						className={`fls__location-copy-container ${
 							isCarouselLocation
 								? ''
 								: 'fls__location-copy-container--post'
 						}`}
 					>
-						<h3 class="fls__location-title">Citrus College</h3>
-						<p class="fls__location-copy">
+						<h3 className="fls__location-title">Citrus College</h3>
+						<p className="fls__location-copy">
 							Study English in California! Citrus College offers a
 							great combination of suburban comfort with access to
 							all of the attracions and glamour of Los Angeles.
 						</p>
+					</div>
+				</div>
+			</div>
+		);
+	} else if (isAffiliate) {
+		return (
+			<div className="column is-one-quarter">
+				<img
+					className={cardStyles.aboutUs__affiliateCardIcon}
+					src="../../img/cea-logo.png"
+					alt=""
+				/>
+
+				<div className={cardStyles.aboutUs__affiliateCardTitle}>
+					Commission on English Language Program Accreditation
+				</div>
+
+				<div className={cardStyles.aboutUs__affiliateCardCopy}>
+					CEA is a national accrediting agency recognized by the U.S.
+					Department of Education. CEA is a specialized accrediting
+					agency founded by active professionals in English language
+					education and is the only U.S. agency designed specifically
+					to accredit English language programs.
+				</div>
+			</div>
+		);
+	} else if (isContact) {
+		return (
+			<div className="column is-one-third-desktop is-half-tablet">
+				<div className={cardStyles.aboutUs__contactCard}>
+					<div className={cardStyles.aboutUs__contactCardDetails}>
+						<img
+							className={cardStyles.aboutUs__contactCardIcon}
+							src="../../img/luke-icon.jpeg"
+							alt=""
+						/>
+						<strong>Mr. Luke Frerichs</strong>
+						<div
+							className={cardStyles.aboutUs__contactCardPosition}
+						>
+							President
+						</div>
+					</div>
+
+					<div className={cardStyles.aboutUs__contactCardEmail}>
+						luke.frerichs@fls.net
 					</div>
 				</div>
 			</div>
