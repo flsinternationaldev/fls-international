@@ -14,7 +14,16 @@ export const AboutUsTemplate = () => {
 				containerClasses={['container']}
 			>
 				<div class="columns is-multiline">
-					<HorizontalNav />
+					<HorizontalNav
+						navItems={[
+							'Welcome',
+							'Mission Statement',
+							'FLS Advantage',
+							'Ethical Conduct',
+							'Accreditations',
+							'Our Team',
+						]}
+					/>
 
 					<div class="column is-full">
 						<div class="columns is-variable is-5">
