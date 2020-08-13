@@ -16,12 +16,13 @@ import videoSampleImg from '../img/video-sample.jpeg';
 // TODO: In the gatsby-netlify starter package, all these React files are kept in /templates,
 // and pages only has Markdown files. Investigate how to do that
 export const HomePageTemplate = ({
-	carousel_settings,
-	explore_your_world,
-	how_is_your_english,
-	our_popular_programs,
-	start_your_journey,
+	carousel_settings = {},
+	explore_your_world = {},
+	how_is_your_english = {},
+	our_popular_programs = {},
+	start_your_journey = {},
 }) => {
+	console.log('lmao!', explore_your_world);
 	const slickSettings = {
 		infinite: true,
 		slidesToShow: 3,
@@ -474,6 +475,7 @@ export const HomePageTemplate = ({
 const HomePage = ({ data }) => {
 	const { frontmatter } = data.markdownRemark;
 
+	console.log('front matter', frontmatter);
 	return (
 		<Layout isHome={true}>
 			<HomePageTemplate
