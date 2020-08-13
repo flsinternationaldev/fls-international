@@ -1,0 +1,52 @@
+/* Contact Us */
+.contact-us__email-call-container {
+	display: flex;
+	flex-direction: column;
+	height: 320px;
+}
+
+.contact-us__email,
+.contact-us__call {
+	flex-basis: 50%;
+	padding: 20px 30px;
+	text-align: center;
+	color: white;
+}
+
+.contact-us__call {
+	background-color: #bb2125;
+}
+
+.contact-us__email-call-title,
+.contact-us__subtitle {
+	font-size: 1.5rem;
+}
+
+.contact-us__address-container {
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+}
+
+.contact-us__address {
+	color: black;
+	margin-bottom: 12px;
+	transition: color 0.3s;
+}
+
+.contact-us__address:hover {
+	color: #bb2125;
+}
+
+.contact-us__title {
+	font-size: 28px;
+	text-transform: uppercase;
+	font-weight: 300;
+	margin-bottom: 12px;
+}
+
+.contact-us__copy {
+	font-size: 14px;
+	color: #8c8c8c;
+	margin-bottom: 12px;
+}
