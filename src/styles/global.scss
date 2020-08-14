@@ -221,7 +221,9 @@ body {
 	max-width: 40%;
 }
 
-.fls__text-input {
+// TODO: Figure out placeholder font color issues
+.fls__base-input,
+.fls__control {
 	line-height: 1.5 !important;
 	color: #495057 !important;
 	background-color: #fff !important;
@@ -230,24 +232,44 @@ body {
 	border-radius: 0 !important;
 	font-size: 0.875rem !important;
 	height: 50px !important;
-	padding: 0.75rem 1.25rem;
+	padding: 0.75rem 1.25rem !important;
 	border-color: rgba(84, 82, 82, 0.34) !important;
 	transition: border-color 0.3s, box-shadow 0.3s !important;
 }
 
-.fls__text-input:focus {
+.fls__base-input:focus {
 	border-color: #bb2125 !important;
 	box-shadow: 0 0 0 0.2rem rgba(187, 33, 37, 0.35) !important;
 }
 
-.fls__text-input--highlighted-section {
+.fls__base-input--highlighted-section {
 	font-size: 0.875rem;
 	border-color: rgba(255, 255, 255, 0.75);
 	background-color: rgba(255, 255, 255, 0.4);
 }
 
-.fls__text-input--highlighted-section::placeholder {
+.fls__base-input--highlighted-section::placeholder {
 	color: white;
+}
+
+.fls__select-container,
+.fls__control {
+	height: 50px;
+}
+
+.fls__control {
+	flex-wrap: nowrap !important;
+}
+
+.fls__value-container {
+	padding: 0 !important;
+}
+
+// TODO: What the diddly fuck is going on with the placeholder styles in the Select component?
+.fls__placeholder {
+	color: #495057 !important;
+	font-size: 0.875rem !important;
+	font-family: 'Montserrat', sans-serif !important;
 }
 
 // .fls__form-copy {

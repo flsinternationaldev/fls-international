@@ -4,12 +4,13 @@ import { graphql } from 'gatsby';
 
 import '../bulma/bulma.scss';
 import 'slick-carousel/slick/slick.css';
-import sectionStyles from '../components/section/section.module.scss';
+import sectionStyles from '../components/section/Section.module.scss';
 
 import Layout from '../components/Layout';
 import Hero from '../components/hero/Hero';
 import Section from '../components/section/Section';
 import Card from '../components/card/Card';
+import Application from '../components/application/ApplicationLanding';
 
 import videoSampleImg from '../img/video-sample.jpeg';
 
@@ -22,7 +23,6 @@ export const HomePageTemplate = ({
 	our_popular_programs = {},
 	start_your_journey = {},
 }) => {
-	console.log('lmao!', explore_your_world);
 	const slickSettings = {
 		infinite: true,
 		slidesToShow: 3,
@@ -107,83 +107,7 @@ export const HomePageTemplate = ({
 						</p>
 					</div>
 					<div className="column is-half-desktop is-full-tablet">
-						<div className="columns is-multiline">
-							<div className="column is-full">
-								<div className="field">
-									<div className="control">
-										<input
-											className="input fls__text-input"
-											type="text"
-											placeholder="Choose Your Start Date"
-										/>
-									</div>
-								</div>
-							</div>
-
-							<div className="column is-half">
-								<div className="field">
-									<div className="control">
-										<input
-											className="input fls__text-input"
-											type="text"
-											placeholder="Choose Your Duration"
-										/>
-									</div>
-								</div>
-							</div>
-
-							<div className="column is-half">
-								<div className="field">
-									<div className="control">
-										<input
-											className="input fls__text-input"
-											type="text"
-											placeholder="Choose Your Center Location"
-										/>
-									</div>
-								</div>
-							</div>
-
-							<div className="column is-full">
-								<div className="field">
-									<div className="control">
-										<input
-											className="input fls__text-input"
-											type="text"
-											placeholder="Choose Your Housing"
-										/>
-									</div>
-								</div>
-							</div>
-
-							<div className="column is-full">
-								<div className="field">
-									<div className="control">
-										<input
-											className="input fls__text-input"
-											type="text"
-											placeholder="Choose Your Program"
-										/>
-									</div>
-								</div>
-							</div>
-
-							<div className="column is-half">
-								<p
-									className={
-										sectionStyles.startYourJourney__price
-									}
-								>
-									$ --USD
-								</p>
-							</div>
-
-							<div className="column is-half">
-								<button className="fls__button">
-									Apply Now
-								</button>
-							</div>
-						</div>
+						<Application isHome={true} />
 					</div>
 				</div>
 			</Section>
@@ -475,15 +399,14 @@ export const HomePageTemplate = ({
 const HomePage = ({ data }) => {
 	const { frontmatter } = data.markdownRemark;
 
-	console.log('front matter', frontmatter);
 	return (
 		<Layout isHome={true}>
 			<HomePageTemplate
-				carousel_settings={frontmatter.carousel_settings}
-				explore_your_world={frontmatter.explore_your_world}
-				how_is_your_english={frontmatter.how_is_your_english}
-				our_popular_programs={frontmatter.our_popular_programs}
-				start_your_journey={frontmatter.start_your_journey}
+				carousel_settings={frontmatter.carousel_settings || {}}
+				explore_your_world={frontmatter.explore_your_world || {}}
+				how_is_your_english={frontmatter.how_is_your_english || {}}
+				our_popular_programs={frontmatter.our_popular_programs || {}}
+				start_your_journey={frontmatter.start_your_journey || {}}
 			/>
 		</Layout>
 	);

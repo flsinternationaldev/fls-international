@@ -74,4 +74,119 @@ collections:
                             default: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae tincidunt massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla malesuada finibus tincidunt. Ut maximus ipsum non ultrices mattis. Interdum et malesuada fames ac ante ipsum primis in faucibus.',
                         }
                       - { label: Card Image, name: card_image, widget: image }
-# TODO: Need a default image
+    - name: application
+      label: Application
+      create: false # TODO: Should probably be false, but need to figure out how this works
+      files:
+          # TODO: Figure out where this file's true home is
+          - file: 'src/pages/application-landing.md'
+            label: 'Application Landing'
+            name: 'application-landing'
+            fields:
+                - widget: 'object'
+                  label: 'On Location Program Information'
+                  name: 'on-location-program-information'
+                  fields:
+                      - {
+                            label: 'General Fees',
+                            name: 'general-fees',
+                            widget: 'object',
+                            fields:
+                                [
+                                    {
+                                        name: 'application_fee',
+                                        label: 'Application Fee',
+                                        widget: 'number',
+                                    },
+                                    {
+                                        name: 'housing_placement_fee',
+                                        label: 'Housing Placement Fee',
+                                        widget: 'number',
+                                    },
+                                    {
+                                        name: 'health_insurance_fee',
+                                        label: 'Health Insurance Fee (Weekly)',
+                                        widget: 'number',
+                                    },
+                                    {
+                                        label: 'One-on-One Tutoring (per lesson)',
+                                        name: 'tutoring',
+                                        widget: 'number',
+                                    },
+                                    {
+                                        label: 'Express Mail Fee (I-20 Applicants)',
+                                        name: 'express_mail_fee',
+                                        widget: 'number',
+                                    },
+                                    {
+                                        label: 'Extra Night: Homestay (per night)',
+                                        name: 'extra_night_homestay',
+                                        widget: 'number',
+                                    },
+                                    {
+                                        label: 'Extra Night: Student Resources (per night)',
+                                        name: 'extra_night_resources',
+                                        widget: 'number',
+                                    },
+                                    {
+                                        label: 'Books and Materials',
+                                        name: 'books_and_materials',
+                                        widget: 'number',
+                                    },
+                                ],
+                        }
+                      - {
+                            label: 'Locations',
+                            name: 'locations',
+                            allow_add: true,
+                            widget: 'list',
+                            fields:
+                                [
+                                    {
+                                        label: 'Location Name',
+                                        name: 'location_name',
+                                        widget: 'string',
+                                    },
+                                    {
+                                        label: 'Programs',
+                                        name: 'programs',
+                                        widget: 'list',
+                                        fields:
+                                            [
+                                                {
+                                                    label: 'Program Name',
+                                                    name: 'program_name',
+                                                    widget: 'string',
+                                                },
+                                                {
+                                                    label: 'Program Details',
+                                                    name: 'program-details',
+                                                    widget: 'object',
+                                                    fields:
+                                                        [
+                                                            {
+                                                                name: 'duration',
+                                                                label: 'Duration (Weeks)',
+                                                                widget: 'string',
+                                                            },
+                                                            {
+                                                                name: 'price',
+                                                                label: 'Price (USD)',
+                                                                widget: 'number',
+                                                            },
+                                                            {
+                                                                name: 'hours',
+                                                                label: 'Hours (Per Week)',
+                                                                widget: 'number',
+                                                            },
+                                                            {
+                                                                name: 'lessons',
+                                                                label: 'Lessons (Per Week)',
+                                                                widget: 'number',
+                                                            },
+                                                        ],
+                                                },
+                                            ],
+                                    },
+                                ],
+                        }
