@@ -54,12 +54,17 @@ const TemplateWrapper = ({
 	isHome,
 	isScrolled,
 	hasNavHero,
+	hasNavButtons,
 	pageTitle,
 }) => {
 	const { title, description } = Metadata();
 
 	const handleHasNavHero = hasNavHero =>
-		hasNavHero ? <NavHero pageTitle={pageTitle} /> : '';
+		hasNavHero ? (
+			<NavHero hasNavButtons={hasNavButtons} pageTitle={pageTitle} />
+		) : (
+			''
+		);
 
 	return (
 		<Fragment>

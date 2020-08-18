@@ -22,6 +22,7 @@ export const HomePageTemplate = ({
 	how_is_your_english = {},
 	our_popular_programs = {},
 	start_your_journey = {},
+	on_location_program_information = {},
 }) => {
 	const slickSettings = {
 		infinite: true,
@@ -107,7 +108,12 @@ export const HomePageTemplate = ({
 						</p>
 					</div>
 					<div className="column is-half-desktop is-full-tablet">
-						<Application isHome={true} />
+						<Application
+							isHome={true}
+							on_location_program_information={
+								on_location_program_information
+							}
+						/>
 					</div>
 				</div>
 			</Section>
@@ -407,6 +413,9 @@ const HomePage = ({ data }) => {
 				how_is_your_english={frontmatter.how_is_your_english || {}}
 				our_popular_programs={frontmatter.our_popular_programs || {}}
 				start_your_journey={frontmatter.start_your_journey || {}}
+				on_location_program_information={
+					frontmatter.on_location_program_information || {}
+				}
 			/>
 		</Layout>
 	);
@@ -443,6 +452,30 @@ export const pageQuery = graphql`
 					copy
 					title
 					subtitle
+				}
+				on_location_program_information {
+					general_fees {
+						application_fee
+						books_and_materials
+						express_mail_fee
+						extra_night_homestay
+						extra_night_resources
+						health_insurance_fee
+						housing_placement_fee
+						tutoring
+					}
+					locations {
+						location_name
+						programs {
+							program_name
+							program_details {
+								duration
+								hours
+								lessons
+								price
+							}
+						}
+					}
 				}
 			}
 		}

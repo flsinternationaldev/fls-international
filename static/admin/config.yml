@@ -85,11 +85,11 @@ collections:
             fields:
                 - widget: 'object'
                   label: 'On Location Program Information'
-                  name: 'on-location-program-information'
+                  name: 'on_location_program_information'
                   fields:
                       - {
                             label: 'General Fees',
-                            name: 'general-fees',
+                            name: 'general_fees',
                             widget: 'object',
                             fields:
                                 [
@@ -138,8 +138,7 @@ collections:
                       - {
                             label: 'Locations',
                             name: 'locations',
-                            allow_add: true,
-                            widget: 'list',
+                            widget: 'object',
                             fields:
                                 [
                                     {
@@ -161,7 +160,7 @@ collections:
                                                 {
                                                     label: 'Program Details',
                                                     name: 'program-details',
-                                                    widget: 'object',
+                                                    widget: 'list',
                                                     fields:
                                                         [
                                                             {

@@ -7,6 +7,11 @@ body {
 	max-width: 1170px !important;
 }
 
+.column--no-padding {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+
 .title--fls {
 	font-size: 2.425rem !important;
 	font-weight: 300 !important;
@@ -104,7 +109,8 @@ body {
 	text-transform: uppercase;
 }
 
-.section--alternate {
+.section--alternate,
+.column--alternate {
 	background-color: #f5f5f5;
 }
 
@@ -159,6 +165,23 @@ body {
 
 .fls__link--dark {
 	color: #2c2e30 !important;
+}
+
+.fls__alternating-item {
+	display: flex;
+	justify-content: space-between;
+	height: 45px;
+	padding: 12px;
+	font-size: 0.875rem;
+	color: #656565;
+
+	&:nth-child(odd) {
+		background-color: #fff;
+	}
+
+	&:nth-child(even) {
+		background-color: #f5f5f5;
+	}
 }
 
 // /* TODO: Combine this with the button class for the hero section */
