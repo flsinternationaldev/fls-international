@@ -1,7 +1,7 @@
 import React from 'react';
 
 import testimonialStyles from './Testimonial.module.scss';
-import testimonialImg from '../../img/testimonial-avatar.jpeg';
+import testimonialImg from 'src/img/testimonial-avatar.jpeg';
 
 export default function Section(props) {
 	// TODO: All this testimonial data should come from the CMS

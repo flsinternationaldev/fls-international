@@ -275,6 +275,26 @@ body {
 	color: white;
 }
 
+.fls__payment-container {
+	border: 1px solid #eee;
+	padding: 13px;
+	margin-bottom: 15px;
+}
+
+.fls__base-input--payment {
+	border: 0 !important;
+}
+
+.fls__payment-options-img {
+	max-width: 125px;
+}
+
+.fls__payment-label {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
 .fls__select-container,
 .fls__control {
 	height: 50px;

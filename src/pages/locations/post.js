@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Layout from '../../components/Layout';
-import Section from '../../components/section/Section';
-import Testimonial from '../../components/testimonial/Testimonial';
-import QuickFacts from '../../components/quick-facts/QuickFacts';
-import PriceCalculator from '../../components/price-calculator/PriceCalculator';
-// import Card from '../../components/card/Card';
+import Layout from 'src/components/Layout';
+import Section from 'src/components/section/Section';
+import Testimonial from 'src/components/testimonial/Testimonial';
+import QuickFacts from 'src/components/quick-facts/QuickFacts';
+import PriceCalculator from 'src/components/price-calculator/PriceCalculator';
+// import Card from 'src/components/card/Card';
 
 export const EnglishLanguageProgramsTemplate = () => {
 	// TODO: This all needs to come from the CMS

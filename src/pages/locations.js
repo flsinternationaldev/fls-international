@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
 
-import '../bulma/bulma.scss';
+import 'src/bulma/bulma.scss';
 
 // TODO: Eventually, css module this
-// import programsStyles from '../styles/Programs.module.scss';
-import '../styles/locations.scss';
+// import programsStyles from 'src/styles/Programs.module.scss';
+import 'src/styles/locations.scss';
 
-import Layout from '../components/Layout';
-import Section from '../components/section/Section';
-import Card from '../components/card/Card';
+import Layout from 'src/components/Layout';
+import Section from 'src/components/section/Section';
+import Card from 'src/components/card/Card';
 
 export const LocationsPageTemplate = () => {
 	return (

@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import Select from 'react-select';
 import { RadioGroup, Radio } from 'react-radio-group';
 
-import sectionStyles from '../section/Section.module.scss';
+import sectionStyles from 'src/components/section/Section.module.scss';
 import applicationStyles from './ApplicationLanding.module.scss';
 
 import 'react-datepicker/dist/react-datepicker.css';
