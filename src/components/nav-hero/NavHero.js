@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-import Section from '../section/Section';
+import Section from 'src/components/section/Section';
 
 import navHeroStyles from './NavHero.module.scss';
 
@@ -26,6 +26,7 @@ export default function NavHero({ pageTitle, hasNavButtons }) {
 			</Fragment>
 		) : null;
 	};
+
 	return (
 		<Section
 			sectionClasses={['hero', 'is-medium', 'hero--page']}
@@ -41,7 +42,7 @@ export default function NavHero({ pageTitle, hasNavButtons }) {
 							</h1>
 						</div>
 
-						{handleNavButtons}
+						{handleNavButtons()}
 					</div>
 				</div>
 			</div>

@@ -2,17 +2,17 @@ import React, { Fragment } from 'react';
 import Slick from 'react-slick';
 import { graphql } from 'gatsby';
 
-import '../bulma/bulma.scss';
+import 'src/bulma/bulma.scss';
 import 'slick-carousel/slick/slick.css';
-import sectionStyles from '../components/section/Section.module.scss';
+import sectionStyles from 'src/components/section/Section.module.scss';
 
-import Layout from '../components/Layout';
-import Hero from '../components/hero/Hero';
-import Section from '../components/section/Section';
-import Card from '../components/card/Card';
-import Application from '../components/application/ApplicationLanding';
+import Layout from 'src/components/Layout';
+import Hero from 'src/components/hero/Hero';
+import Section from 'src/components/section/Section';
+import Card from 'src/components/card/Card';
+import Application from 'src/components/application/ApplicationLanding';
 
-import videoSampleImg from '../img/video-sample.jpeg';
+import videoSampleImg from 'src/img/video-sample.jpeg';
 
 // TODO: In the gatsby-netlify starter package, all these React files are kept in /templates,
 // and pages only has Markdown files. Investigate how to do that

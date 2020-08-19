@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Layout from '../../components/Layout';
-import Card from '../../components/card/Card';
+import Layout from 'src/components/Layout';
+import Card from 'src/components/card/Card';
 
 export const EnglishLanguageProgramsTemplate = () => {
 	return (

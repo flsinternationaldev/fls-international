@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
 
-import '../bulma/bulma.scss';
+import 'src/bulma/bulma.scss';
 
 // TODO: Eventually, css module this
-// import programsStyles from '../styles/Programs.module.scss';
-import '../styles/programs.scss';
+// import programsStyles from 'src/styles/Programs.module.scss';
+import 'src/styles/programs.scss';
 
-import Layout from '../components/Layout';
-import Section from '../components/section/Section';
+import Layout from 'src/components/Layout';
+import Section from 'src/components/section/Section';
 
 export const ProgramsPageTemplate = ({ program_cards }) => {
 	console.log('program cards?', program_cards);

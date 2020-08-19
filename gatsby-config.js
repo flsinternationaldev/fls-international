@@ -3,6 +3,7 @@
  *
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
+const path = require('path');
 
 module.exports = {
 	siteMetadata: {
@@ -11,6 +12,7 @@ module.exports = {
 			"The official website for FLS International's programs and online services.",
 	},
 	plugins: [
+		'gatsby-plugin-root-import',
 		`gatsby-plugin-sass`,
 		{
 			resolve: 'gatsby-plugin-netlify-cms',

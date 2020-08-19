@@ -3,9 +3,9 @@ import React, { Fragment } from 'react';
 import footerStyles from './Footer.module.scss';
 
 // TODO: These will likely come in from the CMS
-import ceaLogo from '../../img/cea-logo.png';
-import bppeLogo from '../../img/bppe-logo.png';
-import englishUsLogo from '../../img/english-us-icon.png';
+import ceaLogo from 'src/img/cea-logo.png';
+import bppeLogo from 'src/img/bppe-logo.png';
+import englishUsLogo from 'src/img/english-us-icon.png';
 
 const footer = () => {
 	return (

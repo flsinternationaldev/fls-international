@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import navbarStyles from './Navbar.module.scss';
-import flsLogo from '../../img/fls-international-logo.png';
+import flsLogo from 'src/img/fls-international-logo.png';
 
 export default function Navbar(props) {
 	const [isScrolled, setIsScrolled] = useState(false);
