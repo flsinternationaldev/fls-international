@@ -80,52 +80,63 @@ collections:
       folder: 'src/netlify-content/location'
       identifier_field: slug
       fields:
+          # See if there's a way to add descriptive text to these fields
           - { label: 'Slug', name: 'slug', widget: 'string' }
           - { label: 'Name', name: 'name', widget: 'string' }
+          - {
+                label: 'General Fees',
+                name: 'general-fees ',
+                widget: 'list',
+                fields:
+                    # TODO: Something is weird about the nesting here, it's adding an extra layer in the parsed object
+                    [
+                        { label: 'Name', name: 'Name', widget: 'string' },
+                        { label: 'Cost', name: 'cost', widget: 'number' },
+                    ],
+            }
           - {
                 label: 'Programs',
                 name: 'programs',
                 widget: 'list',
                 fields:
                     [
+                        { label: 'Name', name: 'name', widget: 'string' },
                         {
-                            label: 'Program',
-                            name: 'program',
+                            label: 'Max Weeks',
+                            name: 'max-weeks',
+                            widget: 'string',
+                        },
+                        {
+                            label: 'Exceed max weeks?',
+                            name: 'exceed-max-weeks',
+                            required: false,
+                            widget: 'boolean',
+                        },
+                        {
+                            label: 'Week Thresholds',
+                            name: 'week-thresholds',
                             widget: 'list',
                             fields:
                                 [
                                     {
-                                        label: 'Name',
-                                        name: 'name',
-                                        widget: 'string',
+                                        label: 'Threshold Max',
+                                        name: 'threshold-max',
+                                        widget: 'number',
                                     },
                                     {
-                                        label: 'Modalities',
-                                        name: 'modalities',
-                                        widget: 'list',
-                                        fields:
-                                            [
-                                                {
-                                                    label: 'Weeks',
-                                                    name: 'weeks',
-                                                    widget: 'string',
-                                                },
-                                                {
-                                                    label: 'Price Per Week',
-                                                    name: 'price-per-week',
-                                                    widget: 'number',
-                                                },
-                                                {
-                                                    label: 'Hours Per Week',
-                                                    name: 'hours-per-week',
-                                                    widget: 'number',
-                                                },
-                                                {
-                                                    label: 'Lessons Per Week',
-                                                    name: 'lessons-per-week',
-                                                    widget: 'number',
-                                                },
-                                            ],
+                                        label: 'Price Per Week',
+                                        name: 'price-per-week',
+                                        widget: 'number',
+                                    },
+                                    {
+                                        label: 'Hours Per Week',
+                                        name: 'hours-per-week',
+                                        widget: 'number',
+                                    },
+                                    {
+                                        label: 'Lessons Per Week',
+                                        name: 'lessons-per-week',
+                                        widget: 'number',
                                     },
                                 ],
                         },

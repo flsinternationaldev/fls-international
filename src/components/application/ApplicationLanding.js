@@ -10,6 +10,8 @@ import applicationStyles from './ApplicationLanding.module.scss';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
+let currentCenter, currentProgram, currentDuration;
+
 // TODO: Figure out how best to handle validation
 export default function Application({
 	isHome,
@@ -51,14 +53,14 @@ export default function Application({
 								non_refundable_deposit
 							}
 							programs {
-								program {
-									modalities {
-										hours_per_week
-										lessons_per_week
-										price_per_week
-										weeks
-									}
-									name
+								name
+								exceed_max_weeks
+								max_weeks
+								week_thresholds {
+									threshold_max
+									lessons_per_week
+									hours_per_week
+									price_per_week
 								}
 							}
 						}
@@ -75,8 +77,6 @@ export default function Application({
 		.map(edge => {
 			return { ...edge.node.frontmatter };
 		});
-
-	console.log('formattedData', formattedData);
 
 	const [startDate, setStartDate] = useState(null);
 
@@ -98,7 +98,24 @@ export default function Application({
 
 	const [programType, setProgramType] = useState('on-location');
 
-	const [price, setPrice] = useState('--');
+	const [prices, setPrices] = useState({
+		center: 'citrus-college',
+		program: 'vacation-english',
+		duration: '1-3',
+		cost: 395,
+	});
+
+	const calculatePrice = prices => {
+		if (prices.length) {
+			return prices.reduce((total, price) => {
+				console.log('PRICE!', price);
+				total += price.cost;
+				return total;
+			}, 0);
+		} else {
+			return 0;
+		}
+	};
 
 	const centerOptions = formattedData.map(center => {
 		return {
@@ -113,19 +130,18 @@ export default function Application({
 		setCenterLabel(centerChange.label);
 		setCenterValue(centerChange.value);
 
-		const currentCenter = formattedData.find(
+		currentCenter = formattedData.find(
 			center => center.name === centerChange.label
 		);
 
 		// Set program options to be the programs associated with the selected center
 		setProgramOptions(
-			currentCenter.programs[0].program // TODO: This 'programs[0].program' thing is screwy, something is whacky in config.yml
-				.map(program => {
-					return {
-						value: program.name.toLowerCase().split(' ').join('-'),
-						label: program.name,
-					};
-				})
+			currentCenter.programs.map(program => {
+				return {
+					value: program.name.toLowerCase().split(' ').join('-'),
+					label: program.name,
+				};
+			})
 		);
 
 		setHousingOptions(
@@ -144,6 +160,36 @@ export default function Application({
 	const handleDurationChange = durationChange => {
 		setDurationLabel(durationChange.label);
 		setDurationValue(durationChange.value);
+
+		let pricePerWeek = currentProgram.week_thresholds.reduce(
+			(pricePerWeek, currentWeek, index, arr) => {
+				// If there are no previous thresholds, previous max defaults to 0. Otherwise, the minimum threshold value is last week's max threshold, plus one.
+				let thresholdMin =
+					index === 0 ? 1 : arr[index - 1].threshold_max + 1;
+
+				if (
+					durationChange.value >= thresholdMin &&
+					durationChange.value <= currentWeek.threshold_max
+				) {
+					// console.log('durationChange', durationChange.value);
+					// console.log('thresholdMin', thresholdMin);
+					// console.log('current max', currentWeek.threshold_max);
+					return currentWeek.price_per_week;
+				} else {
+					return pricePerWeek;
+				}
+			},
+			0
+		);
+
+		const priceObject = {
+			center: centerValue,
+			program: programValue,
+			duration: durationChange.value,
+			cost: durationChange.value * pricePerWeek,
+		};
+
+		setPrices([priceObject]);
 	};
 
 	const handleHousingChange = housingChange => {
@@ -155,20 +201,33 @@ export default function Application({
 		setProgramLabel(programChange.label);
 		setProgramValue(programChange.value);
 
-		setDurationOptions(
-			// This functional pattern is repeated frequently, might be value in DRYing it up
-			formattedData
-				.find(center => center.name === centerLabel)
-				.programs[0].program.find(
-					program => program.name === programChange.label
-				)
-				.modalities.map(modality => {
-					return {
-						label: `${modality.weeks} weeks`,
-						value: modality.weeks,
-					};
-				})
+		currentProgram = currentCenter.programs.find(
+			program => program.name === programChange.label
 		);
+
+		let durationOptions = [];
+
+		for (let i = 0; i <= currentProgram.max_weeks; i++) {
+			const weekNum = i + 1;
+
+			// TODO: Likely need to make a special note during submission if they select more than the max weeks
+			if (
+				currentProgram.exceed_max_weeks &&
+				i == currentProgram.max_weeks
+			) {
+				durationOptions.push({
+					label: `${i}+ weeks`,
+					value: `${weekNum}+`,
+				});
+			} else if (i < currentProgram.max_weeks) {
+				durationOptions.push({
+					label: weekNum === 1 ? `${i + 1} week` : `${i + 1} weeks`,
+					value: weekNum,
+				});
+			}
+		}
+
+		setDurationOptions(durationOptions);
 	};
 
 	const isMonday = date => date.getDay() === 1;
@@ -203,7 +262,7 @@ export default function Application({
 					className="fls__select-container"
 					classNamePrefix={'fls'}
 					value={{ label: centerLabel }}
-					onChange={handleCenterChange.bind(this)}
+					onChange={handleCenterChange}
 					options={centerOptions}
 				/>
 			</div>
@@ -213,7 +272,7 @@ export default function Application({
 					className="fls__select-container"
 					classNamePrefix={'fls'}
 					value={{ label: programLabel }}
-					onChange={handleProgramChange.bind(this)}
+					onChange={handleProgramChange}
 					options={programOptions}
 				/>
 			</div>
@@ -223,7 +282,7 @@ export default function Application({
 					className="fls__select-container"
 					classNamePrefix={'fls'}
 					value={{ label: housingLabel }}
-					onChange={handleHousingChange.bind(this)}
+					onChange={handleHousingChange}
 					options={housingOptions}
 				/>
 			</div>
@@ -235,14 +294,14 @@ export default function Application({
 					className="fls__select-container"
 					classNamePrefix={'fls'}
 					value={{ label: durationLabel }}
-					onChange={handleDurationChange.bind(this)}
+					onChange={handleDurationChange}
 					options={durationOptions}
 				/>
 			</div>
 
 			<div className="column is-half">
 				<p className={sectionStyles.startYourJourney__price}>
-					$ {price}USD
+					$ {calculatePrice(prices)} USD
 				</p>
 			</div>
 

@@ -83,14 +83,14 @@ export const pageQuery = graphql`
 							non_refundable_deposit
 						}
 						programs {
-							program {
-								modalities {
-									hours_per_week
-									lessons_per_week
-									price_per_week
-									weeks
-								}
-								name
+							name
+							exceed_max_weeks
+							max_weeks
+							week_thresholds {
+								threshold_max
+								lessons_per_week
+								hours_per_week
+								price_per_week
 							}
 						}
 					}
