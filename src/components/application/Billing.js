@@ -136,7 +136,10 @@ export default function Billing({ nextStep, previousStep }) {
 				<div className="column is-half">
 					<div className="columns is-multiline">
 						<div className="column is-full column--alternate column--app-program-details">
+<<<<<<< HEAD
 							{/* TODO: Need to make sure to include all the optional costs here as well */}
+=======
+>>>>>>> 9aa9880ec26bfb97040c3a6ab3ce8db585c7cb34
 							<h3 className="fls__post-title">Program Details</h3>
 
 							<div className="fls__app-program-details">
@@ -163,12 +166,15 @@ export default function Billing({ nextStep, previousStep }) {
 
 									<span>Intensive English</span>
 								</div>
+<<<<<<< HEAD
 
 								<div className="fls__app-program-detail-item">
 									<strong>Airport Pick Up:</strong>
 
 									<span>$150</span>
 								</div>
+=======
+>>>>>>> 9aa9880ec26bfb97040c3a6ab3ce8db585c7cb34
 							</div>
 						</div>
 
