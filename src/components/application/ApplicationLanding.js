@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 
 import DatePicker from 'react-datepicker';
 import Select from 'react-select';
@@ -12,20 +12,82 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 // TODO: Figure out how best to handle validation
 export default function Application({
-	data,
 	isHome,
 	on_location_program_information,
 }) {
-	console.log('come home to me!', data);
+	const data = useStaticQuery(graphql`
+		{
+			allMarkdownRemark {
+				edges {
+					node {
+						fileAbsolutePath
+						frontmatter {
+							name
+							supplements {
+								airport_transfers {
+									airport_name
+									cost
+								}
+								auditing {
+									_4_week_cost
+									additional_week_cost
+								}
+								concurrent_enrollment {
+									per_3_unit_class
+								}
+								hs_completion_course {
+									_4_week_cost
+									additional_week_cost
+								}
+								hs_immersion {
+									per_week_cost
+								}
+							}
+							housing_fees {
+								additional_notes
+								cost_per_week
+								housing_name
+								meals_per_week
+								non_refundable_deposit
+							}
+							programs {
+								program {
+									modalities {
+										hours_per_week
+										lessons_per_week
+										price_per_week
+										weeks
+									}
+									name
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	`);
+
+	// TODO: Probably want to make some kind of mix in to pass this function around
+	const formattedData = data.allMarkdownRemark.edges
+		.filter(edge => edge.node.fileAbsolutePath.includes('/location/'))
+		// TODO: There's maybe a cleverer way to do this, but this works for now
+		.map(edge => {
+			return { ...edge.node.frontmatter };
+		});
+
+	console.log('formattedData', formattedData);
 
 	const [startDate, setStartDate] = useState(null);
+
+	const [durationOptions, setDurationOptions] = useState([]);
+	const [programOptions, setProgramOptions] = useState([]);
+	const [housingOptions, setHousingOptions] = useState([]);
 
 	const [durationLabel, setDurationLabel] = useState('Choose Your Duration');
 	const [durationValue, setDurationValue] = useState(null);
 
-	const [centerLabel, setCenterLabel] = useState(
-		'Choose Your Center Location'
-	);
+	const [centerLabel, setCenterLabel] = useState('Choose Your Center');
 	const [centerValue, setCenterValue] = useState(null);
 
 	const [housingLabel, setHousingLabel] = useState('Choose Your Housing');
@@ -38,43 +100,50 @@ export default function Application({
 
 	const [price, setPrice] = useState('--');
 
-	// TODO: These options need to come from the CMS
-	// const durationOptions = on_location_program_information.locations[0].programs[0].program_details[0].map(
-	// 		program => {
-	// 			return {
-	// 				label: program.program_details.duration,
-	// 				value: '',
-	// 			};
-	// 		}
-	// 	),
-	const durationOptions = [],
-		// TODO: Finesse the value
-		centerOptions = [
-			{ value: 'Housing Option 1', label: 'Housing Option 1' },
-			{ value: 'Housing Option 2', label: 'Housing Option 2' },
-			{ value: 'Housing Option 3', label: 'Housing Option 3' },
-		],
-		housingOptions = [
-			{ value: 'Housing Option 1', label: 'Housing Option 1' },
-			{ value: 'Housing Option 2', label: 'Housing Option 2' },
-			{ value: 'Housing Option 3', label: 'Housing Option 3' },
-		],
-		// TODO: These options need to change based off the selected location
-		programOptions = [
-			{ value: 'Housing Option 1', label: 'Housing Option 1' },
-			{ value: 'Housing Option 2', label: 'Housing Option 2' },
-			{ value: 'Housing Option 3', label: 'Housing Option 3' },
-		];
+	const centerOptions = formattedData.map(center => {
+		return {
+			// TODO: Probably want to include this string helper in a mixin
+			value: center.name.toLowerCase().split(' ').join('-'),
+			label: center.name,
+		};
+	});
 
-	// TODO: DRY up these functions
-	const handleDurationChange = durationChange => {
-		setDurationLabel(durationChange.label);
-		setDurationValue(durationChange.value);
-	};
-
+	// TODO: DRY up these functions	const handleCenterChange = centerChange => {
 	const handleCenterChange = centerChange => {
 		setCenterLabel(centerChange.label);
 		setCenterValue(centerChange.value);
+
+		const currentCenter = formattedData.find(
+			center => center.name === centerChange.label
+		);
+
+		// Set program options to be the programs associated with the selected center
+		setProgramOptions(
+			currentCenter.programs[0].program // TODO: This 'programs[0].program' thing is screwy, something is whacky in config.yml
+				.map(program => {
+					return {
+						value: program.name.toLowerCase().split(' ').join('-'),
+						label: program.name,
+					};
+				})
+		);
+
+		setHousingOptions(
+			currentCenter.housing_fees.map(housingFee => {
+				return {
+					label: housingFee.housing_name,
+					value: housingFee.housing_name
+						.toLowerCase()
+						.split(' ')
+						.join('-'),
+				};
+			})
+		);
+	};
+
+	const handleDurationChange = durationChange => {
+		setDurationLabel(durationChange.label);
+		setDurationValue(durationChange.value);
 	};
 
 	const handleHousingChange = housingChange => {
@@ -85,6 +154,21 @@ export default function Application({
 	const handleProgramChange = programChange => {
 		setProgramLabel(programChange.label);
 		setProgramValue(programChange.value);
+
+		setDurationOptions(
+			// This functional pattern is repeated frequently, might be value in DRYing it up
+			formattedData
+				.find(center => center.name === centerLabel)
+				.programs[0].program.find(
+					program => program.name === programChange.label
+				)
+				.modalities.map(modality => {
+					return {
+						label: `${modality.weeks} weeks`,
+						value: modality.weeks,
+					};
+				})
+		);
 	};
 
 	const isMonday = date => date.getDay() === 1;
@@ -114,18 +198,6 @@ export default function Application({
 				/>
 			</div>
 
-			{/* TODO: 'Duration' should come from the CMS */}
-			<div className="column is-half">
-				{/* TODO: These styles need finessing */}
-				<Select
-					className="fls__select-container"
-					classNamePrefix={'fls'}
-					value={{ label: durationLabel }}
-					onChange={handleDurationChange.bind(this)}
-					options={durationOptions}
-				/>
-			</div>
-
 			<div className="column is-half">
 				<Select
 					className="fls__select-container"
@@ -136,7 +208,17 @@ export default function Application({
 				/>
 			</div>
 
-			<div className="column is-full">
+			<div className="column is-half">
+				<Select
+					className="fls__select-container"
+					classNamePrefix={'fls'}
+					value={{ label: programLabel }}
+					onChange={handleProgramChange.bind(this)}
+					options={programOptions}
+				/>
+			</div>
+
+			<div className="column is-half">
 				<Select
 					className="fls__select-container"
 					classNamePrefix={'fls'}
@@ -146,13 +228,15 @@ export default function Application({
 				/>
 			</div>
 
-			<div className="column is-full">
+			{/* TODO: All fields besides dates and center should be disabled until you choose a center */}
+			<div className="column is-half">
+				{/* TODO: These styles need finessing */}
 				<Select
 					className="fls__select-container"
 					classNamePrefix={'fls'}
-					value={{ label: programLabel }}
-					onChange={handleProgramChange.bind(this)}
-					options={programOptions}
+					value={{ label: durationLabel }}
+					onChange={handleDurationChange.bind(this)}
+					options={durationOptions}
 				/>
 			</div>
 
@@ -168,56 +252,3 @@ export default function Application({
 		</div>
 	);
 }
-
-export const pageQuery = graphql`
-	{
-		allMarkdownRemark {
-			edges {
-				node {
-					fileAbsolutePath
-					frontmatter {
-						name
-						supplements {
-							airport_transfers {
-								airport_name
-								cost
-							}
-							auditing {
-								_4_week_cost
-								additional_week_cost
-							}
-							concurrent_enrollment {
-								per_3_unit_class
-							}
-							hs_completion_course {
-								_4_week_cost
-								additional_week_cost
-							}
-							hs_immersion {
-								per_week_cost
-							}
-						}
-						housing_fees {
-							additional_notes
-							cost_per_week
-							housing_name
-							meals_per_week
-							non_refundable_deposit
-						}
-						programs {
-							program {
-								modalities {
-									hours_per_week
-									lessons_per_week
-									price_per_week
-									weeks
-								}
-								name
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-`;

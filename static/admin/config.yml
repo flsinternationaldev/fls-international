@@ -78,7 +78,9 @@ collections:
       label: 'Location'
       create: true
       folder: 'src/netlify-content/location'
+      identifier_field: slug
       fields:
+          - { label: 'Slug', name: 'slug', widget: 'string' }
           - { label: 'Name', name: 'name', widget: 'string' }
           - {
                 label: 'Programs',
