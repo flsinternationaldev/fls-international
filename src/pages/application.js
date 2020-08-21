@@ -3,9 +3,12 @@ import StepWizard from 'react-step-wizard';
 
 import Layout from 'src/components/Layout';
 import Section from 'src/components/section/Section';
+import Steps from 'src/components/steps/Steps';
 import PersonalInfo from 'src/components/application/PersonalInfo';
 import Address from 'src/components/application/Address';
-import Steps from 'src/components/steps/Steps';
+import AdditionalInfo from 'src/components/application/AdditionalInfo';
+import MoreInfo from 'src/components/application/MoreInfo';
+import Billing from 'src/components/application/Billing';
 
 export const ApplicationTemplate = () => {
 	return (
@@ -13,7 +16,12 @@ export const ApplicationTemplate = () => {
 		<Section sectionClasses={['section']} containerClasses={['container']}>
 			<StepWizard isHashEnabled={true} nav={<Steps stepsNum={5} />}>
 				<PersonalInfo hashKey={'personal-info'} />
-				<Address hashKey={'billing-payment'} />
+				<Address hashKey={'address'} />
+				{/* TODO: Might want to consider unifying these two components, if
+				the step wizard allows duplicates */}
+				<AdditionalInfo hashKey={'additional-info'} />
+				<MoreInfo hashKey={'more-info'} />
+				<Billing hashKey={'billing'} />
 			</StepWizard>
 		</Section>
 	);
