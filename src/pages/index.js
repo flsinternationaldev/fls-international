@@ -403,8 +403,9 @@ export const HomePageTemplate = ({
 };
 
 const HomePage = ({ data }) => {
-	const { frontmatter } = data.markdownRemark;
+	// const { frontmatter } = data.markdownRemark;
 
+	const frontmatter = {};
 	return (
 		<Layout isHome={true}>
 			<HomePageTemplate
@@ -425,59 +426,59 @@ export default HomePage;
 
 // TODO: Here, all the individual fields are specified.
 // Is there a way to just say 'get all fields'?
-export const pageQuery = graphql`
-	query {
-		markdownRemark {
-			frontmatter {
-				carousel_settings {
-					copy
-					title
-				}
-				explore_your_world {
-					copy
-					subtitle
-					title
-				}
-				how_is_your_english {
-					copy
-					title
-					subtitle
-				}
-				our_popular_programs {
-					copy
-					subtitle
-					title
-				}
-				start_your_journey {
-					copy
-					title
-					subtitle
-				}
-				on_location_program_information {
-					general_fees {
-						application_fee
-						books_and_materials
-						express_mail_fee
-						extra_night_homestay
-						extra_night_resources
-						health_insurance_fee
-						housing_placement_fee
-						tutoring
-					}
-					locations {
-						location_name
-						programs {
-							program_name
-							program_details {
-								duration
-								hours
-								lessons
-								price
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-`;
+// export const pageQuery = graphql`
+// 	query {
+// 		markdownRemark {
+// 			frontmatter {
+// 				carousel_settings {
+// 					copy
+// 					title
+// 				}
+// 				explore_your_world {
+// 					copy
+// 					subtitle
+// 					title
+// 				}
+// 				how_is_your_english {
+// 					copy
+// 					title
+// 					subtitle
+// 				}
+// 				our_popular_programs {
+// 					copy
+// 					subtitle
+// 					title
+// 				}
+// 				start_your_journey {
+// 					copy
+// 					title
+// 					subtitle
+// 				}
+// 				on_location_program_information {
+// 					general_fees {
+// 						application_fee
+// 						books_and_materials
+// 						express_mail_fee
+// 						extra_night_homestay
+// 						extra_night_resources
+// 						health_insurance_fee
+// 						housing_placement_fee
+// 						tutoring
+// 					}
+// 					locations {
+// 						location_name
+// 						programs {
+// 							program_name
+// 							program_details {
+// 								duration
+// 								hours
+// 								lessons
+// 								price
+// 							}
+// 						}
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// `;

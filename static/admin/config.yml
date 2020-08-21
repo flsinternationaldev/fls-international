@@ -14,7 +14,7 @@ collections:
       label: Pages
       create: true # TODO: Should probably be false, but need to figure out how this works
       files:
-          - file: 'src/pages/home/home.md'
+          - file: 'src/netlify-content/pages/home/home.md'
             label: 'Home Page'
             name: 'home'
             fields:
@@ -52,7 +52,7 @@ collections:
                       - { label: 'Title', name: 'title', widget: 'text' }
                       - { label: 'Subtitle', name: 'subtitle', widget: 'text' }
                       - { label: 'Copy', name: 'copy', widget: 'text' }
-          - file: 'src/pages/programs/programs.md'
+          - file: 'src/netlify-content/pages/programs.md'
             label: 'Programs Page'
             name: 'programs'
             fields:
@@ -74,10 +74,10 @@ collections:
                             default: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae tincidunt massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla malesuada finibus tincidunt. Ut maximus ipsum non ultrices mattis. Interdum et malesuada fames ac ante ipsum primis in faucibus.',
                         }
                       - { label: Card Image, name: card_image, widget: image }
-    - name: 'locations'
-      label: 'Locations'
+    - name: 'location'
+      label: 'Location'
       create: true
-      folder: 'src/locations'
+      folder: 'src/netlify-content/location'
       fields:
           - { label: 'Name', name: 'name', widget: 'string' }
           - {
@@ -240,6 +240,11 @@ collections:
                         {
                             label: 'Cost Per Week',
                             name: 'cost-per-week',
+                            widget: 'number',
+                        },
+                        {
+                            label: 'Non-refundable Deposit',
+                            name: 'non-refundable-deposit',
                             widget: 'number',
                         },
                         {

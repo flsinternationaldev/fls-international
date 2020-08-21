@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { graphql } from 'gatsby';
 
 import DatePicker from 'react-datepicker';
 import Select from 'react-select';
@@ -11,10 +12,11 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 // TODO: Figure out how best to handle validation
 export default function Application({
+	data,
 	isHome,
 	on_location_program_information,
 }) {
-	console.log('come home to me', on_location_program_information);
+	console.log('come home to me!', data);
 
 	const [startDate, setStartDate] = useState(null);
 
@@ -85,8 +87,8 @@ export default function Application({
 		setProgramValue(programChange.value);
 	};
 
-	// if (isHome) {
-	// 	if (programType === 'on-location') {
+	const isMonday = date => date.getDay() === 1;
+
 	return (
 		<div className="columns is-multiline">
 			<div className="column is-full control">
@@ -108,6 +110,7 @@ export default function Application({
 					wrapperClassName={applicationStyles.fls__dateWrapper}
 					className={'input fls__base-input'}
 					placeholderText={'Choose Your Start Date'}
+					filterDate={isMonday}
 				/>
 			</div>
 
@@ -165,3 +168,56 @@ export default function Application({
 		</div>
 	);
 }
+
+export const pageQuery = graphql`
+	{
+		allMarkdownRemark {
+			edges {
+				node {
+					fileAbsolutePath
+					frontmatter {
+						name
+						supplements {
+							airport_transfers {
+								airport_name
+								cost
+							}
+							auditing {
+								_4_week_cost
+								additional_week_cost
+							}
+							concurrent_enrollment {
+								per_3_unit_class
+							}
+							hs_completion_course {
+								_4_week_cost
+								additional_week_cost
+							}
+							hs_immersion {
+								per_week_cost
+							}
+						}
+						housing_fees {
+							additional_notes
+							cost_per_week
+							housing_name
+							meals_per_week
+							non_refundable_deposit
+						}
+						programs {
+							program {
+								modalities {
+									hours_per_week
+									lessons_per_week
+									price_per_week
+									weeks
+								}
+								name
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+`;

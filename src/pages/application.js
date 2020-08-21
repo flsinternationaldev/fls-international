@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import StepWizard from 'react-step-wizard';
+import { graphql } from 'gatsby';
 
 import Layout from 'src/components/Layout';
 import Section from 'src/components/section/Section';
@@ -28,7 +29,7 @@ export const ApplicationTemplate = () => {
 };
 
 const ApplicationPage = ({ data }) => {
-	// const { frontmatter } = data.markdownRemark;
+	console.log('the data', data);
 
 	// TODO: Page title needs to change as user progress through application
 	return (
@@ -45,18 +46,56 @@ const ApplicationPage = ({ data }) => {
 
 export default ApplicationPage;
 
-// TODO: Here, all the individual fields are specified.
-// Is there a way to just say 'get all fields'?
-// export const pageQuery = graphql`
-// 	query {
-// 		markdownRemark {
-// 			frontmatter {
-// 				program_cards {
-// 					card_description
-// 					card_image
-// 					card_title
-// 				}
-// 			}
-// 		}
-// 	}
-// `;
+// TODO: It's likely this query can be better constructed, ideally to include filtering logic.
+export const pageQuery = graphql`
+	{
+		allMarkdownRemark {
+			edges {
+				node {
+					fileAbsolutePath
+					frontmatter {
+						name
+						supplements {
+							airport_transfers {
+								airport_name
+								cost
+							}
+							auditing {
+								_4_week_cost
+								additional_week_cost
+							}
+							concurrent_enrollment {
+								per_3_unit_class
+							}
+							hs_completion_course {
+								_4_week_cost
+								additional_week_cost
+							}
+							hs_immersion {
+								per_week_cost
+							}
+						}
+						housing_fees {
+							additional_notes
+							cost_per_week
+							housing_name
+							meals_per_week
+							non_refundable_deposit
+						}
+						programs {
+							program {
+								modalities {
+									hours_per_week
+									lessons_per_week
+									price_per_week
+									weeks
+								}
+								name
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+`;

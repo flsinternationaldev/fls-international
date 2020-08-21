@@ -31,15 +31,22 @@ module.exports = {
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
-				path: `${__dirname}/src/pages`,
-				name: 'pages',
+				path: `${__dirname}/src/img`,
+				name: 'images',
 			},
 		},
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
-				path: `${__dirname}/src/img`,
-				name: 'images',
+				path: `${__dirname}/src/netlify-content/location`,
+				name: 'location',
+			},
+		},
+		{
+			resolve: 'gatsby-source-filesystem',
+			options: {
+				path: `${__dirname}/src/netlify-content/pages`,
+				name: 'pages',
 			},
 		},
 		`gatsby-transformer-remark`,
