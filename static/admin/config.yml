@@ -74,118 +74,185 @@ collections:
                             default: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae tincidunt massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla malesuada finibus tincidunt. Ut maximus ipsum non ultrices mattis. Interdum et malesuada fames ac ante ipsum primis in faucibus.',
                         }
                       - { label: Card Image, name: card_image, widget: image }
-    - name: application
-      label: Application
-      create: false # TODO: Should probably be false, but need to figure out how this works
-      files:
-          # TODO: Figure out where this file's true home is
-          - file: 'src/pages/application-landing.md'
-            label: 'Application Landing'
-            name: 'application-landing'
-            fields:
-                - widget: 'object'
-                  label: 'On Location Program Information'
-                  name: 'on_location_program_information'
-                  fields:
-                      - {
-                            label: 'General Fees',
-                            name: 'general_fees',
-                            widget: 'object',
+    - name: 'locations'
+      label: 'Locations'
+      create: true
+      folder: 'src/locations'
+      fields:
+          - { label: 'Name', name: 'name', widget: 'string' }
+          - {
+                label: 'Programs',
+                name: 'programs',
+                widget: 'list',
+                fields:
+                    [
+                        {
+                            label: 'Program',
+                            name: 'program',
+                            widget: 'list',
                             fields:
                                 [
                                     {
-                                        name: 'application_fee',
-                                        label: 'Application Fee',
-                                        widget: 'number',
-                                    },
-                                    {
-                                        name: 'housing_placement_fee',
-                                        label: 'Housing Placement Fee',
-                                        widget: 'number',
-                                    },
-                                    {
-                                        name: 'health_insurance_fee',
-                                        label: 'Health Insurance Fee (Weekly)',
-                                        widget: 'number',
-                                    },
-                                    {
-                                        label: 'One-on-One Tutoring (per lesson)',
-                                        name: 'tutoring',
-                                        widget: 'number',
-                                    },
-                                    {
-                                        label: 'Express Mail Fee (I-20 Applicants)',
-                                        name: 'express_mail_fee',
-                                        widget: 'number',
-                                    },
-                                    {
-                                        label: 'Extra Night: Homestay (per night)',
-                                        name: 'extra_night_homestay',
-                                        widget: 'number',
-                                    },
-                                    {
-                                        label: 'Extra Night: Student Resources (per night)',
-                                        name: 'extra_night_resources',
-                                        widget: 'number',
-                                    },
-                                    {
-                                        label: 'Books and Materials',
-                                        name: 'books_and_materials',
-                                        widget: 'number',
-                                    },
-                                ],
-                        }
-                      - {
-                            label: 'Locations',
-                            name: 'locations',
-                            widget: 'object',
-                            fields:
-                                [
-                                    {
-                                        label: 'Location Name',
-                                        name: 'location_name',
+                                        label: 'Name',
+                                        name: 'name',
                                         widget: 'string',
                                     },
                                     {
-                                        label: 'Programs',
-                                        name: 'programs',
+                                        label: 'Modalities',
+                                        name: 'modalities',
                                         widget: 'list',
                                         fields:
                                             [
                                                 {
-                                                    label: 'Program Name',
-                                                    name: 'program_name',
+                                                    label: 'Weeks',
+                                                    name: 'weeks',
                                                     widget: 'string',
                                                 },
                                                 {
-                                                    label: 'Program Details',
-                                                    name: 'program-details',
-                                                    widget: 'list',
-                                                    fields:
-                                                        [
-                                                            {
-                                                                name: 'duration',
-                                                                label: 'Duration (Weeks)',
-                                                                widget: 'string',
-                                                            },
-                                                            {
-                                                                name: 'price',
-                                                                label: 'Price (USD)',
-                                                                widget: 'number',
-                                                            },
-                                                            {
-                                                                name: 'hours',
-                                                                label: 'Hours (Per Week)',
-                                                                widget: 'number',
-                                                            },
-                                                            {
-                                                                name: 'lessons',
-                                                                label: 'Lessons (Per Week)',
-                                                                widget: 'number',
-                                                            },
-                                                        ],
+                                                    label: 'Price Per Week',
+                                                    name: 'price-per-week',
+                                                    widget: 'number',
+                                                },
+                                                {
+                                                    label: 'Hours Per Week',
+                                                    name: 'hours-per-week',
+                                                    widget: 'number',
+                                                },
+                                                {
+                                                    label: 'Lessons Per Week',
+                                                    name: 'lessons-per-week',
+                                                    widget: 'number',
                                                 },
                                             ],
                                     },
                                 ],
-                        }
+                        },
+                    ],
+            }
+          - {
+                label: 'Supplements',
+                name: 'supplements',
+                widget: 'object',
+                fields: [
+                        {
+                            label: 'Airport Transfers',
+                            name: 'airport-transfers',
+                            widget: 'list',
+                            allow_add: true,
+                            fields:
+                                [
+                                    {
+                                        label: 'Airport Name',
+                                        name: 'airport-name',
+                                        widget: 'string',
+                                    },
+                                    {
+                                        label: 'Cost',
+                                        name: 'cost',
+                                        widget: 'number',
+                                    },
+                                ],
+                        },
+                        {
+                            # TODO: Do we need to capture "per x unit class"?
+                            # TODO: Also note, how do we capture the 'sublocations' that Boston Commons has?
+                            label: 'Concurrent Enrollment',
+                            name: 'concurrent-enrollment',
+                            widget: 'object',
+                            fields:
+                                [
+                                    {
+                                        label: 'Per 3 unit class',
+                                        name: 'per-3-unit-class',
+                                        widget: 'number',
+                                    },
+                                ],
+                        },
+                        {
+                            # TODO: How do we capture the amount for 4 weeks, and the amount each additional week?
+                            label: 'Auditing',
+                            name: 'auditing',
+                            widget: 'object',
+                            fields:
+                                [
+                                    {
+                                        label: '4 Week Cost',
+                                        name: '4-week-cost',
+                                        widget: 'number',
+                                    },
+                                    {
+                                        label: 'Additional week cost',
+                                        name: 'additional-week-cost',
+                                        widget: 'number',
+                                    },
+                                ],
+                        },
+                        {
+                            # TODO: Do we need to capture "per x unit class"?
+                            label: 'High School Completion Course',
+                            name: 'hs-completion-course',
+                            widget: 'object',
+                            fields:
+                                [
+                                    {
+                                        label: '4 Week Cost',
+                                        name: '4-week-cost',
+                                        widget: 'number',
+                                    },
+                                    {
+                                        label: 'Additional week cost',
+                                        name: 'additional-week-cost',
+                                        widget: 'number',
+                                    },
+                                ],
+                        },
+                        {
+                            # TODO: Do we need to capture "per x unit class"?
+                            label: 'High School Immersion',
+                            name: 'hs-immersion',
+                            widget: 'object',
+                            fields:
+                                [
+                                    {
+                                        label: 'Per week cost',
+                                        name: 'per-week-cost',
+                                        widget: 'number',
+                                    },
+                                ],
+                        },
+                    ],
+            }
+          - {
+                label: 'Housing Fees',
+                name: 'housing-fees',
+                widget: 'list',
+                fields: [
+                        {
+                            label: 'Housing Name',
+                            name: 'housing-name',
+                            widget: 'string',
+                        },
+                        {
+                            label: 'Meals per week',
+                            name: 'meals-per-week',
+                            widget: 'number',
+                        },
+                        {
+                            label: 'Cost Per Week',
+                            name: 'cost-per-week',
+                            widget: 'number',
+                        },
+                        {
+                            label: 'Additional Notes',
+                            name: 'additional-notes',
+                            widget: 'list',
+                            # TODO: When creating new notes, they come wrapped in another object. I don't think this is intended behavior
+                            field:
+                                {
+                                    label: 'Note',
+                                    name: 'note',
+                                    widget: 'string',
+                                },
+                        },
+                    ],
+            }
