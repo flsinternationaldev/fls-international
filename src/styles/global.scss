@@ -1,6 +1,7 @@
 /* Global */
 body {
 	font-family: 'Montserrat', sans-serif !important;
+	overflow: hidden; /* This prevents weird issues that might arise with the react step wizard */
 }
 
 .container {
@@ -10,6 +11,10 @@ body {
 .column--no-padding {
 	padding-left: 0 !important;
 	padding-right: 0 !important;
+}
+
+.column--app-program-details {
+	margin-bottom: 15px;
 }
 
 .title--fls {
@@ -44,6 +49,20 @@ body {
 .section {
 	padding-top: 5rem !important;
 	padding-bottom: 5rem !important;
+}
+
+.fls__app-program-detail-item,
+.fls__app-program-total-container {
+	display: flex !important;
+	justify-content: space-between;
+}
+
+.fls__app-program-detail-item {
+	font-size: 0.8rem;
+}
+
+.fls__app-program-detail-item {
+	margin-bottom: 6px;
 }
 
 /* Generic FLS Styles */
@@ -306,6 +325,10 @@ body {
 
 .fls__value-container {
 	padding: 0 !important;
+}
+
+.fls__date-wrapper {
+	width: 100%;
 }
 
 // TODO: What the diddly fuck is going on with the placeholder styles in the Select component?

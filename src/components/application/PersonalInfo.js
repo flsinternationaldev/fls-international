@@ -115,6 +115,7 @@ export default function PersonalInfo({ nextStep }) {
 					</div>
 				</div>
 
+				{/* TODO: Arrow icon */}
 				<div className="column is-offset-8 is-4">
 					<button onClick={nextStep} className="fls__button">
 						Save & Continue

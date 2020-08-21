@@ -9,7 +9,7 @@ import PlacesAutocomplete, {
 // TODO: Figure out how best to handle validation
 export default GoogleApiWrapper({
 	apiKey: process.env.GATSBY_GOOGLE_PLACE_API_KEY,
-})(function PersonalInfo({ nextStep, google }) {
+})(function PersonalInfo({ previousStep, nextStep, google }) {
 	const mapStyles = {
 			position: 'relative',
 			width: '100%',
@@ -199,6 +199,21 @@ export default GoogleApiWrapper({
 							</div>
 						</div>
 					</div>
+				</div>
+
+				<div className="column is-4">
+					<button onClick={previousStep} className="fls__button">
+						Previous
+					</button>
+				</div>
+
+				{/* TODO: This works for now... but it's probably not the best implementation */}
+				<div className="column is-4"></div>
+
+				<div className="column is-4">
+					<button onClick={nextStep} className="fls__button">
+						Save & Continue
+					</button>
 				</div>
 			</div>
 		</Fragment>
