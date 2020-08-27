@@ -10,6 +10,7 @@ import Address from 'src/components/application/Address';
 import AdditionalInfo from 'src/components/application/AdditionalInfo';
 import MoreInfo from 'src/components/application/MoreInfo';
 import Billing from 'src/components/application/Billing';
+import Form from 'src/components/application/Form';
 
 export const ApplicationTemplate = () => {
 	const [cost, setCost] = useState(0);
@@ -63,6 +64,7 @@ export const ApplicationTemplate = () => {
 	return (
 		// TODO: There's a bug with stepwizard wherein it fails if you provide only one child
 		<Section sectionClasses={['section']} containerClasses={['container']}>
+			<Form />
 			<StepWizard isHashEnabled={true} nav={<Steps stepsNum={5} />}>
 				<PersonalInfo
 					hashKey={'personal-info'}

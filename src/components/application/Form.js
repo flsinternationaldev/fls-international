@@ -1,6 +1,6 @@
 import React from 'react';
 
-console.log('i rendered');
+console.log('form is online');
 export default function Form() {
 	return (
 		<form
@@ -11,11 +11,7 @@ export default function Form() {
 			data-netlify-honeypot="bot-field"
 		>
 			{/* You still need to add the hidden input with the form name to your JSX form */}
-			<input
-				type="hidden"
-				name="user-application"
-				value="user-application"
-			/>
+			<input type="hidden" name="form-name" value="user-application" />
 		</form>
 	);
 }

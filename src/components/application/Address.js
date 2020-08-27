@@ -6,8 +6,6 @@ import PlacesAutocomplete, {
 	getLatLng,
 } from 'react-places-autocomplete';
 
-import Form from 'src/components/application/Form';
-
 const encode = data => {
 	return Object.keys(data)
 		.map(
@@ -60,7 +58,6 @@ export default GoogleApiWrapper({
 
 	return (
 		<Fragment>
-			<Form />
 			<div className="columns is-multiline">
 				<div className="column is-full">
 					<h3 className="fls__post-title">Your Address</h3>
