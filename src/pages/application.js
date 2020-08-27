@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import StepWizard from 'react-step-wizard';
 import { graphql } from 'gatsby';
 
@@ -12,12 +12,42 @@ import MoreInfo from 'src/components/application/MoreInfo';
 import Billing from 'src/components/application/Billing';
 
 export const ApplicationTemplate = () => {
+	const [costs, setCosts] = useState([]);
+	const [userData, setUserData] = useState({
+		firstName: '',
+		lastName: '',
+		email: '',
+		phoneNumber: '',
+		gender: '',
+		birthDate: '',
+		citizenshipCountry: '',
+		address: '',
+	});
+
+	// TODO: Because this is async, we should probably create a flag to prevent form submission until state has updated
+	const handleInputChange = (name, value, type) => {
+		if (type === 'user') {
+			setUserData({
+				...userData,
+				[name]: value,
+			});
+		}
+	};
+
 	return (
 		// TODO: There's a bug with stepwizard wherein it fails if you provide only one child
 		<Section sectionClasses={['section']} containerClasses={['container']}>
 			<StepWizard isHashEnabled={true} nav={<Steps stepsNum={5} />}>
-				<PersonalInfo hashKey={'personal-info'} />
-				<Address hashKey={'address'} />
+				<PersonalInfo
+					hashKey={'personal-info'}
+					handleInputChange={handleInputChange}
+					userData={userData}
+				/>
+				<Address
+					hashKey={'address'}
+					userData={userData}
+					handleInputChange={handleInputChange}
+				/>
 				{/* TODO: Might want to consider unifying these two components, if
 				the step wizard allows duplicates */}
 				<AdditionalInfo hashKey={'additional-info'} />

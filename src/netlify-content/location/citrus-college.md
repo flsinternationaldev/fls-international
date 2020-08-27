@@ -11,7 +11,7 @@ programs:
     max-weeks: "12"
     week-thresholds:
       - threshold-max: 3
-        price-per-week: 395
+        price-per-week: 393
         hours-per-week: 5
         lessons-per-week: 15
       - threshold-max: 7
@@ -22,7 +22,7 @@ programs:
         price-per-week: 375
         hours-per-week: 15
         lessons-per-week: 18
-    exceed-max-weeks: false
+    exceed-max-weeks: true
 supplements:
   airport-transfers:
     - airport-name: Los Angeles International Airport, LAX
@@ -30,7 +30,7 @@ supplements:
   concurrent-enrollment:
     per-3-unit-class: 0
   auditing:
-    4-week-cost: 0
+    4-week-cost: 1
     additional-week-cost: 0
   hs-completion-course:
     4-week-cost: 1500

@@ -10,7 +10,8 @@ import applicationStyles from './ApplicationLanding.module.scss';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-let currentCenter, currentProgram, currentDuration;
+// TODO: Audit whether all these are necessary
+let currentCenter, currentProgram, currentHousing, currentDuration;
 
 // TODO: Figure out how best to handle validation
 export default function Application({
@@ -98,14 +99,10 @@ export default function Application({
 
 	const [programType, setProgramType] = useState('on-location');
 
-	const [prices, setPrices] = useState({
-		center: 'citrus-college',
-		program: 'vacation-english',
-		duration: '1-3',
-		cost: 395,
-	});
+	const [prices, setPrices] = useState([]);
 
 	const calculatePrice = prices => {
+		console.log('prices', prices);
 		if (prices.length) {
 			return prices.reduce((total, price) => {
 				console.log('PRICE!', price);
@@ -157,6 +154,7 @@ export default function Application({
 		);
 	};
 
+	// TODO: These changes need to also recalculate off of each other, e.g. if you have a type of housing selected, then change the duration, the housing price needs to be recalculated ... might be time for the old redux
 	const handleDurationChange = durationChange => {
 		setDurationLabel(durationChange.label);
 		setDurationValue(durationChange.value);
@@ -182,19 +180,62 @@ export default function Application({
 			0
 		);
 
-		const priceObject = {
-			center: centerValue,
-			program: programValue,
-			duration: durationChange.value,
-			cost: durationChange.value * pricePerWeek,
-		};
+		currentDuration = durationChange.value;
 
-		setPrices([priceObject]);
+		let updatedPrices = prices;
+
+		if (prices.find(priceItem => priceItem.type === 'duration')) {
+			updatedPrices = prices.map(priceItem => {
+				if (priceItem.type === 'duration') {
+					return {
+						type: priceItem.type,
+						cost: durationChange.value * pricePerWeek,
+					};
+				} else {
+					return priceItem;
+				}
+			});
+		} else {
+			updatedPrices.push({
+				type: 'duration',
+				cost: durationChange.value * pricePerWeek,
+			});
+		}
+
+		setPrices(updatedPrices);
 	};
 
 	const handleHousingChange = housingChange => {
 		setHousingLabel(housingChange.label);
 		setHousingValue(housingChange.value);
+
+		const housingCostPerWeek = currentCenter.housing_fees.find(
+			housingFee =>
+				housingChange.value ===
+				housingFee.housing_name.toLowerCase().split(' ').join('-')
+		).cost_per_week;
+
+		let updatedPrices = prices;
+
+		if (prices.find(priceItem => priceItem.type === 'housing')) {
+			updatedPrices = prices.map(priceItem => {
+				if (priceItem.type === 'housing') {
+					return {
+						type: priceItem.type,
+						cost: currentDuration * housingCostPerWeek,
+					};
+				} else {
+					return priceItem;
+				}
+			});
+		} else {
+			updatedPrices.push({
+				type: 'housing',
+				cost: currentDuration * housingCostPerWeek,
+			});
+		}
+
+		setPrices(updatedPrices);
 	};
 
 	const handleProgramChange = programChange => {
@@ -257,7 +298,7 @@ export default function Application({
 				/>
 			</div>
 
-			<div className="column is-half">
+			<div className="column is-full">
 				<Select
 					className="fls__select-container"
 					classNamePrefix={'fls'}
@@ -267,7 +308,7 @@ export default function Application({
 				/>
 			</div>
 
-			<div className="column is-half">
+			<div className="column is-full">
 				<Select
 					className="fls__select-container"
 					classNamePrefix={'fls'}
@@ -277,7 +318,7 @@ export default function Application({
 				/>
 			</div>
 
-			<div className="column is-half">
+			<div className="column is-full">
 				<Select
 					className="fls__select-container"
 					classNamePrefix={'fls'}
@@ -288,7 +329,7 @@ export default function Application({
 			</div>
 
 			{/* TODO: All fields besides dates and center should be disabled until you choose a center */}
-			<div className="column is-half">
+			<div className="column is-full">
 				{/* TODO: These styles need finessing */}
 				<Select
 					className="fls__select-container"

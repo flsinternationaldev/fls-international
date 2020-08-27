@@ -6,8 +6,6 @@ import ApplicationLandingPreview from './preview-templates/ApplicationLandingPre
 
 CMS.registerPreviewTemplate('home', HomePagePreview);
 CMS.registerPreviewTemplate('programs', ProgramsPagePreview);
-// TODO: Why isn't the datepicker styling properly?
-CMS.registerPreviewTemplate('application-landing', ApplicationLandingPreview);
 
 // CMS.registerPreviewStyle('../styles/test.css');
 

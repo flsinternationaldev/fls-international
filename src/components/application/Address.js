@@ -9,7 +9,7 @@ import PlacesAutocomplete, {
 // TODO: Figure out how best to handle validation
 export default GoogleApiWrapper({
 	apiKey: process.env.GATSBY_GOOGLE_PLACE_API_KEY,
-})(function PersonalInfo({ previousStep, nextStep, google }) {
+})(({ previousStep, nextStep, userData, handleInputChange, google }) => {
 	const mapStyles = {
 			position: 'relative',
 			width: '100%',
@@ -21,15 +21,14 @@ export default GoogleApiWrapper({
 			width: '100%',
 		};
 
-	const [address, setAddress] = useState(''),
-		// TODO: Do these need to be two separate values? Can we just use a single object?
-		[latLng, setLatLng] = useState({
-			lat: 40.854885,
-			lng: -88.081807,
-		});
+	// TODO: Do these need to be two separate values? Can we just use a single object?
+	const [latLng, setLatLng] = useState({
+		lat: 40.854885,
+		lng: -88.081807,
+	});
 
 	const handleSelect = address => {
-		setAddress(address);
+		handleInputChange('address', address, 'user');
 
 		geocodeByAddress(address)
 			.then(results => getLatLng(results[0]))
@@ -51,8 +50,15 @@ export default GoogleApiWrapper({
 						<label className="label">Address</label>
 						<div className="control">
 							<PlacesAutocomplete
-								value={address}
-								onChange={setAddress}
+								value={userData.address}
+								name="address"
+								onChange={address => {
+									handleInputChange(
+										'address',
+										address,
+										'user'
+									);
+								}}
 								onSelect={handleSelect}
 							>
 								{({
@@ -211,7 +217,13 @@ export default GoogleApiWrapper({
 				<div className="column is-4"></div>
 
 				<div className="column is-4">
-					<button onClick={nextStep} className="fls__button">
+					<button
+						onClick={() => {
+							console.log('userData - address', userData);
+							nextStep();
+						}}
+						className="fls__button"
+					>
 						Save & Continue
 					</button>
 				</div>
