@@ -12,6 +12,7 @@ import MoreInfo from 'src/components/application/MoreInfo';
 import Billing from 'src/components/application/Billing';
 
 export const ApplicationTemplate = () => {
+	const [cost, setCost] = useState(0);
 	const [costs, setCosts] = useState([]);
 	const [userData, setUserData] = useState({
 		firstName: '',
@@ -22,6 +23,31 @@ export const ApplicationTemplate = () => {
 		birthDate: '',
 		citizenshipCountry: '',
 		address: '',
+	});
+	const [applicationData, setApplicationData] = useState({
+		flsCenter: '',
+		duration: '',
+		startDate: '',
+		endDate: '',
+		housingType: '',
+		program: '',
+		extraNights: false,
+		checkInDate: '',
+		checkOutDate: '',
+		airport: '',
+		airportPickUp: false,
+		airPortDropOff: false,
+		requiresI20: false,
+		transferStudent: false,
+		healthInsurance: false,
+		expressMail: false,
+		processSEVISAppFee: false,
+		unaccompaniedMinorService: false,
+		howDidYouHearAboutFls: '',
+		specifyHowHeardAboutFls: '',
+		additionalComments: '',
+		termsAndConditions: false,
+		// TODO: Figure out passport photo & financial document image upload
 	});
 
 	// TODO: Because this is async, we should probably create a flag to prevent form submission until state has updated

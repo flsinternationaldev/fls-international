@@ -6,6 +6,16 @@ import PlacesAutocomplete, {
 	getLatLng,
 } from 'react-places-autocomplete';
 
+import Form from 'src/components/application/Form';
+
+const encode = data => {
+	return Object.keys(data)
+		.map(
+			key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
+		)
+		.join('&');
+};
+
 // TODO: Figure out how best to handle validation
 export default GoogleApiWrapper({
 	apiKey: process.env.GATSBY_GOOGLE_PLACE_API_KEY,
@@ -38,8 +48,19 @@ export default GoogleApiWrapper({
 			.catch(error => console.error('Error', error));
 	};
 
+	const handleSubmission = () => {
+		fetch('/', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+			body: encode({ 'form-name': 'user-application', ...userData }),
+		})
+			.then(() => alert('Success!'))
+			.catch(error => alert(error));
+	};
+
 	return (
 		<Fragment>
+			<Form />
 			<div className="columns is-multiline">
 				<div className="column is-full">
 					<h3 className="fls__post-title">Your Address</h3>
@@ -220,6 +241,8 @@ export default GoogleApiWrapper({
 					<button
 						onClick={() => {
 							console.log('userData - address', userData);
+							console.log('submitting test form');
+							handleSubmission();
 							nextStep();
 						}}
 						className="fls__button"
