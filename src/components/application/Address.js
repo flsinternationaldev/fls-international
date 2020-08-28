@@ -47,6 +47,10 @@ export default GoogleApiWrapper({
 	};
 
 	const handleSubmission = () => {
+		console.log(
+			'this is my body',
+			encode({ 'form-name': 'user-application', ...userData })
+		);
 		fetch('/', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },

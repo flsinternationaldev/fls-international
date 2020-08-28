@@ -9,8 +9,6 @@ export default function Section(props) {
 			'sectionClasses' in props
 				? props.sectionClasses.join(' ')
 				: 'section';
-
-	console.log('sectionClasses', sectionClasses);
 	return (
 		<section className={sectionClasses}>
 			<div className={containerClasses}>{props.children}</div>

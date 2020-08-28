@@ -87,8 +87,6 @@ export const ApplicationTemplate = () => {
 };
 
 const ApplicationPage = ({ data }) => {
-	console.log('the data', data);
-
 	// TODO: Page title needs to change as user progress through application
 	return (
 		<Layout

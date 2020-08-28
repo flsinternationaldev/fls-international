@@ -1,6 +1,6 @@
 import React from 'react';
 
-console.log('form is online');
+// TODO: Note that Netlify forms, apparently, have monthly limits. Look into that m
 export default function Form() {
 	return (
 		<form
@@ -12,6 +12,10 @@ export default function Form() {
 		>
 			{/* You still need to add the hidden input with the form name to your JSX form */}
 			<input type="hidden" name="form-name" value="user-application" />
+
+			<label>
+				First Name: <input type="text" name="firstName" />
+			</label>
 		</form>
 	);
 }

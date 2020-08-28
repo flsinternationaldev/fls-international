@@ -4,8 +4,6 @@ export default function Steps({ stepsNum, currentStep, goToStep }) {
 	const renderSteps = () => {
 		let steps = [];
 
-		console.log('currentStep', currentStep);
-
 		for (let i = 0; i < stepsNum; i++) {
 			steps.push(
 				<li
