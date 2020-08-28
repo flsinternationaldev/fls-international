@@ -1,10 +1,15 @@
 import React, { Fragment } from 'react';
+
 import Select from 'react-select';
-import DatePicker from 'react-datepicker';
-import { RadioGroup, Radio } from 'react-radio-group';
+import { handleSubmission } from 'src/components/application/NetlifyStaticForm';
 
 // TODO: Figure out how best to handle validation
-export default function MoreInfo({ nextStep, previousStep }) {
+export default function MoreInfo({
+	nextStep,
+	previousStep,
+	userData,
+	handleInputChange,
+}) {
 	const referralOptions = [
 		{
 			label: 'Other',
@@ -27,8 +32,17 @@ export default function MoreInfo({ nextStep, previousStep }) {
 					<Select
 						className="fls__select-container"
 						classNamePrefix={'fls'}
-						value={{ label: 'lol' }}
-						onChange={() => {}}
+						value={{
+							label: userData.howDidYouHearAboutFls,
+							value: userData.howDidYouHearAboutFls,
+						}}
+						onChange={referralOption => {
+							handleInputChange(
+								'howDidYouHearAboutFlst',
+								referralOption.value,
+								'user'
+							);
+						}}
 						options={referralOptions}
 					/>
 				</div>
@@ -41,7 +55,14 @@ export default function MoreInfo({ nextStep, previousStep }) {
 						<input
 							className="input fls__base-input"
 							type="text"
-							placeholder="Text input"
+							value={userData.specifyHowHeardAboutFls}
+							onChange={e =>
+								handleInputChange(
+									'specifyHowHeardAboutFls',
+									e.target.value,
+									'user'
+								)
+							}
 						/>
 					</div>
 				</div>
@@ -99,15 +120,27 @@ export default function MoreInfo({ nextStep, previousStep }) {
 
 				<div className="column is-full">
 					<label className="label">Additional Comments</label>
-					<textarea className="textarea"></textarea>
+					<textarea
+						className="textarea"
+						value={userData.additionalComments}
+						onChange={e =>
+							handleInputChange(
+								'additionalComments',
+								e.target.value,
+								'user'
+							)
+						}
+					></textarea>
 				</div>
 
 				<div className="column is-full">
 					<label className="checkbox">
-						<input type="checkbox" />I acknowledge, by checking the
-						box below, that I have read and agree to the above GDPR
-						privacy policy and FLS{' '}
-						<a href="#">Terms and Conditions.</a> *
+						<input type="checkbox" />
+						<span className="fls__radio-label">
+							I acknowledge, by checking the box below, that I
+							have read and agree to the above GDPR privacy policy
+							and FLS <a href="#">Terms and Conditions.</a> *
+						</span>
 					</label>
 				</div>
 
@@ -121,7 +154,14 @@ export default function MoreInfo({ nextStep, previousStep }) {
 				<div className="column is-4"></div>
 
 				<div className="column is-4">
-					<button onClick={nextStep} className="fls__button">
+					<button
+						onClick={() => {
+							console.log('submitting...');
+							handleSubmission(userData);
+							nextStep();
+						}}
+						className="fls__button"
+					>
 						Save & Continue
 					</button>
 				</div>

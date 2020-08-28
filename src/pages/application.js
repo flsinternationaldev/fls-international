@@ -89,8 +89,16 @@ export const ApplicationTemplate = () => {
 					userData={userData}
 					handleInputChange={handleInputChange}
 				/>
-				<MoreInfo hashKey={'more-info'} />
-				<Billing hashKey={'billing'} />
+				<MoreInfo
+					hashKey={'more-info'}
+					userData={userData}
+					handleInputChange={handleInputChange}
+				/>
+				<Billing
+					hashKey={'billing'}
+					userData={userData}
+					handleInputChange={handleInputChange}
+				/>
 			</StepWizard>
 		</Section>
 	);
