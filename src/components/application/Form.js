@@ -14,8 +14,17 @@ export default function Form() {
 			<input type="hidden" name="form-name" value="user-application" />
 
 			<label>
-				First Name: <input type="text" name="firstName" />
+				<input type="text" name="firstName" />
 			</label>
 		</form>
 	);
 }
+
+// firstName: '',
+// lastName: '',
+// email: '',
+// phoneNumber: '',
+// gender: '',
+// birthDate: '',
+// citizenshipCountry: '',
+// address: '',
