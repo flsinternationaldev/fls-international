@@ -291,9 +291,11 @@ export default function Application({
 				<DatePicker
 					selected={startDate}
 					onChange={setStartDate}
+					minDate={new Date()}
 					wrapperClassName={applicationStyles.fls__dateWrapper}
 					className={'input fls__base-input'}
-					placeholderText={'Choose Your Start Date'}
+					// TODO: This should auto format when typing the date
+					placeholderText={'Choose Your Start Date (MM/DD/YY)'}
 					filterDate={isMonday}
 				/>
 			</div>

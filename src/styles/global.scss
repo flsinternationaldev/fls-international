@@ -133,6 +133,19 @@ body {
 	background-color: #f5f5f5;
 }
 
+.label--required {
+	&:after {
+		content: '*';
+		margin-left: 5px;
+		color: #bb2125;
+		font-weight: 500;
+	}
+}
+
+.fls__radio-label {
+	margin: 0 6px;
+}
+
 // .fls__blue-gradient-bg {
 // 	background: linear-gradient(
 // 		to bottom,

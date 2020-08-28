@@ -23,6 +23,7 @@ export const ApplicationTemplate = () => {
 		gender: '',
 		birthDate: '',
 		citizenshipCountry: '',
+		birthCountry: '',
 		address: '',
 	});
 	const [applicationData, setApplicationData] = useState({
@@ -32,7 +33,7 @@ export const ApplicationTemplate = () => {
 		endDate: '',
 		housingType: '',
 		program: '',
-		extraNights: false,
+		extraNights: '',
 		checkInDate: '',
 		checkOutDate: '',
 		airport: '',
@@ -40,7 +41,7 @@ export const ApplicationTemplate = () => {
 		airPortDropOff: false,
 		requiresI20: false,
 		transferStudent: false,
-		healthInsurance: false,
+		buyingHealthInsurance: false,
 		expressMail: false,
 		processSEVISAppFee: false,
 		unaccompaniedMinorService: false,
@@ -83,7 +84,11 @@ export const ApplicationTemplate = () => {
 				/>
 				{/* TODO: Might want to consider unifying these two components, if
 				the step wizard allows duplicates */}
-				<AdditionalInfo hashKey={'additional-info'} />
+				<AdditionalInfo
+					hashKey={'additional-info'}
+					userData={userData}
+					handleInputChange={handleInputChange}
+				/>
 				<MoreInfo hashKey={'more-info'} />
 				<Billing hashKey={'billing'} />
 			</StepWizard>

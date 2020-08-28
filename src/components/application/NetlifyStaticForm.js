@@ -1,5 +1,23 @@
 import React from 'react';
 
+const encode = data => {
+	return Object.keys(data)
+		.map(
+			key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
+		)
+		.join('&');
+};
+
+export const handleSubmission = data => {
+	fetch('/', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+		body: encode({ 'form-name': 'user-application', ...data }),
+	})
+		.then(() => alert('Success!'))
+		.catch(error => alert(error));
+};
+
 // TODO: Note that Netlify forms, apparently, have monthly limits. Look into that
 export default function NetlifyStaticForm({ formFields }) {
 	// TODO: This form implementation is worthy of a blog post

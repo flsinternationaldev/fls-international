@@ -1,5 +1,12 @@
 import React, { Fragment } from 'react';
 
+import { getName } from 'country-list';
+import DatePicker from 'react-datepicker';
+import ReactFlagsSelect from 'react-flags-select';
+
+import applicationStyles from './ApplicationLanding.module.scss';
+import 'react-flags-select/scss/react-flags-select.scss';
+
 // TODO: Figure out how best to handle validation
 export default function PersonalInfo({
 	nextStep,
@@ -15,7 +22,9 @@ export default function PersonalInfo({
 				<div className="column is-one-third">
 					<div className="field">
 						{/* TODO: Add the required asterisk */}
-						<label className="label">First Name</label>
+						<label className="label label--required">
+							First Name
+						</label>
 						<div className="control">
 							<input
 								className="input fls__base-input"
@@ -37,7 +46,9 @@ export default function PersonalInfo({
 
 				<div className="column is-one-third">
 					<div className="field">
-						<label className="label">Last Name</label>
+						<label className="label label--required">
+							Last Name
+						</label>
 						<div className="control">
 							<input
 								className="input fls__base-input"
@@ -59,7 +70,7 @@ export default function PersonalInfo({
 
 				<div className="column is-one-third">
 					<div className="field">
-						<label className="label">Email</label>
+						<label className="label label--required">Email</label>
 						<div className="control">
 							<input
 								className="input fls__base-input"
@@ -81,7 +92,9 @@ export default function PersonalInfo({
 
 				<div className="column is-one-third">
 					<div className="field">
-						<label className="label">Phone Number</label>
+						<label className="label label--required">
+							Phone Number
+						</label>
 						<div className="control">
 							<input
 								className="input fls__base-input"
@@ -125,9 +138,11 @@ export default function PersonalInfo({
 
 				<div className="column is-one-third">
 					<div className="field">
-						<label className="label">Date of Birth</label>
+						<label className="label label--required">
+							Date of Birth
+						</label>
 						<div className="control">
-							<input
+							{/* <input
 								className="input fls__base-input"
 								type="text"
 								placeholder="Text input"
@@ -140,6 +155,20 @@ export default function PersonalInfo({
 									)
 								}
 								value={userData.birthDate}
+							/> */}
+							<DatePicker
+								selected={userData.birthDate}
+								onChange={date =>
+									handleInputChange('birthDate', date, 'user')
+								}
+								value={userData.birthDate}
+								minDate={new Date()}
+								wrapperClassName={
+									applicationStyles.fls__dateWrapper
+								}
+								className={'input fls__base-input'}
+								// TODO: This should auto format when typing the date
+								placeholderText={'Birthday (MM/DD/YY)'}
 							/>
 						</div>
 					</div>
@@ -147,21 +176,21 @@ export default function PersonalInfo({
 
 				<div className="column is-one-third">
 					<div className="field">
-						<label className="label">Country of Citizenship</label>
+						<label className="label label--required">
+							Country of Citizenship
+						</label>
+
 						<div className="control">
-							<input
-								className="input fls__base-input"
-								type="text"
-								placeholder="Text input"
-								name="citizenshipCountry"
-								onChange={e =>
+							<ReactFlagsSelect
+								defaultCountry="US"
+								searchable={true}
+								onSelect={countryCode => {
 									handleInputChange(
-										e.target.name,
-										e.target.value,
+										'citizenshipCountry',
+										getName(countryCode),
 										'user'
-									)
-								}
-								value={userData.citizenshipCountry}
+									);
+								}}
 							/>
 						</div>
 					</div>
@@ -169,22 +198,23 @@ export default function PersonalInfo({
 
 				<div className="column is-one-third">
 					<div className="field">
-						<label className="label">Country of Birth</label>
+						<label className="label label--required">
+							Country of Birth
+						</label>
 						<div className="control">
-							<input
-								className="input fls__base-input"
-								type="text"
-								placeholder="Text input"
-								name="birthCountry"
-								onChange={e =>
-									handleInputChange(
-										e.target.name,
-										e.target.value,
-										'user'
-									)
-								}
-								value={userData.birthCountry}
-							/>
+							<div className="control">
+								<ReactFlagsSelect
+									defaultCountry="US"
+									searchable={true}
+									onSelect={countryCode => {
+										handleInputChange(
+											'birthCountry',
+											getName(countryCode),
+											'user'
+										);
+									}}
+								/>
+							</div>
 						</div>
 					</div>
 				</div>

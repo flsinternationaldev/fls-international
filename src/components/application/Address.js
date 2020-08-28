@@ -6,12 +6,30 @@ import PlacesAutocomplete, {
 	getLatLng,
 } from 'react-places-autocomplete';
 
-const encode = data => {
-	return Object.keys(data)
-		.map(
-			key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
-		)
-		.join('&');
+const formatAddressComponents = addressComponents => {
+	const desiredComponentTypes = [
+			'street_number',
+			'locality',
+			'administrative_area_level_1',
+			'postal_code',
+			'country',
+		],
+		componentTypeMapping = {
+			street_number: 'streetNumber',
+			locality: 'locality',
+			administrative_area_level_1: 'administrativeArea',
+			postal_code: 'postalCode',
+			country: 'country',
+		};
+
+	return addressComponents.reduce((accum, addressComponent) => {
+		// TODO: Probably not a good idea to directly access the array like this
+		if (desiredComponentTypes.includes(addressComponent.types[0]))
+			accum[componentTypeMapping[addressComponent.types[0]]] =
+				addressComponent.long_name;
+
+		return accum;
+	}, {});
 };
 
 // TODO: Figure out how best to handle validation
@@ -29,35 +47,27 @@ export default GoogleApiWrapper({
 			width: '100%',
 		};
 
-	// TODO: Do these need to be two separate values? Can we just use a single object?
 	const [latLng, setLatLng] = useState({
 		lat: 40.854885,
 		lng: -88.081807,
 	});
 
+	const [addressValues, setAddressValues] = useState({});
+
 	const handleSelect = address => {
 		handleInputChange('address', address, 'user');
 
 		geocodeByAddress(address)
-			.then(results => getLatLng(results[0]))
+			.then(results => {
+				setAddressValues(
+					formatAddressComponents(results[0].address_components)
+				);
+				return getLatLng(results[0]);
+			})
 			.then(latLng => {
 				setLatLng(latLng);
 			})
 			.catch(error => console.error('Error', error));
-	};
-
-	const handleSubmission = () => {
-		console.log(
-			'this is my body',
-			encode({ 'form-name': 'user-application', ...userData })
-		);
-		fetch('/', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-			body: encode({ 'form-name': 'user-application', ...userData }),
-		})
-			.then(() => alert('Success!'))
-			.catch(error => alert(error));
 	};
 
 	return (
@@ -160,14 +170,12 @@ export default GoogleApiWrapper({
 					<div className="columns is-multiline">
 						<div className="column is-full">
 							<div className="field">
-								<label className="label">
-									Apartment/Suite No.
-								</label>
+								<label className="label">Street Number</label>
 								<div className="control">
 									<input
 										className="input fls__base-input"
 										type="text"
-										placeholder="Text input"
+										value={addressValues.streetNumber}
 									/>
 								</div>
 							</div>
@@ -180,7 +188,7 @@ export default GoogleApiWrapper({
 									<input
 										className="input fls__base-input"
 										type="text"
-										placeholder="Text input"
+										value={addressValues.locality}
 									/>
 								</div>
 							</div>
@@ -195,7 +203,7 @@ export default GoogleApiWrapper({
 									<input
 										className="input fls__base-input"
 										type="text"
-										placeholder="Text input"
+										value={addressValues.administrativeArea}
 									/>
 								</div>
 							</div>
@@ -208,7 +216,7 @@ export default GoogleApiWrapper({
 									<input
 										className="input fls__base-input"
 										type="text"
-										placeholder="Text input"
+										value={addressValues.postalCode}
 									/>
 								</div>
 							</div>
@@ -221,7 +229,7 @@ export default GoogleApiWrapper({
 									<input
 										className="input fls__base-input"
 										type="text"
-										placeholder="Text input"
+										value={addressValues.country}
 									/>
 								</div>
 							</div>
@@ -242,8 +250,6 @@ export default GoogleApiWrapper({
 					<button
 						onClick={() => {
 							console.log('userData - address', userData);
-							console.log('submitting test form');
-							handleSubmission();
 							nextStep();
 						}}
 						className="fls__button"
