@@ -181,6 +181,16 @@ body {
 // 	padding-bottom: 86.25%;
 // }
 
+.application__header-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.application__total-price {
+	font-weight: 500;
+	font-size: 20px;
+}
+
 .fls__link {
 	line-height: 1.25 !important;
 	transition: color 0.3s !important;

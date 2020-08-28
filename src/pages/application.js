@@ -13,8 +13,8 @@ import Billing from 'src/components/application/Billing';
 import NetlifyStaticForm from 'src/components/application/NetlifyStaticForm';
 
 export const ApplicationTemplate = () => {
-	const [cost, setCost] = useState(0);
-	const [costs, setCosts] = useState([]);
+	const [price, setPrice] = useState(0);
+	const [prices, setPrices] = useState([]);
 	const [userData, setUserData] = useState({
 		firstName: '',
 		lastName: '',
@@ -22,9 +22,13 @@ export const ApplicationTemplate = () => {
 		phoneNumber: '',
 		gender: '',
 		birthDate: '',
-		citizenshipCountry: '',
-		birthCountry: '',
+		citizenshipCountry: 'France',
+		birthCountry: 'France',
 		address: '',
+		city: '',
+		stateProvince: '',
+		postalCode: '',
+		addressCountry: '',
 	});
 	const [applicationData, setApplicationData] = useState({
 		flsCenter: '',
@@ -51,6 +55,9 @@ export const ApplicationTemplate = () => {
 		termsAndConditions: false,
 		// TODO: Figure out passport photo & financial document image upload
 	});
+	const [billingData, setBillingData] = useState({
+		billingAddressCountry: 'France',
+	});
 
 	// TODO: Because this is async, we should probably create a flag to prevent form submission until state has updated
 	const handleInputChange = (name, value, type) => {
@@ -59,6 +66,39 @@ export const ApplicationTemplate = () => {
 				...userData,
 				[name]: value,
 			});
+		} else if (type === 'billing') {
+			console.log('billingData!', billingData);
+			setBillingData({
+				...billingData,
+				[name]: value,
+			});
+		}
+	};
+
+	const handleBatchInputChange = (values, type) => {
+		// TODO: This is a nonce function, to be replaced with a DRYer solution later
+
+		if (type === 'user') {
+			setUserData({
+				...userData,
+				...values,
+			});
+		} else if (type === 'billing') {
+			setBillingData({
+				...billingData,
+				...values,
+			});
+		}
+	};
+
+	const calculatePrice = prices => {
+		if (prices.length) {
+			return prices.reduce((total, price) => {
+				total += price.cost;
+				return total;
+			}, 0);
+		} else {
+			return 0;
 		}
 	};
 
@@ -69,6 +109,7 @@ export const ApplicationTemplate = () => {
 				formFields={[
 					...Object.keys(userData),
 					...Object.keys(applicationData),
+					...Object.keys(billingData),
 				]}
 			/>
 			<StepWizard isHashEnabled={true} nav={<Steps stepsNum={5} />}>
@@ -76,11 +117,22 @@ export const ApplicationTemplate = () => {
 					hashKey={'personal-info'}
 					handleInputChange={handleInputChange}
 					userData={userData}
+					prices={prices}
+					setPrices={setPrices}
+					price={price}
+					setPrice={setPrice}
+					calculatePrice={calculatePrice}
 				/>
 				<Address
 					hashKey={'address'}
 					userData={userData}
 					handleInputChange={handleInputChange}
+					handleBatchInputChange={handleBatchInputChange}
+					prices={prices}
+					setPrices={setPrices}
+					price={price}
+					setPrice={setPrice}
+					calculatePrice={calculatePrice}
 				/>
 				{/* TODO: Might want to consider unifying these two components, if
 				the step wizard allows duplicates */}
@@ -88,16 +140,33 @@ export const ApplicationTemplate = () => {
 					hashKey={'additional-info'}
 					userData={userData}
 					handleInputChange={handleInputChange}
+					prices={prices}
+					setPrices={setPrices}
+					price={price}
+					setPrice={setPrice}
+					calculatePrice={calculatePrice}
 				/>
 				<MoreInfo
 					hashKey={'more-info'}
 					userData={userData}
 					handleInputChange={handleInputChange}
+					prices={prices}
+					setPrices={setPrices}
+					price={price}
+					setPrice={setPrice}
+					calculatePrice={calculatePrice}
 				/>
 				<Billing
 					hashKey={'billing'}
 					userData={userData}
+					billingData={billingData}
 					handleInputChange={handleInputChange}
+					handleBatchInputChange={handleBatchInputChange}
+					prices={prices}
+					setPrices={setPrices}
+					price={price}
+					setPrice={setPrice}
+					calculatePrice={calculatePrice}
 				/>
 			</StepWizard>
 		</Section>

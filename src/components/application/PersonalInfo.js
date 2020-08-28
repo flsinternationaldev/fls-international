@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-
-import { getName } from 'country-list';
+import Select from 'react-select';
+import { getName, getCode } from 'country-list';
 import DatePicker from 'react-datepicker';
 import ReactFlagsSelect from 'react-flags-select';
 
@@ -12,12 +12,27 @@ export default function PersonalInfo({
 	nextStep,
 	userData,
 	handleInputChange,
+	calculatePrice,
+	prices,
 }) {
+	const genderOptions = [
+		{ label: 'Male', value: 'Male' },
+		{ label: 'Female', value: 'Female' },
+		{ label: 'Non-binary', value: 'Non-binary' },
+	];
+
 	return (
 		<Fragment>
 			<div className="columns is-multiline">
 				<div className="column is-full">
-					<h3 className="fls__post-title">Personal Information</h3>
+					<div className="application__header-container">
+						<h3 className="fls__post-title">
+							Personal Information
+						</h3>
+						<h3 className="application__total-price">
+							Total Price: ${calculatePrice(prices)}
+						</h3>
+					</div>
 				</div>
 				<div className="column is-one-third">
 					<div className="field">
@@ -53,7 +68,7 @@ export default function PersonalInfo({
 							<input
 								className="input fls__base-input"
 								type="text"
-								placeholder="Text input"
+								placeholder="Last Number"
 								name="lastName"
 								onChange={e =>
 									handleInputChange(
@@ -95,11 +110,12 @@ export default function PersonalInfo({
 						<label className="label label--required">
 							Phone Number
 						</label>
+						{/* TODO: Country code? */}
 						<div className="control">
 							<input
 								className="input fls__base-input"
 								type="text"
-								placeholder="Text input"
+								placeholder="Phone Number"
 								name="phoneNumber"
 								onChange={e =>
 									handleInputChange(
@@ -118,19 +134,21 @@ export default function PersonalInfo({
 					<div className="field">
 						<label className="label">Gender</label>
 						<div className="control">
-							<input
-								className="input fls__base-input"
-								type="text"
-								placeholder="Text input"
-								name="gender"
-								onChange={e =>
+							<Select
+								className="fls__select-container"
+								classNamePrefix={'fls'}
+								value={{
+									label: userData.gender,
+									value: userData.gender,
+								}}
+								onChange={genderOption => {
 									handleInputChange(
-										e.target.name,
-										e.target.value,
+										'gender',
+										genderOption.value,
 										'user'
-									)
-								}
-								value={userData.gender}
+									);
+								}}
+								options={genderOptions}
 							/>
 						</div>
 					</div>
@@ -182,7 +200,9 @@ export default function PersonalInfo({
 
 						<div className="control">
 							<ReactFlagsSelect
-								defaultCountry="US"
+								defaultCountry={getCode(
+									userData.citizenshipCountry || 'France'
+								)}
 								searchable={true}
 								onSelect={countryCode => {
 									handleInputChange(
@@ -204,7 +224,9 @@ export default function PersonalInfo({
 						<div className="control">
 							<div className="control">
 								<ReactFlagsSelect
-									defaultCountry="US"
+									defaultCountry={getCode(
+										userData.birthCountry || 'France'
+									)}
 									searchable={true}
 									onSelect={countryCode => {
 										handleInputChange(

@@ -14,10 +14,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 let currentCenter, currentProgram, currentHousing, currentDuration;
 
 // TODO: Figure out how best to handle validation
-export default function Application({
-	isHome,
-	on_location_program_information,
-}) {
+export default function Application() {
 	const data = useStaticQuery(graphql`
 		{
 			allMarkdownRemark {

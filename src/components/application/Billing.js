@@ -4,24 +4,78 @@ import { loadStripe } from '@stripe/stripe-js';
 import {
 	CardElement,
 	Elements,
-	useStripe,
-	useElements,
+	// useStripe,
+	// useElements,
 } from '@stripe/react-stripe-js';
+import { getName, getCode } from 'country-list';
+
+import { handleSubmission } from 'src/components/application/NetlifyStaticForm';
 
 import paymentOptionsImg from 'src/img/stripe-payments.png';
 import 'react-flags-select/scss/react-flags-select.scss';
 
-export default function Billing({ nextStep, previousStep }) {
-	// TODO: We need our REAL stripe key
-	const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+// TODO: We need our REAL stripe key
+const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
 
-	// TODO: Should have a 'same as home address' button
+export default function Billing({
+	previousStep,
+	userData,
+	billingData,
+	handleInputChange,
+	handleBatchInputChange,
+	prices,
+	calculatePrice,
+}) {
+	const useHomeAddress = () => {
+		const billingKeys = [
+				'firstName',
+				'lastName',
+				'address',
+				'addressCountry',
+				'city',
+				'stateProvince',
+				'postalCode',
+			],
+			capitalizeFirstLetter = string => {
+				// TODO: There is probably a cleaner way to handle this weirdness
+				return string.charAt(0).toUpperCase() + string.slice(1);
+			};
+
+		const batchedBillingData = billingKeys.reduce((accum, billingKey) => {
+			accum[`billing${capitalizeFirstLetter(billingKey)}`] =
+				userData[billingKey];
+
+			return accum;
+		}, {});
+
+		handleBatchInputChange(batchedBillingData, 'billing');
+	};
+
 	return (
 		<Fragment>
 			<div className="columns is-multiline">
 				<div className="column is-full">
-					<h3 className="fls__post-title">Billing Address</h3>
+					<div className="application__header-container">
+						<h3 className="fls__post-title">Billing Address</h3>
+						<h3 className="application__total-price">
+							Total Price: ${calculatePrice(prices)}
+						</h3>
+					</div>
 				</div>
+
+				<div className="column is-full">
+					<div className="columns">
+						<div className="column is-half">
+							<button
+								className="fls__button"
+								onClick={useHomeAddress}
+							>
+								Same as Home Address
+							</button>
+						</div>
+					</div>
+				</div>
+
 				<div className="column is-half">
 					<div className="field">
 						<label className="label">First Name</label>
@@ -30,7 +84,14 @@ export default function Billing({ nextStep, previousStep }) {
 							<input
 								className="input fls__base-input"
 								type="text"
-								placeholder="Text input"
+								onChange={e =>
+									handleInputChange(
+										'billingFirstName',
+										e.target.value,
+										'user'
+									)
+								}
+								value={billingData.billingFirstName}
 							/>
 						</div>
 					</div>
@@ -43,11 +104,19 @@ export default function Billing({ nextStep, previousStep }) {
 							<input
 								className="input fls__base-input"
 								type="text"
-								placeholder="Text input"
+								onChange={e =>
+									handleInputChange(
+										'billingLastName',
+										e.target.value,
+										'user'
+									)
+								}
+								value={billingData.billingLastName}
 							/>
 						</div>
 					</div>
 				</div>
+
 				<div className="column is-full">
 					<div className="field">
 						<label className="label">Address</label>
@@ -56,11 +125,19 @@ export default function Billing({ nextStep, previousStep }) {
 							<input
 								className="input fls__base-input"
 								type="text"
-								placeholder="Text input"
+								onChange={e =>
+									handleInputChange(
+										'billingAddress',
+										e.target.value,
+										'user'
+									)
+								}
+								value={billingData.billingAddress}
 							/>
 						</div>
 					</div>
 				</div>
+
 				<div className="column is-half">
 					<div className="field">
 						<label className="label">City</label>
@@ -69,11 +146,19 @@ export default function Billing({ nextStep, previousStep }) {
 							<input
 								className="input fls__base-input"
 								type="text"
-								placeholder="Text input"
+								onChange={e =>
+									handleInputChange(
+										'billingCity',
+										e.target.value,
+										'user'
+									)
+								}
+								value={billingData.billingCity}
 							/>
 						</div>
 					</div>
 				</div>
+
 				<div className="column is-half">
 					<div className="field">
 						<label className="label">State/Province</label>
@@ -82,11 +167,19 @@ export default function Billing({ nextStep, previousStep }) {
 							<input
 								className="input fls__base-input"
 								type="text"
-								placeholder="Text input"
+								onChange={e =>
+									handleInputChange(
+										'billingStateProvince',
+										e.target.value,
+										'user'
+									)
+								}
+								value={billingData.billingStateProvince}
 							/>
 						</div>
 					</div>
 				</div>
+
 				<div className="column is-half">
 					<div className="field">
 						<label className="label">Zip/Postal Code</label>
@@ -95,7 +188,14 @@ export default function Billing({ nextStep, previousStep }) {
 							<input
 								className="input fls__base-input"
 								type="text"
-								placeholder="Text input"
+								onChange={e =>
+									handleInputChange(
+										'billingPostalCode',
+										e.target.value,
+										'user'
+									)
+								}
+								value={billingData.billingPostalCode}
 							/>
 						</div>
 					</div>
@@ -104,15 +204,25 @@ export default function Billing({ nextStep, previousStep }) {
 					<div className="field">
 						{/* TODO: figure out this country input  */}
 						<label className="label">Country</label>
-
 						<div className="control">
+							{/* TODO: Figure out how to change this with state change */}
 							<ReactFlagsSelect
-								defaultCountry="US"
+								defaultCountry={getCode(
+									billingData.billingAddressCountry
+								)}
 								searchable={true}
+								onSelect={countryCode => {
+									handleInputChange(
+										'billingAddressCountry',
+										getName(countryCode),
+										'user'
+									);
+								}}
 							/>
 						</div>
 					</div>
 				</div>
+
 				<div className="column is-half">
 					<h3 className="fls__post-title">Payment Information</h3>
 
@@ -177,6 +287,29 @@ export default function Billing({ nextStep, previousStep }) {
 							<span>$1200</span>
 						</div>
 					</div>
+				</div>
+			</div>
+
+			<div className="columns">
+				<div className="column is-4">
+					<button onClick={previousStep} className="fls__button">
+						Previous
+					</button>
+				</div>
+				{/* TODO: This works for now... but it's probably not the best implementation */}
+				<div className="column is-4"></div>
+
+				<div className="column is-4">
+					<button
+						onClick={() => {
+							console.log('submitting...');
+							handleSubmission(userData);
+						}}
+						className="fls__button"
+					>
+						{/* TODO: Should probably be FLS yellow, to highlight its importance */}
+						Pay & Submit
+					</button>
 				</div>
 			</div>
 		</Fragment>

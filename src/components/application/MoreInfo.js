@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 
 import Select from 'react-select';
-import { handleSubmission } from 'src/components/application/NetlifyStaticForm';
 
 // TODO: Figure out how best to handle validation
 export default function MoreInfo({
@@ -9,6 +8,8 @@ export default function MoreInfo({
 	previousStep,
 	userData,
 	handleInputChange,
+	calculatePrice,
+	prices,
 }) {
 	const referralOptions = [
 		{
@@ -25,7 +26,12 @@ export default function MoreInfo({
 		<Fragment>
 			<div className="columns is-multiline">
 				<div className="column is-full">
-					<h3 className="fls__post-title">More Info</h3>
+					<div className="application__header-container">
+						<h3 className="fls__post-title">More Info</h3>
+						<h3 className="application__total-price">
+							Total Price: ${calculatePrice(prices)}
+						</h3>
+					</div>
 				</div>
 				<div className="column is-half">
 					<label className="label">How did you hear about FLS?</label>
@@ -156,8 +162,10 @@ export default function MoreInfo({
 				<div className="column is-4">
 					<button
 						onClick={() => {
-							console.log('submitting...');
-							handleSubmission(userData);
+							console.log(
+								'application data - more info',
+								userData
+							);
 							nextStep();
 						}}
 						className="fls__button"
