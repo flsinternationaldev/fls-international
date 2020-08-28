@@ -67,9 +67,13 @@ export const ApplicationTemplate = () => {
 				[name]: value,
 			});
 		} else if (type === 'billing') {
-			console.log('billingData!', billingData);
 			setBillingData({
 				...billingData,
+				[name]: value,
+			});
+		} else if (type === 'application') {
+			setApplicationData({
+				...applicationData,
 				[name]: value,
 			});
 		}
@@ -145,6 +149,7 @@ export const ApplicationTemplate = () => {
 					price={price}
 					setPrice={setPrice}
 					calculatePrice={calculatePrice}
+					applicationData={applicationData}
 				/>
 				<MoreInfo
 					hashKey={'more-info'}
@@ -167,6 +172,7 @@ export const ApplicationTemplate = () => {
 					price={price}
 					setPrice={setPrice}
 					calculatePrice={calculatePrice}
+					applicationData={applicationData}
 				/>
 			</StepWizard>
 		</Section>

@@ -3,6 +3,7 @@ import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import { RadioGroup, Radio } from 'react-radio-group';
 import { useStaticQuery, graphql } from 'gatsby';
+import moment from 'moment';
 
 // TODO: Audit whether all these are necessary
 let currentCenter, currentProgram, currentHousing, currentDuration;
@@ -12,10 +13,10 @@ export default function AdditionalInfo({
 	nextStep,
 	previousStep,
 	handleInputChange,
-	userData,
 	prices,
 	setPrices,
-	calculatePrice = { calculatePrice },
+	calculatePrice,
+	applicationData,
 }) {
 	const data = useStaticQuery(graphql`
 		{
@@ -78,8 +79,6 @@ export default function AdditionalInfo({
 			return { ...edge.node.frontmatter };
 		});
 
-	const [startDate, setStartDate] = useState(null);
-
 	const [durationOptions, setDurationOptions] = useState([]);
 	const [programOptions, setProgramOptions] = useState([]);
 	const [housingOptions, setHousingOptions] = useState([]);
@@ -115,7 +114,7 @@ export default function AdditionalInfo({
 			center => center.name === centerChange.label
 		);
 
-		handleInputChange('flsCenter', centerChange.label, 'user');
+		handleInputChange('flsCenter', centerChange.label, 'application');
 
 		// Set program options to be the programs associated with the selected center
 		setProgramOptions(
@@ -145,7 +144,7 @@ export default function AdditionalInfo({
 		setDurationLabel(durationChange.label);
 		setDurationValue(durationChange.value);
 
-		handleInputChange('duration', durationChange.label, 'user');
+		handleInputChange('duration', durationChange.label, 'application');
 
 		let pricePerWeek = currentProgram.week_thresholds.reduce(
 			(pricePerWeek, currentWeek, index, arr) => {
@@ -194,7 +193,7 @@ export default function AdditionalInfo({
 		setHousingLabel(housingChange.label);
 		setHousingValue(housingChange.value);
 
-		handleInputChange('housingType', housingChange.label, 'user');
+		handleInputChange('housingType', housingChange.label, 'application');
 
 		const housingCostPerWeek = currentCenter.housing_fees.find(
 			housingFee =>
@@ -229,7 +228,7 @@ export default function AdditionalInfo({
 		setProgramLabel(programChange.label);
 		setProgramValue(programChange.value);
 
-		handleInputChange('program', programChange.label, 'user');
+		handleInputChange('program', programChange.label, 'application');
 
 		currentProgram = currentCenter.programs.find(
 			program => program.name === programChange.label
@@ -279,7 +278,6 @@ export default function AdditionalInfo({
 						</h3>
 					</div>
 				</div>
-
 				<div className="column is-half">
 					<label className="label">FLS Center*</label>
 
@@ -287,8 +285,8 @@ export default function AdditionalInfo({
 						className="fls__select-container"
 						classNamePrefix={'fls'}
 						value={{
-							label: userData.flsCenter,
-							value: userData.flsCenter,
+							label: applicationData.flsCenter,
+							value: applicationData.flsCenter,
 						}}
 						onChange={centerOption => {
 							handleCenterChange(centerOption);
@@ -296,29 +294,27 @@ export default function AdditionalInfo({
 						options={centerOptions}
 					/>
 				</div>
-
 				<div className="column is-half">
 					<label className="label">Program *</label>
 					<Select
 						className="fls__select-container"
 						classNamePrefix={'fls'}
 						value={{
-							label: userData.program,
-							value: userData.program,
+							label: applicationData.program,
+							value: applicationData.program,
 						}}
 						onChange={handleProgramChange}
 						options={programOptions}
 					/>
 				</div>
-
 				<div className="column is-half">
 					<label className="label">Duration *</label>
 					<Select
 						className="fls__select-container"
 						classNamePrefix={'fls'}
 						value={{
-							label: userData.duration,
-							value: userData.duration,
+							label: applicationData.duration,
+							value: applicationData.duration,
 						}}
 						onChange={handleDurationChange}
 						options={durationOptions}
@@ -328,52 +324,55 @@ export default function AdditionalInfo({
 				<div className="column is-half">
 					<label className="label">Program Start Date *</label>
 					<DatePicker
-						selected={userData.startDate}
+						selected={applicationData.startDate}
 						onChange={date =>
-							handleInputChange('startDate', date, 'user')
+							handleInputChange('startDate', date, 'application')
 						}
-						value={userData.startDate}
+						minDate={new Date()}
+						value={applicationData.startDate}
 						wrapperClassName={'fls__date-wrapper'}
 						className={'input fls__base-input'}
 						placeholderText={'Choose Your Start Date'}
+						filterDate={isMonday}
 					/>
 				</div>
-
 				<div className="column is-half">
 					<label className="label">Program End Date *</label>
 					<DatePicker
 						// TODO: Should be disabled, calculates based off start date
-						selected={userData.endDate}
-						value={userData.endDate}
+						selected={applicationData.endDate}
+						value={applicationData.endDate}
 						wrapperClassName={'fls__date-wrapper'}
 						className={'input fls__base-input'}
 						placeholderText={'Program End Date'}
 					/>
 				</div>
-
 				<div className="column is-half">
 					<label className="label">Housing Type *</label>
 					<Select
 						className="fls__select-container"
 						classNamePrefix={'fls'}
 						value={{
-							label: userData.housingType,
-							value: userData.housingType,
+							label: applicationData.housingType,
+							value: applicationData.housingType,
 						}}
 						onChange={handleHousingChange}
 						options={housingOptions}
 					/>
 				</div>
-
 				<div className="column is-full">
 					<label className="label">
 						Extra Nights of Housing Required? *
 					</label>
 					<RadioGroup
 						name="extra-housing"
-						selectedValue={userData.extraNights}
+						selectedValue={applicationData.extraNights}
 						onChange={value => {
-							handleInputChange('extraNights', value, 'user');
+							handleInputChange(
+								'extraNights',
+								value,
+								'application'
+							);
 						}}
 					>
 						<Radio value="needs-extra-housing" />
@@ -382,34 +381,39 @@ export default function AdditionalInfo({
 						<span className="fls__radio-label">No</span>
 					</RadioGroup>
 				</div>
-
 				<div className="column is-half">
 					<label className="label">Housing Check In Date *</label>
 					<DatePicker
-						selected={userData.checkInDate}
+						selected={applicationData.checkInDate}
 						onChange={date =>
-							handleInputChange('checkInDate', date, 'user')
+							handleInputChange(
+								'checkInDate',
+								date,
+								'application'
+							)
 						}
-						value={userData.checkInDate}
+						value={applicationData.checkInDate}
 						wrapperClassName={'fls__date-wrapper'}
 						className={'input fls__base-input'}
 						placeholderText={'Housing Check-in Date'}
 					/>
 				</div>
-
 				<div className="column is-half">
 					<label className="label">Housing Check Out Date *</label>
 					<DatePicker
-						selected={userData.checkOutDate}
+						selected={applicationData.checkOutDate}
 						onChange={date =>
-							handleInputChange('checkOutDate', date, 'user')
+							handleInputChange(
+								'checkOutDate',
+								date,
+								'application'
+							)
 						}
-						value={userData.checkOutDate}
+						value={applicationData.checkOutDate}
 						className={'input fls__base-input'}
 						placeholderText={'Housing Check Out Date'}
 					/>
 				</div>
-
 				<div className="column is-half">
 					<label className="label">Airport *</label>
 
@@ -417,20 +421,19 @@ export default function AdditionalInfo({
 						className="fls__select-container"
 						classNamePrefix={'fls'}
 						value={{
-							label: userData.airport,
-							value: userData.airport,
+							label: applicationData.airport,
+							value: applicationData.airport,
 						}}
 						onChange={airportOption => {
 							handleInputChange(
 								'airport',
 								airportOption.value,
-								'user'
+								'application'
 							);
 						}}
 						options={airportOptions}
 					/>
 				</div>
-
 				<div className="column is-half">
 					<label className="checkbox">
 						<input type="checkbox" />
@@ -447,7 +450,6 @@ export default function AdditionalInfo({
 						</span>
 					</label>
 				</div>
-
 				<div className="column is-full">
 					{/* TODO: Should have a helpful tooltip */}
 					<label className="label">
@@ -455,48 +457,12 @@ export default function AdditionalInfo({
 					</label>
 
 					<RadioGroup
-						selectedValue={userData.requiresI20}
-						onChange={value => {
-							handleInputChange('requiresI20', value, 'user');
-						}}
-					>
-						<Radio value="yes" />
-						<span className="fls__radio-label">Yes</span>
-						<Radio value="no" />
-						<span className="fls__radio-label">No</span>
-					</RadioGroup>
-				</div>
-
-				<div className="column is-full">
-					{/* TODO: Should have a helpful tooltip */}
-					<label className="label">Are you a transfer student?</label>
-
-					<RadioGroup
-						selectedValue={userData.transferStudent}
-						onChange={value => {
-							handleInputChange('transferStudent', value, 'user');
-						}}
-					>
-						<Radio value="yes" />
-						<span className="fls__radio-label">Yes</span>
-						<Radio value="no" />
-						<span className="fls__radio-label">No</span>
-					</RadioGroup>
-				</div>
-
-				<div className="column is-full">
-					{/* TODO: Should have a helpful tooltip */}
-					<label className="label">
-						Would you like to purchase health insurance through FLS?
-					</label>
-
-					<RadioGroup
-						selectedValue={userData.buyingHealthInsurance}
+						selectedValue={applicationData.requiresI20}
 						onChange={value => {
 							handleInputChange(
-								'buyingHealthInsurance',
+								'requiresI20',
 								value,
-								'user'
+								'application'
 							);
 						}}
 					>
@@ -506,18 +472,18 @@ export default function AdditionalInfo({
 						<span className="fls__radio-label">No</span>
 					</RadioGroup>
 				</div>
-
 				<div className="column is-full">
 					{/* TODO: Should have a helpful tooltip */}
-					<label className="label">
-						Would you like your I-20 Form and acceptance documents
-						to be sent by Express Mail?
-					</label>
+					<label className="label">Are you a transfer student?</label>
 
 					<RadioGroup
-						selectedValue={userData.expressMail}
+						selectedValue={applicationData.transferStudent}
 						onChange={value => {
-							handleInputChange('expressMail', value, 'user');
+							handleInputChange(
+								'transferStudent',
+								value,
+								'application'
+							);
 						}}
 					>
 						<Radio value="yes" />
@@ -526,7 +492,51 @@ export default function AdditionalInfo({
 						<span className="fls__radio-label">No</span>
 					</RadioGroup>
 				</div>
+				<div className="column is-full">
+					{/* TODO: Should have a helpful tooltip */}
+					<label className="label">
+						Would you like to purchase health insurance through FLS?
+					</label>
 
+					<RadioGroup
+						selectedValue={applicationData.buyingHealthInsurance}
+						onChange={value => {
+							handleInputChange(
+								'buyingHealthInsurance',
+								value,
+								'application'
+							);
+						}}
+					>
+						<Radio value="yes" />
+						<span className="fls__radio-label">Yes</span>
+						<Radio value="no" />
+						<span className="fls__radio-label">No</span>
+					</RadioGroup>
+				</div>
+				<div className="column is-full">
+					{/* TODO: Should have a helpful tooltip */}
+					<label className="label">
+						Would you like your I-20 Form and acceptance documents
+						to be sent by Express Mail?
+					</label>
+
+					<RadioGroup
+						selectedValue={applicationData.expressMail}
+						onChange={value => {
+							handleInputChange(
+								'expressMail',
+								value,
+								'application'
+							);
+						}}
+					>
+						<Radio value="yes" />
+						<span className="fls__radio-label">Yes</span>
+						<Radio value="no" />
+						<span className="fls__radio-label">No</span>
+					</RadioGroup>
+				</div>
 				<div className="column is-full">
 					{/* TODO: Should have a helpful tooltip */}
 					<label className="label">
@@ -536,12 +546,12 @@ export default function AdditionalInfo({
 					</label>
 
 					<RadioGroup
-						selectedValue={userData.processSEVISAppFee}
+						selectedValue={applicationData.processSEVISAppFee}
 						onChange={value => {
 							handleInputChange(
 								'processSEVISAppFee',
 								value,
-								'user'
+								'application'
 							);
 						}}
 					>
@@ -551,7 +561,6 @@ export default function AdditionalInfo({
 						<span className="fls__radio-label">No</span>
 					</RadioGroup>
 				</div>
-
 				<div className="column is-full">
 					{/* TODO: Should have a helpful tooltip */}
 					<label className="label">
@@ -560,12 +569,14 @@ export default function AdditionalInfo({
 					</label>
 
 					<RadioGroup
-						selectedValue={userData.unaccompaniedMinorService}
+						selectedValue={
+							applicationData.unaccompaniedMinorService
+						}
 						onChange={value => {
 							handleInputChange(
 								'unaccompaniedMinorService',
 								value,
-								'user'
+								'application'
 							);
 						}}
 					>
@@ -575,22 +586,19 @@ export default function AdditionalInfo({
 						<span className="fls__radio-label">No</span>
 					</RadioGroup>
 				</div>
-
 				<div className="column is-4">
 					<button onClick={previousStep} className="fls__button">
 						Previous
 					</button>
 				</div>
-
 				{/* TODO: This works for now... but it's probably not the best implementation */}
 				<div className="column is-4"></div>
-
 				<div className="column is-4">
 					<button
 						onClick={() => {
 							console.log(
-								'user data - additional info',
-								userData
+								'application data - additional info',
+								applicationData
 							);
 							nextStep();
 						}}

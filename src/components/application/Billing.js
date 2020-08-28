@@ -8,6 +8,7 @@ import {
 	// useElements,
 } from '@stripe/react-stripe-js';
 import { getName, getCode } from 'country-list';
+import moment from 'moment';
 
 import { handleSubmission } from 'src/components/application/NetlifyStaticForm';
 
@@ -25,6 +26,7 @@ export default function Billing({
 	handleBatchInputChange,
 	prices,
 	calculatePrice,
+	applicationData,
 }) {
 	const useHomeAddress = () => {
 		const billingKeys = [
@@ -253,25 +255,29 @@ export default function Billing({
 								<div className="fls__app-program-detail-item">
 									<strong>Start Date:</strong>
 
-									<span>Aug 24, 2020</span>
+									<span>
+										{moment(
+											applicationData.startDate
+										).format('MMMM Do YYYY')}
+									</span>
 								</div>
 
 								<div className="fls__app-program-detail-item">
 									<strong>Duration:</strong>
 
-									<span>2 Weeks</span>
+									<span>{applicationData.duration}</span>
 								</div>
 
 								<div className="fls__app-program-detail-item">
 									<strong>Location:</strong>
 
-									<span>Citrus College</span>
+									<span>{applicationData.flsCenter}</span>
 								</div>
 
 								<div className="fls__app-program-detail-item">
 									<strong>Program:</strong>
 
-									<span>Intensive English</span>
+									<span>{applicationData.program}</span>
 								</div>
 
 								<div className="fls__app-program-detail-item">
@@ -284,7 +290,7 @@ export default function Billing({
 
 						<div className="column is-full column--alternate fls__app-program-total-container">
 							<strong>Total:</strong>
-							<span>$1200</span>
+							<span>${calculatePrice(prices)}</span>
 						</div>
 					</div>
 				</div>
