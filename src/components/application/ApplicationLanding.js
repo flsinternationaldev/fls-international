@@ -98,10 +98,8 @@ export default function Application() {
 	const [prices, setPrices] = useState([]);
 
 	const calculatePrice = prices => {
-		console.log('prices', prices);
 		if (prices.length) {
 			return prices.reduce((total, price) => {
-				console.log('PRICE!', price);
 				total += price.cost;
 				return total;
 			}, 0);
@@ -165,9 +163,6 @@ export default function Application() {
 					durationChange.value >= thresholdMin &&
 					durationChange.value <= currentWeek.threshold_max
 				) {
-					// console.log('durationChange', durationChange.value);
-					// console.log('thresholdMin', thresholdMin);
-					// console.log('current max', currentWeek.threshold_max);
 					return currentWeek.price_per_week;
 				} else {
 					return pricePerWeek;

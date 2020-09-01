@@ -55,10 +55,16 @@ export const ApplicationTemplate = () => {
 		termsAndConditions: false,
 		// TODO: Figure out passport photo & financial document image upload
 	});
+
 	const [billingData, setBillingData] = useState({
 		billingAddressCountry: 'France',
 	});
+
 	const [generalFeesTitle, setGeneralFeesTitle] = useState(null);
+
+	const [currentCenter, setCurrentCenter] = useState(null);
+
+	const [currentProgram, setCurrentProgram] = useState(null);
 
 	// TODO: Because this is async, we should probably create a flag to prevent form submission until state has updated
 	const handleInputChange = (name, value, type) => {
@@ -152,6 +158,10 @@ export const ApplicationTemplate = () => {
 					calculatePrice={calculatePrice}
 					applicationData={applicationData}
 					setGeneralFeesTitle={setGeneralFeesTitle}
+					currentCenter={currentCenter}
+					setCurrentCenter={setCurrentCenter}
+					currentProgram={currentProgram}
+					setCurrentProgram={setCurrentProgram}
 				/>
 				<MoreInfo
 					hashKey={'more-info'}
@@ -190,6 +200,8 @@ export const ApplicationTemplate = () => {
 					calculatePrice={calculatePrice}
 					applicationData={applicationData}
 					generalFeesTitle={generalFeesTitle}
+					currentCenter={currentCenter}
+					currentProgram={currentProgram}
 				></Checkout>
 			</StepWizard>
 		</Section>

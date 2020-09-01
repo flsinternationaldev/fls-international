@@ -14,6 +14,8 @@ export default function Checkout({
 	calculatePrice,
 	applicationData,
 	generalFeesTitle,
+	currentCenter,
+	currentProgram,
 }) {
 	const data = useStaticQuery(graphql`
 		{
@@ -38,6 +40,9 @@ export default function Checkout({
 		}
 	`);
 
+	console.log('prices at checkout', prices);
+	console.log('current program', currentProgram);
+	console.log('current center', currentCenter);
 	// TODO: Probably want to make some kind of mix in to pass this function around
 	let formattedData = data.allMarkdownRemark.edges.filter(
 		edge => edge.node.frontmatter.title === generalFeesTitle
@@ -105,7 +110,39 @@ export default function Checkout({
 			<div className="column is-full">
 				<div className="application__price-summary">
 					<h3 className="fls__post-title">Program Details</h3>
+
+					<div className="application__price-container">
+						<span className="application__price-title">Center</span>
+						<span className="application__price-amount">
+							<strong>{currentCenter.name}</strong>
+						</span>
+					</div>
+
+					<div className="application__price-container">
+						<span className="application__price-title">
+							Program
+						</span>
+						<span className="application__price-amount">
+							<strong>{currentProgram.name}</strong>
+						</span>
+					</div>
+
+					{prices.map(price => (
+						<div
+							className="application__price-container application__price-container--indented"
+							key={price.label}
+						>
+							<span className="application__price-title">
+								{price.label}
+							</span>
+							<span className="application__price-amount">
+								<strong>${price.cost}</strong>
+							</span>
+						</div>
+					))}
 				</div>
+
+				<div></div>
 			</div>
 
 			<div className="column is-full">

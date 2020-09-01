@@ -6,7 +6,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import moment from 'moment';
 
 // TODO: Audit whether all these are necessary
-let currentCenter, currentProgram, currentHousing, currentDuration;
+let currentHousing, currentDuration;
 
 // TODO: Figure out how best to handle validation
 export default function AdditionalInfo({
@@ -18,6 +18,10 @@ export default function AdditionalInfo({
 	calculatePrice,
 	applicationData,
 	setGeneralFeesTitle,
+	currentCenter,
+	setCurrentCenter,
+	currentProgram,
+	setCurrentProgram,
 }) {
 	const data = useStaticQuery(graphql`
 		{
@@ -110,13 +114,16 @@ export default function AdditionalInfo({
 		setCenterLabel(centerChange.label);
 		setCenterValue(centerChange.value);
 
-		currentCenter = formattedData.find(
+		// Set state operatons are async, so we'll use this non-async version for the below operations
+		const currentCenter = formattedData.find(
 			center => center.name === centerChange.label
 		);
 
 		setGeneralFeesTitle(currentCenter.general_fees);
 
 		handleInputChange('flsCenter', centerChange.label, 'application');
+
+		setCurrentCenter(currentCenter);
 
 		// Set program options to be the programs associated with the selected center
 		setProgramOptions(
@@ -176,6 +183,7 @@ export default function AdditionalInfo({
 					return {
 						type: priceItem.type,
 						cost: durationChange.value * pricePerWeek,
+						label: durationChange.label,
 					};
 				} else {
 					return priceItem;
@@ -185,6 +193,7 @@ export default function AdditionalInfo({
 			updatedPrices.push({
 				type: 'duration',
 				cost: durationChange.value * pricePerWeek,
+				label: durationChange.label,
 			});
 		}
 
@@ -211,6 +220,7 @@ export default function AdditionalInfo({
 					return {
 						type: priceItem.type,
 						cost: currentDuration * housingCostPerWeek,
+						label: housingChange.label,
 					};
 				} else {
 					return priceItem;
@@ -220,6 +230,7 @@ export default function AdditionalInfo({
 			updatedPrices.push({
 				type: 'housing',
 				cost: currentDuration * housingCostPerWeek,
+				label: housingChange.label,
 			});
 		}
 
@@ -232,7 +243,7 @@ export default function AdditionalInfo({
 
 		handleInputChange('program', programChange.label, 'application');
 
-		currentProgram = currentCenter.programs.find(
+		const currentProgram = currentCenter.programs.find(
 			program => program.name === programChange.label
 		);
 
@@ -257,6 +268,8 @@ export default function AdditionalInfo({
 				});
 			}
 		}
+
+		setCurrentProgram(currentProgram);
 
 		setDurationOptions(durationOptions);
 	};
