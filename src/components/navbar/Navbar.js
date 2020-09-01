@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'gatsby';
+
 import navbarStyles from './Navbar.module.scss';
 import flsLogo from 'src/img/fls-international-logo.png';
 
@@ -47,15 +49,13 @@ export default function Navbar(props) {
 									<a href="">Home</a>
 								</li>
 								<li>
-									<a href="offline-pages/programs.html">
-										Programs
-									</a>
+									<Link to="/programs">Programs</Link>
 								</li>
 								<li>
-									<a href="">Locations</a>
+									<Link to="/locations">Locations</Link>
 								</li>
 								<li>
-									<a href="">About Us</a>
+									<Link to="/about-us">About Us</Link>
 								</li>
 							</ul>
 						</div>
@@ -89,16 +89,13 @@ export default function Navbar(props) {
 						>
 							<ul>
 								<li>
-									<a href="">Contact</a>
+									<Link to="/contact">Contact</Link>
 								</li>
 								<li>
-									<a href="">Downloads</a>
+									<Link to="/downloads">Downloads</Link>
 								</li>
 								<li>
-									<a href="">Login</a>
-								</li>
-								<li>
-									<a href="">Translate</a>
+									<Link to="/login">Login</Link>
 								</li>
 							</ul>
 						</div>
