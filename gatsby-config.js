@@ -49,6 +49,20 @@ module.exports = {
 				name: 'pages',
 			},
 		},
+		{
+			resolve: 'gatsby-source-filesystem',
+			options: {
+				path: `${__dirname}/src/netlify-content/pages`,
+				name: 'pages',
+			},
+		},
+		{
+			resolve: 'gatsby-source-filesystem',
+			options: {
+				path: `${__dirname}/src/netlify-content/general-fees`,
+				name: 'pages',
+			},
+		},
 		`gatsby-transformer-remark`,
 	],
 };

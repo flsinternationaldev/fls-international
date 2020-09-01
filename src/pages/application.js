@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import StepWizard from 'react-step-wizard';
-import { graphql } from 'gatsby';
 
 import Layout from 'src/components/Layout';
 import Section from 'src/components/section/Section';
@@ -10,6 +9,7 @@ import Address from 'src/components/application/Address';
 import AdditionalInfo from 'src/components/application/AdditionalInfo';
 import MoreInfo from 'src/components/application/MoreInfo';
 import Billing from 'src/components/application/Billing';
+import Checkout from 'src/components/application/Checkout';
 import NetlifyStaticForm from 'src/components/application/NetlifyStaticForm';
 
 export const ApplicationTemplate = () => {
@@ -58,6 +58,7 @@ export const ApplicationTemplate = () => {
 	const [billingData, setBillingData] = useState({
 		billingAddressCountry: 'France',
 	});
+	const [generalFeesTitle, setGeneralFeesTitle] = useState(null);
 
 	// TODO: Because this is async, we should probably create a flag to prevent form submission until state has updated
 	const handleInputChange = (name, value, type) => {
@@ -116,7 +117,7 @@ export const ApplicationTemplate = () => {
 					...Object.keys(billingData),
 				]}
 			/>
-			<StepWizard isHashEnabled={true} nav={<Steps stepsNum={5} />}>
+			<StepWizard isHashEnabled={true} nav={<Steps stepsNum={6} />}>
 				<PersonalInfo
 					hashKey={'personal-info'}
 					handleInputChange={handleInputChange}
@@ -150,6 +151,7 @@ export const ApplicationTemplate = () => {
 					setPrice={setPrice}
 					calculatePrice={calculatePrice}
 					applicationData={applicationData}
+					setGeneralFeesTitle={setGeneralFeesTitle}
 				/>
 				<MoreInfo
 					hashKey={'more-info'}
@@ -173,7 +175,22 @@ export const ApplicationTemplate = () => {
 					setPrice={setPrice}
 					calculatePrice={calculatePrice}
 					applicationData={applicationData}
+					generalFeesTitle={generalFeesTitle}
 				/>
+				<Checkout
+					hashKey={'checkout'}
+					userData={userData}
+					billingData={billingData}
+					handleInputChange={handleInputChange}
+					handleBatchInputChange={handleBatchInputChange}
+					prices={prices}
+					setPrices={setPrices}
+					price={price}
+					setPrice={setPrice}
+					calculatePrice={calculatePrice}
+					applicationData={applicationData}
+					generalFeesTitle={generalFeesTitle}
+				></Checkout>
 			</StepWizard>
 		</Section>
 	);
@@ -194,57 +211,3 @@ const ApplicationPage = ({ data }) => {
 };
 
 export default ApplicationPage;
-
-// TODO: It's likely this query can be better constructed, ideally to include filtering logic.
-export const pageQuery = graphql`
-	{
-		allMarkdownRemark {
-			edges {
-				node {
-					fileAbsolutePath
-					frontmatter {
-						name
-						supplements {
-							airport_transfers {
-								airport_name
-								cost
-							}
-							auditing {
-								_4_week_cost
-								additional_week_cost
-							}
-							concurrent_enrollment {
-								per_3_unit_class
-							}
-							hs_completion_course {
-								_4_week_cost
-								additional_week_cost
-							}
-							hs_immersion {
-								per_week_cost
-							}
-						}
-						housing_fees {
-							additional_notes
-							cost_per_week
-							housing_name
-							meals_per_week
-							non_refundable_deposit
-						}
-						programs {
-							name
-							exceed_max_weeks
-							max_weeks
-							week_thresholds {
-								threshold_max
-								lessons_per_week
-								hours_per_week
-								price_per_week
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-`;

@@ -17,13 +17,15 @@ export default function AdditionalInfo({
 	setPrices,
 	calculatePrice,
 	applicationData,
+	setGeneralFeesTitle,
 }) {
 	const data = useStaticQuery(graphql`
 		{
-			allMarkdownRemark {
+			allMarkdownRemark(
+				filter: { fileAbsolutePath: { regex: "/location//" } }
+			) {
 				edges {
 					node {
-						fileAbsolutePath
 						frontmatter {
 							name
 							supplements {
@@ -64,6 +66,7 @@ export default function AdditionalInfo({
 									price_per_week
 								}
 							}
+							general_fees
 						}
 					}
 				}
@@ -72,12 +75,9 @@ export default function AdditionalInfo({
 	`);
 
 	// TODO: This is a straight copy/paste from Application Landing, and is in need of DRYing
-	const formattedData = data.allMarkdownRemark.edges
-		.filter(edge => edge.node.fileAbsolutePath.includes('/location/'))
-		// TODO: There's maybe a cleverer way to do this, but this works for now
-		.map(edge => {
-			return { ...edge.node.frontmatter };
-		});
+	const formattedData = data.allMarkdownRemark.edges.map(edge => {
+		return { ...edge.node.frontmatter };
+	});
 
 	const [durationOptions, setDurationOptions] = useState([]);
 	const [programOptions, setProgramOptions] = useState([]);
@@ -113,6 +113,8 @@ export default function AdditionalInfo({
 		currentCenter = formattedData.find(
 			center => center.name === centerChange.label
 		);
+
+		setGeneralFeesTitle(currentCenter.general_fees);
 
 		handleInputChange('flsCenter', centerChange.label, 'application');
 
@@ -274,7 +276,7 @@ export default function AdditionalInfo({
 					<div className="application__header-container">
 						<h3 className="fls__post-title">Additional Info</h3>
 						<h3 className="application__total-price">
-							Total Price: ${calculatePrice(prices)}
+							Estimated Price: ${calculatePrice(prices)}
 						</h3>
 					</div>
 				</div>

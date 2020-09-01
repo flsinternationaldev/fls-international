@@ -20,6 +20,7 @@ const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
 
 export default function Billing({
 	previousStep,
+	nextStep,
 	userData,
 	billingData,
 	handleInputChange,
@@ -27,6 +28,7 @@ export default function Billing({
 	prices,
 	calculatePrice,
 	applicationData,
+	generalFeesTitle,
 }) {
 	const useHomeAddress = () => {
 		const billingKeys = [
@@ -58,9 +60,9 @@ export default function Billing({
 			<div className="columns is-multiline">
 				<div className="column is-full">
 					<div className="application__header-container">
-						<h3 className="fls__post-title">Billing Address</h3>
+						<h3 className="fls__post-title">Billing Informaton</h3>
 						<h3 className="application__total-price">
-							Total Price: ${calculatePrice(prices)}
+							Estimated Price: ${calculatePrice(prices)}
 						</h3>
 					</div>
 				</div>
@@ -244,56 +246,6 @@ export default function Billing({
 						</Elements>
 					</div>
 				</div>
-
-				<div className="column is-half">
-					<div className="columns is-multiline">
-						<div className="column is-full column--alternate column--app-program-details">
-							{/* TODO: Need to make sure to include all the optional costs here as well */}
-							<h3 className="fls__post-title">Program Details</h3>
-
-							<div className="fls__app-program-details">
-								<div className="fls__app-program-detail-item">
-									<strong>Start Date:</strong>
-
-									<span>
-										{moment(
-											applicationData.startDate
-										).format('MMMM Do YYYY')}
-									</span>
-								</div>
-
-								<div className="fls__app-program-detail-item">
-									<strong>Duration:</strong>
-
-									<span>{applicationData.duration}</span>
-								</div>
-
-								<div className="fls__app-program-detail-item">
-									<strong>Location:</strong>
-
-									<span>{applicationData.flsCenter}</span>
-								</div>
-
-								<div className="fls__app-program-detail-item">
-									<strong>Program:</strong>
-
-									<span>{applicationData.program}</span>
-								</div>
-
-								<div className="fls__app-program-detail-item">
-									<strong>Airport Pick Up:</strong>
-
-									<span>$150</span>
-								</div>
-							</div>
-						</div>
-
-						<div className="column is-full column--alternate fls__app-program-total-container">
-							<strong>Total:</strong>
-							<span>${calculatePrice(prices)}</span>
-						</div>
-					</div>
-				</div>
 			</div>
 
 			<div className="columns">
@@ -306,15 +258,8 @@ export default function Billing({
 				<div className="column is-4"></div>
 
 				<div className="column is-4">
-					<button
-						onClick={() => {
-							console.log('submitting...');
-							handleSubmission(userData);
-						}}
-						className="fls__button"
-					>
-						{/* TODO: Should probably be FLS yellow, to highlight its importance */}
-						Pay & Submit
+					<button onClick={nextStep} className="fls__button">
+						Next
 					</button>
 				</div>
 			</div>

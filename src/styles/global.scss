@@ -13,10 +13,6 @@ body {
 	padding-right: 0 !important;
 }
 
-.column--app-program-details {
-	margin-bottom: 15px;
-}
-
 .title--fls {
 	font-size: 2.425rem !important;
 	font-weight: 300 !important;
@@ -191,6 +187,27 @@ body {
 	font-size: 20px;
 }
 
+.application__price-summary {
+	padding: 14px;
+	background-color: #f5f5f5;
+}
+
+.application__price-container {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 8px;
+}
+
+.application__price-amount-container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.application__price-amount-subtitle {
+	font-size: 12px;
+}
+
 .fls__link {
 	line-height: 1.25 !important;
 	transition: color 0.3s !important;
@@ -244,6 +261,23 @@ body {
 	font-weight: 500 !important;
 	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
 		border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+
+	&:hover {
+		background-color: #fec910 !important;
+		border-color: #fec910 !important;
+		color: black !important;
+	}
+}
+
+.fls__button--yellow {
+	background-color: #fec910 !important;
+	border-color: #fec910 !important;
+	color: black !important;
+
+	&:hover {
+		background-color: #000 !important;
+		color: white !important;
+	}
 }
 
 .fls__button--red {
@@ -262,12 +296,6 @@ body {
 // 	background-color: #012846;
 // 	border-color: #012846;
 // }
-
-.fls__button:hover {
-	background-color: #fec910 !important;
-	border-color: #fec910 !important;
-	color: black !important;
-}
 
 // .fls__button--login {
 // 	background-color: #0069d9;

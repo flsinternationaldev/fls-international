@@ -78,21 +78,24 @@ collections:
       label: 'Location'
       create: true
       folder: 'src/netlify-content/location'
-      identifier_field: slug
+      identifier_field: title
       fields:
           # See if there's a way to add descriptive text to these fields
-          - { label: 'Slug', name: 'slug', widget: 'string' }
+          - {
+                label: 'Title',
+                name: 'title',
+                widget: 'string',
+                hint: 'All lower case, use dashes instead of spaces (e.g. citrus-college-center)',
+            }
           - { label: 'Name', name: 'name', widget: 'string' }
           - {
                 label: 'General Fees',
-                name: 'general-fees ',
-                widget: 'list',
-                fields:
-                    # TODO: Something is weird about the nesting here, it's adding an extra layer in the parsed object
-                    [
-                        { label: 'Name', name: 'Name', widget: 'string' },
-                        { label: 'Cost', name: 'cost', widget: 'number' },
-                    ],
+                name: 'general-fees',
+                widget: 'relation',
+                collection: 'general-fees',
+                valueField: 'title',
+                searchFields: ['title'],
+                displayFields: ['title'],
             }
           - {
                 label: 'Programs',
@@ -271,6 +274,36 @@ collections:
                                     name: 'note',
                                     widget: 'string',
                                 },
+                        },
+                    ],
+            }
+    - name: 'general-fees'
+      label: 'General Fees'
+      create: true
+      folder: 'src/netlify-content/general-fees'
+      identifier_field: title
+      fields:
+          - {
+                name: 'title',
+                label: 'Title',
+                widget: 'string',
+                hint: 'All lower case, use dashes instead of spaces (e.g. citrus-college-center)',
+            }
+          - {
+                label: 'Fees',
+                name: 'fees',
+                widget: 'list',
+                fields:
+                    [
+                        { label: 'Name', name: 'name', widget: 'string' },
+                        { label: 'Cost', name: 'cost', widget: 'number' },
+                        {
+                            label: 'Pay Period',
+                            name: 'pay-period',
+                            widget: 'select',
+                            hint: 'How often should this fee be charged?',
+                            options:
+                                ['Once', 'Per week', 'Per Lesson', 'Per Night'],
                         },
                     ],
             }

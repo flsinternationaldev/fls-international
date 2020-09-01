@@ -17,7 +17,9 @@ let currentCenter, currentProgram, currentHousing, currentDuration;
 export default function Application() {
 	const data = useStaticQuery(graphql`
 		{
-			allMarkdownRemark {
+			allMarkdownRemark(
+				filter: { fileAbsolutePath: { regex: "/location//" } }
+			) {
 				edges {
 					node {
 						fileAbsolutePath
@@ -69,12 +71,9 @@ export default function Application() {
 	`);
 
 	// TODO: Probably want to make some kind of mix in to pass this function around
-	const formattedData = data.allMarkdownRemark.edges
-		.filter(edge => edge.node.fileAbsolutePath.includes('/location/'))
-		// TODO: There's maybe a cleverer way to do this, but this works for now
-		.map(edge => {
-			return { ...edge.node.frontmatter };
-		});
+	const formattedData = data.allMarkdownRemark.edges.map(edge => {
+		return { ...edge.node.frontmatter };
+	});
 
 	const [startDate, setStartDate] = useState(null);
 

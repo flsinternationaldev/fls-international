@@ -92,7 +92,7 @@ export default GoogleApiWrapper({
 						<div className="application__header-container">
 							<h3 className="fls__post-title">Your Address</h3>
 							<h3 className="application__total-price">
-								Total Price: ${calculatePrice(prices)}
+								Estimated Price: ${calculatePrice(prices)}
 							</h3>
 						</div>
 					</div>
