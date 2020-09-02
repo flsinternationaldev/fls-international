@@ -28,7 +28,7 @@ export const LocationPageTemplate = ({ locationPageData }) => {
 				<div className="column is-3-desktop is-full-tablet">
 					<PriceCalculator />
 
-					<QuickFacts />
+					<QuickFacts data={locationPageData.quick_facts} />
 
 					<Testimonial />
 				</div>
@@ -122,6 +122,11 @@ const LocationPage = ({ pageContext }) => {
 							post_content
 							name
 							carousel_images
+							quick_facts {
+								name
+								icon
+								items
+							}
 						}
 					}
 				}

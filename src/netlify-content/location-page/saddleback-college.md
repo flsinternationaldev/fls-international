@@ -1,6 +1,60 @@
 ---
 path: saddleback-college
 name: Saddleback College
+quick-facts:
+  - name: Campus Facilities
+    icon: /assets/campus-facilities-icon.png
+    items: |-
+      * Cafeteria
+      * McKinney Theatre
+      * Library
+      * Free WiFI
+      * Smartboards
+      * Tennis Courts
+  - name: Popular Majors
+    icon: /assets/popular-majors-icon.png
+    items: |-
+      * Liberal Arts
+      * Health Sciences
+      * Business
+      * Psychology
+      * Environmental Sciences
+  - name: Airport Pickup
+    icon: /assets/airport-pickup-icon.png
+    items: "* Los Angeles Int. Airport (LAX) - 91 kilometers"
+  - name: Average Temp
+    icon: /assets/average-temp-icon.png
+    items: |-
+      * Spring - 23°C
+      * Summer - 26°C
+      * Fall - 22°C
+      * Winter - 20°C
+  - name: Enrollment
+    icon: /assets/enrollment-icon.png
+    items: "* Approximately 27,000 students, including 14,000 degree-seeking
+      undergraduates"
+  - name: Programs Offered
+    icon: /assets/programs-offered-icon.png
+    items: |-
+      * Vacation English
+      * General English
+      * Intensive English
+      * Academic English
+      * TOEFL Preparation
+      * High School Completion
+      * Concurrent Enrollment
+  - name: Local Transportation
+    icon: /assets/local-transportation-icon.png
+    items: |-
+      * Bus: OCTA stop on campus
+      * Light rail: Metrolink line, 1 mile from campus
+  - name: Distance to Major Attractions
+    icon: /assets/major-attractions-icon.png
+    items: |-
+      * Laguna Beach - 11 miles
+      * Disneyland - 26 Miles
+      * Downtown Los Angeles - 52 miles
+      * San Diego - 70 miles
 carousel-images:
   - /assets/saddleback-1.jpeg
   - /assets/saddleback-2.jpeg

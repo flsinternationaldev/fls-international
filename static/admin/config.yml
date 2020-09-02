@@ -321,6 +321,23 @@ collections:
             }
           - { label: 'Name', name: 'name', widget: 'string' }
           - {
+                label: 'Quick Facts',
+                name: 'quick-facts',
+                widget: 'list',
+                label_singular: 'quick fact',
+                fields:
+                    [
+                        { label: 'Name', name: 'name', widget: 'string' },
+                        { label: 'Icon', name: 'icon', widget: 'image' },
+                        {
+                            label: 'Items',
+                            name: 'items',
+                            hint: 'Separate each item with a bullet point',
+                            widget: 'markdown',
+                        },
+                    ],
+            }
+          - {
                 label: 'Carousel Images',
                 name: 'carousel-images',
                 widget: 'list',
