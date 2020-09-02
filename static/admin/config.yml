@@ -307,3 +307,21 @@ collections:
                         },
                     ],
             }
+    - name: 'location-page'
+      label: 'Location Page'
+      create: true
+      folder: 'src/netlify-content/location-page'
+      identifier_field: name
+      fields:
+          - {
+                label: 'Path',
+                name: 'path',
+                widget: 'string',
+                hint: 'The URL for the page. Should be all lower case, and uses dashes instead of spaces, e.g.locations/path-name-here. ',
+            }
+          - { label: 'Name', name: 'name', widget: 'string' }
+          - {
+                label: 'Location post content',
+                name: 'post-content',
+                widget: 'markdown',
+            }

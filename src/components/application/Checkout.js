@@ -114,7 +114,7 @@ export default function Checkout({
 					<div className="application__price-container">
 						<span className="application__price-title">Center</span>
 						<span className="application__price-amount">
-							<strong>{currentCenter.name}</strong>
+							{/* <strong>{currentCenter.name}</strong> */}
 						</span>
 					</div>
 
@@ -123,7 +123,7 @@ export default function Checkout({
 							Program
 						</span>
 						<span className="application__price-amount">
-							<strong>{currentProgram.name}</strong>
+							{/* <strong>{currentProgram.name}</strong> */}
 						</span>
 					</div>
 
@@ -143,6 +143,48 @@ export default function Checkout({
 				</div>
 
 				<div></div>
+			</div>
+
+			<div className="column is-full">
+				<div className="application__price-summary">
+					<h3 className="fls__post-title">Housing</h3>
+
+					<div className="application__general-fees">
+						<div className="application__price-container">
+							<span className="application__price-title">
+								Extra Night: Student Residences
+							</span>
+
+							<div className="application__price-amount-container">
+								<span className="application__price-amount">
+									<strong>$75</strong>
+								</span>
+
+								<span className="application__price-amount-subtitle">
+									Per Night
+								</span>
+							</div>
+						</div>
+
+						<div className="application__price-container">
+							<span className="application__price-title">
+								Extra Night: Student Residences
+							</span>
+							<span className="application__price-amount">
+								<strong>$75</strong>
+							</span>
+						</div>
+
+						<div className="application__price-container">
+							<span className="application__price-title">
+								Extra Night: Student Residences
+							</span>
+							<span className="application__price-amount">
+								<strong>$75</strong>
+							</span>
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<div className="column is-full">

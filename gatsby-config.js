@@ -52,15 +52,15 @@ module.exports = {
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
-				path: `${__dirname}/src/netlify-content/pages`,
-				name: 'pages',
+				path: `${__dirname}/src/netlify-content/general-fees`,
+				name: 'general-fees',
 			},
 		},
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
-				path: `${__dirname}/src/netlify-content/general-fees`,
-				name: 'pages',
+				path: `${__dirname}/src/netlify-content/location-page`,
+				name: 'location-page',
 			},
 		},
 		`gatsby-transformer-remark`,

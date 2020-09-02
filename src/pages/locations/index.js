@@ -42,19 +42,3 @@ const LocationsPage = ({ data }) => {
 };
 
 export default LocationsPage;
-
-// TODO: Here, all the individual fields are specified.
-// Is there a way to just say 'get all fields'?
-// export const pageQuery = graphql`
-// 	query {
-// 		markdownRemark {
-// 			frontmatter {
-// 				program_cards {
-// 					card_description
-// 					card_image
-// 					card_title
-// 				}
-// 			}
-// 		}
-// 	}
-// `;

@@ -1,17 +1,35 @@
 import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 
 import Layout from 'src/components/Layout';
 import Section from 'src/components/section/Section';
 import Testimonial from 'src/components/testimonial/Testimonial';
 import QuickFacts from 'src/components/quick-facts/QuickFacts';
 import PriceCalculator from 'src/components/price-calculator/PriceCalculator';
-// import Card from 'src/components/card/Card';
+import MarkdownContent from 'src/components/MarkdownContent.js';
 
-export const EnglishLanguageProgramsTemplate = () => {
-	// TODO: This all needs to come from the CMS
+export const LocationPageTemplate = ({ locationPageData }) => {
+	// TODO: See if there isn't some way to implement the 'alt' sections from before (i.e. the blocks with light gray backgrounds)
+	const postContent = locationPageData.post_content;
+
+	console.log('the data', locationPageData);
 	return (
 		<Section>
 			<div className="columns is-multiline">
+				<div className="column is-full">
+					<div className="">
+						<MarkdownContent
+							content={postContent}
+							classMap={{
+								h2: 'fls__post-title',
+								h3: 'fls__location-post-subtitle',
+								p: 'fls__post-copy',
+								ul: 'fls__location-post-list',
+								li: 'fls__list-item fls__list-item--small',
+							}}
+						/>
+					</div>
+				</div>
 				<div className="column is-3-desktop is-full-tablet">
 					<PriceCalculator />
 
@@ -430,35 +448,41 @@ export const EnglishLanguageProgramsTemplate = () => {
 	);
 };
 
-const EnglishLanguageProgramsPage = ({ data }) => {
-	// const { frontmatter } = data.markdownRemark;
+const LocationPage = ({ pageContext }) => {
+	const { pagePath } = pageContext;
 
-	console.log('data from query', data);
+	const data = useStaticQuery(graphql`
+		{
+			allMarkdownRemark(
+				limit: 1000
+				filter: { fileAbsolutePath: { regex: "/location-page//" } }
+			) {
+				edges {
+					node {
+						frontmatter {
+							path
+							post_content
+							name
+						}
+					}
+				}
+			}
+		}
+	`);
+
+	const locationPageData = data.allMarkdownRemark.edges.find(
+		edge => edge.node.frontmatter.path === pagePath
+	).node.frontmatter;
+
 	return (
 		<Layout
 			isScrolled={true}
 			hasNavHero={true}
 			pageTitle={'English Language Programs'}
 		>
-			<EnglishLanguageProgramsTemplate />
+			<LocationPageTemplate locationPageData={locationPageData} />
 		</Layout>
 	);
 };
 
-export default EnglishLanguageProgramsPage;
-
-// TODO: Here, all the individual fields are specified.
-// Is there a way to just say 'get all fields'?
-// export const pageQuery = graphql`
-// 	query {
-// 		markdownRemark {
-// 			frontmatter {
-// 				program_cards {
-// 					card_description
-// 					card_image
-// 					card_title
-// 				}
-// 			}
-// 		}
-// 	}
-// `;
+export default LocationPage;

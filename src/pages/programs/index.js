@@ -51,7 +51,7 @@ export const ProgramsPageTemplate = ({ program_cards }) => {
 const ProgramsPage = ({ data }) => {
 	// const { frontmatter } = data.markdownRemark;
 
-	console.log('data from query', data);
+	// console.log('data from query', data);
 	return (
 		<Layout isScrolled={true} hasNavHero={true} pageTitle={'Programs'}>
 			<ProgramsPageTemplate program_cards={''} />
@@ -60,19 +60,3 @@ const ProgramsPage = ({ data }) => {
 };
 
 export default ProgramsPage;
-
-// TODO: Here, all the individual fields are specified.
-// Is there a way to just say 'get all fields'?
-// export const pageQuery = graphql`
-// 	query {
-// 		markdownRemark {
-// 			frontmatter {
-// 				program_cards {
-// 					card_description
-// 					card_image
-// 					card_title
-// 				}
-// 			}
-// 		}
-// 	}
-// `;
