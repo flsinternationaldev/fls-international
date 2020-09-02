@@ -14,16 +14,22 @@ collections:
       label: Pages
       create: true # TODO: Should probably be false, but need to figure out how this works
       files:
-          - file: 'src/netlify-content/pages/home/home.md'
+          - file: 'src/netlify-content/pages/home.md'
             label: 'Home Page'
             name: 'home'
             fields:
-                - widget: 'object' # TODO: This widget needs to be expanded to allow custom carousel items
-                  label: 'Hero Banner Settings'
+                - widget: 'list'
+                  label: 'Hero Carousel Items'
                   name: 'carousel_settings'
+                  label_singular: 'hero carousel item'
                   fields:
                       - { label: 'Title', name: 'title', widget: 'text' }
                       - { label: 'Copy', name: 'copy', widget: 'text' }
+                      - {
+                            label: 'Carousel Image',
+                            name: 'carousel-image',
+                            widget: 'image',
+                        }
                 - widget: 'object'
                   label: 'Explore Your World'
                   name: 'explore_your_world'

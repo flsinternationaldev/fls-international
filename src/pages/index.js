@@ -16,14 +16,7 @@ import videoSampleImg from 'src/img/video-sample.jpeg';
 
 // TODO: In the gatsby-netlify starter package, all these React files are kept in /templates,
 // and pages only has Markdown files. Investigate how to do that
-export const HomePageTemplate = ({
-	carousel_settings = {},
-	explore_your_world = {},
-	how_is_your_english = {},
-	our_popular_programs = {},
-	start_your_journey = {},
-	on_location_program_information = {},
-}) => {
+export const HomePageTemplate = ({ data }) => {
 	const slickSettings = {
 		infinite: true,
 		slidesToShow: 3,
@@ -47,7 +40,7 @@ export const HomePageTemplate = ({
 
 	return (
 		<Fragment>
-			<Hero carousel_settings={carousel_settings} />
+			<Hero carouselItems={data.carousel_settings} />
 
 			<Section
 				sectionClasses={['section', sectionStyles.sectionWhoWeAre]}
@@ -64,15 +57,15 @@ export const HomePageTemplate = ({
 								}
 							>
 								<h3 className="subtitle subtitle--fls subtitle--red">
-									{explore_your_world.subtitle}
+									{data.explore_your_world.subtitle}
 								</h3>
 								<h1 className="title title--fls">
-									{explore_your_world.title}
+									{data.explore_your_world.title}
 								</h1>
 							</div>
 
 							<p className={sectionStyles.exploreYourWorld__copy}>
-								{explore_your_world.copy}
+								{data.explore_your_world.copy}
 							</p>
 						</div>
 					</div>
@@ -88,10 +81,10 @@ export const HomePageTemplate = ({
 					<div className="column is-6">
 						<div className={sectionStyles.section__titleContainer}>
 							<h3 className="subtitle subtitle--fls subtitle--red">
-								{start_your_journey.subtitle}
+								{data.start_your_journey.subtitle}
 							</h3>
 							<h2 className="title title--fls">
-								{start_your_journey.title}
+								{data.start_your_journey.title}
 							</h2>
 						</div>
 					</div>
@@ -104,14 +97,14 @@ export const HomePageTemplate = ({
 								sectionStyles.startYourJourney__copyContainer
 							}
 						>
-							{start_your_journey.copy}
+							{data.start_your_journey.copy}
 						</p>
 					</div>
 					<div className="column is-half-desktop is-full-tablet">
 						<Application
 							isHome={true}
 							on_location_program_information={
-								on_location_program_information
+								data.on_location_program_information
 							}
 						/>
 					</div>
@@ -122,15 +115,15 @@ export const HomePageTemplate = ({
 					<div className="column is-7">
 						<div className={sectionStyles.section__titleContainer}>
 							<h3 className="subtitle subtitle--fls subtitle--red">
-								{our_popular_programs.subtitle}
+								{data.our_popular_programs.subtitle}
 							</h3>
 							<h2 className="title title--fls">
-								{our_popular_programs.title}
+								{data.our_popular_programs.title}
 							</h2>
 						</div>
 
 						<p className={sectionStyles.popularPrograms__subcopy}>
-							{our_popular_programs.copy}
+							{data.our_popular_programs.copy}
 						</p>
 					</div>
 				</div>
@@ -277,10 +270,10 @@ export const HomePageTemplate = ({
 							<h3
 								className={`subtitle ${sectionStyles.highlightedSection__subtitle}`}
 							>
-								{how_is_your_english.subtitle}
+								{data.how_is_your_english.subtitle}
 							</h3>
 							<h2 className="title title--fls title--white">
-								{how_is_your_english.title}
+								{data.how_is_your_english.title}
 							</h2>
 						</div>
 					</div>
@@ -403,82 +396,52 @@ export const HomePageTemplate = ({
 };
 
 const HomePage = ({ data }) => {
-	// const { frontmatter } = data.markdownRemark;
+	// Having a filter in the query means there should only ever be the one node
+	const homePageData = data.allMarkdownRemark.edges[0].node.frontmatter;
 
-	const frontmatter = {};
 	return (
 		<Layout isHome={true}>
-			<HomePageTemplate
-				carousel_settings={frontmatter.carousel_settings || {}}
-				explore_your_world={frontmatter.explore_your_world || {}}
-				how_is_your_english={frontmatter.how_is_your_english || {}}
-				our_popular_programs={frontmatter.our_popular_programs || {}}
-				start_your_journey={frontmatter.start_your_journey || {}}
-				on_location_program_information={
-					frontmatter.on_location_program_information || {}
-				}
-			/>
+			<HomePageTemplate data={homePageData} />
 		</Layout>
 	);
 };
 
 export default HomePage;
 
-// TODO: Here, all the individual fields are specified.
-// Is there a way to just say 'get all fields'?
-// export const pageQuery = graphql`
-// 	query {
-// 		markdownRemark {
-// 			frontmatter {
-// 				carousel_settings {
-// 					copy
-// 					title
-// 				}
-// 				explore_your_world {
-// 					copy
-// 					subtitle
-// 					title
-// 				}
-// 				how_is_your_english {
-// 					copy
-// 					title
-// 					subtitle
-// 				}
-// 				our_popular_programs {
-// 					copy
-// 					subtitle
-// 					title
-// 				}
-// 				start_your_journey {
-// 					copy
-// 					title
-// 					subtitle
-// 				}
-// 				on_location_program_information {
-// 					general_fees {
-// 						application_fee
-// 						books_and_materials
-// 						express_mail_fee
-// 						extra_night_homestay
-// 						extra_night_resources
-// 						health_insurance_fee
-// 						housing_placement_fee
-// 						tutoring
-// 					}
-// 					locations {
-// 						location_name
-// 						programs {
-// 							program_name
-// 							program_details {
-// 								duration
-// 								hours
-// 								lessons
-// 								price
-// 							}
-// 						}
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// `;
+export const pageQuery = graphql`
+	{
+		allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/home/" } }) {
+			edges {
+				node {
+					frontmatter {
+						carousel_settings {
+							carousel_image
+							copy
+							title
+						}
+						explore_your_world {
+							subtitle
+							copy
+							title
+						}
+						how_is_your_english {
+							copy
+							subtitle
+							title
+						}
+						start_your_journey {
+							copy
+							subtitle
+							title
+						}
+						our_popular_programs {
+							copy
+							subtitle
+							title
+						}
+					}
+				}
+			}
+		}
+	}
+`;

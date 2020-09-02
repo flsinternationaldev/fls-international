@@ -8,7 +8,6 @@ const classMap = {
 	li: quickFactsStyles.fls__quickFactItem,
 };
 
-console.log('quick styles', quickFactsStyles);
 export default function QuickFacts({ data }) {
 	return (
 		<div className={`${quickFactsStyles.fls__quickFacts} column is-full`}>
