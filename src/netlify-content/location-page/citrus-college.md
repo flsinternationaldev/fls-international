@@ -1,6 +1,10 @@
 ---
-path: citrus-college
-name: Citrus College
+path: saddleback-college
+name: Saddleback College
+carousel-images:
+  - /assets/saddleback-1.jpeg
+  - /assets/saddleback-2.jpeg
+  - /assets/saddleback-3.jpeg
 post-content: >-
   ## OVERVIEW
 
@@ -32,15 +36,15 @@ post-content: >-
   ### Campus Facilities
 
 
-  * **Learning Resouce Center**\
+  * **Learning Resouce Center**
     Housing computer stations, language lab, and campus library.
-  * **McKinney Theater**\
+  * **McKinney Theater**
     Performing arts stage, with seating for 400, offering a variety of live entertainment events to students and the public.
-  * **Student Services Center**\
+  * **Student Services Center**
     Housing a student lounge and cafeteria providing a full range of food services.
-  * **Athletic Facilities**\
+  * **Athletic Facilities**
     Including tennis courts, golf driving range, gymnasium, baseball field and swimming pool.
-  * **KSBR Radio Station**\
+  * **KSBR Radio Station**
     A commercial-free contemporary jazz and community information station serving Orange County. KSBR has won multiple awards and trains students enrolled in Saddleback’s Cinema/TV/Radio program.
 
   ## HOUSING
@@ -50,4 +54,93 @@ post-content: >-
 
 
   A homestay is a great way to experience American culture while improving your English ability! All FLS centers offer homestay accommodation with American families individually selected by FLS. Learn about American daily life, practice English on a regular basis and participate in many aspects of American culture that visitors often don't get to see. (Twin and Single options available).
+
+
+  <iframe width="560" height="349" src="https://www.youtube.com/embed/cQJKGECy8i4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+
+
+  ## AREA PROFILE
+
+
+  **The Saddleback Experience**
+
+
+
+  With great weather, access to amazing beaches and a picturesque location between Los Angeles and San Diego, Mission Viejo offers an unbeatable quality of life with easy freeway access to classic California attractions like Sea World and Disneyland!
+
+
+  * Visit Disneyland Resort including the original Disneyland theme park including Galaxy's Edge, and the expanded California Adventure park, featuring Cars Land and Ariel’s Undersea Adventure.
+
+  * Relax on the sandy shores of Laguna Beach, considered one of the most beautiful beaches in California, and visit the many unique art galleries and cafes.
+
+  * Spend a fun-filled day at Sea World and see Shamu, sea lions and otters in action and enjoy rides like Manta and Wild Arctic.
+
+  * Enjoy the best of shopping, entertainment and dining at the huge Irvine Spectrum Center, offering over 130 specialty stores and restaurants.
+
+  * Take a surfing lesson on the shores of Huntington Beach, Surf City USA, the home of the annual US Open of Surf.
+
+
+
+  **Mission Viejo, CA**
+
+
+  Recently named the safest city in the United States, Mission Viejo is an affluent suburban community of nearly 100,000. The center of the city contains a large man-made lake and beautiful tree-lined streets overlooked by the Saddleback mountain range. Mission Viejo offers an ideal climate with a temperature range of 11-23 degrees Celsius year-round. Summers are sunny, warm and dry. Fall and winter bring occasional rain showers, with snow in the local mountains. Due to close proximity to the ocean, nighttime and morning clouds are common.
+
+
+  ## PROGRAMS OFFERED
+
+
+  **Academic Programs**
+
+
+  * Academic Programs
+
+  * Vacation English
+
+  * General English
+
+  * Intensive English
+
+  * Academic English
+
+  * TOEFL Preparation
+
+  * High School Completion
+
+  * Concurrent Enrollment
+
+
+  **English + Volunteering**
+
+
+  FLS offers ESL students a wonderful way to practice their new English skills while immersing themselves in American society by volunteering at local charities and community service centers. Join other FLS students as they perfect their conversational English while helping others! Here are some of the oportunities you will enjoy at FLS Saddleback College:
+
+
+  * Mission Viejo Library
+
+  * G.I. Joe Search and Rescue
+
+  * Irvine Senior Services
+
+  * Boys & Girls Club of Laguna Beach
+
+
+  **Optional Weekend and Evening Activities**
+
+
+  FLS offers ESL students memorable and educational tour experiences, and opportunities to visit the best attractions of the United States. Students will have many opportunities to take part in excursions with the full supervision of our trained FLS staff.
+
+
+  **Activities Include:**
+
+
+  * Disneyland
+
+  * Six Flags Magic Mountain
+
+  * Soak City
+
+  * Knott's Berry Farm
+
+  * San Diego
 ---

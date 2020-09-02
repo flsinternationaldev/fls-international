@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Navbar(props) {
-	// TODO: This needs to come from the CMS
+	// TODO: This needs to come from the CMS... and also actually, like, work
 
 	return (
 		<div className="fls__location-price-calculator">

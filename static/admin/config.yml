@@ -321,6 +321,17 @@ collections:
             }
           - { label: 'Name', name: 'name', widget: 'string' }
           - {
+                label: 'Carousel Images',
+                name: 'carousel-images',
+                widget: 'list',
+                field:
+                    {
+                        label: 'Carousel Image',
+                        name: 'carousel-image',
+                        widget: 'image',
+                    },
+            }
+          - {
                 label: 'Location post content',
                 name: 'post-content',
                 widget: 'markdown',

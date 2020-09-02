@@ -706,12 +706,19 @@ body {
 /* Programs post styles */
 
 /* TODO: More classes in need of genericization */
-.programs__post-carousel,
-.fls__location-post-carousel {
+.programs__post-carousel {
 	display: flex !important;
 	justify-content: center;
 	width: 100%;
 	background-color: #f5f5f5;
+}
+
+.fls__location-post-carousel {
+	background-color: #f5f5f5;
+
+	.slick-list {
+		margin: 0 auto;
+	}
 }
 
 /* TODO: These need finessing, carousel images might be cut off as is */
