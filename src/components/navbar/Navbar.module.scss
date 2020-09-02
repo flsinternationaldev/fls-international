@@ -1,0 +1,55 @@
+.navbar__head-copy {
+	color: white;
+	font-size: 24px;
+}
+
+.navbar__logo {
+	position: relative;
+	top: 20px;
+	max-height: 5rem !important;
+}
+
+.navbar--fls {
+	background-color: rgba(0, 0, 0, 0.5) !important;
+	transition: background-color 0.3s;
+
+	ul {
+		border-bottom: none !important;
+	}
+
+	li {
+		height: 100%;
+		display: flex !important;
+	}
+}
+
+.tabs--fls {
+	a {
+		color: #7e8085 !important;
+		border-bottom: none;
+		text-transform: uppercase;
+		font-size: 14px;
+		font-weight: 500;
+		transition: all 0.3s ease 0s;
+	}
+
+	a:hover {
+		color: #fec910;
+	}
+}
+
+.navbar--scrolled {
+	background-color: #fff !important;
+}
+
+.tabs--home {
+	a {
+		color: white !important;
+	}
+}
+
+.tabs--scrolled {
+	a {
+		color: #7e8085 !important;
+	}
+}
