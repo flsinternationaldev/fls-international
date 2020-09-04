@@ -9,14 +9,15 @@ import MarkdownContent from 'src/components/MarkdownContent.js';
 
 import 'slick-carousel/slick/slick.css';
 
-export const ProgramPageTemplate = ({ programPageData }) => {
+export const ProgramPageTemplate = ({ programPageData, allProgramNavData }) => {
 	return (
 		<Section>
 			<div className="columns is-multiline">
 				<div className="column is-3-desktop is-full-tablet">
-					<PostNavbar />
+					<PostNavbar data={allProgramNavData} />
 					<Testimonial />
 				</div>
+
 				<div className="column is-9-desktop is-full-tablet">
 					<div className="columns is-multiline">
 						<div className="column is-full">
@@ -56,6 +57,7 @@ export const ProgramPageTemplate = ({ programPageData }) => {
 										programPageData.program_post_content
 									}
 									classMap={{
+										h2: 'fls-post__subtitle',
 										p: 'fls-post__paragraph',
 									}}
 								/>
@@ -116,13 +118,24 @@ const ProgramPage = ({ pageContext }) => {
 		edge => edge.node.frontmatter.path === pagePath
 	).node.frontmatter;
 
+	const allProgramNavData = data.allMarkdownRemark.edges.map(edge => {
+		return {
+			path: `/programs/on-site/${edge.node.frontmatter.path}`,
+			name: edge.node.frontmatter.name,
+		};
+	});
+
 	return (
 		<Layout
 			isScrolled={true}
 			hasNavHero={true}
+			hasNavButtons={true}
 			pageTitle={'On-Site Programs'}
 		>
-			<ProgramPageTemplate programPageData={programPageData} />
+			<ProgramPageTemplate
+				programPageData={programPageData}
+				allProgramNavData={allProgramNavData}
+			/>
 		</Layout>
 	);
 };
