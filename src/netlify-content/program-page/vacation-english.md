@@ -1,7 +1,7 @@
 ---
 path: vacation-english
 name: Vacation English
-hero-image: /assets/vacation-english-hero.jpeg
+hero-image: /assets/university-tours-1.jpeg
 program-details:
   lessons-per-week: 18
   hours-per-week: 15
