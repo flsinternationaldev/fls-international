@@ -10,8 +10,6 @@ import MarkdownContent from 'src/components/MarkdownContent.js';
 import 'slick-carousel/slick/slick.css';
 
 export const ProgramPageTemplate = ({ programPageData }) => {
-	// TODO: See if there isn't some way to implement the 'alt' sections from before (i.e. the blocks with light gray backgrounds)
-
 	return (
 		<Section>
 			<div className="columns is-multiline">
@@ -24,28 +22,58 @@ export const ProgramPageTemplate = ({ programPageData }) => {
 						<div className="column is-full">
 							{/* TODO: Again, these 'programs' classes need genericizing */}
 							<h2 className="programs__post-title">
-								Vacation English
+								{programPageData.name}
 							</h2>
 						</div>
 
 						<div className="column is-full">
 							<div className="fls-post__hero">
-								<img src="" alt="" />
+								<img
+									src={programPageData.hero_image}
+									alt={`${programPageData.name} hero image`}
+								/>
 							</div>
 						</div>
 
 						<div className="column is-full">
 							<div className="fls-post__subhero">
 								<span className="fls-post__subhero-item">
-									18 lessons per week
+									{`${programPageData.program_details.lessons_per_week} lessons per week`}
 								</span>
 								<span className="fls-post__subhero-item">
-									15 hours per week
+									{`${programPageData.program_details.hours_per_week} hours per week`}
 								</span>
 								<span className="fls-post__subhero-item fls--red">
-									*1 lesson = 50 minutes
+									{`*1 lesson = ${programPageData.program_details.minutes_per_lesson} minutes`}
 								</span>
 							</div>
+						</div>
+
+						<div className="column is-full">
+							<div className="fls-post__copy-container">
+								<MarkdownContent
+									content={
+										programPageData.program_post_content
+									}
+									classMap={{
+										p: 'fls-post__paragraph',
+									}}
+								/>
+							</div>
+						</div>
+
+						<div className="column is-full fls-post__copy-container fls-post__copy-container--alt">
+							<MarkdownContent
+								content={
+									programPageData.program_features_content
+								}
+								classMap={{
+									h2: 'fls-post__subtitle',
+									p: 'fls-post__paragraph',
+									ul: 'fls__location-post-list',
+									li: 'fls__list-item',
+								}}
+							/>
 						</div>
 					</div>
 				</div>
@@ -57,36 +85,36 @@ export const ProgramPageTemplate = ({ programPageData }) => {
 const ProgramPage = ({ pageContext }) => {
 	const { pagePath } = pageContext;
 
-	// const data = useStaticQuery(graphql`
-	// 	{
-	// 		allMarkdownRemark(
-	// 			limit: 1000
-	// 			filter: { fileAbsolutePath: { regex: "/location-page//" } }
-	// 		) {
-	// 			edges {
-	// 				node {
-	// 					frontmatter {
-	// 						path
-	// 						post_content
-	// 						name
-	// 						carousel_images
-	// 						quick_facts {
-	// 							name
-	// 							icon
-	// 							items
-	// 						}
-	// 					}
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-	// `);
+	const data = useStaticQuery(graphql`
+		{
+			allMarkdownRemark(
+				limit: 1000
+				filter: { fileAbsolutePath: { regex: "/program-page//" } }
+			) {
+				edges {
+					node {
+						frontmatter {
+							path
+							post_content
+							name
+							hero_image
+							program_details {
+								hours_per_week
+								lessons_per_week
+								minutes_per_lesson
+							}
+							program_post_content
+							program_features_content
+						}
+					}
+				}
+			}
+		}
+	`);
 
-	// const locationPageData = data.allMarkdownRemark.edges.find(
-	// 	edge => edge.node.frontmatter.path === pagePath
-	// ).node.frontmatter;
-
-	const programPageData = {};
+	const programPageData = data.allMarkdownRemark.edges.find(
+		edge => edge.node.frontmatter.path === pagePath
+	).node.frontmatter;
 
 	return (
 		<Layout

@@ -63,6 +63,13 @@ module.exports = {
 				name: 'location-page',
 			},
 		},
+		{
+			resolve: 'gatsby-source-filesystem',
+			options: {
+				path: `${__dirname}/src/netlify-content/program-page`,
+				name: 'location-page',
+			},
+		},
 		`gatsby-transformer-remark`,
 	],
 };

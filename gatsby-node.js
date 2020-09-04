@@ -44,15 +44,38 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		});
 	});
 
+	// Dynamically render program pages
+	const programs = await graphql(
+		`
+			{
+				allMarkdownRemark(
+					limit: 1000
+					filter: { fileAbsolutePath: { regex: "/program-page//" } }
+				) {
+					edges {
+						node {
+							frontmatter {
+								path
+							}
+						}
+					}
+				}
+			}
+		`
+	);
+
 	const programPageTemplate = path.resolve(`src/components/ProgramPage.js`);
 
-	// Dynamically render program pages
-	createPage({
-		path: 'programs/on-site/vacation-english',
-		component: programPageTemplate,
-		// Context properties are passed into the component as graphql variables
-		context: {
-			pagePath: 'vacation-english',
-		},
+	programs.data.allMarkdownRemark.edges.forEach(({ node }) => {
+		const pagePath = `programs/on-site/${node.frontmatter.path}`;
+
+		createPage({
+			path: pagePath,
+			component: programPageTemplate,
+			// Context properties are passed into the component as graphql variables
+			context: {
+				pagePath: node.frontmatter.path,
+			},
+		});
 	});
 };

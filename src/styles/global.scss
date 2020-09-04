@@ -441,22 +441,6 @@ body {
 	background-color: #0069d9;
 }
 
-.fls__post-title {
-	color: #363636;
-	font-weight: 500;
-	text-transform: uppercase;
-	font-size: 20px;
-}
-
-.fls__post-title:after {
-	display: block;
-	width: 30px;
-	height: 2px;
-	margin: 12px 0;
-	border-top: 1px solid #ddd;
-	content: '';
-}
-
 .fls__post-copy {
 	font-size: 15px;
 	margin-bottom: 1rem;
@@ -697,6 +681,7 @@ body {
 // 	font-size: 20px;
 // }
 
+.fls-post__title,
 .programs__post-title {
 	font-size: 29px;
 	text-transform: uppercase;
@@ -715,12 +700,22 @@ body {
 
 .fls-post__hero,
 .fls-post__subhero,
+.fls-post__copy-container--alt,
 .fls__location-post-carousel {
 	background-color: #f5f5f5;
 
 	.slick-list {
 		margin: 0 auto;
 	}
+}
+
+.fls-post__hero {
+	display: flex;
+	justify-content: center;
+}
+
+.fls-post__copy-container {
+	font-size: 14px;
 }
 
 .fls-post__subhero {
@@ -731,11 +726,19 @@ body {
 }
 
 .fls-post__subhero-item {
-	font-size: 12px;
+	font-size: 13px;
 
 	&:nth-child(2) {
 		margin: 0 8px;
 	}
+}
+
+.fls-post__copy-container--alt {
+	padding: 1.5rem !important;
+}
+
+.fls-post__paragraph {
+	margin-bottom: 16px;
 }
 
 /* TODO: These need finessing, carousel images might be cut off as is */
@@ -762,14 +765,14 @@ body {
 }
 
 /* TODO: Handle these duplicates */
-.fls__post-title {
+.fls-post__subtitle {
 	color: #022847;
 	text-transform: uppercase;
 	font-weight: 400;
 	font-size: 20px;
 }
 
-.fls__post-title:after {
+.fls-post__subtitle:after {
 	display: block;
 	width: 30px;
 	height: 2px;

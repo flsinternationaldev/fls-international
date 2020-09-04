@@ -15,7 +15,6 @@ export const LocationPageTemplate = ({ locationPageData }) => {
 	// TODO: See if there isn't some way to implement the 'alt' sections from before (i.e. the blocks with light gray backgrounds)
 	const postContent = locationPageData.post_content;
 
-	console.log('the data', locationPageData);
 	const slickSettings = {
 		autoplay: true,
 		arrows: false,
@@ -91,7 +90,7 @@ export const LocationPageTemplate = ({ locationPageData }) => {
 							<MarkdownContent
 								content={postContent}
 								classMap={{
-									h2: 'fls__post-title',
+									h2: 'fls-post__subtitle',
 									h3: 'fls__location-post-subtitle',
 									p: 'fls__post-copy',
 									ul: 'fls__location-post-list',

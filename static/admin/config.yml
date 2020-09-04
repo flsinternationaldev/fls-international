@@ -359,3 +359,50 @@ collections:
                 name: 'post-content',
                 widget: 'markdown',
             }
+    - name: 'program-page'
+      label: 'Program Page'
+      create: true
+      folder: 'src/netlify-content/program-page'
+      identifier_field: name
+      fields:
+          - {
+                label: 'Path',
+                name: 'path',
+                widget: 'string',
+                hint: 'The URL for the page. Should be all lower case, and uses dashes instead of spaces, e.g.locations/path-name-here. ',
+            }
+          - { label: 'Name', name: 'name', widget: 'string' }
+          - { label: 'Hero Image', name: 'hero-image', widget: 'image' }
+          - {
+                label: 'Program Details',
+                name: 'program-details',
+                widget: 'object',
+                fields:
+                    [
+                        {
+                            label: 'Lessons per week',
+                            name: 'lessons-per-week',
+                            widget: 'number',
+                        },
+                        {
+                            label: 'Hours per week',
+                            name: 'hours-per-week',
+                            widget: 'number',
+                        },
+                        {
+                            label: 'Minutes per lesson',
+                            name: 'minutes-per-lesson',
+                            widget: 'number',
+                        },
+                    ],
+            }
+          - {
+                label: 'Program post content',
+                name: 'program-post-content',
+                widget: 'markdown',
+            }
+          - {
+                label: 'Program features content',
+                name: 'program-features-content',
+                widget: 'markdown',
+            }
