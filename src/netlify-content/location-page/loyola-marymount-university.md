@@ -1,6 +1,6 @@
 ---
-path: saddleback-university-local
-name: Saddleback College
+path: loyola-marymount-university
+name: Loyola Marymount University
 quick-facts:
   - name: Campus Facilities
     icon: /assets/campus-facilities-icon.png

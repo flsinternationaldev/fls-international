@@ -1,9 +1,14 @@
+$fls-red: #e63946;
+$fls-grey: #f1faee;
+$fls-light-blue: #a8dadc;
+$fls-dark-blue: #457b9d;
+
 .fls__post-navbar-item {
 	display: block;
 	width: 100%;
 	border-left: #f5f5f5 solid 3px;
 	padding: 0.5rem 1rem;
-	background-color: #f5f5f5;
+	background-color: $fls-dark-blue;
 	margin-bottom: 1px;
 	min-height: 36px;
 	font-size: 13px;
