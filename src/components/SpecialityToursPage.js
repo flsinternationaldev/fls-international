@@ -23,6 +23,10 @@ export const SpecialityTourPageTemplate = ({
 		autoplaySpeed: 4000,
 	};
 
+	console.log('specaility tour data', specialityTourData);
+
+	console.log('details', specialityTourData.speciality_tour_details);
+
 	return (
 		<Section>
 			<div className="columns is-multiline">
@@ -180,7 +184,10 @@ export const SpecialityTourPageTemplate = ({
 							</div>
 							{specialityTourData.program_dates.map(
 								programDate => (
-									<div className="fls-post__table-row">
+									<div
+										className="fls-post__table-row"
+										key={programDate.arrive}
+									>
 										<div className="columns">
 											<span className="column is-one-quarter">
 												{programDate.arrive}
@@ -189,7 +196,7 @@ export const SpecialityTourPageTemplate = ({
 												{programDate.depart}
 											</span>
 											<span className="column is-one-quarter">
-												{programDate.price}
+												${programDate.price}
 											</span>
 											<span className="column is-one-quarter">
 												<button className="fls__button fls__button--small">
@@ -263,7 +270,7 @@ const SpecialityTourPage = ({ pageContext }) => {
 			isScrolled={true}
 			hasNavHero={true}
 			hasNavButtons={true}
-			pageTitle={'On-Site Programs'}
+			pageTitle={'Speciality Tours'}
 		>
 			<SpecialityTourPageTemplate
 				specialityTourData={specialityTourData}

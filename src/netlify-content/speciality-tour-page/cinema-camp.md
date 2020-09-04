@@ -7,8 +7,7 @@ carousel-images:
   - /assets/cinema-camp-carousel-3.jpeg
 speciality-tour-details:
   minimum-age: 16
-  number of weeks: 3
-  number-of-weeks: -1
+  number-of-weeks: 3
 speciality-tour-description: This program introduces participants to the
   exciting process of filmmaking. Students will study under experienced teachers
   who have worked on major Hollywood projects as they learn every part of the
