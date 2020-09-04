@@ -9,6 +9,7 @@ export default function PostNavbar({ data }) {
 			{data.map(mappedData => {
 				return (
 					<Link
+						key={mappedData.path}
 						className={postNavbarStyles.fls__postNavbarItem}
 						to={mappedData.path}
 					>

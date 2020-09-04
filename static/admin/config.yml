@@ -406,3 +406,77 @@ collections:
                 name: 'program-features-content',
                 widget: 'markdown',
             }
+    - name: 'speciality-tour'
+      label: 'Speciality Tour Page'
+      create: true
+      folder: 'src/netlify-content/speciality-tour-page'
+      identifier_field: name
+      fields:
+          - {
+                label: 'Path',
+                name: 'path',
+                widget: 'string',
+                hint: 'The URL for the page. Should be all lower case, and uses dashes instead of spaces, e.g.locations/path-name-here. ',
+            }
+          - { label: 'Name', name: 'name', widget: 'string' }
+          - {
+                label: 'Carousel Images',
+                name: 'carousel-images',
+                widget: 'list',
+                field:
+                    {
+                        label: 'Carousel Image',
+                        name: 'carousel-image',
+                        widget: 'image',
+                    },
+            }
+          - {
+                label: 'Speciality Tour Details',
+                name: 'speciality-tour-details',
+                widget: 'object',
+                fields:
+                    [
+                        {
+                            label: 'Minimum Age',
+                            name: 'minimum-age',
+                            widget: 'number',
+                        },
+                        {
+                            label: 'Number of Weeks',
+                            name: 'number-of-weeks',
+                            widget: 'number',
+                        },
+                    ],
+            }
+          - {
+                label: 'Speciality Tour Description',
+                name: 'speciality-tour-description',
+                widget: 'markdown',
+            }
+          - {
+                label: 'Activities and Excursions',
+                name: 'activities-and-excursions',
+                widget: 'markdown',
+            }
+          - { label: 'Features', name: 'features', widget: 'markdown' }
+          - {
+                label: 'Accommodations',
+                name: 'accommodations',
+                widget: 'markdown',
+            }
+          - {
+                label: 'Program Dates',
+                name: 'program-dates',
+                widget: 'list',
+                fields:
+                    [
+                        { label: 'Arrive', name: 'arrive', widget: 'string' },
+                        { label: 'Depart', name: 'depart', widget: 'string' },
+                        { label: 'Price', name: 'price', widget: 'number' },
+                    ],
+            }
+          - {
+                label: 'Sample Calendar',
+                name: 'sample-calendar',
+                widget: 'file',
+            }

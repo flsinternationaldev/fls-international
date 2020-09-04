@@ -5,6 +5,7 @@ const path = require('path');
 exports.createPages = async ({ graphql, actions, reporter }) => {
 	const { createPage } = actions;
 
+	// Dynamically render location pages
 	const locations = await graphql(
 		`
 			{
@@ -72,6 +73,61 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		createPage({
 			path: pagePath,
 			component: programPageTemplate,
+			// Context properties are passed into the component as graphql variables
+			context: {
+				pagePath: node.frontmatter.path,
+			},
+		});
+	});
+
+	// Dynamically render speciality tours pages
+	const specialityTours = await graphql(
+		`
+			{
+				allMarkdownRemark(
+					limit: 1000
+					filter: {
+						fileAbsolutePath: { regex: "/speciality-tour-page//" }
+					}
+				) {
+					edges {
+						node {
+							frontmatter {
+								path
+								name
+								accommodations
+								activities_and_excursions
+								carousel_images
+								features
+								program_dates {
+									arrive
+									depart
+									price
+								}
+								sample_calendar
+								speciality_tour_description
+								speciality_tour_details {
+									minimum_age
+									number_of_weeks
+								}
+							}
+						}
+					}
+				}
+			}
+		`
+	);
+
+	const specialityTourPageTemplate = path.resolve(
+		`src/components/SpecialityToursPage.js`
+	);
+
+	specialityTours.data.allMarkdownRemark.edges.forEach(({ node }) => {
+		const pagePath = `programs/speciality-tours/${node.frontmatter.path}`;
+
+		createPage({
+			path: pagePath,
+			component: specialityTourPageTemplate,
 			// Context properties are passed into the component as graphql variables
 			context: {
 				pagePath: node.frontmatter.path,
