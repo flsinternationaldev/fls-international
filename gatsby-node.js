@@ -43,4 +43,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 			},
 		});
 	});
+
+	const programPageTemplate = path.resolve(`src/components/ProgramPage.js`);
+
+	// Dynamically render program pages
+	createPage({
+		path: 'programs/on-site/vacation-english',
+		component: programPageTemplate,
+		// Context properties are passed into the component as graphql variables
+		context: {
+			pagePath: 'vacation-english',
+		},
+	});
 };
