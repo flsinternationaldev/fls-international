@@ -382,7 +382,7 @@ export const AboutUsTemplate = () => {
 				</div>
 			</Section>
 
-			<Section sectionClasses={['section', 'section--alternate']}>
+			<Section sectionClasses={['section']}>
 				<div class="columns is-centered is-multiline">
 					<div class="column is-8 has-text-centered">
 						<h3 class="subtitle subtitle--fls subtitle--red">

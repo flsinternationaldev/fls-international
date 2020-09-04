@@ -492,6 +492,11 @@ collections:
                 widget: 'string',
                 hint: 'The URL this card will link to. Should be all lower case, and uses dashes instead of spaces, e.g.locations/path-name-here.',
             }
+          - {
+                label: 'Background Image',
+                name: 'background-image',
+                widget: 'image',
+            }
           - { label: 'Name', name: 'name', widget: 'string' }
           - {
                 label: 'Short description',

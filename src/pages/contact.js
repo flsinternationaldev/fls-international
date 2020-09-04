@@ -45,20 +45,6 @@ export const ContactUsTemplate = () => {
 								680 E Colorado Blvd Suite 180 Second Floor
 								Pasadena, CA 91101
 							</a>
-
-							<div className="fls__iframe-wrapper fls__iframe-wrapper--contact-us">
-								<iframe
-									src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d26414.59501386585!2d-118.13285800000001!3d34.150835!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd6fc1f629ae422f3!2sFLS%20International!5e0!3m2!1sen!2sus!4v1594501320897!5m2!1sen!2sus"
-									width="600"
-									height="450"
-									frameborder="0"
-									// TODO: Figure this iframe out
-									// style="border:0;"
-									allowfullscreen=""
-									aria-hidden="false"
-									tabindex="0"
-								></iframe>
-							</div>
 						</div>
 					</div>
 				</div>
