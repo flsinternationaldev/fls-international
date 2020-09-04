@@ -3,6 +3,7 @@ $fls-grey: #f1faee;
 $fls-dark-blue: #457b9d;
 $fls-light-blue: #a8dadc;
 
+// TODO: Currently a very small weird white border on the bottom of the nav
 .navbar__head-copy {
 	color: white;
 	font-size: 24px;
@@ -28,6 +29,7 @@ $fls-light-blue: #a8dadc;
 
 .tabs--fls {
 	margin-bottom: 0 !important;
+	overflow: visible !important;
 
 	a {
 		color: $fls-light-blue !important;
@@ -40,14 +42,7 @@ $fls-light-blue: #a8dadc;
 
 	a:hover {
 		color: black !important;
-	}
-
-	& li {
-		transition: all 0.3s ease 0s;
-
-		&:hover {
-			background-color: $fls-light-blue !important;
-		}
+		background-color: $fls-light-blue !important;
 	}
 }
 
@@ -64,5 +59,33 @@ $fls-light-blue: #a8dadc;
 .tabs--scrolled {
 	a {
 		color: $fls-light-blue !important;
+	}
+}
+
+.fls-nav__dropdown-container {
+	position: relative;
+}
+
+.fls-nav__dropdown {
+	position: absolute;
+	width: 100%;
+	background-color: $fls-dark-blue;
+	// TODO: Not a very robust solution for positioning the dropdown
+	bottom: -113px;
+	text-align: center;
+}
+
+.fls-nav__dropdown-item {
+	display: block;
+	padding: 10px;
+	font-size: 12px;
+	width: 100%;
+	color: $fls-light-blue !important;
+	cursor: pointer;
+	transition: all 0.3s ease;
+
+	&:hover {
+		background-color: $fls-light-blue;
+		color: white !important;
 	}
 }

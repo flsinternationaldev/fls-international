@@ -4,6 +4,8 @@ import { Link } from 'gatsby';
 import navbarStyles from './Navbar.module.scss';
 import flsLogo from 'src/img/fls-international-logo.png';
 
+import NavbarDropdown from 'src/components/navbar/NavbarDropdown';
+
 export default function Navbar(props) {
 	const [isScrolled, setIsScrolled] = useState(false);
 
@@ -67,14 +69,22 @@ export default function Navbar(props) {
 								<li>
 									<a href="">Home</a>
 								</li>
-								<li>
-									<Link to="/programs-speciality-tours">
-										Programs
-									</Link>
-								</li>
-								<li>
-									<Link to="/locations">Locations</Link>
-								</li>
+								<NavbarDropdown
+									title={'Programs'}
+									items={[
+										{ name: 'On-Site' },
+										{ name: 'Online' },
+										{ name: 'Speciality Tours' },
+									]}
+								></NavbarDropdown>
+								<NavbarDropdown
+									title={'Locations'}
+									items={[
+										{ name: 'Orange County' },
+										{ name: 'Los Angeles' },
+										{ name: 'Boston' },
+									]}
+								></NavbarDropdown>
 								<li>
 									<Link to="/application">Application</Link>
 								</li>

@@ -267,15 +267,23 @@ export default function Application() {
 	return (
 		<div className="columns is-multiline">
 			<div className="column is-full control">
+				{/* TODO: Ensure you can click the label to select the radio */}
 				<RadioGroup
 					name="program-type"
 					selectedValue={programType}
 					onChange={setProgramType}
 				>
-					<Radio value="on-location" />
-					On Location
-					<Radio value="online" />
-					Online
+					<label htmlFor="" className="radio">
+						<Radio
+							value="on-location"
+							className="fls-input__radio"
+						/>
+						On Location
+					</label>
+					<label htmlFor="" className="radio">
+						<Radio value="online" className="fls-input__radio" />
+						Online
+					</label>
 				</RadioGroup>
 			</div>
 			<div className="column is-full">

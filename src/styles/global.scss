@@ -52,6 +52,22 @@ a {
 	}
 }
 
+.fls__transparent {
+	opacity: 0;
+}
+
+.fls__opaque {
+	opacity: 1;
+}
+
+.fls__hide {
+	display: none;
+}
+
+.fls__show {
+	display: block;
+}
+
 .subtitle--fls {
 	font-size: 1.125rem !important;
 	font-weight: 500 !important;
@@ -78,6 +94,10 @@ a {
 }
 
 /* Generic FLS Styles */
+
+.fls-input__radio {
+	margin-right: 10px;
+}
 
 .fls__list-item {
 	position: relative;

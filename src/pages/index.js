@@ -350,11 +350,19 @@ export const HomePageTemplate = ({ data }) => {
 							<div className="column is-half">
 								<div className="control">
 									<label className="radio">
-										<input type="radio" name="answer" />
+										<input
+											type="radio"
+											className="fls-input__radio"
+											name="answer"
+										/>
 										Yes
 									</label>
 									<label className="radio">
-										<input type="radio" name="answer" />
+										<input
+											type="radio"
+											name="answer"
+											className="fls-input__radio"
+										/>
 										No
 									</label>
 								</div>
