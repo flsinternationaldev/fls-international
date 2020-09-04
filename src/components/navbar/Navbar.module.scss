@@ -1,16 +1,19 @@
+// TODO: Should go in a 'variables' file
+$fls-grey: #f1faee;
+$fls-dark-blue: #457b9d;
+$fls-light-blue: #a8dadc;
+
 .navbar__head-copy {
 	color: white;
 	font-size: 24px;
 }
 
 .navbar__logo {
-	position: relative;
-	top: 20px;
 	max-height: 5rem !important;
 }
 
 .navbar--fls {
-	background-color: rgba(0, 0, 0, 0.5) !important;
+	background-color: rgba(230, 57, 70, 0.5) !important;
 	transition: background-color 0.3s;
 
 	ul {
@@ -24,8 +27,10 @@
 }
 
 .tabs--fls {
+	margin-bottom: 0 !important;
+
 	a {
-		color: #7e8085 !important;
+		color: $fls-light-blue !important;
 		border-bottom: none;
 		text-transform: uppercase;
 		font-size: 14px;
@@ -34,12 +39,20 @@
 	}
 
 	a:hover {
-		color: #fec910;
+		color: black !important;
+	}
+
+	& li {
+		transition: all 0.3s ease 0s;
+
+		&:hover {
+			background-color: $fls-light-blue !important;
+		}
 	}
 }
 
 .navbar--scrolled {
-	background-color: #fff !important;
+	background-color: $fls-dark-blue !important;
 }
 
 .tabs--home {
@@ -50,6 +63,6 @@
 
 .tabs--scrolled {
 	a {
-		color: #7e8085 !important;
+		color: $fls-light-blue !important;
 	}
 }

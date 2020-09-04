@@ -36,6 +36,25 @@ export default function Navbar(props) {
 			} ${isScrolled ? navbarStyles.navbarScrolled : ''}`}
 		>
 			<div className="container">
+				<div className="navbar-brand">
+					<a className="navbar-item" href="../">
+						<img
+							className={navbarStyles.navbar__logo}
+							src={flsLogo}
+							alt="Logo"
+						/>
+					</a>
+					{/* TODO: Still need a mobile implementation for the navbar */}
+					<span
+						className="navbar-burger burger"
+						data-target="navbarMenu"
+					>
+						<span></span>
+						<span></span>
+						<span></span>
+					</span>
+				</div>
+
 				<div id="navbarMenu" className="navbar-menu">
 					<div className="navbar-start">
 						<div
@@ -49,38 +68,25 @@ export default function Navbar(props) {
 									<a href="">Home</a>
 								</li>
 								<li>
-									<Link to="/programs">Programs</Link>
+									<Link to="/programs-speciality-tours">
+										Programs
+									</Link>
 								</li>
 								<li>
 									<Link to="/locations">Locations</Link>
+								</li>
+								<li>
+									<Link to="/application">Application</Link>
+								</li>
+								<li>
+									<Link to="/application">Testimonials</Link>
 								</li>
 								<li>
 									<Link to="/about-us">About Us</Link>
 								</li>
 							</ul>
 						</div>
-					</div>
 
-					<div className="navbar-brand">
-						<a className="navbar-item" href="../">
-							<img
-								className={navbarStyles.navbar__logo}
-								src={flsLogo}
-								alt="Logo"
-							/>
-						</a>
-						{/* TODO: Still need a mobile implementation for the navbar */}
-						<span
-							className="navbar-burger burger"
-							data-target="navbarMenu"
-						>
-							<span></span>
-							<span></span>
-							<span></span>
-						</span>
-					</div>
-
-					<div className="navbar-end">
 						<div
 							className={`tabs is-right 							
 							${navbarStyles.tabsFls} 

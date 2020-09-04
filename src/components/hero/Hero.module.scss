@@ -1,3 +1,9 @@
+// TODO: Should go in a 'variables' file
+$fls-red: #e63946;
+$fls-light-blue: #a8dadc;
+$fls-dark-blue: #457b9d;
+$fls-grey: #f1faee;
+
 .hero-body--home {
 	z-index: 1;
 	padding-bottom: 5rem !important;
@@ -10,16 +16,18 @@
 
 .hero__copy-container {
 	position: relative;
-	top: 42vh;
+	top: 48vh;
 	margin: 0 auto;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	text-align: center;
 	align-items: center;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: $fls-dark-blue !important;
 	max-width: 750px;
-	height: 223px;
+	height: 245px;
+	padding: 25px;
+	border-radius: 15px;
 
 	@media only screen and (max-device-width: 768px) {
 		max-width: 460px;

@@ -361,7 +361,7 @@ export const HomePageTemplate = ({ data }) => {
 							</div>
 
 							<div className="column is-full">
-								<button className="button fls__button fls__button--red">
+								<button className="button fls__button">
 									Begin the Test
 								</button>
 							</div>
@@ -400,7 +400,7 @@ const HomePage = ({ data }) => {
 	const homePageData = data.allMarkdownRemark.edges[0].node.frontmatter;
 
 	return (
-		<Layout isHome={true}>
+		<Layout>
 			<HomePageTemplate data={homePageData} />
 		</Layout>
 	);

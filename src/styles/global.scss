@@ -1,7 +1,23 @@
 /* Global */
+
+// TODO: This should go in a vars file
+$fls-red: #e63946;
+$fls-grey: #f1faee;
+$fls-light-blue: #a8dadc;
+$fls-dark-blue: #457b9d;
+
 body {
 	font-family: 'Montserrat', sans-serif !important;
 	overflow: hidden; /* This prevents weird issues that might arise with the react step wizard */
+}
+
+a {
+	color: $fls-light-blue !important;
+	transition: all 0.3s;
+
+	&:hover {
+		color: white !important;
+	}
 }
 
 .container {
@@ -78,7 +94,7 @@ body {
 		left: 0;
 		top: 4.5px;
 		border-radius: 100%;
-		background-color: #dbab04;
+		background-color: $fls-grey;
 		height: 10px;
 		width: 10px;
 	}
@@ -90,8 +106,8 @@ body {
 
 .footer {
 	position: relative !important;
-	color: white !important;
-	background-color: #012846 !important;
+	color: $fls-grey !important;
+	background-color: $fls-dark-blue !important;
 	padding-bottom: 3rem !important;
 }
 
@@ -215,19 +231,27 @@ body {
 .fls__link {
 	line-height: 1.25 !important;
 	transition: color 0.3s !important;
-	color: white !important;
+	color: $fls-grey !important;
+
+	&:hover {
+		color: $fls-red !important;
+	}
 }
 
-.fls__link:hover {
-	color: #bb2125 !important;
-}
+.fls__link--alt {
+	color: $fls-light-blue !important;
 
-.fls__link--alt:hover {
-	color: #dbab04 !important;
+	&:hover {
+		color: white !important;
+	}
 }
 
 .fls__link--dark {
 	color: #2c2e30 !important;
+}
+
+.fls--grey {
+	color: $fls-grey;
 }
 
 .fls__alternating-item {
@@ -267,9 +291,8 @@ body {
 		border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
 
 	&:hover {
-		background-color: #fec910 !important;
-		border-color: #fec910 !important;
-		color: black !important;
+		background-color: $fls-dark-blue !important;
+		border-color: $fls-dark-blue !important;
 	}
 }
 
@@ -286,8 +309,8 @@ body {
 
 .fls__button--red {
 	color: #fff !important;
-	background-color: #bb2125 !important;
-	border-color: #bb2125 !important;
+	background-color: $fls-red !important;
+	border-color: $fls-red !important;
 	height: 50px !important;
 	line-height: 40px !important;
 	border-radius: 0 !important;

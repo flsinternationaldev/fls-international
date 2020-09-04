@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 
 import footerStyles from './Footer.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
 
 // TODO: These will likely come in from the CMS
 import ceaLogo from 'src/img/cea-logo.png';
@@ -56,7 +58,11 @@ const footer = () => {
 										href="#"
 										className="fls__link fls__link--alt"
 									>
-										&gt; Home
+										<FontAwesomeIcon
+											className="fls-post__subhero-icon"
+											icon={faAngleDoubleRight}
+										/>{' '}
+										<strong>Home</strong>
 									</a>
 								</li>
 								<li
@@ -66,7 +72,11 @@ const footer = () => {
 										href="#"
 										className="fls__link fls__link--alt"
 									>
-										&gt; Programs
+										<FontAwesomeIcon
+											className="fls-post__subhero-icon"
+											icon={faAngleDoubleRight}
+										/>{' '}
+										<strong>Programs</strong>
 									</a>
 								</li>
 								<li
@@ -76,7 +86,11 @@ const footer = () => {
 										href="#"
 										className="fls__link fls__link--alt"
 									>
-										&gt; Locations
+										<FontAwesomeIcon
+											className="fls-post__subhero-icon"
+											icon={faAngleDoubleRight}
+										/>{' '}
+										<strong>Locations</strong>
 									</a>
 								</li>
 								<li
@@ -86,7 +100,11 @@ const footer = () => {
 										href="#"
 										className="fls__link fls__link--alt"
 									>
-										&gt; BPPE Resources
+										<FontAwesomeIcon
+											className="fls-post__subhero-icon"
+											icon={faAngleDoubleRight}
+										/>{' '}
+										<strong>BPPE Resources</strong>
 									</a>
 								</li>
 								<li
@@ -96,7 +114,11 @@ const footer = () => {
 										href="#"
 										className="fls__link fls__link--alt"
 									>
-										&gt; FLS Level Correlations
+										<FontAwesomeIcon
+											className="fls-post__subhero-icon"
+											icon={faAngleDoubleRight}
+										/>{' '}
+										<strong>FLS Level Correlations</strong>
 									</a>
 								</li>
 								<li
@@ -106,7 +128,11 @@ const footer = () => {
 										href="#"
 										className="fls__link fls__link--alt"
 									>
-										&gt; Academic Calendar
+										<FontAwesomeIcon
+											className="fls-post__subhero-icon"
+											icon={faAngleDoubleRight}
+										/>{' '}
+										<strong>Academic Calendar</strong>
 									</a>
 								</li>
 							</ul>
@@ -149,6 +175,7 @@ const footer = () => {
 								<a
 									href="https://akingdebased.github.io/"
 									target="_blank"
+									className="fls__link fls__link--alt"
 								>
 									Gabriel Gonzalvez
 								</a>

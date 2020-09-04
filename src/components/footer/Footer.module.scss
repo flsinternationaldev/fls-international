@@ -1,3 +1,9 @@
+// TODO: Should go in a 'variables' file
+$fls-red: #e63946;
+$fls-light-blue: #a8dadc;
+$fls-dark-blue: #457b9d;
+$fls-grey: #f1faee;
+
 /* Footer */
 .footer__main {
 	background-color: #012846;
@@ -6,15 +12,16 @@
 .footer__title {
 	font-size: 1.225rem;
 	font-weight: 600;
-	color: #fff;
+	color: $fls-grey;
 	margin-bottom: 12px;
 }
 
 .footer__legal {
-	background-color: #001531 !important;
+	background-color: $fls-dark-blue !important;
 	font-size: 14px;
 	padding-top: 1.5rem;
 	padding-bottom: 1.5rem !important;
+	color: $fls-grey;
 }
 
 .footer__item {
@@ -37,7 +44,7 @@
 	font-size: 1.15rem;
 	font-weight: 700;
 	color: #012846;
-	background-color: #fec910;
+	background-color: $fls-light-blue;
 	right: 270px;
 	top: -7px;
 	z-index: 2;
@@ -53,7 +60,7 @@
 		z-index: 0;
 		transition: all 0.02s ease-out;
 		transform: translateY(-50%);
-		border-left: 10px solid #a77e00;
+		border-left: 10px solid $fls-light-blue;
 		border-top: 7px solid transparent;
 		border-bottom: 0;
 	}
@@ -66,7 +73,7 @@
 		z-index: 0;
 		transition: all 0.2s ease-out;
 		transform: translateY(-50%);
-		border-right: 10px solid #a77e00;
+		border-right: 10px solid $fls-light-blue;
 		border-top: 7px solid transparent;
 		border-bottom: 0;
 	}

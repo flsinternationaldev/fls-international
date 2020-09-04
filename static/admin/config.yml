@@ -480,3 +480,32 @@ collections:
                 name: 'sample-calendar',
                 widget: 'file',
             }
+    - name: 'program-card'
+      label: 'Program Card'
+      create: true
+      folder: 'src/netlify-content/program-card'
+      identifier_field: name
+      fields:
+          - {
+                label: 'Path',
+                name: 'path',
+                widget: 'string',
+                hint: 'The URL this card will link to. Should be all lower case, and uses dashes instead of spaces, e.g.locations/path-name-here.',
+            }
+          - { label: 'Name', name: 'name', widget: 'string' }
+          - {
+                label: 'Short description',
+                name: 'short-description',
+                widget: 'string',
+                hint: 'For better display, this should be between 2 and 5 sentences.',
+            }
+          - {
+                label: 'Lessons per week',
+                name: 'lessons-per-week',
+                widget: 'number',
+            }
+          - {
+                label: 'Hours per week',
+                name: 'hours-per-week',
+                widget: 'number',
+            }
