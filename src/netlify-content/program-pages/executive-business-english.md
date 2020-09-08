@@ -1,5 +1,7 @@
 ---
 path: executive-business-english
+page-name: Executive Business English
+page_name: Executive Business English
 name: Executive Business English
 hero-image: /assets/executive-business-english.jpeg
 program-details:

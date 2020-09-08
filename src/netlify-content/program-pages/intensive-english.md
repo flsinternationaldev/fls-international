@@ -1,28 +1,27 @@
 ---
-path: vacation-english
-name: Vacation English
-hero-image: /assets/university-tours-1.jpeg
+path: intensive-english
+page-name: Intensive English
+page_name: Intensive English
+name: Intensive English
+hero-image: /assets/intensive-english.jpeg
 program-details:
-  lessons-per-week: 18
-  hours-per-week: 15
+  lessons-per-week: 30
+  hours-per-week: 25
   minutes-per-lesson: 50
 program-post-content: >-
-  Our Vacation English Program offers basic instruction in the fundamental
-  skills of English in a relaxed context.
+  Our most popular program, the Intensive English Program includes 30 lessons of
+  instruction per week from qualified, native-speaking teachers.
 
 
-  Students in this program will develop their fluency while enjoying plenty of time to explore the rich cultural offerings and entertainment attractions available near our language schools.
+  The Intensive English Program is a comprehensive approach to studying English. You'll have the advantage of three different classes: an integrated Core Class at one of 18 FLS levels, a focused elective class covering a specific skill or topic and an Academic Workshop to round out your school day.
 
 
   Our program places an exceptional emphasis on speaking. Students practice speaking skills frequently in class, receiving regular guidance and correction from their instructor.
-
-
-  (Please note that students on an F-1 visa are not eligible to take the Vacation English Program.)
 program-features-content: >-
-  ## Program Features
+  ## PROGRAM FEATURES
 
 
-  All Vacation English Program students enjoy these exceptional features:
+  All Intensive English Program students enjoy these exceptional features:
 
 
   * Eighteen levels of study from low beginner to high advanced.
@@ -30,6 +29,10 @@ program-features-content: >-
   * Small class sizes of 15 or less, guaranteeing individual attention from your teacher.
 
   * Core Class emphasizing the four key language skills: speaking, listening, reading and writing
+
+  * An Elective Class devoted to a specific topic or skill, such as Slang, Business English, American Culture, Public Speaking, Grammar, or Composition.
+
+  * Lab-style Academic Workshop offering a range of academic options each week, including Pronunciation Clinics, Conversation Clubs, Homework Labs, Computer Labs, and more.
 
   * Our exclusive English Everywhere program with weekly Hot Sheets, involving your host family, activity guides and FLS staff in your learning process.
 

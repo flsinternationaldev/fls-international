@@ -59,29 +59,36 @@ module.exports = {
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
-				path: `${__dirname}/src/netlify-content/location-page`,
-				name: 'location-page',
+				path: `${__dirname}/src/netlify-content/location-pages`,
+				name: 'location-pages',
 			},
 		},
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
-				path: `${__dirname}/src/netlify-content/program-page`,
-				name: 'location-page',
+				path: `${__dirname}/src/netlify-content/program-pages`,
+				name: 'program-pages',
 			},
 		},
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
-				path: `${__dirname}/src/netlify-content/speciality-tour-page`,
-				name: 'location-page',
+				path: `${__dirname}/src/netlify-content/speciality-tour-pages`,
+				name: 'speciality-tour-pages',
 			},
 		},
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
-				path: `${__dirname}/src/netlify-content/program-card`,
-				name: 'location-page',
+				path: `${__dirname}/src/netlify-content/program-cards`,
+				name: 'program-cards',
+			},
+		},
+		{
+			resolve: 'gatsby-source-filesystem',
+			options: {
+				path: `${__dirname}/src/netlify-content/navbar-items`,
+				name: 'navbar-items',
 			},
 		},
 		`gatsby-transformer-remark`,

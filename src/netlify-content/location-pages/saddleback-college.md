@@ -1,5 +1,6 @@
 ---
-path: saddleback-university-local
+path: orange-county
+page-name: Orange County
 name: Saddleback College
 quick-facts:
   - name: Campus Facilities

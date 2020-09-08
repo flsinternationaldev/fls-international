@@ -1,5 +1,7 @@
 ---
 path: general-english
+page-name: General English
+page_name: General English
 name: General English
 hero-image: /assets/general-english.jpeg
 program-details:

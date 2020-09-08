@@ -11,7 +11,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 			{
 				allMarkdownRemark(
 					limit: 1000
-					filter: { fileAbsolutePath: { regex: "/location-page//" } }
+					filter: { fileAbsolutePath: { regex: "/location-pages//" } }
 				) {
 					edges {
 						node {
@@ -51,7 +51,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 			{
 				allMarkdownRemark(
 					limit: 1000
-					filter: { fileAbsolutePath: { regex: "/program-page//" } }
+					filter: { fileAbsolutePath: { regex: "/program-pages//" } }
 				) {
 					edges {
 						node {
@@ -68,7 +68,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	const programPageTemplate = path.resolve(`src/components/ProgramPage.js`);
 
 	programs.data.allMarkdownRemark.edges.forEach(({ node }) => {
-		const pagePath = `programs/on-site/${node.frontmatter.path}`;
+		const pagePath = `programs/in-person/${node.frontmatter.path}`;
 
 		createPage({
 			path: pagePath,
@@ -87,7 +87,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 				allMarkdownRemark(
 					limit: 1000
 					filter: {
-						fileAbsolutePath: { regex: "/speciality-tour-page//" }
+						fileAbsolutePath: { regex: "/speciality-tour-pages//" }
 					}
 				) {
 					edges {

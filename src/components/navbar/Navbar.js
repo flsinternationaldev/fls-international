@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'gatsby';
+import { Link, useStaticQuery } from 'gatsby';
 
 import navbarStyles from './Navbar.module.scss';
 import flsLogo from 'src/img/fls-international-logo.png';
@@ -7,6 +7,33 @@ import flsLogo from 'src/img/fls-international-logo.png';
 import NavbarDropdownContainer from 'src/components/navbar/NavbarDropdownContainer';
 
 export default function Navbar(props) {
+	const data = useStaticQuery(graphql`
+		{
+			allMarkdownRemark(
+				limit: 1000
+				filter: { fileAbsolutePath: { regex: "/navbar-items//" } }
+			) {
+				edges {
+					node {
+						frontmatter {
+							path
+							page_name
+							links {
+								collection_name
+								page_name
+								path
+							}
+						}
+					}
+				}
+			}
+		}
+	`);
+
+	const mainNavItems = data.allMarkdownRemark.edges.map(
+		edge => edge.node.frontmatter
+	);
+
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [programsNavItems, setProgramsNavItems] = useState([
 		{
@@ -76,35 +103,33 @@ export default function Navbar(props) {
 							${props.isHome ? navbarStyles.tabsHome : ''} 
 							${isScrolled ? navbarStyles.tabsScrolled : navbarStyles.tabsFls}`}
 						>
-							<Link to="/">Home</Link>
-
-							<NavbarDropdownContainer
-								title={'Programs'}
-								items={programsNavItems}
-								parentEl={navParentEl}
-							></NavbarDropdownContainer>
-
-							{/* <NavbarDropdownContainer
-								title={'Locations'}
-								items={[
-									{ name: 'Orange County' },
-									{ name: 'Los Angeles' },
-									{ name: 'Philadelphia' },
-									{ name: 'New York City' },
-									{ name: 'Haven' },
-									{ name: 'Val Royeaux' },
-								]}
-								parentEl={navParentEl}
-							></NavbarDropdownContainer> */}
-
+							{mainNavItems.map(mainNavItem => {
+								if (mainNavItem.links) {
+									return (
+										<NavbarDropdownContainer
+											title={mainNavItem.page_name}
+											items={mainNavItem.links}
+											rootNavPath={mainNavItem.path}
+											parentEl={navParentEl}
+										></NavbarDropdownContainer>
+									);
+								} else {
+									return (
+										<Link to={`/${mainNavItem.path}`}>
+											{mainNavItem.page_name}
+										</Link>
+									);
+								}
+							})}
+							{/* 
 							<Link to="/application">Application</Link>
 
 							<Link to="/application">Testimonials</Link>
 
-							<Link to="/about-us">About Us</Link>
+							<Link to="/about-us">About Us</Link> */}
 						</div>
 
-						<div
+						{/* <div
 							className={`tabs is-right 							
 							${navbarStyles.tabsFls} 
 							${props.isHome ? navbarStyles.tabsHome : ''} 
@@ -117,7 +142,7 @@ export default function Navbar(props) {
 
 								<Link to="/login">Login</Link>
 							</div>
-						</div>
+						</div> */}
 					</div>
 				</div>
 			</div>

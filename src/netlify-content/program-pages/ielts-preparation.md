@@ -1,5 +1,7 @@
 ---
 path: ielts-preparation
+page-name: IELTS Preparation
+page_name: IELTS Preparation
 name: IELTS Preparation
 hero-image: /assets/ielts-preparation.jpeg
 program-details:

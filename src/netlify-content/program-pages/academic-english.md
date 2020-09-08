@@ -1,25 +1,27 @@
 ---
-path: intensive-english
-name: Intensive English
-hero-image: /assets/intensive-english.jpeg
+path: academic-english
+page_name: Academic English
+page-name: Academic English
+name: Academic English
+hero-image: /assets/academic-english.jpeg
 program-details:
-  lessons-per-week: 30
-  hours-per-week: 25
+  lessons-per-week: 36
+  hours-per-week: 30
   minutes-per-lesson: 50
 program-post-content: >-
-  Our most popular program, the Intensive English Program includes 30 lessons of
-  instruction per week from qualified, native-speaking teachers.
+  Our high-powered Academic English program offers the fastest way to develop
+  your English.
 
 
-  The Intensive English Program is a comprehensive approach to studying English. You'll have the advantage of three different classes: an integrated Core Class at one of 18 FLS levels, a focused elective class covering a specific skill or topic and an Academic Workshop to round out your school day.
+  The Academic English Program features six hours a day of quality language instruction, including a core class, your choice of two electives or one premium test preparation class, and a daily academic workshop. Designed for students who plan to transfer to an American college or university, the program is suitable for any student interested in gaining English fluency as quickly as possible.
 
 
   Our program places an exceptional emphasis on speaking. Students practice speaking skills frequently in class, receiving regular guidance and correction from their instructor.
 program-features-content: >-
-  ## PROGRAM FEATURES
+  PROGRAM FEATURES
 
 
-  All Intensive English Program students enjoy these exceptional features:
+  All Academic English students enjoy these exceptional features:
 
 
   * Eighteen levels of study from low beginner to high advanced.
@@ -28,7 +30,7 @@ program-features-content: >-
 
   * Core Class emphasizing the four key language skills: speaking, listening, reading and writing
 
-  * An Elective Class devoted to a specific topic or skill, such as Slang, Business English, American Culture, Public Speaking, Grammar, or Composition.
+  * Two Elective Classes devoted to a specific topic or skill, such as Slang, Business English, American Culture, Public Speaking, Grammar, or Composition. Or take one of our premium Test Preparation classes to prepare for the TOEFL, SAT, or IELTS.
 
   * Lab-style Academic Workshop offering a range of academic options each week, including Pronunciation Clinics, Conversation Clubs, Homework Labs, Computer Labs, and more.
 

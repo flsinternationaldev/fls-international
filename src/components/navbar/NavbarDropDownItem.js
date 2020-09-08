@@ -1,11 +1,38 @@
 import React, { useRef, useState } from 'react';
-import { Link } from 'gatsby';
+import { Link, useStaticQuery } from 'gatsby';
 
 import NavbarDropdown from 'src/components/navbar/NavbarDropdown';
 
 import navbarStyles from 'src/components/navbar/Navbar.module.scss';
 
-export default function NavbarDropdownItem({ dropdownItem }) {
+export default function NavbarDropdownItem({ dropdownItem, rootNavPath }) {
+	const data = useStaticQuery(graphql`
+		{
+			allMarkdownRemark(
+				limit: 1000
+				filter: { fileAbsolutePath: { regex: "/pages//" } }
+			) {
+				edges {
+					node {
+						frontmatter {
+							path
+							page_name
+						}
+						fileAbsolutePath
+					}
+				}
+			}
+		}
+	`);
+
+	const sublinks = data.allMarkdownRemark.edges
+		.filter(edge => {
+			return edge.node.fileAbsolutePath.includes(
+				dropdownItem.collection_name
+			);
+		})
+		.map(sublink => sublink.node.frontmatter);
+
 	const dropdownItemEl = useRef(null);
 
 	const [isHovering, setIsHovering] = useState(false);
@@ -14,12 +41,12 @@ export default function NavbarDropdownItem({ dropdownItem }) {
 
 	let renderedDropdownItem;
 
-	if (dropdownItem.items) {
+	if (dropdownItem.collection_name && sublinks.length) {
 		renderedDropdownItem = (
 			<div
 				className={`${navbarStyles.flsNav__dropdownItem}`}
 				ref={dropdownItemEl}
-				key={dropdownItem.name}
+				key={dropdownItem.page_name}
 				onMouseEnter={() => {
 					let newDropdownPos = {};
 
@@ -37,16 +64,16 @@ export default function NavbarDropdownItem({ dropdownItem }) {
 					setIsHovering(false);
 				}}
 			>
-				{/* TODO: Should, obviously, be links */}
-				{/* <Link to="/programs-speciality-tours"> */}
-				{dropdownItem.name}
-				{/* </Link> */}
+				<Link to={`/${rootNavPath}/${dropdownItem.path}`}>
+					{dropdownItem.page_name}
+				</Link>
 
 				<NavbarDropdown
-					items={dropdownItem.items}
+					items={sublinks}
 					dropdownPos={dropdownPos}
 					dropdownWidth={dropdownWidth}
 					isHovering={isHovering}
+					rootNavPath={`${rootNavPath}/${dropdownItem.path}`}
 				/>
 			</div>
 		);
@@ -54,11 +81,11 @@ export default function NavbarDropdownItem({ dropdownItem }) {
 		renderedDropdownItem = (
 			<div
 				className={`${navbarStyles.flsNav__dropdownItem}`}
-				key={dropdownItem.name}
+				key={dropdownItem.page_name}
 			>
-				{/* TODO: Should, obviously, be links */}
-				{/* <Link to="/programs-speciality-tours"> */}
-				{dropdownItem.name}
+				<Link to={`/${rootNavPath}/${dropdownItem.path}`}>
+					{dropdownItem.page_name}
+				</Link>
 			</div>
 		);
 	}

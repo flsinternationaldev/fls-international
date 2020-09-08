@@ -112,7 +112,7 @@ const LocationPage = ({ pageContext }) => {
 		{
 			allMarkdownRemark(
 				limit: 1000
-				filter: { fileAbsolutePath: { regex: "/location-page//" } }
+				filter: { fileAbsolutePath: { regex: "/location-pages//" } }
 			) {
 				edges {
 					node {

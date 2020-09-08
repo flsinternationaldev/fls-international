@@ -9,6 +9,7 @@ export default function NavbarDropdown({
 	isHovering,
 	dropdownPos,
 	dropdownWidth,
+	rootNavPath,
 	items = [],
 }) {
 	return (
@@ -18,11 +19,15 @@ export default function NavbarDropdown({
 			}`}
 			style={{
 				...dropdownPos,
-				width: dropdownWidth,
+				'min-width': dropdownWidth,
 			}}
 		>
 			{items.map(dropdownItem => (
-				<NavbarDropdownItem dropdownItem={dropdownItem} />
+				<NavbarDropdownItem
+					rootNavPath={rootNavPath}
+					dropdownItem={dropdownItem}
+					key={rootNavPath}
+				/>
 			))}
 		</div>
 	);

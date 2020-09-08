@@ -1,5 +1,7 @@
 ---
 path: toefl-preparation
+page-name: TOEFL Preparation
+page_name: TOEFL Preparation
 name: TOEFL Preparation
 hero-image: /assets/toefl-preparation.jpeg
 program-details:

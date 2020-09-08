@@ -5,7 +5,12 @@ import navbarStyles from 'src/components/navbar/Navbar.module.scss';
 
 import NavbarDropdown from 'src/components/navbar/NavbarDropdown';
 
-export default function NavbarDropdownContainer({ title, items, parentEl }) {
+export default function NavbarDropdownContainer({
+	title,
+	items,
+	parentEl,
+	rootNavPath,
+}) {
 	const [isHoveringDropdown, setIsHoveringDropdown] = useState(false);
 	const [dropdownPos, setDropdownPos] = useState(0);
 	const [dropdownWidth, setDropdownWidth] = useState(0);
@@ -32,13 +37,15 @@ export default function NavbarDropdownContainer({ title, items, parentEl }) {
 			ref={dropdownContainerEl}
 		>
 			{/* TODO: Needs to be a dynamic link */}
-			<Link to="/programs-speciality-tours">{title}</Link>
+			<Link to={`/${rootNavPath}`}>{title}</Link>
 
 			<NavbarDropdown
 				isHovering={isHoveringDropdown}
 				dropdownPos={dropdownPos}
 				dropdownWidth={dropdownWidth}
 				items={items}
+				rootNavPath={rootNavPath}
+				key={rootNavPath}
 			/>
 		</div>
 	);

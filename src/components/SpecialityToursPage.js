@@ -223,7 +223,7 @@ const SpecialityTourPage = ({ pageContext }) => {
 			allMarkdownRemark(
 				limit: 1000
 				filter: {
-					fileAbsolutePath: { regex: "/speciality-tour-page//" }
+					fileAbsolutePath: { regex: "/speciality-tour-pages//" }
 				}
 			) {
 				edges {

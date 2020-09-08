@@ -91,7 +91,7 @@ const ProgramPage = ({ pageContext }) => {
 		{
 			allMarkdownRemark(
 				limit: 1000
-				filter: { fileAbsolutePath: { regex: "/program-page//" } }
+				filter: { fileAbsolutePath: { regex: "/program-pages//" } }
 			) {
 				edges {
 					node {
