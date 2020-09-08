@@ -514,3 +514,71 @@ collections:
                 name: 'hours-per-week',
                 widget: 'number',
             }
+    - name: 'navbar-item'
+      label: 'Navbar Items'
+      create: true
+      folder: 'src/netlify-content/navbar-items'
+      identifier_field: name
+      label_singular: 'navbar item'
+      fields:
+          - {
+                label: 'Path',
+                name: 'path',
+                widget: 'string',
+                hint: 'The URL the navbar item will go to. Should be all lowercase & use dashes in place of spaces, e.g. program-pages',
+            }
+          - { label: 'Page Name', name: 'page_name', widget: 'string' }
+          - {
+                label: 'Links collection Name',
+                name: 'collection-name',
+                widget: 'string',
+                required: false,
+                hint: 'If provided, the site will try and pull all the names & URLs from each entry of a particular collection. e.g. for "program-pages", the site will dynamically pull in the URLs & names for all entries in the Program Pages collection',
+            }
+          - {
+                label: 'Links',
+                name: 'links',
+                widget: 'list',
+                required: false,
+                fields:
+                    [
+                        {
+                            label: 'Path',
+                            name: 'path',
+                            hint: 'The URL the navbar item link will go to. Should be all lowercase & use dashes in place of spaces, e.g. program-pages',
+                            widget: 'string',
+                        },
+                        {
+                            label: 'Page Name',
+                            name: 'page-name',
+                            widget: 'string',
+                        },
+                        {
+                            label: 'Collection Name',
+                            name: 'collection-name',
+                            widget: 'string',
+                            required: false,
+                            hint: 'If provided, the site will try and pull all the names & URLs from each entry of a particular collection. e.g. for "program-pages", the site will dynamically pull in the URLs & names for all entries in the Program Pages collection',
+                        },
+                        {
+                            label: 'Sublinks',
+                            name: 'links',
+                            widget: 'list',
+                            required: false,
+                            fields:
+                                [
+                                    {
+                                        label: 'Path',
+                                        name: 'path',
+                                        widget: 'string',
+                                    },
+                                    {
+                                        label: 'Page Name',
+                                        name: 'page_name',
+                                        widget: 'string',
+                                        required: false,
+                                    },
+                                ],
+                        },
+                    ],
+            }

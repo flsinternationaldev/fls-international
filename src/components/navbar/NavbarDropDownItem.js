@@ -7,7 +7,10 @@ import navbarStyles from 'src/components/navbar/Navbar.module.scss';
 
 export default function NavbarDropdownItem({ dropdownItem }) {
 	const dropdownItemEl = useRef(null);
-	const [isHoveringSubItem, setIsHoveringSubItem] = useState(false);
+
+	const [isHovering, setIsHovering] = useState(false);
+	const [dropdownWidth, setDropdownWidth] = useState(0);
+	const [dropdownPos, setDropdownPos] = useState(0);
 
 	let renderedDropdownItem;
 
@@ -15,7 +18,24 @@ export default function NavbarDropdownItem({ dropdownItem }) {
 		renderedDropdownItem = (
 			<div
 				className={`${navbarStyles.flsNav__dropdownItem}`}
+				ref={dropdownItemEl}
 				key={dropdownItem.name}
+				onMouseEnter={() => {
+					let newDropdownPos = {};
+
+					newDropdownPos.left =
+						dropdownItemEl.current.getBoundingClientRect().left +
+						dropdownItemEl.current.offsetWidth;
+
+					newDropdownPos.top = dropdownItemEl.current.getBoundingClientRect().top;
+
+					setDropdownWidth(dropdownItemEl.current.offsetWidth);
+					setDropdownPos(newDropdownPos);
+					setIsHovering(true);
+				}}
+				onMouseLeave={() => {
+					setIsHovering(false);
+				}}
 			>
 				{/* TODO: Should, obviously, be links */}
 				{/* <Link to="/programs-speciality-tours"> */}
@@ -23,11 +43,10 @@ export default function NavbarDropdownItem({ dropdownItem }) {
 				{/* </Link> */}
 
 				<NavbarDropdown
-					title={dropdownItem.title}
-					parentEl={dropdownItemEl}
 					items={dropdownItem.items}
-					isSubMenu={true}
-					isHovering={isHoveringSubItem}
+					dropdownPos={dropdownPos}
+					dropdownWidth={dropdownWidth}
+					isHovering={isHovering}
 				/>
 			</div>
 		);

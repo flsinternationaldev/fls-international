@@ -5,12 +5,7 @@ import navbarStyles from 'src/components/navbar/Navbar.module.scss';
 
 import NavbarDropdown from 'src/components/navbar/NavbarDropdown';
 
-export default function NavbarDropdownContainer({
-	title,
-	items,
-	parentEl,
-	isSubMenu,
-}) {
+export default function NavbarDropdownContainer({ title, items, parentEl }) {
 	const [isHoveringDropdown, setIsHoveringDropdown] = useState(false);
 	const [dropdownPos, setDropdownPos] = useState(0);
 	const [dropdownWidth, setDropdownWidth] = useState(0);
@@ -22,12 +17,6 @@ export default function NavbarDropdownContainer({
 			className={navbarStyles.navbar__navItem}
 			onMouseEnter={() => {
 				let newDropdownPos = {};
-
-				if (isSubMenu) {
-					newDropdownPos.left =
-						parentEl.current.getBoundingClientRect().left +
-						parentEl.current.offsetWidth;
-				}
 
 				newDropdownPos.top =
 					parentEl.current.getBoundingClientRect().top +
