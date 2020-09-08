@@ -17,13 +17,19 @@ $fls-light-blue: #a8dadc;
 	background-color: rgba(230, 57, 70, 0.5) !important;
 	transition: background-color 0.3s;
 
-	ul {
-		border-bottom: none !important;
-	}
-
-	li {
+	.navbar__item-container {
 		height: 100%;
 		display: flex !important;
+	}
+
+	.navbar__nav-item {
+		display: block;
+		height: 100%;
+
+		a {
+			height: 100% !important;
+			border-bottom: $fls-dark-blue;
+		}
 	}
 }
 
@@ -43,6 +49,7 @@ $fls-light-blue: #a8dadc;
 	a:hover {
 		color: black !important;
 		background-color: $fls-light-blue !important;
+		border-bottom: $fls-light-blue !important;
 	}
 }
 
@@ -62,16 +69,10 @@ $fls-light-blue: #a8dadc;
 	}
 }
 
-.fls-nav__dropdown-container {
-	position: relative;
-}
-
 .fls-nav__dropdown {
-	position: absolute;
+	position: fixed;
 	width: 100%;
 	background-color: $fls-dark-blue;
-	// TODO: Not a very robust solution for positioning the dropdown
-	bottom: -113px;
 	text-align: center;
 }
 

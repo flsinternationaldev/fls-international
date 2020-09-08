@@ -1,33 +1,33 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'gatsby';
 
-import navbarStyles from './Navbar.module.scss';
+import navbarStyles from 'src/components/navbar/Navbar.module.scss';
 
-export default function NavbarDropdown({ title, items }) {
-	const [isHoveringDropdown, setIsHoveringDropdown] = useState(false);
+// import NavbarDropdownItem from 'src/components/navbar/NavbarDropdown';
 
+import NavbarDropdownItem from 'src/components/navbar/NavbarDropdownItem';
+
+export default function NavbarDropdown({
+	isHovering,
+	dropdownPos,
+	dropdownWidth,
+	items,
+}) {
 	return (
-		<li
-			onMouseEnter={() => setIsHoveringDropdown(true)}
-			onMouseLeave={() => setIsHoveringDropdown(false)}
-			className={navbarStyles.flsNav__dropdownContainer}
+		<div
+			className={`${navbarStyles.flsNav__dropdown} ${
+				isHovering ? 'fls__show' : 'fls__hide'
+			}`}
+			style={{
+				...dropdownPos,
+				width: dropdownWidth,
+			}}
 		>
-			<Link to="/programs-speciality-tours">{title}</Link>
-
-			<div
-				className={`${navbarStyles.flsNav__dropdown} ${
-					isHoveringDropdown ? 'fls__show' : 'fls__hide'
-				}`}
-			>
-				{items.map(dropdownItem => (
-					<div className={`${navbarStyles.flsNav__dropdownItem}`}>
-						{/* TODO: Should, obviously, be links */}
-						{/* <Link to="/programs-speciality-tours"> */}
-						{dropdownItem.name}
-						{/* </Link> */}
-					</div>
-				))}
-			</div>
-		</li>
+			{items.map(dropdownItem => (
+				// <div key={dropdownItem.name}>{dropdownItem.name}</div>
+				// <NavbarDropdownItem></NavbarDropdownItem>
+				<NavbarDropdownItem dropdownItem={dropdownItem} />
+			))}
+		</div>
 	);
 }

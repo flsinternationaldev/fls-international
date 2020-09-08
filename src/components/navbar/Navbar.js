@@ -1,13 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'gatsby';
 
 import navbarStyles from './Navbar.module.scss';
 import flsLogo from 'src/img/fls-international-logo.png';
 
-import NavbarDropdown from 'src/components/navbar/NavbarDropdown';
+import NavbarDropdownContainer from 'src/components/navbar/NavbarDropdownContainer';
 
 export default function Navbar(props) {
 	const [isScrolled, setIsScrolled] = useState(false);
+	const [programsNavItems, setProgramsNavItems] = useState([
+		{
+			name: 'On-Site',
+			items: [{ name: 'General English' }, { name: 'Vaction English' }],
+		},
+		{ name: 'Online' },
+		{ name: 'Speciality Tours' },
+	]);
+
+	const navParentEl = useRef(null);
 
 	// This React Hook allows us to set an event handler when the component mounts,
 	// then remove it when the component is unmounted
@@ -36,6 +46,7 @@ export default function Navbar(props) {
 			className={`navbar is-fixed-top ${navbarStyles.navbarFls} ${
 				navbarStyles.navbarHome
 			} ${isScrolled ? navbarStyles.navbarScrolled : ''}`}
+			ref={navParentEl}
 		>
 			<div className="container">
 				<div className="navbar-brand">
@@ -65,36 +76,32 @@ export default function Navbar(props) {
 							${props.isHome ? navbarStyles.tabsHome : ''} 
 							${isScrolled ? navbarStyles.tabsScrolled : navbarStyles.tabsFls}`}
 						>
-							<ul>
-								<li>
-									<a href="">Home</a>
-								</li>
-								<NavbarDropdown
-									title={'Programs'}
-									items={[
-										{ name: 'On-Site' },
-										{ name: 'Online' },
-										{ name: 'Speciality Tours' },
-									]}
-								></NavbarDropdown>
-								<NavbarDropdown
-									title={'Locations'}
-									items={[
-										{ name: 'Orange County' },
-										{ name: 'Los Angeles' },
-										{ name: 'Boston' },
-									]}
-								></NavbarDropdown>
-								<li>
-									<Link to="/application">Application</Link>
-								</li>
-								<li>
-									<Link to="/application">Testimonials</Link>
-								</li>
-								<li>
-									<Link to="/about-us">About Us</Link>
-								</li>
-							</ul>
+							<Link to="/">Home</Link>
+
+							<NavbarDropdownContainer
+								title={'Programs'}
+								items={programsNavItems}
+								parentEl={navParentEl}
+							></NavbarDropdownContainer>
+
+							{/* <NavbarDropdownContainer
+								title={'Locations'}
+								items={[
+									{ name: 'Orange County' },
+									{ name: 'Los Angeles' },
+									{ name: 'Philadelphia' },
+									{ name: 'New York City' },
+									{ name: 'Haven' },
+									{ name: 'Val Royeaux' },
+								]}
+								parentEl={navParentEl}
+							></NavbarDropdownContainer> */}
+
+							<Link to="/application">Application</Link>
+
+							<Link to="/application">Testimonials</Link>
+
+							<Link to="/about-us">About Us</Link>
 						</div>
 
 						<div
@@ -103,17 +110,13 @@ export default function Navbar(props) {
 							${props.isHome ? navbarStyles.tabsHome : ''} 
 							${isScrolled ? navbarStyles.tabsScrolled : navbarStyles.tabsFls}`}
 						>
-							<ul>
-								<li>
-									<Link to="/contact">Contact</Link>
-								</li>
-								<li>
-									<Link to="/downloads">Downloads</Link>
-								</li>
-								<li>
-									<Link to="/login">Login</Link>
-								</li>
-							</ul>
+							<div>
+								<Link to="/contact">Contact</Link>
+
+								<Link to="/downloads">Downloads</Link>
+
+								<Link to="/login">Login</Link>
+							</div>
 						</div>
 					</div>
 				</div>
