@@ -3,19 +3,13 @@ $fls-grey: #f1faee;
 $fls-dark-blue: #457b9d;
 $fls-light-blue: #a8dadc;
 
-// TODO: Currently a very small weird white border on the bottom of the nav
-.navbar__head-copy {
-	color: white;
-	font-size: 24px;
-}
-
 .navbar__logo {
 	max-height: 5rem !important;
 }
 
 .navbar--fls {
-	background-color: rgba(230, 57, 70, 0.5) !important;
-	transition: background-color 0.3s;
+	background-color: $fls-dark-blue !important;
+	transition: all 0.3s ease 0s;
 
 	.navbar__item-container {
 		height: 100%;
@@ -23,44 +17,38 @@ $fls-light-blue: #a8dadc;
 	}
 
 	.navbar__nav-item {
-		display: block;
+		display: flex;
+		align-items: center;
 		height: 100%;
+		text-transform: uppercase;
+		font-weight: 500;
+		color: $fls-light-blue;
+		padding: 10px;
+
+		&:hover {
+			background-color: $fls-light-blue;
+			color: black !important;
+		}
 
 		a {
 			height: 100% !important;
 			border-bottom: $fls-dark-blue;
+
+			&:hover {
+				color: black !important;
+			}
 		}
 	}
 }
 
-.tabs--fls {
-	margin-bottom: 0 !important;
-	overflow: visible !important;
-
-	a {
-		color: $fls-light-blue !important;
-		border-bottom: none;
-		text-transform: uppercase;
-		font-size: 14px;
-		font-weight: 500;
-		transition: all 0.3s ease 0s;
-	}
-
-	a:hover {
-		color: black !important;
-		background-color: $fls-light-blue !important;
-		border-bottom: $fls-light-blue !important;
-	}
-}
-
-.navbar--scrolled {
-	background-color: $fls-dark-blue !important;
-}
-
-.tabs--scrolled {
-	a {
-		color: $fls-light-blue !important;
-	}
+.fls-nav__content {
+	align-items: stretch;
+	display: flex;
+	font-size: 1rem;
+	justify-content: space-between;
+	overflow: hidden;
+	overflow-x: auto;
+	white-space: nowrap;
 }
 
 .fls-nav__dropdown {
@@ -77,20 +65,10 @@ $fls-light-blue: #a8dadc;
 	width: 100%;
 	color: $fls-light-blue !important;
 	cursor: pointer;
-	transition: all 0.3s ease;
+	transition: all 0.3s ease 0s;
 
-	a {
-		font-size: 12px !important;
-	}
-}
-
-// TODO: Figure out weirdness with hover styles
-.fls-nav__dropdown-item--active {
 	&:hover {
 		background-color: $fls-light-blue;
-
-		a {
-			color: black !important;
-		}
+		color: black;
 	}
 }

@@ -1,5 +1,5 @@
 import React, { useState, useRef, Fragment } from 'react';
-import { Link } from 'gatsby';
+import { Link, useStaticQuery } from 'gatsby';
 
 import navbarStyles from 'src/components/navbar/Navbar.module.scss';
 
@@ -10,15 +10,47 @@ export default function NavbarDropdownContainer({
 	items,
 	parentEl,
 	rootNavPath,
+	mainNavItem,
 }) {
+	const data = useStaticQuery(graphql`
+		{
+			allMarkdownRemark(
+				limit: 1000
+				filter: { fileAbsolutePath: { regex: "/pages//" } }
+			) {
+				edges {
+					node {
+						frontmatter {
+							path
+							pageName
+						}
+						fileAbsolutePath
+					}
+				}
+			}
+		}
+	`);
+
+	if (mainNavItem.collectionName) {
+		items = data.allMarkdownRemark.edges
+			.filter(edge => {
+				return edge.node.fileAbsolutePath.includes(
+					mainNavItem.collectionName
+				);
+			})
+			.map(sublink => sublink.node.frontmatter);
+	}
+
 	const [isHoveringDropdown, setIsHoveringDropdown] = useState(false);
 	const [dropdownPos, setDropdownPos] = useState(0);
 	const [dropdownWidth, setDropdownWidth] = useState(0);
 
 	const dropdownContainerEl = useRef(null);
 
+	// TODO: Figure out why the dropdown is slightly offset
 	return (
-		<div
+		<Link
+			to={`/${rootNavPath}`}
 			className={navbarStyles.navbar__navItem}
 			onMouseEnter={() => {
 				let newDropdownPos = {};
@@ -36,8 +68,7 @@ export default function NavbarDropdownContainer({
 			}}
 			ref={dropdownContainerEl}
 		>
-			{/* TODO: Needs to be a dynamic link */}
-			<Link to={`/${rootNavPath}`}>{title}</Link>
+			<span>{title}</span>
 
 			<NavbarDropdown
 				isHovering={isHoveringDropdown}
@@ -47,6 +78,6 @@ export default function NavbarDropdownContainer({
 				rootNavPath={rootNavPath}
 				key={rootNavPath}
 			/>
-		</div>
+		</Link>
 	);
 }

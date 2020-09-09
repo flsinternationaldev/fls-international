@@ -17,10 +17,11 @@ export default function Navbar(props) {
 					node {
 						frontmatter {
 							path
-							page_name
+							pageName
+							collectionName
 							links {
-								collection_name
-								page_name
+								collectionName
+								pageName
 								path
 							}
 						}
@@ -35,14 +36,6 @@ export default function Navbar(props) {
 	);
 
 	const [isScrolled, setIsScrolled] = useState(false);
-	const [programsNavItems, setProgramsNavItems] = useState([
-		{
-			name: 'On-Site',
-			items: [{ name: 'General English' }, { name: 'Vaction English' }],
-		},
-		{ name: 'Online' },
-		{ name: 'Speciality Tours' },
-	]);
 
 	const navParentEl = useRef(null);
 
@@ -96,40 +89,38 @@ export default function Navbar(props) {
 				</div>
 
 				<div id="navbarMenu" className="navbar-menu">
-					<div className="navbar-start">
-						<div
-							className={`tabs is-left 
-							${navbarStyles.tabsFls} 
-							${props.isHome ? navbarStyles.tabsHome : ''} 
-							${isScrolled ? navbarStyles.tabsScrolled : navbarStyles.tabsFls}`}
-						>
-							{mainNavItems.map(mainNavItem => {
-								if (mainNavItem.links) {
-									return (
-										<NavbarDropdownContainer
-											title={mainNavItem.page_name}
-											items={mainNavItem.links}
-											rootNavPath={mainNavItem.path}
-											parentEl={navParentEl}
-										></NavbarDropdownContainer>
-									);
-								} else {
-									return (
-										<Link to={`/${mainNavItem.path}`}>
-											{mainNavItem.page_name}
-										</Link>
-									);
-								}
-							})}
-							{/* 
+					<div className={navbarStyles.flsNav__content}>
+						{mainNavItems.map(mainNavItem => {
+							if (
+								mainNavItem.links ||
+								mainNavItem.collectionName
+							) {
+								return (
+									<NavbarDropdownContainer
+										mainNavItem={mainNavItem}
+										title={mainNavItem.pageName}
+										items={mainNavItem.links}
+										rootNavPath={mainNavItem.path}
+										parentEl={navParentEl}
+									></NavbarDropdownContainer>
+								);
+							} else {
+								return (
+									<Link to={`/${mainNavItem.path}`}>
+										{mainNavItem.pageName}
+									</Link>
+								);
+							}
+						})}
+						{/* 
 							<Link to="/application">Application</Link>
 
 							<Link to="/application">Testimonials</Link>
 
 							<Link to="/about-us">About Us</Link> */}
-						</div>
+					</div>
 
-						{/* <div
+					{/* <div
 							className={`tabs is-right 							
 							${navbarStyles.tabsFls} 
 							${props.isHome ? navbarStyles.tabsHome : ''} 
@@ -143,7 +134,6 @@ export default function Navbar(props) {
 								<Link to="/login">Login</Link>
 							</div>
 						</div> */}
-					</div>
 				</div>
 			</div>
 		</nav>

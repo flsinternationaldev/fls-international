@@ -1,6 +1,6 @@
 ---
 path: locations
-page-name: Locations
-collection-name: location-pages
+pageName: Locations
+collectionName: location-pages
 links: []
 ---

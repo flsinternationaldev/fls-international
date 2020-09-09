@@ -318,7 +318,7 @@ collections:
       create: true
       folder: 'src/netlify-content/location-pages'
       identifier_field: name
-      label_singular: 'quick fact'
+      label_singular: 'location page'
       fields:
           - {
                 label: 'Path',
@@ -328,7 +328,7 @@ collections:
             }
           - {
                 label: 'Page Name',
-                name: 'page_name',
+                name: 'pageName',
                 widget: 'string',
                 hint: 'The main name, usually rendered at the top of the page. Should be similar to the path url.',
             }
@@ -380,7 +380,7 @@ collections:
             }
           - {
                 label: 'Page Name',
-                name: 'page_name',
+                name: 'pageName',
                 widget: 'string',
                 hint: 'The main name, usually rendered at the top of the page. Should be similar to the path url.',
             }
@@ -434,7 +434,7 @@ collections:
             }
           - {
                 label: 'Page Name',
-                name: 'page_name',
+                name: 'pageName',
                 widget: 'string',
                 hint: 'The main name, usually rendered at the top of the page. Should be similar to the path url.',
             }
@@ -539,7 +539,7 @@ collections:
       label: 'Navbar Items'
       create: true
       folder: 'src/netlify-content/navbar-items'
-      identifier_field: page-name
+      identifier_field: pageName
       label_singular: 'navbar item'
       fields:
           - {
@@ -548,10 +548,10 @@ collections:
                 widget: 'string',
                 hint: 'The URL the navbar item will go to. Should be all lowercase & use dashes in place of spaces, e.g. program-pages',
             }
-          - { label: 'Page Name', name: 'page-name', widget: 'string' }
+          - { label: 'Page Name', name: 'pageName', widget: 'string' }
           - {
                 label: 'Links collection Name',
-                name: 'collection-name',
+                name: 'collectionName',
                 widget: 'string',
                 required: false,
                 hint: 'If provided, the site will try and pull all the names & URLs from each entry of a particular collection. e.g. for "program-pages", the site will dynamically pull in the URLs & names for all entries in the Program Pages collection',
@@ -572,12 +572,12 @@ collections:
                         },
                         {
                             label: 'Page Name',
-                            name: 'page-name',
+                            name: 'pageName',
                             widget: 'string',
                         },
                         {
                             label: 'Collection Name',
-                            name: 'collection-name',
+                            name: 'collectionName',
                             widget: 'string',
                             required: false,
                             hint: 'If provided, the site will try and pull all the names & URLs from each entry of a particular collection. e.g. for "program-pages", the site will dynamically pull in the URLs & names for all entries in the Program Pages collection',
@@ -597,7 +597,7 @@ collections:
                                     },
                                     {
                                         label: 'Page Name',
-                                        name: 'page_name',
+                                        name: 'pageName',
                                         widget: 'string',
                                         required: false,
                                     },

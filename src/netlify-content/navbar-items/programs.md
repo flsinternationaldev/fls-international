@@ -1,9 +1,8 @@
 ---
 path: programs
-page_name: Programs
-page-name: Programs
+pageName: Programs
 links:
-  - path: in-person
-    page-name: In Person
-    collection-name: program-pages
+    - path: in-person
+      pageName: In Person
+      collectionName: program-pages
 ---

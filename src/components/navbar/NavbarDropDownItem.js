@@ -16,7 +16,7 @@ export default function NavbarDropdownItem({ dropdownItem, rootNavPath }) {
 					node {
 						frontmatter {
 							path
-							page_name
+							pageName
 						}
 						fileAbsolutePath
 					}
@@ -28,7 +28,7 @@ export default function NavbarDropdownItem({ dropdownItem, rootNavPath }) {
 	const sublinks = data.allMarkdownRemark.edges
 		.filter(edge => {
 			return edge.node.fileAbsolutePath.includes(
-				dropdownItem.collection_name
+				dropdownItem.collectionName
 			);
 		})
 		.map(sublink => sublink.node.frontmatter);
@@ -41,12 +41,13 @@ export default function NavbarDropdownItem({ dropdownItem, rootNavPath }) {
 
 	let renderedDropdownItem;
 
-	if (dropdownItem.collection_name && sublinks.length) {
+	if (dropdownItem.collectionName && sublinks.length) {
 		renderedDropdownItem = (
-			<div
+			<Link
+				to={`/${rootNavPath}/${dropdownItem.path}`}
 				className={`${navbarStyles.flsNav__dropdownItem}`}
 				ref={dropdownItemEl}
-				key={dropdownItem.page_name}
+				key={dropdownItem.pageName}
 				onMouseEnter={() => {
 					let newDropdownPos = {};
 
@@ -64,9 +65,7 @@ export default function NavbarDropdownItem({ dropdownItem, rootNavPath }) {
 					setIsHovering(false);
 				}}
 			>
-				<Link to={`/${rootNavPath}/${dropdownItem.path}`}>
-					{dropdownItem.page_name}
-				</Link>
+				<span>{dropdownItem.pageName}</span>
 
 				<NavbarDropdown
 					items={sublinks}
@@ -75,18 +74,17 @@ export default function NavbarDropdownItem({ dropdownItem, rootNavPath }) {
 					isHovering={isHovering}
 					rootNavPath={`${rootNavPath}/${dropdownItem.path}`}
 				/>
-			</div>
+			</Link>
 		);
 	} else {
 		renderedDropdownItem = (
-			<div
+			<Link
 				className={`${navbarStyles.flsNav__dropdownItem}`}
-				key={dropdownItem.page_name}
+				key={dropdownItem.pageName}
+				to={`/${rootNavPath}/${dropdownItem.path}`}
 			>
-				<Link to={`/${rootNavPath}/${dropdownItem.path}`}>
-					{dropdownItem.page_name}
-				</Link>
-			</div>
+				<span>{dropdownItem.pageName}</span>
+			</Link>
 		);
 	}
 
