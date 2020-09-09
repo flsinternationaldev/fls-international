@@ -19,6 +19,7 @@ export default function Navbar(props) {
 							path
 							pageName
 							collectionName
+							order
 							links {
 								collectionName
 								pageName
@@ -34,6 +35,8 @@ export default function Navbar(props) {
 	const mainNavItems = data.allMarkdownRemark.edges.map(
 		edge => edge.node.frontmatter
 	);
+
+	mainNavItems.sort((a, b) => a.order - b.order);
 
 	const [isScrolled, setIsScrolled] = useState(false);
 
@@ -106,7 +109,10 @@ export default function Navbar(props) {
 								);
 							} else {
 								return (
-									<Link to={`/${mainNavItem.path}`}>
+									<Link
+										to={`/${mainNavItem.path}`}
+										className={navbarStyles.navbar__navItem}
+									>
 										{mainNavItem.pageName}
 									</Link>
 								);

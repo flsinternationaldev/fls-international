@@ -45,10 +45,11 @@ $fls-light-blue: #a8dadc;
 	align-items: stretch;
 	display: flex;
 	font-size: 1rem;
-	justify-content: space-between;
 	overflow: hidden;
 	overflow-x: auto;
 	white-space: nowrap;
+	width: 100%;
+	justify-content: space-evenly;
 }
 
 .fls-nav__dropdown {

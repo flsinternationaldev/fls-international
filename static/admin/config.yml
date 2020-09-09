@@ -557,6 +557,12 @@ collections:
                 hint: 'If provided, the site will try and pull all the names & URLs from each entry of a particular collection. e.g. for "program-pages", the site will dynamically pull in the URLs & names for all entries in the Program Pages collection',
             }
           - {
+                label: 'Order',
+                name: 'order',
+                widget: 'number',
+                hint: 'The order this item will render in the navbar. The smaller the number, the closer to the left side of the navbar.',
+            }
+          - {
                 label: 'Links',
                 name: 'links',
                 widget: 'list',
