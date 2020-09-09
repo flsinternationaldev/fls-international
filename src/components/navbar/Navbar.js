@@ -71,7 +71,7 @@ export default function Navbar(props) {
 		>
 			<div className="container">
 				<div className="navbar-brand">
-					<a className="navbar-item" href="../">
+					<a className="navbar-item" href="/">
 						<img
 							className={navbarStyles.navbar__logo}
 							src={flsLogo}

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import createHistory from 'history/createHashHistory';
-import { graphql } from 'gatsby';
+import { graphql, useStaticQuery, navigate } from 'gatsby';
 
 import 'src/bulma/bulma.scss';
 
@@ -9,50 +8,43 @@ import sectionStyles from 'src/components/section/Section.module.scss';
 
 import Layout from 'src/components/Layout';
 import Section from 'src/components/section/Section';
-import Steps from 'src/components/steps/Steps';
+import Card from 'src/components/Card/card';
 // import sectionStyles from 'src/components/section/Section.module.scss';
 
-export const ProgramsPageTemplate = (
-	{
-		/* program_cards*/
-	}
-) => {
-	const [selectedProgramType, setSelectedProgramType] = useState('on-site');
-
-	// TODO: Needs to come from CMS
+export const ProgramsPageTemplate = ({ data, location }) => {
+	// TODO: Does this need to be codified in the CMS?
 	const programTypes = [
-		{ type: 'on-site', label: 'In Person' },
+		{ type: 'in-person', label: 'In Person' },
 		{ type: 'online', label: 'Online' },
 		{ type: 'speciality-tours', label: 'Speciality Tours' },
 	];
 
-	const program_cards = [
-		{
-			card_title: 'Academic English',
-			card_description:
-				'Our high-powered Academic English Program offers the fastest way to develop your English.',
-		},
-		{
-			card_title: 'Academic English',
-			card_description:
-				'Our high-powered Academic English Program offers the fastest way to develop your English.',
-		},
-		{
-			card_title: 'Academic English',
-			card_description:
-				'Our high-powered Academic English Program offers the fastest way to develop your English.',
-		},
-		{
-			card_title: 'Academic English',
-			card_description:
-				'Our high-powered Academic English Program offers the fastest way to develop your English.',
-		},
-		{
-			card_title: 'Academic English',
-			card_description:
-				'Our high-powered Academic English Program offers the fastest way to develop your English.',
-		},
-	];
+	const [selectedProgramType, setSelectedProgramType] = useState(
+		location.hash.substring(1) || 'in-person'
+	);
+
+	const renderProgramsView = hash => {
+		let view = <div></div>;
+
+		// TODO: Part of this map is a repeated pattern with all these graphql queries. Think about creating some kind of mixin
+		const filteredData = data.allMarkdownRemark.edges
+			.map(edge => edge.node.frontmatter)
+			.filter(program => program.programType === selectedProgramType);
+
+		console.log('filtered data', filteredData);
+
+		if (hash.includes('in-person')) {
+			view = filteredData.map(cardData => {
+				return (
+					<div className="column is-half">
+						<Card cardData={cardData}></Card>
+					</div>
+				);
+			});
+		}
+
+		return view;
+	};
 
 	return (
 		<Section
@@ -78,52 +70,58 @@ export const ProgramsPageTemplate = (
 									: ''
 							}`}
 							onClick={() => {
-								console.log('currentType', selectedProgramType);
-								console.log('setting type', programType.type);
-								setSelectedProgramType(programType.type);
+								setSelectedProgramType(() => {
+									navigate(`#${programType.type}`);
+									return programType.type;
+								});
 							}}
 						>
 							{programType.label}
 						</button>
 					</div>
 				))}
-				{/* TODO: Keys should not be indices */}
-				{program_cards.map(program_card => {
-					return (
-						<div className="column is-half-desktop is-full-tablet">
-							<div className="programs__card">
-								<div className="programs__card-content">
-									<h5 className="programs__card-title">
-										{program_card.card_title}
-									</h5>
-									<p className="programs__card-copy">
-										{program_card.card_description}
-									</p>
-								</div>
-								<div className="programs__card-img-container">
-									<a
-										href="#"
-										className="fls__button fls__button--blue fls__button--card"
-									>
-										Read More
-									</a>
-								</div>
-							</div>
-						</div>
-					);
-				})}
+
+				{renderProgramsView(location.hash)}
 			</div>
 		</Section>
 	);
 };
 
-const ProgramsPage = ({ data }) => {
+const ProgramsPage = ({ /*data, */ location }) => {
 	// const { frontmatter } = data.markdownRemark;
 
-	// console.log('data from query', data);
+	const data = useStaticQuery(graphql`
+		{
+			allMarkdownRemark(
+				limit: 1000
+				filter: { fileAbsolutePath: { regex: "/program-pages//" } }
+			) {
+				edges {
+					node {
+						frontmatter {
+							description
+							path
+							name
+							programType
+							program_details {
+								lessons_per_week
+								hours_per_week
+							}
+							hero_image
+						}
+					}
+				}
+			}
+		}
+	`);
+
 	return (
 		<Layout isScrolled={true} hasNavHero={true} pageTitle={'Programs'}>
-			<ProgramsPageTemplate program_cards={''} />
+			<ProgramsPageTemplate
+				data={data}
+				location={location}
+				program_cards={''}
+			/>
 		</Layout>
 	);
 };

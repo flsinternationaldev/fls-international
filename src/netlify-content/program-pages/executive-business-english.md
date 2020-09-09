@@ -3,10 +3,13 @@ path: executive-english
 pageName: Executive English
 name: Executive Business English
 hero-image: /assets/executive-business-english.jpeg
+programType: in-person
 program-details:
   lessons-per-week: 30
   hours-per-week: 25
   minutes-per-lesson: 50
+description: "Improve your Business English skills at our FLS locations in and
+  around America's financial capitals: New York City and Boston! "
 program-post-content: >-
   Improve your Business English skills at our FLS locations in and around
   America's financial capitals: New York City and Boston!

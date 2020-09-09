@@ -1,6 +1,8 @@
 import React from 'react';
 
 import cardStyles from './Card.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBook, faClock } from '@fortawesome/free-solid-svg-icons';
 
 export default function Card({
 	isSpecialityTours,
@@ -8,7 +10,21 @@ export default function Card({
 	isCarouselLocation,
 	isAffiliate,
 	isContact,
+	cardData,
 }) {
+	const renderProgramPill = programType => {
+		console.log('program Type', programType);
+		if (programType === 'in-person') {
+			return (
+				<span className="fls__pill fls__pill--in-person">
+					In Person
+				</span>
+			);
+		} else if (programType === 'online') {
+			return <span className="fls__pill fls__pill--online">Online</span>;
+		}
+	};
+
 	if (isSpecialityTours) {
 		return (
 			<div className={cardStyles.fls__card}>
@@ -137,29 +153,42 @@ export default function Card({
 			// TODO: Render bg images based on CMS, and figure out why the pills don't have the space between them that they do in the static site
 			<div className={cardStyles.fls__card}>
 				<div className={cardStyles.fls__cardContents}>
-					<span className="fls__pill fls__pill--in-person">
-						In Person
-					</span>
-					<span className="fls__pill fls__pill--online">Online</span>
+					{renderProgramPill(cardData.programType)}
 
 					<div>
 						<h5 className={cardStyles.fls__cardTitle}>
-							Academic English
+							{cardData.name}
 						</h5>
 						<p className={cardStyles.fls__cardCopy}>
-							Our high-powered Academic English program offers the
-							fastest way to develop your English.
+							{cardData.description}
 						</p>
 					</div>
 
 					<div className={cardStyles.fls__cardDetails}>
 						{/* TODO: Icons */}
-						<span>36 lessons per week</span>
-						<span>30 hours per week</span>
+						<span>
+							<FontAwesomeIcon
+								className="fls-post__subhero-icon"
+								icon={faBook}
+							/>
+							{cardData.program_details.lessons_per_week} lessons
+							per week
+						</span>
+						<span>
+							<FontAwesomeIcon
+								className="fls-post__subhero-icon"
+								icon={faClock}
+							/>
+							{cardData.program_details.hours_per_week} hours per
+							week
+						</span>
 					</div>
 				</div>
 
-				<div className={cardStyles.fls__cardBg}></div>
+				<img
+					className={cardStyles.fls__cardBg}
+					src={cardData.hero_image}
+				/>
 				<div className={cardStyles.fls__cardBgOverlay}></div>
 			</div>
 		);

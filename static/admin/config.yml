@@ -387,6 +387,12 @@ collections:
           - { label: 'Name', name: 'name', widget: 'string' }
           - { label: 'Hero Image', name: 'hero-image', widget: 'image' }
           - {
+                label: 'Program type',
+                name: 'programType',
+                widget: 'select',
+                options: ['in-person', 'online', 'speciality tour'],
+            }
+          - {
                 label: 'Program Details',
                 name: 'program-details',
                 widget: 'object',
@@ -408,6 +414,12 @@ collections:
                             widget: 'number',
                         },
                     ],
+            }
+          - {
+                label: 'Description',
+                name: 'description',
+                widget: 'string',
+                hint: 'A 1 - 3 sentence summary of the program. Used on the program card.',
             }
           - {
                 label: 'Program post content',
@@ -499,41 +511,6 @@ collections:
                 label: 'Sample Calendar',
                 name: 'sample-calendar',
                 widget: 'file',
-            }
-    - name: 'program-cards'
-      label: 'Program Cards'
-      create: true
-      folder: 'src/netlify-content/program-cards'
-      identifier_field: name
-      label_singular: 'program card'
-      fields:
-          - {
-                label: 'Path',
-                name: 'path',
-                widget: 'string',
-                hint: 'The URL this card will link to. Should be all lower case, and uses dashes instead of spaces, e.g.locations/path-name-here.',
-            }
-          - {
-                label: 'Background Image',
-                name: 'background-image',
-                widget: 'image',
-            }
-          - { label: 'Name', name: 'name', widget: 'string' }
-          - {
-                label: 'Short description',
-                name: 'short-description',
-                widget: 'string',
-                hint: 'For better display, this should be between 2 and 5 sentences.',
-            }
-          - {
-                label: 'Lessons per week',
-                name: 'lessons-per-week',
-                widget: 'number',
-            }
-          - {
-                label: 'Hours per week',
-                name: 'hours-per-week',
-                widget: 'number',
             }
     - name: 'navbar-item'
       label: 'Navbar Items'

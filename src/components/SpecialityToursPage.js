@@ -21,11 +21,8 @@ export const SpecialityTourPageTemplate = ({
 		autoplay: true,
 		arrows: false,
 		autoplaySpeed: 4000,
+		infinite: true,
 	};
-
-	console.log('specaility tour data', specialityTourData);
-
-	console.log('details', specialityTourData.speciality_tour_details);
 
 	return (
 		<Section>
