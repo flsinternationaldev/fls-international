@@ -8,7 +8,6 @@ export default function Hero({ carouselItems }) {
 	const slickSettings = {
 		autoplay: true,
 		draggable: false,
-		// TODO: Weird outline borders appear when clicking on the carousel
 		focusOnSelect: false,
 		arrows: false,
 		autoplaySpeed: 4000,
@@ -17,9 +16,7 @@ export default function Hero({ carouselItems }) {
 
 	return (
 		<section className={`hero is-fullheight ${heroStyles.heroFls}`}>
-			{/* TODO: _.template these carousel slides */}
 			<Slick {...slickSettings}>
-				{/* TODO: Figure out how to render the bg image */}
 				{carouselItems.map(carouselItem => (
 					<div
 						className={heroStyles.heroBody__carouselItem}

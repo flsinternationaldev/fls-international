@@ -114,7 +114,7 @@ export const ApplicationTemplate = () => {
 	};
 
 	return (
-		// TODO: There's a bug with stepwizard wherein it fails if you provide only one child
+		// NOTE: There's a bug with stepwizard wherein it fails if you provide only one child
 		<Section sectionClasses={['section']} containerClasses={['container']}>
 			<NetlifyStaticForm
 				formFields={[

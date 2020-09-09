@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import createHistory from 'history/createHashHistory';
 import { graphql } from 'gatsby';
 
 import 'src/bulma/bulma.scss';
@@ -8,7 +9,9 @@ import sectionStyles from 'src/components/section/Section.module.scss';
 
 import Layout from 'src/components/Layout';
 import Section from 'src/components/section/Section';
+import Steps from 'src/components/steps/Steps';
 // import sectionStyles from 'src/components/section/Section.module.scss';
+
 export const ProgramsPageTemplate = (
 	{
 		/* program_cards*/
@@ -18,7 +21,7 @@ export const ProgramsPageTemplate = (
 
 	// TODO: Needs to come from CMS
 	const programTypes = [
-		{ type: 'on-site', label: 'On Site' },
+		{ type: 'on-site', label: 'In Person' },
 		{ type: 'online', label: 'Online' },
 		{ type: 'speciality-tours', label: 'Speciality Tours' },
 	];
@@ -62,9 +65,7 @@ export const ProgramsPageTemplate = (
 						<h3 className="subtitle subtitle--fls subtitle--red">
 							Our Offerings
 						</h3>
-						<h1 className="title title--fls">
-							Programs & Speciality Tours
-						</h1>
+						<h1 className="title title--fls">Programs</h1>
 					</div>
 				</div>
 
