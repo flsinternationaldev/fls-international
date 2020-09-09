@@ -66,9 +66,7 @@ export default function Navbar(props) {
 
 	return (
 		<nav
-			className={`navbar is-fixed-top ${navbarStyles.navbarFls} ${
-				navbarStyles.navbarHome
-			} ${isScrolled ? navbarStyles.navbarScrolled : ''}`}
+			className={`navbar is-fixed-top ${navbarStyles.navbarFls}`}
 			ref={navParentEl}
 		>
 			<div className="container">

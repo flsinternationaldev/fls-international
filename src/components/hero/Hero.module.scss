@@ -4,6 +4,10 @@ $fls-light-blue: #a8dadc;
 $fls-dark-blue: #457b9d;
 $fls-grey: #f1faee;
 
+.hero--fls {
+	background: linear-gradient(45deg, black 22%, $fls-light-blue 100%);
+}
+
 .hero-body--home {
 	z-index: 1;
 	padding-bottom: 5rem !important;
@@ -16,18 +20,16 @@ $fls-grey: #f1faee;
 
 .hero__copy-container {
 	position: relative;
-	top: 48vh;
+	top: 44vh;
 	margin: 0 auto;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	text-align: center;
 	align-items: center;
-	background-color: $fls-dark-blue !important;
-	max-width: 750px;
+	max-width: 775px;
 	height: 245px;
 	padding: 25px;
-	border-radius: 15px;
 
 	@media only screen and (max-device-width: 768px) {
 		max-width: 460px;
@@ -35,9 +37,10 @@ $fls-grey: #f1faee;
 }
 
 .hero__copy-title {
-	font-size: 20px;
+	font-size: 24px;
 	text-transform: uppercase;
 	margin-bottom: 0 !important;
+	color: white;
 
 	@media only screen and (max-device-width: 768px) {
 		font-size: 15px;
@@ -46,9 +49,10 @@ $fls-grey: #f1faee;
 }
 
 .hero__copy {
-	font-size: 38px;
+	font-size: 42px;
 	text-transform: uppercase;
 	font-weight: 400;
+	color: white;
 
 	@media only screen and (max-device-width: 768px) {
 		font-size: 20px;
@@ -58,8 +62,15 @@ $fls-grey: #f1faee;
 /* Style to help avoid collision with the :after bg */
 /* TODO: This should be moved to a generic carousel component */
 .hero-body__carousel-item {
-	background-image: url('../../img/sample-bg.jpeg');
-	width: 100%;
-	background-size: cover;
+	position: relative;
 	min-height: 100vh !important;
+}
+
+.fls-hero__carousel-image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	width: 100%;
+	opacity: 0.6;
 }

@@ -12,10 +12,11 @@ export default function Hero({ carouselItems }) {
 		focusOnSelect: false,
 		arrows: false,
 		autoplaySpeed: 4000,
+		infinite: true,
 	};
 
 	return (
-		<section className="hero is-link is-fullheight">
+		<section className={`hero is-fullheight ${heroStyles.heroFls}`}>
 			{/* TODO: _.template these carousel slides */}
 			<Slick {...slickSettings}>
 				{/* TODO: Figure out how to render the bg image */}
@@ -24,6 +25,12 @@ export default function Hero({ carouselItems }) {
 						className={heroStyles.heroBody__carouselItem}
 						key={carouselItem.title}
 					>
+						<img
+							className={heroStyles.flsHero__carouselImage}
+							src={carouselItem.carousel_image}
+							alt={carouselItem.title}
+						/>
+
 						<div className={heroStyles.hero__copyContainer}>
 							<h2
 								className={`subtitle ${heroStyles.hero__copyTitle}`}
