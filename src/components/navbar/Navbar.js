@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef, Fragment } from 'react';
 import { Link, useStaticQuery } from 'gatsby';
 
 import navbarStyles from './Navbar.module.scss';
 import flsLogo from 'src/img/fls-international-logo.png';
+import 'hamburgers/dist/hamburgers.css';
 
 import NavbarDropdownContainer from 'src/components/navbar/NavbarDropdownContainer';
+import NavbarMobile from 'src/components/navbar/NavbarMobile';
 
 export default function Navbar(props) {
 	const data = useStaticQuery(graphql`
@@ -40,68 +42,91 @@ export default function Navbar(props) {
 
 	const navParentEl = useRef(null);
 
-	console.log('main nav items', mainNavItems);
-	return (
-		<nav
-			className={`navbar is-fixed-top ${navbarStyles.navbarFls}`}
-			ref={navParentEl}
-		>
-			<div className="container">
-				<div className="navbar-brand">
-					<a className="navbar-item" href="/">
-						<img
-							className={navbarStyles.navbar__logo}
-							src={flsLogo}
-							alt="Logo"
-						/>
-					</a>
-					{/* TODO: Still need a mobile implementation for the navbar */}
-					<span
-						className="navbar-burger burger"
-						data-target="navbarMenu"
-					>
-						<span></span>
-						<span></span>
-						<span></span>
-					</span>
-				</div>
+	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-				<div id="navbarMenu" className="navbar-menu">
-					<div className={navbarStyles.flsNav__content}>
-						{mainNavItems.map(mainNavItem => {
-							if (
-								mainNavItem.links ||
-								mainNavItem.collectionName
-							) {
-								return (
-									<NavbarDropdownContainer
-										mainNavItem={mainNavItem}
-										title={mainNavItem.pageName}
-										items={mainNavItem.links}
-										rootNavPath={mainNavItem.path}
-										parentEl={navParentEl}
-									></NavbarDropdownContainer>
-								);
-							} else {
-								return (
-									<Link
-										to={`/${mainNavItem.path}`}
-										className={navbarStyles.navbar__navItem}
-									>
-										{mainNavItem.pageName}
-									</Link>
-								);
-							}
-						})}
-						{/* 
+	// TODO: This state, and its logic, is a near duplicate of the desktop nav's position logic. Could be consolidated?
+	const [mobileDropdownPos, setMobileDropdownPos] = useState({ top: 0 });
+
+	return (
+		<Fragment>
+			<nav
+				className={`navbar is-fixed-top ${navbarStyles.navbarFls}`}
+				ref={navParentEl}
+			>
+				<div className="container">
+					<div
+						className={`navbar-brand ${navbarStyles.navbarBrandFls}`}
+					>
+						<a className="navbar-item" href="/">
+							<img
+								className={navbarStyles.navbar__logo}
+								src={flsLogo}
+								alt="Logo"
+							/>
+						</a>
+
+						<button
+							class={`hamburger hamburger--spin ${
+								navbarStyles.hamburgerFls
+							} ${isMobileMenuOpen ? 'is-active' : ''} `}
+							onClick={() => {
+								let newDropdownPos = {};
+
+								newDropdownPos.top =
+									navParentEl.current.getBoundingClientRect()
+										.top + navParentEl.current.offsetHeight;
+
+								setMobileDropdownPos(newDropdownPos);
+								setIsMobileMenuOpen(prevState => !prevState);
+							}}
+							type="button"
+						>
+							<span class="hamburger-box">
+								<span
+									class={`hamburger-inner ${navbarStyles.hamburgerInnerFls}`}
+								></span>
+							</span>
+						</button>
+					</div>
+
+					<div id="navbarMenu" className="navbar-menu">
+						<div className={navbarStyles.flsNav__content}>
+							{mainNavItems.map(mainNavItem => {
+								if (
+									mainNavItem.links ||
+									mainNavItem.collectionName
+								) {
+									return (
+										<NavbarDropdownContainer
+											mainNavItem={mainNavItem}
+											title={mainNavItem.pageName}
+											items={mainNavItem.links}
+											rootNavPath={mainNavItem.path}
+											parentEl={navParentEl}
+										></NavbarDropdownContainer>
+									);
+								} else {
+									return (
+										<Link
+											to={`/${mainNavItem.path}`}
+											className={
+												navbarStyles.navbar__navItem
+											}
+										>
+											{mainNavItem.pageName}
+										</Link>
+									);
+								}
+							})}
+							{/* 
 							<Link to="/application">Application</Link>
 
 							<Link to="/application">Testimonials</Link>
 
 							<Link to="/about-us">About Us</Link> */}
-					</div>
+						</div>
 
-					{/* <div
+						{/* <div
 							className={`tabs is-right 							
 							${navbarStyles.tabsFls} 
 							${props.isHome ? navbarStyles.tabsHome : ''} 
@@ -115,8 +140,14 @@ export default function Navbar(props) {
 								<Link to="/login">Login</Link>
 							</div>
 						</div> */}
+					</div>
 				</div>
-			</div>
-		</nav>
+			</nav>
+
+			<NavbarMobile
+				mobileDropdownPos={mobileDropdownPos}
+				isMobileMenuOpen={isMobileMenuOpen}
+			/>
+		</Fragment>
 	);
 }

@@ -35,9 +35,6 @@ export const ProgramsPageTemplate = ({ data, location }) => {
 			.map(edge => edge.node.frontmatter)
 			.filter(program => program.programType === selectedProgramType);
 
-		// console.log('selectedProgramType', selectedProgramType);
-		// console.log('all data', data);
-		// console.log('filteredData', filteredData);
 		view = filteredData.map(cardData => {
 			return (
 				<div className="column is-half">

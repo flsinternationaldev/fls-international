@@ -29,6 +29,10 @@ a {
 	padding-right: 0 !important;
 }
 
+.fls-nav__mobile-container {
+	padding: 16px;
+}
+
 .title--fls {
 	font-size: 2.425rem !important;
 	font-weight: 300 !important;
@@ -264,6 +268,14 @@ a {
 
 .fls--grey {
 	color: $fls-grey;
+}
+
+.fls--white {
+	color: white !important;
+}
+
+.fls--light-blue {
+	color: $fls-light-blue;
 }
 
 .fls__alternating-item {
