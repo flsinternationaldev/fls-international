@@ -8,7 +8,7 @@ import sectionStyles from 'src/components/section/Section.module.scss';
 
 import Layout from 'src/components/Layout';
 import Section from 'src/components/section/Section';
-import Card from 'src/components/Card/card';
+import Card from 'src/components/card/Card';
 
 export const ProgramsPageTemplate = ({ data, location }) => {
 	// TODO: Does this need to be codified in the CMS?
