@@ -33,10 +33,7 @@ export const ProgramsPageTemplate = ({ data, location }) => {
 			isProgramView ? 'programs' : 'specialityTours'
 		].edges
 			.map(edge => edge.node.frontmatter)
-			.filter(program => {
-				console.log('mapped program', program);
-				return program.programType === selectedProgramType;
-			});
+			.filter(program => program.programType === selectedProgramType);
 
 		// console.log('selectedProgramType', selectedProgramType);
 		// console.log('all data', data);

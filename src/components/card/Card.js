@@ -86,7 +86,7 @@ export default function Card({
 						alt={`${cardData.name} background image`}
 					/>
 					<Link
-						to={`locations/${cardData.path}`}
+						to={`/locations/${cardData.path}`}
 						className="fls__button fls__button--card fls__button--locations-card"
 					>
 						Read More
