@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import Slick from 'react-slick';
-import { graphql } from 'gatsby';
+import { graphql, useStaticQuery, Link } from 'gatsby';
 
 import 'src/bulma/bulma.scss';
 import 'slick-carousel/slick/slick.css';
@@ -14,8 +14,6 @@ import Application from 'src/components/application/ApplicationLanding';
 
 import videoSampleImg from 'src/img/video-sample.jpeg';
 
-// TODO: In the gatsby-netlify starter package, all these React files are kept in /templates,
-// and pages only has Markdown files. Investigate how to do that
 export const HomePageTemplate = ({ data }) => {
 	const slickSettings = {
 		infinite: true,
@@ -38,9 +36,19 @@ export const HomePageTemplate = ({ data }) => {
 		],
 	};
 
+	// TODO: This 'reduce' pattern repeats across the app. Think about creating a mixin of some kind
+	const homeCopy = data.homeCopy.edges.reduce(
+		(accum, edge) => Object.assign({}, edge.node.frontmatter),
+		{}
+	);
+
+	const programs = data.programs.edges.map(edge => edge.node.frontmatter);
+
+	const locations = data.locations.edges.map(edge => edge.node.frontmatter);
+
 	return (
 		<Fragment>
-			<Hero carouselItems={data.carousel_settings} />
+			<Hero carouselItems={homeCopy.carousel_settings} />
 
 			<Section
 				sectionClasses={['section', sectionStyles.sectionWhoWeAre]}
@@ -57,15 +65,15 @@ export const HomePageTemplate = ({ data }) => {
 								}
 							>
 								<h3 className="subtitle subtitle--fls subtitle--red">
-									{data.explore_your_world.subtitle}
+									{homeCopy.explore_your_world.subtitle}
 								</h3>
 								<h1 className="title title--fls">
-									{data.explore_your_world.title}
+									{homeCopy.explore_your_world.title}
 								</h1>
 							</div>
 
 							<p className={sectionStyles.exploreYourWorld__copy}>
-								{data.explore_your_world.copy}
+								{homeCopy.explore_your_world.copy}
 							</p>
 						</div>
 					</div>
@@ -81,10 +89,10 @@ export const HomePageTemplate = ({ data }) => {
 					<div className="column is-6">
 						<div className={sectionStyles.section__titleContainer}>
 							<h3 className="subtitle subtitle--fls subtitle--red">
-								{data.start_your_journey.subtitle}
+								{homeCopy.start_your_journey.subtitle}
 							</h3>
 							<h2 className="title title--fls">
-								{data.start_your_journey.title}
+								{homeCopy.start_your_journey.title}
 							</h2>
 						</div>
 					</div>
@@ -97,14 +105,14 @@ export const HomePageTemplate = ({ data }) => {
 								sectionStyles.startYourJourney__copyContainer
 							}
 						>
-							{data.start_your_journey.copy}
+							{homeCopy.start_your_journey.copy}
 						</p>
 					</div>
 					<div className="column is-half-desktop is-full-tablet">
 						<Application
 							isHome={true}
 							on_location_program_information={
-								data.on_location_program_information
+								homeCopy.on_location_program_information
 							}
 						/>
 					</div>
@@ -115,149 +123,54 @@ export const HomePageTemplate = ({ data }) => {
 					<div className="column is-7">
 						<div className={sectionStyles.section__titleContainer}>
 							<h3 className="subtitle subtitle--fls subtitle--red">
-								{data.our_popular_programs.subtitle}
+								{homeCopy.our_popular_programs.subtitle}
 							</h3>
 							<h2 className="title title--fls">
-								{data.our_popular_programs.title}
+								{homeCopy.our_popular_programs.title}
 							</h2>
 						</div>
 
 						<p className={sectionStyles.popularPrograms__subcopy}>
-							{data.our_popular_programs.copy}
+							{homeCopy.our_popular_programs.copy}
 						</p>
 					</div>
 				</div>
-				<div className="columns is-centered is-multiline">
-					{/* TODO: DRY this up */}
-					<div className="column is-one-quarter-desktop is-half-tablet is-full-mobile">
-						<div
-							className={
-								sectionStyles.popularPrograms__programContainer
-							}
-						>
-							<h3
-								className={
-									sectionStyles.popularPrograms__programTitle
-								}
-							>
-								English Language Programs
-							</h3>
-						</div>
-					</div>
 
-					<div className="column is-one-quarter-desktop is-half-tablet is-full-mobile">
-						<div
-							className={
-								sectionStyles.popularPrograms__programContainer
-							}
-						>
-							<h3
-								className={
-									sectionStyles.popularPrograms__programTitle
-								}
-							>
-								Speciality Tours
-							</h3>
-						</div>
-					</div>
-
-					<div className="column is-one-quarter-desktop is-half-tablet is-full-mobile">
-						<div
-							className={
-								sectionStyles.popularPrograms__programContainer
-							}
-						>
-							<h3
-								className={
-									sectionStyles.popularPrograms__programTitle
-								}
-							>
-								High School & University Placement
-							</h3>
-						</div>
-					</div>
-
-					<div className="column is-one-quarter-desktop is-half-tablet is-full-mobile">
-						<div
-							className={
-								sectionStyles.popularPrograms__programContainer
-							}
-						>
-							<h3
-								className={
-									sectionStyles.popularPrograms__programTitle
-								}
-							>
-								College Auditing
-							</h3>
-						</div>
-					</div>
-
-					<div className="column is-one-quarter-desktop is-half-tablet is-full-mobile">
-						<div
-							className={
-								sectionStyles.popularPrograms__programContainer
-							}
-						>
-							<h3
-								className={
-									sectionStyles.popularPrograms__programTitle
-								}
-							>
-								FLS Pathways
-							</h3>
-						</div>
-					</div>
-					<div className="column is-one-quarter-desktop is-half-tablet is-full-mobile">
-						<div
-							className={
-								sectionStyles.popularPrograms__programContainer
-							}
-						>
-							<h3
-								className={
-									sectionStyles.popularPrograms__programTitle
-								}
-							>
-								Concurrent Enrollment
-							</h3>
-						</div>
-					</div>
-					<div className="column is-one-quarter-desktop is-half-tablet is-full-mobile">
-						<div
-							className={
-								sectionStyles.popularPrograms__programContainer
-							}
-						>
-							<h3
-								className={
-									sectionStyles.popularPrograms__programTitle
-								}
-							>
-								High School Completion
-							</h3>
-						</div>
-					</div>
-					<div className="column is-one-quarter-desktop is-half-tablet is-full-mobile">
-						<div
-							className={
-								sectionStyles.popularPrograms__programContainer
-							}
-						>
-							<h3
-								className={
-									sectionStyles.popularPrograms__programTitle
-								}
-							>
-								Study 30+
-							</h3>
-						</div>
-					</div>
+				<div className="columns is-multiline">
+					{programs.map(program => {
+						return (
+							<div className="column is-one-quarter-desktop is-half-tablet is-full-mobile">
+								<Link
+									className={
+										sectionStyles.popularPrograms__programContainer
+									}
+									to={`/programs/${program.programType}/${program.path}`}
+								>
+									<img
+										className={
+											sectionStyles.popularPrograms__bgImg
+										}
+										src={program.hero_image}
+										alt={`${program.name} background image`}
+									/>
+									<h3
+										className={
+											sectionStyles.popularPrograms__programTitle
+										}
+									>
+										{program.name}
+									</h3>
+								</Link>
+							</div>
+						);
+					})}
 				</div>
 
 				<div className="columns is-centered">
 					<div className="column is-one-quarter-tablet is-full-mobile">
-						<button className="fls__button">View More</button>
+						<Link to="/programs" className="fls__button">
+							View More
+						</Link>
 					</div>
 				</div>
 			</Section>
@@ -270,10 +183,10 @@ export const HomePageTemplate = ({ data }) => {
 							<h3
 								className={`subtitle ${sectionStyles.highlightedSection__subtitle}`}
 							>
-								{data.how_is_your_english.subtitle}
+								{homeCopy.how_is_your_english.subtitle}
 							</h3>
 							<h2 className="title title--fls title--white">
-								{data.how_is_your_english.title}
+								{homeCopy.how_is_your_english.title}
 							</h2>
 						</div>
 					</div>
@@ -387,69 +300,117 @@ export const HomePageTemplate = ({ data }) => {
 					</div>
 				</div>
 
-				<Slick {...slickSettings}>
-					<Card isLocation={true} isCarouselLocation={true} />
+				<div className="columns is-multiline">
+					{locations.map(location => (
+						<div className="column is-one-third">
+							<Card
+								key={location.path}
+								cardData={location}
+								isLocation={true}
+								isCarouselLocation={true}
+							/>
+						</div>
+					))}
 
-					<Card isLocation={true} isCarouselLocation={true} />
-
-					<Card isLocation={true} isCarouselLocation={true} />
-
-					<Card isLocation={true} isCarouselLocation={true} />
-
-					<Card isLocation={true} isCarouselLocation={true} />
-				</Slick>
+					{/* TODO: Slick refuses to work with a map. Look into this. */}
+					{/* <Slick {...slickSettings}>
+					{locations.map(location => (
+						<Card
+							key={location.path}
+							cardData={location}
+							isLocation={true}
+							isCarouselLocation={true}
+						/>
+					))}
+				</Slick> */}
+				</div>
 			</Section>
 		</Fragment>
 	);
 };
 
-const HomePage = ({ data }) => {
-	// Having a filter in the query means there should only ever be the one node
-	const homePageData = data.allMarkdownRemark.edges[0].node.frontmatter;
-
-	return (
-		<Layout>
-			<HomePageTemplate data={homePageData} />
-		</Layout>
-	);
-};
-
-export default HomePage;
-
-export const pageQuery = graphql`
+const HomePage = (
 	{
-		allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/home/" } }) {
-			edges {
-				node {
-					frontmatter {
-						carousel_settings {
-							carousel_image
-							copy
-							title
+		/*data*/
+	}
+) => {
+	// const homePageData = homeCopy.edges[0].node.frontmatter;
+	const data = useStaticQuery(graphql`
+		{
+			homeCopy: allMarkdownRemark(
+				filter: { fileAbsolutePath: { regex: "/home/" } }
+			) {
+				edges {
+					node {
+						frontmatter {
+							carousel_settings {
+								carousel_image
+								copy
+								title
+							}
+							explore_your_world {
+								subtitle
+								copy
+								title
+							}
+							how_is_your_english {
+								copy
+								subtitle
+								title
+							}
+							start_your_journey {
+								copy
+								subtitle
+								title
+							}
+							our_popular_programs {
+								copy
+								subtitle
+								title
+							}
 						}
-						explore_your_world {
-							subtitle
-							copy
-							title
+					}
+				}
+			}
+			programs: allMarkdownRemark(
+				limit: 8
+				filter: { fileAbsolutePath: { regex: "/program-pages//" } }
+			) {
+				edges {
+					node {
+						frontmatter {
+							path
+							name
+							hero_image
+							programType
 						}
-						how_is_your_english {
-							copy
-							subtitle
-							title
-						}
-						start_your_journey {
-							copy
-							subtitle
-							title
-						}
-						our_popular_programs {
-							copy
-							subtitle
-							title
+					}
+				}
+			}
+			locations: allMarkdownRemark(
+				limit: 1000
+				filter: { fileAbsolutePath: { regex: "/location-pages//" } }
+			) {
+				edges {
+					node {
+						frontmatter {
+							path
+							name
+							carousel_images
+							pageName
+							description
 						}
 					}
 				}
 			}
 		}
-	}
-`;
+	`);
+
+	return (
+		<Layout>
+			<HomePageTemplate data={data} />
+		</Layout>
+	);
+};
+
+export default HomePage;

@@ -72,37 +72,38 @@ export default function Card({
 		);
 	} else if (isLocation) {
 		return (
-			<div>
+			<div
+				className={`fls__location ${
+					isCarouselLocation
+						? 'fls__location--carousel'
+						: 'fls__location--post'
+				}`}
+			>
+				<div className="fls__location-img-container">
+					<img
+						className="fls__location-img"
+						src={cardData.carousel_images[0]}
+						alt={`${cardData.name} background image`}
+					/>
+					<Link
+						to={`locations/${cardData.path}`}
+						className="fls__button fls__button--card fls__button--locations-card"
+					>
+						Read More
+					</Link>
+				</div>
+
 				<div
-					className={`fls__location ${
+					className={`fls__location-copy-container ${
 						isCarouselLocation
-							? 'fls__location--carousel'
-							: 'fls__location--post'
+							? ''
+							: 'fls__location-copy-container--post'
 					}`}
 				>
-					<div className="fls__location-img-container">
-						<a
-							href="#"
-							className="fls__button fls__button--card fls__button--locations-card"
-						>
-							Read More
-						</a>
-					</div>
+					<h3 className="fls__location-title">{cardData.pageName}</h3>
+					<h4 className="fls-location__subtitle">{cardData.name}</h4>
 
-					<div
-						className={`fls__location-copy-container ${
-							isCarouselLocation
-								? ''
-								: 'fls__location-copy-container--post'
-						}`}
-					>
-						<h3 className="fls__location-title">Citrus College</h3>
-						<p className="fls__location-copy">
-							Study English in California! Citrus College offers a
-							great combination of suburban comfort with access to
-							all of the attracions and glamour of Los Angeles.
-						</p>
-					</div>
+					<p className="fls__location-copy">{cardData.description}</p>
 				</div>
 			</div>
 		);

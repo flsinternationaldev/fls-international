@@ -120,6 +120,7 @@ const LocationPage = ({ pageContext }) => {
 							path
 							post_content
 							name
+							pageName
 							carousel_images
 							quick_facts {
 								name
@@ -141,7 +142,7 @@ const LocationPage = ({ pageContext }) => {
 		<Layout
 			isScrolled={true}
 			hasNavHero={true}
-			pageTitle={'English Language Programs'}
+			pageTitle={locationPageData.pageName}
 		>
 			<LocationPageTemplate locationPageData={locationPageData} />
 		</Layout>

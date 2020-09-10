@@ -13,15 +13,18 @@ $fls-dark-blue: #457b9d;
 	min-height: 36px;
 	font-size: 13px;
 	transition: color 0.3s, border-color 0.3s;
+	font-weight: 500;
+
+	span {
+		color: $fls-light-blue !important;
+	}
 
 	&:hover {
-		color: #bb2125;
-		border-color: #bb2125;
-	}
-}
+		border-color: $fls-dark-blue;
+		background-color: $fls-light-blue;
 
-a {
-	&.fls__post-navbar-item {
-		color: black;
+		span {
+			color: black !important;
+		}
 	}
 }

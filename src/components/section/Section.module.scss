@@ -89,6 +89,7 @@ $fls-dark-blue: #457b9d;
 }
 
 .popular-programs__program-container {
+	display: block;
 	position: relative;
 	min-height: 8.5rem;
 	text-align: center;
@@ -103,7 +104,6 @@ $fls-dark-blue: #457b9d;
 	align-items: center;
 	text-transform: uppercase;
 	color: white;
-	background-image: url('../../img/english-language-programs.jpeg');
 }
 
 .popular-programs__program-container:before {
@@ -114,9 +114,17 @@ $fls-dark-blue: #457b9d;
 	width: 100%;
 	height: 100%;
 	position: absolute;
+	z-index: 1;
 	background-color: rgba(0, 0, 0, 0.45);
 	/* TODO: Transition necessary for eventual hover state */
-	transition: all 0.5s ease 0s;
+	transition: all 0.3s ease 0s;
+}
+
+.popular-programs__bg-img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
 }
 
 .popular-programs__program-title {

@@ -27,7 +27,6 @@ $fls-dark-blue: #457b9d;
 
 .fls__location-img-container {
 	position: relative;
-	background-image: url('../img/citrus-college.jpeg');
 	flex-basis: 80%;
 	border-bottom: $fls-dark-blue solid 2px;
 	overflow: hidden;
@@ -48,6 +47,15 @@ $fls-dark-blue: #457b9d;
 		background-color: rgba(2, 40, 71, 0.8);
 		transition: all 0.5s ease 0s;
 	}
+}
+
+.fls__location-img {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	min-height: 100%;
+	z-index: 0;
 }
 
 .fls__location:hover {
@@ -80,6 +88,12 @@ $fls-dark-blue: #457b9d;
 	font-weight: 600;
 	color: #363636;
 	text-transform: uppercase;
+}
+
+.fls-location__subtitle {
+	font-size: 0.75rem;
+	font-weight: 500;
+	color: #363636;
 	margin-bottom: 10px;
 }
 

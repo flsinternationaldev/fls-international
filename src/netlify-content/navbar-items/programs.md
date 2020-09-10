@@ -10,4 +10,5 @@ links:
     pageName: Online
   - path: speciality-tours
     pageName: Speciality Tours
+    collectionName: speciality-tour-pages
 ---

@@ -325,7 +325,14 @@ collections:
                 widget: 'string',
                 hint: 'The main name, usually rendered at the top of the page. Should be similar to the path url.',
             }
+          # TODO: This needs a 'center name' field
           - { label: 'Name', name: 'name', widget: 'string' }
+          - {
+                label: 'Description',
+                name: 'description',
+                widget: 'string',
+                hint: '1 - 3 sentences describing the location. Used on the location card.',
+            }
           - {
                 label: 'Quick Facts',
                 name: 'quick-facts',

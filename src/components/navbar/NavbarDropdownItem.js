@@ -6,6 +6,9 @@ import NavbarDropdown from 'src/components/navbar/NavbarDropdown';
 import navbarStyles from 'src/components/navbar/Navbar.module.scss';
 
 export default function NavbarDropdownItem({ dropdownItem, rootNavPath }) {
+	// TODO: The dropdown items don't like overy long titles
+	// Either find a way to expand each item, or implement a 'short name' field on the CMS
+
 	const data = useStaticQuery(graphql`
 		{
 			allMarkdownRemark(

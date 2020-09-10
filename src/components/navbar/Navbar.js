@@ -38,32 +38,9 @@ export default function Navbar(props) {
 
 	mainNavItems.sort((a, b) => a.order - b.order);
 
-	const [isScrolled, setIsScrolled] = useState(false);
-
 	const navParentEl = useRef(null);
 
-	// This React Hook allows us to set an event handler when the component mounts,
-	// then remove it when the component is unmounted
-	useEffect(() => {
-		if (props.isHome) {
-			const navbarEl = document.querySelector('.navbar'),
-				colorChangePoint = navbarEl.offsetTop,
-				handleScroll = () => {
-					window.pageYOffset > colorChangePoint
-						? setIsScrolled(true)
-						: setIsScrolled(false);
-				};
-
-			window.addEventListener('scroll', handleScroll);
-
-			return () => {
-				window.removeEventListener('scroll', handleScroll);
-			};
-		} else {
-			setIsScrolled(true);
-		}
-	}, []);
-
+	console.log('main nav items', mainNavItems);
 	return (
 		<nav
 			className={`navbar is-fixed-top ${navbarStyles.navbarFls}`}
