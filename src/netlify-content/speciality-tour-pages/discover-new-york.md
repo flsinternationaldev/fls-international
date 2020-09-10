@@ -1,6 +1,8 @@
 ---
 path: discover-new-york
-name: Discover New York
+pageName: Discover New York
+center: Orange County, CA
+programType: speciality-tours
 carousel-images:
   - /assets/discover-new-york-1.png
   - /assets/discover-new-york-2.jpeg
@@ -77,4 +79,5 @@ program-dates:
     depart: Aug 1, 2020
     price: 4475
 sample-calendar: /assets/discover-new-york.pdf
+name: Discover New York
 ---

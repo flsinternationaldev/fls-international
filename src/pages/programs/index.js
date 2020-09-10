@@ -9,7 +9,6 @@ import sectionStyles from 'src/components/section/Section.module.scss';
 import Layout from 'src/components/Layout';
 import Section from 'src/components/section/Section';
 import Card from 'src/components/Card/card';
-// import sectionStyles from 'src/components/section/Section.module.scss';
 
 export const ProgramsPageTemplate = ({ data, location }) => {
 	// TODO: Does this need to be codified in the CMS?
@@ -24,26 +23,50 @@ export const ProgramsPageTemplate = ({ data, location }) => {
 	);
 
 	const renderProgramsView = hash => {
-		let view = <div></div>;
+		let view = <div></div>,
+			isProgramView =
+				selectedProgramType === 'in-person' ||
+				selectedProgramType === 'online';
 
 		// TODO: Part of this map is a repeated pattern with all these graphql queries. Think about creating some kind of mixin
-		const filteredData = data.allMarkdownRemark.edges
+		const filteredData = data[
+			isProgramView ? 'programs' : 'specialityTours'
+		].edges
 			.map(edge => edge.node.frontmatter)
-			.filter(program => program.programType === selectedProgramType);
-
-		console.log('filtered data', filteredData);
-
-		if (hash.includes('in-person')) {
-			view = filteredData.map(cardData => {
-				return (
-					<div className="column is-half">
-						<Card cardData={cardData}></Card>
-					</div>
-				);
+			.filter(program => {
+				console.log('mapped program', program);
+				return program.programType === selectedProgramType;
 			});
-		}
+
+		// console.log('selectedProgramType', selectedProgramType);
+		// console.log('all data', data);
+		// console.log('filteredData', filteredData);
+		view = filteredData.map(cardData => {
+			return (
+				<div className="column is-half">
+					<Card
+						programType={selectedProgramType}
+						cardData={cardData}
+					></Card>
+				</div>
+			);
+		});
 
 		return view;
+	};
+
+	const renderProgramTypeDescription = selectedProgramType => {
+		const selectedProgramTypeCopy = data.programTypesCopy.edges.reduce(
+			(accum, edge) =>
+				Object.assign(
+					{},
+					edge.node.frontmatter.programTypeDescriptions
+				),
+			{}
+			// TODO: This replace turns snake case to camelCase. It's annoying, but, it works
+		)[selectedProgramType.replace(/-([a-z])/g, g => g[1].toUpperCase())];
+
+		return <div>{selectedProgramTypeCopy}</div>;
 	};
 
 	return (
@@ -51,13 +74,19 @@ export const ProgramsPageTemplate = ({ data, location }) => {
 			sectionClasses={['section', 'programs']}
 			containerClasses={['container']}
 		>
-			<div className="columns is-centered is-multiline">
+			<div className="columns is-multiline">
 				<div className="column is-full">
 					<div className={sectionStyles.section__titleContainer}>
 						<h3 className="subtitle subtitle--fls subtitle--red">
 							Our Offerings
 						</h3>
 						<h1 className="title title--fls">Programs</h1>
+					</div>
+				</div>
+
+				<div className="column is-full">
+					<div className="has-text-centered">
+						{renderProgramTypeDescription(selectedProgramType)}
 					</div>
 				</div>
 
@@ -81,7 +110,7 @@ export const ProgramsPageTemplate = ({ data, location }) => {
 					</div>
 				))}
 
-				{renderProgramsView(location.hash)}
+				{renderProgramsView(selectedProgramType)}
 			</div>
 		</Section>
 	);
@@ -92,7 +121,7 @@ const ProgramsPage = ({ /*data, */ location }) => {
 
 	const data = useStaticQuery(graphql`
 		{
-			allMarkdownRemark(
+			programs: allMarkdownRemark(
 				limit: 1000
 				filter: { fileAbsolutePath: { regex: "/program-pages//" } }
 			) {
@@ -108,6 +137,44 @@ const ProgramsPage = ({ /*data, */ location }) => {
 								hours_per_week
 							}
 							hero_image
+						}
+					}
+				}
+			}
+			specialityTours: allMarkdownRemark(
+				limit: 1000
+				filter: {
+					fileAbsolutePath: { regex: "/speciality-tour-pages//" }
+				}
+			) {
+				edges {
+					node {
+						frontmatter {
+							speciality_tour_description
+							path
+							pageName
+							center
+							programType
+							speciality_tour_details {
+								minimum_age
+							}
+							carousel_images
+						}
+					}
+				}
+			}
+			programTypesCopy: allMarkdownRemark(
+				limit: 1000
+				filter: { fileAbsolutePath: { regex: "/pages/programs/" } }
+			) {
+				edges {
+					node {
+						frontmatter {
+							programTypeDescriptions {
+								inPerson
+								online
+								specialityTours
+							}
 						}
 					}
 				}

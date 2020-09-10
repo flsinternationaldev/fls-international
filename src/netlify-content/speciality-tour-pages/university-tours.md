@@ -1,6 +1,8 @@
 ---
 path: university-tours
-name: University Tours
+pageName: University Tours
+center: Orange County, CA
+programType: speciality-tours
 carousel-images:
   - /assets/university-tours-1.jpeg
   - /assets/university-tours-2.jpeg
@@ -75,4 +77,5 @@ program-dates:
     depart: Aug 1, 2020
     price: 4325
 sample-calendar: /assets/university-tours-calendar.pdf
+name: University Tours
 ---

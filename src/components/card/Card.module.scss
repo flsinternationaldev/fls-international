@@ -1,4 +1,10 @@
+$fls-red: #e63946;
+$fls-light-blue: #a8dadc;
+$fls-dark-blue: #457b9d;
+$fls-grey: #f1faee;
+
 .fls__card {
+	display: block;
 	position: relative;
 	padding: 30px;
 	border: 1px solid #ddd;
@@ -6,6 +12,18 @@
 	width: 100%;
 	cursor: pointer;
 	overflow: hidden;
+	color: black;
+
+	&:hover {
+		.fls__card-title,
+		.fls__card-copy,
+		.fls__card-details,
+		.fls__card-subtitle,
+		.fls__card-header,
+		.fls-card__user-icon {
+			color: white !important;
+		}
+	}
 }
 
 .fls__card-contents {
@@ -56,14 +74,6 @@
 	transition: all 0.3s ease 0s;
 }
 
-.fls__card:hover .fls__card-title,
-.fls__card:hover .fls__card-copy,
-.fls__card:hover .fls__card-details,
-.fls__card:hover .fls__card-subtitle,
-.fls__card:hover .fls__card-header {
-	color: white;
-}
-
 .fls__card-bg,
 .fls__card-bg-overlay,
 .fls__card-footer-overlay {
@@ -88,10 +98,6 @@
 	left: 0;
 }
 
-.fls__card-bg--speciality-tours {
-	background-image: url('../../img/specialty-tours-bg.png');
-}
-
 .fls__card-bg-overlay {
 	opacity: 0;
 	background: rgba(0, 0, 0, 0.6);
@@ -105,7 +111,7 @@
 	bottom: -45px;
 	opacity: 0;
 	z-index: 2;
-	background-color: #bb2125;
+	background-color: $fls-dark-blue;
 	height: 45px;
 }
 
@@ -133,6 +139,12 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	margin-bottom: 16px;
+}
+
+.fls-card__user-icon {
+	color: $fls-dark-blue !important;
+	font-size: 20px !important;
+	margin-right: 10px;
 }
 
 // TODO: Think about renaming theses classes

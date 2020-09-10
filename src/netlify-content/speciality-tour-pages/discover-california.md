@@ -1,6 +1,8 @@
 ---
 path: discover-california
-name: Discover California
+pageName: Discover California
+center: New York Area
+programType: speciality-tours
 carousel-images:
   - /assets/discover-california1.jpeg
   - /assets/discover-california-2.jpeg
@@ -90,4 +92,5 @@ program-dates:
     depart: Feb 15, 2020
     price: 3795
 sample-calendar: /assets/discover-california-calendar.pdf
+name: Discover California
 ---

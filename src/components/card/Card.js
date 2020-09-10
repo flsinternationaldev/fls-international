@@ -1,19 +1,19 @@
 import React from 'react';
+import { Link } from 'gatsby';
 
 import cardStyles from './Card.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBook, faClock } from '@fortawesome/free-solid-svg-icons';
+import { faBook, faClock, faUser } from '@fortawesome/free-solid-svg-icons';
 
 export default function Card({
-	isSpecialityTours,
 	isLocation,
 	isCarouselLocation,
 	isAffiliate,
 	isContact,
+	programType,
 	cardData,
 }) {
 	const renderProgramPill = programType => {
-		console.log('program Type', programType);
 		if (programType === 'in-person') {
 			return (
 				<span className="fls__pill fls__pill--in-person">
@@ -25,30 +25,31 @@ export default function Card({
 		}
 	};
 
-	if (isSpecialityTours) {
+	if (programType === 'speciality-tours') {
 		return (
-			<div className={cardStyles.fls__card}>
+			<Link
+				to={`/programs/speciality-tours/${cardData.path}`}
+				className={cardStyles.fls__card}
+			>
 				<div className={cardStyles.fls__cardContents}>
-					<div className={cardStyles.fls__cardHeader}>Age 6+</div>
+					<div className={cardStyles.fls__cardHeader}>
+						<FontAwesomeIcon
+							className={cardStyles.flsCard__userIcon}
+							icon={faUser}
+						/>
+						{`Age ${cardData.speciality_tour_details.minimum_age}+`}
+					</div>
 
 					<div>
 						<h5 className={cardStyles.fls__cardTitle}>
-							Family Programs
+							{cardData.pageName}
 						</h5>
 						<h6 className={cardStyles.fls__cardSubtitle}>
-							Citrus College
+							{cardData.center}
 						</h6>
 
 						<p className={cardStyles.fls__cardCopy}>
-							Travelling together as a family builds memories that
-							will last forever. Family travel is even more
-							rewarding when you can combine a beautiful
-							destination with education and the opportunity to
-							make international friendships. Our Family Program
-							in Los Angeles gives younger students the experience
-							of building friendships with American children while
-							also providing adults with the chance to practice
-							their English with students from around the world.
+							{cardData.speciality_tour_description}
 						</p>
 					</div>
 
@@ -59,12 +60,15 @@ export default function Card({
 					</div>
 				</div>
 
-				<div
+				<img
+					// NOTE: Default to the first carousel image
+					src={cardData.carousel_images[0]}
+					alt={`${cardData.pageName} background image`}
 					className={`${cardStyles.fls__cardBg} ${cardStyles.fls__cardBgSpecialityTours}`}
-				></div>
+				/>
 				<div className={cardStyles.fls__cardBgOverlay}></div>
 				<div className={cardStyles.fls__cardFooterOverlay}></div>
-			</div>
+			</Link>
 		);
 	} else if (isLocation) {
 		return (
@@ -148,12 +152,12 @@ export default function Card({
 				</div>
 			</div>
 		);
-	} else {
+	} else if (programType === 'in-person' || programType === 'online') {
 		return (
 			// TODO: Render bg images based on CMS, and figure out why the pills don't have the space between them that they do in the static site
 			<div className={cardStyles.fls__card}>
 				<div className={cardStyles.fls__cardContents}>
-					{renderProgramPill(cardData.programType)}
+					{renderProgramPill(programType)}
 
 					<div>
 						<h5 className={cardStyles.fls__cardTitle}>

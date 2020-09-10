@@ -1,6 +1,8 @@
 ---
 path: acting-camp
-name: Acting Camp
+pageName: Acting Camp
+center: Orange County, CA
+programType: speciality-tours
 carousel-images:
   - /assets/acting-camp-1.jpeg
   - /assets/acting-camp-2.jpeg
@@ -67,4 +69,5 @@ program-dates:
     arrive: Jul 12, 2020
     depart: Aug 1, 2020
 sample-calendar: /assets/acting-camp-calendar.pdf
+name: Acting Camp
 ---

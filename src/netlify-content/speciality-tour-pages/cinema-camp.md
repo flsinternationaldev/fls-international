@@ -1,6 +1,8 @@
 ---
 path: cinema-camp
-name: Cinema Camp
+pageName: Cinema Camp
+center: New York Area
+programType: speciality-tours
 carousel-images:
   - /assets/cinema-camp-carousel-2.jpeg
   - /assets/cinema-camp-carousel-1.jpeg
@@ -70,4 +72,5 @@ program-dates:
     depart: Aug 1, 2020
     price: 4350
 sample-calendar: /assets/cinema-camp-sample-calendar.pdf
+name: Cinema Camp
 ---
