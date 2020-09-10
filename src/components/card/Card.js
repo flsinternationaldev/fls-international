@@ -83,7 +83,7 @@ export default function Card({
 					<img
 						className="fls__location-img"
 						src={cardData.carousel_images[0]}
-						alt={`${cardData.name} background image`}
+						alt={`${cardData.name}`}
 					/>
 					<Link
 						to={`/locations/${cardData.path}`}
