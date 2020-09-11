@@ -50,7 +50,7 @@ export default function NavbarDropdownContainer({
 	// TODO: Figure out why the dropdown is slightly offset
 	return (
 		<Link
-			to={`/${rootNavPath}`}
+			to={`${rootNavPath}`}
 			className={navbarStyles.navbar__navItem}
 			onMouseEnter={() => {
 				let newDropdownPos = {};

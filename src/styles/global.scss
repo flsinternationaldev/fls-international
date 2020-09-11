@@ -295,6 +295,18 @@ a {
 	}
 }
 
+// Utilities
+.fls--flex-align-center {
+	display: flex;
+	align-items: center;
+}
+
+.fls--collapsed {
+	max-height: 0 !important;
+	overflow: hidden;
+	transition: max-height 0.3s linear;
+}
+
 // /* TODO: Combine this with the button class for the hero section */
 .fls__button {
 	display: block !important;

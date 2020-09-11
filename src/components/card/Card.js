@@ -156,7 +156,10 @@ export default function Card({
 	} else if (programType === 'in-person' || programType === 'online') {
 		return (
 			// TODO: Render bg images based on CMS, and figure out why the pills don't have the space between them that they do in the static site
-			<div className={cardStyles.fls__card}>
+			<Link
+				to={`/programs/${programType}/${cardData.path}`}
+				className={cardStyles.fls__card}
+			>
 				<div className={cardStyles.fls__cardContents}>
 					{renderProgramPill(programType)}
 
@@ -195,7 +198,7 @@ export default function Card({
 					src={cardData.hero_image}
 				/>
 				<div className={cardStyles.fls__cardBgOverlay}></div>
-			</div>
+			</Link>
 		);
 	}
 }

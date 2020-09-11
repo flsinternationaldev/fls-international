@@ -47,7 +47,7 @@ export default function NavbarDropdownItem({ dropdownItem, rootNavPath }) {
 	if (dropdownItem.collectionName && sublinks.length) {
 		renderedDropdownItem = (
 			<Link
-				to={`/${rootNavPath}/${dropdownItem.path}`}
+				to={`${rootNavPath}/${dropdownItem.path}`}
 				className={`${navbarStyles.flsNav__dropdownItem}`}
 				ref={dropdownItemEl}
 				key={dropdownItem.pageName}
@@ -84,7 +84,7 @@ export default function NavbarDropdownItem({ dropdownItem, rootNavPath }) {
 			<Link
 				className={`${navbarStyles.flsNav__dropdownItem}`}
 				key={dropdownItem.pageName}
-				to={`/${rootNavPath}/${dropdownItem.path}`}
+				to={`${rootNavPath}/${dropdownItem.path}`}
 			>
 				<span>{dropdownItem.pageName}</span>
 			</Link>

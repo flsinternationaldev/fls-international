@@ -110,28 +110,45 @@ $fls-light-blue: #a8dadc;
 }
 
 .fls-nav__mobile-header {
+	display: block;
 	text-transform: uppercase;
 	font-weight: 500;
 	font-size: 22px;
-	margin-bottom: 8px;
-
-	&:after {
-		display: block;
-		width: 30px;
-		height: 2px;
-		margin: 8px 0;
-		border-top: 1px solid #ddd;
-		content: '';
-	}
 }
 
 .fls-nav__mobile-item-header {
 	text-transform: uppercase;
 	font-weight: 500;
-	font-size: 18px;
+	font-size: 16px;
 }
 
 .fls-nav__mobile-item {
 	font-size: 14px;
-	font-weight: 500px;
+	font-weight: 500;
+}
+
+.fls-nav__mobile-header-container {
+	display: flex;
+	align-items: center;
+
+	span {
+		margin-left: 10px;
+		font-size: 12px;
+		cursor: pointer;
+	}
+}
+
+.fls-nav__expand {
+	transition: all 0.3s ease 0s;
+	margin-left: 8px;
+	cursor: pointer;
+}
+
+.fls-nav__expand--expanded {
+	transform: rotate(90deg);
+}
+
+.fls-nav__collapsible-container {
+	max-height: 50vh;
+	transition: max-height 0.3s linear;
 }

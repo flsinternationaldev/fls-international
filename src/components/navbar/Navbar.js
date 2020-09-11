@@ -101,7 +101,7 @@ export default function Navbar(props) {
 											mainNavItem={mainNavItem}
 											title={mainNavItem.pageName}
 											items={mainNavItem.links}
-											rootNavPath={mainNavItem.path}
+											rootNavPath={`/${mainNavItem.path}`}
 											parentEl={navParentEl}
 										></NavbarDropdownContainer>
 									);
@@ -118,28 +118,7 @@ export default function Navbar(props) {
 									);
 								}
 							})}
-							{/* 
-							<Link to="/application">Application</Link>
-
-							<Link to="/application">Testimonials</Link>
-
-							<Link to="/about-us">About Us</Link> */}
 						</div>
-
-						{/* <div
-							className={`tabs is-right 							
-							${navbarStyles.tabsFls} 
-							${props.isHome ? navbarStyles.tabsHome : ''} 
-							${isScrolled ? navbarStyles.tabsScrolled : navbarStyles.tabsFls}`}
-						>
-							<div>
-								<Link to="/contact">Contact</Link>
-
-								<Link to="/downloads">Downloads</Link>
-
-								<Link to="/login">Login</Link>
-							</div>
-						</div> */}
 					</div>
 				</div>
 			</nav>
@@ -147,6 +126,7 @@ export default function Navbar(props) {
 			<NavbarMobile
 				mobileDropdownPos={mobileDropdownPos}
 				isMobileMenuOpen={isMobileMenuOpen}
+				mainNavItems={mainNavItems}
 			/>
 		</Fragment>
 	);

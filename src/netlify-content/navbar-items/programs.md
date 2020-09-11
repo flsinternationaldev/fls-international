@@ -8,6 +8,7 @@ links:
     collectionName: program-pages
   - path: online
     pageName: Online
+    collectionName: program-pages
   - path: speciality-tours
     pageName: Speciality Tours
     collectionName: speciality-tour-pages

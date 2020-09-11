@@ -16,7 +16,6 @@ export const LocationsPageTemplate = ({ data }) => {
 		edge => edge.node.frontmatter
 	);
 
-	console.log('locations!', locations);
 	return (
 		<Section
 			sectionClasses={['section', 'programs']}
