@@ -12,31 +12,30 @@ export default function Hero({ carouselItems }) {
 		arrows: false,
 		autoplaySpeed: 4000,
 		infinite: true,
+		adaptiveHeight: true,
 	};
 
 	return (
 		<section className={`hero is-fullheight ${heroStyles.heroFls}`}>
 			<Slick {...slickSettings}>
 				{carouselItems.map(carouselItem => (
-					<div
-						className={heroStyles.heroBody__carouselItem}
-						key={carouselItem.title}
-					>
-						<img
-							className={heroStyles.flsHero__carouselImage}
-							src={carouselItem.carousel_image}
-							alt={carouselItem.title}
-						/>
-
-						<div className={heroStyles.hero__copyContainer}>
-							<h2
-								className={`subtitle ${heroStyles.hero__copyTitle}`}
-							>
-								{carouselItem.title}
-							</h2>
-							<h1 className={heroStyles.hero__copy}>
-								{carouselItem.copy}
-							</h1>
+					<div key={carouselItem.title}>
+						<div
+							className={heroStyles.heroBody__carouselItem}
+							style={{
+								'background-image': `url(${carouselItem.carousel_image})`,
+							}}
+						>
+							<div className={heroStyles.hero__copyContainer}>
+								<h2
+									className={`subtitle ${heroStyles.hero__copyTitle}`}
+								>
+									{carouselItem.title}
+								</h2>
+								<h1 className={heroStyles.hero__copy}>
+									{carouselItem.copy}
+								</h1>
+							</div>
 						</div>
 					</div>
 				))}

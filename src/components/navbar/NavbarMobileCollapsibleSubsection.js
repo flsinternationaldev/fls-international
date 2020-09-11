@@ -34,7 +34,7 @@ export default function Navbar({ item, rootNavPath, isSubItem }) {
 	const renderItems = isSubItem => {
 		if (isSubItem) {
 			return (
-				<div className="column is-one-third">
+				<div className="column is-one-third has-text-centered">
 					<Link
 						to={
 							item.collectionName === 'program-pages'

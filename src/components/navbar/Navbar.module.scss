@@ -114,6 +114,7 @@ $fls-light-blue: #a8dadc;
 	text-transform: uppercase;
 	font-weight: 500;
 	font-size: 22px;
+	text-align: center;
 }
 
 .fls-nav__mobile-item-header {
@@ -130,6 +131,8 @@ $fls-light-blue: #a8dadc;
 .fls-nav__mobile-header-container {
 	display: flex;
 	align-items: center;
+	justify-content: center;
+	margin-bottom: 10px;
 
 	span {
 		margin-left: 10px;
@@ -149,6 +152,6 @@ $fls-light-blue: #a8dadc;
 }
 
 .fls-nav__collapsible-container {
-	max-height: 50vh;
+	max-height: 100vh;
 	transition: max-height 0.3s linear;
 }
