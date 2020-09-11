@@ -5,11 +5,16 @@ $fls-light-blue: #a8dadc;
 
 .navbar__logo {
 	max-height: 5rem !important;
+
+	@media only screen and (max-width: 768px) {
+		max-height: 3.5rem !important;
+	}
 }
 
 .navbar--fls {
 	background-color: $fls-dark-blue !important;
 	transition: all 0.3s ease 0s;
+	z-index: 100 !important;
 
 	.navbar__item-container {
 		height: 100%;
@@ -48,10 +53,12 @@ $fls-light-blue: #a8dadc;
 .fls-nav__mobile {
 	height: 100vh;
 	width: 100%;
-	z-index: 1000;
+	z-index: 99;
 	background-color: darken($fls-dark-blue, 10%);
 	position: fixed;
 	color: white;
+	overflow-y: scroll;
+	padding-bottom: 16px;
 }
 
 .fls-nav__content {

@@ -23,7 +23,7 @@ export default function Hero({ carouselItems }) {
 						<div
 							className={heroStyles.heroBody__carouselItem}
 							style={{
-								'background-image': `url(${carouselItem.carousel_image})`,
+								backgroundImage: `url(${carouselItem.carousel_image})`,
 							}}
 						>
 							<div className={heroStyles.hero__copyContainer}>

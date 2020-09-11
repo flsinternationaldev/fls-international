@@ -45,7 +45,9 @@ export default function Navbar(props) {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
 	// TODO: This state, and its logic, is a near duplicate of the desktop nav's position logic. Could be consolidated?
-	const [mobileDropdownPos, setMobileDropdownPos] = useState({ top: 0 });
+	const [mobileDropdownPadding, setMobileDropdownPadding] = useState({
+		top: 0,
+	});
 
 	return (
 		<Fragment>
@@ -70,13 +72,13 @@ export default function Navbar(props) {
 								navbarStyles.hamburgerFls
 							} ${isMobileMenuOpen ? 'is-active' : ''} `}
 							onClick={() => {
-								let newDropdownPos = {};
+								let newDropdownPadding = {};
 
-								newDropdownPos.top =
+								newDropdownPadding['padding-top'] =
 									navParentEl.current.getBoundingClientRect()
 										.top + navParentEl.current.offsetHeight;
 
-								setMobileDropdownPos(newDropdownPos);
+								setMobileDropdownPadding(newDropdownPadding);
 								setIsMobileMenuOpen(prevState => !prevState);
 							}}
 							type="button"
@@ -124,7 +126,7 @@ export default function Navbar(props) {
 			</nav>
 
 			<NavbarMobile
-				mobileDropdownPos={mobileDropdownPos}
+				mobileDropdownPadding={mobileDropdownPadding}
 				isMobileMenuOpen={isMobileMenuOpen}
 				mainNavItems={mainNavItems}
 			/>

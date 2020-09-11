@@ -8,7 +8,7 @@ import NavbarMobileCollapsibleSection from 'src/components/navbar/NavbarMobileCo
 
 export default function Navbar({
 	isMobileMenuOpen,
-	mobileDropdownPos,
+	mobileDropdownPadding,
 	mainNavItems,
 }) {
 	return (
@@ -16,7 +16,7 @@ export default function Navbar({
 			className={`${navbarStyles.flsNav__mobile} ${
 				isMobileMenuOpen ? 'fls__show' : 'fls__hide'
 			}`}
-			style={mobileDropdownPos}
+			style={mobileDropdownPadding}
 		>
 			<div className="fls-nav__mobile-container">
 				<div className="columns is-multiline ">

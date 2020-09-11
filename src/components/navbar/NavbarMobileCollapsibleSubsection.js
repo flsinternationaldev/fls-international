@@ -57,7 +57,7 @@ export default function Navbar({ item, rootNavPath, isSubItem }) {
 			);
 		} else {
 			return (
-				<div className={`column is-full uh`}>
+				<div className={`column is-full`}>
 					<div className={navbarStyles.flsNav__mobileHeaderContainer}>
 						<Link
 							to={
