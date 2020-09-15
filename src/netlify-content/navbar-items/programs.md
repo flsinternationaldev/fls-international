@@ -12,4 +12,6 @@ links:
   - path: speciality-tours
     pageName: Speciality Tours
     collectionName: speciality-tour-pages
+  - path: about-us
+    pageName: About Us
 ---
