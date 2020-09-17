@@ -306,12 +306,12 @@ collections:
                         },
                     ],
             }
-    - name: 'location-pages'
-      label: 'Location Pages'
+    - name: 'locationsDynamicPages'
+      label: 'Locations Dynamic Pages'
       create: true
-      folder: 'src/netlify-content/location-pages'
+      folder: 'src/netlify-content/dynamic-pages/locations'
       identifier_field: pageName
-      label_singular: 'location page'
+      label_singular: 'location dynamic page'
       fields:
           - {
                 label: 'Path',
@@ -366,10 +366,10 @@ collections:
                 name: 'post-content',
                 widget: 'markdown',
             }
-    - name: 'program-pages'
-      label: 'Program Pages'
+    - name: 'inPersonProgramsDynamicPages'
+      label: 'In Person Programs Dynamic Pages'
       create: true
-      folder: 'src/netlify-content/program-pages'
+      folder: 'src/netlify-content/dynamic-pages/programs/in-person'
       identifier_field: name
       fields:
           - {
@@ -386,12 +386,6 @@ collections:
             }
           - { label: 'Name', name: 'name', widget: 'string' }
           - { label: 'Hero Image', name: 'hero-image', widget: 'image' }
-          - {
-                label: 'Program type',
-                name: 'programType',
-                widget: 'select',
-                options: ['in-person', 'online'],
-            }
           - {
                 label: 'Program Details',
                 name: 'program-details',
@@ -431,12 +425,74 @@ collections:
                 name: 'program-features-content',
                 widget: 'markdown',
             }
-    - name: 'speciality-tours'
-      label: 'Speciality Tour Pages'
+    - name: 'onlineProgramsDynamicPages'
+      label: 'Online Programs Dynamic Pages'
       create: true
-      folder: 'src/netlify-content/speciality-tour-pages'
+      folder: 'src/netlify-content/dynamic-pages/programs/online'
+      identifier_field: name
+      label_singular: 'online program dynamic page'
+      fields:
+          - {
+                label: 'Path',
+                name: 'path',
+                widget: 'string',
+                hint: 'The URL for the page. Should be all lower case, and uses dashes instead of spaces, e.g.locations/path-name-here. ',
+            }
+          - {
+                label: 'Online Program Data',
+                name: 'onlineProgram',
+                widget: 'relation',
+                valueField: 'name',
+                searchFields: ['name'],
+                collection: 'onlineProgramsData',
+                hint: 'The online program data item to pull program specific info from',
+            }
+          - { label: 'Hero Image', name: 'hero-image', widget: 'image' }
+          - {
+                label: 'Program Details',
+                name: 'program-details',
+                widget: 'object',
+                fields:
+                    [
+                        {
+                            label: 'Lessons per week',
+                            name: 'lessons-per-week',
+                            widget: 'number',
+                        },
+                        {
+                            label: 'Hours per week',
+                            name: 'hours-per-week',
+                            widget: 'number',
+                        },
+                        {
+                            label: 'Minutes per lesson',
+                            name: 'minutes-per-lesson',
+                            widget: 'number',
+                        },
+                    ],
+            }
+          - {
+                label: 'Description',
+                name: 'description',
+                widget: 'string',
+                hint: 'A 1 - 3 sentence summary of the program. Used on the program card.',
+            }
+          - {
+                label: 'Program post content',
+                name: 'program-post-content',
+                widget: 'markdown',
+            }
+          - {
+                label: 'Program features content',
+                name: 'program-features-content',
+                widget: 'markdown',
+            }
+    - name: 'specialityToursDynamicPages'
+      label: 'Speciality Tours Dynamic Pages'
+      create: true
+      folder: 'src/netlify-content/dynamic-pages/programs/speciality-tours'
       identifier_field: pageName
-      label_singular: 'speciality tour page'
+      label_singular: 'speciality tour dynamic page'
       fields:
           - {
                 label: 'Path',
@@ -460,13 +516,6 @@ collections:
                 # https://www.netlifycms.org/docs/widgets/relation/
                 valueField: 'pageName',
                 searchFields: ['pageName'],
-            }
-          - {
-                label: 'Program type',
-                name: 'programType',
-                widget: 'select',
-                options: ['speciality-tours'],
-                default: ['speciality-tours'],
             }
           - {
                 label: 'Carousel Images',
@@ -514,15 +563,252 @@ collections:
                 name: 'accommodations',
                 widget: 'markdown',
             }
+    - name: 'onlineProgramsData'
+      label: 'Online Programs Data'
+      create: true
+      folder: 'src/netlify-content/data/online-programs'
+      identifier_field: name
+      label_singular: 'online program data'
+      fields:
+          - { name: 'name', label: 'Online Program Name', widget: 'string' }
+          - {
+                name: 'duration',
+                label: 'Duration Options',
+                widget: 'object',
+                fields:
+                    [
+                        {
+                            label: 'Max Weeks',
+                            name: 'max-weeks',
+                            widget: 'string',
+                        },
+                        {
+                            label: 'Exceed max weeks?',
+                            name: 'exceed-max-weeks',
+                            required: false,
+                            hint: 'If "true", will render on website as "[maxWeekNumber]+" (e.g. if max weeks = 4, will render as "4+"',
+                            widget: 'boolean',
+                        },
+                        {
+                            label: 'Week Thresholds',
+                            name: 'week-thresholds',
+                            required: false,
+                            widget: 'list',
+                            fields:
+                                [
+                                    {
+                                        label: 'Threshold Max',
+                                        name: 'threshold-max',
+                                        widget: 'number',
+                                    },
+                                    {
+                                        label: 'Price Per Week',
+                                        name: 'pricePerWeek',
+                                        widget: 'number',
+                                    },
+                                ],
+                        },
+                    ],
+            }
+          - {
+                label: 'Price Details',
+                name: 'priceDetails',
+                widget: 'object',
+                required: false,
+                hint: 'If this field is left blank, it is expected that the weekly price is specified in the above "Week Thresholds" list',
+                fields:
+                    [
+                        { label: 'Price', name: 'price', widget: 'number' },
+                        {
+                            label: 'Pay Period',
+                            name: 'payPeriod',
+                            widget: 'select',
+                            options: [{ label: 'Weekly', value: 'weekly' }],
+                        },
+                    ],
+            }
+          - { label: 'Hours Per Week', name: 'hoursPerWeek', widget: 'number' }
+          - {
+                label: 'Lessons Per Week',
+                name: 'lessonsPerWeek',
+                widget: 'number',
+            }
+          - {
+                # Should note, or enforce, that these are PST
+                label: 'Times Offered',
+                name: 'timesOffered',
+                widget: 'list',
+                label_singular: 'offered time',
+                summary: '{{start}}',
+                field:
+                    {
+                        name: 'start',
+                        label: 'Start',
+                        widget: 'datetime',
+                        default: '',
+                        time_format: 'LT',
+                        format: 'LT',
+                        picker_utc: false,
+                        hint: 'This will only render the selected time on the site, and will totally ignore the date (e.g. 09/16/2020 9:00 AM will display as 9:00 AM)',
+                    },
+            }
+          - {
+                label: 'Term Dates',
+                name: 'termDates',
+                widget: 'list',
+                required: false,
+                summary: '{{start}} - {{end}}',
+                label_singular: 'term date',
+                fields: [
+                        {
+                            # TODO: Why is the CMS UI not respecting the format options?
+                            label: 'Start',
+                            name: 'start',
+                            widget: 'datetime',
+                            date_format: 'M/D',
+                            time_format: false,
+                            picker_utc: false,
+                            format: 'M/D',
+                            hint: 'This will render as "Date/Month" in app (e.g. 09/16/2020 will dislay as 9/16)',
+                        },
+                        {
+                            label: 'End',
+                            name: 'end',
+                            widget: 'datetime',
+                            date_format: 'M/D',
+                            time_format: false,
+                            picker_utc: false,
+                            format: 'M/D',
+                            hint: 'This will render as "Date/Month" on the site (e.g. 09/16/2020 will dislay as 9/16)',
+                        },
+                    ],
+            }
+            # TODO: Supplements
+    - name: 'inPersonProgramsData'
+      label: 'In-Person Programs Data'
+      create: true
+      folder: 'src/netlify-content/data/in-person'
+      identifier_field: name
+      label_singular: 'in-person program data'
+      summary: '{{name}} @ {{location}}'
+      fields:
+          - {
+                name: 'name',
+                label: 'In-Person Program Name',
+                widget: 'string',
+                hint: 'Note that, for in-person programs, the main header of the page will be the location name',
+            }
+          - {
+                label: 'Location',
+                name: 'location',
+                widget: 'relation',
+                collection: 'location-pages',
+                valueField: 'name',
+                searchFields: ['name'],
+                displayFields: ['name'],
+                hint: 'This field helps the site logic differentiate between the same program at different locations',
+            }
+          - {
+                name: 'duration',
+                label: 'Duration Options',
+                widget: 'object',
+                fields:
+                    [
+                        {
+                            label: 'Max Weeks',
+                            name: 'maxWeeks',
+                            widget: 'string',
+                        },
+                        {
+                            label: 'Exceed max weeks?',
+                            name: 'exceedMaxWeeks',
+                            required: false,
+                            hint: 'If "true", will render on website as "[maxWeekNumber]+" (e.g. if max weeks = 4, will render as "4+"',
+                            widget: 'boolean',
+                        },
+                        {
+                            label: 'Week Thresholds',
+                            name: 'weekThresholds',
+                            required: false,
+                            widget: 'list',
+                            fields:
+                                [
+                                    {
+                                        label: 'Threshold Max',
+                                        name: 'thresholdMax',
+                                        widget: 'number',
+                                    },
+                                    {
+                                        label: 'Price Per Week',
+                                        name: 'pricePerWeek',
+                                        widget: 'number',
+                                    },
+                                ],
+                        },
+                    ],
+            }
+            # TODO: There is only one in-person program that does not have all the same hours per week for all the week thresholds. Check if this is intentional or not.
+          - { label: 'Hours Per Week', name: 'hoursPerWeek', widget: 'number' }
+          - {
+                label: 'Lessons Per Week',
+                name: 'lessonsPerWeek',
+                widget: 'number',
+            }
+            # TODO: Supplements
+    - name: 'specialityToursData'
+      label: 'Speciality Tours Data'
+      create: true
+      folder: 'src/netlify-content/data/speciality-tours'
+      identifier_field: name
+      label_singular: 'speciality tour data'
+      summary: '{{name}} @ {{location}}'
+      fields:
+          - { name: 'name', label: 'Speciality Tour Name', widget: 'string' }
+          - {
+                label: 'Location',
+                name: 'location',
+                widget: 'relation',
+                collection: 'location-pages',
+                valueField: 'name',
+                searchFields: ['name'],
+                displayFields: ['name'],
+            }
+          - { name: 'price', label: 'Price', widget: 'number' }
+          - { name: 'duration', label: 'Duration (Weeks)', widget: 'number' }
+          - { name: 'minimumAge', label: 'Minimum Age', widget: 'number' }
+          - {
+                label: 'Lessons Per Week',
+                name: 'lessonsPerWeek',
+                widget: 'number',
+            }
           - {
                 label: 'Program Dates',
                 name: 'program-dates',
                 widget: 'list',
-                fields:
-                    [
-                        { label: 'Arrive', name: 'arrive', widget: 'string' },
-                        { label: 'Depart', name: 'depart', widget: 'string' },
-                        { label: 'Price', name: 'price', widget: 'number' },
+                label_sigular: 'program date',
+                summary: '{{arrive}} - {{depart}}',
+                fields: [
+                        {
+                            # Should note, or enforce, that these are PST
+                            label: 'Arrive',
+                            name: 'arrive',
+                            widget: 'datetime',
+                            default: '',
+                            time_format: false,
+                            format: 'MMM Do, YYYY',
+                            picker_utc: false,
+                            hint: 'This will only render the selected date on the site, and will totally ignore the time (e.g. 09/16/2020 9:00 AM will display as "Sep 16, 2020")',
+                        },
+                        {
+                            label: 'Depart',
+                            name: 'depart',
+                            widget: 'datetime',
+                            default: '',
+                            time_format: false,
+                            format: 'MMM Do, YYYY',
+                            picker_utc: false,
+                            hint: 'This will only render the selected date on the site, and will totally ignore the time (e.g. 09/16/2020 9:00 AM will display as "Sep 16, 2020")',
+                        },
                     ],
             }
           - {
