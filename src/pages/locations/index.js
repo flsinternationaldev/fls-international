@@ -37,28 +37,28 @@ const LocationsPage = (
 		/*data*/
 	}
 ) => {
-	// const { frontmatter } = data.markdownRemark;
+	const data = {};
 
-	const data = useStaticQuery(graphql`
-		{
-			allMarkdownRemark(
-				limit: 1000
-				filter: { fileAbsolutePath: { regex: "/location-pages//" } }
-			) {
-				edges {
-					node {
-						frontmatter {
-							path
-							name
-							carousel_images
-							pageName
-							description
-						}
-					}
-				}
-			}
-		}
-	`);
+	// const data = useStaticQuery(graphql`
+	// 	{
+	// 		allMarkdownRemark(
+	// 			limit: 1000
+	// 			filter: { fileAbsolutePath: { regex: "/location-pages//" } }
+	// 		) {
+	// 			edges {
+	// 				node {
+	// 					frontmatter {
+	// 						path
+	// 						name
+	// 						carousel_images
+	// 						pageName
+	// 						description
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// `);
 
 	return (
 		<Layout isScrolled={true} hasNavHero={true} pageTitle={'Locations'}>

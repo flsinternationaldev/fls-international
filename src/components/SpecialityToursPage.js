@@ -215,40 +215,36 @@ export const SpecialityTourPageTemplate = ({
 const SpecialityTourPage = ({ pageContext }) => {
 	const { pagePath } = pageContext;
 
-	const data = useStaticQuery(graphql`
-		{
-			allMarkdownRemark(
-				limit: 1000
-				filter: {
-					fileAbsolutePath: { regex: "/speciality-tour-pages//" }
-				}
-			) {
-				edges {
-					node {
-						frontmatter {
-							path
-							name
-							accommodations
-							activities_and_excursions
-							carousel_images
-							features
-							program_dates {
-								arrive
-								depart
-								price
-							}
-							sample_calendar
-							speciality_tour_description
-							speciality_tour_details {
-								minimum_age
-								number_of_weeks
-							}
-						}
-					}
-				}
-			}
-		}
-	`);
+	const data = {};
+	// const data = useStaticQuery(graphql`
+	// 	{
+	// 		allMarkdownRemark(
+	// 			limit: 1000
+	// 			filter: {
+	// 				fileAbsolutePath: { regex: "/speciality-tour-pages//" }
+	// 			}
+	// 		) {
+	// 			edges {
+	// 				node {
+	// 					frontmatter {
+	// 						path
+	// 						name
+	// 						accommodations
+	// 						activities_and_excursions
+	// 						features
+	// 						program_dates {
+	// 							arrive
+	// 							depart
+	// 							price
+	// 						}
+	// 						sample_calendar
+	// 						speciality_tour_description
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// `);
 
 	const specialityTourData = data.allMarkdownRemark.edges.find(
 		edge => edge.node.frontmatter.path === pagePath

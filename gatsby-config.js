@@ -38,13 +38,6 @@ module.exports = {
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
-				path: `${__dirname}/src/netlify-content/location`,
-				name: 'location',
-			},
-		},
-		{
-			resolve: 'gatsby-source-filesystem',
-			options: {
 				path: `${__dirname}/src/netlify-content/pages`,
 				name: 'pages',
 			},
@@ -52,29 +45,15 @@ module.exports = {
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
+				path: `${__dirname}/src/netlify-content/data`,
+				name: 'data',
+			},
+		},
+		{
+			resolve: 'gatsby-source-filesystem',
+			options: {
 				path: `${__dirname}/src/netlify-content/general-fees`,
 				name: 'general-fees',
-			},
-		},
-		{
-			resolve: 'gatsby-source-filesystem',
-			options: {
-				path: `${__dirname}/src/netlify-content/location-pages`,
-				name: 'location-pages',
-			},
-		},
-		{
-			resolve: 'gatsby-source-filesystem',
-			options: {
-				path: `${__dirname}/src/netlify-content/program-pages`,
-				name: 'program-pages',
-			},
-		},
-		{
-			resolve: 'gatsby-source-filesystem',
-			options: {
-				path: `${__dirname}/src/netlify-content/speciality-tour-pages`,
-				name: 'speciality-tour-pages',
 			},
 		},
 		{

@@ -11,7 +11,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 			{
 				allMarkdownRemark(
 					limit: 1000
-					filter: { fileAbsolutePath: { regex: "/location-pages//" } }
+					filter: {
+						fileAbsolutePath: {
+							regex: "/pages/dynamic/locations//"
+						}
+					}
 				) {
 					edges {
 						node {
@@ -49,9 +53,29 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	const programs = await graphql(
 		`
 			{
-				allMarkdownRemark(
+				inPerson: allMarkdownRemark(
 					limit: 1000
-					filter: { fileAbsolutePath: { regex: "/program-pages//" } }
+					filter: {
+						fileAbsolutePath: {
+							regex: "/pages/dynamic/programs/in-person//"
+						}
+					}
+				) {
+					edges {
+						node {
+							frontmatter {
+								path
+							}
+						}
+					}
+				}
+				online: allMarkdownRemark(
+					limit: 1000
+					filter: {
+						fileAbsolutePath: {
+							regex: "/pages/dynamic/programs/online//"
+						}
+					}
 				) {
 					edges {
 						node {
@@ -67,8 +91,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 	const programPageTemplate = path.resolve(`src/components/ProgramPage.js`);
 
-	programs.data.allMarkdownRemark.edges.forEach(({ node }) => {
+	// TODO: This can be DRYed up
+	programs.data.inPerson.edges.forEach(({ node }) => {
 		const pagePath = `programs/in-person/${node.frontmatter.path}`;
+
+		createPage({
+			path: pagePath,
+			component: programPageTemplate,
+			// Context properties are passed into the component as graphql variables
+			context: {
+				pagePath: node.frontmatter.path,
+			},
+		});
+	});
+
+	programs.data.online.edges.forEach(({ node }) => {
+		const pagePath = `programs/online/${node.frontmatter.path}`;
 
 		createPage({
 			path: pagePath,
@@ -87,29 +125,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 				allMarkdownRemark(
 					limit: 1000
 					filter: {
-						fileAbsolutePath: { regex: "/speciality-tour-pages//" }
+						fileAbsolutePath: {
+							regex: "/pages/dynamic/programs/speciality-tours//"
+						}
 					}
 				) {
 					edges {
 						node {
 							frontmatter {
 								path
-								name
-								accommodations
-								activities_and_excursions
-								carousel_images
-								features
-								program_dates {
-									arrive
-									depart
-									price
-								}
-								sample_calendar
-								speciality_tour_description
-								speciality_tour_details {
-									minimum_age
-									number_of_weeks
-								}
 							}
 						}
 					}

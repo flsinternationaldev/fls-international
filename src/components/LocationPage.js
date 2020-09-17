@@ -112,16 +112,16 @@ const LocationPage = ({ pageContext }) => {
 		{
 			allMarkdownRemark(
 				limit: 1000
-				filter: { fileAbsolutePath: { regex: "/location-pages//" } }
+				filter: {
+					fileAbsolutePath: { regex: "/pages/dynamic/locations//" }
+				}
 			) {
 				edges {
 					node {
 						frontmatter {
 							path
-							post_content
 							name
 							pageName
-							carousel_images
 							quick_facts {
 								name
 								icon

@@ -1,7 +1,7 @@
 ---
 path: boston-ma
-pageName: Boston, MA
-name: Boston Commons
+locationName: Los Angeles, CA
+centerName: Citrus College
 description: Steeped in history, rich in culture, and home to some of America's
   most popular sports teams, Boston is the country's educational capital.
 quick-facts:
@@ -72,6 +72,7 @@ carousel-images:
   - /assets/boston-commons-1.jpeg
   - /assets/boston-commons-2.jpeg
   - /assets/boston-commons-4.jpeg
+name: Boston Commons
 post-content: >-
   ## OVERVIEW
 
@@ -247,4 +248,5 @@ post-content: >-
 
 
   \- Newbury Street Shopping
+pageName: Boston, MA
 ---

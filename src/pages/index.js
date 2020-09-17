@@ -334,7 +334,6 @@ const HomePage = (
 		/*data*/
 	}
 ) => {
-	// const homePageData = homeCopy.edges[0].node.frontmatter;
 	const data = useStaticQuery(graphql`
 		{
 			homeCopy: allMarkdownRemark(
@@ -374,7 +373,11 @@ const HomePage = (
 			}
 			programs: allMarkdownRemark(
 				limit: 8
-				filter: { fileAbsolutePath: { regex: "/program-pages//" } }
+				filter: {
+					fileAbsolutePath: {
+						regex: "/pages/dynamic/programs/in-person//"
+					}
+				}
 			) {
 				edges {
 					node {
@@ -382,20 +385,22 @@ const HomePage = (
 							path
 							name
 							hero_image
-							programType
 						}
 					}
 				}
 			}
 			locations: allMarkdownRemark(
 				limit: 1000
-				filter: { fileAbsolutePath: { regex: "/location-pages//" } }
+				filter: {
+					fileAbsolutePath: { regex: "/pages/dynamic/locations//" }
+				}
 			) {
 				edges {
 					node {
 						frontmatter {
 							path
-							name
+							centerName
+							locationName
 							carousel_images
 							pageName
 							description

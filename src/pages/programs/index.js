@@ -111,70 +111,67 @@ export const ProgramsPageTemplate = ({ data, location }) => {
 };
 
 const ProgramsPage = ({ /*data, */ location }) => {
-	// const { frontmatter } = data.markdownRemark;
+	const data = {};
 
-	const data = useStaticQuery(graphql`
-		{
-			programs: allMarkdownRemark(
-				limit: 1000
-				filter: { fileAbsolutePath: { regex: "/program-pages//" } }
-			) {
-				edges {
-					node {
-						frontmatter {
-							description
-							path
-							name
-							programType
-							program_details {
-								lessons_per_week
-								hours_per_week
-							}
-							hero_image
-						}
-					}
-				}
-			}
-			specialityTours: allMarkdownRemark(
-				limit: 1000
-				filter: {
-					fileAbsolutePath: { regex: "/speciality-tour-pages//" }
-				}
-			) {
-				edges {
-					node {
-						frontmatter {
-							speciality_tour_description
-							path
-							pageName
-							center
-							programType
-							speciality_tour_details {
-								minimum_age
-							}
-							carousel_images
-						}
-					}
-				}
-			}
-			programTypesCopy: allMarkdownRemark(
-				limit: 1000
-				filter: { fileAbsolutePath: { regex: "/pages/programs/" } }
-			) {
-				edges {
-					node {
-						frontmatter {
-							programTypeDescriptions {
-								inPerson
-								online
-								specialityTours
-							}
-						}
-					}
-				}
-			}
-		}
-	`);
+	// const data = useStaticQuery(graphql`
+	// 	{
+	// 		programs: allMarkdownRemark(
+	// 			limit: 1000
+	// 			filter: { fileAbsolutePath: { regex: "/program-pages//" } }
+	// 		) {
+	// 			edges {
+	// 				node {
+	// 					frontmatter {
+	// 						description
+	// 						path
+	// 						name
+	// 						programType
+	// 						program_details {
+	// 							lessons_per_week
+	// 							hours_per_week
+	// 						}
+	// 						hero_image
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+	// 		specialityTours: allMarkdownRemark(
+	// 			limit: 1000
+	// 			filter: {
+	// 				fileAbsolutePath: { regex: "/speciality-tour-pages//" }
+	// 			}
+	// 		) {
+	// 			edges {
+	// 				node {
+	// 					frontmatter {
+	// 						speciality_tour_description
+	// 						path
+	// 						pageName
+	// 						center
+	// 						programType
+	// 						carousel_images
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+	// 		programTypesCopy: allMarkdownRemark(
+	// 			limit: 1000
+	// 			filter: { fileAbsolutePath: { regex: "/pages/programs/" } }
+	// 		) {
+	// 			edges {
+	// 				node {
+	// 					frontmatter {
+	// 						programTypeDescriptions {
+	// 							inPerson
+	// 							online
+	// 							specialityTours
+	// 						}
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// `);
 
 	return (
 		<Layout isScrolled={true} hasNavHero={true} pageTitle={'Programs'}>

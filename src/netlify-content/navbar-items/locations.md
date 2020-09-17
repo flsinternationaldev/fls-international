@@ -1,7 +1,7 @@
 ---
 path: locations
 pageName: Locations
-collectionName: location-pages
+collectionName: locations
 collection-name: location-pages
 order: 1
 links: []

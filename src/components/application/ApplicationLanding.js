@@ -25,44 +25,6 @@ export default function Application() {
 						fileAbsolutePath
 						frontmatter {
 							name
-							supplements {
-								airport_transfers {
-									airport_name
-									cost
-								}
-								auditing {
-									_4_week_cost
-									additional_week_cost
-								}
-								concurrent_enrollment {
-									per_3_unit_class
-								}
-								hs_completion_course {
-									_4_week_cost
-									additional_week_cost
-								}
-								hs_immersion {
-									per_week_cost
-								}
-							}
-							housing_fees {
-								additional_notes
-								cost_per_week
-								housing_name
-								meals_per_week
-								non_refundable_deposit
-							}
-							programs {
-								name
-								exceed_max_weeks
-								max_weeks
-								week_thresholds {
-									threshold_max
-									lessons_per_week
-									hours_per_week
-									price_per_week
-								}
-							}
 						}
 					}
 				}
