@@ -318,7 +318,7 @@ collections:
                 label: 'Path',
                 name: 'path',
                 widget: 'string',
-                hint: 'The URL for the page. Should be all lower case, and uses dashes instead of spaces, e.g.locations/path-name-here. ',
+                hint: 'The URL for the page. Should be all lower case, and uses dashes instead of spaces, e.g. computer-science-camp',
             }
           - {
                 label: 'Location Name',
@@ -391,30 +391,46 @@ collections:
           - {
                 label: 'name',
                 name: 'name',
-                widget: 'string',
+                widget: 'relation',
+                collection: 'inPersonProgramsData',
+                searchFields: ['name'],
+                displayFields: ['name'],
+                valueField: 'name',
                 hint: 'The program name, which will act as the page title',
             }
           - { label: 'Hero Image', name: 'hero-image', widget: 'image' }
           - {
                 label: 'Program Details',
-                name: 'program-details',
+                name: 'programDetails',
                 widget: 'object',
                 fields:
                     [
                         {
                             label: 'Lessons per week',
-                            name: 'lessons-per-week',
-                            widget: 'number',
+                            name: 'lessonsPerWeek',
+                            widget: 'relation',
+                            collection: 'inPersonProgramsData',
+                            searchFields: ['lessonsPerWeek'],
+                            displayFields: ['lessonsPerWeek'],
+                            valueField: 'lessonsPerWeek',
                         },
                         {
                             label: 'Hours per week',
-                            name: 'hours-per-week',
-                            widget: 'number',
+                            name: 'hoursPerWeek',
+                            widget: 'relation',
+                            collection: 'inPersonProgramsData',
+                            searchFields: ['hoursPerWeek'],
+                            displayFields: ['hoursPerWeek'],
+                            valueField: 'hoursPerWeek',
                         },
                         {
                             label: 'Minutes per lesson',
-                            name: 'minutes-per-lesson',
-                            widget: 'number',
+                            name: 'minutesPerLesson',
+                            widget: 'relation',
+                            collection: 'inPersonProgramsData',
+                            searchFields: ['minutesPerLesson'],
+                            displayFields: ['minutesPerLesson'],
+                            valueField: 'minutesPerLesson',
                         },
                     ],
             }
@@ -500,7 +516,7 @@ collections:
       label: 'Speciality Tours Dynamic Pages'
       create: true
       folder: 'src/netlify-content/pages/dynamic/programs/speciality-tours'
-      identifier_field: pageName
+      summary: '{{name}} @ {{centerName}}'
       label_singular: 'speciality tour dynamic page'
       fields:
           - {
@@ -510,21 +526,62 @@ collections:
                 hint: 'The URL for the page. Should be all lower case, and uses dashes instead of spaces, e.g.locations/path-name-here. ',
             }
           - {
-                label: 'Page Name',
-                name: 'pageName',
-                widget: 'string',
-                hint: 'The main name, usually rendered at the top of the page. Should be similar to the path url.',
+                label: 'Name',
+                name: 'name',
+                widget: 'relation',
+                collection: 'specialityToursData',
+                valueField: 'name',
+                searchFields: ['name'],
+                displayFields: ['name'],
+                hint: 'The name of the speciality tour. Will be rendered as the page title.',
             }
           - {
                 label: 'Center',
-                name: 'center',
+                name: 'centerName',
                 widget: 'relation',
-                hint: 'The center this speciality tour is associated with. Values in this dropdown are pulled from the "Location Pages" collection.',
-                collection: 'location-pages',
+                hint: 'The center this speciality tour is associated with. Values in this dropdown are pulled from the "Locations Data" collection.',
+                collection: 'locationsData',
                 # TODO: Might be worth making a PR to the netlify docs to note that this is expected to be 'valueField', not 'value_field' like they claim
                 # https://www.netlifycms.org/docs/widgets/relation/
-                valueField: 'pageName',
-                searchFields: ['pageName'],
+                valueField: 'centerName',
+                searchFields: ['centerName'],
+            }
+          - {
+                label: 'Program Dates',
+                name: 'programDates',
+                widget: 'list',
+                label_sigular: 'program date',
+                summary: '{{arrive}} - {{depart}}',
+                fields:
+                    [
+                        {
+                            label: 'Arrive',
+                            name: 'arrive',
+                            widget: 'relation',
+                            collection: 'specialityToursData',
+                            valueField: 'programDates.*.arrive',
+                            searchFields: ['programDates.*.arrive'],
+                            displayFields: ['programDates.*.arrive'],
+                        },
+                        {
+                            label: 'Depart',
+                            name: 'depart',
+                            widget: 'relation',
+                            collection: 'specialityToursData',
+                            valueField: 'programDates.*.depart',
+                            searchFields: ['programDates.*.depart'],
+                            displayFields: ['programDates.*.depart'],
+                        },
+                    ],
+            }
+          - {
+                label: 'Sample Calendar',
+                name: 'sampleCalendar',
+                widget: 'relation',
+                collection: 'specialityToursData',
+                valueField: 'sampleCalendar',
+                searchFields: ['sampleCalendar'],
+                displayFields: ['sampleCalendar'],
             }
           - {
                 label: 'Carousel Images',
@@ -547,12 +604,29 @@ collections:
                         {
                             label: 'Minimum Age',
                             name: 'minimum-age',
-                            widget: 'number',
+                            widget: 'relation',
+                            collection: 'specialityToursData',
+                            valueField: 'minimumAge',
+                            searchFields: ['minimumAge'],
+                            displayFields: ['minimumAge'],
                         },
                         {
-                            label: 'Number of Weeks',
-                            name: 'number-of-weeks',
-                            widget: 'number',
+                            label: 'Duration',
+                            name: 'duration',
+                            widget: 'relation',
+                            collection: 'specialityToursData',
+                            valueField: 'duration',
+                            searchFields: ['duration'],
+                            displayFields: ['duration'],
+                        },
+                        {
+                            label: 'Price',
+                            name: 'price',
+                            widget: 'relation',
+                            collection: 'specialityToursData',
+                            valueField: 'price',
+                            searchFields: ['price'],
+                            displayFields: ['price'],
                         },
                     ],
             }
@@ -708,13 +782,13 @@ collections:
                 hint: 'Note that, for in-person programs, the main header of the page will be the location name',
             }
           - {
-                label: 'Location',
+                label: 'Center',
                 name: 'location',
                 widget: 'relation',
-                collection: 'location-pages',
-                valueField: 'name',
-                searchFields: ['name'],
-                displayFields: ['name'],
+                collection: 'locationsData',
+                valueField: 'centerName',
+                searchFields: ['centerName'],
+                displayFields: ['centerName'],
                 hint: 'This field helps the site logic differentiate between the same program at different locations',
             }
           - {
@@ -763,6 +837,11 @@ collections:
                 name: 'lessonsPerWeek',
                 widget: 'number',
             }
+          - {
+                label: 'Minutes Per Lesson',
+                name: 'minutesPerLesson',
+                widget: 'number',
+            }
             # TODO: Supplements
     - name: 'specialityToursData'
       label: 'Speciality Tours Data'
@@ -774,25 +853,20 @@ collections:
       fields:
           - { name: 'name', label: 'Speciality Tour Name', widget: 'string' }
           - {
-                label: 'Location',
-                name: 'location',
+                label: 'Center Name',
+                name: 'centerName',
                 widget: 'relation',
-                collection: 'location-pages',
-                valueField: 'name',
-                searchFields: ['name'],
-                displayFields: ['name'],
+                collection: 'locationsData',
+                valueField: 'centerName',
+                searchFields: ['centerName'],
+                displayFields: ['centerName'],
             }
           - { name: 'price', label: 'Price', widget: 'number' }
           - { name: 'duration', label: 'Duration (Weeks)', widget: 'number' }
           - { name: 'minimumAge', label: 'Minimum Age', widget: 'number' }
           - {
-                label: 'Lessons Per Week',
-                name: 'lessonsPerWeek',
-                widget: 'number',
-            }
-          - {
                 label: 'Program Dates',
-                name: 'program-dates',
+                name: 'programDates',
                 widget: 'list',
                 label_sigular: 'program date',
                 summary: '{{arrive}} - {{depart}}',
@@ -820,11 +894,7 @@ collections:
                         },
                     ],
             }
-          - {
-                label: 'Sample Calendar',
-                name: 'sample-calendar',
-                widget: 'file',
-            }
+          - { label: 'Sample Calendar', name: 'sampleCalendar', widget: 'file' }
     - name: 'locationsData'
       label: 'Locations Data'
       create: true

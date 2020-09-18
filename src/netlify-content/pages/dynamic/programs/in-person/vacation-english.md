@@ -1,13 +1,11 @@
 ---
 path: vacation-english
-pageName: Vacation English
 name: Vacation English
 hero-image: /assets/university-tours-1.jpeg
-programType: in-person
-program-details:
-  lessons-per-week: 18
-  hours-per-week: 15
-  minutes-per-lesson: 50
+programDetails:
+  lessonsPerWeek: 18
+  hoursPerWeek: 15
+  minutesPerLesson: 50
 description: "Our Vacation English Program offers basic instruction in the
   fundamental skills of English in a relaxed context. "
 program-post-content: >-
@@ -52,4 +50,10 @@ program-features-content: >-
   * Articulation agreements with numerous colleges allowing admission without a TOEFL score based on completion of the designated FLS level.
 
   * Personalized counseling and academic assistance.
+program-details:
+  lessons-per-week: 18
+  hours-per-week: 15
+  minutes-per-lesson: 50
+pageName: Vacation English
+programType: in-person
 ---

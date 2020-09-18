@@ -75,7 +75,7 @@ export const SpecialityTourPageTemplate = ({
 									className="fls-post__subhero-icon"
 									icon={faCalendarAlt}
 								/>{' '}
-								{`${specialityTourData.speciality_tour_details.number_of_weeks} weeks`}
+								{`${specialityTourData.speciality_tour_details.duration} weeks`}
 							</span>
 						</div>
 					</div>
@@ -151,9 +151,7 @@ export const SpecialityTourPageTemplate = ({
 										icon={faCalendarAlt}
 									/>
 									<a
-										href={
-											specialityTourData.sample_calendar
-										}
+										href={specialityTourData.sampleCalendar}
 										className="fls--red"
 										target="_blank"
 									>
@@ -179,7 +177,7 @@ export const SpecialityTourPageTemplate = ({
 									<span className="column is-one-quarter"></span>
 								</div>
 							</div>
-							{specialityTourData.program_dates.map(
+							{specialityTourData.programDates.map(
 								programDate => (
 									<div
 										className="fls-post__table-row"
@@ -193,7 +191,12 @@ export const SpecialityTourPageTemplate = ({
 												{programDate.depart}
 											</span>
 											<span className="column is-one-quarter">
-												${programDate.price}
+												$
+												{
+													specialityTourData
+														.speciality_tour_details
+														.price
+												}
 											</span>
 											<span className="column is-one-quarter">
 												<button className="fls__button fls__button--small">
@@ -215,36 +218,42 @@ export const SpecialityTourPageTemplate = ({
 const SpecialityTourPage = ({ pageContext }) => {
 	const { pagePath } = pageContext;
 
-	const data = {};
-	// const data = useStaticQuery(graphql`
-	// 	{
-	// 		allMarkdownRemark(
-	// 			limit: 1000
-	// 			filter: {
-	// 				fileAbsolutePath: { regex: "/speciality-tour-pages//" }
-	// 			}
-	// 		) {
-	// 			edges {
-	// 				node {
-	// 					frontmatter {
-	// 						path
-	// 						name
-	// 						accommodations
-	// 						activities_and_excursions
-	// 						features
-	// 						program_dates {
-	// 							arrive
-	// 							depart
-	// 							price
-	// 						}
-	// 						sample_calendar
-	// 						speciality_tour_description
-	// 					}
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-	// `);
+	const data = useStaticQuery(graphql`
+		{
+			allMarkdownRemark(
+				limit: 1000
+				filter: {
+					fileAbsolutePath: {
+						regex: "/pages/dynamic/programs/speciality-tours//"
+					}
+				}
+			) {
+				edges {
+					node {
+						frontmatter {
+							path
+							name
+							accommodations
+							activities_and_excursions
+							features
+							programDates {
+								arrive
+								depart
+							}
+							carousel_images
+							sampleCalendar
+							speciality_tour_description
+							speciality_tour_details {
+								duration
+								minimum_age
+								price
+							}
+						}
+					}
+				}
+			}
+		}
+	`);
 
 	const specialityTourData = data.allMarkdownRemark.edges.find(
 		edge => edge.node.frontmatter.path === pagePath

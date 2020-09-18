@@ -12,4 +12,5 @@ duration:
       pricePerWeek: 375
 hoursPerWeek: 15
 lessonsPerWeek: 18
+minutesPerLesson: 50
 ---

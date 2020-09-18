@@ -22,18 +22,15 @@ export const ProgramsPageTemplate = ({ data, location }) => {
 		location.hash.substring(1) || 'in-person'
 	);
 
-	const renderProgramsView = hash => {
-		let view = <div></div>,
-			isProgramView =
-				selectedProgramType === 'in-person' ||
-				selectedProgramType === 'online';
+	const renderProgramsView = () => {
+		let view = <div></div>;
 
 		// TODO: Part of this map is a repeated pattern with all these graphql queries. Think about creating some kind of mixin
 		const filteredData = data[
-			isProgramView ? 'programs' : 'specialityTours'
-		].edges
-			.map(edge => edge.node.frontmatter)
-			.filter(program => program.programType === selectedProgramType);
+			selectedProgramType.replace(/-([a-z])/g, g => g[1].toUpperCase())
+		].edges.map(edge => edge.node.frontmatter);
+
+		console.log('filtered data', filteredData);
 
 		view = filteredData.map(cardData => {
 			return (
@@ -111,67 +108,105 @@ export const ProgramsPageTemplate = ({ data, location }) => {
 };
 
 const ProgramsPage = ({ /*data, */ location }) => {
-	const data = {};
-
-	// const data = useStaticQuery(graphql`
-	// 	{
-	// 		programs: allMarkdownRemark(
-	// 			limit: 1000
-	// 			filter: { fileAbsolutePath: { regex: "/program-pages//" } }
-	// 		) {
-	// 			edges {
-	// 				node {
-	// 					frontmatter {
-	// 						description
-	// 						path
-	// 						name
-	// 						programType
-	// 						program_details {
-	// 							lessons_per_week
-	// 							hours_per_week
-	// 						}
-	// 						hero_image
-	// 					}
-	// 				}
-	// 			}
-	// 		}
-	// 		specialityTours: allMarkdownRemark(
-	// 			limit: 1000
-	// 			filter: {
-	// 				fileAbsolutePath: { regex: "/speciality-tour-pages//" }
-	// 			}
-	// 		) {
-	// 			edges {
-	// 				node {
-	// 					frontmatter {
-	// 						speciality_tour_description
-	// 						path
-	// 						pageName
-	// 						center
-	// 						programType
-	// 						carousel_images
-	// 					}
-	// 				}
-	// 			}
-	// 		}
-	// 		programTypesCopy: allMarkdownRemark(
-	// 			limit: 1000
-	// 			filter: { fileAbsolutePath: { regex: "/pages/programs/" } }
-	// 		) {
-	// 			edges {
-	// 				node {
-	// 					frontmatter {
-	// 						programTypeDescriptions {
-	// 							inPerson
-	// 							online
-	// 							specialityTours
-	// 						}
-	// 					}
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-	// `);
+	const data = useStaticQuery(graphql`
+		{
+			inPerson: allMarkdownRemark(
+				limit: 1000
+				filter: {
+					fileAbsolutePath: {
+						regex: "/pages/dynamic/programs/in-person//"
+					}
+				}
+			) {
+				edges {
+					node {
+						frontmatter {
+							description
+							path
+							name
+							program_details {
+								lessons_per_week
+								hours_per_week
+							}
+							hero_image
+						}
+					}
+				}
+			}
+			online: allMarkdownRemark(
+				limit: 1000
+				filter: {
+					fileAbsolutePath: {
+						regex: "/pages/dynamic/programs/online//"
+					}
+				}
+			) {
+				edges {
+					node {
+						frontmatter {
+							description
+							path
+							name
+							program_details {
+								lessons_per_week
+								hours_per_week
+							}
+							hero_image
+						}
+					}
+				}
+			}
+			specialityTours: allMarkdownRemark(
+				limit: 1000
+				filter: {
+					fileAbsolutePath: {
+						regex: "/pages/dynamic/programs/speciality-tours//"
+					}
+				}
+			) {
+				edges {
+					node {
+						frontmatter {
+							path
+							name
+							centerName
+							speciality_tour_details {
+								minimum_age
+								duration
+							}
+							carousel_images
+							speciality_tour_description
+						}
+					}
+				}
+			}
+			programTypesCopy: allMarkdownRemark(
+				limit: 1000
+				filter: {
+					fileAbsolutePath: { regex: "/pages/static/programs//" }
+				}
+			) {
+				edges {
+					node {
+						frontmatter {
+							description
+							path
+							name
+							program_details {
+								lessons_per_week
+								hours_per_week
+							}
+							hero_image
+							speciality_tour_details {
+								minimum_age
+								duration
+							}
+						}
+					}
+				}
+			}
+		}
+	`);
 
 	return (
 		<Layout isScrolled={true} hasNavHero={true} pageTitle={'Programs'}>

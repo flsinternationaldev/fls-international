@@ -12,4 +12,5 @@ duration:
       thresholdMax: 10
 hoursPerWeek: 15
 lessonsPerWeek: 18
+minutesPerLesson: 50
 ---

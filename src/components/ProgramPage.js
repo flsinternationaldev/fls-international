@@ -87,31 +87,35 @@ export const ProgramPageTemplate = ({ programPageData, allProgramNavData }) => {
 const ProgramPage = ({ pageContext }) => {
 	const { pagePath } = pageContext;
 
-	// const data = useStaticQuery(graphql`
-	// 	{
-	// 		allMarkdownRemark(
-	// 			limit: 1000
-	// 			filter: { fileAbsolutePath: { regex: "/program-pages//" } }
-	// 		) {
-	// 			edges {
-	// 				node {
-	// 					frontmatter {
-	// 						path
-	// 						name
-	// 						hero_image
-	// 						program_details {
-	// 							hours_per_week
-	// 							lessons_per_week
-	// 							minutes_per_lesson
-	// 						}
-	// 						program_post_content
-	// 					}
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-	// `);
-	const data = {};
+	const data = useStaticQuery(graphql`
+		{
+			allMarkdownRemark(
+				limit: 1000
+				filter: {
+					fileAbsolutePath: {
+						regex: "/pages/dynamic/programs/in-person//"
+					}
+				}
+			) {
+				edges {
+					node {
+						frontmatter {
+							path
+							name
+							hero_image
+							program_details {
+								hours_per_week
+								lessons_per_week
+								minutes_per_lesson
+							}
+							program_post_content
+							program_features_content
+						}
+					}
+				}
+			}
+		}
+	`);
 
 	const programPageData = data.allMarkdownRemark.edges.find(
 		edge => edge.node.frontmatter.path === pagePath
