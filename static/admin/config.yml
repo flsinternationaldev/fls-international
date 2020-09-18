@@ -70,7 +70,7 @@ collections:
                       - { label: 'In-Person', name: 'inPerson', widget: string }
                       - { label: 'Online', name: 'online', widget: string }
                       - {
-                            label: 'Speciality Tours',
+                            label: 'Specialty Tours',
                             name: 'specialityTours',
                             widget: string,
                         }
@@ -386,7 +386,7 @@ collections:
                 label: 'Path',
                 name: 'path',
                 widget: 'string',
-                hint: 'The URL for the page. Should be all lower case, and uses dashes instead of spaces, e.g.locations/path-name-here. ',
+                hint: 'The URL for the page. Should be all lower case, and uses dashes instead of spaces, e.g. path-name-here. ',
             }
           - {
                 label: 'name',
@@ -461,38 +461,59 @@ collections:
                 label: 'Path',
                 name: 'path',
                 widget: 'string',
-                hint: 'The URL for the page. Should be all lower case, and uses dashes instead of spaces, e.g.locations/path-name-here. ',
+                hint: 'The URL for the page. Should be all lower case, and uses dashes instead of spaces, e.g. path-name-here. ',
             }
           - {
-                label: 'Online Program Data',
-                name: 'onlineProgram',
+                label: 'Name',
+                name: 'name',
                 widget: 'relation',
                 valueField: 'name',
                 searchFields: ['name'],
                 collection: 'onlineProgramsData',
-                hint: 'The online program data item to pull program specific info from',
+                hint: 'The name of the online program. Used as the page title.',
+            }
+          - {
+                label: 'Type',
+                name: 'type',
+                widget: 'relation',
+                valueField: 'onlineProgramType',
+                searchFields: ['onlineProgramType'],
+                collection: 'onlineProgramsData',
+                hint: 'The type of online program this is e.g. Online Essential Program. Used similarly to "locations" for in-person programs.',
             }
           - { label: 'Hero Image', name: 'hero-image', widget: 'image' }
           - {
                 label: 'Program Details',
-                name: 'program-details',
+                name: 'programDetails',
                 widget: 'object',
                 fields:
                     [
                         {
                             label: 'Lessons per week',
-                            name: 'lessons-per-week',
-                            widget: 'number',
+                            name: 'lessonsPerWeek',
+                            widget: 'relation',
+                            collection: 'onlineProgramsData',
+                            searchFields: ['lessonsPerWeek'],
+                            displayFields: ['lessonsPerWeek'],
+                            valueField: 'lessonsPerWeek',
                         },
                         {
                             label: 'Hours per week',
-                            name: 'hours-per-week',
-                            widget: 'number',
+                            name: 'hoursPerWeek',
+                            widget: 'relation',
+                            collection: 'onlineProgramsData',
+                            searchFields: ['hoursPerWeek'],
+                            displayFields: ['hoursPerWeek'],
+                            valueField: 'hoursPerWeek',
                         },
                         {
                             label: 'Minutes per lesson',
-                            name: 'minutes-per-lesson',
-                            widget: 'number',
+                            name: 'minutesPerLesson',
+                            widget: 'relation',
+                            collection: 'onlineProgramsData',
+                            searchFields: ['minutesPerLesson'],
+                            displayFields: ['minutesPerLesson'],
+                            valueField: 'minutesPerLesson',
                         },
                     ],
             }
@@ -513,17 +534,17 @@ collections:
                 widget: 'markdown',
             }
     - name: 'specialityToursDynamicPages'
-      label: 'Speciality Tours Dynamic Pages'
+      label: 'Specialty Tours Dynamic Pages'
       create: true
-      folder: 'src/netlify-content/pages/dynamic/programs/speciality-tours'
+      folder: 'src/netlify-content/pages/dynamic/programs/specialty-tours'
       summary: '{{name}} @ {{centerName}}'
-      label_singular: 'speciality tour dynamic page'
+      label_singular: 'specialty tour dynamic page'
       fields:
           - {
                 label: 'Path',
                 name: 'path',
                 widget: 'string',
-                hint: 'The URL for the page. Should be all lower case, and uses dashes instead of spaces, e.g.locations/path-name-here. ',
+                hint: 'The URL for the page. Should be all lower case, and uses dashes instead of spaces, e.g. path-name-here. ',
             }
           - {
                 label: 'Name',
@@ -533,13 +554,13 @@ collections:
                 valueField: 'name',
                 searchFields: ['name'],
                 displayFields: ['name'],
-                hint: 'The name of the speciality tour. Will be rendered as the page title.',
+                hint: 'The name of the specialty tour. Will be rendered as the page title.',
             }
           - {
                 label: 'Center',
                 name: 'centerName',
                 widget: 'relation',
-                hint: 'The center this speciality tour is associated with. Values in this dropdown are pulled from the "Locations Data" collection.',
+                hint: 'The center this specialty tour is associated with. Values in this dropdown are pulled from the "Locations Data" collection.',
                 collection: 'locationsData',
                 # TODO: Might be worth making a PR to the netlify docs to note that this is expected to be 'valueField', not 'value_field' like they claim
                 # https://www.netlifycms.org/docs/widgets/relation/
@@ -596,8 +617,8 @@ collections:
                     },
             }
           - {
-                label: 'Speciality Tour Details',
-                name: 'speciality-tour-details',
+                label: 'Specialty Tour Details',
+                name: 'specialty-tour-details',
                 widget: 'object',
                 fields:
                     [
@@ -631,8 +652,8 @@ collections:
                     ],
             }
           - {
-                label: 'Speciality Tour Description',
-                name: 'speciality-tour-description',
+                label: 'Specialty Tour Description',
+                name: 'specialty-tour-description',
                 widget: 'markdown',
             }
           - {
@@ -654,6 +675,15 @@ collections:
       label_singular: 'online program data'
       fields:
           - { name: 'name', label: 'Online Program Name', widget: 'string' }
+          - {
+                name: 'onlineProgramType',
+                label: 'Online Program Type',
+                widget: 'relation',
+                collection: 'onlineProgramTypesData',
+                valueField: 'name',
+                searchFields: ['name'],
+                hint: 'The type of online program this is e.g. Online Essential Program. Used similarly to "locations" for in-person programs.',
+            }
           - {
                 name: 'duration',
                 label: 'Duration Options',
@@ -714,6 +744,11 @@ collections:
           - {
                 label: 'Lessons Per Week',
                 name: 'lessonsPerWeek',
+                widget: 'number',
+            }
+          - {
+                label: 'Minutes Per Lesson',
+                name: 'minutesPerLesson',
                 widget: 'number',
             }
           - {
@@ -844,14 +879,14 @@ collections:
             }
             # TODO: Supplements
     - name: 'specialityToursData'
-      label: 'Speciality Tours Data'
+      label: 'Specialty Tours Data'
       create: true
-      folder: 'src/netlify-content/data/programs/speciality-tours'
+      folder: 'src/netlify-content/data/programs/specialty-tours'
       identifier_field: name
-      label_singular: 'speciality tour data'
+      label_singular: 'specialty tour data'
       summary: '{{name}} @ {{location}}'
       fields:
-          - { name: 'name', label: 'Speciality Tour Name', widget: 'string' }
+          - { name: 'name', label: 'Specialty Tour Name', widget: 'string' }
           - {
                 label: 'Center Name',
                 name: 'centerName',
@@ -901,12 +936,13 @@ collections:
       folder: 'src/netlify-content/data/locations'
       summary: '{{centerName}} @ {{locationName}}'
       label_singular: 'location data'
+      identifier_field: 'centerName'
       fields:
           - {
                 label: 'Location Name',
                 name: 'locationName',
                 widget: 'string',
-                hint: 'Should be a city and state abbreviaton, e.g. "Boston, MA"',
+                hint: 'Should be a city and state abbreviation, e.g. "Boston, MA"',
             }
           - {
                 label: 'Center Name',
@@ -914,12 +950,29 @@ collections:
                 widget: 'string',
                 hint: 'Should be the name of the single center associated with this location.',
             }
+    - name: 'onlineProgramTypesData'
+      label: 'Online Program Types Data'
+      create: true
+      folder: 'src/netlify-content/data/online-program-types'
+      summary: '{{name}}'
+      identifier_field: name
+      label_singular: 'online program type data'
+      hint: 'This can best be thought of as the "locations" for online programs, in terms of how it categorizes enhancements and time banks.'
+      fields:
+          - { label: 'Online Program Type', name: 'name', widget: 'string' }
+          - {
+                label: 'Online Program Type Description',
+                name: 'onlineProgramTypeDescription',
+                widget: 'string',
+                hint: 'A 1 - 3 sentence description of the program type. Used on the online program dynamic pages',
+            }
     - name: 'navbar-item'
       label: 'Navbar Items'
       create: true
       folder: 'src/netlify-content/navbar-items'
-      identifier_field: pageName
+      identifier_field: name
       label_singular: 'navbar item'
+      summary: '{{name}} - {{order}}'
       fields:
           - {
                 label: 'Path',
@@ -927,7 +980,7 @@ collections:
                 widget: 'string',
                 hint: 'The URL the navbar item will go to. Should be all lowercase & use dashes in place of spaces, e.g. program-pages',
             }
-          - { label: 'Page Name', name: 'pageName', widget: 'string' }
+          - { label: 'Page Name', name: 'name', widget: 'string' }
           - {
                 label: 'Links collection Name',
                 name: 'collectionName',
@@ -955,11 +1008,7 @@ collections:
                             hint: 'The URL the navbar item link will go to. Should be all lowercase & use dashes in place of spaces, e.g. program-pages',
                             widget: 'string',
                         },
-                        {
-                            label: 'Page Name',
-                            name: 'pageName',
-                            widget: 'string',
-                        },
+                        { label: 'Page Name', name: 'name', widget: 'string' },
                         {
                             label: 'Collection Name',
                             name: 'collectionName',
@@ -982,7 +1031,7 @@ collections:
                                     },
                                     {
                                         label: 'Page Name',
-                                        name: 'pageName',
+                                        name: 'name',
                                         widget: 'string',
                                         required: false,
                                     },

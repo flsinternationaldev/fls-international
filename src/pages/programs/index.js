@@ -15,7 +15,7 @@ export const ProgramsPageTemplate = ({ data, location }) => {
 	const programTypes = [
 		{ type: 'in-person', label: 'In Person' },
 		{ type: 'online', label: 'Online' },
-		{ type: 'speciality-tours', label: 'Speciality Tours' },
+		{ type: 'specialty-tours', label: 'Specialty Tours' },
 	];
 
 	const [selectedProgramType, setSelectedProgramType] = useState(
@@ -29,8 +29,6 @@ export const ProgramsPageTemplate = ({ data, location }) => {
 		const filteredData = data[
 			selectedProgramType.replace(/-([a-z])/g, g => g[1].toUpperCase())
 		].edges.map(edge => edge.node.frontmatter);
-
-		console.log('filtered data', filteredData);
 
 		view = filteredData.map(cardData => {
 			return (
@@ -156,11 +154,11 @@ const ProgramsPage = ({ /*data, */ location }) => {
 					}
 				}
 			}
-			specialityTours: allMarkdownRemark(
+			specialtyTours: allMarkdownRemark(
 				limit: 1000
 				filter: {
 					fileAbsolutePath: {
-						regex: "/pages/dynamic/programs/speciality-tours//"
+						regex: "/pages/dynamic/programs/specialty-tours//"
 					}
 				}
 			) {
@@ -170,12 +168,12 @@ const ProgramsPage = ({ /*data, */ location }) => {
 							path
 							name
 							centerName
-							speciality_tour_details {
+							specialty_tour_details {
 								minimum_age
 								duration
 							}
 							carousel_images
-							speciality_tour_description
+							specialty_tour_description
 						}
 					}
 				}
@@ -197,7 +195,7 @@ const ProgramsPage = ({ /*data, */ location }) => {
 								hours_per_week
 							}
 							hero_image
-							speciality_tour_details {
+							specialty_tour_details {
 								minimum_age
 								duration
 							}

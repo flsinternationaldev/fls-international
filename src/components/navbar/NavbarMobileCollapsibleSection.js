@@ -23,7 +23,7 @@ export default function NavbarMobileCollapsibleSection({ mainNavItem }) {
 						to={`/${mainNavItem.path}`}
 						className={`${navbarStyles.flsNav__mobileHeader} fls--white`}
 					>
-						{mainNavItem.pageName}
+						{mainNavItem.name}
 					</Link>
 
 					<div

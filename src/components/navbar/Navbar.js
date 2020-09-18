@@ -19,12 +19,12 @@ export default function Navbar(props) {
 					node {
 						frontmatter {
 							path
-							pageName
+							name
 							collectionName
 							order
 							links {
 								collectionName
-								pageName
+								name
 								path
 							}
 						}
@@ -101,7 +101,7 @@ export default function Navbar(props) {
 									return (
 										<NavbarDropdownContainer
 											mainNavItem={mainNavItem}
-											title={mainNavItem.pageName}
+											title={mainNavItem.name}
 											items={mainNavItem.links}
 											rootNavPath={`/${mainNavItem.path}`}
 											parentEl={navParentEl}
@@ -115,7 +115,7 @@ export default function Navbar(props) {
 												navbarStyles.navbar__navItem
 											}
 										>
-											{mainNavItem.pageName}
+											{mainNavItem.name}
 										</Link>
 									);
 								}

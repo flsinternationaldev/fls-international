@@ -1,5 +1,6 @@
 ---
 name: Core English
+onlineProgramType: Online Pathway Program
 duration:
   max-weeks: "13"
   exceed-max-weeks: true
@@ -24,6 +25,7 @@ priceDetails:
   payPeriod: weekly
 hoursPerWeek: 15
 lessonsPerWeek: 16
+minutesPerLesson: 50
 timesOffered:
   - 6:00 AM
   - 9:00 AM

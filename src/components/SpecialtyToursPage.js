@@ -13,9 +13,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserAlt } from '@fortawesome/free-solid-svg-icons';
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 
-export const SpecialityTourPageTemplate = ({
-	specialityTourData,
-	allSpecialityTourNavData,
+export const SpecialtyTourPageTemplate = ({
+	specialtyTourData,
+	allSpecialtyTourNavData,
 }) => {
 	const slickSettings = {
 		autoplay: true,
@@ -28,7 +28,7 @@ export const SpecialityTourPageTemplate = ({
 		<Section>
 			<div className="columns is-multiline">
 				<div className="column is-3-desktop is-full-tablet">
-					<PostNavbar data={allSpecialityTourNavData} />
+					<PostNavbar data={allSpecialtyTourNavData} />
 					<Testimonial />
 				</div>
 
@@ -37,20 +37,20 @@ export const SpecialityTourPageTemplate = ({
 						<div className="column is-full">
 							{/* TODO: Again, these 'programs' classes need genericizing */}
 							<h2 className="programs__post-title">
-								{specialityTourData.name}
+								{specialtyTourData.name}
 							</h2>
 						</div>
 
 						<div className="column is-full">
 							<div className="fls__location-post-carousel">
 								<Slick {...slickSettings}>
-									{specialityTourData.carousel_images.map(
+									{specialtyTourData.carousel_images.map(
 										carouselImagePath => {
 											return (
 												<img
 													key={carouselImagePath}
 													src={carouselImagePath}
-													alt={`${specialityTourData.name} carousel image`}
+													alt={`${specialtyTourData.name} carousel image`}
 												/>
 											);
 										}
@@ -67,7 +67,7 @@ export const SpecialityTourPageTemplate = ({
 									className="fls-post__subhero-icon"
 									icon={faUserAlt}
 								/>{' '}
-								{`Age ${specialityTourData.speciality_tour_details.minimum_age}+`}
+								{`Age ${specialtyTourData.specialty_tour_details.minimum_age}+`}
 							</span>
 
 							<span className="fls-post__subhero-item">
@@ -75,13 +75,13 @@ export const SpecialityTourPageTemplate = ({
 									className="fls-post__subhero-icon"
 									icon={faCalendarAlt}
 								/>{' '}
-								{`${specialityTourData.speciality_tour_details.duration} weeks`}
+								{`${specialtyTourData.specialty_tour_details.duration} weeks`}
 							</span>
 						</div>
 					</div>
 
 					<div className="column is-full">
-						{specialityTourData.speciality_tour_description}
+						{specialtyTourData.specialty_tour_description}
 					</div>
 
 					<div className="column is-full">
@@ -92,7 +92,7 @@ export const SpecialityTourPageTemplate = ({
 
 							<MarkdownContent
 								content={
-									specialityTourData.activities_and_excursions
+									specialtyTourData.activities_and_excursions
 								}
 								classMap={{
 									h2: 'fls-post__subtitle',
@@ -109,7 +109,7 @@ export const SpecialityTourPageTemplate = ({
 							<h3 className="fls-post__subtitle">Features</h3>
 
 							<MarkdownContent
-								content={specialityTourData.features}
+								content={specialtyTourData.features}
 								classMap={{
 									h2: 'fls-post__subtitle',
 									p: 'fls-post__paragraph',
@@ -127,7 +127,7 @@ export const SpecialityTourPageTemplate = ({
 							</h3>
 
 							<MarkdownContent
-								content={specialityTourData.accommodations}
+								content={specialtyTourData.accommodations}
 								classMap={{
 									h2: 'fls-post__subtitle',
 									p: 'fls-post__paragraph',
@@ -151,7 +151,7 @@ export const SpecialityTourPageTemplate = ({
 										icon={faCalendarAlt}
 									/>
 									<a
-										href={specialityTourData.sampleCalendar}
+										href={specialtyTourData.sampleCalendar}
 										className="fls--red"
 										target="_blank"
 									>
@@ -177,36 +177,34 @@ export const SpecialityTourPageTemplate = ({
 									<span className="column is-one-quarter"></span>
 								</div>
 							</div>
-							{specialityTourData.programDates.map(
-								programDate => (
-									<div
-										className="fls-post__table-row"
-										key={programDate.arrive}
-									>
-										<div className="columns">
-											<span className="column is-one-quarter">
-												{programDate.arrive}
-											</span>
-											<span className="column is-one-quarter">
-												{programDate.depart}
-											</span>
-											<span className="column is-one-quarter">
-												$
-												{
-													specialityTourData
-														.speciality_tour_details
-														.price
-												}
-											</span>
-											<span className="column is-one-quarter">
-												<button className="fls__button fls__button--small">
-													Apply
-												</button>
-											</span>
-										</div>
+							{specialtyTourData.programDates.map(programDate => (
+								<div
+									className="fls-post__table-row"
+									key={programDate.arrive}
+								>
+									<div className="columns">
+										<span className="column is-one-quarter">
+											{programDate.arrive}
+										</span>
+										<span className="column is-one-quarter">
+											{programDate.depart}
+										</span>
+										<span className="column is-one-quarter">
+											$
+											{
+												specialtyTourData
+													.specialty_tour_details
+													.price
+											}
+										</span>
+										<span className="column is-one-quarter">
+											<button className="fls__button fls__button--small">
+												Apply
+											</button>
+										</span>
 									</div>
-								)
-							)}
+								</div>
+							))}
 						</div>
 					</div>
 				</div>
@@ -215,7 +213,7 @@ export const SpecialityTourPageTemplate = ({
 	);
 };
 
-const SpecialityTourPage = ({ pageContext }) => {
+const SpecialtyTourPage = ({ pageContext }) => {
 	const { pagePath } = pageContext;
 
 	const data = useStaticQuery(graphql`
@@ -224,7 +222,7 @@ const SpecialityTourPage = ({ pageContext }) => {
 				limit: 1000
 				filter: {
 					fileAbsolutePath: {
-						regex: "/pages/dynamic/programs/speciality-tours//"
+						regex: "/pages/dynamic/programs/specialty-tours//"
 					}
 				}
 			) {
@@ -242,8 +240,8 @@ const SpecialityTourPage = ({ pageContext }) => {
 							}
 							carousel_images
 							sampleCalendar
-							speciality_tour_description
-							speciality_tour_details {
+							specialty_tour_description
+							specialty_tour_details {
 								duration
 								minimum_age
 								price
@@ -255,31 +253,31 @@ const SpecialityTourPage = ({ pageContext }) => {
 		}
 	`);
 
-	const specialityTourData = data.allMarkdownRemark.edges.find(
+	const specialtyTourData = data.allMarkdownRemark.edges.find(
 		edge => edge.node.frontmatter.path === pagePath
 	).node.frontmatter;
 
-	const allSpecialityTourNavData = data.allMarkdownRemark.edges.map(edge => {
+	const allSpecialtyTourNavData = data.allMarkdownRemark.edges.map(edge => {
 		return {
-			path: `/programs/speciality-tours/${edge.node.frontmatter.path}`,
+			path: `/programs/specialty-tours/${edge.node.frontmatter.path}`,
 			name: edge.node.frontmatter.name,
 		};
 	});
 
-	console.log('current speicality tour data', specialityTourData);
+	console.log('current speicality tour data', specialtyTourData);
 	return (
 		<Layout
 			isScrolled={true}
 			hasNavHero={true}
 			hasNavButtons={true}
-			pageTitle={'Speciality Tours'}
+			pageTitle={'Specialty Tours'}
 		>
-			<SpecialityTourPageTemplate
-				specialityTourData={specialityTourData}
-				allSpecialityTourNavData={allSpecialityTourNavData}
+			<SpecialtyTourPageTemplate
+				specialtyTourData={specialtyTourData}
+				allSpecialtyTourNavData={allSpecialtyTourNavData}
 			/>
 		</Layout>
 	);
 };
 
-export default SpecialityTourPage;
+export default SpecialtyTourPage;

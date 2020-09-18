@@ -25,11 +25,11 @@ export default function Card({
 		}
 	};
 
-	if (programType === 'speciality-tours') {
-		console.log('speciality tours card', cardData);
+	if (programType === 'specialty-tours') {
+		console.log('specialty tours card', cardData);
 		return (
 			<Link
-				to={`/programs/speciality-tours/${cardData.path}`}
+				to={`/programs/specialty-tours/${cardData.path}`}
 				className={cardStyles.fls__card}
 			>
 				<div className={cardStyles.fls__cardContents}>

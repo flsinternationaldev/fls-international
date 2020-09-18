@@ -43,7 +43,7 @@ export default function Navbar({ item, rootNavPath, isSubItem }) {
 						}
 						className={`${navbarStyles.flsNav__mobileItem} fls--light-blue`}
 					>
-						{item.pageName}
+						{item.name}
 					</Link>
 
 					{item.collectionName || item.links ? (
@@ -67,7 +67,7 @@ export default function Navbar({ item, rootNavPath, isSubItem }) {
 							}
 							className={`${navbarStyles.flsNav__mobileItemHeader} fls--light-blue`}
 						>
-							{item.pageName}
+							{item.name}
 						</Link>
 
 						{handleExpandButton(item)}

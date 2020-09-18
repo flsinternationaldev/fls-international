@@ -19,7 +19,7 @@ export default function NavbarDropdownItem({ dropdownItem, rootNavPath }) {
 					node {
 						frontmatter {
 							path
-							pageName
+							name
 						}
 						fileAbsolutePath
 					}
@@ -36,6 +36,8 @@ export default function NavbarDropdownItem({ dropdownItem, rootNavPath }) {
 		})
 		.map(sublink => sublink.node.frontmatter);
 
+	console.log('sublinks!', sublinks);
+
 	const dropdownItemEl = useRef(null);
 
 	const [isHovering, setIsHovering] = useState(false);
@@ -50,7 +52,7 @@ export default function NavbarDropdownItem({ dropdownItem, rootNavPath }) {
 				to={`${rootNavPath}/${dropdownItem.path}`}
 				className={`${navbarStyles.flsNav__dropdownItem}`}
 				ref={dropdownItemEl}
-				key={dropdownItem.pageName}
+				key={dropdownItem.name}
 				onMouseEnter={() => {
 					let newDropdownPos = {};
 
@@ -68,7 +70,7 @@ export default function NavbarDropdownItem({ dropdownItem, rootNavPath }) {
 					setIsHovering(false);
 				}}
 			>
-				<span>{dropdownItem.pageName}</span>
+				<span>{dropdownItem.name}</span>
 
 				<NavbarDropdown
 					items={sublinks}
@@ -83,10 +85,10 @@ export default function NavbarDropdownItem({ dropdownItem, rootNavPath }) {
 		renderedDropdownItem = (
 			<Link
 				className={`${navbarStyles.flsNav__dropdownItem}`}
-				key={dropdownItem.pageName}
+				key={dropdownItem.name}
 				to={`${rootNavPath}/${dropdownItem.path}`}
 			>
-				<span>{dropdownItem.pageName}</span>
+				<span>{dropdownItem.name}</span>
 			</Link>
 		);
 	}

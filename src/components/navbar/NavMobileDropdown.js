@@ -21,7 +21,7 @@ export default function Navbar({
 					node {
 						frontmatter {
 							path
-							pageName
+							name
 						}
 						fileAbsolutePath
 					}

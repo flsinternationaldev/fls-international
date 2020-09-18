@@ -89,7 +89,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		`
 	);
 
-	const programPageTemplate = path.resolve(`src/components/ProgramPage.js`);
+	const inPersonProgramPageTemplate = path.resolve(
+		`src/components/ProgramPage.js`
+	);
 
 	// TODO: This can be DRYed up
 	programs.data.inPerson.edges.forEach(({ node }) => {
@@ -97,20 +99,24 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 		createPage({
 			path: pagePath,
-			component: programPageTemplate,
+			component: inPersonProgramPageTemplate,
 			// Context properties are passed into the component as graphql variables
 			context: {
 				pagePath: node.frontmatter.path,
 			},
 		});
 	});
+
+	const onlineProgramPageTemplate = path.resolve(
+		'src/components/OnlineProgramPage.js'
+	);
 
 	programs.data.online.edges.forEach(({ node }) => {
 		const pagePath = `programs/online/${node.frontmatter.path}`;
 
 		createPage({
 			path: pagePath,
-			component: programPageTemplate,
+			component: onlineProgramPageTemplate,
 			// Context properties are passed into the component as graphql variables
 			context: {
 				pagePath: node.frontmatter.path,
@@ -118,15 +124,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		});
 	});
 
-	// Dynamically render speciality tours pages
-	const specialityTours = await graphql(
+	// Dynamically render specialty tours pages
+	const specialtyTours = await graphql(
 		`
 			{
 				allMarkdownRemark(
 					limit: 1000
 					filter: {
 						fileAbsolutePath: {
-							regex: "/pages/dynamic/programs/speciality-tours//"
+							regex: "/pages/dynamic/programs/specialty-tours//"
 						}
 					}
 				) {
@@ -142,16 +148,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		`
 	);
 
-	const specialityTourPageTemplate = path.resolve(
-		`src/components/SpecialityToursPage.js`
+	const specialtyTourPageTemplate = path.resolve(
+		`src/components/SpecialtyToursPage.js`
 	);
 
-	specialityTours.data.allMarkdownRemark.edges.forEach(({ node }) => {
-		const pagePath = `programs/speciality-tours/${node.frontmatter.path}`;
+	specialtyTours.data.allMarkdownRemark.edges.forEach(({ node }) => {
+		const pagePath = `programs/specialty-tours/${node.frontmatter.path}`;
 
 		createPage({
 			path: pagePath,
-			component: specialityTourPageTemplate,
+			component: specialtyTourPageTemplate,
 			// Context properties are passed into the component as graphql variables
 			context: {
 				pagePath: node.frontmatter.path,

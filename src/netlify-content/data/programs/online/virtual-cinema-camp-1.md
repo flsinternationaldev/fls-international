@@ -1,5 +1,6 @@
 ---
 name: Virtual Cinema Camp
+onlineProgramType: Online Summer Camp
 duration:
   max-weeks: "2"
 priceDetails:
@@ -7,6 +8,7 @@ priceDetails:
   payPeriod: weekly
 hoursPerWeek: 10
 lessonsPerWeek: 9
+minutesPerLesson: 50
 timesOffered:
   - 6:00 AM
   - 6:00 PM

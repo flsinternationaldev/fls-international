@@ -51,7 +51,7 @@ const LocationsPage = (
 	// 						path
 	// 						name
 	// 						carousel_images
-	// 						pageName
+	// 						name
 	// 						description
 	// 					}
 	// 				}

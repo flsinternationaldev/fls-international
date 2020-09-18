@@ -402,7 +402,7 @@ const HomePage = (
 							centerName
 							locationName
 							carousel_images
-							pageName
+							name
 							description
 						}
 					}
