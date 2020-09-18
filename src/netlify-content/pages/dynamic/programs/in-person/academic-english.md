@@ -1,13 +1,11 @@
 ---
 path: academic-english
-pageName: Academic English
 name: Academic English
 hero-image: /assets/academic-english.jpeg
-programType: in-person
-program-details:
-  lessons-per-week: 36
-  hours-per-week: 30
-  minutes-per-lesson: 50
+programDetails:
+  lessonsPerWeek: 18
+  hoursPerWeek: 15
+  minutesPerLesson: 50
 description: "Our high-powered Academic English program offers the fastest way
   to develop your English. "
 program-post-content: >-
@@ -53,4 +51,10 @@ program-features-content: >-
   * Articulation agreements with numerous colleges allowing admission without a TOEFL score based on completion of the designated FLS level.
 
   * Personalized counseling and academic assistance.
+program-details:
+  lessons-per-week: 36
+  hours-per-week: 30
+  minutes-per-lesson: 50
+pageName: Academic English
+programType: in-person
 ---

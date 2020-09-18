@@ -42,13 +42,13 @@ export const InPersonProgramPageTemplate = ({
 						<div className="column is-full">
 							<div className="fls-post__subhero">
 								<span className="fls-post__subhero-item">
-									{`${programPageData.program_details.lessons_per_week} lessons per week`}
+									{`${programPageData.programDetails.lessonsPerWeek} lessons per week`}
 								</span>
 								<span className="fls-post__subhero-item">
-									{`${programPageData.program_details.hours_per_week} hours per week`}
+									{`${programPageData.programDetails.hoursPerWeek} hours per week`}
 								</span>
 								<span className="fls-post__subhero-item fls--red">
-									{`*1 lesson = ${programPageData.program_details.minutes_per_lesson} minutes`}
+									{`*1 lesson = ${programPageData.programDetails.minutesPerLesson} minutes`}
 								</span>
 							</div>
 						</div>
@@ -106,10 +106,10 @@ const InPersonProgramPage = ({ pageContext }) => {
 							path
 							name
 							hero_image
-							program_details {
-								hours_per_week
-								lessons_per_week
-								minutes_per_lesson
+							programDetails {
+								hoursPerWeek
+								lessonsPerWeek
+								minutesPerLesson
 							}
 							program_post_content
 							program_features_content

@@ -538,6 +538,7 @@ collections:
       create: true
       folder: 'src/netlify-content/pages/dynamic/programs/specialty-tours'
       summary: '{{name}} @ {{centerName}}'
+      identifier_field: name
       label_singular: 'specialty tour dynamic page'
       fields:
           - {
@@ -617,14 +618,14 @@ collections:
                     },
             }
           - {
-                label: 'Specialty Tour Details',
-                name: 'specialty-tour-details',
+                label: 'Program Details',
+                name: 'programDetails',
                 widget: 'object',
                 fields:
                     [
                         {
                             label: 'Minimum Age',
-                            name: 'minimum-age',
+                            name: 'minimumAge',
                             widget: 'relation',
                             collection: 'specialtyToursData',
                             valueField: 'minimumAge',
@@ -884,7 +885,7 @@ collections:
       folder: 'src/netlify-content/data/programs/specialty-tours'
       identifier_field: name
       label_singular: 'specialty tour data'
-      summary: '{{name}} @ {{location}}'
+      summary: '{{name}} @ {{centerName}}'
       fields:
           - { name: 'name', label: 'Specialty Tour Name', widget: 'string' }
           - {

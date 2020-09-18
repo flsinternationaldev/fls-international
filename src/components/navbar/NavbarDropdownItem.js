@@ -36,8 +36,6 @@ export default function NavbarDropdownItem({ dropdownItem, rootNavPath }) {
 		})
 		.map(sublink => sublink.node.frontmatter);
 
-	console.log('sublinks!', sublinks);
-
 	const dropdownItemEl = useRef(null);
 
 	const [isHovering, setIsHovering] = useState(false);
@@ -47,9 +45,13 @@ export default function NavbarDropdownItem({ dropdownItem, rootNavPath }) {
 	let renderedDropdownItem;
 
 	if (dropdownItem.collectionName && sublinks.length) {
+		const url = dropdownItem.isProgramCategory
+			? `${rootNavPath}#${dropdownItem.path}`
+			: `${rootNavPath}/${dropdownItem.path}`;
+
 		renderedDropdownItem = (
 			<Link
-				to={`${rootNavPath}/${dropdownItem.path}`}
+				to={url}
 				className={`${navbarStyles.flsNav__dropdownItem}`}
 				ref={dropdownItemEl}
 				key={dropdownItem.name}

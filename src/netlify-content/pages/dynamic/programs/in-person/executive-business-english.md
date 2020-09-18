@@ -1,13 +1,11 @@
 ---
 path: executive-english
-pageName: Executive English
 name: Executive Business English
 hero-image: /assets/executive-business-english.jpeg
-programType: in-person
-program-details:
-  lessons-per-week: 30
-  hours-per-week: 25
-  minutes-per-lesson: 50
+programDetails:
+  lessonsPerWeek: 18
+  hoursPerWeek: 15
+  minutesPerLesson: 50
 description: "Improve your Business English skills at our FLS locations in and
   around America's financial capitals: New York City and Boston! "
 program-post-content: >-
@@ -45,4 +43,10 @@ program-features-content: >-
   * Students who apply to this program must be in Level 9 or higher.
 
   * Students can start any Monday.
+program-details:
+  lessons-per-week: 30
+  hours-per-week: 25
+  minutes-per-lesson: 50
+pageName: Executive English
+programType: in-person
 ---

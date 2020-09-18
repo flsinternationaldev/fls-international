@@ -67,7 +67,7 @@ export const SpecialtyTourPageTemplate = ({
 									className="fls-post__subhero-icon"
 									icon={faUserAlt}
 								/>{' '}
-								{`Age ${specialtyTourData.specialty_tour_details.minimum_age}+`}
+								{`Age ${specialtyTourData.programDetails.minimumAge}+`}
 							</span>
 
 							<span className="fls-post__subhero-item">
@@ -75,7 +75,7 @@ export const SpecialtyTourPageTemplate = ({
 									className="fls-post__subhero-icon"
 									icon={faCalendarAlt}
 								/>{' '}
-								{`${specialtyTourData.specialty_tour_details.duration} weeks`}
+								{`${specialtyTourData.programDetails.duration} weeks`}
 							</span>
 						</div>
 					</div>
@@ -192,8 +192,7 @@ export const SpecialtyTourPageTemplate = ({
 										<span className="column is-one-quarter">
 											$
 											{
-												specialtyTourData
-													.specialty_tour_details
+												specialtyTourData.programDetails
 													.price
 											}
 										</span>
@@ -241,9 +240,9 @@ const SpecialtyTourPage = ({ pageContext }) => {
 							carousel_images
 							sampleCalendar
 							specialty_tour_description
-							specialty_tour_details {
+							programDetails {
 								duration
-								minimum_age
+								minimumAge
 								price
 							}
 						}

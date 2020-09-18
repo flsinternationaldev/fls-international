@@ -1,13 +1,11 @@
 ---
 path: sat-preparation-program
-pageName: SAT Prep
 name: SAT Prep
 hero-image: /assets/sat-prep-hero.jpeg
-programType: in-person
-program-details:
-  lessons-per-week: 36
-  hours-per-week: 30
-  minutes-per-lesson: 50
+programDetails:
+  lessonsPerWeek: 18
+  hoursPerWeek: 15
+  minutesPerLesson: 50
 description: Gain the edge in preparing for university admission with our
   thorough SAT Preparation Program!
 program-post-content: >-
@@ -58,4 +56,10 @@ program-features-content: >-
   * Articulation agreements with numerous colleges allowing admission without a TOEFL score based on completion of the designated FLS level.
 
   * Personalized counseling and academic assistance.
+program-details:
+  lessons-per-week: 36
+  hours-per-week: 30
+  minutes-per-lesson: 50
+pageName: SAT Prep
+programType: in-person
 ---

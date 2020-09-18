@@ -122,9 +122,9 @@ const ProgramsPage = ({ /*data, */ location }) => {
 							description
 							path
 							name
-							program_details {
-								lessons_per_week
-								hours_per_week
+							programDetails {
+								lessonsPerWeek
+								hoursPerWeek
 							}
 							hero_image
 						}
@@ -145,9 +145,9 @@ const ProgramsPage = ({ /*data, */ location }) => {
 							description
 							path
 							name
-							program_details {
-								lessons_per_week
-								hours_per_week
+							programDetails {
+								lessonsPerWeek
+								hoursPerWeek
 							}
 							hero_image
 						}
@@ -168,8 +168,8 @@ const ProgramsPage = ({ /*data, */ location }) => {
 							path
 							name
 							centerName
-							specialty_tour_details {
-								minimum_age
+							programDetails {
+								minimumAge
 								duration
 							}
 							carousel_images
@@ -190,13 +190,13 @@ const ProgramsPage = ({ /*data, */ location }) => {
 							description
 							path
 							name
-							program_details {
-								lessons_per_week
-								hours_per_week
+							programDetails {
+								lessonsPerWeek
+								hoursPerWeek
 							}
 							hero_image
-							specialty_tour_details {
-								minimum_age
+							programDetails {
+								minimumAge
 								duration
 							}
 						}

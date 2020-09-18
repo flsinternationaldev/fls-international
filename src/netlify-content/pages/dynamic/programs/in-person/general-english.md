@@ -1,13 +1,11 @@
 ---
 path: general-english
-pageName: General English
 name: General English
 hero-image: /assets/general-english.jpeg
-programType: in-person
-program-details:
-  lessons-per-week: 20
-  hours-per-week: 4
-  minutes-per-lesson: 50
+programDetails:
+  lessonsPerWeek: 18
+  hoursPerWeek: 15
+  minutesPerLesson: 50
 description: For students who want to balance English studies with exploring the
   sights near our centers, our General English Program is the ideal choice.
 program-post-content: >-
@@ -36,4 +34,10 @@ program-features-content: >-
   * Weekly English tests and individualized progress reports every four weeks.
 
   * Language Extension Day (LED) activities once per term, encouraging students to use English in new settings and contexts.
+program-details:
+  lessons-per-week: 20
+  hours-per-week: 4
+  minutes-per-lesson: 50
+pageName: General English
+programType: in-person
 ---

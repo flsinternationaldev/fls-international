@@ -1,13 +1,11 @@
 ---
 path: toefl-preparation
-pageName: TOEFL Preparation
 name: TOEFL Preparation
 hero-image: /assets/toefl-preparation.jpeg
-programType: in-person
-program-details:
-  lessons-per-week: 36
-  hours-per-week: 30
-  minutes-per-lesson: 50
+programDetails:
+  lessonsPerWeek: 18
+  hoursPerWeek: 15
+  minutesPerLesson: 50
 description: Take your TOEFL score to new heights with our proven preparation program!
 program-post-content: >-
   Take your TOEFL score to new heights with our proven preparation program!
@@ -50,4 +48,10 @@ program-features-content: >-
   * Articulation agreements with numerous colleges allowing admission without a TOEFL score based on completion of the designated FLS level.
 
   * Personalized counseling and academic assistance.
+program-details:
+  lessons-per-week: 36
+  hours-per-week: 30
+  minutes-per-lesson: 50
+pageName: TOEFL Preparation
+programType: in-person
 ---

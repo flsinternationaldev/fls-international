@@ -1,13 +1,11 @@
 ---
 path: intensive-english-america
-pageName: Intensive English
 name: Intensive English
 hero-image: /assets/intensive-english.jpeg
-programType: in-person
-program-details:
-  lessons-per-week: 30
-  hours-per-week: 25
-  minutes-per-lesson: 50
+programDetails:
+  lessonsPerWeek: 18
+  hoursPerWeek: 15
+  minutesPerLesson: 50
 description: Our most popular program, the Intensive English Program includes 30
   lessons of instruction per week from qualified, native-speaking teachers.
 program-post-content: >-
@@ -53,4 +51,10 @@ program-features-content: >-
   * Articulation agreements with numerous colleges allowing admission without a TOEFL score based on completion of the designated FLS level.
 
   * Personalized counseling and academic assistance.
+program-details:
+  lessons-per-week: 30
+  hours-per-week: 25
+  minutes-per-lesson: 50
+pageName: Intensive English
+programType: in-person
 ---

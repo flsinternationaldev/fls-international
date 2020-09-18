@@ -12,7 +12,6 @@ export default function NavbarDropdown({
 	rootNavPath,
 	items = [],
 }) {
-	console.log('my items', items);
 	return (
 		<div
 			className={`${navbarStyles.flsNav__dropdown} ${

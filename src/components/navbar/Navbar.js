@@ -28,17 +28,32 @@ export default function Navbar(props) {
 								path
 							}
 						}
+						fileAbsolutePath
 					}
 				}
 			}
 		}
 	`);
 
-	const mainNavItems = data.allMarkdownRemark.edges.map(
-		edge => edge.node.frontmatter
-	);
+	const mainNavItems = data.allMarkdownRemark.edges.map(edge => {
+		return {
+			...edge.node.frontmatter,
+			fileAbsolutePath: edge.node.fileAbsolutePath,
+		};
+	});
 
 	mainNavItems.sort((a, b) => a.order - b.order);
+
+	/* TODO: This is a less way to get the program category links (speciality tours, online, in-person) to
+	 link to the /programs page using a "#" instead of "/". This is because I'm using hash routing on the 
+	 programs page so that the programs can be filtered in a "single page app" style. */
+	mainNavItems.forEach(mainNavItem => {
+		if (
+			mainNavItem.links &&
+			mainNavItem.fileAbsolutePath.includes('programs')
+		)
+			mainNavItem.links.forEach(link => (link.isProgramCategory = true));
+	});
 
 	const navParentEl = useRef(null);
 

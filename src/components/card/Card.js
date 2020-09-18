@@ -38,7 +38,7 @@ export default function Card({
 							className={cardStyles.flsCard__userIcon}
 							icon={faUser}
 						/>
-						{`Age ${cardData.speciality_tour_details.minimum_age}+`}
+						{`Age ${cardData.programDetails.minimumAge}+`}
 					</div>
 
 					<div>
@@ -180,15 +180,15 @@ export default function Card({
 								className="fls-post__subhero-icon"
 								icon={faBook}
 							/>
-							{cardData.program_details.lessons_per_week} lessons
-							per week
+							{cardData.programDetails.lessonsPerWeek} lessons per
+							week
 						</span>
 						<span>
 							<FontAwesomeIcon
 								className="fls-post__subhero-icon"
 								icon={faClock}
 							/>
-							{cardData.program_details.hours_per_week} hours per
+							{cardData.programDetails.hoursPerWeek} hours per
 							week
 						</span>
 					</div>

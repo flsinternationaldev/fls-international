@@ -38,7 +38,12 @@ export default function NavbarDropdownContainer({
 					mainNavItem.collectionName
 				);
 			})
-			.map(sublink => sublink.node.frontmatter);
+			.map(sublink => {
+				return {
+					...sublink.node.frontmatter,
+					fileAbsolutePath: sublink.node.fileAbsolutePath,
+				};
+			});
 	}
 
 	const [isHoveringDropdown, setIsHoveringDropdown] = useState(false);
