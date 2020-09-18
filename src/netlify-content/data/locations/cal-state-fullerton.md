@@ -1,4 +1,4 @@
 ---
-locationName: Orange County, CA
+name: Orange County, CA
 centerName: Cal State Fullerton
 ---

@@ -64,7 +64,7 @@ export default function Card({
 				<img
 					// NOTE: Default to the first carousel image
 					src={cardData.carousel_images[0]}
-					alt={`${cardData.pageName} background image`}
+					alt={`${cardData.name} background image`}
 					className={`${cardStyles.fls__cardBg} ${cardStyles.fls__cardBgSpecialityTours}`}
 				/>
 				<div className={cardStyles.fls__cardBgOverlay}></div>

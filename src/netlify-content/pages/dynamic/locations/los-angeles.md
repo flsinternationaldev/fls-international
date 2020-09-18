@@ -1,7 +1,8 @@
 ---
 path: los-angeles
-pageName: Los Angeles, CA
-name: Citrus College
+name: Los Angeles, CA
+centerNname: Citrus College
+centerName: Citrus College
 description: Study English in California! Citrus College offers a great
   combination of suburban comfort with access to all of the attractions and
   glamour of Los Angeles.

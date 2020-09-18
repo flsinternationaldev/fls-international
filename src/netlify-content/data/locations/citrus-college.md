@@ -1,4 +1,4 @@
 ---
-locationName: Los Angeles, CA
+name: Los Angeles, CA
 centerName: Citrus College
 ---

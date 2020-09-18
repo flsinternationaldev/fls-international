@@ -9,7 +9,10 @@ import MarkdownContent from 'src/components/MarkdownContent.js';
 
 import 'slick-carousel/slick/slick.css';
 
-export const ProgramPageTemplate = ({ programPageData, allProgramNavData }) => {
+export const InPersonProgramPageTemplate = ({
+	programPageData,
+	allProgramNavData,
+}) => {
 	return (
 		<Section>
 			<div className="columns is-multiline">
@@ -31,7 +34,7 @@ export const ProgramPageTemplate = ({ programPageData, allProgramNavData }) => {
 							<div className="fls-post__hero">
 								<img
 									src={programPageData.hero_image}
-									alt={`${programPageData.name} hero image`}
+									alt={`${programPageData.name} hero`}
 								/>
 							</div>
 						</div>
@@ -84,7 +87,7 @@ export const ProgramPageTemplate = ({ programPageData, allProgramNavData }) => {
 	);
 };
 
-const ProgramPage = ({ pageContext }) => {
+const InPersonProgramPage = ({ pageContext }) => {
 	const { pagePath } = pageContext;
 
 	const data = useStaticQuery(graphql`
@@ -123,7 +126,7 @@ const ProgramPage = ({ pageContext }) => {
 
 	const allProgramNavData = data.allMarkdownRemark.edges.map(edge => {
 		return {
-			path: `/programs/on-site/${edge.node.frontmatter.path}`,
+			path: `/programs/in-person/${edge.node.frontmatter.path}`,
 			name: edge.node.frontmatter.name,
 		};
 	});
@@ -133,9 +136,9 @@ const ProgramPage = ({ pageContext }) => {
 			isScrolled={true}
 			hasNavHero={true}
 			hasNavButtons={true}
-			pageTitle={'On-Site Programs'}
+			pageTitle={'In-Person Programs'}
 		>
-			<ProgramPageTemplate
+			<InPersonProgramPageTemplate
 				programPageData={programPageData}
 				allProgramNavData={allProgramNavData}
 			/>
@@ -143,4 +146,4 @@ const ProgramPage = ({ pageContext }) => {
 	);
 };
 
-export default ProgramPage;
+export default InPersonProgramPage;

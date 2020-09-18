@@ -71,7 +71,7 @@ collections:
                       - { label: 'Online', name: 'online', widget: string }
                       - {
                             label: 'Specialty Tours',
-                            name: 'specialityTours',
+                            name: 'specialtyTours',
                             widget: string,
                         }
     # - name: 'location'
@@ -311,7 +311,7 @@ collections:
       label: 'Locations Dynamic Pages'
       create: true
       folder: 'src/netlify-content/pages/dynamic/locations'
-      summary: '{{locationName}} - {{centerName}}'
+      summary: '{{name}} - {{centerName}}'
       label_singular: 'location dynamic page'
       fields:
           - {
@@ -322,10 +322,10 @@ collections:
             }
           - {
                 label: 'Location Name',
-                name: 'locationName',
+                name: 'name',
                 widget: 'relation',
-                valueField: 'locationName',
-                searchFields: ['locationName'],
+                valueField: 'name',
+                searchFields: ['name'],
                 collection: 'locationsData',
                 hint: 'The city & state of the location. Rendered as the main title of the page.',
             }
@@ -533,7 +533,7 @@ collections:
                 name: 'program-features-content',
                 widget: 'markdown',
             }
-    - name: 'specialityToursDynamicPages'
+    - name: 'specialtyToursDynamicPages'
       label: 'Specialty Tours Dynamic Pages'
       create: true
       folder: 'src/netlify-content/pages/dynamic/programs/specialty-tours'
@@ -550,7 +550,7 @@ collections:
                 label: 'Name',
                 name: 'name',
                 widget: 'relation',
-                collection: 'specialityToursData',
+                collection: 'specialtyToursData',
                 valueField: 'name',
                 searchFields: ['name'],
                 displayFields: ['name'],
@@ -579,7 +579,7 @@ collections:
                             label: 'Arrive',
                             name: 'arrive',
                             widget: 'relation',
-                            collection: 'specialityToursData',
+                            collection: 'specialtyToursData',
                             valueField: 'programDates.*.arrive',
                             searchFields: ['programDates.*.arrive'],
                             displayFields: ['programDates.*.arrive'],
@@ -588,7 +588,7 @@ collections:
                             label: 'Depart',
                             name: 'depart',
                             widget: 'relation',
-                            collection: 'specialityToursData',
+                            collection: 'specialtyToursData',
                             valueField: 'programDates.*.depart',
                             searchFields: ['programDates.*.depart'],
                             displayFields: ['programDates.*.depart'],
@@ -599,7 +599,7 @@ collections:
                 label: 'Sample Calendar',
                 name: 'sampleCalendar',
                 widget: 'relation',
-                collection: 'specialityToursData',
+                collection: 'specialtyToursData',
                 valueField: 'sampleCalendar',
                 searchFields: ['sampleCalendar'],
                 displayFields: ['sampleCalendar'],
@@ -626,7 +626,7 @@ collections:
                             label: 'Minimum Age',
                             name: 'minimum-age',
                             widget: 'relation',
-                            collection: 'specialityToursData',
+                            collection: 'specialtyToursData',
                             valueField: 'minimumAge',
                             searchFields: ['minimumAge'],
                             displayFields: ['minimumAge'],
@@ -635,7 +635,7 @@ collections:
                             label: 'Duration',
                             name: 'duration',
                             widget: 'relation',
-                            collection: 'specialityToursData',
+                            collection: 'specialtyToursData',
                             valueField: 'duration',
                             searchFields: ['duration'],
                             displayFields: ['duration'],
@@ -644,7 +644,7 @@ collections:
                             label: 'Price',
                             name: 'price',
                             widget: 'relation',
-                            collection: 'specialityToursData',
+                            collection: 'specialtyToursData',
                             valueField: 'price',
                             searchFields: ['price'],
                             displayFields: ['price'],
@@ -878,7 +878,7 @@ collections:
                 widget: 'number',
             }
             # TODO: Supplements
-    - name: 'specialityToursData'
+    - name: 'specialtyToursData'
       label: 'Specialty Tours Data'
       create: true
       folder: 'src/netlify-content/data/programs/specialty-tours'
@@ -934,13 +934,13 @@ collections:
       label: 'Locations Data'
       create: true
       folder: 'src/netlify-content/data/locations'
-      summary: '{{centerName}} @ {{locationName}}'
+      summary: '{{centerName}} @ {{name}}'
       label_singular: 'location data'
       identifier_field: 'centerName'
       fields:
           - {
                 label: 'Location Name',
-                name: 'locationName',
+                name: 'name',
                 widget: 'string',
                 hint: 'Should be a city and state abbreviation, e.g. "Boston, MA"',
             }

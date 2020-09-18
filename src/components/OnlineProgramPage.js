@@ -42,13 +42,13 @@ export const OnlineProgramPageTemplate = ({
 						<div className="column is-full">
 							<div className="fls-post__subhero">
 								<span className="fls-post__subhero-item">
-									{`${programPageData.program_details.lessons_per_week} lessons per week`}
+									{`${programPageData.programDetails.lessonsPerWeek} lessons per week`}
 								</span>
 								<span className="fls-post__subhero-item">
-									{`${programPageData.program_details.hours_per_week} hours per week`}
+									{`${programPageData.programDetails.hoursPerWeek} hours per week`}
 								</span>
 								<span className="fls-post__subhero-item fls--red">
-									{`*1 lesson = ${programPageData.program_details.minutes_per_lesson} minutes`}
+									{`*1 lesson = ${programPageData.programDetails.minutesPerLesson} minutes`}
 								</span>
 							</div>
 						</div>
@@ -127,7 +127,7 @@ const OnlineProgramPage = ({ pageContext }) => {
 
 	const allProgramNavData = data.allMarkdownRemark.edges.map(edge => {
 		return {
-			path: `/programs/on-site/${edge.node.frontmatter.path}`,
+			path: `/programs/online/${edge.node.frontmatter.path}`,
 			name: edge.node.frontmatter.name,
 		};
 	});
@@ -137,7 +137,7 @@ const OnlineProgramPage = ({ pageContext }) => {
 			isScrolled={true}
 			hasNavHero={true}
 			hasNavButtons={true}
-			pageTitle={'On-Site Programs'}
+			pageTitle={'Online Programs'}
 		>
 			<OnlineProgramPageTemplate
 				programPageData={programPageData}

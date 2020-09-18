@@ -22,7 +22,7 @@ export default function NavbarDropdownContainer({
 					node {
 						frontmatter {
 							path
-							pageName
+							name
 						}
 						fileAbsolutePath
 					}

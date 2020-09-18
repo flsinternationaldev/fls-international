@@ -36,7 +36,7 @@ export const LocationPageTemplate = ({ locationPageData }) => {
 						<div className="column is-full">
 							{/* TODO: Again, these 'programs' classes need genericizing */}
 							<h2 className="programs__post-title">
-								{locationPageData.name}
+								{locationPageData.centerName}
 							</h2>
 						</div>
 
@@ -121,7 +121,8 @@ const LocationPage = ({ pageContext }) => {
 						frontmatter {
 							path
 							name
-							pageName
+							centerName
+							carousel_images
 							quick_facts {
 								name
 								icon
@@ -142,7 +143,7 @@ const LocationPage = ({ pageContext }) => {
 		<Layout
 			isScrolled={true}
 			hasNavHero={true}
-			pageTitle={locationPageData.pageName}
+			pageTitle={locationPageData.name}
 		>
 			<LocationPageTemplate locationPageData={locationPageData} />
 		</Layout>

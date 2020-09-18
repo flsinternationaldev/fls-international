@@ -1,4 +1,4 @@
 ---
-locationName: Boston, MA
+name: Boston, MA
 centerName: Fisher College
 ---

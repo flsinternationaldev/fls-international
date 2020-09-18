@@ -90,7 +90,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	);
 
 	const inPersonProgramPageTemplate = path.resolve(
-		`src/components/ProgramPage.js`
+		`src/components/InPersonProgramPage.js`
 	);
 
 	// TODO: This can be DRYed up

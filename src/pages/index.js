@@ -400,7 +400,7 @@ const HomePage = (
 						frontmatter {
 							path
 							centerName
-							locationName
+							name
 							carousel_images
 							name
 							description
