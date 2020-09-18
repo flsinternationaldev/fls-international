@@ -337,6 +337,16 @@ a {
 	border-color: $fls-dark-blue !important;
 }
 
+.fls__button--dark-blue {
+	background-color: $fls-dark-blue !important;
+	border-color: $fls-dark-blue !important;
+
+	&:hover {
+		background-color: $fls-light-blue !important;
+		border-color: $fls-light-blue !important;
+	}
+}
+
 .fls__button--yellow {
 	background-color: #fec910 !important;
 	border-color: #fec910 !important;

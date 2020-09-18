@@ -74,236 +74,45 @@ collections:
                             name: 'specialtyTours',
                             widget: string,
                         }
-    # - name: 'location'
-    #   label: 'Location'
-    #   create: true
-    #   folder: 'src/netlify-content/location'
-    #   identifier_field: title
-    #   fields:
-    #       # See if there's a way to add descriptive text to these fields
-    #       - {
-    #             label: 'Title',
-    #             name: 'title',
-    #             widget: 'string',
-    #             hint: 'All lower case, use dashes instead of spaces (e.g. citrus-college-center)',
-    #         }
-    #       - { label: 'Name', name: 'name', widget: 'string' }
-    #       - {
-    #             label: 'General Fees',
-    #             name: 'general-fees',
-    #             widget: 'relation',
-    #             collection: 'general-fees',
-    #             valueField: 'title',
-    #             searchFields: ['title'],
-    #             displayFields: ['title'],
-    #         }
-    #       - {
-    #             label: 'Programs',
-    #             name: 'programs',
-    #             widget: 'list',
-    #             fields:
-    #                 [
-    #                     { label: 'Name', name: 'name', widget: 'string' },
-    #                     {
-    #                         label: 'Max Weeks',
-    #                         name: 'max-weeks',
-    #                         widget: 'string',
-    #                     },
-    #                     {
-    #                         label: 'Exceed max weeks?',
-    #                         name: 'exceed-max-weeks',
-    #                         required: false,
-    #                         widget: 'boolean',
-    #                     },
-    #                     {
-    #                         label: 'Week Thresholds',
-    #                         name: 'week-thresholds',
-    #                         widget: 'list',
-    #                         fields:
-    #                             [
-    #                                 {
-    #                                     label: 'Threshold Max',
-    #                                     name: 'threshold-max',
-    #                                     widget: 'number',
-    #                                 },
-    #                                 {
-    #                                     label: 'Price Per Week',
-    #                                     name: 'price-per-week',
-    #                                     widget: 'number',
-    #                                 },
-    #                                 {
-    #                                     label: 'Hours Per Week',
-    #                                     name: 'hours-per-week',
-    #                                     widget: 'number',
-    #                                 },
-    #                                 {
-    #                                     label: 'Lessons Per Week',
-    #                                     name: 'lessons-per-week',
-    #                                     widget: 'number',
-    #                                 },
-    #                             ],
-    #                     },
-    #                 ],
-    #         }
-    #       - {
-    #             label: 'Supplements',
-    #             name: 'supplements',
-    #             widget: 'object',
-    #             fields: [
-    #                     {
-    #                         label: 'Airport Transfers',
-    #                         name: 'airport-transfers',
-    #                         widget: 'list',
-    #                         allow_add: true,
-    #                         fields:
-    #                             [
-    #                                 {
-    #                                     label: 'Airport Name',
-    #                                     name: 'airport-name',
-    #                                     widget: 'string',
-    #                                 },
-    #                                 {
-    #                                     label: 'Cost',
-    #                                     name: 'cost',
-    #                                     widget: 'number',
-    #                                 },
-    #                             ],
-    #                     },
-    #                     {
-    #                         # TODO: Do we need to capture "per x unit class"?
-    #                         # TODO: Also note, how do we capture the 'sublocations' that Boston Commons has?
-    #                         label: 'Concurrent Enrollment',
-    #                         name: 'concurrent-enrollment',
-    #                         widget: 'object',
-    #                         fields:
-    #                             [
-    #                                 {
-    #                                     label: 'Per 3 unit class',
-    #                                     name: 'per-3-unit-class',
-    #                                     widget: 'number',
-    #                                 },
-    #                             ],
-    #                     },
-    #                     {
-    #                         # TODO: How do we capture the amount for 4 weeks, and the amount each additional week?
-    #                         label: 'Auditing',
-    #                         name: 'auditing',
-    #                         widget: 'object',
-    #                         fields:
-    #                             [
-    #                                 {
-    #                                     label: '4 Week Cost',
-    #                                     name: '4-week-cost',
-    #                                     widget: 'number',
-    #                                 },
-    #                                 {
-    #                                     label: 'Additional week cost',
-    #                                     name: 'additional-week-cost',
-    #                                     widget: 'number',
-    #                                 },
-    #                             ],
-    #                     },
-    #                     {
-    #                         # TODO: Do we need to capture "per x unit class"?
-    #                         label: 'High School Completion Course',
-    #                         name: 'hs-completion-course',
-    #                         widget: 'object',
-    #                         fields:
-    #                             [
-    #                                 {
-    #                                     label: '4 Week Cost',
-    #                                     name: '4-week-cost',
-    #                                     widget: 'number',
-    #                                 },
-    #                                 {
-    #                                     label: 'Additional week cost',
-    #                                     name: 'additional-week-cost',
-    #                                     widget: 'number',
-    #                                 },
-    #                             ],
-    #                     },
-    #                     {
-    #                         # TODO: Do we need to capture "per x unit class"?
-    #                         label: 'High School Immersion',
-    #                         name: 'hs-immersion',
-    #                         widget: 'object',
-    #                         fields:
-    #                             [
-    #                                 {
-    #                                     label: 'Per week cost',
-    #                                     name: 'per-week-cost',
-    #                                     widget: 'number',
-    #                                 },
-    #                             ],
-    #                     },
-    #                 ],
-    #         }
-    #       - {
-    #             label: 'Housing Fees',
-    #             name: 'housing-fees',
-    #             widget: 'list',
-    #             fields: [
-    #                     {
-    #                         label: 'Housing Name',
-    #                         name: 'housing-name',
-    #                         widget: 'string',
-    #                     },
-    #                     {
-    #                         label: 'Meals per week',
-    #                         name: 'meals-per-week',
-    #                         widget: 'number',
-    #                     },
-    #                     {
-    #                         label: 'Cost Per Week',
-    #                         name: 'cost-per-week',
-    #                         widget: 'number',
-    #                     },
-    #                     {
-    #                         label: 'Non-refundable Deposit',
-    #                         name: 'non-refundable-deposit',
-    #                         widget: 'number',
-    #                     },
-    #                     {
-    #                         label: 'Additional Notes',
-    #                         name: 'additional-notes',
-    #                         widget: 'list',
-    #                         # TODO: When creating new notes, they come wrapped in another object. I don't think this is intended behavior
-    #                         field:
-    #                             {
-    #                                 label: 'Note',
-    #                                 name: 'note',
-    #                                 widget: 'string',
-    #                             },
-    #                     },
-    #                 ],
-    #         }
-    - name: 'general-fees'
-      label: 'General Fees'
+    - name: 'generalFeesData'
+      label: 'General Fees Data'
       create: true
-      folder: 'src/netlify-content/general-fees'
-      identifier_field: title
+      folder: 'src/netlify-content/data/general-fees'
+      identifier_field: name
+      label_singular: 'general fee data'
+      summary: '{{name}} @ {{centerName}}'
       fields:
+          - { name: 'name', label: 'Name', widget: 'string' }
           - {
-                name: 'title',
-                label: 'Title',
-                widget: 'string',
-                hint: 'All lower case, use dashes instead of spaces (e.g. citrus-college-center)',
+                label: 'Center Name',
+                name: 'centerName',
+                widget: 'relation',
+                multiple: true,
+                hint: 'The center/s this general fee is associated with',
+                valueField: 'centerName',
+                searchFields: ['centerName'],
+                collection: 'locationsData',
             }
           - {
-                label: 'Fees',
-                name: 'fees',
-                widget: 'list',
+                label: 'Price Details',
+                name: 'priceDetails',
+                widget: 'object',
                 fields:
                     [
-                        { label: 'Name', name: 'name', widget: 'string' },
                         { label: 'Cost', name: 'cost', widget: 'number' },
                         {
                             label: 'Pay Period',
-                            name: 'pay-period',
+                            name: 'payPeriod',
                             widget: 'select',
                             hint: 'How often should this fee be charged?',
                             options:
-                                ['Once', 'Per week', 'Per Lesson', 'Per Night'],
+                                [
+                                    'Once',
+                                    'Per week',
+                                    'Per Lesson',
+                                    'Per Night',
+                                    'Included',
+                                ],
                         },
                     ],
             }
@@ -686,7 +495,7 @@ collections:
                 hint: 'The type of online program this is e.g. Online Essential Program. Used similarly to "locations" for in-person programs.',
             }
           - {
-                name: 'duration',
+                name: 'durationOptions',
                 label: 'Duration Options',
                 widget: 'object',
                 fields:
@@ -822,13 +631,14 @@ collections:
                 name: 'location',
                 widget: 'relation',
                 collection: 'locationsData',
+                multiple: true,
                 valueField: 'centerName',
                 searchFields: ['centerName'],
                 displayFields: ['centerName'],
                 hint: 'This field helps the site logic differentiate between the same program at different locations',
             }
           - {
-                name: 'duration',
+                name: 'durationOptions',
                 label: 'Duration Options',
                 widget: 'object',
                 fields:
@@ -966,6 +776,113 @@ collections:
                 name: 'onlineProgramTypeDescription',
                 widget: 'string',
                 hint: 'A 1 - 3 sentence description of the program type. Used on the online program dynamic pages',
+            }
+    - name: 'housingData'
+      label: 'Housing Data'
+      create: true
+      folder: 'src/netlify-content/data/housing'
+      summary: '{{name}} @ {{centerNames}}'
+      label_singular: 'housing data'
+      identifier_field: 'name'
+      fields:
+          - { label: 'Housing Type', name: 'name', widget: 'string' }
+          - {
+                label: 'Center Names',
+                name: 'centerNames',
+                widget: 'relation',
+                multiple: true,
+                collection: 'locationsData',
+                searchFields: ['centerName'],
+                valueField: 'centerName',
+                hint: 'Should be the name of the center/centers associated with this housing option.',
+            }
+          - {
+                label: 'Price Details',
+                name: 'priceDetails',
+                widget: 'object',
+                required: false,
+                fields:
+                    [
+                        { label: 'Price', name: 'price', widget: 'number' },
+                        {
+                            label: 'Pay Period',
+                            name: 'payPeriod',
+                            widget: 'select',
+                            options: [{ label: 'Weekly', value: 'weekly' }],
+                        },
+                    ],
+            }
+          - { label: 'Meals Per Week', name: 'mealsPerWeek', widget: 'number' }
+          - {
+                label: 'Minimum Age',
+                name: 'minimumAge',
+                widget: 'number',
+                required: false,
+            }
+          - {
+                label: 'Additional Notes',
+                name: 'notes',
+                widget: list,
+                required: false,
+                field: { label: 'note', name: 'note', widget: 'string' },
+            }
+    - name: 'enhancementsData'
+      label: 'Enhancements Data'
+      create: true
+      folder: 'src/netlify-content/data/enhancements'
+      summary: '{{name}} @ {{centerNames}}'
+      label_singular: 'enhancement data'
+      identifier_field: 'name'
+      fields:
+          - { label: 'Enhancement Name', name: 'name', widget: 'string' }
+          - {
+                label: 'Center Names',
+                name: 'centerNames',
+                widget: 'relation',
+                multiple: true,
+                collection: 'locationsData',
+                searchFields: ['centerName'],
+                valueField: 'centerName',
+                hint: 'Should be the name of the center/centers associated with this enhancement.',
+            }
+          - {
+                label: 'Price Details',
+                name: 'priceDetails',
+                widget: 'list',
+                required: false,
+                fields:
+                    [
+                        { label: 'Price', name: 'price', widget: 'number' },
+                        {
+                            label: 'Pay Period',
+                            name: 'payPeriod',
+                            widget: 'select',
+                            options:
+                                [
+                                    { label: 'Weekly', value: 'weekly' },
+                                    { label: 'Each way', value: 'each-way' },
+                                    {
+                                        label: 'Per 3 Unit Class',
+                                        value: 'three-unit-class',
+                                    },
+                                    {
+                                        label: 'Per 4 Weeks',
+                                        value: 'per-four-weeks',
+                                    },
+                                    {
+                                        label: 'Each additional week',
+                                        value: 'additional-week',
+                                    },
+                                ],
+                        },
+                    ],
+            }
+          - {
+                label: 'Additional Notes',
+                name: 'notes',
+                widget: list,
+                required: false,
+                field: { label: 'note', name: 'note', widget: 'string' },
             }
     - name: 'navbar-item'
       label: 'Navbar Items'

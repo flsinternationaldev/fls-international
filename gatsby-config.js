@@ -52,6 +52,13 @@ module.exports = {
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
+				path: `${__dirname}/src/netlify-content/data`,
+				name: 'data',
+			},
+		},
+		{
+			resolve: 'gatsby-source-filesystem',
+			options: {
 				path: `${__dirname}/src/netlify-content/general-fees`,
 				name: 'general-fees',
 			},

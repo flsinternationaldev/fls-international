@@ -1,6 +1,7 @@
 ---
 name: Vacation English
-location: Boston Commons
+location:
+  - Boston Commons
 duration:
   maxWeeks: "12"
   weekThresholds:
@@ -10,6 +11,15 @@ duration:
       pricePerWeek: 390
     - thresholdMax: 12
       pricePerWeek: 385
+durationOptions:
+  maxWeeks: "12"
+  weekThresholds:
+    - thresholdMax: 3
+      pricePerWeek: 395
+    - thresholdMax: 5
+      pricePerWeek: 390
+    - pricePerWeek: 385
+      thresholdMax: 12
 hoursPerWeek: 15
 lessonsPerWeek: 18
 minutesPerLesson: 50

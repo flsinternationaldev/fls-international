@@ -53,6 +53,7 @@ export const ApplicationTemplate = () => {
 		specifyHowHeardAboutFls: '',
 		additionalComments: '',
 		termsAndConditions: false,
+		programType: '',
 		// TODO: Figure out passport photo & financial document image upload
 	});
 

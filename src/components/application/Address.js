@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { GoogleApiWrapper } from 'google-maps-react';
 
 import PlacesAutocomplete, {
 	geocodeByAddress,
@@ -175,22 +175,8 @@ export default GoogleApiWrapper({
 							</div>
 						</div>
 					</div>
-					<div className="column is-half">
-						{/* TODO: Dropdown needs styling */}
-						<Map
-							google={google}
-							containerStyle={mapContainerStyles}
-							style={mapStyles}
-							center={latLng}
-							zoom={14}
-						>
-							{/* TODO: Think about giving this a pop up stating the chosen address */}
-							<Marker position={latLng} />
-						</Map>
-					</div>
-					{/* TODO: Perfect world, these should populate after the user
-				selects the autocompleted address */}
-					<div className="column is-half">
+
+					<div className="column is-full">
 						<div className="columns is-multiline">
 							<div className="column is-full">
 								<div className="field">
