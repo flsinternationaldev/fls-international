@@ -2,6 +2,8 @@
 name: General English
 location:
   - Chestnut Hill College
+centerName:
+  - Chestnut Hill College
 durationOptions:
   maxWeeks: "32"
   exceedMaxWeeks: true

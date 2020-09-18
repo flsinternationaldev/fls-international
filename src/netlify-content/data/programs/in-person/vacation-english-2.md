@@ -12,6 +12,9 @@ duration:
       pricePerWeek: 385
     - pricePerWeek: 375
       thresholdMax: 10
+centerName:
+  - Citrus College
+  - Saddleback College
 durationOptions:
   maxWeeks: "12"
   weekThresholds:

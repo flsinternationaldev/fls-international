@@ -11,6 +11,8 @@ duration:
       pricePerWeek: 390
     - thresholdMax: 12
       pricePerWeek: 385
+centerName:
+  - Boston Commons
 durationOptions:
   maxWeeks: "12"
   weekThresholds:

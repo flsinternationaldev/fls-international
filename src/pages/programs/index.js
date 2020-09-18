@@ -167,7 +167,6 @@ const ProgramsPage = ({ /*data, */ location }) => {
 						frontmatter {
 							path
 							name
-							centerName
 							programDetails {
 								minimumAge
 								duration

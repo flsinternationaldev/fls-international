@@ -628,7 +628,7 @@ collections:
             }
           - {
                 label: 'Center',
-                name: 'location',
+                name: 'centerName',
                 widget: 'relation',
                 collection: 'locationsData',
                 multiple: true,

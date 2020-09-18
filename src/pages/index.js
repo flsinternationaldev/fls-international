@@ -399,10 +399,8 @@ const HomePage = (
 					node {
 						frontmatter {
 							path
-							centerName
 							name
 							carousel_images
-							name
 							description
 						}
 					}

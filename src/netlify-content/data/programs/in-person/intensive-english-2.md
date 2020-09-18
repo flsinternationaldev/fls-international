@@ -3,6 +3,9 @@ name: Intensive English
 location:
   - Citrus College
   - Saddleback College
+centerName:
+  - Citrus College
+  - Saddleback College
 durationOptions:
   maxWeeks: "32"
   exceedMaxWeeks: true

@@ -2,6 +2,8 @@
 name: General English
 location:
   - Boston Commons
+centerName:
+  - Boston Commons
 durationOptions:
   maxWeeks: "32"
   exceedMaxWeeks: true

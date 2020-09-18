@@ -34,7 +34,7 @@ export default function AdditionalInfoForm({
 					node {
 						frontmatter {
 							name
-							location
+
 							programDetails {
 								lessonsPerWeek
 								hoursPerWeek
@@ -64,7 +64,6 @@ export default function AdditionalInfoForm({
 					node {
 						frontmatter {
 							name
-							location
 							programDetails {
 								lessonsPerWeek
 								hoursPerWeek
@@ -96,7 +95,6 @@ export default function AdditionalInfoForm({
 					node {
 						frontmatter {
 							name
-							location
 							programDetails {
 								lessonsPerWeek
 								hoursPerWeek

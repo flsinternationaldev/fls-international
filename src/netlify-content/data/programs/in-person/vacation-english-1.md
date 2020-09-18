@@ -11,6 +11,8 @@ duration:
       pricePerWeek: 385
     - thresholdMax: 12
       pricePerWeek: 375
+centerName:
+  - Chestnut Hill College
 durationOptions:
   maxWeeks: "12"
   weekThresholds:
