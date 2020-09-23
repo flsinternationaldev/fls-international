@@ -70,6 +70,10 @@ module.exports = {
 				name: 'navbar-items',
 			},
 		},
+		{
+			resolve: 'gatsby-plugin-exclude',
+			options: { paths: ['/locations/**'] },
+		},
 		`gatsby-transformer-remark`,
 	],
 };
