@@ -1,8 +1,8 @@
 ---
 name: Concurrent Enrollment
-centerNames:
-  - Fisher College
+centerNameRelation:
+    - Fisher College
 priceDetails:
-  - price: 3500
-    payPeriod: three-unit-class
+    - price: 3500
+      payPeriod: three-unit-class
 ---

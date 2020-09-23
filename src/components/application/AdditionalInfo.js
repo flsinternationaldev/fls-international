@@ -26,9 +26,9 @@ export default function AdditionalInfo({
 						</h2>
 					</div>
 
-					<div className="column is-one-third">
+					<div className="column is-full">
 						<button
-							className="fls__button"
+							className="fls__button fls__button--additional-info"
 							onClick={() =>
 								handleInputChange(
 									'programType',
@@ -40,9 +40,9 @@ export default function AdditionalInfo({
 							In-Person
 						</button>
 					</div>
-					<div className="column is-one-third">
+					<div className="column is-full">
 						<button
-							className="fls__button"
+							className="fls__button fls__button--additional-info"
 							onClick={() =>
 								handleInputChange(
 									'programType',
@@ -54,9 +54,9 @@ export default function AdditionalInfo({
 							Online
 						</button>
 					</div>
-					<div className="column is-one-third">
+					<div className="column is-full">
 						<button
-							className="fls__button"
+							className="fls__button fls__button--additional-info"
 							onClick={() =>
 								handleInputChange(
 									'programType',

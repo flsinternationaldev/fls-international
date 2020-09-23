@@ -3,7 +3,7 @@ name: General English
 location:
   - Citrus College
   - Saddleback College
-centerName:
+centerNameRelation:
   - Citrus College
   - Saddleback College
 durationOptions:

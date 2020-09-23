@@ -1,11 +1,11 @@
 ---
 name: Homestay Single Room
-centerNames:
-  - Boston Commons
+centerNameRelation:
+    - Boston Commons
 priceDetails:
-  price: 325
-  payPeriod: weekly
+    price: 325
+    payPeriod: weekly
 mealsPerWeek: 16
 notes:
-  - Single room may not be available July - August.
+    - Single room may not be available July - August.
 ---

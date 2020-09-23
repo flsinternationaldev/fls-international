@@ -1,10 +1,10 @@
 ---
 name: Auditing
-centerNames:
-  - Boston Commons
+centerNameRelation:
+    - Boston Commons
 priceDetails:
-  - price: 1600
-    payPeriod: per-four-weeks
-  - price: 200
-    payPeriod: additional-week
+    - price: 1600
+      payPeriod: per-four-weeks
+    - price: 200
+      payPeriod: additional-week
 ---

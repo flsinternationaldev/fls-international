@@ -1,8 +1,8 @@
 ---
 name: Airport Transfer
-centerNames:
-  - Citrus College
+centerNameRelation:
+    - Citrus College
 priceDetails:
-  - price: 150
-    payPeriod: each-way
+    - price: 150
+      payPeriod: each-way
 ---

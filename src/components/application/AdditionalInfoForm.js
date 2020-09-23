@@ -24,6 +24,19 @@ export default function AdditionalInfoForm({
 }) {
 	const data = useStaticQuery(graphql`
 		{
+			locations: allMarkdownRemark(
+				limit: 1000
+				filter: { fileAbsolutePath: { regex: "/data/locations/" } }
+			) {
+				edges {
+					node {
+						frontmatter {
+							name
+							centerName
+						}
+					}
+				}
+			}
 			inPerson: allMarkdownRemark(
 				limit: 1000
 				filter: {
@@ -34,12 +47,11 @@ export default function AdditionalInfoForm({
 					node {
 						frontmatter {
 							name
-
 							programDetails {
 								lessonsPerWeek
 								hoursPerWeek
 							}
-							hero_image
+							centerNameRelation
 							durationOptions {
 								maxWeeks
 								weekThresholds {
@@ -118,13 +130,18 @@ export default function AdditionalInfoForm({
 	`);
 
 	// TODO: This is a straight copy/paste from Application Landing, and is in need of DRYing
-	const formattedData = data[
+	const programsData = data[
 		applicationData.programType.replace(/-([a-z])/g, g =>
 			g[1].toUpperCase()
 		)
 	].edges.map(edge => edge.node.frontmatter);
 
-	console.log('formattedData!', formattedData);
+	console.log('programsData', programsData);
+
+	// TODO: DRY this up
+	const centersData = data.locations.edges.map(edge => edge.node.frontmatter);
+
+	console.log('centersData', centersData);
 
 	const [durationOptions, setDurationOptions] = useState([]);
 	const [programOptions, setProgramOptions] = useState([]);
@@ -144,11 +161,10 @@ export default function AdditionalInfoForm({
 
 	const [programType, setProgramType] = useState('on-location');
 
-	const centerOptions = formattedData.map(center => {
+	const centerOptions = centersData.map(center => {
 		return {
-			// TODO: Probably want to include this string helper in a mixin
-			value: center.name.toLowerCase().split(' ').join('-'),
-			label: center.name,
+			value: center.centerName,
+			label: `${center.centerName} @ ${center.name}`,
 		};
 	});
 
@@ -158,11 +174,12 @@ export default function AdditionalInfoForm({
 		setCenterValue(centerChange.value);
 
 		// Set state operatons are async, so we'll use this non-async version for the below operations
-		const currentCenter = formattedData.find(
-			center => center.name === centerChange.label
+		const currentCenter = centersData.find(
+			center => center.centerName === centerChange.value
 		);
 
-		setGeneralFeesTitle(currentCenter.general_fees);
+		console.log('currentCenter', currentCenter);
+		// setGeneralFeesTitle(currentCenter.general_fees);
 
 		handleInputChange('flsCenter', centerChange.label, 'application');
 
@@ -170,25 +187,31 @@ export default function AdditionalInfoForm({
 
 		// Set program options to be the programs associated with the selected center
 		setProgramOptions(
-			currentCenter.programs.map(program => {
-				return {
-					value: program.name.toLowerCase().split(' ').join('-'),
-					label: program.name,
-				};
-			})
+			programsData
+				.filter(program => {
+					return program.centerNameRelation.includes(
+						centerChange.value
+					);
+				})
+				.map(program => {
+					return {
+						value: program.name.toLowerCase().split(' ').join('-'),
+						label: program.name,
+					};
+				})
 		);
 
-		setHousingOptions(
-			currentCenter.housing_fees.map(housingFee => {
-				return {
-					label: housingFee.housing_name,
-					value: housingFee.housing_name
-						.toLowerCase()
-						.split(' ')
-						.join('-'),
-				};
-			})
-		);
+		// setHousingOptions(
+		// 	currentCenter.housing_fees.map(housingFee => {
+		// 		return {
+		// 			label: housingFee.housing_name,
+		// 			value: housingFee.housing_name
+		// 				.toLowerCase()
+		// 				.split(' ')
+		// 				.join('-'),
+		// 		};
+		// 	})
+		// );
 	};
 
 	// TODO: These changes need to also recalculate off of each other, e.g. if you have a type of housing selected, then change the duration, the housing price needs to be recalculated ... might be time for the old redux
@@ -354,16 +377,23 @@ export default function AdditionalInfoForm({
 						/>
 					</div>
 					<div className="column is-half">
-						<label className="label">Program *</label>
+						<label className="label">
+							Program * - Select a location first.
+						</label>
 						<Select
-							className="fls__select-container"
+							// className={fls__select-container fls__select-container--disabled}
 							classNamePrefix={'fls'}
+							defaultValue={{
+								label: 'Select your location first.',
+								value: null,
+							}}
 							value={{
 								label: applicationData.program,
 								value: applicationData.program,
 							}}
 							onChange={handleProgramChange}
 							options={programOptions}
+							// isDisabled={true}
 						/>
 					</div>
 					<div className="column is-half">

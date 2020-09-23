@@ -1,10 +1,10 @@
 ---
 name: Airport Transfer
-centerNames:
-  - Boston Commons
+centerNameRelation:
+    - Boston Commons
 priceDetails:
-  - price: 130
-    payPeriod: each-way
+    - price: 130
+      payPeriod: each-way
 notes:
-  - Boston Logan International
+    - Boston Logan International
 ---

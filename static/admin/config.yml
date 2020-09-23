@@ -85,7 +85,7 @@ collections:
           - { name: 'name', label: 'Name', widget: 'string' }
           - {
                 label: 'Center Name',
-                name: 'centerName',
+                name: 'centerNameRelation',
                 widget: 'relation',
                 multiple: true,
                 hint: 'The center/s this general fee is associated with',
@@ -140,7 +140,7 @@ collections:
             }
           - {
                 label: 'Center Name',
-                name: 'centerName',
+                name: 'centerNameRelation',
                 widget: 'relation',
                 valueField: 'centerName',
                 searchFields: ['centerName'],
@@ -368,7 +368,7 @@ collections:
             }
           - {
                 label: 'Center',
-                name: 'centerName',
+                name: 'centerNameRelation',
                 widget: 'relation',
                 hint: 'The center this specialty tour is associated with. Values in this dropdown are pulled from the "Locations Data" collection.',
                 collection: 'locationsData',
@@ -618,7 +618,7 @@ collections:
       folder: 'src/netlify-content/data/programs/in-person'
       identifier_field: name
       label_singular: 'in-person program data'
-      summary: '{{name}} @ {{location}}'
+      summary: '{{name}} @ {{centerNameRelation}}'
       fields:
           - {
                 name: 'name',
@@ -628,7 +628,7 @@ collections:
             }
           - {
                 label: 'Center',
-                name: 'centerName',
+                name: 'centerNameRelation',
                 widget: 'relation',
                 collection: 'locationsData',
                 multiple: true,
@@ -700,7 +700,7 @@ collections:
           - { name: 'name', label: 'Specialty Tour Name', widget: 'string' }
           - {
                 label: 'Center Name',
-                name: 'centerName',
+                name: 'centerNameRelation',
                 widget: 'relation',
                 collection: 'locationsData',
                 valueField: 'centerName',
@@ -781,14 +781,14 @@ collections:
       label: 'Housing Data'
       create: true
       folder: 'src/netlify-content/data/housing'
-      summary: '{{name}} @ {{centerNames}}'
+      summary: '{{name}} @ {{centerNameRelation}}'
       label_singular: 'housing data'
       identifier_field: 'name'
       fields:
           - { label: 'Housing Type', name: 'name', widget: 'string' }
           - {
                 label: 'Center Names',
-                name: 'centerNames',
+                name: 'centerNameRelation',
                 widget: 'relation',
                 multiple: true,
                 collection: 'locationsData',
@@ -837,7 +837,7 @@ collections:
           - { label: 'Enhancement Name', name: 'name', widget: 'string' }
           - {
                 label: 'Center Names',
-                name: 'centerNames',
+                name: 'centerNameRelation',
                 widget: 'relation',
                 multiple: true,
                 collection: 'locationsData',

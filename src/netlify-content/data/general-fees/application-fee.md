@@ -1,14 +1,14 @@
 ---
 name: Application Fee
-centerName:
-  - Boston Commons
-  - Chestnut Hill College
-  - Cal State Fullerton
-  - Citrus College
-  - Fisher College
-  - Saddleback College
+centerNameRelation:
+    - Boston Commons
+    - Chestnut Hill College
+    - Cal State Fullerton
+    - Citrus College
+    - Fisher College
+    - Saddleback College
 priceDetails:
-  cost: 150
-  payPeriod: Once
-  name: "1"
+    cost: 150
+    payPeriod: Once
+    name: '1'
 ---

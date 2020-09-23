@@ -1,4 +1,4 @@
 ---
 name: Orange County, CA
-centerName: Cal State Fullerton
+centerName: Saddleback College
 ---

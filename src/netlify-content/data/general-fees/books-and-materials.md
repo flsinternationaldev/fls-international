@@ -1,13 +1,13 @@
 ---
 name: Books and Materials
-centerName:
-  - Cal State Fullerton
-  - Boston Commons
-  - Chestnut Hill College
-  - Citrus College
-  - Fisher College
-  - Saddleback College
+centerNameRelation:
+    - Cal State Fullerton
+    - Boston Commons
+    - Chestnut Hill College
+    - Citrus College
+    - Fisher College
+    - Saddleback College
 priceDetails:
-  cost: 0
-  payPeriod: Included
+    cost: 0
+    payPeriod: Included
 ---
