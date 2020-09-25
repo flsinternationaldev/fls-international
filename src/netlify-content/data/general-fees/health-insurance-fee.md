@@ -8,6 +8,6 @@ centerNameRelation:
     - Fisher College
     - Saddleback College
 priceDetails:
-    cost: 40
-    payPeriod: Per week
+    - cost: 40
+      payPeriod: Per week
 ---

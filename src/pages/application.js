@@ -100,6 +100,11 @@ export const ApplicationTemplate = () => {
 				...billingData,
 				...values,
 			});
+		} else if (type === 'application') {
+			setApplicationData({
+				...applicationData,
+				...values,
+			});
 		}
 	};
 
@@ -152,6 +157,7 @@ export const ApplicationTemplate = () => {
 					hashKey={'additional-info'}
 					userData={userData}
 					handleInputChange={handleInputChange}
+					handleBatchInputChange={handleBatchInputChange}
 					prices={prices}
 					setPrices={setPrices}
 					price={price}

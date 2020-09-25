@@ -3,8 +3,8 @@ name: Student Residence Shared Room
 centerNameRelation:
     - Chestnut Hill College
 priceDetails:
-    price: 350
-    payPeriod: weekly
+    - price: 350
+      payPeriod: weekly
 mealsPerWeek: 19
 minimumAge: 18
 notes:

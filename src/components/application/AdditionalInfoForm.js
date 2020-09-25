@@ -18,6 +18,7 @@ export default function AdditionalInfoForm({
 	currentProgram,
 	setCurrentProgram,
 	handleInputChange,
+	handleBatchInputChange,
 	prices,
 	setPrices,
 	applicationData,
@@ -37,6 +38,23 @@ export default function AdditionalInfoForm({
 					}
 				}
 			}
+			housing: allMarkdownRemark(
+				limit: 1000
+				filter: { fileAbsolutePath: { regex: "/data/housing/" } }
+			) {
+				edges {
+					node {
+						frontmatter {
+							name
+							centerNameRelation
+							priceDetails {
+								payPeriod
+								price
+							}
+						}
+					}
+				}
+			}
 			inPerson: allMarkdownRemark(
 				limit: 1000
 				filter: {
@@ -47,13 +65,10 @@ export default function AdditionalInfoForm({
 					node {
 						frontmatter {
 							name
-							programDetails {
-								lessonsPerWeek
-								hoursPerWeek
-							}
 							centerNameRelation
 							durationOptions {
 								maxWeeks
+								exceedMaxWeeks
 								weekThresholds {
 									pricePerWeek
 									thresholdMax
@@ -136,12 +151,10 @@ export default function AdditionalInfoForm({
 		)
 	].edges.map(edge => edge.node.frontmatter);
 
-	console.log('programsData', programsData);
-
 	// TODO: DRY this up
 	const centersData = data.locations.edges.map(edge => edge.node.frontmatter);
 
-	console.log('centersData', centersData);
+	const housingData = data.housing.edges.map(edge => edge.node.frontmatter);
 
 	const [durationOptions, setDurationOptions] = useState([]);
 	const [programOptions, setProgramOptions] = useState([]);
@@ -178,7 +191,6 @@ export default function AdditionalInfoForm({
 			center => center.centerName === centerChange.value
 		);
 
-		console.log('currentCenter', currentCenter);
 		// setGeneralFeesTitle(currentCenter.general_fees);
 
 		handleInputChange('flsCenter', centerChange.label, 'application');
@@ -201,17 +213,57 @@ export default function AdditionalInfoForm({
 				})
 		);
 
-		// setHousingOptions(
-		// 	currentCenter.housing_fees.map(housingFee => {
-		// 		return {
-		// 			label: housingFee.housing_name,
-		// 			value: housingFee.housing_name
-		// 				.toLowerCase()
-		// 				.split(' ')
-		// 				.join('-'),
-		// 		};
-		// 	})
-		// );
+		setHousingOptions(
+			housingData
+				.filter(housing => {
+					return housing.centerNameRelation.includes(
+						centerChange.value
+					);
+				})
+				.map(housing => {
+					return {
+						value: housing.name.toLowerCase().split(' ').join('-'),
+						label: housing.name,
+					};
+				})
+		);
+	};
+
+	const handleProgramChange = programChange => {
+		setProgramLabel(programChange.label);
+		setProgramValue(programChange.value);
+
+		handleInputChange('program', programChange.label, 'application');
+
+		const currentProgram = programsData.find(
+			program => program.name === programChange.label
+		);
+
+		let durationOptions = [];
+
+		for (let i = 0; i <= currentProgram.durationOptions.maxWeeks; i++) {
+			const weekNum = i + 1;
+
+			// TODO: Likely need to make a special note during submission if they select more than the max weeks
+			if (
+				currentProgram.durationOptions.exceedMaxWeeks &&
+				i == currentProgram.durationOptions.maxWeeks
+			) {
+				durationOptions.push({
+					label: `${i}+ weeks`,
+					value: `${weekNum}+`,
+				});
+			} else if (i < currentProgram.durationOptions.maxWeeks) {
+				durationOptions.push({
+					label: weekNum === 1 ? `${i + 1} week` : `${i + 1} weeks`,
+					value: weekNum,
+				});
+			}
+		}
+
+		setCurrentProgram(currentProgram);
+
+		setDurationOptions(durationOptions);
 	};
 
 	// TODO: These changes need to also recalculate off of each other, e.g. if you have a type of housing selected, then change the duration, the housing price needs to be recalculated ... might be time for the old redux
@@ -221,17 +273,17 @@ export default function AdditionalInfoForm({
 
 		handleInputChange('duration', durationChange.label, 'application');
 
-		let pricePerWeek = currentProgram.week_thresholds.reduce(
+		let pricePerWeek = currentProgram.durationOptions.weekThresholds.reduce(
 			(pricePerWeek, currentWeek, index, arr) => {
 				// If there are no previous thresholds, previous max defaults to 0. Otherwise, the minimum threshold value is last week's max threshold, plus one.
 				let thresholdMin =
-					index === 0 ? 1 : arr[index - 1].threshold_max + 1;
+					index === 0 ? 1 : arr[index - 1].thresholdMax + 1;
 
 				if (
 					durationChange.value >= thresholdMin &&
-					durationChange.value <= currentWeek.threshold_max
+					durationChange.value <= currentWeek.thresholdMax
 				) {
-					return currentWeek.price_per_week;
+					return currentWeek.pricePerWeek;
 				} else {
 					return pricePerWeek;
 				}
@@ -272,11 +324,9 @@ export default function AdditionalInfoForm({
 
 		handleInputChange('housingType', housingChange.label, 'application');
 
-		const housingCostPerWeek = currentCenter.housing_fees.find(
-			housingFee =>
-				housingChange.value ===
-				housingFee.housing_name.toLowerCase().split(' ').join('-')
-		).cost_per_week;
+		const currentHousing = housingData.find(
+			housing => housing.name === housingChange.label
+		);
 
 		let updatedPrices = prices;
 
@@ -285,7 +335,9 @@ export default function AdditionalInfoForm({
 				if (priceItem.type === 'housing') {
 					return {
 						type: priceItem.type,
-						cost: currentDuration * housingCostPerWeek,
+						cost:
+							currentDuration *
+							currentHousing.priceDetails[0].price,
 						label: housingChange.label,
 					};
 				} else {
@@ -295,49 +347,12 @@ export default function AdditionalInfoForm({
 		} else {
 			updatedPrices.push({
 				type: 'housing',
-				cost: currentDuration * housingCostPerWeek,
+				cost: currentDuration * currentHousing.priceDetails[0].price,
 				label: housingChange.label,
 			});
 		}
 
 		setPrices(updatedPrices);
-	};
-
-	const handleProgramChange = programChange => {
-		setProgramLabel(programChange.label);
-		setProgramValue(programChange.value);
-
-		handleInputChange('program', programChange.label, 'application');
-
-		const currentProgram = currentCenter.programs.find(
-			program => program.name === programChange.label
-		);
-
-		let durationOptions = [];
-
-		for (let i = 0; i <= currentProgram.max_weeks; i++) {
-			const weekNum = i + 1;
-
-			// TODO: Likely need to make a special note during submission if they select more than the max weeks
-			if (
-				currentProgram.exceed_max_weeks &&
-				i == currentProgram.max_weeks
-			) {
-				durationOptions.push({
-					label: `${i}+ weeks`,
-					value: `${weekNum}+`,
-				});
-			} else if (i < currentProgram.max_weeks) {
-				durationOptions.push({
-					label: weekNum === 1 ? `${i + 1} week` : `${i + 1} weeks`,
-					value: weekNum,
-				});
-			}
-		}
-
-		setCurrentProgram(currentProgram);
-
-		setDurationOptions(durationOptions);
 	};
 
 	const isMonday = date => date.getDay() === 1;
@@ -378,10 +393,16 @@ export default function AdditionalInfoForm({
 					</div>
 					<div className="column is-half">
 						<label className="label">
-							Program * - Select a location first.
+							{currentCenter
+								? 'Program'
+								: 'Program * - Select a location first.'}
 						</label>
 						<Select
-							// className={fls__select-container fls__select-container--disabled}
+							className={`fls__select-container ${
+								!currentCenter
+									? 'fls__select-container--disabled'
+									: ''
+							}`}
 							classNamePrefix={'fls'}
 							defaultValue={{
 								label: 'Select your location first.',
@@ -393,13 +414,21 @@ export default function AdditionalInfoForm({
 							}}
 							onChange={handleProgramChange}
 							options={programOptions}
-							// isDisabled={true}
+							isDisabled={!currentCenter}
 						/>
 					</div>
 					<div className="column is-half">
-						<label className="label">Duration *</label>
+						<label className="label">
+							{currentProgram
+								? 'Duration'
+								: 'Duration * - Select a program first.'}
+						</label>
 						<Select
-							className="fls__select-container"
+							className={`fls__select-container ${
+								!currentProgram
+									? 'fls__select-container--disabled'
+									: ''
+							}`}
 							classNamePrefix={'fls'}
 							value={{
 								label: applicationData.duration,
@@ -407,43 +436,22 @@ export default function AdditionalInfoForm({
 							}}
 							onChange={handleDurationChange}
 							options={durationOptions}
+							isDisabled={!currentProgram}
 						/>
 					</div>
 
 					<div className="column is-half">
-						<label className="label">Program Start Date *</label>
-						<DatePicker
-							selected={applicationData.startDate}
-							onChange={date =>
-								handleInputChange(
-									'startDate',
-									date,
-									'application'
-								)
-							}
-							minDate={new Date()}
-							value={applicationData.startDate}
-							wrapperClassName={'fls__date-wrapper'}
-							className={'input fls__base-input'}
-							placeholderText={'Choose Your Start Date'}
-							filterDate={isMonday}
-						/>
-					</div>
-					<div className="column is-half">
-						<label className="label">Program End Date *</label>
-						<DatePicker
-							// TODO: Should be disabled, calculates based off start date
-							selected={applicationData.endDate}
-							value={applicationData.endDate}
-							wrapperClassName={'fls__date-wrapper'}
-							className={'input fls__base-input'}
-							placeholderText={'Program End Date'}
-						/>
-					</div>
-					<div className="column is-half">
-						<label className="label">Housing Type *</label>
+						<label className="label">
+							{currentCenter
+								? 'Housing Type'
+								: 'Housing Type * - Select a center first.'}
+						</label>
 						<Select
-							className="fls__select-container"
+							className={`fls__select-container ${
+								!currentCenter
+									? 'fls__select-container--disabled'
+									: ''
+							}`}
 							classNamePrefix={'fls'}
 							value={{
 								label: applicationData.housingType,
@@ -451,8 +459,68 @@ export default function AdditionalInfoForm({
 							}}
 							onChange={handleHousingChange}
 							options={housingOptions}
+							isDisabled={!currentCenter}
 						/>
 					</div>
+
+					{/* TODO: This field needs some serious validation */}
+					<div className="column is-half">
+						<label className="label">
+							{currentProgram
+								? 'Program Start Date *'
+								: 'Program Start Date * - Select a center first.'}
+						</label>
+
+						<DatePicker
+							selected={applicationData.startDate}
+							onChange={date => {
+								handleBatchInputChange(
+									{
+										startDate: date,
+										endDate: new Date(
+											Date.parse(date) +
+												currentDuration *
+													7 *
+													24 *
+													60 *
+													60 *
+													1000
+										),
+									},
+									'application'
+								);
+							}}
+							minDate={new Date()}
+							value={applicationData.startDate}
+							wrapperClassName={`fls__date-wrapper ${
+								!currentDuration
+									? 'fls__select-container--disabled'
+									: ''
+							}`}
+							className={'input fls__base-input'}
+							placeholderText={'Choose Your Start Date'}
+							filterDate={isMonday}
+							readOnly={!currentDuration}
+						/>
+					</div>
+
+					<div className="column is-half">
+						<label className="label">Program End Date *</label>
+						<DatePicker
+							// TODO: Should be disabled, calculates based off start date
+							selected={applicationData.endDate}
+							value={applicationData.endDate}
+							wrapperClassName={`fls__date-wrapper ${
+								!currentDuration
+									? 'fls__select-container--disabled'
+									: ''
+							}`}
+							className={'input fls__base-input'}
+							placeholderText={'Program End Date'}
+							readOnly={true}
+						/>
+					</div>
+
 					<div className="column is-full">
 						<label className="label">
 							Extra Nights of Housing Required? *

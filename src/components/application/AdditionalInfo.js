@@ -6,6 +6,7 @@ export default function AdditionalInfo({
 	nextStep,
 	previousStep,
 	handleInputChange,
+	handleBatchInputChange,
 	prices,
 	setPrices,
 	calculatePrice,
@@ -82,6 +83,7 @@ export default function AdditionalInfo({
 					currentProgram={currentProgram}
 					setCurrentProgram={setCurrentProgram}
 					handleInputChange={handleInputChange}
+					handleBatchInputChange={handleBatchInputChange}
 					prices={prices}
 					setPrices={setPrices}
 					applicationData={applicationData}

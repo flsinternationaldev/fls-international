@@ -96,7 +96,7 @@ collections:
           - {
                 label: 'Price Details',
                 name: 'priceDetails',
-                widget: 'object',
+                widget: 'list',
                 fields:
                     [
                         { label: 'Cost', name: 'cost', widget: 'number' },
@@ -536,7 +536,7 @@ collections:
           - {
                 label: 'Price Details',
                 name: 'priceDetails',
-                widget: 'object',
+                widget: 'list',
                 required: false,
                 hint: 'If this field is left blank, it is expected that the weekly price is specified in the above "Week Thresholds" list',
                 fields:
@@ -799,7 +799,7 @@ collections:
           - {
                 label: 'Price Details',
                 name: 'priceDetails',
-                widget: 'object',
+                widget: 'list',
                 required: false,
                 fields:
                     [
