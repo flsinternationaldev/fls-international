@@ -3,7 +3,10 @@ import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import { RadioGroup, Radio } from 'react-radio-group';
 import { useStaticQuery, graphql } from 'gatsby';
-// import moment from 'moment';
+
+import EstimatedPrices from 'src/components/application/EstimatedPrices';
+
+import { snakeToCamel, formatEdges, updatePrices } from 'src/utils/helpers';
 
 export default function AdditionalInfoForm({
 	calculatePrice,
@@ -20,7 +23,6 @@ export default function AdditionalInfoForm({
 	setPrices,
 	applicationData,
 }) {
-	console.log('prices!', prices);
 	const data = useStaticQuery(graphql`
 		{
 			locations: allMarkdownRemark(
@@ -177,25 +179,17 @@ export default function AdditionalInfoForm({
 		}
 	`);
 
-	// TODO: This is a straight copy/paste from Application Landing, and is in need of DRYing
-	const programsData = data[
-		applicationData.programType.replace(/-([a-z])/g, g =>
-			g[1].toUpperCase()
-		)
-	].edges.map(edge => edge.node.frontmatter);
-
-	// TODO: DRY this up
-	const centersData = data.locations.edges.map(edge => edge.node.frontmatter);
-
-	const housingData = data.housing.edges.map(edge => edge.node.frontmatter);
-
-	const enhancementsData = data.enhancements.edges.map(
-		edge => edge.node.frontmatter
+	const programsData = formatEdges(
+		data[snakeToCamel(applicationData.programType)]
 	);
 
-	const generalFeesData = data.generalFees.edges.map(
-		edge => edge.node.frontmatter
-	);
+	const centersData = formatEdges(data.locations);
+
+	const housingData = formatEdges(data.housing);
+
+	const enhancementsData = formatEdges(data.enhancements);
+
+	const generalFeesData = formatEdges(data.generalFees);
 
 	const [durationOptions, setDurationOptions] = useState([]);
 	const [programOptions, setProgramOptions] = useState([]);
@@ -224,7 +218,7 @@ export default function AdditionalInfoForm({
 		};
 	});
 
-	// TODO: DRY up these functions	const handleCenterChange = centerChange => {
+	// TODO: DRY up these functions
 	const handleCenterChange = centerChange => {
 		setCenterLabel(centerChange.label);
 		setCenterValue(centerChange.value);
@@ -358,38 +352,15 @@ export default function AdditionalInfoForm({
 
 		setCurrentDuration(durationChange.value);
 
-		// TODO: This 'update prices' logic is begging to be refactored & DRYed up
-		prices = prices.map(priceItem => {
-			if (priceItem.type === 'program') {
-				return {
-					...priceItem,
-					priceDetails: {
-						duration: durationChange.value,
-						price: pricePerWeek,
-					},
-				};
-			} else if (prices.find(priceItem => priceItem.type === 'housing')) {
-				if (priceItem.type === 'housing') {
-				}
-				return {
-					...priceItem,
-					priceDetails: {
-						...priceItem.priceDetails,
-						duration: durationChange.value,
-					},
-				};
-			} else {
-				return priceItem;
-			}
-		});
+		let updatedPrices = [...prices];
 
 		/*
 			The duration input is only responsible for adding a new program,
 			since programs are inextricably tied to duration. Other price types, like housing,
 			are handled by the change of their respective inputs.
 		*/
-		if (!prices.find(priceItem => priceItem.type === 'program')) {
-			prices.push({
+		if (!updatedPrices.find(priceItem => priceItem.type === 'program')) {
+			updatedPrices.push({
 				type: 'program',
 				label: `${currentProgram.name} @ ${currentCenter.centerName}`,
 				priceDetails: {
@@ -397,9 +368,24 @@ export default function AdditionalInfoForm({
 					price: pricePerWeek,
 				},
 			});
+		} else {
+			// TODO: This function might be clearer if it supports chaining, or a way to pass in multiple changes as arguments
+			updatedPrices = updatePrices(updatedPrices, 'program', {
+				priceDetails: {
+					duration: durationChange.value,
+					price: pricePerWeek,
+				},
+			});
 		}
 
-		setPrices(prices);
+		// Housing price is tied to duration, so we make sure to update it when the duraton changes;
+		updatedPrices = updatePrices(updatedPrices, 'housing', {
+			priceDetails: {
+				duration: durationChange.value,
+			},
+		});
+
+		setPrices(updatedPrices);
 	};
 
 	const handleHousingChange = housingChange => {
@@ -436,6 +422,25 @@ export default function AdditionalInfoForm({
 			});
 		}
 
+		// // TODO: There might be a clever way to refactor 'updatePrices' such that we don't need an if statement here
+		// if (prices.find(priceItem => priceItem.type === 'housing')) {
+		// 	updatedPrices = updatePrices(updatedPrices, 'housing', {
+		// 		priceDetails: {
+		// 			duration: currentDuration,
+		// 			price: currentHousing.priceDetails[0].price,
+		// 		},
+		// 	});
+		// } else {
+		// 	updatedPrices.push({
+		// 		type: 'housing',
+		// 		label: `${currentHousing.name}`,
+		// 		priceDetails: {
+		// 			duration: currentDuration,
+		// 			price: currentHousing.priceDetails[0].price,
+		// 		},
+		// 	});
+		// }
+
 		setPrices(prices);
 	};
 
@@ -447,7 +452,7 @@ export default function AdditionalInfoForm({
 				<div className="columns is-multiline">
 					<div className="column is-full">
 						<div className="application__header-container">
-							<h3 className="fls__post-title">Additional Info</h3>
+							<h3 className="fls-post__title">Additional Info</h3>
 							<h3 className="application__total-price">
 								Estimated Price: ${calculatePrice(prices)}
 							</h3>
@@ -771,14 +776,14 @@ export default function AdditionalInfoForm({
 										!prices.find(
 											priceItem =>
 												priceItem.type ===
-													'general-fee' &&
+													'general fee' &&
 												priceItem.name
 													.toLowerCase()
 													.includes('health')
 										)
 									) {
 										prices.push({
-											type: 'general-fee',
+											type: 'general fee',
 											label: healthInsuranceData.name,
 											priceDetails: {
 												price:
@@ -795,7 +800,7 @@ export default function AdditionalInfoForm({
 										prices.filter(
 											priceItem =>
 												priceItem.type !==
-													'general-fee' &&
+													'general fee' &&
 												!priceItem.label
 													.toLowerCase()
 													.includes('health')
@@ -839,6 +844,7 @@ export default function AdditionalInfoForm({
 							<span className="fls__radio-label">No</span>
 						</RadioGroup>
 					</div>
+
 					<div className="column is-full">
 						{/* TODO: Should have a helpful tooltip */}
 						<label className="label">
@@ -863,6 +869,7 @@ export default function AdditionalInfoForm({
 							<span className="fls__radio-label">No</span>
 						</RadioGroup>
 					</div>
+
 					<div className="column is-full">
 						{/* TODO: Should have a helpful tooltip */}
 						<label className="label">
@@ -888,13 +895,18 @@ export default function AdditionalInfoForm({
 							<span className="fls__radio-label">No</span>
 						</RadioGroup>
 					</div>
+
+					<EstimatedPrices prices={prices} />
+
 					<div className="column is-4">
 						<button onClick={previousStep} className="fls__button">
 							Previous
 						</button>
 					</div>
+
 					{/* TODO: This works for now... but it's probably not the best implementation */}
 					<div className="column is-4"></div>
+
 					<div className="column is-4">
 						<button
 							onClick={() => {
