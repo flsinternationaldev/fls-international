@@ -109,9 +109,12 @@ export const ApplicationTemplate = () => {
 	};
 
 	const calculatePrice = prices => {
+		console.log('calculating total price', prices);
 		if (prices.length) {
-			return prices.reduce((total, price) => {
-				total += price.cost;
+			return prices.reduce((total, priceItem) => {
+				total +=
+					priceItem.priceDetails.price *
+					priceItem.priceDetails.duration;
 				return total;
 			}, 0);
 		} else {

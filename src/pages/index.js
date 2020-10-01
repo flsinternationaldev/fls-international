@@ -36,14 +36,12 @@ export const HomePageTemplate = ({ data }) => {
 		],
 	};
 
-	console.log('RAW DATA', data);
 	// TODO: This 'reduce' pattern repeats across the app. Think about creating a mixin of some kind
 	const homeCopy = data.homeCopy.edges.reduce(
 		(accum, edge) => Object.assign({}, edge.node.frontmatter),
 		{}
 	);
 
-	console.log('HOME. COPY.', homeCopy);
 	const programs = data.programs.edges.map(edge => edge.node.frontmatter);
 
 	const locations = data.locations.edges.map(edge => edge.node.frontmatter);

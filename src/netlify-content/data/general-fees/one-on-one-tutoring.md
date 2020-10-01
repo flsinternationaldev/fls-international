@@ -8,6 +8,6 @@ centerNameRelation:
     - Fisher College
     - Saddleback College
 priceDetails:
-    - cost: 70
+    - price: 70
       payPeriod: Per Lesson
 ---

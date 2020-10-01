@@ -263,7 +263,6 @@ const SpecialtyTourPage = ({ pageContext }) => {
 		};
 	});
 
-	console.log('current speicality tour data', specialtyTourData);
 	return (
 		<Layout
 			isScrolled={true}

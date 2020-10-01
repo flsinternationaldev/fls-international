@@ -4,7 +4,6 @@ import { HomePageTemplate } from '../../pages/index';
 
 const HomePagePreview = ({ entry }) => {
 	const data = entry.getIn(['data']).toJS();
-	console.log('home data?', data);
 
 	if (data) {
 		// TODO: There must be a better way to pass in these arguments & destructure the parameters in HomePageTemplate

@@ -68,7 +68,7 @@ export default function PersonalInfo({
 							<input
 								className="input fls__base-input"
 								type="text"
-								placeholder="Last Number"
+								placeholder="Last Name"
 								name="lastName"
 								onChange={e =>
 									handleInputChange(

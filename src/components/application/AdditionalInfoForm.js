@@ -5,9 +5,6 @@ import { RadioGroup, Radio } from 'react-radio-group';
 import { useStaticQuery, graphql } from 'gatsby';
 // import moment from 'moment';
 
-// TODO: Audit whether all these are necessary
-let currentHousing, currentDuration;
-
 export default function AdditionalInfoForm({
 	calculatePrice,
 	nextStep,
@@ -23,6 +20,7 @@ export default function AdditionalInfoForm({
 	setPrices,
 	applicationData,
 }) {
+	console.log('prices!', prices);
 	const data = useStaticQuery(graphql`
 		{
 			locations: allMarkdownRemark(
@@ -141,6 +139,41 @@ export default function AdditionalInfoForm({
 					}
 				}
 			}
+			enhancements: allMarkdownRemark(
+				limit: 1000
+				filter: { fileAbsolutePath: { regex: "/data/enhancements//" } }
+			) {
+				edges {
+					node {
+						frontmatter {
+							name
+							centerNameRelation
+							priceDetails {
+								price
+								payPeriod
+							}
+							notes
+						}
+					}
+				}
+			}
+			generalFees: allMarkdownRemark(
+				limit: 1000
+				filter: { fileAbsolutePath: { regex: "/data/general-fees//" } }
+			) {
+				edges {
+					node {
+						frontmatter {
+							name
+							centerNameRelation
+							priceDetails {
+								price
+								payPeriod
+							}
+						}
+					}
+				}
+			}
 		}
 	`);
 
@@ -156,9 +189,19 @@ export default function AdditionalInfoForm({
 
 	const housingData = data.housing.edges.map(edge => edge.node.frontmatter);
 
+	const enhancementsData = data.enhancements.edges.map(
+		edge => edge.node.frontmatter
+	);
+
+	const generalFeesData = data.generalFees.edges.map(
+		edge => edge.node.frontmatter
+	);
+
 	const [durationOptions, setDurationOptions] = useState([]);
 	const [programOptions, setProgramOptions] = useState([]);
 	const [housingOptions, setHousingOptions] = useState([]);
+	const [airportOptions, setAirportOptions] = useState([]);
+	const [currentDuration, setCurrentDuration] = useState(0);
 
 	const [durationLabel, setDurationLabel] = useState('Choose Your Duration');
 	const [durationValue, setDurationValue] = useState(null);
@@ -227,6 +270,28 @@ export default function AdditionalInfoForm({
 					};
 				})
 		);
+
+		const airportData = enhancementsData.filter(enhancement => {
+			return (
+				enhancement.centerNameRelation.includes(centerChange.value) &&
+				enhancement.name.toLowerCase().includes('airport')
+			);
+		});
+
+		if (airportData) {
+			setAirportOptions(
+				airportData.reduce((accum, enhancement) => {
+					enhancement.notes.forEach(note => {
+						accum.push({
+							value: note,
+							label: note,
+						});
+					});
+
+					return accum;
+				}, [])
+			);
+		}
 	};
 
 	const handleProgramChange = programChange => {
@@ -291,31 +356,50 @@ export default function AdditionalInfoForm({
 			0
 		);
 
-		currentDuration = durationChange.value;
+		setCurrentDuration(durationChange.value);
 
-		let updatedPrices = prices;
-
-		if (prices.find(priceItem => priceItem.type === 'duration')) {
-			updatedPrices = prices.map(priceItem => {
-				if (priceItem.type === 'duration') {
-					return {
-						type: priceItem.type,
-						cost: durationChange.value * pricePerWeek,
-						label: durationChange.label,
-					};
-				} else {
-					return priceItem;
+		// TODO: This 'update prices' logic is begging to be refactored & DRYed up
+		prices = prices.map(priceItem => {
+			if (priceItem.type === 'program') {
+				return {
+					...priceItem,
+					priceDetails: {
+						duration: durationChange.value,
+						price: pricePerWeek,
+					},
+				};
+			} else if (prices.find(priceItem => priceItem.type === 'housing')) {
+				if (priceItem.type === 'housing') {
 				}
-			});
-		} else {
-			updatedPrices.push({
-				type: 'duration',
-				cost: durationChange.value * pricePerWeek,
-				label: durationChange.label,
+				return {
+					...priceItem,
+					priceDetails: {
+						...priceItem.priceDetails,
+						duration: durationChange.value,
+					},
+				};
+			} else {
+				return priceItem;
+			}
+		});
+
+		/*
+			The duration input is only responsible for adding a new program,
+			since programs are inextricably tied to duration. Other price types, like housing,
+			are handled by the change of their respective inputs.
+		*/
+		if (!prices.find(priceItem => priceItem.type === 'program')) {
+			prices.push({
+				type: 'program',
+				label: `${currentProgram.name} @ ${currentCenter.centerName}`,
+				priceDetails: {
+					duration: durationChange.value,
+					price: pricePerWeek,
+				},
 			});
 		}
 
-		setPrices(updatedPrices);
+		setPrices(prices);
 	};
 
 	const handleHousingChange = housingChange => {
@@ -328,40 +412,34 @@ export default function AdditionalInfoForm({
 			housing => housing.name === housingChange.label
 		);
 
-		let updatedPrices = prices;
-
+		// TODO: This 'new price' logic is begging to be refactored & DRYed up
 		if (prices.find(priceItem => priceItem.type === 'housing')) {
-			updatedPrices = prices.map(priceItem => {
+			prices = prices.map(priceItem => {
 				if (priceItem.type === 'housing') {
 					return {
-						type: priceItem.type,
-						cost:
-							currentDuration *
-							currentHousing.priceDetails[0].price,
-						label: housingChange.label,
+						...priceItem,
+						priceDetails: {
+							duration: currentDuration,
+							price: currentHousing.priceDetails[0].price,
+						},
 					};
-				} else {
-					return priceItem;
 				}
 			});
 		} else {
-			updatedPrices.push({
+			prices.push({
 				type: 'housing',
-				cost: currentDuration * currentHousing.priceDetails[0].price,
-				label: housingChange.label,
+				label: `${currentHousing.name}`,
+				priceDetails: {
+					duration: currentDuration,
+					price: currentHousing.priceDetails[0].price,
+				},
 			});
 		}
 
-		setPrices(updatedPrices);
+		setPrices(prices);
 	};
 
 	const isMonday = date => date.getDay() === 1;
-
-	const airportOptions = [
-		{ value: 'Airport Option 1', label: 'Airport Option 1' },
-		{ value: 'Airport Option 2', label: 'Airport Option 2' },
-		{ value: 'Airport Option 3', label: 'Airport Option 3' },
-	];
 
 	const renderFormViews = programType => {
 		if (programType === 'in-person') {
@@ -521,6 +599,43 @@ export default function AdditionalInfoForm({
 						/>
 					</div>
 
+					<div className="column is-half">
+						<label className="label">Housing Check In Date *</label>
+						<DatePicker
+							selected={applicationData.checkInDate}
+							onChange={date =>
+								handleInputChange(
+									'checkInDate',
+									date,
+									'application'
+								)
+							}
+							value={applicationData.checkInDate}
+							wrapperClassName={'fls__date-wrapper'}
+							className={'input fls__base-input'}
+							placeholderText={'Housing Check-in Date'}
+						/>
+					</div>
+
+					<div className="column is-half">
+						<label className="label">
+							Housing Check Out Date *
+						</label>
+						<DatePicker
+							selected={applicationData.checkOutDate}
+							onChange={date =>
+								handleInputChange(
+									'checkOutDate',
+									date,
+									'application'
+								)
+							}
+							value={applicationData.checkOutDate}
+							className={'input fls__base-input'}
+							placeholderText={'Housing Check Out Date'}
+						/>
+					</div>
+
 					<div className="column is-full">
 						<label className="label">
 							Extra Nights of Housing Required? *
@@ -542,46 +657,20 @@ export default function AdditionalInfoForm({
 							<span className="fls__radio-label">No</span>
 						</RadioGroup>
 					</div>
-					<div className="column is-half">
-						<label className="label">Housing Check In Date *</label>
-						<DatePicker
-							selected={applicationData.checkInDate}
-							onChange={date =>
-								handleInputChange(
-									'checkInDate',
-									date,
-									'application'
-								)
-							}
-							value={applicationData.checkInDate}
-							wrapperClassName={'fls__date-wrapper'}
-							className={'input fls__base-input'}
-							placeholderText={'Housing Check-in Date'}
-						/>
-					</div>
+
 					<div className="column is-half">
 						<label className="label">
-							Housing Check Out Date *
+							{currentCenter
+								? 'Airport'
+								: 'Airport * - Select a location first.'}
 						</label>
-						<DatePicker
-							selected={applicationData.checkOutDate}
-							onChange={date =>
-								handleInputChange(
-									'checkOutDate',
-									date,
-									'application'
-								)
-							}
-							value={applicationData.checkOutDate}
-							className={'input fls__base-input'}
-							placeholderText={'Housing Check Out Date'}
-						/>
-					</div>
-					<div className="column is-half">
-						<label className="label">Airport *</label>
 
 						<Select
-							className="fls__select-container"
+							className={`fls__select-container ${
+								!currentCenter
+									? 'fls__select-container--disabled'
+									: ''
+							}`}
 							classNamePrefix={'fls'}
 							value={{
 								label: applicationData.airport,
@@ -669,6 +758,51 @@ export default function AdditionalInfoForm({
 								applicationData.buyingHealthInsurance
 							}
 							onChange={value => {
+								const healthInsuranceData = generalFeesData.find(
+									generalFee =>
+										generalFee.name
+											.toLowerCase()
+											.includes('health')
+								);
+
+								if (value === 'yes') {
+									// TODO: Looking for the word 'health' in the name is far from the most robust way of finding this specific general fee
+									if (
+										!prices.find(
+											priceItem =>
+												priceItem.type ===
+													'general-fee' &&
+												priceItem.name
+													.toLowerCase()
+													.includes('health')
+										)
+									) {
+										prices.push({
+											type: 'general-fee',
+											label: healthInsuranceData.name,
+											priceDetails: {
+												price:
+													healthInsuranceData
+														.priceDetails[0].price,
+												duration: currentDuration,
+											},
+										});
+
+										setPrices(prices);
+									}
+								} else if (value === 'no') {
+									setPrices(
+										prices.filter(
+											priceItem =>
+												priceItem.type !==
+													'general-fee' &&
+												!priceItem.label
+													.toLowerCase()
+													.includes('health')
+										)
+									);
+								}
+
 								handleInputChange(
 									'buyingHealthInsurance',
 									value,

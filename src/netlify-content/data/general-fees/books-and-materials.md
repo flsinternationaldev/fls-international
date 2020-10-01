@@ -8,6 +8,6 @@ centerNameRelation:
     - Fisher College
     - Saddleback College
 priceDetails:
-    - cost: 0
+    - price: 0
       payPeriod: Included
 ---

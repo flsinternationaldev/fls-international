@@ -80,7 +80,7 @@ collections:
       folder: 'src/netlify-content/data/general-fees'
       identifier_field: name
       label_singular: 'general fee data'
-      summary: '{{name}} @ {{centerName}}'
+      summary: '{{name}} @ {{centerNameRelation}}'
       fields:
           - { name: 'name', label: 'Name', widget: 'string' }
           - {
@@ -99,7 +99,7 @@ collections:
                 widget: 'list',
                 fields:
                     [
-                        { label: 'Cost', name: 'cost', widget: 'number' },
+                        { label: 'price', name: 'price', widget: 'number' },
                         {
                             label: 'Pay Period',
                             name: 'payPeriod',
@@ -830,7 +830,7 @@ collections:
       label: 'Enhancements Data'
       create: true
       folder: 'src/netlify-content/data/enhancements'
-      summary: '{{name}} @ {{centerNames}}'
+      summary: '{{name}} @ {{centerNameRelation}}'
       label_singular: 'enhancement data'
       identifier_field: 'name'
       fields:

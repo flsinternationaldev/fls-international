@@ -8,6 +8,6 @@ centerNameRelation:
     - Chestnut Hill College
     - Saddleback College
 priceDetails:
-    - cost: 55
+    - price: 55
       payPeriod: Per Night
 ---
