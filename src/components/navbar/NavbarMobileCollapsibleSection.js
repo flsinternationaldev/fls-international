@@ -15,7 +15,7 @@ export default function NavbarMobileCollapsibleSection({ mainNavItem }) {
 			<div
 				className="column is-full"
 				style={{
-					'padding-bottom': 0,
+					paddingBottom: 0,
 				}}
 			>
 				<div className={navbarStyles.flsNav__mobileHeaderContainer}>

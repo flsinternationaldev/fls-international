@@ -35,7 +35,7 @@ export default function NetlifyStaticForm({ formFields }) {
 			{/* These labels and associated inputs are not meant to be rendered. Rather, Netlify will map the values from a POST that hits '\' to the inputs here, based on the 'name' attribute */}
 			{formFields.map(formField => {
 				return (
-					<label>
+					<label key={formField}>
 						<input name={formField}></input>
 					</label>
 				);

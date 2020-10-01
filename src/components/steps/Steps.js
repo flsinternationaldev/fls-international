@@ -7,6 +7,7 @@ export default function Steps({ stepsNum, currentStep, goToStep }) {
 		for (let i = 0; i < stepsNum; i++) {
 			steps.push(
 				<li
+					key={i}
 					onClick={goToStep.bind(this, i + 1)}
 					className={`steps-segment ${
 						i + 1 === currentStep ? 'is-active' : ''

@@ -32,7 +32,7 @@ export default function Navbar({
 								<div
 									className="column is-full"
 									style={{
-										'padding-bottom': 0,
+										paddingBottom: 0,
 									}}
 								>
 									<Link

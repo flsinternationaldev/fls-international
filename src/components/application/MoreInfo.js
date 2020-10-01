@@ -7,7 +7,7 @@ export default function MoreInfo({
 	nextStep,
 	previousStep,
 	userData,
-	handleInputChange,
+	handleDataChange,
 	calculatePrice,
 	prices,
 }) {
@@ -43,7 +43,7 @@ export default function MoreInfo({
 							value: userData.howDidYouHearAboutFls,
 						}}
 						onChange={referralOption => {
-							handleInputChange(
+							handleDataChange(
 								'howDidYouHearAboutFlst',
 								referralOption.value,
 								'user'
@@ -63,7 +63,7 @@ export default function MoreInfo({
 							type="text"
 							value={userData.specifyHowHeardAboutFls}
 							onChange={e =>
-								handleInputChange(
+								handleDataChange(
 									'specifyHowHeardAboutFls',
 									e.target.value,
 									'user'
@@ -130,7 +130,7 @@ export default function MoreInfo({
 						className="textarea"
 						value={userData.additionalComments}
 						onChange={e =>
-							handleInputChange(
+							handleDataChange(
 								'additionalComments',
 								e.target.value,
 								'user'
@@ -162,10 +162,6 @@ export default function MoreInfo({
 				<div className="column is-4">
 					<button
 						onClick={() => {
-							console.log(
-								'application data - more info',
-								userData
-							);
 							nextStep();
 						}}
 						className="fls__button"

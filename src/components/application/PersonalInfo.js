@@ -11,7 +11,7 @@ import 'react-flags-select/scss/react-flags-select.scss';
 export default function PersonalInfo({
 	nextStep,
 	userData,
-	handleInputChange,
+	handleDataChange,
 	calculatePrice,
 	prices,
 }) {
@@ -47,7 +47,7 @@ export default function PersonalInfo({
 								placeholder="First Name"
 								name="firstName"
 								onChange={e =>
-									handleInputChange(
+									handleDataChange(
 										e.target.name,
 										e.target.value,
 										'user'
@@ -71,7 +71,7 @@ export default function PersonalInfo({
 								placeholder="Last Name"
 								name="lastName"
 								onChange={e =>
-									handleInputChange(
+									handleDataChange(
 										e.target.name,
 										e.target.value,
 										'user'
@@ -93,7 +93,7 @@ export default function PersonalInfo({
 								placeholder="Text input"
 								name="email"
 								onChange={e =>
-									handleInputChange(
+									handleDataChange(
 										e.target.name,
 										e.target.value,
 										'user'
@@ -118,7 +118,7 @@ export default function PersonalInfo({
 								placeholder="Phone Number"
 								name="phoneNumber"
 								onChange={e =>
-									handleInputChange(
+									handleDataChange(
 										e.target.name,
 										e.target.value,
 										'user'
@@ -142,7 +142,7 @@ export default function PersonalInfo({
 									value: userData.gender,
 								}}
 								onChange={genderOption => {
-									handleInputChange(
+									handleDataChange(
 										'gender',
 										genderOption.value,
 										'user'
@@ -166,7 +166,7 @@ export default function PersonalInfo({
 								placeholder="Text input"
 								name="birthDate"
 								onChange={e =>
-									handleInputChange(
+									handleDataChange(
 										e.target.name,
 										e.target.value,
 										'user'
@@ -177,7 +177,7 @@ export default function PersonalInfo({
 							<DatePicker
 								selected={userData.birthDate}
 								onChange={date =>
-									handleInputChange('birthDate', date, 'user')
+									handleDataChange('birthDate', date, 'user')
 								}
 								value={userData.birthDate}
 								minDate={new Date()}
@@ -205,7 +205,7 @@ export default function PersonalInfo({
 								)}
 								searchable={true}
 								onSelect={countryCode => {
-									handleInputChange(
+									handleDataChange(
 										'citizenshipCountry',
 										getName(countryCode),
 										'user'
@@ -229,7 +229,7 @@ export default function PersonalInfo({
 									)}
 									searchable={true}
 									onSelect={countryCode => {
-										handleInputChange(
+										handleDataChange(
 											'birthCountry',
 											getName(countryCode),
 											'user'
@@ -245,7 +245,6 @@ export default function PersonalInfo({
 				<div className="column is-offset-8 is-4">
 					<button
 						onClick={() => {
-							console.log('userData - personal info', userData);
 							nextStep();
 						}}
 						className="fls__button"

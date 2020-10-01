@@ -21,9 +21,9 @@ export const LocationsPageTemplate = ({ data }) => {
 			sectionClasses={['section', 'programs']}
 			containerClasses={['container']}
 		>
-			<div class="columns is-multiline">
+			<div className="columns is-multiline">
 				{locations.map(location => (
-					<div class="column is-one-third-desktop is-half-tablet">
+					<div className="column is-one-third-desktop is-half-tablet">
 						<Card isLocation={true} cardData={location} />
 					</div>
 				))}

@@ -8,7 +8,7 @@ export default function Checkout({
 	nextStep,
 	userData,
 	billingData,
-	handleInputChange,
+	handleDataChange,
 	handleBatchInputChange,
 	prices,
 	calculatePrice,
@@ -40,9 +40,6 @@ export default function Checkout({
 		}
 	`);
 
-	console.log('prices at checkout', prices);
-	console.log('current program', currentProgram);
-	console.log('current center', currentCenter);
 	// TODO: Probably want to make some kind of mix in to pass this function around
 	let formattedData = data.allMarkdownRemark.edges.filter(
 		edge => edge.node.frontmatter.title === generalFeesTitle
@@ -205,7 +202,6 @@ export default function Checkout({
 			<div className="column is-4">
 				<button
 					onClick={() => {
-						console.log('submit form!', userData);
 						handleSubmission();
 					}}
 					className="fls__button fls__button--yellow"

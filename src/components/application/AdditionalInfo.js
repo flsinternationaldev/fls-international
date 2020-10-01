@@ -5,7 +5,7 @@ import AdditionalInfoForm from 'src/components/application/AdditionalInfoForm';
 export default function AdditionalInfo({
 	nextStep,
 	previousStep,
-	handleInputChange,
+	handleDataChange,
 	handleBatchInputChange,
 	prices,
 	setPrices,
@@ -31,7 +31,7 @@ export default function AdditionalInfo({
 						<button
 							className="fls__button fls__button--additional-info"
 							onClick={() =>
-								handleInputChange(
+								handleDataChange(
 									'programType',
 									'in-person',
 									'application'
@@ -45,7 +45,7 @@ export default function AdditionalInfo({
 						<button
 							className="fls__button fls__button--additional-info"
 							onClick={() =>
-								handleInputChange(
+								handleDataChange(
 									'programType',
 									'online',
 									'application'
@@ -59,7 +59,7 @@ export default function AdditionalInfo({
 						<button
 							className="fls__button fls__button--additional-info"
 							onClick={() =>
-								handleInputChange(
+								handleDataChange(
 									'programType',
 									'specialty-tours',
 									'application'
@@ -82,7 +82,7 @@ export default function AdditionalInfo({
 					setCurrentCenter={setCurrentCenter}
 					currentProgram={currentProgram}
 					setCurrentProgram={setCurrentProgram}
-					handleInputChange={handleInputChange}
+					handleDataChange={handleDataChange}
 					handleBatchInputChange={handleBatchInputChange}
 					prices={prices}
 					setPrices={setPrices}

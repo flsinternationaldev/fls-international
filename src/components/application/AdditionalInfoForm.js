@@ -6,23 +6,25 @@ import { useStaticQuery, graphql } from 'gatsby';
 
 import EstimatedPrices from 'src/components/application/EstimatedPrices';
 
-import { snakeToCamel, formatEdges, updatePrices } from 'src/utils/helpers';
+import {
+	snakeToCamel,
+	formatEdges,
+	updatePrices,
+	removePrices,
+} from 'src/utils/helpers';
+// import { PaymentRequestButtonElement } from '@stripe/react-stripe-js';
 
 export default function AdditionalInfoForm({
 	calculatePrice,
 	nextStep,
 	previousStep,
-	setGeneralFeesTitle,
-	currentCenter,
-	setCurrentCenter,
-	currentProgram,
-	setCurrentProgram,
-	handleInputChange,
+	handleDataChange,
 	handleBatchInputChange,
 	prices,
 	setPrices,
 	applicationData,
 }) {
+	console.log('current prices', prices);
 	const data = useStaticQuery(graphql`
 		{
 			locations: allMarkdownRemark(
@@ -195,21 +197,6 @@ export default function AdditionalInfoForm({
 	const [programOptions, setProgramOptions] = useState([]);
 	const [housingOptions, setHousingOptions] = useState([]);
 	const [airportOptions, setAirportOptions] = useState([]);
-	const [currentDuration, setCurrentDuration] = useState(0);
-
-	const [durationLabel, setDurationLabel] = useState('Choose Your Duration');
-	const [durationValue, setDurationValue] = useState(null);
-
-	const [centerLabel, setCenterLabel] = useState('Choose Your Center');
-	const [centerValue, setCenterValue] = useState(null);
-
-	const [housingLabel, setHousingLabel] = useState('Choose Your Housing');
-	const [housingValue, setHousingValue] = useState(null);
-
-	const [programLabel, setProgramLabel] = useState('Choose Your Program');
-	const [programValue, setProgramValue] = useState(null);
-
-	const [programType, setProgramType] = useState('on-location');
 
 	const centerOptions = centersData.map(center => {
 		return {
@@ -220,19 +207,33 @@ export default function AdditionalInfoForm({
 
 	// TODO: DRY up these functions
 	const handleCenterChange = centerChange => {
-		setCenterLabel(centerChange.label);
-		setCenterValue(centerChange.value);
-
 		// Set state operatons are async, so we'll use this non-async version for the below operations
 		const currentCenter = centersData.find(
 			center => center.centerName === centerChange.value
 		);
 
-		// setGeneralFeesTitle(currentCenter.general_fees);
+		handleDataChange('center', currentCenter, 'application');
 
-		handleInputChange('flsCenter', centerChange.label, 'application');
+		/* 
+			If the duration or program is already selected, and the user picks a new center, this can cause complications with already selected programs
+			and durations. It seems easier, then, to just require them to reselect a program & duration.
+		*/
+		if (applicationData.duration || applicationData.program) {
+			/* 
+				Originally, this was two state changes in quick succession. This was causing problems, and though there may be a better way to handle it,
+				manually batching the state changes seems to solve the problem.
+			*/
+			let blankedApplicationData = {};
 
-		setCurrentCenter(currentCenter);
+			if (applicationData.duration)
+				blankedApplicationData.duration = null;
+			if (applicationData.program) blankedApplicationData.program = null;
+			if (applicationData.housing) blankedApplicationData.housing = null;
+
+			handleBatchInputChange(blankedApplicationData, 'application');
+
+			setPrices(removePrices(prices, ['program', 'housing']));
+		}
 
 		// Set program options to be the programs associated with the selected center
 		setProgramOptions(
@@ -289,14 +290,13 @@ export default function AdditionalInfoForm({
 	};
 
 	const handleProgramChange = programChange => {
-		setProgramLabel(programChange.label);
-		setProgramValue(programChange.value);
-
-		handleInputChange('program', programChange.label, 'application');
-
 		const currentProgram = programsData.find(
 			program => program.name === programChange.label
 		);
+
+		// TODO: State changes are async, so we keep using 'currentProgram' inside this function scope
+		// With some refactoring, we could probably change 'handleDataChange' to take a callback that can be passed to the state change
+		handleDataChange('program', currentProgram, 'application');
 
 		let durationOptions = [];
 
@@ -320,19 +320,19 @@ export default function AdditionalInfoForm({
 			}
 		}
 
-		setCurrentProgram(currentProgram);
+		handleDataChange('program', currentProgram, 'application');
 
 		setDurationOptions(durationOptions);
 	};
 
-	// TODO: These changes need to also recalculate off of each other, e.g. if you have a type of housing selected, then change the duration, the housing price needs to be recalculated ... might be time for the old redux
 	const handleDurationChange = durationChange => {
-		setDurationLabel(durationChange.label);
-		setDurationValue(durationChange.value);
+		handleDataChange(
+			'duration',
+			{ label: durationChange.label, value: durationChange.value },
+			'application'
+		);
 
-		handleInputChange('duration', durationChange.label, 'application');
-
-		let pricePerWeek = currentProgram.durationOptions.weekThresholds.reduce(
+		let pricePerWeek = applicationData.program.durationOptions.weekThresholds.reduce(
 			(pricePerWeek, currentWeek, index, arr) => {
 				// If there are no previous thresholds, previous max defaults to 0. Otherwise, the minimum threshold value is last week's max threshold, plus one.
 				let thresholdMin =
@@ -350,8 +350,6 @@ export default function AdditionalInfoForm({
 			0
 		);
 
-		setCurrentDuration(durationChange.value);
-
 		let updatedPrices = [...prices];
 
 		/*
@@ -362,10 +360,12 @@ export default function AdditionalInfoForm({
 		if (!updatedPrices.find(priceItem => priceItem.type === 'program')) {
 			updatedPrices.push({
 				type: 'program',
-				label: `${currentProgram.name} @ ${currentCenter.centerName}`,
+				label: `${applicationData.program.name} @ ${applicationData.center.centerName}`,
 				priceDetails: {
 					duration: durationChange.value,
 					price: pricePerWeek,
+					// TODO: Is there a way to capture the payPeriod for programs in the CMS?
+					payPeriod: 'Per Week',
 				},
 			});
 		} else {
@@ -389,14 +389,11 @@ export default function AdditionalInfoForm({
 	};
 
 	const handleHousingChange = housingChange => {
-		setHousingLabel(housingChange.label);
-		setHousingValue(housingChange.value);
-
-		handleInputChange('housingType', housingChange.label, 'application');
-
 		const currentHousing = housingData.find(
 			housing => housing.name === housingChange.label
 		);
+
+		handleDataChange('housing', currentHousing, 'application');
 
 		// TODO: This 'new price' logic is begging to be refactored & DRYed up
 		if (prices.find(priceItem => priceItem.type === 'housing')) {
@@ -405,7 +402,7 @@ export default function AdditionalInfoForm({
 					return {
 						...priceItem,
 						priceDetails: {
-							duration: currentDuration,
+							duration: applicationData.duration.value,
 							price: currentHousing.priceDetails[0].price,
 						},
 					};
@@ -416,30 +413,14 @@ export default function AdditionalInfoForm({
 				type: 'housing',
 				label: `${currentHousing.name}`,
 				priceDetails: {
-					duration: currentDuration,
+					duration: applicationData.duration
+						? applicationData.duration.value
+						: 0,
 					price: currentHousing.priceDetails[0].price,
+					payPeriod: currentHousing.priceDetails[0].payPeriod,
 				},
 			});
 		}
-
-		// // TODO: There might be a clever way to refactor 'updatePrices' such that we don't need an if statement here
-		// if (prices.find(priceItem => priceItem.type === 'housing')) {
-		// 	updatedPrices = updatePrices(updatedPrices, 'housing', {
-		// 		priceDetails: {
-		// 			duration: currentDuration,
-		// 			price: currentHousing.priceDetails[0].price,
-		// 		},
-		// 	});
-		// } else {
-		// 	updatedPrices.push({
-		// 		type: 'housing',
-		// 		label: `${currentHousing.name}`,
-		// 		priceDetails: {
-		// 			duration: currentDuration,
-		// 			price: currentHousing.priceDetails[0].price,
-		// 		},
-		// 	});
-		// }
 
 		setPrices(prices);
 	};
@@ -465,8 +446,12 @@ export default function AdditionalInfoForm({
 							className="fls__select-container"
 							classNamePrefix={'fls'}
 							value={{
-								label: applicationData.flsCenter,
-								value: applicationData.flsCenter,
+								label: applicationData.center
+									? `${applicationData.center.centerName} @ ${applicationData.center.name}`
+									: 'Select a center.',
+								value: applicationData.center
+									? applicationData.center.centerName
+									: null,
 							}}
 							onChange={centerOption => {
 								handleCenterChange(centerOption);
@@ -476,80 +461,89 @@ export default function AdditionalInfoForm({
 					</div>
 					<div className="column is-half">
 						<label className="label">
-							{currentCenter
+							{applicationData.center
 								? 'Program'
 								: 'Program * - Select a location first.'}
 						</label>
 						<Select
 							className={`fls__select-container ${
-								!currentCenter
+								!applicationData.center
 									? 'fls__select-container--disabled'
 									: ''
 							}`}
 							classNamePrefix={'fls'}
-							defaultValue={{
-								label: 'Select your location first.',
-								value: null,
-							}}
 							value={{
-								label: applicationData.program,
-								value: applicationData.program,
+								label: applicationData.program
+									? applicationData.program.name
+									: 'Select a program',
+								value: applicationData.program
+									? applicationData.program.name
+									: 'Select a program',
 							}}
 							onChange={handleProgramChange}
 							options={programOptions}
-							isDisabled={!currentCenter}
-						/>
-					</div>
-					<div className="column is-half">
-						<label className="label">
-							{currentProgram
-								? 'Duration'
-								: 'Duration * - Select a program first.'}
-						</label>
-						<Select
-							className={`fls__select-container ${
-								!currentProgram
-									? 'fls__select-container--disabled'
-									: ''
-							}`}
-							classNamePrefix={'fls'}
-							value={{
-								label: applicationData.duration,
-								value: applicationData.duration,
-							}}
-							onChange={handleDurationChange}
-							options={durationOptions}
-							isDisabled={!currentProgram}
+							isDisabled={!applicationData.center}
 						/>
 					</div>
 
 					<div className="column is-half">
 						<label className="label">
-							{currentCenter
-								? 'Housing Type'
-								: 'Housing Type * - Select a center first.'}
+							{applicationData.program
+								? 'Duration'
+								: 'Duration * - Select a program first.'}
 						</label>
 						<Select
 							className={`fls__select-container ${
-								!currentCenter
+								!applicationData.program
 									? 'fls__select-container--disabled'
 									: ''
 							}`}
 							classNamePrefix={'fls'}
 							value={{
-								label: applicationData.housingType,
-								value: applicationData.housingType,
+								label: applicationData.duration
+									? applicationData.duration.label
+									: 'Select a duration.',
+								value: applicationData.duration
+									? applicationData.duration.value
+									: null,
+							}}
+							onChange={handleDurationChange}
+							options={durationOptions}
+							isDisabled={!applicationData.program}
+						/>
+					</div>
+
+					<div className="column is-half">
+						<label className="label">
+							{applicationData.center
+								? 'Housing Type'
+								: 'Housing Type * - Select a center first.'}
+						</label>
+						<Select
+							className={`fls__select-container ${
+								!applicationData.center
+									? 'fls__select-container--disabled'
+									: ''
+							}`}
+							classNamePrefix={'fls'}
+							value={{
+								label: applicationData.housing
+									? applicationData.housing.name
+									: 'Select your housing type.',
+								value: applicationData.housing
+									? applicationData.housing.name
+									: null,
 							}}
 							onChange={handleHousingChange}
 							options={housingOptions}
-							isDisabled={!currentCenter}
+							isDisabled={!applicationData.center}
 						/>
 					</div>
 
 					{/* TODO: This field needs some serious validation */}
 					<div className="column is-half">
 						<label className="label">
-							{currentProgram
+							{applicationData.program
 								? 'Program Start Date *'
 								: 'Program Start Date * - Select a center first.'}
 						</label>
@@ -562,7 +556,7 @@ export default function AdditionalInfoForm({
 										startDate: date,
 										endDate: new Date(
 											Date.parse(date) +
-												currentDuration *
+												applicationData.duration.value *
 													7 *
 													24 *
 													60 *
@@ -576,14 +570,14 @@ export default function AdditionalInfoForm({
 							minDate={new Date()}
 							value={applicationData.startDate}
 							wrapperClassName={`fls__date-wrapper ${
-								!currentDuration
+								!applicationData.duration
 									? 'fls__select-container--disabled'
 									: ''
 							}`}
 							className={'input fls__base-input'}
 							placeholderText={'Choose Your Start Date'}
 							filterDate={isMonday}
-							readOnly={!currentDuration}
+							readOnly={!applicationData.duration}
 						/>
 					</div>
 
@@ -594,7 +588,7 @@ export default function AdditionalInfoForm({
 							selected={applicationData.endDate}
 							value={applicationData.endDate}
 							wrapperClassName={`fls__date-wrapper ${
-								!currentDuration
+								!applicationData.duration
 									? 'fls__select-container--disabled'
 									: ''
 							}`}
@@ -609,7 +603,7 @@ export default function AdditionalInfoForm({
 						<DatePicker
 							selected={applicationData.checkInDate}
 							onChange={date =>
-								handleInputChange(
+								handleDataChange(
 									'checkInDate',
 									date,
 									'application'
@@ -629,7 +623,7 @@ export default function AdditionalInfoForm({
 						<DatePicker
 							selected={applicationData.checkOutDate}
 							onChange={date =>
-								handleInputChange(
+								handleDataChange(
 									'checkOutDate',
 									date,
 									'application'
@@ -649,7 +643,7 @@ export default function AdditionalInfoForm({
 							name="extra-housing"
 							selectedValue={applicationData.extraNights}
 							onChange={value => {
-								handleInputChange(
+								handleDataChange(
 									'extraNights',
 									value,
 									'application'
@@ -665,14 +659,14 @@ export default function AdditionalInfoForm({
 
 					<div className="column is-half">
 						<label className="label">
-							{currentCenter
+							{applicationData.center
 								? 'Airport'
 								: 'Airport * - Select a location first.'}
 						</label>
 
 						<Select
 							className={`fls__select-container ${
-								!currentCenter
+								!applicationData.center
 									? 'fls__select-container--disabled'
 									: ''
 							}`}
@@ -682,7 +676,7 @@ export default function AdditionalInfoForm({
 								value: applicationData.airport,
 							}}
 							onChange={airportOption => {
-								handleInputChange(
+								handleDataChange(
 									'airport',
 									airportOption.value,
 									'application'
@@ -716,7 +710,7 @@ export default function AdditionalInfoForm({
 						<RadioGroup
 							selectedValue={applicationData.requiresI20}
 							onChange={value => {
-								handleInputChange(
+								handleDataChange(
 									'requiresI20',
 									value,
 									'application'
@@ -738,7 +732,7 @@ export default function AdditionalInfoForm({
 						<RadioGroup
 							selectedValue={applicationData.transferStudent}
 							onChange={value => {
-								handleInputChange(
+								handleDataChange(
 									'transferStudent',
 									value,
 									'application'
@@ -776,20 +770,26 @@ export default function AdditionalInfoForm({
 										!prices.find(
 											priceItem =>
 												priceItem.type ===
-													'general fee' &&
+													'general fees' &&
 												priceItem.name
 													.toLowerCase()
 													.includes('health')
 										)
 									) {
 										prices.push({
-											type: 'general fee',
+											type: 'general fees',
 											label: healthInsuranceData.name,
 											priceDetails: {
 												price:
 													healthInsuranceData
 														.priceDetails[0].price,
-												duration: currentDuration,
+												duration:
+													applicationData.duration
+														.value || 0,
+												payPeriod:
+													healthInsuranceData
+														.priceDetails[0]
+														.payPeriod,
 											},
 										});
 
@@ -797,18 +797,18 @@ export default function AdditionalInfoForm({
 									}
 								} else if (value === 'no') {
 									setPrices(
-										prices.filter(
-											priceItem =>
-												priceItem.type !==
-													'general fee' &&
-												!priceItem.label
+										removePrices(
+											prices,
+											['general fees'],
+											() => priceItem =>
+												!priceItem.name
 													.toLowerCase()
 													.includes('health')
 										)
 									);
 								}
 
-								handleInputChange(
+								handleDataChange(
 									'buyingHealthInsurance',
 									value,
 									'application'
@@ -831,7 +831,7 @@ export default function AdditionalInfoForm({
 						<RadioGroup
 							selectedValue={applicationData.expressMail}
 							onChange={value => {
-								handleInputChange(
+								handleDataChange(
 									'expressMail',
 									value,
 									'application'
@@ -856,7 +856,7 @@ export default function AdditionalInfoForm({
 						<RadioGroup
 							selectedValue={applicationData.processSEVISAppFee}
 							onChange={value => {
-								handleInputChange(
+								handleDataChange(
 									'processSEVISAppFee',
 									value,
 									'application'
@@ -882,7 +882,7 @@ export default function AdditionalInfoForm({
 								applicationData.unaccompaniedMinorService
 							}
 							onChange={value => {
-								handleInputChange(
+								handleDataChange(
 									'unaccompaniedMinorService',
 									value,
 									'application'
@@ -910,10 +910,6 @@ export default function AdditionalInfoForm({
 					<div className="column is-4">
 						<button
 							onClick={() => {
-								console.log(
-									'application data - additional info',
-									applicationData
-								);
 								nextStep();
 							}}
 							className="fls__button"

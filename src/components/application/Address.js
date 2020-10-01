@@ -40,7 +40,7 @@ export default GoogleApiWrapper({
 		previousStep,
 		nextStep,
 		userData,
-		handleInputChange,
+		handleDataChange,
 		handleBatchInputChange,
 		calculatePrice,
 		prices,
@@ -105,7 +105,7 @@ export default GoogleApiWrapper({
 									value={userData.address}
 									name="address"
 									onChange={address => {
-										handleInputChange(
+										handleDataChange(
 											'address',
 											address,
 											'user'
@@ -263,7 +263,6 @@ export default GoogleApiWrapper({
 					<div className="column is-4">
 						<button
 							onClick={() => {
-								console.log('userData - address', userData);
 								nextStep();
 							}}
 							className="fls__button"

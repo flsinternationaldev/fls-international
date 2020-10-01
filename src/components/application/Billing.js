@@ -23,7 +23,7 @@ export default function Billing({
 	nextStep,
 	userData,
 	billingData,
-	handleInputChange,
+	handleDataChange,
 	handleBatchInputChange,
 	prices,
 	calculatePrice,
@@ -89,7 +89,7 @@ export default function Billing({
 								className="input fls__base-input"
 								type="text"
 								onChange={e =>
-									handleInputChange(
+									handleDataChange(
 										'billingFirstName',
 										e.target.value,
 										'user'
@@ -109,7 +109,7 @@ export default function Billing({
 								className="input fls__base-input"
 								type="text"
 								onChange={e =>
-									handleInputChange(
+									handleDataChange(
 										'billingLastName',
 										e.target.value,
 										'user'
@@ -130,7 +130,7 @@ export default function Billing({
 								className="input fls__base-input"
 								type="text"
 								onChange={e =>
-									handleInputChange(
+									handleDataChange(
 										'billingAddress',
 										e.target.value,
 										'user'
@@ -151,7 +151,7 @@ export default function Billing({
 								className="input fls__base-input"
 								type="text"
 								onChange={e =>
-									handleInputChange(
+									handleDataChange(
 										'billingCity',
 										e.target.value,
 										'user'
@@ -172,7 +172,7 @@ export default function Billing({
 								className="input fls__base-input"
 								type="text"
 								onChange={e =>
-									handleInputChange(
+									handleDataChange(
 										'billingStateProvince',
 										e.target.value,
 										'user'
@@ -193,7 +193,7 @@ export default function Billing({
 								className="input fls__base-input"
 								type="text"
 								onChange={e =>
-									handleInputChange(
+									handleDataChange(
 										'billingPostalCode',
 										e.target.value,
 										'user'
@@ -216,7 +216,7 @@ export default function Billing({
 								)}
 								searchable={true}
 								onSelect={countryCode => {
-									handleInputChange(
+									handleDataChange(
 										'billingAddressCountry',
 										getName(countryCode),
 										'user'

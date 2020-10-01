@@ -26,7 +26,6 @@ export default function Card({
 	};
 
 	if (programType === 'specialty-tours') {
-		console.log('specialty tours card', cardData);
 		return (
 			<Link
 				to={`/programs/specialty-tours/${cardData.path}`}

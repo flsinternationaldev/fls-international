@@ -13,7 +13,7 @@ export const AboutUsTemplate = () => {
 				sectionClasses={['section']}
 				containerClasses={['container']}
 			>
-				<div class="columns is-multiline">
+				<div className="columns is-multiline">
 					<HorizontalNav
 						navItems={[
 							'Welcome',
@@ -25,19 +25,21 @@ export const AboutUsTemplate = () => {
 						]}
 					/>
 
-					<div class="column is-full">
-						<div class="columns is-variable is-5">
-							<div class="column is-3">
-								<figure class="image is-4by5">
+					<div className="column is-full">
+						<div className="columns is-variable is-5">
+							<div className="column is-3">
+								<figure className="image is-4by5">
 									{/* TODO: There is an annoying gap on the left side of this image, when rendered on the page */}
 									<img src="../../img/francine-img.png" />
 								</figure>
 							</div>
 
-							<div class="column is-9">
-								<h1 class="title title--fls">Welcome to Fls</h1>
+							<div className="column is-9">
+								<h1 className="title title--fls">
+									Welcome to Fls
+								</h1>
 
-								<p class="fls__generic-copy">
+								<p className="fls__generic-copy">
 									With globalization increasing, it’s more
 									important than ever to learn about other
 									cultures. There’s no better way to
@@ -46,7 +48,7 @@ export const AboutUsTemplate = () => {
 									has been about for over 30 years.
 								</p>
 
-								<p class="fls__generic-copy">
+								<p className="fls__generic-copy">
 									By joining an FLS program, students improve
 									their English, gain an understanding of
 									other cultures and develop their
@@ -56,7 +58,7 @@ export const AboutUsTemplate = () => {
 									increase their personal growth.
 								</p>
 
-								<p class="fls__generic-copy">
+								<p className="fls__generic-copy">
 									At FLS we invite each student to appreciate
 									the allure of a new language and immerse
 									themselves in a new culture. We strive to
@@ -66,7 +68,7 @@ export const AboutUsTemplate = () => {
 									for personal growth.
 								</p>
 
-								<p class="fls__generic-copy">
+								<p className="fls__generic-copy">
 									As America’s largest network of family-owned
 									and operated language schools, FLS is proud
 									of our excellent record of student
@@ -80,15 +82,15 @@ export const AboutUsTemplate = () => {
 									valuable American experience.
 								</p>
 
-								<p class="fls__generic-copy">Sincerely,</p>
+								<p className="fls__generic-copy">Sincerely,</p>
 
 								<img
-									class="about-us__contact-card-icon"
+									className="about-us__contact-card-icon"
 									src="../../img/francine-signature.png"
 									alt="Francine Forman Swain signature"
 								/>
 
-								<p class="fls__generic-copy">
+								<p className="fls__generic-copy">
 									Francine Forman Swain
 								</p>
 
@@ -103,17 +105,17 @@ export const AboutUsTemplate = () => {
 				sectionClasses={['section', 'highlighted-section']}
 				containerClasses={['container']}
 			>
-				<div class="columns is-centered is-multiline">
-					<div class="column is-full">
-						<div class="section__title-container">
-							<h2 class="title title--fls title--white title--underline">
+				<div className="columns is-centered is-multiline">
+					<div className="column is-full">
+						<div className="section__title-container">
+							<h2 className="title title--fls title--white title--underline">
 								Mission Statement
 							</h2>
 						</div>
 					</div>
 
-					<div class="column is-9">
-						<p class="highlighted-section__copy">
+					<div className="column is-9">
+						<p className="highlighted-section__copy">
 							FLS International is committed to providing
 							effective English as a Foreign Language education
 							and cultural training to international students and
@@ -130,13 +132,13 @@ export const AboutUsTemplate = () => {
 				sectionClasses={['section']}
 				containerClasses={['container']}
 			>
-				<div class="columns is-centered is-multiline">
-					<div class="column is-8 has-text-centered">
-						<h3 class="subtitle subtitle--fls subtitle--red">
+				<div className="columns is-centered is-multiline">
+					<div className="column is-8 has-text-centered">
+						<h3 className="subtitle subtitle--fls subtitle--red">
 							The
 						</h3>
-						<h2 class="title title--fls">FLS Advantage</h2>
-						<div class="section__title-copy">
+						<h2 className="title title--fls">FLS Advantage</h2>
+						<div className="section__title-copy">
 							Here are just a few of the reasons why FLS
 							International offers international students an
 							unbeatable learning and cultural experience. As
@@ -147,53 +149,53 @@ export const AboutUsTemplate = () => {
 					</div>
 
 					{/* TODO: we'll need to make sure any arbitrary amount of bullet points can be inputted, and that they will render (reasonably) well */}
-					<div class="column is-half">
+					<div className="column is-half">
 						{/* TODO: Figure out icons */}
 						<ul>
-							<li class="fls__list-item">
+							<li className="fls__list-item">
 								Small class sizes ensuring individual student
 								attention.
 							</li>
-							<li class="fls__list-item">
+							<li className="fls__list-item">
 								College and university placement assistance at
 								no additional charge.
 							</li>
-							<li class="fls__list-item">
+							<li className="fls__list-item">
 								Programs using the immersion method of language
 								instruction, emphasizing spoken English.
 							</li>
-							<li class="fls__list-item">
+							<li className="fls__list-item">
 								Structured Pathway programs to effectively
 								prepare students for college entrance.
 							</li>
-							<li class="fls__list-item">
+							<li className="fls__list-item">
 								Eighteen levels of English study.
 							</li>
-							<li class="fls__list-item">
+							<li className="fls__list-item">
 								Unique English Everywhere program highlighting
 								key curriculum points each week.
 							</li>
 						</ul>
 					</div>
 
-					<div class="column is-half">
+					<div className="column is-half">
 						{/* TODO: Figure out icons */}
 						<ul>
-							<li class="fls__list-item">
+							<li className="fls__list-item">
 								Experienced academic counselors.
 							</li>
-							<li class="fls__list-item">
+							<li className="fls__list-item">
 								Accreditation by CEA (Commission on English
 								Language Program Accreditation).
 							</li>
-							<li class="fls__list-item">
+							<li className="fls__list-item">
 								Centers located in secure, safe environments.
 							</li>
-							<li class="fls__list-item">
+							<li className="fls__list-item">
 								Monthly Language Extension Day, letting students
 								use their English in new settings.
 							</li>
-							<li class="fls__list-item">
+							<li className="fls__list-item">
 								Highly qualified teaching staff with all faculty
 								holding Master’s Degrees or TESOL credentials.
 							</li>
@@ -206,20 +208,20 @@ export const AboutUsTemplate = () => {
 				sectionClasses={['section', 'section--alternate']}
 				containerClasses={['container']}
 			>
-				<div class="columns is-centered is-multiline">
-					<div class="column is-full has-text-centered">
-						<h3 class="subtitle subtitle--fls subtitle--red">
+				<div className="columns is-centered is-multiline">
+					<div className="column is-full has-text-centered">
+						<h3 className="subtitle subtitle--fls subtitle--red">
 							About
 						</h3>
-						<h2 class="title title--fls">Ethical Conduct</h2>
+						<h2 className="title title--fls">Ethical Conduct</h2>
 					</div>
 
-					<div class="column is-full">
-						<div class="columns">
-							<div class="column is-9 fls__post-container">
-								<h3 class="fls__post-title">Integrity</h3>
+					<div className="column is-full">
+						<div className="columns">
+							<div className="column is-9 fls__post-container">
+								<h3 className="fls__post-title">Integrity</h3>
 
-								<p class="fls__post-copy">
+								<p className="fls__post-copy">
 									We will manifest the highest level of
 									integrity in all our professional
 									undertakings, dealing with others honestly
@@ -229,11 +231,11 @@ export const AboutUsTemplate = () => {
 									us.
 								</p>
 
-								<h3 class="fls__post-title">
+								<h3 className="fls__post-title">
 									Respect For The Law
 								</h3>
 
-								<p class="fls__post-copy">
+								<p className="fls__post-copy">
 									We will follow all applicable laws and
 									regulations and carefully and reflectively
 									advise students and scholars regarding those
@@ -244,9 +246,9 @@ export const AboutUsTemplate = () => {
 									our role or competency.
 								</p>
 
-								<h3 class="fls__post-title">Quality</h3>
+								<h3 className="fls__post-title">Quality</h3>
 
-								<p class="fls__post-copy">
+								<p className="fls__post-copy">
 									We will strive constantly to provide high
 									quality and educationally valuable programs
 									and services. We regularly will evaluate and
@@ -255,9 +257,9 @@ export const AboutUsTemplate = () => {
 									adopt exemplary practices.
 								</p>
 
-								<h3 class="fls__post-title">Competence</h3>
+								<h3 className="fls__post-title">Competence</h3>
 
-								<p class="fls__post-copy">
+								<p className="fls__post-copy">
 									We will undertake our work with the highest
 									levels of competence and professionalism,
 									regularly seeking and acquiring the training
@@ -273,22 +275,22 @@ export const AboutUsTemplate = () => {
 								</p>
 							</div>
 
-							<div class="column is-3">
+							<div className="column is-3">
 								<img src="../../img/about-img-1.jpeg" alt="" />
 							</div>
 						</div>
 					</div>
 
-					<div class="column is-full">
-						<div class="columns">
-							<div class="column is-3">
+					<div className="column is-full">
+						<div className="columns">
+							<div className="column is-3">
 								<img src="../../img/about-img-2.jpeg" alt="" />
 							</div>
 
-							<div class="column is-9 fls__post-container--left">
-								<h3 class="fls__post-title">Diversity</h3>
+							<div className="column is-9 fls__post-container--left">
+								<h3 className="fls__post-title">Diversity</h3>
 
-								<p class="fls__post-copy">
+								<p className="fls__post-copy">
 									In both word and deed we will respect the
 									dignity and worth of all people and be
 									properly attentive and responsive to the
@@ -302,9 +304,11 @@ export const AboutUsTemplate = () => {
 									educational goals.
 								</p>
 
-								<h3 class="fls__post-title">Transparency</h3>
+								<h3 className="fls__post-title">
+									Transparency
+								</h3>
 
-								<p class="fls__post-copy">
+								<p className="fls__post-copy">
 									We will demonstrate the appropriate level of
 									transparency in dealings with individuals
 									and organizations. In collaborations with
@@ -323,9 +327,9 @@ export const AboutUsTemplate = () => {
 									they will study or work.
 								</p>
 
-								<h3 class="fls__post-title">Access</h3>
+								<h3 className="fls__post-title">Access</h3>
 
-								<p class="fls__post-copy">
+								<p className="fls__post-copy">
 									In planning developing, and implementing our
 									programs we will strive to ensure that they
 									are accessible to all qualified individuals,
@@ -334,9 +338,11 @@ export const AboutUsTemplate = () => {
 									who desire it and can benefit from it.
 								</p>
 
-								<h3 class="fls__post-title">Responsiveness</h3>
+								<h3 className="fls__post-title">
+									Responsiveness
+								</h3>
 
-								<p class="fls__post-copy">
+								<p className="fls__post-copy">
 									We will maintain open and readily accessible
 									communication with individuals in our
 									programs and services and with our
@@ -352,16 +358,16 @@ export const AboutUsTemplate = () => {
 			</Section>
 
 			<Section>
-				<div class="columns is-multiline is-centered">
-					<div class="column is-8 has-text-centered">
-						<h3 class="subtitle subtitle--fls subtitle--red">
+				<div className="columns is-multiline is-centered">
+					<div className="column is-8 has-text-centered">
+						<h3 className="subtitle subtitle--fls subtitle--red">
 							About
 						</h3>
-						<h2 class="title title--fls">
+						<h2 className="title title--fls">
 							Accreditations & Affiliations
 						</h2>
 
-						<p class="fls__post-copy">
+						<p className="fls__post-copy">
 							FLS is one of a select number of schools accredited
 							both by CEA (Commission on English Language Program
 							Accreditation) and ACCET (Accrediting Council on
@@ -373,8 +379,8 @@ export const AboutUsTemplate = () => {
 						</p>
 					</div>
 
-					<div class="column is-full">
-						<div class="columns is-multiline">
+					<div className="column is-full">
+						<div className="columns is-multiline">
 							{/* TODO: Should come from the CMS */}
 							<Card isAffiliate={true} />
 						</div>
@@ -383,23 +389,23 @@ export const AboutUsTemplate = () => {
 			</Section>
 
 			<Section sectionClasses={['section']}>
-				<div class="columns is-centered is-multiline">
-					<div class="column is-8 has-text-centered">
-						<h3 class="subtitle subtitle--fls subtitle--red">
+				<div className="columns is-centered is-multiline">
+					<div className="column is-8 has-text-centered">
+						<h3 className="subtitle subtitle--fls subtitle--red">
 							Meet the Team
 						</h3>
-						<h2 class="title title--fls">Contact FLS</h2>
+						<h2 className="title title--fls">Contact FLS</h2>
 
-						<p class="fls__post-copy">
+						<p className="fls__post-copy">
 							Call or email us with any questions about FLS
 							international or this website.
 						</p>
 					</div>
 				</div>
 
-				<div class="columns is-multiline">
-					<div class="column is-full">
-						<h3 class="fls__post-title">
+				<div className="columns is-multiline">
+					<div className="column is-full">
+						<h3 className="fls__post-title">
 							FLS International Administrators
 						</h3>
 					</div>

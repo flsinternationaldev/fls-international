@@ -19,14 +19,14 @@ export default function NavbarDropdown({
 			}`}
 			style={{
 				...dropdownPos,
-				'min-width': dropdownWidth,
+				minWidth: dropdownWidth,
 			}}
 		>
 			{items.map(dropdownItem => (
 				<NavbarDropdownItem
 					rootNavPath={rootNavPath}
 					dropdownItem={dropdownItem}
-					key={rootNavPath}
+					key={`${rootNavPath}/${dropdownItem.path}`}
 				/>
 			))}
 		</div>

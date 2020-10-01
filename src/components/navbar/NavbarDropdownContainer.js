@@ -81,7 +81,6 @@ export default function NavbarDropdownContainer({
 				dropdownWidth={dropdownWidth}
 				items={items}
 				rootNavPath={rootNavPath}
-				key={rootNavPath}
 			/>
 		</Link>
 	);

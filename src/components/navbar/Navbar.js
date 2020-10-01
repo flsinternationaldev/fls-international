@@ -83,7 +83,7 @@ export default function Navbar(props) {
 						</a>
 
 						<button
-							class={`hamburger hamburger--spin ${
+							className={`hamburger hamburger--spin ${
 								navbarStyles.hamburgerFls
 							} ${isMobileMenuOpen ? 'is-active' : ''} `}
 							onClick={() => {
@@ -98,9 +98,9 @@ export default function Navbar(props) {
 							}}
 							type="button"
 						>
-							<span class="hamburger-box">
+							<span className="hamburger-box">
 								<span
-									class={`hamburger-inner ${navbarStyles.hamburgerInnerFls}`}
+									className={`hamburger-inner ${navbarStyles.hamburgerInnerFls}`}
 								></span>
 							</span>
 						</button>
@@ -120,6 +120,7 @@ export default function Navbar(props) {
 											items={mainNavItem.links}
 											rootNavPath={`/${mainNavItem.path}`}
 											parentEl={navParentEl}
+											key={`/${mainNavItem.path}`}
 										></NavbarDropdownContainer>
 									);
 								} else {
@@ -129,6 +130,7 @@ export default function Navbar(props) {
 											className={
 												navbarStyles.navbar__navItem
 											}
+											key={`/${mainNavItem.path}`}
 										>
 											{mainNavItem.name}
 										</Link>

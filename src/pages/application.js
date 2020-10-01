@@ -31,11 +31,11 @@ export const ApplicationTemplate = () => {
 		addressCountry: '',
 	});
 	const [applicationData, setApplicationData] = useState({
-		flsCenter: '',
+		center: '',
 		duration: '',
 		startDate: '',
 		endDate: '',
-		housingType: '',
+		housing: '',
 		program: '',
 		extraNights: '',
 		checkInDate: '',
@@ -68,7 +68,8 @@ export const ApplicationTemplate = () => {
 	const [currentProgram, setCurrentProgram] = useState(null);
 
 	// TODO: Because this is async, we should probably create a flag to prevent form submission until state has updated
-	const handleInputChange = (name, value, type) => {
+	const handleDataChange = (name, value, type) => {
+		// console.table({ name, value, type });
 		if (type === 'user') {
 			setUserData({
 				...userData,
@@ -80,6 +81,10 @@ export const ApplicationTemplate = () => {
 				[name]: value,
 			});
 		} else if (type === 'application') {
+			console.log('handling an application change', {
+				...applicationData,
+				[name]: value,
+			});
 			setApplicationData({
 				...applicationData,
 				[name]: value,
@@ -109,7 +114,6 @@ export const ApplicationTemplate = () => {
 	};
 
 	const calculatePrice = prices => {
-		console.log('calculating total price', prices);
 		if (prices.length) {
 			return prices.reduce((total, priceItem) => {
 				total +=
@@ -132,10 +136,12 @@ export const ApplicationTemplate = () => {
 					...Object.keys(billingData),
 				]}
 			/>
+
+			{/* TODO: For some reason, the hash has stepped rendering in the URL bar? */}
 			<StepWizard isHashEnabled={true} nav={<Steps stepsNum={6} />}>
 				<PersonalInfo
 					hashKey={'personal-info'}
-					handleInputChange={handleInputChange}
+					handleDataChange={handleDataChange}
 					userData={userData}
 					prices={prices}
 					setPrices={setPrices}
@@ -146,7 +152,7 @@ export const ApplicationTemplate = () => {
 				<Address
 					hashKey={'address'}
 					userData={userData}
-					handleInputChange={handleInputChange}
+					handleDataChange={handleDataChange}
 					handleBatchInputChange={handleBatchInputChange}
 					prices={prices}
 					setPrices={setPrices}
@@ -159,7 +165,7 @@ export const ApplicationTemplate = () => {
 				<AdditionalInfo
 					hashKey={'additional-info'}
 					userData={userData}
-					handleInputChange={handleInputChange}
+					handleDataChange={handleDataChange}
 					handleBatchInputChange={handleBatchInputChange}
 					prices={prices}
 					setPrices={setPrices}
@@ -176,7 +182,7 @@ export const ApplicationTemplate = () => {
 				<MoreInfo
 					hashKey={'more-info'}
 					userData={userData}
-					handleInputChange={handleInputChange}
+					handleDataChange={handleDataChange}
 					prices={prices}
 					setPrices={setPrices}
 					price={price}
@@ -187,7 +193,7 @@ export const ApplicationTemplate = () => {
 					hashKey={'billing'}
 					userData={userData}
 					billingData={billingData}
-					handleInputChange={handleInputChange}
+					handleDataChange={handleDataChange}
 					handleBatchInputChange={handleBatchInputChange}
 					prices={prices}
 					setPrices={setPrices}
@@ -201,7 +207,7 @@ export const ApplicationTemplate = () => {
 					hashKey={'checkout'}
 					userData={userData}
 					billingData={billingData}
-					handleInputChange={handleInputChange}
+					handleDataChange={handleDataChange}
 					handleBatchInputChange={handleBatchInputChange}
 					prices={prices}
 					setPrices={setPrices}

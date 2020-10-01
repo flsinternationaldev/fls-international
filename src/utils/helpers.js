@@ -36,3 +36,16 @@ export function updatePrices(prices, updateType, updates) {
 		}
 	});
 }
+
+export function removePrices(prices, removalTypes, optionalCallback) {
+	let filteredPrices = prices.filter(
+		priceItem => !removalTypes.includes(priceItem.type)
+	);
+
+	// TODO: This is ugly, but it's meant to help out general fees, specifically
+	if (optionalCallback) {
+		filteredPrices = filteredPrices.filter(optionalCallback);
+	}
+
+	return filteredPrices;
+}
