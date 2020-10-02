@@ -99,6 +99,10 @@ a {
 
 /* Generic FLS Styles */
 
+.fls-input__radio-group {
+	position: relative;
+}
+
 .fls-input__radio {
 	margin-right: 10px;
 }
@@ -463,7 +467,8 @@ a {
 	height: 50px;
 }
 
-.fls__select-container--disabled {
+.fls__select-container--disabled,
+.fls-input__radio-group--disabled {
 	&:after {
 		content: '';
 		display: block;

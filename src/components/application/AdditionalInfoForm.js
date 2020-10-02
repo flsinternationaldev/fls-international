@@ -193,6 +193,32 @@ export default function AdditionalInfoForm({
 
 	const generalFeesData = formatEdges(data.generalFees);
 
+	console.log('general fees data', generalFeesData);
+
+	if (
+		!prices.find(
+			priceItem =>
+				priceItem.type === 'general fees' &&
+				priceItem.label.toLowerCase().includes('application fee')
+		)
+	) {
+		const applicationFeeData = generalFeesData.find(generalFee =>
+			generalFee.name.toLowerCase().includes('application fee')
+		);
+
+		prices.push({
+			type: 'general fees',
+			label: applicationFeeData.name,
+			priceDetails: {
+				price: applicationFeeData.priceDetails[0].price,
+				duration: 1,
+				payPeriod: applicationFeeData.priceDetails[0].payPeriod,
+			},
+		});
+
+		setPrices(prices);
+	}
+
 	const [durationOptions, setDurationOptions] = useState([]);
 	const [programOptions, setProgramOptions] = useState([]);
 	const [housingOptions, setHousingOptions] = useState([]);
@@ -657,50 +683,53 @@ export default function AdditionalInfoForm({
 						</RadioGroup>
 					</div>
 
-					<div className="column is-half">
-						<label className="label">
-							{applicationData.center
-								? 'Airport'
-								: 'Airport * - Select a location first.'}
-						</label>
+					{airportOptions.length ? (
+						<div className="column is-half">
+							<label className="label">
+								{applicationData.center
+									? 'Airport'
+									: 'Airport * - Select a location first.'}
+							</label>
 
-						<Select
-							className={`fls__select-container ${
-								!applicationData.center
-									? 'fls__select-container--disabled'
-									: ''
-							}`}
-							classNamePrefix={'fls'}
-							value={{
-								label: applicationData.airport,
-								value: applicationData.airport,
-							}}
-							onChange={airportOption => {
-								handleDataChange(
-									'airport',
-									airportOption.value,
-									'application'
-								);
-							}}
-							options={airportOptions}
-						/>
-					</div>
+							<Select
+								className={`fls__select-container ${
+									!applicationData.center
+										? 'fls__select-container--disabled'
+										: ''
+								}`}
+								classNamePrefix={'fls'}
+								value={{
+									label: applicationData.airport,
+									value: applicationData.airport,
+								}}
+								onChange={airportOption => {
+									handleDataChange(
+										'airport',
+										airportOption.value,
+										'application'
+									);
+								}}
+								options={airportOptions}
+							/>
+						</div>
+					) : null}
+
 					<div className="column is-half">
 						<label className="checkbox">
 							<input type="checkbox" />
-							{/* TODO: This value should come from the CMS */}
 							<span className="fls__radio-label">
-								Airport Pick up - $150
+								Airport Pick up
 							</span>
 						</label>
 
 						<label className="checkbox">
 							<input type="checkbox" />
 							<span className="fls__radio-label">
-								Airport Drop Off - $150
+								Airport Drop Off
 							</span>
 						</label>
 					</div>
+
 					<div className="column is-full">
 						{/* TODO: Should have a helpful tooltip */}
 						<label className="label">
@@ -723,8 +752,84 @@ export default function AdditionalInfoForm({
 							<span className="fls__radio-label">No</span>
 						</RadioGroup>
 					</div>
+
+					{applicationData.requiresI20 === 'yes' ? (
+						<div className="column is-full">
+							{/* TODO: Should have a helpful tooltip */}
+							<label className="label">
+								Would you like your I-20 Form and acceptance
+								documents to be sent by Express Mail?
+							</label>
+
+							<RadioGroup
+								selectedValue={applicationData.expressMail}
+								onChange={value => {
+									const expressMailData = generalFeesData.find(
+										generalFee =>
+											generalFee.name
+												.toLowerCase()
+												.includes('express')
+									);
+
+									if (value === 'yes') {
+										// TODO: Looking for the word 'health' in the name is far from the most robust way of finding this specific general fee
+										if (
+											!prices.find(
+												priceItem =>
+													priceItem.type ===
+														'general fees' &&
+													priceItem.label
+														.toLowerCase()
+														.includes('express')
+											)
+										) {
+											prices.push({
+												type: 'general fees',
+												label: expressMailData.name,
+												priceDetails: {
+													price:
+														expressMailData
+															.priceDetails[0]
+															.price,
+													duration: 1,
+													payPeriod:
+														expressMailData
+															.priceDetails[0]
+															.payPeriod,
+												},
+											});
+
+											setPrices(prices);
+										}
+									} else if (value === 'no') {
+										setPrices(
+											removePrices(
+												prices,
+												['general fees'],
+												() => priceItem =>
+													!priceItem.label
+														.toLowerCase()
+														.includes('express')
+											)
+										);
+									}
+
+									handleDataChange(
+										'expressMail',
+										value,
+										'application'
+									);
+								}}
+							>
+								<Radio value="yes" />
+								<span className="fls__radio-label">Yes</span>
+								<Radio value="no" />
+								<span className="fls__radio-label">No</span>
+							</RadioGroup>
+						</div>
+					) : null}
+
 					<div className="column is-full">
-						{/* TODO: Should have a helpful tooltip */}
 						<label className="label">
 							Are you a transfer student?
 						</label>
@@ -745,14 +850,21 @@ export default function AdditionalInfoForm({
 							<span className="fls__radio-label">No</span>
 						</RadioGroup>
 					</div>
+
 					<div className="column is-full">
 						{/* TODO: Should have a helpful tooltip */}
 						<label className="label">
-							Would you like to purchase health insurance through
-							FLS?
+							{applicationData.program
+								? 'Would you like to purchase health insurance through FLS?'
+								: 'Would you like to purchase health insurance through FLS? - Select a duration first.'}
 						</label>
 
 						<RadioGroup
+							className={`fls-input__radio-group ${
+								!applicationData.duration
+									? 'fls-input__radio-group--disabled'
+									: ''
+							}`}
 							selectedValue={
 								applicationData.buyingHealthInsurance
 							}
@@ -771,7 +883,7 @@ export default function AdditionalInfoForm({
 											priceItem =>
 												priceItem.type ===
 													'general fees' &&
-												priceItem.name
+												priceItem.label
 													.toLowerCase()
 													.includes('health')
 										)
@@ -801,7 +913,7 @@ export default function AdditionalInfoForm({
 											prices,
 											['general fees'],
 											() => priceItem =>
-												!priceItem.name
+												!priceItem.label
 													.toLowerCase()
 													.includes('health')
 										)
@@ -810,29 +922,6 @@ export default function AdditionalInfoForm({
 
 								handleDataChange(
 									'buyingHealthInsurance',
-									value,
-									'application'
-								);
-							}}
-						>
-							<Radio value="yes" />
-							<span className="fls__radio-label">Yes</span>
-							<Radio value="no" />
-							<span className="fls__radio-label">No</span>
-						</RadioGroup>
-					</div>
-					<div className="column is-full">
-						{/* TODO: Should have a helpful tooltip */}
-						<label className="label">
-							Would you like your I-20 Form and acceptance
-							documents to be sent by Express Mail?
-						</label>
-
-						<RadioGroup
-							selectedValue={applicationData.expressMail}
-							onChange={value => {
-								handleDataChange(
-									'expressMail',
 									value,
 									'application'
 								);
