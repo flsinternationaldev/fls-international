@@ -37,15 +37,24 @@ export function updatePrices(prices, updateType, updates) {
 	});
 }
 
+// TODO: This implementation is somewhat fragile. When there's an optional callback, we usually don't need a removal type,
+// yet it is required to preserve arity.
 export function removePrices(prices, removalTypes, optionalCallback) {
-	let filteredPrices = prices.filter(
-		priceItem => !removalTypes.includes(priceItem.type)
+	return prices.filter(
+		optionalCallback
+			? optionalCallback
+			: priceItem => !removalTypes.includes(priceItem.type)
 	);
+}
 
-	// TODO: This is ugly, but it's meant to help out general fees, specifically
-	if (optionalCallback) {
-		filteredPrices = filteredPrices.filter(optionalCallback);
+export function calculatePrice(prices) {
+	if (prices.length) {
+		return prices.reduce((total, priceItem) => {
+			total +=
+				priceItem.priceDetails.price * priceItem.priceDetails.duration;
+			return total;
+		}, 0);
+	} else {
+		return 0;
 	}
-
-	return filteredPrices;
 }

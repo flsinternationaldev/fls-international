@@ -1,10 +1,10 @@
 ---
 name: Airport Transfer
 centerNameRelation:
-    - Saddleback College
+  - Saddleback College
 priceDetails:
-    - price: 175
-      payPeriod: each-way
+  - price: 175
+    payPeriod: once
 notes:
-    - Los Angeles International Airport, LAX
+  - Los Angeles International Airport, LAX
 ---

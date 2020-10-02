@@ -1,6 +1,9 @@
 import React, { Fragment } from 'react';
 
+import { calculatePrice } from 'src/utils/helpers';
+
 export default function EstimatedPrices({ prices }) {
+	// TODO: This is a fragile implemnentation, but since general fees are the only prices that "nest", it should work fine for now
 	const formattedGeneralFees = prices.reduce(
 		(accum, priceItem) => {
 			if (priceItem.type === 'general fees') accum.items.push(priceItem);
@@ -13,8 +16,6 @@ export default function EstimatedPrices({ prices }) {
 	const formattedPrices = prices
 		.filter(priceItem => priceItem.type !== 'general fees')
 		.concat(formattedGeneralFees);
-
-	console.log('formattedPrices', formattedPrices);
 
 	const renderPriceItem = priceItem => {
 		if (priceItem.items) {
@@ -74,6 +75,12 @@ export default function EstimatedPrices({ prices }) {
 						</div>
 					</div>
 				))}
+
+				<div className="column is-full">
+					<h3 class="application__total-price">
+						Total Price: {`$${calculatePrice(prices)}`}
+					</h3>
+				</div>
 			</div>
 		</div>
 	);

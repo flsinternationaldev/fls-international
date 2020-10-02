@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 import StepWizard from 'react-step-wizard';
 
 import Layout from 'src/components/Layout';
@@ -12,7 +13,31 @@ import Billing from 'src/components/application/Billing';
 import Checkout from 'src/components/application/Checkout';
 import NetlifyStaticForm from 'src/components/application/NetlifyStaticForm';
 
+import { formatEdges, calculatePrice } from 'src/utils/helpers';
+
 export const ApplicationTemplate = () => {
+	const data = useStaticQuery(graphql`
+		{
+			generalFees: allMarkdownRemark(
+				limit: 1000
+				filter: { fileAbsolutePath: { regex: "/data/general-fees//" } }
+			) {
+				edges {
+					node {
+						frontmatter {
+							name
+							centerNameRelation
+							priceDetails {
+								price
+								payPeriod
+							}
+						}
+					}
+				}
+			}
+		}
+	`);
+
 	const [price, setPrice] = useState(0);
 	const [prices, setPrices] = useState([]);
 	const [userData, setUserData] = useState({
@@ -42,7 +67,7 @@ export const ApplicationTemplate = () => {
 		checkOutDate: '',
 		airport: '',
 		airportPickUp: false,
-		airPortDropOff: false,
+		airportDropOff: false,
 		requiresI20: false,
 		transferStudent: false,
 		buyingHealthInsurance: false,
@@ -56,6 +81,32 @@ export const ApplicationTemplate = () => {
 		programType: '',
 		// TODO: Figure out passport photo & financial document image upload
 	});
+
+	const generalFeesData = formatEdges(data.generalFees);
+
+	if (
+		!prices.find(
+			priceItem =>
+				priceItem.type === 'general fees' &&
+				priceItem.label.toLowerCase().includes('application fee')
+		)
+	) {
+		const applicationFeeData = generalFeesData.find(generalFee =>
+			generalFee.name.toLowerCase().includes('application fee')
+		);
+
+		prices.push({
+			type: 'general fees',
+			label: applicationFeeData.name,
+			priceDetails: {
+				price: applicationFeeData.priceDetails[0].price,
+				duration: 1,
+				payPeriod: applicationFeeData.priceDetails[0].payPeriod,
+			},
+		});
+
+		setPrices(prices);
+	}
 
 	const [billingData, setBillingData] = useState({
 		billingAddressCountry: 'France',
@@ -113,19 +164,6 @@ export const ApplicationTemplate = () => {
 		}
 	};
 
-	const calculatePrice = prices => {
-		if (prices.length) {
-			return prices.reduce((total, priceItem) => {
-				total +=
-					priceItem.priceDetails.price *
-					priceItem.priceDetails.duration;
-				return total;
-			}, 0);
-		} else {
-			return 0;
-		}
-	};
-
 	return (
 		// NOTE: There's a bug with stepwizard wherein it fails if you provide only one child
 		<Section sectionClasses={['section']} containerClasses={['container']}>
@@ -164,6 +202,7 @@ export const ApplicationTemplate = () => {
 				the step wizard allows duplicates */}
 				<AdditionalInfo
 					hashKey={'additional-info'}
+					generalFeesData={data}
 					userData={userData}
 					handleDataChange={handleDataChange}
 					handleBatchInputChange={handleBatchInputChange}

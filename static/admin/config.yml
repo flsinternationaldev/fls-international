@@ -860,7 +860,7 @@ collections:
                             options:
                                 [
                                     { label: 'Weekly', value: 'weekly' },
-                                    { label: 'Each way', value: 'each-way' },
+                                    { label: 'once', value: 'once' },
                                     {
                                         label: 'Per 3 Unit Class',
                                         value: 'three-unit-class',

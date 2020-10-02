@@ -1,10 +1,10 @@
 ---
 name: Airport Transfer
 centerNameRelation:
-    - Chestnut Hill College
+  - Chestnut Hill College
 priceDetails:
-    - price: 150
-      payPeriod: each-way
+  - price: 150
+    payPeriod: once
 notes:
-    - Newark International Airport, EWR
+  - Newark International Airport, EWR
 ---

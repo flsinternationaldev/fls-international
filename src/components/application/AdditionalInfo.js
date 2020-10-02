@@ -16,6 +16,7 @@ export default function AdditionalInfo({
 	setCurrentCenter,
 	currentProgram,
 	setCurrentProgram,
+	generalFeesData,
 }) {
 	const handleRender = programType => {
 		if (!applicationData.programType) {
@@ -74,6 +75,7 @@ export default function AdditionalInfo({
 		} else {
 			return (
 				<AdditionalInfoForm
+					generalFeesData={generalFeesData}
 					calculatePrice={calculatePrice}
 					nextStep={nextStep}
 					previousStep={previousStep}

@@ -219,7 +219,7 @@ export const AboutUsTemplate = () => {
 					<div className="column is-full">
 						<div className="columns">
 							<div className="column is-9 fls__post-container">
-								<h3 className="fls__post-title">Integrity</h3>
+								<h3 className="fls-post__title">Integrity</h3>
 
 								<p className="fls__post-copy">
 									We will manifest the highest level of
@@ -231,7 +231,7 @@ export const AboutUsTemplate = () => {
 									us.
 								</p>
 
-								<h3 className="fls__post-title">
+								<h3 className="fls-post__title">
 									Respect For The Law
 								</h3>
 
@@ -246,7 +246,7 @@ export const AboutUsTemplate = () => {
 									our role or competency.
 								</p>
 
-								<h3 className="fls__post-title">Quality</h3>
+								<h3 className="fls-post__title">Quality</h3>
 
 								<p className="fls__post-copy">
 									We will strive constantly to provide high
@@ -257,7 +257,7 @@ export const AboutUsTemplate = () => {
 									adopt exemplary practices.
 								</p>
 
-								<h3 className="fls__post-title">Competence</h3>
+								<h3 className="fls-post__title">Competence</h3>
 
 								<p className="fls__post-copy">
 									We will undertake our work with the highest
@@ -288,7 +288,7 @@ export const AboutUsTemplate = () => {
 							</div>
 
 							<div className="column is-9 fls__post-container--left">
-								<h3 className="fls__post-title">Diversity</h3>
+								<h3 className="fls-post__title">Diversity</h3>
 
 								<p className="fls__post-copy">
 									In both word and deed we will respect the
@@ -304,7 +304,7 @@ export const AboutUsTemplate = () => {
 									educational goals.
 								</p>
 
-								<h3 className="fls__post-title">
+								<h3 className="fls-post__title">
 									Transparency
 								</h3>
 
@@ -327,7 +327,7 @@ export const AboutUsTemplate = () => {
 									they will study or work.
 								</p>
 
-								<h3 className="fls__post-title">Access</h3>
+								<h3 className="fls-post__title">Access</h3>
 
 								<p className="fls__post-copy">
 									In planning developing, and implementing our
@@ -338,7 +338,7 @@ export const AboutUsTemplate = () => {
 									who desire it and can benefit from it.
 								</p>
 
-								<h3 className="fls__post-title">
+								<h3 className="fls-post__title">
 									Responsiveness
 								</h3>
 
@@ -405,7 +405,7 @@ export const AboutUsTemplate = () => {
 
 				<div className="columns is-multiline">
 					<div className="column is-full">
-						<h3 className="fls__post-title">
+						<h3 className="fls-post__title">
 							FLS International Administrators
 						</h3>
 					</div>

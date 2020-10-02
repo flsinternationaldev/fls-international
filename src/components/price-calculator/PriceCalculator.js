@@ -5,7 +5,7 @@ export default function Navbar(props) {
 
 	return (
 		<div className="fls__location-price-calculator">
-			<h6 className="fls__post-title">Price Calculator</h6>
+			<h6 className="fls-post__title">Price Calculator</h6>
 			<div className="field">
 				<div className="control">
 					<input

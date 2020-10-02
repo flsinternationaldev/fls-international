@@ -10,7 +10,7 @@ import {
 import { getName, getCode } from 'country-list';
 import moment from 'moment';
 
-import { handleSubmission } from 'src/components/application/NetlifyStaticForm';
+import EstimatedPrices from './EstimatedPrices';
 
 import paymentOptionsImg from 'src/img/stripe-payments.png';
 import 'react-flags-select/scss/react-flags-select.scss';
@@ -60,9 +60,9 @@ export default function Billing({
 			<div className="columns is-multiline">
 				<div className="column is-full">
 					<div className="application__header-container">
-						<h3 className="fls__post-title">Billing Informaton</h3>
+						<h3 className="fls-post__title">Billing Informaton</h3>
 						<h3 className="application__total-price">
-							Estimated Price: ${calculatePrice(prices)}
+							Total Price: ${calculatePrice(prices)}
 						</h3>
 					</div>
 				</div>
@@ -228,7 +228,7 @@ export default function Billing({
 				</div>
 
 				<div className="column is-half">
-					<h3 className="fls__post-title">Payment Information</h3>
+					<h3 className="fls-post__title">Payment Information</h3>
 
 					<div className="fls__payment-container">
 						<div className="fls__payment-label">
@@ -247,6 +247,8 @@ export default function Billing({
 					</div>
 				</div>
 			</div>
+
+			<EstimatedPrices prices={prices} />
 
 			<div className="columns">
 				<div className="column is-4">

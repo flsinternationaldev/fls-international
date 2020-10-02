@@ -11,7 +11,7 @@ const classMap = {
 export default function QuickFacts({ data }) {
 	return (
 		<div className={`${quickFactsStyles.fls__quickFacts} column is-full`}>
-			<h6 className="fls__post-title">Quick Facts</h6>
+			<h6 className="fls-post__title">Quick Facts</h6>
 
 			{data.map(quickFact => (
 				<div

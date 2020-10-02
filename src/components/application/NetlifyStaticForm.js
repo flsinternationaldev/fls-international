@@ -1,4 +1,5 @@
 import React from 'react';
+import { navigate } from 'gatsby';
 
 const encode = data => {
 	return Object.keys(data)
@@ -14,7 +15,9 @@ export const handleSubmission = data => {
 		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 		body: encode({ 'form-name': 'user-application', ...data }),
 	})
-		.then(() => alert('Success!'))
+		.then(() => {
+			navigate('/application/success');
+		})
 		.catch(error => alert(error));
 };
 

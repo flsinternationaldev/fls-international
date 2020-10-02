@@ -1,10 +1,10 @@
 ---
 name: Airport Transfer
 centerNameRelation:
-    - Chestnut Hill College
+  - Chestnut Hill College
 priceDetails:
-    - price: 75
-      payPeriod: each-way
+  - price: 75
+    payPeriod: once
 notes:
-    - Philadelphia International Airport, PHI
+  - Philadelphia International Airport, PHI
 ---

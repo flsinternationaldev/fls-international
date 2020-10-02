@@ -2,6 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import { handleSubmission } from 'src/components/application/NetlifyStaticForm';
+import EstimatedPrices from './EstimatedPrices';
 
 export default function Checkout({
 	previousStep,
@@ -55,140 +56,14 @@ export default function Checkout({
 		<div className="columns is-multiline">
 			<div className="column is-full">
 				<div className="application__header-container">
-					<h3 className="fls__post-title">Checkout</h3>
+					<h3 className="fls-post__title">Checkout</h3>
 					<h3 className="application__total-price">
-						Estimated Price: ${calculatePrice(prices)}
+						Total Price: ${calculatePrice(prices)}
 					</h3>
 				</div>
 			</div>
 
-			<div className="column is-full">
-				<div className="application__price-summary">
-					<h3 className="fls__post-title">General Fees</h3>
-
-					<div className="application__general-fees">
-						<div className="application__price-container">
-							<span className="application__price-title">
-								Extra Night: Student Residences
-							</span>
-
-							<div className="application__price-amount-container">
-								<span className="application__price-amount">
-									<strong>$75</strong>
-								</span>
-
-								<span className="application__price-amount-subtitle">
-									Per Night
-								</span>
-							</div>
-						</div>
-
-						<div className="application__price-container">
-							<span className="application__price-title">
-								Extra Night: Student Residences
-							</span>
-							<span className="application__price-amount">
-								<strong>$75</strong>
-							</span>
-						</div>
-
-						<div className="application__price-container">
-							<span className="application__price-title">
-								Extra Night: Student Residences
-							</span>
-							<span className="application__price-amount">
-								<strong>$75</strong>
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div className="column is-full">
-				<div className="application__price-summary">
-					<h3 className="fls__post-title">Program Details</h3>
-
-					<div className="application__price-container">
-						<span className="application__price-title">Center</span>
-						<span className="application__price-amount">
-							{/* <strong>{currentCenter.name}</strong> */}
-						</span>
-					</div>
-
-					<div className="application__price-container">
-						<span className="application__price-title">
-							Program
-						</span>
-						<span className="application__price-amount">
-							{/* <strong>{currentProgram.name}</strong> */}
-						</span>
-					</div>
-
-					{prices.map(price => (
-						<div
-							className="application__price-container application__price-container--indented"
-							key={price.label}
-						>
-							<span className="application__price-title">
-								{price.label}
-							</span>
-							<span className="application__price-amount">
-								<strong>${price.cost}</strong>
-							</span>
-						</div>
-					))}
-				</div>
-
-				<div></div>
-			</div>
-
-			<div className="column is-full">
-				<div className="application__price-summary">
-					<h3 className="fls__post-title">Housing</h3>
-
-					<div className="application__general-fees">
-						<div className="application__price-container">
-							<span className="application__price-title">
-								Extra Night: Student Residences
-							</span>
-
-							<div className="application__price-amount-container">
-								<span className="application__price-amount">
-									<strong>$75</strong>
-								</span>
-
-								<span className="application__price-amount-subtitle">
-									Per Night
-								</span>
-							</div>
-						</div>
-
-						<div className="application__price-container">
-							<span className="application__price-title">
-								Extra Night: Student Residences
-							</span>
-							<span className="application__price-amount">
-								<strong>$75</strong>
-							</span>
-						</div>
-
-						<div className="application__price-container">
-							<span className="application__price-title">
-								Extra Night: Student Residences
-							</span>
-							<span className="application__price-amount">
-								<strong>$75</strong>
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div className="column is-full">
-				<div>
-					<span>Total Cost</span>
-				</div>
-			</div>
+			<EstimatedPrices prices={prices} />
 
 			<div className="column is-4">
 				<button onClick={previousStep} className="fls__button">

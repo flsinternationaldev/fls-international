@@ -3,6 +3,7 @@ import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import { RadioGroup, Radio } from 'react-radio-group';
 import { useStaticQuery, graphql } from 'gatsby';
+import Checkbox from 'rc-checkbox';
 
 import EstimatedPrices from 'src/components/application/EstimatedPrices';
 
@@ -14,11 +15,15 @@ import {
 } from 'src/utils/helpers';
 // import { PaymentRequestButtonElement } from '@stripe/react-stripe-js';
 
+// TODO: Figure out a better way to implement this data
+let airportData;
+
 export default function AdditionalInfoForm({
 	calculatePrice,
 	nextStep,
 	previousStep,
 	handleDataChange,
+	generalFeesData,
 	handleBatchInputChange,
 	prices,
 	setPrices,
@@ -191,34 +196,6 @@ export default function AdditionalInfoForm({
 
 	const enhancementsData = formatEdges(data.enhancements);
 
-	const generalFeesData = formatEdges(data.generalFees);
-
-	console.log('general fees data', generalFeesData);
-
-	if (
-		!prices.find(
-			priceItem =>
-				priceItem.type === 'general fees' &&
-				priceItem.label.toLowerCase().includes('application fee')
-		)
-	) {
-		const applicationFeeData = generalFeesData.find(generalFee =>
-			generalFee.name.toLowerCase().includes('application fee')
-		);
-
-		prices.push({
-			type: 'general fees',
-			label: applicationFeeData.name,
-			priceDetails: {
-				price: applicationFeeData.priceDetails[0].price,
-				duration: 1,
-				payPeriod: applicationFeeData.priceDetails[0].payPeriod,
-			},
-		});
-
-		setPrices(prices);
-	}
-
 	const [durationOptions, setDurationOptions] = useState([]);
 	const [programOptions, setProgramOptions] = useState([]);
 	const [housingOptions, setHousingOptions] = useState([]);
@@ -292,7 +269,7 @@ export default function AdditionalInfoForm({
 				})
 		);
 
-		const airportData = enhancementsData.filter(enhancement => {
+		airportData = enhancementsData.filter(enhancement => {
 			return (
 				enhancement.centerNameRelation.includes(centerChange.value) &&
 				enhancement.name.toLowerCase().includes('airport')
@@ -451,6 +428,73 @@ export default function AdditionalInfoForm({
 		setPrices(prices);
 	};
 
+	const handleAirportChange = airportChange => {
+		const currentAirport = airportData.find(airport =>
+			airport.notes.includes(airportChange.label)
+		);
+
+		handleDataChange('airport', airportChange.value, 'application');
+
+		let updatedPrices = [...prices];
+
+		const hasAirportPickUpPrice = updatedPrices.find(
+			priceItem =>
+				priceItem.type === 'general fees' &&
+				priceItem.label.toLowerCase().includes('pick up')
+		);
+
+		const hasAirportDropOffPrice = updatedPrices.find(
+			priceItem =>
+				priceItem.type === 'general fees' &&
+				priceItem.label.toLowerCase().includes('drop off')
+		);
+
+		// TODO: This very clearly needs DRYing
+		if (hasAirportPickUpPrice) {
+			// TODO: This can be refactored to use 'updatePrices,' which can be refactored to accept this kind of logic
+			updatedPrices = removePrices(
+				prices,
+				['general fees'],
+				priceItem => !priceItem.label.toLowerCase().includes('pick up')
+			);
+		}
+
+		if (applicationData.airportPickUp) {
+			updatedPrices.push({
+				type: 'general fees',
+				label: `${currentAirport.notes[0]} - Pick Up`,
+				priceDetails: {
+					price: currentAirport.priceDetails[0].price,
+					duration: 1,
+					payPeriod: currentAirport.priceDetails[0].payPeriod,
+				},
+			});
+		}
+
+		if (hasAirportDropOffPrice) {
+			// TODO: This can be refactored to use 'updatePrices,' which can be refactored to accept this kind of logic
+			updatedPrices = removePrices(
+				prices,
+				['general fees'],
+				priceItem => !priceItem.label.toLowerCase().includes('drop off')
+			);
+		}
+
+		if (applicationData.airportDropOff) {
+			updatedPrices.push({
+				type: 'general fees',
+				label: `${currentAirport.notes[0]} - Drop Off`,
+				priceDetails: {
+					price: currentAirport.priceDetails[0].price,
+					duration: 1,
+					payPeriod: currentAirport.priceDetails[0].payPeriod,
+				},
+			});
+		}
+
+		setPrices(updatedPrices);
+	};
+
 	const isMonday = date => date.getDay() === 1;
 
 	const renderFormViews = programType => {
@@ -461,7 +505,7 @@ export default function AdditionalInfoForm({
 						<div className="application__header-container">
 							<h3 className="fls-post__title">Additional Info</h3>
 							<h3 className="application__total-price">
-								Estimated Price: ${calculatePrice(prices)}
+								Total Price: ${calculatePrice(prices)}
 							</h3>
 						</div>
 					</div>
@@ -685,10 +729,55 @@ export default function AdditionalInfoForm({
 
 					{airportOptions.length ? (
 						<div className="column is-half">
+							<div className="label">Airport Transport</div>
+
+							<label className="checkbox">
+								<Checkbox
+									className="checkbox"
+									defaultChecked={
+										applicationData.airportPickUp
+									}
+									onChange={e =>
+										handleDataChange(
+											'airportPickUp',
+											e.target.checked,
+											'application'
+										)
+									}
+								/>
+								<span className="fls__radio-label">
+									Airport Pick Up
+								</span>
+							</label>
+
+							<label className="checkbox">
+								<Checkbox
+									className="checkbox"
+									defaultChecked={
+										applicationData.airportDropOff
+									}
+									onChange={e =>
+										handleDataChange(
+											'airportDropOff',
+											e.target.checked,
+											'application'
+										)
+									}
+								/>
+								<span className="fls__radio-label">
+									Airport Drop Off
+								</span>
+							</label>
+						</div>
+					) : null}
+
+					{applicationData.airportPickUp ||
+					applicationData.airportDropOff ? (
+						<div className="column is-half">
 							<label className="label">
 								{applicationData.center
-									? 'Airport'
-									: 'Airport * - Select a location first.'}
+									? 'Airport Options'
+									: 'Airport Options * - Select a location first.'}
 							</label>
 
 							<Select
@@ -702,33 +791,11 @@ export default function AdditionalInfoForm({
 									label: applicationData.airport,
 									value: applicationData.airport,
 								}}
-								onChange={airportOption => {
-									handleDataChange(
-										'airport',
-										airportOption.value,
-										'application'
-									);
-								}}
+								onChange={handleAirportChange}
 								options={airportOptions}
 							/>
 						</div>
 					) : null}
-
-					<div className="column is-half">
-						<label className="checkbox">
-							<input type="checkbox" />
-							<span className="fls__radio-label">
-								Airport Pick up
-							</span>
-						</label>
-
-						<label className="checkbox">
-							<input type="checkbox" />
-							<span className="fls__radio-label">
-								Airport Drop Off
-							</span>
-						</label>
-					</div>
 
 					<div className="column is-full">
 						{/* TODO: Should have a helpful tooltip */}
@@ -806,7 +873,7 @@ export default function AdditionalInfoForm({
 											removePrices(
 												prices,
 												['general fees'],
-												() => priceItem =>
+												priceItem =>
 													!priceItem.label
 														.toLowerCase()
 														.includes('express')
@@ -912,7 +979,7 @@ export default function AdditionalInfoForm({
 										removePrices(
 											prices,
 											['general fees'],
-											() => priceItem =>
+											priceItem =>
 												!priceItem.label
 													.toLowerCase()
 													.includes('health')
@@ -945,6 +1012,61 @@ export default function AdditionalInfoForm({
 						<RadioGroup
 							selectedValue={applicationData.processSEVISAppFee}
 							onChange={value => {
+								handleDataChange(
+									'processSEVISAppFee',
+									value,
+									'application'
+								);
+							}}
+							onChange={value => {
+								const sevisAppData = generalFeesData.find(
+									generalFee =>
+										generalFee.name
+											.toLowerCase()
+											.includes('sevis')
+								);
+
+								if (value === 'yes') {
+									// TODO: Looking for the word 'SEVIS' in the name is far from the most robust way of finding this specific general fee
+									if (
+										!prices.find(
+											priceItem =>
+												priceItem.type ===
+													'general fees' &&
+												priceItem.label
+													.toLowerCase()
+													.includes('sevis')
+										)
+									) {
+										prices.push({
+											type: 'general fees',
+											label: sevisAppData.name,
+											priceDetails: {
+												price:
+													sevisAppData.priceDetails[0]
+														.price,
+												duration: 1,
+												payPeriod:
+													sevisAppData.priceDetails[0]
+														.payPeriod,
+											},
+										});
+
+										setPrices(prices);
+									}
+								} else if (value === 'no') {
+									setPrices(
+										removePrices(
+											prices,
+											['general fees'],
+											priceItem =>
+												!priceItem.label
+													.toLowerCase()
+													.includes('sevis')
+										)
+									);
+								}
+
 								handleDataChange(
 									'processSEVISAppFee',
 									value,
