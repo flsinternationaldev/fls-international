@@ -169,12 +169,19 @@ a {
 	background-color: $fls-light-blue;
 }
 
+.label {
+	position: relative;
+}
+
 .label--required {
 	&:after {
 		content: '*';
 		margin-left: 5px;
 		color: #bb2125;
 		font-weight: 500;
+		font-size: 30px;
+		position: absolute;
+		top: -6px;
 	}
 }
 
@@ -247,6 +254,11 @@ a {
 .application__price-amount-subtitle {
 	font-size: 12px;
 	text-transform: capitalize;
+}
+
+.application__label-container {
+	display: flex;
+	justify-content: space-between;
 }
 
 .fls__link {
@@ -494,6 +506,12 @@ a {
 	position: relative;
 }
 
+.fls__date-wrapper--read-only {
+	input {
+		cursor: default !important;
+	}
+}
+
 // TODO: What the diddly fuck is going on with the placeholder styles in the Select component?
 .fls__placeholder {
 	color: #495057 !important;
@@ -611,7 +629,7 @@ a {
 // }
 
 .fls--red {
-	color: #cc3333;
+	color: #cc3333 !important;
 }
 
 // .fls--opaque {

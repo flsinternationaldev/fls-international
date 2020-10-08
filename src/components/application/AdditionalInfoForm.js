@@ -331,9 +331,42 @@ export default function AdditionalInfoForm({
 	const handleDurationChange = durationChange => {
 		handleDataChange(
 			'duration',
-			{ label: durationChange.label, value: durationChange.value },
+			{
+				label: durationChange.label,
+				value: durationChange.value,
+			},
 			'application'
 		);
+
+		// If programStartDate exists, we can be confident there's also a program end date & housing check in/check out dates
+		if (applicationData.programStartDate) {
+			handleBatchInputChange(
+				{
+					programEndDate: (() => {
+						const clonedDate = new Date(
+							applicationData.programStartDate
+						);
+
+						// Each 'week' needs to end on a friday, hence this weird math
+						return clonedDate.setDate(
+							clonedDate.getDate() +
+								(durationChange.value * 7 - 3)
+						);
+					})(),
+					housingCheckOutDate: (() => {
+						const clonedDate = new Date(
+							applicationData.housingCheckInDate
+						);
+
+						return clonedDate.setDate(
+							clonedDate.getDate() +
+								(durationChange.value * 7 - 1)
+						);
+					})(),
+				},
+				'application'
+			);
+		}
 
 		let pricePerWeek = applicationData.program.durationOptions.weekThresholds.reduce(
 			(pricePerWeek, currentWeek, index, arr) => {
@@ -510,7 +543,9 @@ export default function AdditionalInfoForm({
 						</div>
 					</div>
 					<div className="column is-half">
-						<label className="label">FLS Center*</label>
+						<label className="label label--required">
+							FLS Center
+						</label>
 
 						<Select
 							className="fls__select-container"
@@ -530,11 +565,17 @@ export default function AdditionalInfoForm({
 						/>
 					</div>
 					<div className="column is-half">
-						<label className="label">
-							{applicationData.center
-								? 'Program'
-								: 'Program * - Select a location first.'}
-						</label>
+						<div className="application__label-container">
+							<label className="label label--required">
+								Program
+							</label>
+							{applicationData.center ? null : (
+								<span className="label fls--red">
+									Select a location first.
+								</span>
+							)}
+						</div>
+
 						<Select
 							className={`fls__select-container ${
 								!applicationData.center
@@ -557,11 +598,17 @@ export default function AdditionalInfoForm({
 					</div>
 
 					<div className="column is-half">
-						<label className="label">
-							{applicationData.program
-								? 'Duration'
-								: 'Duration * - Select a program first.'}
-						</label>
+						<div className="application__label-container">
+							<label className="label label--required">
+								Duration
+							</label>
+							{applicationData.program ? null : (
+								<span className="label fls--red">
+									Select a program first.
+								</span>
+							)}
+						</div>
+
 						<Select
 							className={`fls__select-container ${
 								!applicationData.program
@@ -584,11 +631,17 @@ export default function AdditionalInfoForm({
 					</div>
 
 					<div className="column is-half">
-						<label className="label">
-							{applicationData.center
-								? 'Housing Type'
-								: 'Housing Type * - Select a center first.'}
-						</label>
+						<div className="application__label-container">
+							<label className="label label--required">
+								Housing Type
+							</label>
+							{applicationData.center ? null : (
+								<span className="label fls--red">
+									Select a center first.
+								</span>
+							)}
+						</div>
+
 						<Select
 							className={`fls__select-container ${
 								!applicationData.center
@@ -612,33 +665,60 @@ export default function AdditionalInfoForm({
 
 					{/* TODO: This field needs some serious validation */}
 					<div className="column is-half">
-						<label className="label">
-							{applicationData.program
-								? 'Program Start Date *'
-								: 'Program Start Date * - Select a center first.'}
-						</label>
+						<div className="application__label-container">
+							<label className="label label--required">
+								Program Start Date
+							</label>
+							{applicationData.program ? null : (
+								<span className="label fls--red">
+									Select a program first.
+								</span>
+							)}
+						</div>
 
 						<DatePicker
-							selected={applicationData.startDate}
+							selected={applicationData.programStartDate}
 							onChange={date => {
 								handleBatchInputChange(
 									{
-										startDate: date,
-										endDate: new Date(
-											Date.parse(date) +
-												applicationData.duration.value *
-													7 *
-													24 *
-													60 *
-													60 *
-													1000
-										),
+										programStartDate: date,
+										programEndDate: (() => {
+											const clonedDate = new Date(date);
+
+											// Each 'week' needs to end on a friday, hence this weird math
+											return clonedDate.setDate(
+												clonedDate.getDate() +
+													(applicationData.duration
+														.value *
+														7 -
+														3)
+											);
+										})(),
+										// Default check in date to suinday before start of program
+										housingCheckInDate: (() => {
+											const clonedDate = new Date(date);
+
+											return clonedDate.setDate(
+												clonedDate.getDate() - 1
+											);
+										})(),
+										// Default checkout date to saturday after end of program
+										housingCheckOutDate: (() => {
+											const clonedDate = new Date(date);
+
+											return clonedDate.setDate(
+												clonedDate.getDate() +
+													(applicationData.duration
+														.value *
+														7 -
+														2)
+											);
+										})(),
 									},
 									'application'
 								);
 							}}
 							minDate={new Date()}
-							value={applicationData.startDate}
 							wrapperClassName={`fls__date-wrapper ${
 								!applicationData.duration
 									? 'fls__select-container--disabled'
@@ -652,12 +732,11 @@ export default function AdditionalInfoForm({
 					</div>
 
 					<div className="column is-half">
-						<label className="label">Program End Date *</label>
+						<label className="label">Program End Date</label>
+
 						<DatePicker
-							// TODO: Should be disabled, calculates based off start date
-							selected={applicationData.endDate}
-							value={applicationData.endDate}
-							wrapperClassName={`fls__date-wrapper ${
+							selected={applicationData.programEndDate}
+							wrapperClassName={`fls__date-wrapper fls__date-wrapper--read-only ${
 								!applicationData.duration
 									? 'fls__select-container--disabled'
 									: ''
@@ -669,39 +748,46 @@ export default function AdditionalInfoForm({
 					</div>
 
 					<div className="column is-half">
-						<label className="label">Housing Check In Date *</label>
+						<div className="application__label-container">
+							<label className="label label--required">
+								Housing Check In Date
+							</label>
+
+							{applicationData.housing ? null : (
+								<span className="label fls--red">
+									Select a housing type first.
+								</span>
+							)}
+						</div>
+
 						<DatePicker
-							selected={applicationData.checkInDate}
-							onChange={date =>
-								handleDataChange(
-									'checkInDate',
-									date,
-									'application'
-								)
-							}
-							value={applicationData.checkInDate}
-							wrapperClassName={'fls__date-wrapper'}
+							selected={applicationData.housingCheckInDate}
+							wrapperClassName={`fls__date-wrapper fls__date-wrapper--read-only ${
+								!applicationData.housing
+									? 'fls__select-container--disabled'
+									: ''
+							}`}
 							className={'input fls__base-input'}
 							placeholderText={'Housing Check-in Date'}
+							readOnly={true}
 						/>
 					</div>
 
 					<div className="column is-half">
-						<label className="label">
-							Housing Check Out Date *
+						<label className="label label--required">
+							Housing Check Out Date
 						</label>
+
 						<DatePicker
-							selected={applicationData.checkOutDate}
-							onChange={date =>
-								handleDataChange(
-									'checkOutDate',
-									date,
-									'application'
-								)
-							}
-							value={applicationData.checkOutDate}
+							selected={applicationData.housingCheckOutDate}
 							className={'input fls__base-input'}
+							wrapperClassName={`fls__date-wrapper fls__date-wrapper--read-only ${
+								!applicationData.housing
+									? 'fls__select-container--disabled'
+									: ''
+							}`}
 							placeholderText={'Housing Check Out Date'}
+							readOnly={true}
 						/>
 					</div>
 
@@ -777,7 +863,7 @@ export default function AdditionalInfoForm({
 							<label className="label">
 								{applicationData.center
 									? 'Airport Options'
-									: 'Airport Options * - Select a location first.'}
+									: 'Airport Options * - Select a center first.'}
 							</label>
 
 							<Select

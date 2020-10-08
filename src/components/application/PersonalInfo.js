@@ -4,8 +4,6 @@ import { getName, getCode } from 'country-list';
 import DatePicker from 'react-datepicker';
 import ReactFlagsSelect from 'react-flags-select';
 
-import EstimatedPrices from 'src/components/application/EstimatedPrices';
-
 import applicationStyles from './ApplicationLanding.module.scss';
 import 'react-flags-select/scss/react-flags-select.scss';
 
@@ -30,9 +28,6 @@ export default function PersonalInfo({
 					<div className="application__header-container">
 						<h3 className="fls-post__title">
 							Personal Information
-						</h3>
-						<h3 className="application__total-price">
-							Total Price: ${calculatePrice(prices)}
 						</h3>
 					</div>
 				</div>
@@ -242,8 +237,6 @@ export default function PersonalInfo({
 						</div>
 					</div>
 				</div>
-
-				<EstimatedPrices prices={prices} />
 
 				{/* TODO: Arrow icon */}
 				<div className="column is-offset-8 is-4">

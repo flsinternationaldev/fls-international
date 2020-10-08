@@ -58,13 +58,13 @@ export const ApplicationTemplate = () => {
 	const [applicationData, setApplicationData] = useState({
 		center: '',
 		duration: '',
-		startDate: '',
-		endDate: '',
+		programStartDate: '',
+		programEndDate: '',
 		housing: '',
 		program: '',
 		extraNights: '',
-		checkInDate: '',
-		checkOutDate: '',
+		housingCheckInDate: '',
+		housingCheckOutDate: '',
 		airport: '',
 		airportPickUp: false,
 		airportDropOff: false,
@@ -158,6 +158,10 @@ export const ApplicationTemplate = () => {
 			});
 		} else if (type === 'application') {
 			setApplicationData({
+				...applicationData,
+				...values,
+			});
+			console.log('application data', {
 				...applicationData,
 				...values,
 			});

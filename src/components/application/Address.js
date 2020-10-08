@@ -6,8 +6,6 @@ import PlacesAutocomplete, {
 	getLatLng,
 } from 'react-places-autocomplete';
 
-import EstimatedPrices from './EstimatedPrices';
-
 const formatAddressComponents = addressComponents => {
 	const desiredComponentTypes = [
 			'street_number',
@@ -93,9 +91,6 @@ export default GoogleApiWrapper({
 					<div className="column is-full">
 						<div className="application__header-container">
 							<h3 className="fls-post__title">Your Address</h3>
-							<h3 className="application__total-price">
-								Total Price: ${calculatePrice(prices)}
-							</h3>
 						</div>
 					</div>
 					<div className="column is-full">
@@ -252,8 +247,6 @@ export default GoogleApiWrapper({
 							</div>
 						</div>
 					</div>
-
-					<EstimatedPrices prices={prices} />
 
 					<div className="column is-4">
 						<button onClick={previousStep} className="fls__button">
