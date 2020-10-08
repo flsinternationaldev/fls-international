@@ -20,6 +20,10 @@ a {
 	}
 }
 
+.label--application {
+	margin-bottom: 0 !important;
+}
+
 .container {
 	max-width: 1170px !important;
 }
@@ -259,6 +263,10 @@ a {
 .application__label-container {
 	display: flex;
 	justify-content: space-between;
+}
+
+.application__label-container {
+	margin-bottom: 0.5em;
 }
 
 .fls__link {

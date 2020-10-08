@@ -543,9 +543,11 @@ export default function AdditionalInfoForm({
 						</div>
 					</div>
 					<div className="column is-half">
-						<label className="label label--required">
-							FLS Center
-						</label>
+						<div className="application__label-container">
+							<label className="label label--application">
+								FLS Center
+							</label>
+						</div>
 
 						<Select
 							className="fls__select-container"
@@ -566,12 +568,12 @@ export default function AdditionalInfoForm({
 					</div>
 					<div className="column is-half">
 						<div className="application__label-container">
-							<label className="label label--required">
+							<label className="label label--application">
 								Program
 							</label>
 							{applicationData.center ? null : (
-								<span className="label fls--red">
-									Select a location first.
+								<span className="label label--application fls--red">
+									Select a center first.
 								</span>
 							)}
 						</div>
@@ -599,11 +601,11 @@ export default function AdditionalInfoForm({
 
 					<div className="column is-half">
 						<div className="application__label-container">
-							<label className="label label--required">
+							<label className="label label--application">
 								Duration
 							</label>
 							{applicationData.program ? null : (
-								<span className="label fls--red">
+								<span className="label label--application fls--red">
 									Select a program first.
 								</span>
 							)}
@@ -632,11 +634,11 @@ export default function AdditionalInfoForm({
 
 					<div className="column is-half">
 						<div className="application__label-container">
-							<label className="label label--required">
+							<label className="label label--application">
 								Housing Type
 							</label>
 							{applicationData.center ? null : (
-								<span className="label fls--red">
+								<span className="label label--application fls--red">
 									Select a center first.
 								</span>
 							)}
@@ -666,11 +668,11 @@ export default function AdditionalInfoForm({
 					{/* TODO: This field needs some serious validation */}
 					<div className="column is-half">
 						<div className="application__label-container">
-							<label className="label label--required">
+							<label className="label label--application">
 								Program Start Date
 							</label>
 							{applicationData.program ? null : (
-								<span className="label fls--red">
+								<span className="label label--application fls--red">
 									Select a program first.
 								</span>
 							)}
@@ -732,7 +734,11 @@ export default function AdditionalInfoForm({
 					</div>
 
 					<div className="column is-half">
-						<label className="label">Program End Date</label>
+						<div className="application__label-container">
+							<label className="label label--application">
+								Program End Date
+							</label>
+						</div>
 
 						<DatePicker
 							selected={applicationData.programEndDate}
@@ -749,12 +755,12 @@ export default function AdditionalInfoForm({
 
 					<div className="column is-half">
 						<div className="application__label-container">
-							<label className="label label--required">
+							<label className="label label--application">
 								Housing Check In Date
 							</label>
 
 							{applicationData.housing ? null : (
-								<span className="label fls--red">
+								<span className="label label--application fls--red">
 									Select a housing type first.
 								</span>
 							)}
@@ -774,9 +780,11 @@ export default function AdditionalInfoForm({
 					</div>
 
 					<div className="column is-half">
-						<label className="label label--required">
-							Housing Check Out Date
-						</label>
+						<div className="application__label-container">
+							<label className="label label--application">
+								Housing Check Out Date
+							</label>
+						</div>
 
 						<DatePicker
 							selected={applicationData.housingCheckOutDate}
@@ -792,8 +800,8 @@ export default function AdditionalInfoForm({
 					</div>
 
 					<div className="column is-full">
-						<label className="label">
-							Extra Nights of Housing Required? *
+						<label className="label label--application">
+							Extra Nights of Housing Required?
 						</label>
 						<RadioGroup
 							name="extra-housing"
@@ -815,7 +823,9 @@ export default function AdditionalInfoForm({
 
 					{airportOptions.length ? (
 						<div className="column is-half">
-							<div className="label">Airport Transport</div>
+							<div className="label label--application">
+								Airport Transport
+							</div>
 
 							<label className="checkbox">
 								<Checkbox
@@ -860,7 +870,7 @@ export default function AdditionalInfoForm({
 					{applicationData.airportPickUp ||
 					applicationData.airportDropOff ? (
 						<div className="column is-half">
-							<label className="label">
+							<label className="label label--application">
 								{applicationData.center
 									? 'Airport Options'
 									: 'Airport Options * - Select a center first.'}
@@ -885,7 +895,7 @@ export default function AdditionalInfoForm({
 
 					<div className="column is-full">
 						{/* TODO: Should have a helpful tooltip */}
-						<label className="label">
+						<label className="label label--application">
 							Do you require an I-20 Form?
 						</label>
 
@@ -909,7 +919,7 @@ export default function AdditionalInfoForm({
 					{applicationData.requiresI20 === 'yes' ? (
 						<div className="column is-full">
 							{/* TODO: Should have a helpful tooltip */}
-							<label className="label">
+							<label className="label label--application">
 								Would you like your I-20 Form and acceptance
 								documents to be sent by Express Mail?
 							</label>
@@ -983,7 +993,7 @@ export default function AdditionalInfoForm({
 					) : null}
 
 					<div className="column is-full">
-						<label className="label">
+						<label className="label label--application">
 							Are you a transfer student?
 						</label>
 
@@ -1006,7 +1016,7 @@ export default function AdditionalInfoForm({
 
 					<div className="column is-full">
 						{/* TODO: Should have a helpful tooltip */}
-						<label className="label">
+						<label className="label label--application">
 							{applicationData.program
 								? 'Would you like to purchase health insurance through FLS?'
 								: 'Would you like to purchase health insurance through FLS? - Select a duration first.'}
@@ -1089,7 +1099,7 @@ export default function AdditionalInfoForm({
 
 					<div className="column is-full">
 						{/* TODO: Should have a helpful tooltip */}
-						<label className="label">
+						<label className="label label--application">
 							{/* TODO: If chosen, should this actually add $350 to the final billing? */}
 							Would you like FLS to process the $350 SEVIS
 							Application Fee for you?
@@ -1169,7 +1179,7 @@ export default function AdditionalInfoForm({
 
 					<div className="column is-full">
 						{/* TODO: Should have a helpful tooltip */}
-						<label className="label">
+						<label className="label label--application">
 							Would you like FLS to provide Unaccompanied Minor
 							Service?
 						</label>
