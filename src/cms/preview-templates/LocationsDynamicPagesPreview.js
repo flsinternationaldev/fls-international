@@ -13,7 +13,6 @@ const LocationPagePreview = ({ entry }) => {
 			formattedData[kebabToSnake(prop)] = data[prop];
 		}
 
-		console.log('formattedData - location', formattedData);
 		return <LocationPageTemplate previewData={formattedData} />;
 	} else {
 		return <div>Loading...</div>;

@@ -77,7 +77,7 @@ export default function EstimatedPrices({ prices }) {
 				))}
 
 				<div className="column is-full">
-					<h3 class="application__total-price">
+					<h3 className="application__total-price">
 						Total Price: {`$${calculatePrice(prices)}`}
 					</h3>
 				</div>

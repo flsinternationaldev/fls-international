@@ -205,12 +205,19 @@ export default function AdditionalInfoForm({
 	const [housingOptions, setHousingOptions] = useState([]);
 	const [airportOptions, setAirportOptions] = useState([]);
 
-	const centerOptions = centersData.map(center => {
-		return {
-			value: center.centerName,
-			label: `${center.centerName} @ ${center.name}`,
-		};
-	});
+	// Prune out any centers that have no in person programs
+	const centerOptions = centersData
+		.map(center => {
+			return {
+				value: center.centerName,
+				label: `${center.centerName} @ ${center.name}`,
+			};
+		})
+		.filter(center =>
+			programsData.some(program =>
+				program.centerNameRelation.includes(center.value)
+			)
+		);
 
 	// TODO: DRY up these functions
 	const handleCenterChange = centerChange => {
@@ -552,7 +559,8 @@ export default function AdditionalInfoForm({
 								</h3>
 							</div>
 						</div>
-						<div className="column is-half">
+
+						<div className="column is-full-tablet is-half-desktop">
 							<div className="application__label-container">
 								<label className="label label--application">
 									FLS Center
@@ -576,7 +584,8 @@ export default function AdditionalInfoForm({
 								options={centerOptions}
 							/>
 						</div>
-						<div className="column is-half">
+
+						<div className="column is-full-tablet is-half-desktop">
 							<div className="application__label-container">
 								<label className="label label--application">
 									Program
@@ -609,7 +618,7 @@ export default function AdditionalInfoForm({
 							/>
 						</div>
 
-						<div className="column is-half">
+						<div className="column is-full-tablet is-half-desktop">
 							<div className="application__label-container">
 								<label className="label label--application">
 									Duration
@@ -642,7 +651,7 @@ export default function AdditionalInfoForm({
 							/>
 						</div>
 
-						<div className="column is-half">
+						<div className="column is-full-tablet is-half-desktop">
 							<div className="application__label-container">
 								<label className="label label--application">
 									Housing Type
@@ -676,7 +685,7 @@ export default function AdditionalInfoForm({
 						</div>
 
 						{/* TODO: This field needs some serious validation */}
-						<div className="column is-half">
+						<div className="column is-full-tablet is-half-desktop">
 							<div className="application__label-container">
 								<label className="label label--application">
 									Program Start Date
@@ -755,7 +764,7 @@ export default function AdditionalInfoForm({
 							/>
 						</div>
 
-						<div className="column is-half">
+						<div className="column is-full-tablet is-half-desktop">
 							<div className="application__label-container">
 								<label className="label label--application">
 									Program End Date
@@ -775,7 +784,7 @@ export default function AdditionalInfoForm({
 							/>
 						</div>
 
-						<div className="column is-half">
+						<div className="column is-full-tablet is-half-desktop">
 							<div className="application__label-container">
 								<label className="label label--application">
 									Housing Check In Date
@@ -801,7 +810,7 @@ export default function AdditionalInfoForm({
 							/>
 						</div>
 
-						<div className="column is-half">
+						<div className="column is-full-tablet is-half-desktop">
 							<div className="application__label-container">
 								<label className="label label--application">
 									Housing Check Out Date

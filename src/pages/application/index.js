@@ -132,10 +132,6 @@ export const ApplicationTemplate = () => {
 				[name]: value,
 			});
 		} else if (type === 'application') {
-			console.log('handling an application change', {
-				...applicationData,
-				[name]: value,
-			});
 			setApplicationData({
 				...applicationData,
 				[name]: value,
@@ -158,10 +154,6 @@ export const ApplicationTemplate = () => {
 			});
 		} else if (type === 'application') {
 			setApplicationData({
-				...applicationData,
-				...values,
-			});
-			console.log('application data', {
 				...applicationData,
 				...values,
 			});

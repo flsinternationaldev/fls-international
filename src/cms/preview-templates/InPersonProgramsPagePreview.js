@@ -13,7 +13,6 @@ const InPersonProgramPagePreview = ({ entry }) => {
 			formattedData[kebabToSnake(prop)] = data[prop];
 		}
 
-		console.log('formattedData', formattedData);
 		return <InPersonProgramPageTemplate previewData={formattedData} />;
 	} else {
 		return <div>Loading...</div>;

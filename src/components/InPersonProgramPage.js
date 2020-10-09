@@ -93,8 +93,6 @@ export const InPersonProgramPageTemplate = ({
 };
 
 const InPersonProgramPage = ({ data, pageContext, previewData }) => {
-	console.log('previewData', previewData);
-
 	let programPageData, allProgramNavData;
 
 	if (!previewData) {
