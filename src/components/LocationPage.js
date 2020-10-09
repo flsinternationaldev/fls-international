@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import Slick from 'react-slick';
 
 import Layout from 'src/components/Layout';
@@ -58,7 +58,8 @@ export const LocationPageTemplate = ({ locationPageData }) => {
 							</div>
 						</div>
 
-						<div className="column is-full">
+						{/* TODO: Figure out how to make anchor tags work with the markdown post */}
+						{/* <div className="column is-full">
 							<div className="columns is-variable is-1">
 								<div className="column">
 									<a className="fls__location-post-anchor-button">
@@ -84,14 +85,16 @@ export const LocationPageTemplate = ({ locationPageData }) => {
 									</a>
 								</div>
 							</div>
-						</div>
+						</div> */}
 
 						<div className="column is-full">
 							<MarkdownContent
 								content={postContent}
+								className={'fls__location-post-container'}
 								classMap={{
 									h2: 'fls-post__subtitle',
 									h3: 'fls__location-post-subtitle',
+									h6: 'fls__location-post-subtitle',
 									p: 'fls__post-copy',
 									ul: 'fls__location-post-list',
 									li: 'fls__list-item fls__list-item--small',
@@ -105,49 +108,54 @@ export const LocationPageTemplate = ({ locationPageData }) => {
 	);
 };
 
-const LocationPage = ({ pageContext }) => {
-	const { pagePath } = pageContext;
+const LocationPage = ({ data, pageContext, previewData }) => {
+	if (!previewData) {
+		const { pagePath } = pageContext;
 
-	const data = useStaticQuery(graphql`
-		{
-			allMarkdownRemark(
-				limit: 1000
-				filter: {
-					fileAbsolutePath: { regex: "/pages/dynamic/locations//" }
-				}
-			) {
-				edges {
-					node {
-						frontmatter {
-							path
+		const locationPageData = data.allMarkdownRemark.edges.find(
+			edge => edge.node.frontmatter.path === pagePath
+		).node.frontmatter;
+
+		return (
+			<Layout
+				isScrolled={true}
+				hasNavHero={true}
+				pageTitle={locationPageData.name}
+			>
+				<LocationPageTemplate locationPageData={locationPageData} />
+			</Layout>
+		);
+	} else {
+		return <LocationPageTemplate locationPageData={previewData} />;
+	}
+};
+
+export default LocationPage;
+
+export const LocationPageData = graphql`
+	{
+		allMarkdownRemark(
+			limit: 1000
+			filter: {
+				fileAbsolutePath: { regex: "/pages/dynamic/locations//" }
+			}
+		) {
+			edges {
+				node {
+					frontmatter {
+						path
+						name
+						name
+						carousel_images
+						quick_facts {
 							name
-							name
-							carousel_images
-							quick_facts {
-								name
-								icon
-								items
-							}
+							icon
+							items
 						}
+						post_content
 					}
 				}
 			}
 		}
-	`);
-
-	const locationPageData = data.allMarkdownRemark.edges.find(
-		edge => edge.node.frontmatter.path === pagePath
-	).node.frontmatter;
-
-	return (
-		<Layout
-			isScrolled={true}
-			hasNavHero={true}
-			pageTitle={locationPageData.name}
-		>
-			<LocationPageTemplate locationPageData={locationPageData} />
-		</Layout>
-	);
-};
-
-export default LocationPage;
+	}
+`;

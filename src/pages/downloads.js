@@ -42,7 +42,7 @@ const DownloadsPage = ({ data }) => {
 	// const { frontmatter } = data.markdownRemark;
 
 	return (
-		<Layout isScrolled={true} hasNavHero={true} pageTitle={'Contact Us'}>
+		<Layout isScrolled={true} hasNavHero={true} pageTitle={'Downloads'}>
 			<DownloadsTemplate />
 		</Layout>
 	);

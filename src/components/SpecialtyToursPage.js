@@ -1,5 +1,5 @@
-import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import React, { Fragment } from 'react';
+import { graphql } from 'gatsby';
 import Slick from 'react-slick';
 
 import Layout from 'src/components/Layout';
@@ -16,6 +16,7 @@ import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 export const SpecialtyTourPageTemplate = ({
 	specialtyTourData,
 	allSpecialtyTourNavData,
+	previewData,
 }) => {
 	const slickSettings = {
 		autoplay: true,
@@ -27,10 +28,14 @@ export const SpecialtyTourPageTemplate = ({
 	return (
 		<Section>
 			<div className="columns is-multiline">
-				<div className="column is-3-desktop is-full-tablet">
-					<PostNavbar data={allSpecialtyTourNavData} />
-					<Testimonial />
-				</div>
+				{previewData ? null : (
+					<Fragment>
+						<div className="column is-3-desktop is-full-tablet">
+							<PostNavbar data={allSpecialtyTourNavData} />
+							<Testimonial />
+						</div>
+					</Fragment>
+				)}
 
 				<div className="column is-9-desktop is-full-tablet">
 					<div className="columns is-multiline">
@@ -212,70 +217,81 @@ export const SpecialtyTourPageTemplate = ({
 	);
 };
 
-const SpecialtyTourPage = ({ pageContext }) => {
-	const { pagePath } = pageContext;
+const SpecialtyTourPage = ({ data, pageContext, previewData }) => {
+	if (!previewData) {
+		const { pagePath } = pageContext;
 
-	const data = useStaticQuery(graphql`
-		{
-			allMarkdownRemark(
-				limit: 1000
-				filter: {
-					fileAbsolutePath: {
-						regex: "/pages/dynamic/programs/specialty-tours//"
-					}
+		const specialtyTourData = data.allMarkdownRemark.edges.find(
+			edge => edge.node.frontmatter.path === pagePath
+		).node.frontmatter;
+
+		const allSpecialtyTourNavData = data.allMarkdownRemark.edges.map(
+			edge => {
+				return {
+					path: `/programs/specialty-tours/${edge.node.frontmatter.path}`,
+					name: edge.node.frontmatter.name,
+				};
+			}
+		);
+
+		return (
+			<Layout
+				isScrolled={true}
+				hasNavHero={true}
+				hasNavButtons={true}
+				pageTitle={'Specialty Tours'}
+			>
+				<SpecialtyTourPageTemplate
+					specialtyTourData={specialtyTourData}
+					allSpecialtyTourNavData={allSpecialtyTourNavData}
+				/>
+			</Layout>
+		);
+	} else {
+		return (
+			<SpecialtyTourPageTemplate
+				specialtyTourData={previewData}
+				previewData={previewData}
+			/>
+		);
+	}
+};
+
+export default SpecialtyTourPage;
+
+export const SpecialityTourData = graphql`
+	{
+		allMarkdownRemark(
+			limit: 1000
+			filter: {
+				fileAbsolutePath: {
+					regex: "/pages/dynamic/programs/specialty-tours//"
 				}
-			) {
-				edges {
-					node {
-						frontmatter {
-							path
-							name
-							accommodations
-							activities_and_excursions
-							features
-							programDates {
-								arrive
-								depart
-							}
-							carousel_images
-							sampleCalendar
-							specialty_tour_description
-							programDetails {
-								duration
-								minimumAge
-								price
-							}
+			}
+		) {
+			edges {
+				node {
+					frontmatter {
+						path
+						name
+						accommodations
+						activities_and_excursions
+						features
+						programDates {
+							arrive
+							depart
+						}
+						carousel_images
+						sampleCalendar
+						specialty_tour_description
+						programDetails {
+							duration
+							minimumAge
+							price
 						}
 					}
 				}
 			}
 		}
-	`);
-
-	const specialtyTourData = data.allMarkdownRemark.edges.find(
-		edge => edge.node.frontmatter.path === pagePath
-	).node.frontmatter;
-
-	const allSpecialtyTourNavData = data.allMarkdownRemark.edges.map(edge => {
-		return {
-			path: `/programs/specialty-tours/${edge.node.frontmatter.path}`,
-			name: edge.node.frontmatter.name,
-		};
-	});
-
-	return (
-		<Layout
-			isScrolled={true}
-			hasNavHero={true}
-			hasNavButtons={true}
-			pageTitle={'Specialty Tours'}
-		>
-			<SpecialtyTourPageTemplate
-				specialtyTourData={specialtyTourData}
-				allSpecialtyTourNavData={allSpecialtyTourNavData}
-			/>
-		</Layout>
-	);
-};
-
-export default SpecialtyTourPage;
+	}
+`;

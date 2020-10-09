@@ -1,12 +1,29 @@
 import CMS from 'netlify-cms-app';
 
-import HomePagePreview from './preview-templates/HomePagePreview';
-import ProgramsPagePreview from './preview-templates/ProgramsPagePreview';
-import ApplicationLandingPreview from './preview-templates/ApplicationLandingPreview';
+import InPersonProgramsDynamicPagesPreview from './preview-templates/InPersonProgramsPagePreview';
+import LocationsDynamicPagesPreview from './preview-templates/LocationsDynamicPagesPreview';
+import SpecialtyToursDynamicPages from './preview-templates/SpecialtyToursDynamicPagesPreview';
+import OnlineProgramsDynamicPages from './preview-templates/OnlineProgramPagesPreview';
 
-CMS.registerPreviewTemplate('home', HomePagePreview);
-CMS.registerPreviewTemplate('programs', ProgramsPagePreview);
+CMS.registerPreviewTemplate(
+	'inPersonProgramsDynamicPages',
+	InPersonProgramsDynamicPagesPreview
+);
+CMS.registerPreviewTemplate(
+	'locationsDynamicPages',
+	LocationsDynamicPagesPreview
+);
+CMS.registerPreviewTemplate(
+	'specialtyToursDynamicPages',
+	SpecialtyToursDynamicPages
+);
+CMS.registerPreviewTemplate(
+	'onlineProgramsDynamicPages',
+	OnlineProgramsDynamicPages
+);
 
+// TODO: Figure out styles at some point
+// https://www.netlifycms.org/docs/beta-features/#raw-css-in-registerpreviewstyle
 // CMS.registerPreviewStyle('../styles/test.css');
 
 console.log(

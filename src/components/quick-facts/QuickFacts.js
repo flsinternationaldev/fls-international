@@ -4,6 +4,7 @@ import quickFactsStyles from './QuickFacts.module.scss';
 
 import MarkdownContent from '../MarkdownContent';
 
+console.log('quickFactsStyles', quickFactsStyles);
 const classMap = {
 	li: quickFactsStyles.fls__quickFactItem,
 };
@@ -11,7 +12,7 @@ const classMap = {
 export default function QuickFacts({ data }) {
 	return (
 		<div className={`${quickFactsStyles.fls__quickFacts} column is-full`}>
-			<h6 className="fls-post__title">Quick Facts</h6>
+			<h6 className="fls-post__subtitle">Quick Facts</h6>
 
 			{data.map(quickFact => (
 				<div

@@ -126,7 +126,7 @@ a {
 		left: 0;
 		top: 4.5px;
 		border-radius: 100%;
-		background-color: $fls-grey;
+		background-color: $fls-dark-blue;
 		height: 10px;
 		width: 10px;
 	}
@@ -838,6 +838,13 @@ a {
 	justify-content: center;
 	width: 100%;
 	background-color: #f5f5f5;
+}
+
+.fls__location-post-container {
+	iframe {
+		display: block;
+		margin: 0 auto;
+	}
 }
 
 .fls-post__hero,

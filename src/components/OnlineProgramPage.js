@@ -1,5 +1,5 @@
-import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import React, { Fragment } from 'react';
+import { graphql } from 'gatsby';
 
 import Layout from 'src/components/Layout';
 import Section from 'src/components/section/Section';
@@ -12,14 +12,19 @@ import 'slick-carousel/slick/slick.css';
 export const OnlineProgramPageTemplate = ({
 	programPageData,
 	allProgramNavData,
+	previewData,
 }) => {
 	return (
 		<Section>
 			<div className="columns is-multiline">
-				<div className="column is-3-desktop is-full-tablet">
-					<PostNavbar data={allProgramNavData} />
-					<Testimonial />
-				</div>
+				{previewData ? null : (
+					<Fragment>
+						<div className="column is-3-desktop is-full-tablet">
+							<PostNavbar data={allProgramNavData} />
+							<Testimonial />
+						</div>
+					</Fragment>
+				)}
 
 				<div className="column is-9-desktop is-full-tablet">
 					<div className="columns is-multiline">
@@ -87,64 +92,71 @@ export const OnlineProgramPageTemplate = ({
 	);
 };
 
-const OnlineProgramPage = ({ pageContext }) => {
-	const { pagePath } = pageContext;
+const OnlineProgramPage = ({ pageContext, previewData, data }) => {
+	if (!previewData) {
+		const { pagePath } = pageContext;
 
-	const data = useStaticQuery(graphql`
-		{
-			allMarkdownRemark(
-				limit: 1000
-				filter: {
-					fileAbsolutePath: {
-						regex: "/pages/dynamic/programs/online//"
-					}
-				}
-			) {
-				edges {
-					node {
-						frontmatter {
-							path
-							name
-							type
-							hero_image
-							programDetails {
-								hoursPerWeek
-								lessonsPerWeek
-								minutesPerLesson
-							}
-							program_post_content
-							program_features_content
+		const programPageData = data.allMarkdownRemark.edges.find(
+			edge => edge.node.frontmatter.path === pagePath
+		).node.frontmatter;
+
+		const allProgramNavData = data.allMarkdownRemark.edges.map(edge => {
+			return {
+				path: `/programs/online/${edge.node.frontmatter.path}`,
+				name: edge.node.frontmatter.name,
+			};
+		});
+
+		return (
+			<Layout
+				isScrolled={true}
+				hasNavHero={true}
+				hasNavButtons={true}
+				pageTitle={'Online Programs'}
+			>
+				<OnlineProgramPageTemplate
+					programPageData={programPageData}
+					allProgramNavData={allProgramNavData}
+				/>
+			</Layout>
+		);
+	} else {
+		return (
+			<OnlineProgramPageTemplate
+				programPageData={previewData}
+				previewData={previewData}
+			/>
+		);
+	}
+};
+
+export default OnlineProgramPage;
+
+export const OnlineProgramData = graphql`
+	{
+		allMarkdownRemark(
+			limit: 1000
+			filter: {
+				fileAbsolutePath: { regex: "/pages/dynamic/programs/online//" }
+			}
+		) {
+			edges {
+				node {
+					frontmatter {
+						path
+						name
+						type
+						hero_image
+						programDetails {
+							hoursPerWeek
+							lessonsPerWeek
+							minutesPerLesson
 						}
+						program_post_content
+						program_features_content
 					}
 				}
 			}
 		}
-	`);
-
-	const programPageData = data.allMarkdownRemark.edges.find(
-		edge => edge.node.frontmatter.path === pagePath
-	).node.frontmatter;
-
-	const allProgramNavData = data.allMarkdownRemark.edges.map(edge => {
-		return {
-			path: `/programs/online/${edge.node.frontmatter.path}`,
-			name: edge.node.frontmatter.name,
-		};
-	});
-
-	return (
-		<Layout
-			isScrolled={true}
-			hasNavHero={true}
-			hasNavButtons={true}
-			pageTitle={'Online Programs'}
-		>
-			<OnlineProgramPageTemplate
-				programPageData={programPageData}
-				allProgramNavData={allProgramNavData}
-			/>
-		</Layout>
-	);
-};
-
-export default OnlineProgramPage;
+	}
+`;
