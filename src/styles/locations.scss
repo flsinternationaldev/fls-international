@@ -35,6 +35,7 @@ $fls-dark-blue: #457b9d;
 	justify-content: center;
 	flex-direction: column;
 	transition: all 0.5s ease 0s;
+	max-height: 195px;
 
 	&:after {
 		content: '';

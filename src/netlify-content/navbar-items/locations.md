@@ -1,5 +1,5 @@
 ---
-path: locations
+path: locations-centers
 pageName: Locations
 collectionName: locations
 collection-name: location-pages

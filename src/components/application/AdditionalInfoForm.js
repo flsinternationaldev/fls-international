@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import { RadioGroup, Radio } from 'react-radio-group';
+import ReactTooltip from 'react-tooltip';
 import { useStaticQuery, graphql } from 'gatsby';
 import Checkbox from 'rc-checkbox';
 
 import EstimatedPrices from 'src/components/application/EstimatedPrices';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 import {
 	snakeToCamel,
@@ -533,348 +537,56 @@ export default function AdditionalInfoForm({
 	const renderFormViews = programType => {
 		if (programType === 'in-person') {
 			return (
-				<div className="columns is-multiline">
-					<div className="column is-full">
-						<div className="application__header-container">
-							<h3 className="fls-post__title">Additional Info</h3>
-							<h3 className="application__total-price">
-								Total Price: ${calculatePrice(prices)}
-							</h3>
+				<Fragment>
+					<ReactTooltip type="info" effect="solid" />
+
+					<div className="columns is-multiline">
+						<div className="column is-full">
+							<div className="application__header-container">
+								<h3 className="fls-post__title">
+									Additional Info
+								</h3>
+
+								<h3 className="application__total-price">
+									Total Price: ${calculatePrice(prices)}
+								</h3>
+							</div>
 						</div>
-					</div>
-					<div className="column is-half">
-						<div className="application__label-container">
-							<label className="label label--application">
-								FLS Center
-							</label>
-						</div>
-
-						<Select
-							className="fls__select-container"
-							classNamePrefix={'fls'}
-							value={{
-								label: applicationData.center
-									? `${applicationData.center.centerName} @ ${applicationData.center.name}`
-									: 'Select a center.',
-								value: applicationData.center
-									? applicationData.center.centerName
-									: null,
-							}}
-							onChange={centerOption => {
-								handleCenterChange(centerOption);
-							}}
-							options={centerOptions}
-						/>
-					</div>
-					<div className="column is-half">
-						<div className="application__label-container">
-							<label className="label label--application">
-								Program
-							</label>
-							{applicationData.center ? null : (
-								<span className="label label--application fls--red">
-									Select a center first.
-								</span>
-							)}
-						</div>
-
-						<Select
-							className={`fls__select-container ${
-								!applicationData.center
-									? 'fls__select-container--disabled'
-									: ''
-							}`}
-							classNamePrefix={'fls'}
-							value={{
-								label: applicationData.program
-									? applicationData.program.name
-									: 'Select a program',
-								value: applicationData.program
-									? applicationData.program.name
-									: 'Select a program',
-							}}
-							onChange={handleProgramChange}
-							options={programOptions}
-							isDisabled={!applicationData.center}
-						/>
-					</div>
-
-					<div className="column is-half">
-						<div className="application__label-container">
-							<label className="label label--application">
-								Duration
-							</label>
-							{applicationData.program ? null : (
-								<span className="label label--application fls--red">
-									Select a program first.
-								</span>
-							)}
-						</div>
-
-						<Select
-							className={`fls__select-container ${
-								!applicationData.program
-									? 'fls__select-container--disabled'
-									: ''
-							}`}
-							classNamePrefix={'fls'}
-							value={{
-								label: applicationData.duration
-									? applicationData.duration.label
-									: 'Select a duration.',
-								value: applicationData.duration
-									? applicationData.duration.value
-									: null,
-							}}
-							onChange={handleDurationChange}
-							options={durationOptions}
-							isDisabled={!applicationData.program}
-						/>
-					</div>
-
-					<div className="column is-half">
-						<div className="application__label-container">
-							<label className="label label--application">
-								Housing Type
-							</label>
-							{applicationData.center ? null : (
-								<span className="label label--application fls--red">
-									Select a center first.
-								</span>
-							)}
-						</div>
-
-						<Select
-							className={`fls__select-container ${
-								!applicationData.center
-									? 'fls__select-container--disabled'
-									: ''
-							}`}
-							classNamePrefix={'fls'}
-							value={{
-								label: applicationData.housing
-									? applicationData.housing.name
-									: 'Select your housing type.',
-								value: applicationData.housing
-									? applicationData.housing.name
-									: null,
-							}}
-							onChange={handleHousingChange}
-							options={housingOptions}
-							isDisabled={!applicationData.center}
-						/>
-					</div>
-
-					{/* TODO: This field needs some serious validation */}
-					<div className="column is-half">
-						<div className="application__label-container">
-							<label className="label label--application">
-								Program Start Date
-							</label>
-							{applicationData.program ? null : (
-								<span className="label label--application fls--red">
-									Select a program first.
-								</span>
-							)}
-						</div>
-
-						<DatePicker
-							selected={applicationData.programStartDate}
-							onChange={date => {
-								handleBatchInputChange(
-									{
-										programStartDate: date,
-										programEndDate: (() => {
-											const clonedDate = new Date(date);
-
-											// Each 'week' needs to end on a friday, hence this weird math
-											return clonedDate.setDate(
-												clonedDate.getDate() +
-													(applicationData.duration
-														.value *
-														7 -
-														3)
-											);
-										})(),
-										// Default check in date to suinday before start of program
-										housingCheckInDate: (() => {
-											const clonedDate = new Date(date);
-
-											return clonedDate.setDate(
-												clonedDate.getDate() - 1
-											);
-										})(),
-										// Default checkout date to saturday after end of program
-										housingCheckOutDate: (() => {
-											const clonedDate = new Date(date);
-
-											return clonedDate.setDate(
-												clonedDate.getDate() +
-													(applicationData.duration
-														.value *
-														7 -
-														2)
-											);
-										})(),
-									},
-									'application'
-								);
-							}}
-							minDate={new Date()}
-							wrapperClassName={`fls__date-wrapper ${
-								!applicationData.duration
-									? 'fls__select-container--disabled'
-									: ''
-							}`}
-							className={'input fls__base-input'}
-							placeholderText={'Choose Your Start Date'}
-							filterDate={isMonday}
-							readOnly={!applicationData.duration}
-						/>
-					</div>
-
-					<div className="column is-half">
-						<div className="application__label-container">
-							<label className="label label--application">
-								Program End Date
-							</label>
-						</div>
-
-						<DatePicker
-							selected={applicationData.programEndDate}
-							wrapperClassName={`fls__date-wrapper fls__date-wrapper--read-only ${
-								!applicationData.duration
-									? 'fls__select-container--disabled'
-									: ''
-							}`}
-							className={'input fls__base-input'}
-							placeholderText={'Program End Date'}
-							readOnly={true}
-						/>
-					</div>
-
-					<div className="column is-half">
-						<div className="application__label-container">
-							<label className="label label--application">
-								Housing Check In Date
-							</label>
-
-							{applicationData.housing ? null : (
-								<span className="label label--application fls--red">
-									Select a housing type first.
-								</span>
-							)}
-						</div>
-
-						<DatePicker
-							selected={applicationData.housingCheckInDate}
-							wrapperClassName={`fls__date-wrapper fls__date-wrapper--read-only ${
-								!applicationData.housing
-									? 'fls__select-container--disabled'
-									: ''
-							}`}
-							className={'input fls__base-input'}
-							placeholderText={'Housing Check-in Date'}
-							readOnly={true}
-						/>
-					</div>
-
-					<div className="column is-half">
-						<div className="application__label-container">
-							<label className="label label--application">
-								Housing Check Out Date
-							</label>
-						</div>
-
-						<DatePicker
-							selected={applicationData.housingCheckOutDate}
-							className={'input fls__base-input'}
-							wrapperClassName={`fls__date-wrapper fls__date-wrapper--read-only ${
-								!applicationData.housing
-									? 'fls__select-container--disabled'
-									: ''
-							}`}
-							placeholderText={'Housing Check Out Date'}
-							readOnly={true}
-						/>
-					</div>
-
-					<div className="column is-full">
-						<label className="label label--application">
-							Extra Nights of Housing Required?
-						</label>
-						<RadioGroup
-							name="extra-housing"
-							selectedValue={applicationData.extraNights}
-							onChange={value => {
-								handleDataChange(
-									'extraNights',
-									value,
-									'application'
-								);
-							}}
-						>
-							<Radio value="needs-extra-housing" />
-							<span className="fls__radio-label">Yes</span>
-							<Radio value="no-extra-housing" />
-							<span className="fls__radio-label">No</span>
-						</RadioGroup>
-					</div>
-
-					{airportOptions.length ? (
 						<div className="column is-half">
-							<div className="label label--application">
-								Airport Transport
+							<div className="application__label-container">
+								<label className="label label--application">
+									FLS Center
+								</label>
 							</div>
 
-							<label className="checkbox">
-								<Checkbox
-									className="checkbox"
-									defaultChecked={
-										applicationData.airportPickUp
-									}
-									onChange={e =>
-										handleDataChange(
-											'airportPickUp',
-											e.target.checked,
-											'application'
-										)
-									}
-								/>
-								<span className="fls__radio-label">
-									Airport Pick Up
-								</span>
-							</label>
-
-							<label className="checkbox">
-								<Checkbox
-									className="checkbox"
-									defaultChecked={
-										applicationData.airportDropOff
-									}
-									onChange={e =>
-										handleDataChange(
-											'airportDropOff',
-											e.target.checked,
-											'application'
-										)
-									}
-								/>
-								<span className="fls__radio-label">
-									Airport Drop Off
-								</span>
-							</label>
+							<Select
+								className="fls__select-container"
+								classNamePrefix={'fls'}
+								value={{
+									label: applicationData.center
+										? `${applicationData.center.centerName} @ ${applicationData.center.name}`
+										: 'Select a center.',
+									value: applicationData.center
+										? applicationData.center.centerName
+										: null,
+								}}
+								onChange={centerOption => {
+									handleCenterChange(centerOption);
+								}}
+								options={centerOptions}
+							/>
 						</div>
-					) : null}
-
-					{applicationData.airportPickUp ||
-					applicationData.airportDropOff ? (
 						<div className="column is-half">
-							<label className="label label--application">
-								{applicationData.center
-									? 'Airport Options'
-									: 'Airport Options * - Select a center first.'}
-							</label>
+							<div className="application__label-container">
+								<label className="label label--application">
+									Program
+								</label>
+								{applicationData.center ? null : (
+									<span className="label label--application fls--red">
+										Select a center first.
+									</span>
+								)}
+							</div>
 
 							<Select
 								className={`fls__select-container ${
@@ -884,54 +596,483 @@ export default function AdditionalInfoForm({
 								}`}
 								classNamePrefix={'fls'}
 								value={{
-									label: applicationData.airport,
-									value: applicationData.airport,
+									label: applicationData.program
+										? applicationData.program.name
+										: 'Select a program',
+									value: applicationData.program
+										? applicationData.program.name
+										: 'Select a program',
 								}}
-								onChange={handleAirportChange}
-								options={airportOptions}
+								onChange={handleProgramChange}
+								options={programOptions}
+								isDisabled={!applicationData.center}
 							/>
 						</div>
-					) : null}
 
-					<div className="column is-full">
-						{/* TODO: Should have a helpful tooltip */}
-						<label className="label label--application">
-							Do you require an I-20 Form?
-						</label>
+						<div className="column is-half">
+							<div className="application__label-container">
+								<label className="label label--application">
+									Duration
+								</label>
+								{applicationData.program ? null : (
+									<span className="label label--application fls--red">
+										Select a program first.
+									</span>
+								)}
+							</div>
 
-						<RadioGroup
-							selectedValue={applicationData.requiresI20}
-							onChange={value => {
-								handleDataChange(
-									'requiresI20',
-									value,
-									'application'
-								);
-							}}
-						>
-							<Radio value="yes" />
-							<span className="fls__radio-label">Yes</span>
-							<Radio value="no" />
-							<span className="fls__radio-label">No</span>
-						</RadioGroup>
-					</div>
+							<Select
+								className={`fls__select-container ${
+									!applicationData.program
+										? 'fls__select-container--disabled'
+										: ''
+								}`}
+								classNamePrefix={'fls'}
+								value={{
+									label: applicationData.duration
+										? applicationData.duration.label
+										: 'Select a duration.',
+									value: applicationData.duration
+										? applicationData.duration.value
+										: null,
+								}}
+								onChange={handleDurationChange}
+								options={durationOptions}
+								isDisabled={!applicationData.program}
+							/>
+						</div>
 
-					{applicationData.requiresI20 === 'yes' ? (
+						<div className="column is-half">
+							<div className="application__label-container">
+								<label className="label label--application">
+									Housing Type
+								</label>
+								{applicationData.center ? null : (
+									<span className="label label--application fls--red">
+										Select a center first.
+									</span>
+								)}
+							</div>
+
+							<Select
+								className={`fls__select-container ${
+									!applicationData.center
+										? 'fls__select-container--disabled'
+										: ''
+								}`}
+								classNamePrefix={'fls'}
+								value={{
+									label: applicationData.housing
+										? applicationData.housing.name
+										: 'Select your housing type.',
+									value: applicationData.housing
+										? applicationData.housing.name
+										: null,
+								}}
+								onChange={handleHousingChange}
+								options={housingOptions}
+								isDisabled={!applicationData.center}
+							/>
+						</div>
+
+						{/* TODO: This field needs some serious validation */}
+						<div className="column is-half">
+							<div className="application__label-container">
+								<label className="label label--application">
+									Program Start Date
+									<FontAwesomeIcon
+										className="application__info-icon"
+										icon={faInfoCircle}
+										data-tip="In-person programs begin on Mondays."
+									/>
+								</label>
+
+								{applicationData.program ? null : (
+									<span className="label label--application fls--red">
+										Select a program first.
+									</span>
+								)}
+							</div>
+
+							<DatePicker
+								selected={applicationData.programStartDate}
+								onChange={date => {
+									handleBatchInputChange(
+										{
+											programStartDate: date,
+											programEndDate: (() => {
+												const clonedDate = new Date(
+													date
+												);
+
+												// Each 'week' needs to end on a friday, hence this weird math
+												return clonedDate.setDate(
+													clonedDate.getDate() +
+														(applicationData
+															.duration.value *
+															7 -
+															3)
+												);
+											})(),
+											// Default check in date to suinday before start of program
+											housingCheckInDate: (() => {
+												const clonedDate = new Date(
+													date
+												);
+
+												return clonedDate.setDate(
+													clonedDate.getDate() - 1
+												);
+											})(),
+											// Default checkout date to saturday after end of program
+											housingCheckOutDate: (() => {
+												const clonedDate = new Date(
+													date
+												);
+
+												return clonedDate.setDate(
+													clonedDate.getDate() +
+														(applicationData
+															.duration.value *
+															7 -
+															2)
+												);
+											})(),
+										},
+										'application'
+									);
+								}}
+								minDate={new Date()}
+								wrapperClassName={`fls__date-wrapper ${
+									!applicationData.duration
+										? 'fls__select-container--disabled'
+										: ''
+								}`}
+								className={'input fls__base-input'}
+								placeholderText={'Choose Your Start Date'}
+								filterDate={isMonday}
+								readOnly={!applicationData.duration}
+							/>
+						</div>
+
+						<div className="column is-half">
+							<div className="application__label-container">
+								<label className="label label--application">
+									Program End Date
+								</label>
+							</div>
+
+							<DatePicker
+								selected={applicationData.programEndDate}
+								wrapperClassName={`fls__date-wrapper fls__date-wrapper--read-only ${
+									!applicationData.duration
+										? 'fls__select-container--disabled'
+										: ''
+								}`}
+								className={'input fls__base-input'}
+								placeholderText={'Program End Date'}
+								readOnly={true}
+							/>
+						</div>
+
+						<div className="column is-half">
+							<div className="application__label-container">
+								<label className="label label--application">
+									Housing Check In Date
+								</label>
+
+								{applicationData.housing ? null : (
+									<span className="label label--application fls--red">
+										Select a housing type first.
+									</span>
+								)}
+							</div>
+
+							<DatePicker
+								selected={applicationData.housingCheckInDate}
+								wrapperClassName={`fls__date-wrapper fls__date-wrapper--read-only ${
+									!applicationData.housing
+										? 'fls__select-container--disabled'
+										: ''
+								}`}
+								className={'input fls__base-input'}
+								placeholderText={'Housing Check-in Date'}
+								readOnly={true}
+							/>
+						</div>
+
+						<div className="column is-half">
+							<div className="application__label-container">
+								<label className="label label--application">
+									Housing Check Out Date
+								</label>
+							</div>
+
+							<DatePicker
+								selected={applicationData.housingCheckOutDate}
+								className={'input fls__base-input'}
+								wrapperClassName={`fls__date-wrapper fls__date-wrapper--read-only ${
+									!applicationData.housing
+										? 'fls__select-container--disabled'
+										: ''
+								}`}
+								placeholderText={'Housing Check Out Date'}
+								readOnly={true}
+							/>
+						</div>
+
+						<div className="column is-full">
+							<label className="label label--application">
+								Extra Nights of Housing Required?
+							</label>
+							<RadioGroup
+								name="extra-housing"
+								selectedValue={applicationData.extraNights}
+								onChange={value => {
+									handleDataChange(
+										'extraNights',
+										value,
+										'application'
+									);
+								}}
+							>
+								<Radio value="needs-extra-housing" />
+								<span className="fls__radio-label">Yes</span>
+								<Radio value="no-extra-housing" />
+								<span className="fls__radio-label">No</span>
+							</RadioGroup>
+						</div>
+
+						{airportOptions.length ? (
+							<div className="column is-half">
+								<div className="label label--application">
+									Airport Transport
+								</div>
+
+								<label className="checkbox">
+									<Checkbox
+										className="checkbox"
+										defaultChecked={
+											applicationData.airportPickUp
+										}
+										onChange={e =>
+											handleDataChange(
+												'airportPickUp',
+												e.target.checked,
+												'application'
+											)
+										}
+									/>
+									<span className="fls__radio-label">
+										Airport Pick Up
+									</span>
+								</label>
+
+								<label className="checkbox">
+									<Checkbox
+										className="checkbox"
+										defaultChecked={
+											applicationData.airportDropOff
+										}
+										onChange={e =>
+											handleDataChange(
+												'airportDropOff',
+												e.target.checked,
+												'application'
+											)
+										}
+									/>
+									<span className="fls__radio-label">
+										Airport Drop Off
+									</span>
+								</label>
+							</div>
+						) : null}
+
+						{applicationData.airportPickUp ||
+						applicationData.airportDropOff ? (
+							<div className="column is-half">
+								<label className="label label--application">
+									{applicationData.center
+										? 'Airport Options'
+										: 'Airport Options * - Select a center first.'}
+								</label>
+
+								<Select
+									className={`fls__select-container ${
+										!applicationData.center
+											? 'fls__select-container--disabled'
+											: ''
+									}`}
+									classNamePrefix={'fls'}
+									value={{
+										label: applicationData.airport,
+										value: applicationData.airport,
+									}}
+									onChange={handleAirportChange}
+									options={airportOptions}
+								/>
+							</div>
+						) : null}
+
 						<div className="column is-full">
 							{/* TODO: Should have a helpful tooltip */}
 							<label className="label label--application">
-								Would you like your I-20 Form and acceptance
-								documents to be sent by Express Mail?
+								Do you require an I-20 Form?
+								<FontAwesomeIcon
+									className="application__info-icon"
+									icon={faInfoCircle}
+									data-tip={`As of July 1, 2016, the ${(
+										<a
+											href="https://studyinthestates.dhs.gov/sites/default/files/I-20_Active.pdf"
+											target="_blank"
+										>
+											redesigned Form I-20
+										</a>
+									)} is required for all F and M nonimmigrant visa applications, entry into the United States, travel and applications for nonimmigrant benefits. The previous version of the Form I-20 (with a barcode) is now invalid.`}
+								/>
 							</label>
 
 							<RadioGroup
-								selectedValue={applicationData.expressMail}
+								selectedValue={applicationData.requiresI20}
 								onChange={value => {
-									const expressMailData = generalFeesData.find(
+									handleDataChange(
+										'requiresI20',
+										value,
+										'application'
+									);
+								}}
+							>
+								<Radio value="yes" />
+								<span className="fls__radio-label">Yes</span>
+								<Radio value="no" />
+								<span className="fls__radio-label">No</span>
+							</RadioGroup>
+						</div>
+
+						{applicationData.requiresI20 === 'yes' ? (
+							<div className="column is-full">
+								{/* TODO: Should have a helpful tooltip */}
+								<label className="label label--application">
+									Would you like your I-20 Form and acceptance
+									documents to be sent by Express Mail?
+								</label>
+
+								<RadioGroup
+									selectedValue={applicationData.expressMail}
+									onChange={value => {
+										const expressMailData = generalFeesData.find(
+											generalFee =>
+												generalFee.name
+													.toLowerCase()
+													.includes('express')
+										);
+
+										if (value === 'yes') {
+											// TODO: Looking for the word 'health' in the name is far from the most robust way of finding this specific general fee
+											if (
+												!prices.find(
+													priceItem =>
+														priceItem.type ===
+															'general fees' &&
+														priceItem.label
+															.toLowerCase()
+															.includes('express')
+												)
+											) {
+												prices.push({
+													type: 'general fees',
+													label: expressMailData.name,
+													priceDetails: {
+														price:
+															expressMailData
+																.priceDetails[0]
+																.price,
+														duration: 1,
+														payPeriod:
+															expressMailData
+																.priceDetails[0]
+																.payPeriod,
+													},
+												});
+
+												setPrices(prices);
+											}
+										} else if (value === 'no') {
+											setPrices(
+												removePrices(
+													prices,
+													['general fees'],
+													priceItem =>
+														!priceItem.label
+															.toLowerCase()
+															.includes('express')
+												)
+											);
+										}
+
+										handleDataChange(
+											'expressMail',
+											value,
+											'application'
+										);
+									}}
+								>
+									<Radio value="yes" />
+									<span className="fls__radio-label">
+										Yes
+									</span>
+									<Radio value="no" />
+									<span className="fls__radio-label">No</span>
+								</RadioGroup>
+							</div>
+						) : null}
+
+						<div className="column is-full">
+							<label className="label label--application">
+								Are you a transfer student?
+							</label>
+
+							<RadioGroup
+								selectedValue={applicationData.transferStudent}
+								onChange={value => {
+									handleDataChange(
+										'transferStudent',
+										value,
+										'application'
+									);
+								}}
+							>
+								<Radio value="yes" />
+								<span className="fls__radio-label">Yes</span>
+								<Radio value="no" />
+								<span className="fls__radio-label">No</span>
+							</RadioGroup>
+						</div>
+
+						<div className="column is-full">
+							{/* TODO: Should have a helpful tooltip */}
+							<label className="label label--application">
+								{applicationData.program
+									? 'Would you like to purchase health insurance through FLS?'
+									: 'Would you like to purchase health insurance through FLS? - Select a duration first.'}
+							</label>
+
+							<RadioGroup
+								className={`fls-input__radio-group ${
+									!applicationData.duration
+										? 'fls-input__radio-group--disabled'
+										: ''
+								}`}
+								selectedValue={
+									applicationData.buyingHealthInsurance
+								}
+								onChange={value => {
+									const healthInsuranceData = generalFeesData.find(
 										generalFee =>
 											generalFee.name
 												.toLowerCase()
-												.includes('express')
+												.includes('health')
 									);
 
 									if (value === 'yes') {
@@ -943,20 +1084,22 @@ export default function AdditionalInfoForm({
 														'general fees' &&
 													priceItem.label
 														.toLowerCase()
-														.includes('express')
+														.includes('health')
 											)
 										) {
 											prices.push({
 												type: 'general fees',
-												label: expressMailData.name,
+												label: healthInsuranceData.name,
 												priceDetails: {
 													price:
-														expressMailData
+														healthInsuranceData
 															.priceDetails[0]
 															.price,
-													duration: 1,
+													duration:
+														applicationData.duration
+															.value || 0,
 													payPeriod:
-														expressMailData
+														healthInsuranceData
 															.priceDetails[0]
 															.payPeriod,
 												},
@@ -972,13 +1115,13 @@ export default function AdditionalInfoForm({
 												priceItem =>
 													!priceItem.label
 														.toLowerCase()
-														.includes('express')
+														.includes('health')
 											)
 										);
 									}
 
 									handleDataChange(
-										'expressMail',
+										'buyingHealthInsurance',
 										value,
 										'application'
 									);
@@ -990,241 +1133,143 @@ export default function AdditionalInfoForm({
 								<span className="fls__radio-label">No</span>
 							</RadioGroup>
 						</div>
-					) : null}
 
-					<div className="column is-full">
-						<label className="label label--application">
-							Are you a transfer student?
-						</label>
+						<div className="column is-full">
+							{/* TODO: Should have a helpful tooltip */}
+							<label className="label label--application">
+								{/* TODO: If chosen, should this actually add $350 to the final billing? */}
+								Would you like FLS to process the $350 SEVIS
+								Application Fee for you?
+							</label>
 
-						<RadioGroup
-							selectedValue={applicationData.transferStudent}
-							onChange={value => {
-								handleDataChange(
-									'transferStudent',
-									value,
-									'application'
-								);
-							}}
-						>
-							<Radio value="yes" />
-							<span className="fls__radio-label">Yes</span>
-							<Radio value="no" />
-							<span className="fls__radio-label">No</span>
-						</RadioGroup>
-					</div>
-
-					<div className="column is-full">
-						{/* TODO: Should have a helpful tooltip */}
-						<label className="label label--application">
-							{applicationData.program
-								? 'Would you like to purchase health insurance through FLS?'
-								: 'Would you like to purchase health insurance through FLS? - Select a duration first.'}
-						</label>
-
-						<RadioGroup
-							className={`fls-input__radio-group ${
-								!applicationData.duration
-									? 'fls-input__radio-group--disabled'
-									: ''
-							}`}
-							selectedValue={
-								applicationData.buyingHealthInsurance
-							}
-							onChange={value => {
-								const healthInsuranceData = generalFeesData.find(
-									generalFee =>
-										generalFee.name
-											.toLowerCase()
-											.includes('health')
-								);
-
-								if (value === 'yes') {
-									// TODO: Looking for the word 'health' in the name is far from the most robust way of finding this specific general fee
-									if (
-										!prices.find(
-											priceItem =>
-												priceItem.type ===
-													'general fees' &&
-												priceItem.label
-													.toLowerCase()
-													.includes('health')
-										)
-									) {
-										prices.push({
-											type: 'general fees',
-											label: healthInsuranceData.name,
-											priceDetails: {
-												price:
-													healthInsuranceData
-														.priceDetails[0].price,
-												duration:
-													applicationData.duration
-														.value || 0,
-												payPeriod:
-													healthInsuranceData
-														.priceDetails[0]
-														.payPeriod,
-											},
-										});
-
-										setPrices(prices);
-									}
-								} else if (value === 'no') {
-									setPrices(
-										removePrices(
-											prices,
-											['general fees'],
-											priceItem =>
-												!priceItem.label
-													.toLowerCase()
-													.includes('health')
-										)
-									);
+							<RadioGroup
+								selectedValue={
+									applicationData.processSEVISAppFee
 								}
-
-								handleDataChange(
-									'buyingHealthInsurance',
-									value,
-									'application'
-								);
-							}}
-						>
-							<Radio value="yes" />
-							<span className="fls__radio-label">Yes</span>
-							<Radio value="no" />
-							<span className="fls__radio-label">No</span>
-						</RadioGroup>
-					</div>
-
-					<div className="column is-full">
-						{/* TODO: Should have a helpful tooltip */}
-						<label className="label label--application">
-							{/* TODO: If chosen, should this actually add $350 to the final billing? */}
-							Would you like FLS to process the $350 SEVIS
-							Application Fee for you?
-						</label>
-
-						<RadioGroup
-							selectedValue={applicationData.processSEVISAppFee}
-							onChange={value => {
-								handleDataChange(
-									'processSEVISAppFee',
-									value,
-									'application'
-								);
-							}}
-							onChange={value => {
-								const sevisAppData = generalFeesData.find(
-									generalFee =>
-										generalFee.name
-											.toLowerCase()
-											.includes('sevis')
-								);
-
-								if (value === 'yes') {
-									// TODO: Looking for the word 'SEVIS' in the name is far from the most robust way of finding this specific general fee
-									if (
-										!prices.find(
-											priceItem =>
-												priceItem.type ===
-													'general fees' &&
-												priceItem.label
-													.toLowerCase()
-													.includes('sevis')
-										)
-									) {
-										prices.push({
-											type: 'general fees',
-											label: sevisAppData.name,
-											priceDetails: {
-												price:
-													sevisAppData.priceDetails[0]
-														.price,
-												duration: 1,
-												payPeriod:
-													sevisAppData.priceDetails[0]
-														.payPeriod,
-											},
-										});
-
-										setPrices(prices);
-									}
-								} else if (value === 'no') {
-									setPrices(
-										removePrices(
-											prices,
-											['general fees'],
-											priceItem =>
-												!priceItem.label
-													.toLowerCase()
-													.includes('sevis')
-										)
+								onChange={value => {
+									handleDataChange(
+										'processSEVISAppFee',
+										value,
+										'application'
 									);
+								}}
+								onChange={value => {
+									const sevisAppData = generalFeesData.find(
+										generalFee =>
+											generalFee.name
+												.toLowerCase()
+												.includes('sevis')
+									);
+
+									if (value === 'yes') {
+										// TODO: Looking for the word 'SEVIS' in the name is far from the most robust way of finding this specific general fee
+										if (
+											!prices.find(
+												priceItem =>
+													priceItem.type ===
+														'general fees' &&
+													priceItem.label
+														.toLowerCase()
+														.includes('sevis')
+											)
+										) {
+											prices.push({
+												type: 'general fees',
+												label: sevisAppData.name,
+												priceDetails: {
+													price:
+														sevisAppData
+															.priceDetails[0]
+															.price,
+													duration: 1,
+													payPeriod:
+														sevisAppData
+															.priceDetails[0]
+															.payPeriod,
+												},
+											});
+
+											setPrices(prices);
+										}
+									} else if (value === 'no') {
+										setPrices(
+											removePrices(
+												prices,
+												['general fees'],
+												priceItem =>
+													!priceItem.label
+														.toLowerCase()
+														.includes('sevis')
+											)
+										);
+									}
+
+									handleDataChange(
+										'processSEVISAppFee',
+										value,
+										'application'
+									);
+								}}
+							>
+								<Radio value="yes" />
+								<span className="fls__radio-label">Yes</span>
+								<Radio value="no" />
+								<span className="fls__radio-label">No</span>
+							</RadioGroup>
+						</div>
+
+						<div className="column is-full">
+							{/* TODO: Should have a helpful tooltip */}
+							<label className="label label--application">
+								Would you like FLS to provide Unaccompanied
+								Minor Service?
+							</label>
+
+							<RadioGroup
+								selectedValue={
+									applicationData.unaccompaniedMinorService
 								}
+								onChange={value => {
+									handleDataChange(
+										'unaccompaniedMinorService',
+										value,
+										'application'
+									);
+								}}
+							>
+								<Radio value="yes" />
+								<span className="fls__radio-label">Yes</span>
+								<Radio value="no" />
+								<span className="fls__radio-label">No</span>
+							</RadioGroup>
+						</div>
 
-								handleDataChange(
-									'processSEVISAppFee',
-									value,
-									'application'
-								);
-							}}
-						>
-							<Radio value="yes" />
-							<span className="fls__radio-label">Yes</span>
-							<Radio value="no" />
-							<span className="fls__radio-label">No</span>
-						</RadioGroup>
+						<EstimatedPrices prices={prices} />
+
+						<div className="column is-4">
+							<button
+								onClick={previousStep}
+								className="fls__button"
+							>
+								Previous
+							</button>
+						</div>
+
+						{/* TODO: This works for now... but it's probably not the best implementation */}
+						<div className="column is-4"></div>
+
+						<div className="column is-4">
+							<button
+								onClick={() => {
+									nextStep();
+								}}
+								className="fls__button"
+							>
+								Save & Continue
+							</button>
+						</div>
 					</div>
-
-					<div className="column is-full">
-						{/* TODO: Should have a helpful tooltip */}
-						<label className="label label--application">
-							Would you like FLS to provide Unaccompanied Minor
-							Service?
-						</label>
-
-						<RadioGroup
-							selectedValue={
-								applicationData.unaccompaniedMinorService
-							}
-							onChange={value => {
-								handleDataChange(
-									'unaccompaniedMinorService',
-									value,
-									'application'
-								);
-							}}
-						>
-							<Radio value="yes" />
-							<span className="fls__radio-label">Yes</span>
-							<Radio value="no" />
-							<span className="fls__radio-label">No</span>
-						</RadioGroup>
-					</div>
-
-					<EstimatedPrices prices={prices} />
-
-					<div className="column is-4">
-						<button onClick={previousStep} className="fls__button">
-							Previous
-						</button>
-					</div>
-
-					{/* TODO: This works for now... but it's probably not the best implementation */}
-					<div className="column is-4"></div>
-
-					<div className="column is-4">
-						<button
-							onClick={() => {
-								nextStep();
-							}}
-							className="fls__button"
-						>
-							Save & Continue
-						</button>
-					</div>
-				</div>
+				</Fragment>
 			);
 		}
 	};

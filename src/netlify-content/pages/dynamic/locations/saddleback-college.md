@@ -1,6 +1,8 @@
 ---
-path: orange-county
+path: orange-county-ca
 name: Orange County, CA
+centerNameRelation:
+    - Saddleback College
 description: Located in sunny Orange County, Saddleback College has been a top
     choice in education since 1968 on a beautiful campus near picture-perfect
     beaches.

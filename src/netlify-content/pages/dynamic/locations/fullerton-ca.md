@@ -1,6 +1,8 @@
 ---
-path: orange-county-ca
-name: Orange County, CA
+path: fullerton-ca
+name: Fullerton, CA
+centerNameRelation:
+    - CSU
 description: Part of the excellent California State University system, the
     campus hosts many of our popular camps on their attractive campus just minutes
     from Disneyland.

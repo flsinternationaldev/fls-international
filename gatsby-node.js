@@ -37,7 +37,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	const locationPageTemplate = path.resolve(`src/components/LocationPage.js`);
 
 	locations.data.allMarkdownRemark.edges.forEach(({ node }) => {
-		const pagePath = `locations/${node.frontmatter.path}`;
+		// TODO: For some unknown god damn reasons, naming the folder 'locations' in pages ... no longer works?
+		const pagePath = `locations-centers/${node.frontmatter.path}`;
 
 		createPage({
 			path: pagePath,

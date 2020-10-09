@@ -86,7 +86,7 @@ export default function Card({
 						alt={`${cardData.name} background image`}
 					/>
 					<Link
-						to={`/locations/${cardData.path}`}
+						to={`/locations-centers/${cardData.path}`}
 						className="fls__button fls__button--card fls__button--locations-card"
 					>
 						Read More
@@ -100,7 +100,9 @@ export default function Card({
 							: 'fls__location-copy-container--post'
 					}`}
 				>
-					<h3 className="fls__location-title">{cardData.pageName}</h3>
+					<h3 className="fls__location-title">
+						{cardData.centerNameRelation[0]}
+					</h3>
 					<h4 className="fls-location__subtitle">{cardData.name}</h4>
 
 					<p className="fls__location-copy">{cardData.description}</p>

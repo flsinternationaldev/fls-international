@@ -263,6 +263,10 @@ a {
 .application__label-container {
 	display: flex;
 	justify-content: space-between;
+
+	@media only screen and (min-width: 768px) {
+		flex-direction: column;
+	}
 }
 
 .application__label-container {
@@ -277,6 +281,10 @@ a {
 	&:hover {
 		color: $fls-red !important;
 	}
+}
+
+.application__info-icon {
+	margin-left: 6px;
 }
 
 .fls__link--alt {

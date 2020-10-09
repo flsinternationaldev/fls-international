@@ -120,7 +120,7 @@ collections:
       label: 'Locations Dynamic Pages'
       create: true
       folder: 'src/netlify-content/pages/dynamic/locations'
-      summary: '{{name}} - {{centerName}}'
+      summary: '{{name}} - {{centerNameRelation}}'
       label_singular: 'location dynamic page'
       fields:
           - {
