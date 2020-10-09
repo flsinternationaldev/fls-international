@@ -4,7 +4,6 @@ import quickFactsStyles from './QuickFacts.module.scss';
 
 import MarkdownContent from '../MarkdownContent';
 
-console.log('quickFactsStyles', quickFactsStyles);
 const classMap = {
 	li: quickFactsStyles.fls__quickFactItem,
 };

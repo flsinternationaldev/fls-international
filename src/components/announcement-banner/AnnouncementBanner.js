@@ -3,12 +3,23 @@ import announcementBannerStyles from './AnnouncementBanner.module.scss';
 import 'animate.css';
 
 export default function AnnouncementBanner() {
-	// Love me a React Hook
-	const [isAnnouncementBannerOpen, setIsAnnouncementBannerOpen] = useState(
-		true
+	const lsIsAnnouncementBannerOpen = localStorage.getItem(
+		'isAnnouncementBannerOpen'
 	);
 
-	const closeAnnouncementBanner = () => setIsAnnouncementBannerOpen(false);
+	// Love me a React Hook
+	const [isAnnouncementBannerOpen, setIsAnnouncementBannerOpen] = useState(
+		lsIsAnnouncementBannerOpen !== null
+			? lsIsAnnouncementBannerOpen == 'true'
+			: true
+	);
+
+	console.log('locally stored');
+
+	const closeAnnouncementBanner = () => {
+		localStorage.setItem('isAnnouncementBannerOpen', false);
+		setIsAnnouncementBannerOpen(false);
+	};
 
 	return (
 		// TODO: Might be nice to have some kind of session variable that keeps track of whether or not this has been closed

@@ -205,12 +205,19 @@ export default function AdditionalInfoForm({
 	const [housingOptions, setHousingOptions] = useState([]);
 	const [airportOptions, setAirportOptions] = useState([]);
 
-	const centerOptions = centersData.map(center => {
-		return {
-			value: center.centerName,
-			label: `${center.centerName} @ ${center.name}`,
-		};
-	});
+	// Prune out any centers that have no in person programs
+	const centerOptions = centersData
+		.map(center => {
+			return {
+				value: center.centerName,
+				label: `${center.centerName} @ ${center.name}`,
+			};
+		})
+		.filter(center =>
+			programsData.some(program =>
+				program.centerNameRelation.includes(center.value)
+			)
+		);
 
 	// TODO: DRY up these functions
 	const handleCenterChange = centerChange => {
@@ -538,7 +545,14 @@ export default function AdditionalInfoForm({
 		if (programType === 'in-person') {
 			return (
 				<Fragment>
-					<ReactTooltip type="info" effect="solid" />
+					<ReactTooltip
+						type="info"
+						effect="solid"
+						html={true}
+						multiline={true}
+						className="fls__tooltip"
+						clickable={true}
+					/>
 
 					<div className="columns is-multiline">
 						<div className="column is-full">
@@ -552,7 +566,8 @@ export default function AdditionalInfoForm({
 								</h3>
 							</div>
 						</div>
-						<div className="column is-half">
+
+						<div className="column is-full-tablet is-half-desktop">
 							<div className="application__label-container">
 								<label className="label label--application">
 									FLS Center
@@ -576,7 +591,8 @@ export default function AdditionalInfoForm({
 								options={centerOptions}
 							/>
 						</div>
-						<div className="column is-half">
+
+						<div className="column is-full-tablet is-half-desktop">
 							<div className="application__label-container">
 								<label className="label label--application">
 									Program
@@ -609,7 +625,7 @@ export default function AdditionalInfoForm({
 							/>
 						</div>
 
-						<div className="column is-half">
+						<div className="column is-full-tablet is-half-desktop">
 							<div className="application__label-container">
 								<label className="label label--application">
 									Duration
@@ -642,7 +658,7 @@ export default function AdditionalInfoForm({
 							/>
 						</div>
 
-						<div className="column is-half">
+						<div className="column is-full-tablet is-half-desktop">
 							<div className="application__label-container">
 								<label className="label label--application">
 									Housing Type
@@ -676,7 +692,7 @@ export default function AdditionalInfoForm({
 						</div>
 
 						{/* TODO: This field needs some serious validation */}
-						<div className="column is-half">
+						<div className="column is-full-tablet is-half-desktop">
 							<div className="application__label-container">
 								<label className="label label--application">
 									Program Start Date
@@ -755,7 +771,7 @@ export default function AdditionalInfoForm({
 							/>
 						</div>
 
-						<div className="column is-half">
+						<div className="column is-full-tablet is-half-desktop">
 							<div className="application__label-container">
 								<label className="label label--application">
 									Program End Date
@@ -775,10 +791,15 @@ export default function AdditionalInfoForm({
 							/>
 						</div>
 
-						<div className="column is-half">
+						<div className="column is-full-tablet is-half-desktop">
 							<div className="application__label-container">
 								<label className="label label--application">
 									Housing Check In Date
+									<FontAwesomeIcon
+										className="application__info-icon"
+										icon={faInfoCircle}
+										data-tip={`Check in is the Sunday before the program start date. If you need different accommodations, please select "Extra Nights of Housing Required" below.`}
+									/>
 								</label>
 
 								{applicationData.housing ? null : (
@@ -801,10 +822,15 @@ export default function AdditionalInfoForm({
 							/>
 						</div>
 
-						<div className="column is-half">
+						<div className="column is-full-tablet is-half-desktop">
 							<div className="application__label-container">
 								<label className="label label--application">
 									Housing Check Out Date
+									<FontAwesomeIcon
+										className="application__info-icon"
+										icon={faInfoCircle}
+										data-tip={`Check out is the Saturday after the program end date. If you need different accommodations, please select "Extra Nights of Housing Required" below.`}
+									/>
 								</label>
 							</div>
 
@@ -922,14 +948,7 @@ export default function AdditionalInfoForm({
 								<FontAwesomeIcon
 									className="application__info-icon"
 									icon={faInfoCircle}
-									data-tip={`As of July 1, 2016, the ${(
-										<a
-											href="https://studyinthestates.dhs.gov/sites/default/files/I-20_Active.pdf"
-											target="_blank"
-										>
-											redesigned Form I-20
-										</a>
-									)} is required for all F and M nonimmigrant visa applications, entry into the United States, travel and applications for nonimmigrant benefits. The previous version of the Form I-20 (with a barcode) is now invalid.`}
+									data-tip="As of July 1, 2016, the redesigned Form I-20 is required for all F and M nonimmigrant visa applications, entry into the United States, travel and applications for nonimmigrant benefits. The previous version of the Form I-20 (with a barcode) is now invalid."
 								/>
 							</label>
 
@@ -1051,12 +1070,17 @@ export default function AdditionalInfoForm({
 						</div>
 
 						<div className="column is-full">
-							{/* TODO: Should have a helpful tooltip */}
-							<label className="label label--application">
-								{applicationData.program
-									? 'Would you like to purchase health insurance through FLS?'
-									: 'Would you like to purchase health insurance through FLS? - Select a duration first.'}
-							</label>
+							<div className="application__label-container">
+								<label className="label label--application">
+									Would you like to purchase health insurance
+									through FLS?
+								</label>
+								{applicationData.duration ? null : (
+									<span className="label label--application fls--red">
+										Select a duration first.
+									</span>
+								)}
+							</div>
 
 							<RadioGroup
 								className={`fls-input__radio-group ${

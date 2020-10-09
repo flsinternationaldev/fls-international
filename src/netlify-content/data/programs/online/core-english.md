@@ -1,7 +1,7 @@
 ---
 name: Core English
 onlineProgramType: Online Pathway Program
-duration:
+durationOptions:
     max-weeks: '13'
     exceed-max-weeks: true
     week-thresholds:
