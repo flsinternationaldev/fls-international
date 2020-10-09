@@ -1,6 +1,8 @@
 ---
 path: discover-boston
 name: Discover Boston
+centerNameRelation:
+    - Boston Commons
 programDates:
     - arrive: Jul 19th, 2020
       depart: Aug 8th, 2020

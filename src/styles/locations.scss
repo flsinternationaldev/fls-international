@@ -115,7 +115,7 @@ $fls-dark-blue: #457b9d;
 .fls__location-post-subtitle {
 	text-transform: none !important;
 	margin-bottom: 0.5rem;
-	font-weight: 400;
+	font-weight: 500;
 	line-height: 1.2;
 	font-size: 1rem;
 }
@@ -142,7 +142,7 @@ $fls-dark-blue: #457b9d;
 
 .fls__location-post-anchor-button {
 	&:hover {
-		background-color: #cc3333;
+		background-color: $fls-dark-blue;
 		color: white;
 	}
 }

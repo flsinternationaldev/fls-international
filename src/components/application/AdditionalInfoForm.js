@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 import {
-	snakeToCamel,
+	kebabToCamel,
 	formatEdges,
 	updatePrices,
 	removePrices,
@@ -191,7 +191,7 @@ export default function AdditionalInfoForm({
 	`);
 
 	const programsData = formatEdges(
-		data[snakeToCamel(applicationData.programType)]
+		data[kebabToCamel(applicationData.programType)]
 	);
 
 	const centersData = formatEdges(data.locations);

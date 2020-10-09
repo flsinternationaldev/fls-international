@@ -1,5 +1,9 @@
-export function snakeToCamel(str) {
+export function kebabToCamel(str) {
 	return str.replace(/-([a-z])/g, g => g[1].toUpperCase());
+}
+
+export function kebabToSnake(str) {
+	return str.replace(/-/g, '_');
 }
 
 // Takes the 'edges' array from a graphql, and returns a friendlier, flattened object

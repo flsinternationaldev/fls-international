@@ -1,5 +1,5 @@
-import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import React, { Fragment } from 'react';
+import { graphql } from 'gatsby';
 
 import Layout from 'src/components/Layout';
 import Section from 'src/components/section/Section';
@@ -12,13 +12,18 @@ import 'slick-carousel/slick/slick.css';
 export const InPersonProgramPageTemplate = ({
 	programPageData,
 	allProgramNavData,
+	isPreview,
 }) => {
 	return (
 		<Section>
 			<div className="columns is-multiline">
 				<div className="column is-3-desktop is-full-tablet">
-					<PostNavbar data={allProgramNavData} />
-					<Testimonial />
+					{isPreview ? null : (
+						<Fragment>
+							<PostNavbar data={allProgramNavData} />
+							<Testimonial />
+						</Fragment>
+					)}
 				</div>
 
 				<div className="column is-9-desktop is-full-tablet">
@@ -87,63 +92,79 @@ export const InPersonProgramPageTemplate = ({
 	);
 };
 
-const InPersonProgramPage = ({ pageContext }) => {
-	const { pagePath } = pageContext;
+const InPersonProgramPage = ({ data, pageContext, previewData }) => {
+	console.log('previewData', previewData);
 
-	const data = useStaticQuery(graphql`
-		{
-			allMarkdownRemark(
-				limit: 1000
-				filter: {
-					fileAbsolutePath: {
-						regex: "/pages/dynamic/programs/in-person//"
-					}
+	let programPageData, allProgramNavData;
+
+	if (!previewData) {
+		const { pagePath } = pageContext;
+
+		programPageData = data.allMarkdownRemark.edges.find(
+			edge => edge.node.frontmatter.path === pagePath
+		).node.frontmatter;
+
+		allProgramNavData = data.allMarkdownRemark.edges.map(edge => {
+			return {
+				path: `/programs/in-person/${edge.node.frontmatter.path}`,
+				name: edge.node.frontmatter.name,
+			};
+		});
+
+		return (
+			<Layout
+				isScrolled={true}
+				hasNavHero={true}
+				hasNavButtons={true}
+				pageTitle={'In-Person Programs'}
+			>
+				<InPersonProgramPageTemplate
+					programPageData={programPageData}
+					allProgramNavData={allProgramNavData}
+				/>
+			</Layout>
+		);
+	} else {
+		programPageData = previewData;
+
+		return (
+			<InPersonProgramPageTemplate
+				programPageData={programPageData}
+				allProgramNavData={allProgramNavData}
+				isPreview={true}
+			/>
+		);
+	}
+};
+
+export default InPersonProgramPage;
+
+export const InPersonProgramsPageData = graphql`
+	{
+		allMarkdownRemark(
+			limit: 1000
+			filter: {
+				fileAbsolutePath: {
+					regex: "/pages/dynamic/programs/in-person//"
 				}
-			) {
-				edges {
-					node {
-						frontmatter {
-							path
-							name
-							hero_image
-							programDetails {
-								hoursPerWeek
-								lessonsPerWeek
-								minutesPerLesson
-							}
-							program_post_content
-							program_features_content
+			}
+		) {
+			edges {
+				node {
+					frontmatter {
+						path
+						name
+						hero_image
+						programDetails {
+							hoursPerWeek
+							lessonsPerWeek
+							minutesPerLesson
 						}
+						program_post_content
+						program_features_content
 					}
 				}
 			}
 		}
-	`);
-
-	const programPageData = data.allMarkdownRemark.edges.find(
-		edge => edge.node.frontmatter.path === pagePath
-	).node.frontmatter;
-
-	const allProgramNavData = data.allMarkdownRemark.edges.map(edge => {
-		return {
-			path: `/programs/in-person/${edge.node.frontmatter.path}`,
-			name: edge.node.frontmatter.name,
-		};
-	});
-
-	return (
-		<Layout
-			isScrolled={true}
-			hasNavHero={true}
-			hasNavButtons={true}
-			pageTitle={'In-Person Programs'}
-		>
-			<InPersonProgramPageTemplate
-				programPageData={programPageData}
-				allProgramNavData={allProgramNavData}
-			/>
-		</Layout>
-	);
-};
-
-export default InPersonProgramPage;
+	}
+`;

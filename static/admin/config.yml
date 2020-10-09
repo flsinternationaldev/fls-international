@@ -145,6 +145,7 @@ collections:
                 valueField: 'centerName',
                 searchFields: ['centerName'],
                 collection: 'locationsData',
+                multiple: true,
             }
           - {
                 label: 'Description',
@@ -346,7 +347,7 @@ collections:
       label: 'Specialty Tours Dynamic Pages'
       create: true
       folder: 'src/netlify-content/pages/dynamic/programs/specialty-tours'
-      summary: '{{name}} @ {{centerName}}'
+      summary: '{{name}} @ {{centerNameRelation}}'
       identifier_field: name
       label_singular: 'specialty tour dynamic page'
       fields:
@@ -376,6 +377,7 @@ collections:
                 # https://www.netlifycms.org/docs/widgets/relation/
                 valueField: 'centerName',
                 searchFields: ['centerName'],
+                multiple: true,
             }
           - {
                 label: 'Program Dates',
@@ -695,7 +697,7 @@ collections:
       folder: 'src/netlify-content/data/programs/specialty-tours'
       identifier_field: name
       label_singular: 'specialty tour data'
-      summary: '{{name}} @ {{centerName}}'
+      summary: '{{name}} @ {{centerNameRelation}}'
       fields:
           - { name: 'name', label: 'Specialty Tour Name', widget: 'string' }
           - {
@@ -706,6 +708,7 @@ collections:
                 valueField: 'centerName',
                 searchFields: ['centerName'],
                 displayFields: ['centerName'],
+                multiple: true,
             }
           - { name: 'price', label: 'Price', widget: 'number' }
           - { name: 'duration', label: 'Duration (Weeks)', widget: 'number' }
