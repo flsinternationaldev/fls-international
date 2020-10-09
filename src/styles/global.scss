@@ -60,6 +60,19 @@ a {
 	}
 }
 
+.fls__tooltip {
+	max-width: 325px;
+
+	a {
+		color: yellow;
+		font-weight: 500;
+
+		&:hover {
+			color: black;
+		}
+	}
+}
+
 .fls__transparent {
 	opacity: 0;
 }
