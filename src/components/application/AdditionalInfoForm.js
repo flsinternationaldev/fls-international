@@ -483,13 +483,13 @@ export default function AdditionalInfoForm({
 
 		const hasAirportPickUpPrice = updatedPrices.find(
 			priceItem =>
-				priceItem.type === 'general fees' &&
+				priceItem.type === 'enhancements' &&
 				priceItem.label.toLowerCase().includes('pick up')
 		);
 
 		const hasAirportDropOffPrice = updatedPrices.find(
 			priceItem =>
-				priceItem.type === 'general fees' &&
+				priceItem.type === 'enhancements' &&
 				priceItem.label.toLowerCase().includes('drop off')
 		);
 
@@ -498,14 +498,14 @@ export default function AdditionalInfoForm({
 			// TODO: This can be refactored to use 'updatePrices,' which can be refactored to accept this kind of logic
 			updatedPrices = removePrices(
 				prices,
-				['general fees'],
+				['enhancements'],
 				priceItem => !priceItem.label.toLowerCase().includes('pick up')
 			);
 		}
 
 		if (applicationData.airportPickUp) {
 			updatedPrices.push({
-				type: 'general fees',
+				type: 'enhancements',
 				label: `${currentAirport.notes[0]} - Pick Up`,
 				priceDetails: {
 					price: currentAirport.priceDetails[0].price,
@@ -941,6 +941,22 @@ export default function AdditionalInfoForm({
 							</div>
 						) : null}
 
+						{applicationData.airportPickUp ||
+						applicationData.airportDropOff ? (
+							<div className="column is-half">
+								<label className="label">
+									Airport Transport Special Requests
+									<FontAwesomeIcon
+										className="application__info-icon"
+										icon={faInfoCircle}
+										data-tip="Note that any additional requests may incur extra charges."
+									/>
+								</label>
+
+								<input type="text" className="input" />
+							</div>
+						) : null}
+
 						<div className="column is-full">
 							{/* TODO: Should have a helpful tooltip */}
 							<label className="label label--application">
@@ -1254,6 +1270,61 @@ export default function AdditionalInfoForm({
 									applicationData.unaccompaniedMinorService
 								}
 								onChange={value => {
+									const unaccompaniedMinorServiceData = enhancementsData.find(
+										generalFee =>
+											generalFee.name
+												.toLowerCase()
+												.includes('unaccompanied')
+									);
+
+									if (value === 'yes') {
+										// TODO: Looking for the word 'health' in the name is far from the most robust way of finding this specific general fee
+										if (
+											!prices.find(
+												priceItem =>
+													priceItem.type ===
+														'enhancements' &&
+													priceItem.label
+														.toLowerCase()
+														.includes(
+															'unaccompanied'
+														)
+											)
+										) {
+											prices.push({
+												type: 'enhancements',
+												label:
+													unaccompaniedMinorServiceData.name,
+												priceDetails: {
+													price:
+														unaccompaniedMinorServiceData
+															.priceDetails[0]
+															.price,
+													duration: 1,
+													payPeriod:
+														unaccompaniedMinorServiceData
+															.priceDetails[0]
+															.payPeriod,
+												},
+											});
+
+											setPrices(prices);
+										}
+									} else if (value === 'no') {
+										setPrices(
+											removePrices(
+												prices,
+												['enhancements'],
+												priceItem =>
+													!priceItem.label
+														.toLowerCase()
+														.includes(
+															'unaccompanied'
+														)
+											)
+										);
+									}
+
 									handleDataChange(
 										'unaccompaniedMinorService',
 										value,

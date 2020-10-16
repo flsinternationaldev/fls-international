@@ -1,10 +1,14 @@
 import React, { Fragment } from 'react';
-
+import ReactTooltip from 'react-tooltip';
 import Select from 'react-select';
 import EstimatedPrices from './EstimatedPrices';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+
 // TODO: Figure out how best to handle validation
 export default function MoreInfo({
+	applicationData,
 	nextStep,
 	previousStep,
 	userData,
@@ -25,6 +29,15 @@ export default function MoreInfo({
 
 	return (
 		<Fragment>
+			<ReactTooltip
+				type="info"
+				effect="solid"
+				html={true}
+				multiline={true}
+				className="fls__tooltip"
+				clickable={true}
+			/>
+
 			<div className="columns is-multiline">
 				<div className="column is-full">
 					<div className="application__header-container">
@@ -78,69 +91,106 @@ export default function MoreInfo({
 					</div>
 				) : null}
 
-				{/* TODO: Need to see if there's a way to get this into Netlify */}
-				<div className="column is-full">
-					<div className="columns">
-						<div className="column is-half">
-							<label className="label">
-								Passport Photo (.jpg, .png, .pdf)(Max File Size
-								5mb)
-							</label>
-							<div className="file has-name">
-								<label className="file-label">
-									<input
-										className="file-input"
-										type="file"
-										name="passport"
-									/>
-
-									<span className="file-cta">
-										<span className="file-icon">
-											<i className="fas fa-upload"></i>
-										</span>
-
-										<span className="file-label">
-											Choose a file…
-										</span>
-									</span>
-
-									<span className="file-name">
-										Screen Shot 2017-07-29 at 15.54.25.png
-									</span>
-								</label>
-							</div>
+				{userData.howDidYouHearAboutFls === 'Agent' ? (
+					<div className="column is-half">
+						{/* TODO: Should only show if they select 'Other' for 'How did you hear about FLS?' */}
+						<label className="label">Which Agency?</label>
+						<div className="control">
+							<input
+								className="input fls__base-input"
+								type="text"
+								value={userData.specifyHowHeardAboutFls}
+								onChange={e =>
+									handleDataChange(
+										'specifyHowHeardAboutFls',
+										e.target.value,
+										'user'
+									)
+								}
+							/>
 						</div>
+					</div>
+				) : null}
 
-						<div className="column is-half">
-							<label className="label">
-								Financial Document (.jpg, .png, .pdf)(Max File
-								Size 5mb)
-							</label>
-							<div className="file has-name">
-								<label className="file-label">
-									<input
-										className="file-input"
-										type="file"
-										name="financial-document"
+				{/* TODO: Need to see if there's a way to get this into Netlify */}
+				{applicationData.requiresI20 === 'yes' ? (
+					<div className="column is-full">
+						<div className="columns">
+							<div className="column is-half">
+								<label className="label">
+									Passport Photo (.jpg, .png, .pdf)(Max File
+									Size 5mb)
+									<FontAwesomeIcon
+										className="application__info-icon"
+										icon={faInfoCircle}
+										data-tip="A passport photo is not required now. This can be provided at a future date."
 									/>
-
-									<span className="file-cta">
-										<span className="file-icon">
-											<i className="fas fa-upload"></i>
-										</span>
-										<span className="file-label">
-											Choose a file…
-										</span>
-									</span>
-
-									<span className="file-name">
-										Screen Shot 2017-07-29 at 15.54.25.png
-									</span>
 								</label>
+
+								<div className="file has-name">
+									<label className="file-label">
+										<input
+											className="file-input"
+											type="file"
+											name="passport"
+										/>
+
+										<span className="file-cta">
+											<span className="file-icon">
+												<i className="fas fa-upload"></i>
+											</span>
+
+											<span className="file-label">
+												Choose a file…
+											</span>
+										</span>
+
+										<span className="file-name">
+											Screen Shot 2017-07-29 at
+											15.54.25.png
+										</span>
+									</label>
+								</div>
+							</div>
+
+							<div className="column is-half">
+								<label className="label">
+									Financial Document (.jpg, .png, .pdf)(Max
+									File Size 5mb)
+									<FontAwesomeIcon
+										className="application__info-icon"
+										icon={faInfoCircle}
+										data-tip="A financial document
+									 is not required now. This can be provided at a future date."
+									/>
+								</label>
+								<div className="file has-name">
+									<label className="file-label">
+										<input
+											className="file-input"
+											type="file"
+											name="financial-document"
+										/>
+
+										<span className="file-cta">
+											<span className="file-icon">
+												<i className="fas fa-upload"></i>
+											</span>
+											<span className="file-label">
+												Choose a file…
+											</span>
+										</span>
+
+										<span className="file-name">
+											Screen Shot 2017-07-29 at
+											15.54.25.png
+										</span>
+									</label>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				) : null}
 
 				<div className="column is-full">
 					<label className="label">Additional Comments</label>

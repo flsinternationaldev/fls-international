@@ -9,8 +9,7 @@ import PersonalInfo from 'src/components/application/PersonalInfo';
 import Address from 'src/components/application/Address';
 import AdditionalInfo from 'src/components/application/AdditionalInfo';
 import MoreInfo from 'src/components/application/MoreInfo';
-import Billing from 'src/components/application/Billing';
-import Checkout from 'src/components/application/Checkout';
+import BillingCheckout from 'src/components/application/BillingCheckout';
 import NetlifyStaticForm from 'src/components/application/NetlifyStaticForm';
 
 import { formatEdges, calculatePrice } from 'src/utils/helpers';
@@ -172,7 +171,7 @@ export const ApplicationTemplate = () => {
 			/>
 
 			{/* TODO: For some reason, the hash has stepped rendering in the URL bar? */}
-			<StepWizard isHashEnabled={true} nav={<Steps stepsNum={6} />}>
+			<StepWizard isHashEnabled={true} nav={<Steps stepsNum={5} />}>
 				<PersonalInfo
 					hashKey={'personal-info'}
 					handleDataChange={handleDataChange}
@@ -198,7 +197,7 @@ export const ApplicationTemplate = () => {
 				the step wizard allows duplicates */}
 				<AdditionalInfo
 					hashKey={'additional-info'}
-					generalFeesData={data}
+					generalFeesData={generalFeesData}
 					userData={userData}
 					handleDataChange={handleDataChange}
 					handleBatchInputChange={handleBatchInputChange}
@@ -217,6 +216,7 @@ export const ApplicationTemplate = () => {
 				<MoreInfo
 					hashKey={'more-info'}
 					userData={userData}
+					applicationData={applicationData}
 					handleDataChange={handleDataChange}
 					prices={prices}
 					setPrices={setPrices}
@@ -224,8 +224,8 @@ export const ApplicationTemplate = () => {
 					setPrice={setPrice}
 					calculatePrice={calculatePrice}
 				/>
-				<Billing
-					hashKey={'billing'}
+				<BillingCheckout
+					hashKey={'billing-checkout'}
 					userData={userData}
 					billingData={billingData}
 					handleDataChange={handleDataChange}
@@ -238,22 +238,6 @@ export const ApplicationTemplate = () => {
 					applicationData={applicationData}
 					generalFeesTitle={generalFeesTitle}
 				/>
-				<Checkout
-					hashKey={'checkout'}
-					userData={userData}
-					billingData={billingData}
-					handleDataChange={handleDataChange}
-					handleBatchInputChange={handleBatchInputChange}
-					prices={prices}
-					setPrices={setPrices}
-					price={price}
-					setPrice={setPrice}
-					calculatePrice={calculatePrice}
-					applicationData={applicationData}
-					generalFeesTitle={generalFeesTitle}
-					currentCenter={currentCenter}
-					currentProgram={currentProgram}
-				></Checkout>
 			</StepWizard>
 		</Section>
 	);

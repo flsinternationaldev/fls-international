@@ -8,7 +8,7 @@ import {
 	// useElements,
 } from '@stripe/react-stripe-js';
 import { getName, getCode } from 'country-list';
-import moment from 'moment';
+import { handleSubmission } from 'src/components/application/NetlifyStaticForm';
 
 import EstimatedPrices from './EstimatedPrices';
 
@@ -18,7 +18,7 @@ import 'react-flags-select/scss/react-flags-select.scss';
 // TODO: We need our REAL stripe key
 const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
 
-export default function Billing({
+export default function BillingCheckout({
 	previousStep,
 	nextStep,
 	userData,
@@ -60,7 +60,7 @@ export default function Billing({
 			<div className="columns is-multiline">
 				<div className="column is-full">
 					<div className="application__header-container">
-						<h3 className="fls-post__title">Billing Informaton</h3>
+						<h3 className="fls-post__title">Billing & Checkout</h3>
 						<h3 className="application__total-price">
 							Total Price: ${calculatePrice(prices)}
 						</h3>
@@ -260,8 +260,14 @@ export default function Billing({
 				<div className="column is-4"></div>
 
 				<div className="column is-4">
-					<button onClick={nextStep} className="fls__button">
-						Next
+					<button
+						onClick={() => {
+							handleSubmission();
+						}}
+						className="fls__button fls__button--yellow"
+					>
+						{/* TODO: Should probably be FLS yellow, to highlight its importance */}
+						Submit & Pay
 					</button>
 				</div>
 			</div>
