@@ -74,44 +74,75 @@ collections:
                             name: 'specialtyTours',
                             widget: string,
                         }
-    - name: 'generalFeesData'
-      label: 'General Fees Data'
+    - name: 'navbar-item'
+      label: 'Navbar Items'
       create: true
-      folder: 'src/netlify-content/data/general-fees'
+      folder: 'src/netlify-content/navbar-items'
       identifier_field: name
-      label_singular: 'general fee data'
-      summary: '{{name}} @ {{centerNameRelation}}'
+      label_singular: 'navbar item'
+      summary: '{{name}} - {{order}}'
       fields:
-          - { name: 'name', label: 'Name', widget: 'string' }
           - {
-                label: 'Center Name',
-                name: 'centerNameRelation',
-                widget: 'relation',
-                multiple: true,
-                hint: 'The center/s this general fee is associated with',
-                valueField: 'centerName',
-                searchFields: ['centerName'],
-                collection: 'locationsData',
+                label: 'Path',
+                name: 'path',
+                widget: 'string',
+                hint: 'The URL the navbar item will go to. Should be all lowercase & use dashes in place of spaces, e.g. program-pages',
+            }
+          - { label: 'Page Name', name: 'name', widget: 'string' }
+          - {
+                label: 'Links collection Name',
+                name: 'collectionName',
+                widget: 'string',
+                required: false,
+                hint: 'If provided, the site will try and pull all the names & URLs from each entry of a particular collection. e.g. for "program-pages", the site will dynamically pull in the URLs & names for all entries in the Program Pages collection',
             }
           - {
-                label: 'Price Details',
-                name: 'priceDetails',
+                label: 'Order',
+                name: 'order',
+                widget: 'number',
+                hint: 'The order this item will render in the navbar. The smaller the number, the closer to the left side of the navbar.',
+            }
+          - {
+                label: 'Links',
+                name: 'links',
                 widget: 'list',
+                hint: 'All nav link URLs will be prefaced by the path of the main nav item, e.g. /locations/link-name',
+                required: false,
                 fields:
                     [
-                        { label: 'price', name: 'price', widget: 'number' },
                         {
-                            label: 'Pay Period',
-                            name: 'payPeriod',
-                            widget: 'select',
-                            hint: 'How often should this fee be charged?',
-                            options:
+                            label: 'Path',
+                            name: 'path',
+                            hint: 'The URL the navbar item link will go to. Should be all lowercase & use dashes in place of spaces, e.g. program-pages',
+                            widget: 'string',
+                        },
+                        { label: 'Page Name', name: 'name', widget: 'string' },
+                        {
+                            label: 'Collection Name',
+                            name: 'collectionName',
+                            widget: 'string',
+                            required: false,
+                            hint: 'If provided, the site will try and pull all the names & URLs from each entry of a particular collection. e.g. for "program-pages", the site will dynamically pull in the URLs & names for all entries in the Program Pages collection',
+                        },
+                        {
+                            label: 'Sublinks',
+                            name: 'links',
+                            widget: 'list',
+                            required: false,
+                            fields:
                                 [
-                                    'Once',
-                                    'Per week',
-                                    'Per Lesson',
-                                    'Per Night',
-                                    'Included',
+                                    {
+                                        label: 'Path',
+                                        name: 'path',
+                                        required: false,
+                                        widget: 'string',
+                                    },
+                                    {
+                                        label: 'Page Name',
+                                        name: 'name',
+                                        widget: 'string',
+                                        required: false,
+                                    },
                                 ],
                         },
                     ],
@@ -744,6 +775,90 @@ collections:
                     ],
             }
           - { label: 'Sample Calendar', name: 'sampleCalendar', widget: 'file' }
+    - name: 'inPersonGeneralFeesData'
+      label: 'In Person General Fees Data'
+      create: true
+      folder: 'src/netlify-content/data/general-fees/in-person'
+      identifier_field: name
+      label_singular: 'general fee data'
+      summary: '{{name}} @ {{centerNameRelation}}'
+      fields:
+          - { name: 'name', label: 'Name', widget: 'string' }
+          - {
+                label: 'Center Name',
+                name: 'centerNameRelation',
+                widget: 'relation',
+                multiple: true,
+                hint: 'The center/s this general fee is associated with',
+                valueField: 'centerName',
+                searchFields: ['centerName'],
+                collection: 'locationsData',
+            }
+          - {
+                label: 'Price Details',
+                name: 'priceDetails',
+                widget: 'list',
+                fields:
+                    [
+                        { label: 'price', name: 'price', widget: 'number' },
+                        {
+                            label: 'Pay Period',
+                            name: 'payPeriod',
+                            widget: 'select',
+                            hint: 'How often should this fee be charged?',
+                            options:
+                                [
+                                    'Once',
+                                    'Per week',
+                                    'Per Lesson',
+                                    'Per Night',
+                                    'Included',
+                                ],
+                        },
+                    ],
+            }
+    - name: 'onlineGeneralFeesData'
+      label: 'Online General Fees Data'
+      create: true
+      folder: 'src/netlify-content/data/general-fees/online'
+      identifier_field: name
+      label_singular: 'general fee data'
+      summary: '{{name}} @ {{centerNameRelation}}'
+      fields:
+          - { name: 'name', label: 'Name', widget: 'string' }
+          #   - {
+          #         label: 'Online Program Type ',
+          #         name: 'onlineProgramTypeRelation',
+          #         widget: 'relation',
+          #         multiple: true,
+          #         hint: 'The online program type this general fee is associated with',
+          #         valueField: 'name',
+          #         searchFields: ['name'],
+          #         collection: 'onlineProgramTypesData',
+          #     }
+          - {
+                label: 'Price Details',
+                name: 'priceDetails',
+                widget: 'list',
+                fields:
+                    [
+                        { label: 'price', name: 'price', widget: 'number' },
+                        {
+                            label: 'Pay Period',
+                            name: 'payPeriod',
+                            widget: 'select',
+                            hint: 'How often should this fee be charged?',
+                            options:
+                                [
+                                    'Once',
+                                    'Per week',
+                                    'Per Lesson',
+                                    'Per Night',
+                                    'Included',
+                                ],
+                        },
+                    ],
+            }
     - name: 'locationsData'
       label: 'Locations Data'
       create: true
@@ -829,10 +944,10 @@ collections:
                 required: false,
                 field: { label: 'note', name: 'note', widget: 'string' },
             }
-    - name: 'enhancementsData'
-      label: 'Enhancements Data'
+    - name: 'inPersonEnhancementsData'
+      label: 'In Person Enhancements Data'
       create: true
-      folder: 'src/netlify-content/data/enhancements'
+      folder: 'src/netlify-content/data/enhancements/in-person'
       summary: '{{name}} @ {{centerNameRelation}}'
       label_singular: 'enhancement data'
       identifier_field: 'name'
@@ -887,76 +1002,61 @@ collections:
                 required: false,
                 field: { label: 'note', name: 'note', widget: 'string' },
             }
-    - name: 'navbar-item'
-      label: 'Navbar Items'
+    - name: 'onlineEnhancementsData'
+      label: 'Online Enhancements Data'
       create: true
-      folder: 'src/netlify-content/navbar-items'
-      identifier_field: name
-      label_singular: 'navbar item'
-      summary: '{{name}} - {{order}}'
+      folder: 'src/netlify-content/data/enhancements/online'
+      summary: '{{name}} @ {{onlineProgramTypeRelation}}'
+      label_singular: 'enhancement data'
+      identifier_field: 'name'
       fields:
+          - { label: 'Enhancement Name', name: 'name', widget: 'string' }
           - {
-                label: 'Path',
-                name: 'path',
-                widget: 'string',
-                hint: 'The URL the navbar item will go to. Should be all lowercase & use dashes in place of spaces, e.g. program-pages',
-            }
-          - { label: 'Page Name', name: 'name', widget: 'string' }
-          - {
-                label: 'Links collection Name',
-                name: 'collectionName',
-                widget: 'string',
-                required: false,
-                hint: 'If provided, the site will try and pull all the names & URLs from each entry of a particular collection. e.g. for "program-pages", the site will dynamically pull in the URLs & names for all entries in the Program Pages collection',
+                label: 'Online Program Type ',
+                name: 'onlineProgramTypeRelation',
+                widget: 'relation',
+                multiple: true,
+                hint: 'The online program type this enhancement is associated with',
+                valueField: 'name',
+                searchFields: ['name'],
+                collection: 'onlineProgramTypesData',
             }
           - {
-                label: 'Order',
-                name: 'order',
-                widget: 'number',
-                hint: 'The order this item will render in the navbar. The smaller the number, the closer to the left side of the navbar.',
-            }
-          - {
-                label: 'Links',
-                name: 'links',
+                label: 'Price Details',
+                name: 'priceDetails',
                 widget: 'list',
-                hint: 'All nav link URLs will be prefaced by the path of the main nav item, e.g. /locations/link-name',
                 required: false,
                 fields:
                     [
+                        { label: 'Price', name: 'price', widget: 'number' },
                         {
-                            label: 'Path',
-                            name: 'path',
-                            hint: 'The URL the navbar item link will go to. Should be all lowercase & use dashes in place of spaces, e.g. program-pages',
-                            widget: 'string',
-                        },
-                        { label: 'Page Name', name: 'name', widget: 'string' },
-                        {
-                            label: 'Collection Name',
-                            name: 'collectionName',
-                            widget: 'string',
-                            required: false,
-                            hint: 'If provided, the site will try and pull all the names & URLs from each entry of a particular collection. e.g. for "program-pages", the site will dynamically pull in the URLs & names for all entries in the Program Pages collection',
-                        },
-                        {
-                            label: 'Sublinks',
-                            name: 'links',
-                            widget: 'list',
-                            required: false,
-                            fields:
+                            label: 'Pay Period',
+                            name: 'payPeriod',
+                            widget: 'select',
+                            options:
                                 [
+                                    { label: 'Weekly', value: 'weekly' },
+                                    { label: 'once', value: 'once' },
                                     {
-                                        label: 'Path',
-                                        name: 'path',
-                                        required: false,
-                                        widget: 'string',
+                                        label: 'Per 3 Unit Class',
+                                        value: 'three-unit-class',
                                     },
                                     {
-                                        label: 'Page Name',
-                                        name: 'name',
-                                        widget: 'string',
-                                        required: false,
+                                        label: 'Per 4 Weeks',
+                                        value: 'per-four-weeks',
+                                    },
+                                    {
+                                        label: 'Each additional week',
+                                        value: 'additional-week',
                                     },
                                 ],
                         },
                     ],
+            }
+          - {
+                label: 'Additional Notes',
+                name: 'notes',
+                widget: list,
+                required: false,
+                field: { label: 'note', name: 'note', widget: 'string' },
             }
