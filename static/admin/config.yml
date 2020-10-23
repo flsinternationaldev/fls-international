@@ -533,10 +533,11 @@ collections:
                 widget: 'object',
                 fields:
                     [
+                        { label: 'Min Weeks', name: 'minWeeks', widget: 'number'}
                         {
                             label: 'Max Weeks',
                             name: 'maxWeeks',
-                            widget: 'string',
+                            widget: 'number',
                         },
                         {
                             label: 'Exceed max weeks?',

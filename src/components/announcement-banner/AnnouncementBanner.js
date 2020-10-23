@@ -3,9 +3,9 @@ import announcementBannerStyles from './AnnouncementBanner.module.scss';
 import 'animate.css';
 
 export default function AnnouncementBanner() {
-	const lsIsAnnouncementBannerOpen = localStorage.getItem(
+	const lsIsAnnouncementBannerOpen = /*localStorage.getItem(
 		'isAnnouncementBannerOpen'
-	);
+	);*/ true;
 
 	// Love me a React Hook
 	const [isAnnouncementBannerOpen, setIsAnnouncementBannerOpen] = useState(
@@ -17,7 +17,7 @@ export default function AnnouncementBanner() {
 	console.log('locally stored');
 
 	const closeAnnouncementBanner = () => {
-		localStorage.setItem('isAnnouncementBannerOpen', false);
+		// localStorage.setItem('isAnnouncementBannerOpen', false);
 		setIsAnnouncementBannerOpen(false);
 	};
 
