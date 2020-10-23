@@ -2,10 +2,10 @@
 name: STEM
 onlineProgramType: Online Pathway Program
 durationOptions:
-  max-weeks: "2"
+    maxWeeks: '2'
 hoursPerWeek: 2
 lessonsPerWeek: 3
 minutesPerLesson: 1
 timesOffered:
-  - 12:00 AM
+    - 12:00 AM
 ---

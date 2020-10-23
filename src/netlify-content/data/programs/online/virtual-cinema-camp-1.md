@@ -2,7 +2,7 @@
 name: Virtual Cinema Camp
 onlineProgramType: Online Summer Camp
 durationOptions:
-    max-weeks: '2'
+    maxWeeks: '2'
 priceDetails:
     - price: 390
       payPeriod: weekly

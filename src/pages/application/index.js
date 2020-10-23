@@ -81,37 +81,9 @@ export const ApplicationTemplate = () => {
 		// TODO: Figure out passport photo & financial document image upload
 	});
 
-	const generalFeesData = formatEdges(data.generalFees);
-
-	if (
-		!prices.find(
-			priceItem =>
-				priceItem.type === 'general fees' &&
-				priceItem.label.toLowerCase().includes('application fee')
-		)
-	) {
-		const applicationFeeData = generalFeesData.find(generalFee =>
-			generalFee.name.toLowerCase().includes('application fee')
-		);
-
-		prices.push({
-			type: 'general fees',
-			label: applicationFeeData.name,
-			priceDetails: {
-				price: applicationFeeData.priceDetails[0].price,
-				duration: 1,
-				payPeriod: applicationFeeData.priceDetails[0].payPeriod,
-			},
-		});
-
-		setPrices(prices);
-	}
-
 	const [billingData, setBillingData] = useState({
 		billingAddressCountry: 'France',
 	});
-
-	const [generalFeesTitle, setGeneralFeesTitle] = useState(null);
 
 	const [currentCenter, setCurrentCenter] = useState(null);
 
@@ -197,7 +169,6 @@ export const ApplicationTemplate = () => {
 				the step wizard allows duplicates */}
 				<AdditionalInfo
 					hashKey={'additional-info'}
-					generalFeesData={generalFeesData}
 					userData={userData}
 					handleDataChange={handleDataChange}
 					handleBatchInputChange={handleBatchInputChange}
@@ -207,7 +178,6 @@ export const ApplicationTemplate = () => {
 					setPrice={setPrice}
 					calculatePrice={calculatePrice}
 					applicationData={applicationData}
-					setGeneralFeesTitle={setGeneralFeesTitle}
 					currentCenter={currentCenter}
 					setCurrentCenter={setCurrentCenter}
 					currentProgram={currentProgram}
@@ -236,7 +206,6 @@ export const ApplicationTemplate = () => {
 					setPrice={setPrice}
 					calculatePrice={calculatePrice}
 					applicationData={applicationData}
-					generalFeesTitle={generalFeesTitle}
 				/>
 			</StepWizard>
 		</Section>

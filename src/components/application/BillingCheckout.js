@@ -28,7 +28,6 @@ export default function BillingCheckout({
 	prices,
 	calculatePrice,
 	applicationData,
-	generalFeesTitle,
 }) {
 	const useHomeAddress = () => {
 		const billingKeys = [

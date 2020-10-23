@@ -535,19 +535,19 @@ collections:
                     [
                         {
                             label: 'Max Weeks',
-                            name: 'max-weeks',
+                            name: 'maxWeeks',
                             widget: 'string',
                         },
                         {
                             label: 'Exceed max weeks?',
-                            name: 'exceed-max-weeks',
+                            name: 'exceedMaxWeeks',
                             required: false,
                             hint: 'If "true", will render on website as "[maxWeekNumber]+" (e.g. if max weeks = 4, will render as "4+"',
                             widget: 'boolean',
                         },
                         {
                             label: 'Week Thresholds',
-                            name: 'week-thresholds',
+                            name: 'weekThresholds',
                             required: false,
                             widget: 'list',
                             fields:
@@ -826,16 +826,6 @@ collections:
       summary: '{{name}} @ {{centerNameRelation}}'
       fields:
           - { name: 'name', label: 'Name', widget: 'string' }
-          #   - {
-          #         label: 'Online Program Type ',
-          #         name: 'onlineProgramTypeRelation',
-          #         widget: 'relation',
-          #         multiple: true,
-          #         hint: 'The online program type this general fee is associated with',
-          #         valueField: 'name',
-          #         searchFields: ['name'],
-          #         collection: 'onlineProgramTypesData',
-          #     }
           - {
                 label: 'Price Details',
                 name: 'priceDetails',

@@ -2,9 +2,9 @@
 name: Core English
 onlineProgramType: Online Pathway Program
 durationOptions:
-    max-weeks: '13'
-    exceed-max-weeks: true
-    week-thresholds:
+    maxWeeks: '13'
+    exceedMaxWeeks: true
+    weekThresholds:
         - threshold-max: 3
           price-per-week: 295
           hours-per-week: 15

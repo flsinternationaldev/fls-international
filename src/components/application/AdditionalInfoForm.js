@@ -31,6 +31,104 @@ export default function AdditionalInfoForm({
 	setPrices,
 	applicationData,
 }) {
+	const programsData = useStaticQuery(graphql`
+		{
+			inPerson: allMarkdownRemark(
+				limit: 1000
+				filter: {
+					fileAbsolutePath: { regex: "/data/programs/in-person//" }
+				}
+			) {
+				edges {
+					node {
+						frontmatter {
+							name
+							centerNameRelation
+							durationOptions {
+								maxWeeks
+								exceedMaxWeeks
+								weekThresholds {
+									pricePerWeek
+									thresholdMax
+								}
+							}
+							hoursPerWeek
+							lessonsPerWeek
+							minutesPerLesson
+						}
+					}
+				}
+			}
+
+			online: allMarkdownRemark(
+				limit: 1000
+				filter: {
+					fileAbsolutePath: { regex: "/data/programs/online//" }
+				}
+			) {
+				edges {
+					node {
+						frontmatter {
+							name
+							onlineProgramType
+							priceDetails {
+								price
+								payPeriod
+							}
+							durationOptions {
+								maxWeeks
+								weekThresholds {
+									pricePerWeek
+									thresholdMax
+								}
+							}
+							hoursPerWeek
+							lessonsPerWeek
+							minutesPerLesson
+							timesOffered
+							termDates {
+								start
+								end
+							}
+						}
+					}
+				}
+			}
+
+			specialtyTours: allMarkdownRemark(
+				limit: 1000
+				filter: {
+					fileAbsolutePath: {
+						regex: "/data/programs/specialty-tours//"
+					}
+				}
+			) {
+				edges {
+					node {
+						frontmatter {
+							name
+							programDetails {
+								lessonsPerWeek
+								hoursPerWeek
+							}
+							hero_image
+							durationOptions {
+								maxWeeks
+								weekThresholds {
+									pricePerWeek
+									thresholdMax
+								}
+							}
+							hoursPerWeek
+							lessonsPerWeek
+							minutesPerLesson
+						}
+					}
+				}
+			}
+		}
+	`);
+
 	const renderFormViews = programType => {
 		if (programType === 'in-person') {
 			return (
@@ -65,6 +163,7 @@ export default function AdditionalInfoForm({
 							prices={prices}
 							setPrices={setPrices}
 							applicationData={applicationData}
+							programsData={programsData.inPerson}
 						/>
 
 						<EstimatedPrices prices={prices} />
@@ -119,7 +218,15 @@ export default function AdditionalInfoForm({
 							</div>
 						</div>
 
-						<OnlineInfoForm />
+						<OnlineInfoForm
+							programType={programType}
+							applicationData={applicationData}
+							programsData={programsData.online}
+							handleDataChange={handleDataChange}
+							handleBatchInputChange={handleBatchInputChange}
+							prices={prices}
+							setPrices={setPrices}
+						/>
 
 						<EstimatedPrices prices={prices} />
 

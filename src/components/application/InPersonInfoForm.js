@@ -26,11 +26,11 @@ export default function InPersonInfoForm({
 	nextStep,
 	previousStep,
 	handleDataChange,
-	generalFeesData,
 	handleBatchInputChange,
 	prices,
 	setPrices,
 	applicationData,
+	programsData,
 }) {
 	const data = useStaticQuery(graphql`
 		{
@@ -152,7 +152,9 @@ export default function InPersonInfoForm({
 			}
 			enhancements: allMarkdownRemark(
 				limit: 1000
-				filter: { fileAbsolutePath: { regex: "/data/enhancements//" } }
+				filter: {
+					fileAbsolutePath: { regex: "/data/enhancements/in-person/" }
+				}
 			) {
 				edges {
 					node {
@@ -170,7 +172,9 @@ export default function InPersonInfoForm({
 			}
 			generalFees: allMarkdownRemark(
 				limit: 1000
-				filter: { fileAbsolutePath: { regex: "/data/general-fees//" } }
+				filter: {
+					fileAbsolutePath: { regex: "/data/general-fees/in-person/" }
+				}
 			) {
 				edges {
 					node {
@@ -188,9 +192,9 @@ export default function InPersonInfoForm({
 		}
 	`);
 
-	const programsData = formatEdges(
-		data[kebabToCamel(applicationData.programType)]
-	);
+	programsData = formatEdges(programsData);
+
+	const generalFeesData = formatEdges(data.generalFees);
 
 	const centersData = formatEdges(data.locations);
 
