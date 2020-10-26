@@ -588,7 +588,7 @@ collections:
                         },
                     ],
             }
-          - { label: 'Hours Per Week', name: 'hoursPerWeek', widget: 'number' }
+          - { label: 'Hours Per Week', name: 'hoursPerWeek', widget: 'string' }
           - {
                 label: 'Lessons Per Week',
                 name: 'lessonsPerWeek',
@@ -715,7 +715,7 @@ collections:
                     ],
             }
             # TODO: There is only one in-person program that does not have all the same hours per week for all the week thresholds. Check if this is intentional or not.
-          - { label: 'Hours Per Week', name: 'hoursPerWeek', widget: 'number' }
+          - { label: 'Hours Per Week', name: 'hoursPerWeek', widget: 'string' }
           - {
                 label: 'Lessons Per Week',
                 name: 'lessonsPerWeek',
