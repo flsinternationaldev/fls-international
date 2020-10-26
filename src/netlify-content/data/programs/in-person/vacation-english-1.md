@@ -3,7 +3,7 @@ name: Vacation English
 location:
     - Chestnut Hill College
 duration:
-    maxWeeks: '12'
+    maxWeeks: 12
     weekThresholds:
         - thresholdMax: 3
           pricePerWeek: 395
@@ -14,7 +14,7 @@ duration:
 centerNameRelation:
     - Chestnut Hill College
 durationOptions:
-    maxWeeks: '12'
+    maxWeeks: 12
     weekThresholds:
         - thresholdMax: 3
           pricePerWeek: 395

@@ -2,7 +2,7 @@
 name: Weekend TOEFL
 onlineProgramType: Online Essential Program
 durationOptions:
-    maxWeeks: '4'
+    maxWeeks: 4
     exceedMaxWeeks: true
 priceDetails:
     - price: 95

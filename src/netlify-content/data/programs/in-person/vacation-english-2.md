@@ -4,7 +4,7 @@ location:
     - Citrus College
     - Saddleback College
 duration:
-    maxWeeks: '12'
+    maxWeeks: 12
     weekThresholds:
         - thresholdMax: 3
           pricePerWeek: 395
@@ -16,7 +16,7 @@ centerNameRelation:
     - Citrus College
     - Saddleback College
 durationOptions:
-    maxWeeks: '12'
+    maxWeeks: 12
     weekThresholds:
         - thresholdMax: 3
           pricePerWeek: 395

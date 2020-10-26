@@ -5,7 +5,7 @@ location:
 centerNameRelation:
     - Boston Commons
 durationOptions:
-    maxWeeks: '32'
+    maxWeeks: 32
     exceedMaxWeeks: true
     weekThresholds:
         - thresholdMax: 3

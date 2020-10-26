@@ -684,7 +684,7 @@ collections:
                         {
                             label: 'Max Weeks',
                             name: 'maxWeeks',
-                            widget: 'string',
+                            widget: 'number',
                         },
                         {
                             label: 'Exceed max weeks?',

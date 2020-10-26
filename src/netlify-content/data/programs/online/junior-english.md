@@ -2,7 +2,7 @@
 name: Junior English
 onlineProgramType: Online Essential Program
 durationOptions:
-    maxWeeks: '36'
+    maxWeeks: 36
     exceedMaxWeeks: true
 hoursPerWeek: 8
 lessonsPerWeek: 5
