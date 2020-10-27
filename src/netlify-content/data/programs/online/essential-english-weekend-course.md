@@ -1,5 +1,5 @@
 ---
-name: Essential English Weekend Course
+name: Essential Weekend Course
 onlineProgramType: Online Essential Program
 durationOptions:
   maxWeeks: 52
