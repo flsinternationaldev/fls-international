@@ -17,6 +17,7 @@ program-post-content: Don't let this winter pass you by without enjoying one of
   hours per week during your vacation time, you'll both improve your English and
   have fun participating in our guided activities.
 program-features-content: |-
+  * For students aged 14-18
   * Start any Monday at 6:00 AM Pacific Time, or any Sunday at 5 PM Pacific Time
   * Study from 1-3 weeks
   * Daily two-hour English lesson
