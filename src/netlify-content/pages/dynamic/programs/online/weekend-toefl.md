@@ -17,6 +17,6 @@ program-features-content: |-
   ## PROGRAM FEATURES
 
   * Saturday and Sunday, 4:00 AM Pacific Time
-  * 2.5 hours of study per day/5 hours per weekend
+  * 2 hours of study per day/4 hours per weekend
   * Start any Saturday
 ---
