@@ -1,6 +1,6 @@
 ---
 path: ee-weekend
-name: Essential English Weekend Course
+name: Essential Weekend Course
 type: Online Essential Program
 hero-image: /assets/elp-card-bg.jpeg
 programDetails:
