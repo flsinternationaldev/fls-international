@@ -1,5 +1,5 @@
 ---
-path: virtual-winter-camp
+path: virtual-winter-camp-jr
 name: Virtual Winter Camp Jr
 type: Online Summer Camp
 hero-image: /assets/vacation-english-hero.jpeg
