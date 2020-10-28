@@ -21,7 +21,6 @@ program-post-content: >-
 
   Each lesson involves students in actively practicing their English with a live, native-speaking instructor.  Our supportive, expert teachers provide individual feedback and activities that young learners love.
 program-features-content: |-
-  For ages 7-9
-
-  60 minutes of study, three times a week (Monday, Wednesday, and Friday)
+  * For ages 7-9
+  * 60 minutes of study, three times a week (Monday, Wednesday, and Friday)
 ---
