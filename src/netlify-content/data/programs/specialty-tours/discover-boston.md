@@ -2,7 +2,7 @@
 name: Discover Boston
 centerNameRelation:
   - Boston Commons
-price: 3785
+price: 3795
 duration: 3
 minimumAge: 15
 programDates:
