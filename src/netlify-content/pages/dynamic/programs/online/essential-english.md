@@ -13,26 +13,11 @@ program-post-content: >-
     this program offers short daily sessions.  you'll experience an integrated
     approach to all the key language skills.  These dynamic classes offer plenty
     of speaking practice and an introduction to essential English grammar
-    structures and vocabulary.  
-
-
-<<<<<<< HEAD
-
-
-    Your TEFL-certified, native-American speaking teacher provides immediate feedback and expert guidance at every step!
+    structures and vocabulary. Your TEFL-certified, native-American speaking teacher provides immediate feedback and expert guidance at every step!
 program-features-content: |-
+    ### Program Features:
     * $110 per week
     * 90 minutes per day/7.5 hours per week
     * Start any Monday
     * 18 levels of instruction
-=======
-  Your TEFL-certified, native-American speaking teacher provides immediate feedback and expert guidance at every step!
-program-features-content: |-
-  ### Program Features:
-
-  * $110 per week
-  * 90 minutes per day/7.5 hours per week
-  * Start any Monday
-  * 18 levels of instruction
->>>>>>> 16c6c53cc026970dd4556ae778f507ff5712e699
 ---
