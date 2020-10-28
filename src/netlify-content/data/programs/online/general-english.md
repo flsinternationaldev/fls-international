@@ -28,8 +28,8 @@ durationOptions:
 priceDetails:
   - price: 0
     payPeriod: weekly
-hoursPerWeek: 15
-lessonsPerWeek: 18
+hoursPerWeek: "20"
+lessonsPerWeek: 24
 minutesPerLesson: 50
 timesOffered:
   - 6:00 AM
