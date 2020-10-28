@@ -1,5 +1,5 @@
 ---
-path: sat-preparation
+path: online-sat-preparation
 name: SAT Preparation
 type: Online Essential Program
 hero-image: /assets/home-carousel-2.jpeg
