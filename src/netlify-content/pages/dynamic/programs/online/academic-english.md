@@ -8,12 +8,16 @@ programDetails:
   hoursPerWeek: "30"
   minutesPerLesson: 50
 description: Learn the English you need for academic success
-program-post-content: The FLS Academic English Program is perfect for students
-  who want to improve their English skills as quickly as possible and get on the
-  right track for college and university success!  This program offers the most
-  lessons per week available at FLS.  Students will study in our core integrated
-  skills class, will attend a daily workshop, and have a choice of either two
-  electives, a test preparation class, or our high school completion course.
+program-post-content: >-
+  The FLS Academic English Program is perfect for students who want to improve
+  their English skills as quickly as possible and get on the right track for
+  college and university success!  This program offers the most lessons per week
+  available at FLS.  Students will study in our core integrated skills class,
+  will attend a daily workshop, and have a choice of either two electives, a
+  test preparation class, or our high school completion course.
+
+
+  Our qualified teachers provide you with immediate feedback!
 program-features-content: >-
   ### Program Features:
 
