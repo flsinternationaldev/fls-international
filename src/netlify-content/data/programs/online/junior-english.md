@@ -4,7 +4,7 @@ onlineProgramType: Online Essential Program
 durationOptions:
     maxWeeks: 36
     exceedMaxWeeks: true
-hoursPerWeek: 8
+hoursPerWeek: '8'
 lessonsPerWeek: 5
 minutesPerLesson: 90
 timesOffered:

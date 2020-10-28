@@ -17,7 +17,7 @@ carousel-images:
     - /assets/discover-boston-5.jpeg
 programDetails:
     minimumAge: 12
-    duration: 3
+    durationRelation: 3
     price: 3785
 specialty-tour-description: Boston combines unmatched cultural attractions,
     prestigious universities and colleges, and top-notch entertainment and dining
@@ -28,10 +28,4 @@ activities-and-excursions: TBD
 features: TBD
 accommodations: TBD
 center: Boston Commons
-specialty-tour-details:
-    minimum-age: 15
-    duration: 3
-    Price: 3785
-    price: 3785
-    minimumAge: 12
 ---

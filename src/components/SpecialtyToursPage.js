@@ -285,7 +285,7 @@ export const SpecialityTourData = graphql`
 						sampleCalendar
 						specialty_tour_description
 						programDetails {
-							duration
+							durationRelation
 							minimumAge
 							price
 						}

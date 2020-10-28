@@ -20,7 +20,7 @@ durationOptions:
           pricePerWeek: 380
         - thresholdMax: 32
           pricePerWeek: 360
-hoursPerWeek: 20
+hoursPerWeek: '20'
 lessonsPerWeek: 24
 minutesPerLesson: 50
 ---

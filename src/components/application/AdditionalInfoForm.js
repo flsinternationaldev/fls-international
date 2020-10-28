@@ -119,7 +119,6 @@ export default function AdditionalInfoForm({
 									thresholdMax
 								}
 							}
-							hoursPerWeek
 							lessonsPerWeek
 							minutesPerLesson
 						}

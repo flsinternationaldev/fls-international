@@ -476,7 +476,7 @@ collections:
                         },
                         {
                             label: 'Duration',
-                            name: 'duration',
+                            name: 'durationRelation',
                             widget: 'relation',
                             collection: 'specialtyToursData',
                             valueField: 'duration',

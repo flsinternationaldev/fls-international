@@ -169,7 +169,7 @@ const ProgramsPage = ({ /*data, */ location }) => {
 							name
 							programDetails {
 								minimumAge
-								duration
+								durationRelation
 							}
 							carousel_images
 							specialty_tour_description
@@ -179,24 +179,15 @@ const ProgramsPage = ({ /*data, */ location }) => {
 			}
 			programTypesCopy: allMarkdownRemark(
 				limit: 1000
-				filter: {
-					fileAbsolutePath: { regex: "/pages/static/programs//" }
-				}
+				filter: { fileAbsolutePath: { regex: "/pages/static//" } }
 			) {
 				edges {
 					node {
 						frontmatter {
-							description
-							path
-							name
-							programDetails {
-								lessonsPerWeek
-								hoursPerWeek
-							}
-							hero_image
-							programDetails {
-								minimumAge
-								duration
+							programTypeDescriptions {
+								specialityTours
+								inPerson
+								online
 							}
 						}
 					}

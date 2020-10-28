@@ -6,7 +6,7 @@ durationOptions:
 priceDetails:
     - price: 390
       payPeriod: weekly
-hoursPerWeek: 10
+hoursPerWeek: '10'
 lessonsPerWeek: 9
 minutesPerLesson: 50
 timesOffered:
