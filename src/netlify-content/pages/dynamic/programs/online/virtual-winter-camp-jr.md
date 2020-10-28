@@ -20,7 +20,7 @@ program-post-content: Don't let this winter pass you by without enjoying one of
 program-features-content: |-
   * Created especially for juniors, aged 10-13
   * Start any Monday at 6:00 AM Pacific Time, or any Sunday at 5 PM Pacific Time
-  * Study from 1-2 weeks
+  * Study from 1-4 weeks
   * Daily two-hour English lesson
   * Daily 1-hour guided online activity
   * One-to-one tutorial with your teacher
