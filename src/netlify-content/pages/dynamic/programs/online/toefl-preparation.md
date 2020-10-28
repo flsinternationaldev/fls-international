@@ -1,5 +1,5 @@
 ---
-path: toefl-preparation
+path: online-toefl-preparation
 name: TOEFL Preparation
 type: Online Essential Program
 hero-image: /assets/home-carousel-2.jpeg
