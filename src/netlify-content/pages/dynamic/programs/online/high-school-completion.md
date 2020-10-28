@@ -23,6 +23,17 @@ program-features-content: |-
   ### Program Features:
 
   * $150 per week, four weeks minimum enrollment
+  * One-time curriculum fee
   * 2 hours per day/ten hours per week
   * Start any Monday
+  * For students in FLS level 12 and up
+
+  ### Study courses in:
+
+  * Earth Science
+  * Biology
+  * American History
+  * Mathematics
+  * Human Relations
+  * and more...
 ---
