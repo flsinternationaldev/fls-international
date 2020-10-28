@@ -27,6 +27,17 @@ program-post-content: >-
 
   Every lesson is given with live instruction, so your teacher is always there to provide feedback and correction. You'll meet and practice with students from around the world as you improve your English skills together!
 program-features-content: |-
+  
+
+  ### Program Features:
+
+  * Small class sizes
+  * 2 hours per day/ 4hours per week
   * Start any Saturday
-  * Course meets on Saturdays and Sundays, 4:00 AM (US Pacific Time)
+  * 18 levels of instruction
+  * Start time: Saturdays and Sundays, 4:00 AM (US Pacific Time)
+
+  ### Price
+
+  * $110 per week
 ---
