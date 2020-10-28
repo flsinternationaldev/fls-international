@@ -16,9 +16,16 @@ program-post-content: >-
   cultural and academic knowledge!
 
 
+  #### TEACHERS
 
 
-  Our TEFL-certified, native-American speaking teachers will guide you through learning vocabular, grammar, and listening and speaking skills in our conversationally-based lessons.  Develop a valuable skill in your free time.
+  All of our teachers are based in the United States and speak native-proficient level English. Every teacher has a TEFL Certificate or Master's Degree and extensive instructional experience.
+
+
+  #### LIVE INSTRUCTION
+
+
+  Every lesson is given with live instruction, so your teacher is always there to provide feedback and correction. You'll meet and practice with students from around the world as you improve your English skills together!
 program-features-content: |-
   * Start any Saturday
   * Course meets on Saturdays and Sundays, 4:00 AM (US Pacific Time)
