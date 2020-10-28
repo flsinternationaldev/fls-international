@@ -28,7 +28,14 @@ program-post-content: >-
 
   Every lesson is given with live instruction, so your teacher is always there to provide feedback and correction. You'll meet and practice with students from around the world as you improve your English skills together!
 program-features-content: |-
-  * For ages 7-9
-  * 60 minutes of study, three times a week (Monday, Wednesday, and Friday)
-  * Start any Monday
+  ### Program Features:
+
+  * 60 minutes per day, 3 days per week/3 hours per week
+  * Start any Monday 
+  * Available for ages 7-9
+  * 2 Start times available: 3 PM Pacific Time or 3 AM Pacific Time
+
+  ### Price
+
+  * $110 per week
 ---
