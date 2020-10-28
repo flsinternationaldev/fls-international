@@ -37,5 +37,5 @@ program-features-content: |-
 
   ### Price
 
-  * $110 per week
+  * $85 per week
 ---
