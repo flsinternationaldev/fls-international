@@ -1,0 +1,28 @@
+---
+path: high-school-completion
+name: High School Completion
+type: Online Essential Program
+hero-image: /assets/vacation-english-hero.jpeg
+programDetails:
+  lessonsPerWeek: 12
+  hoursPerWeek: "10"
+  minutesPerLesson: 50
+description: Earn your American high school diploma with FLS!
+program-post-content: >-
+  The pathway to success begins with an American high school diploma!  But many
+  international students hoping to complete a diploma don't have the time or
+  resources to attend a US high school and are searching for alternate
+  options.   Now international high schools students can earn high school credit
+  and their high school diploma through FLS through our guided online program.
+
+
+
+
+  Students use nationally accredited high school curriculum online, with guidance and mentoring from FLS instructors specially trained to help our students succeed.  After receiving your diploma, use FLS's placement service to get accepted to the best university for you!
+program-features-content: |-
+  ### Program Features:
+
+  * $150 per week, four weeks minimum enrollment
+  * 2 hours per day/ten hours per week
+  * Start any Monday
+---
