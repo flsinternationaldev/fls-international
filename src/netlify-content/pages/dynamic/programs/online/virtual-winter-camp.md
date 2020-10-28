@@ -24,4 +24,17 @@ program-features-content: |-
   * Daily 1-hour guided online activity
   * One-to-one tutorial with your teacher
   * FLS Completion Certificate
+
+
+
+  ### Activities include:
+
+  * Trivia games
+  * Virtual Escape Room
+  * Yoga
+  * Hip Hop Dance
+  * Tik Tok Workshop
+  * Virtual Tours
+  * Slang Workshop
+  * Social Media Workshops
 ---
