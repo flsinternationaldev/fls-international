@@ -10,7 +10,7 @@ programDetails:
 description: English for a head start in academic success!
 program-post-content: >-
   Students who begin their intensive English studies at a younger age have a
-  great head start on academic success. Available for students age 10 and up,
+  great head start on academic success. Available for students age 10 to 15,
   Essential English for Juniors is a fast-moving program that covers the
   fundamental English skills and beyond. Students will enjoy engaging lessons
   with a curriculum designed specifically for younger students. Each lesson
