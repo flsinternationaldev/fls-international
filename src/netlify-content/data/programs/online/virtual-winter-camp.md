@@ -3,7 +3,7 @@ name: Virtual Winter Camp
 onlineProgramType: Online Summer Camp
 durationOptions:
   minWeeks: 1
-  maxWeeks: 2
+  maxWeeks: 4
 priceDetails:
   - price: 210
     payPeriod: weekly
