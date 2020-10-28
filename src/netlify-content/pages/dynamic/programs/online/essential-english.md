@@ -16,10 +16,10 @@ program-post-content: >-
   structures and vocabulary.  
 
 
-
-
   Your TEFL-certified, native-American speaking teacher provides immediate feedback and expert guidance at every step!
 program-features-content: |-
+  ### Program Features:
+
   * $110 per week
   * 90 minutes per day/7.5 hours per week
   * Start any Monday
