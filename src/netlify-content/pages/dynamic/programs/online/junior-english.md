@@ -28,11 +28,14 @@ program-post-content: >-
 
   Every lesson is given with live instruction, so your teacher is always there to provide feedback and correction. You'll meet and practice with students from around the world as you improve your English skills together!
 program-features-content: |-
-  $110 per week
+  ### Program Features:
 
-  4 weeks minimum*
+  * 90 minutes per day/7.5 hours per week
+  * Start any Monday 
+  * 18 levels of instruction
+  * 2 Start times available: 3 PM Pacific Time or 3 AM Pacific Time
 
+  ### Price
 
-
-  Class Schedules: Online Essentials I or Online Essentials II
+  * $110 per week
 ---
