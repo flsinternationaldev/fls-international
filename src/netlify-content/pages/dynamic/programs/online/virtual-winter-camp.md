@@ -19,13 +19,11 @@ program-post-content: Don't let this winter pass you by without enjoying one of
 program-features-content: |-
   * For students aged 14-18
   * Start any Monday at 6:00 AM Pacific Time, or any Sunday at 5 PM Pacific Time
-  * Study from 1-3 weeks
+  * Study from 1-4 weeks
   * Daily two-hour English lesson
   * Daily 1-hour guided online activity
   * One-to-one tutorial with your teacher
   * FLS Completion Certificate
-
-
 
   ### Activities include:
 
