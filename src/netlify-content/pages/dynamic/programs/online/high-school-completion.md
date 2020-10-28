@@ -1,5 +1,5 @@
 ---
-path: high-school-completion
+path: online-high-school-completion
 name: High School Completion
 type: Online Essential Program
 hero-image: /assets/vacation-english-hero.jpeg
