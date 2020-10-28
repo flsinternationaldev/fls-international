@@ -1,5 +1,5 @@
 ---
-path: ielts-preparation
+path: online-ielts-preparation
 name: IELTS Preparation
 type: Online Essential Program
 hero-image: /assets/home-carousel-2.jpeg
