@@ -1,10 +1,10 @@
 ---
-name: Acting Camp
+name: Computer Science
 centerNameRelation:
   - Cal State Long Beach
-price: 4450
+price: 4675
 duration: 3
-minimumAge: 15
+minimumAge: 12
 programDates:
   - arrive: Jun 20th, 2021
     depart: Jul 10th, 2021
