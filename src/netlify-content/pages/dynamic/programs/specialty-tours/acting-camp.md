@@ -9,6 +9,8 @@ programDates:
   - arrive: Jul 11th, 2021
     depart: Jul 31st, 2021
 sampleCalendar: /assets/tour-calendar-placeholder.pdf
+carousel-images:
+  - /assets/acting-camp-1.jpeg
 programDetails:
   minimumAge: 15
   duration: 3
