@@ -8,12 +8,24 @@ programDetails:
   hoursPerWeek: "3"
   minutesPerLesson: 90
 description: Improve your English conversation ability!
-program-post-content: For anyone who wants to improve their everyday English
-  conversational ability with a comfortable time commitment, this program offers
-  short sessions three times during the week.  You'll experience an integrated
-  approach to all the key language skills. These dynamic classes offer plenty of
-  speaking practice and an introduction to essential English grammar structures
-  and vocabulary.
+program-post-content: >-
+  For anyone who wants to improve their everyday English conversational ability
+  with a comfortable time commitment, this program offers short sessions three
+  times during the week.  You'll experience an integrated approach to all the
+  key language skills. These dynamic classes offer plenty of speaking practice
+  and an introduction to essential English grammar structures and vocabulary.
+
+
+  #### TEACHERS
+
+
+  All of our teachers are based in the United States and speak native-proficient level English. Every teacher has a TEFL Certificate or Master's Degree and extensive instructional experience.
+
+
+  #### LIVE INSTRUCTION
+
+
+  Every lesson is given with live instruction, so your teacher is always there to provide feedback and correction. You'll meet and practice with students from around the world as you improve your English skills together!
 program-features-content: |-
   ### Program Features:
 
