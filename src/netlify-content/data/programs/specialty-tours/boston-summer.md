@@ -16,5 +16,5 @@ programDates:
     depart: Jul 31st, 2021
   - arrive: Jul 18th, 2021
     depart: Aug 7th, 2021
-sampleCalendar: /assets/university-tours-calendar.pdf
+sampleCalendar: /assets/tour-calendar-placeholder.pdf
 ---
