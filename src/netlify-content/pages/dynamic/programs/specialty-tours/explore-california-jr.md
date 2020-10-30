@@ -18,7 +18,7 @@ carousel-images:
 programDetails:
   minimumAge: 12
   duration: 3
-  price: 4625
+  price: 4635
 specialty-tour-description: As the home of Disneyland, the beach, and sunny
   weather, it's no surprise that California is popular with kids.  Our calendar
   keeps campers active the trips to legendary beaches, famous sites, and some of
