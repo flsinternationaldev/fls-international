@@ -46,5 +46,9 @@ activities-and-excursions: |-
 features: |-
   * 18 lessons on STEM topics each week
   * Evening games, sports, movies, and parties
-accommodations: .
+accommodations: |-
+  
+
+  * Safe and secure shared residence halls at Suffolk University
+  * Full Board (meals not provided on optional excursions)
 ---
