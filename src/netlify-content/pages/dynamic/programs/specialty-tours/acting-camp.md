@@ -16,7 +16,7 @@ programDetails:
   duration: 3
   price: 4450
 specialty-tour-description: >-
-  * Take a journey to Hollywood - the home of the stars - and pursue your acting
+  Take a journey to Hollywood - the home of the stars - and pursue your acting
   dreams.  The beautiful CSULB campus provides an ideal setting to work on your
   acting style with expert teachers from Hollywood's unmatched acting
   community.  
