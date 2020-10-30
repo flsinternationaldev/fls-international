@@ -26,41 +26,27 @@ specialty-tour-description: Boston combines unmatched cultural attractions,
   finest, against the backdrop of Boston’s historic landmarks. With beaches and
   rural scenery less than an hour away, Boston has something for everyone.
 activities-and-excursions: |-
-  Newbury Street
+  * Newbury Street
+  * Faneuil Hall and Quincy Market
+  * Beacon Hill and the State House
+  * Harvard University and Harvard Square
+  * Prudential Center
+  * New England Aquarium
+  * Museum of Fine Arts
+  * MIT
+  * Freedom Trail
+  * Duck Tour
+  * Revere Beach
+  * Little Italy
 
-  Faneuil Hall and Quincy Market
+  ### Optional Activities:
 
-  Beacon Hill and the State House
-
-  Harvard University and Harvard Square
-
-  Prudential Center
-
-  New England Aquarium
-
-  Museum of Fine Arts
-
-  MIT
-
-  Freedom Trail
-
-  Duck Tour
-
-  Revere Beach
-
-  Little Italy
-
-  Outlet Shopping
-
-  Six Flags Amusement Park (Optional)
-
-  New York City (Optional)
-features: |-
-  18 English lessons per week
-
-  Twin room accommodation in carefully selected American families
-
-  Half board
-accommodations: TBD
+  * Six Flags Amusement Park
+  * New York City Weekend
+features: "* 18 English lessons per week"
+accommodations: |-
+  * Twin room accommodation in carefully selected American families
+  * Half board
+  * Public Transportation Pass included in program fee
 center: Boston Commons
 ---
