@@ -24,7 +24,26 @@ specialty-tour-description: As the home of Disneyland, the beach, and sunny
   keeps campers active the trips to legendary beaches, famous sites, and some of
   the best shopping malls around!  Students will need to get the cameras ready
   for our visits to some of the top tourist attractions in Southern California.
-activities-and-excursions: .
+activities-and-excursions: |-
+  * Hollywood
+  * Huntington Beach
+  * Beverly Hills
+  * Newport Beach
+  * Downtown LA
+  * Laguna Beach
+  * Fashion Island
+  * UC Irvine Tour
+  * Aquarium of the Pacific
+  * Harbor Cruise and Whale Watching
+
+  ### Optional Tours Include:
+
+  * Disneyland
+  * Universal Studios
+  * Six Flags Magic Mountain
+  * Knott's Berry Farm
+  * Santa Monica Pier
+  * MLB Baseball Game
 features: .
 accommodations: .
 ---
