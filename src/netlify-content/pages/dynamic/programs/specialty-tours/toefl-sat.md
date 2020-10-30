@@ -26,15 +26,19 @@ activities-and-excursions: |-
   * Newbury Street
   * Faneuil Hall/Quincy Market
   * Beacon Hill & the State House
-  * Harvard University and Harvard Square
-  * Prudential Center
-  * New England Aquarium
   * Museum of Fine Arts
-  * MIT Tour
   * Freedom Trail
   * Duck Tour
   * Revere Beach
-  * Little Italy
+
+
+
+  ### University Tours:
+
+  * Harvard University
+  * MIT
+  * UMass Boston
+  * Brown University (optional)
 
 
 
@@ -44,6 +48,8 @@ activities-and-excursions: |-
   * Six Flags Amusement Park
 features: |-
   * 18 lessons of English per week
+  * 1 college preparation workshop per week
+  * 4 university visits
   * Evening games, parties, and activities
   * Airport Transfers to/from Boston Logan International Airport available
 accommodations: |-
