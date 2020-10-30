@@ -25,21 +25,18 @@ activities-and-excursions: |-
   * Newbury Street
   * Faneuil Hall/Quincy Market
   * Beacon Hill & the State House
-  * Museum of Fine Arts
-  * Freedom Trail
+  * Prudential Center
   * Duck Tour
-  * Revere Beach
-
-
 
   ### University Tours:
 
   * Harvard University
   * MIT
   * UMass Boston
-  * Brown University (optional)
-
-
+  * Brown University
+  * Suffolk University
+  * Boston College
+  * Boston University
 
   ### Optional Tours available:
 
@@ -48,7 +45,7 @@ activities-and-excursions: |-
 features: |-
   * 18 lessons of English per week
   * 1 college preparation workshop per week
-  * 4 university visits
+  * 7 university visits
   * Evening games, parties, and activities
   * Airport Transfers to/from Boston Logan International Airport available
 accommodations: |-
