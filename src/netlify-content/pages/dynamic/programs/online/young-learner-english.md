@@ -2,7 +2,7 @@
 path: young-learner-english
 name: Young Learner English
 type: Online Essential Program
-hero-image: /assets/johnny-mcclung-rjdoqxj7-5k-unsplash.jpg
+hero-image: /assets/adobestock_337256050.jpeg
 programDetails:
   lessonsPerWeek: 4
   hoursPerWeek: "3"
