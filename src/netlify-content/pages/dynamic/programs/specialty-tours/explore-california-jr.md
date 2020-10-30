@@ -47,5 +47,10 @@ activities-and-excursions: |-
 features: |-
   * 18 lessons of English each week with students from around the world
   * Evening activities, including dances, sports, and movies
-accommodations: .
+accommodations: >-
+  Students will stay in safe and secure on-campus residence halls, in shared
+  room accommodation.
+
+
+  Full board is included with the program.  (Meals not included on optional activities.)
 ---
