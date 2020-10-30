@@ -46,6 +46,9 @@ activities-and-excursions: |-
   * Knott's Berry Farm
   * Santa Monica Pier
   * MLB Baseball Game
-features: .
+features: |-
+  * 18 lessons of English each week with students from around the world
+  * 8 acting lessons each week
+  * Evening activities, including dances, sports, and movies
 accommodations: .
 ---
