@@ -2,7 +2,7 @@
 name: Explore California Jr
 centerNameRelation:
   - Cal State Long Beach
-price: 4625
+price: 4635
 duration: 3
 minimumAge: 12
 programDates:
