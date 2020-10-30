@@ -22,31 +22,20 @@ specialty-tour-description: Increase your computer knowledge using the latest
   languages such as Java, Python, HTML. and CSS.  Not to mention, you'll enjoy
   excursions to some of California's best attractions!
 activities-and-excursions: |-
-  Discovery Cube
+  * Discovery Cube
+  * California Science Center
+  * Hollywood
+  * Beverly Hills
+  * Downtown LA
+  * Aquarium of the Pacific
 
-  California Science Center
+  ### Optional Tours Include:
 
-  Hollywood
-
-  Beverly Hills
-
-  Downtown LA
-
-  Aquarium of the Pacific
-
-
-
-  Optional Tours Include:
-
-  Disneyland
-
-  Universal Studios
-
-  Six Flags Amusement Park
-
-  Santa Monica
-
-  MLB Baseball Game
+  * Disneyland
+  * Universal Studios
+  * Six Flags Amusement Park
+  * Santa Monica
+  * MLB Baseball Game
 features: |-
   * 18 lessons of English each week with students from around the world
   * 6 computer science lessons each week
