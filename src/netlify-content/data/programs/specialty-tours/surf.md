@@ -14,5 +14,5 @@ programDates:
     depart: Jul 24th, 2021
   - arrive: Jul 11th, 2021
     depart: Jul 31st, 2021
-sampleCalendar: /assets/acting-camp-calendar.pdf
+sampleCalendar: /assets/tour-calendar-placeholder.pdf
 ---
