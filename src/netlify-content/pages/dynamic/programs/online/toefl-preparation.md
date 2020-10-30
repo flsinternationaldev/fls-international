@@ -31,7 +31,12 @@ program-post-content: >-
 program-features-content: |-
   ### Program Features:
 
-  * $150 per week, four weeks minimum enrollment
-  * 2 hours per day/ten hours per week
-  * Start any Monday
+  * 2 hours per day/ 12 lessons per week
+  * Start any Monday 
+  * Small class sizes
+  * 3 Start times available: 12:15 and 3 PM Pacific Time or 3 AM Pacific Time
+
+  ### Price
+
+  * $150 per week
 ---
