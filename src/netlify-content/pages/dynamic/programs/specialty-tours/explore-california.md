@@ -1,0 +1,51 @@
+---
+path: explore-california
+name: Explore California
+centerNameRelation:
+  - Cal State Long Beach
+programDates:
+  - arrive: Jun 20th, 2021
+    depart: Jul 10th, 2021
+  - arrive: Jun 27th, 2021
+    depart: Jul 17th, 2021
+  - arrive: Jul 4th, 2021
+    depart: Jul 24th, 2021
+  - arrive: Jul 11th, 2021
+    depart: Jul 31st, 2021
+sampleCalendar: /assets/tour-calendar-placeholder.pdf
+carousel-images:
+  - /assets/csu-fullerton-3.jpeg
+programDetails:
+  minimumAge: 15
+  duration: 3
+  price: 4475
+specialty-tour-description: Improve your English skills on the campus of one of
+  California's largest universities with instruction from our TEFL-certified
+  instructors.  Then, enjoy afternoons and weekends with trips to iconic
+  attractions like Hollywood, Beverly Hills, beautiful beach cities, and
+  fashionable shopping centers.
+activities-and-excursions: |-
+  * Hollywood
+  * Huntington Beach
+  * Beverly Hills
+  * Newport Beach
+  * Downtown LA
+  * Laguna Beach
+  * Fashion Island
+  * UC Irvine Tour
+  * Aquarium of the Pacific
+  * Harbor Cruise and Whale Watching
+
+
+
+  ### Optional Tours Include:
+
+  * Disneyland
+  * Universal Studios
+  * Six Flags Magic Mountain
+  * Knott's Berry Farm
+  * Santa Monica Pier
+  * MLB Baseball Game
+features: .
+accommodations: .
+---
