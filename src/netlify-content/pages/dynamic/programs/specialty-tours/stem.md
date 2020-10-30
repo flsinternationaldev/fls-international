@@ -26,7 +26,25 @@ specialty-tour-description: >-
 
 
   Students will enjoy university dormitory accommodation in downtown Boston and benefit from and environment rich with historical and educational landmarks.  Our camp is rounded off with stimulating visits to MIT, the Museum of Science, the New England Aquarium, and more.
-activities-and-excursions: .
-features: .
+activities-and-excursions: |-
+  
+
+  * Newbury Street
+  * Faneuil Hall/Quincy Market
+  * Beacon Hill & the State House
+  * Harvard University and Harvard Square
+  * New England Aquarium
+  * MIT Tour
+  * Freedom Trail
+  * Duck Tour
+
+
+
+  ### Optional Tours available:
+
+  * New York Weekend
+features: |-
+  * 18 lessons on STEM topics each week
+  * Evening games, sports, movies, and parties
 accommodations: .
 ---
