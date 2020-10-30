@@ -1,5 +1,5 @@
 ---
-name: California Summer
+name: Explore California
 centerNameRelation:
   - Cal State Long Beach
 price: 4475
