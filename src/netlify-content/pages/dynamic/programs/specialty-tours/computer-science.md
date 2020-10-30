@@ -49,8 +49,7 @@ activities-and-excursions: |-
   MLB Baseball Game
 features: |-
   * 18 lessons of English each week with students from around the world
-  * 8 acting lessons each week
-  * Copy of the final film
+  * 6 computer science lessons each week
   * Evening activities, including dances, sports, and movies
 accommodations: >-
   Students will stay in safe and secure on-campus residence halls, in shared
