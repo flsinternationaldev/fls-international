@@ -16,7 +16,7 @@ program-post-content: >-
   analysis and algebra.
 
 
-  Available for students in Level 13 and above, our SAT Preparation course covers every aspect of the test, and provides extensive practice testing, to secure higher scores for our students.
+  Available for students in Level 13 and above, our SAT Preparation course will make students more confident in every aspect of the test, and provides extensive practice testing, to secure higher scores for our students.
 program-features-content: |-
   ### Program Features:
 
