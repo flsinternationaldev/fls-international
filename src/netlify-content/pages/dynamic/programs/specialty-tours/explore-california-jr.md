@@ -1,0 +1,30 @@
+---
+path: explore-california-jr
+name: Explore California Jr
+centerNameRelation:
+  - Cal State Long Beach
+programDates:
+  - arrive: Jun 20th, 2021
+    depart: Jul 10th, 2021
+  - arrive: Jun 27th, 2021
+    depart: Jul 17th, 2021
+  - arrive: Jul 4th, 2021
+    depart: Jul 24th, 2021
+  - arrive: Jul 11th, 2021
+    depart: Jul 31st, 2021
+sampleCalendar: /assets/tour-calendar-placeholder.pdf
+carousel-images:
+  - /assets/discover-california-2.jpeg
+programDetails:
+  minimumAge: 12
+  duration: 3
+  price: 4625
+specialty-tour-description: As the home of Disneyland, the beach, and sunny
+  weather, it's no surprise that California is popular with kids.  Our calendar
+  keeps campers active the trips to legendary beaches, famous sites, and some of
+  the best shopping malls around!  Students will need to get the cameras ready
+  for our visits to some of the top tourist attractions in Southern California.
+activities-and-excursions: .
+features: .
+accommodations: .
+---
