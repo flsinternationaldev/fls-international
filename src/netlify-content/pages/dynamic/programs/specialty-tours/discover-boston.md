@@ -43,10 +43,10 @@ activities-and-excursions: |-
 
   * Six Flags Amusement Park
   * New York City Weekend
-features: |-
-  * 18 English lessons per week
+features: "* 18 English lessons per week"
+accommodations: |-
   * Twin room accommodation in carefully selected American families
   * Half board
-accommodations: TBD
+  * Public Transportation Pass included in program fee
 center: Boston Commons
 ---
