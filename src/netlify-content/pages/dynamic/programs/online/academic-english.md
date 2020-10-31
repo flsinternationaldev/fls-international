@@ -30,9 +30,17 @@ program-post-content: >-
 
 
   As part of our Online Pathway Program you will participate via webcam with a live in-person class.
-program-features-content: "### Program Features: * 6 hours of study per day/30
-  hours per week * 18 levels * Textbooks and materials provided * Small class
-  size * All classes taught by TEFL-certified teachers with native fluency in
-  American English * Our best value, with the lowest cost per lesson of any
-  online Pathway course"
+program-features-content: >-
+  ### Program Features:
+
+
+  * 6 hours of study per day/ 30 hours per week
+
+  * 18 levels
+
+  * Textbooks and materials provided
+
+  * Small class size
+
+  * All classes taught by TEFL-certified teachers with native fluency in American English
 ---
