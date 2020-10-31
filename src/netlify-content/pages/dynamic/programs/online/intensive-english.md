@@ -34,7 +34,7 @@ program-features-content: >-
   ### Program Features:
 
 
-  * 5 hours of study per day/25 hours per week
+  * 5 hours of study per day/ 25 hours per week
 
   * 18 levels
 
