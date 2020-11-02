@@ -46,5 +46,9 @@ activities-and-excursions: |-
 features: |-
   * 18 English lessons per week
   * Dances, parties, games, and movies
-accommodations: .
+accommodations: |-
+  
+
+  * Safe and secure shared residence halls 
+  * Full Board (meals not provided on optional excursions)
 ---
