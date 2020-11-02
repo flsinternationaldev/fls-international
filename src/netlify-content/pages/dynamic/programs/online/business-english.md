@@ -31,12 +31,14 @@ program-post-content: >-
 program-features-content: |-
   ### Program Features:
 
-  * 90 minutes per day/7.5 hours per week
+  * 90 minutes per day/ 7.5 hours per week
   * Start any Monday 
   * Small class sizes
   * 2 Start times available: 3 PM Pacific Time or 3 AM Pacific Time
 
-    ### Price
+
+
+    Price
 
     * $110 per week
 ---
