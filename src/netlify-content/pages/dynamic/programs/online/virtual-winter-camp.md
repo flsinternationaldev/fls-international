@@ -30,6 +30,8 @@ program-post-content: >-
 
   Every lesson is given with live instruction, so your teacher is always there to provide feedback and correction. You'll meet and practice with students from around the world as you improve your English skills together!
 program-features-content: |-
+  ### Program Features:
+
   * For students aged 14-18
   * Start any Monday at 6:00 AM Pacific Time, or any Sunday at 5 PM Pacific Time
   * Study from 1-4 weeks
