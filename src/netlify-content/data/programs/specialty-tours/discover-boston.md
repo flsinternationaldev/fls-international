@@ -1,14 +1,14 @@
 ---
 name: Discover Boston
 centerNameRelation:
-    - Boston Commons
-price: 3785
+  - Boston Commons
+price: 3795
 duration: 3
 minimumAge: 15
 programDates:
-    - arrive: Jul 19th, 2020
-      depart: Aug 8th, 2020
-    - arrive: Jul 26th, 2020
-      depart: Aug 15th, 2020
+  - arrive: Jul 18th, 2021
+    depart: Aug 7th, 2021
+  - arrive: Jul 25th, 2021
+    depart: Aug 14th, 2021
 sampleCalendar: /assets/discover-boston.pdf
 ---
