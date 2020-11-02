@@ -1,5 +1,5 @@
 ---
-name: Playwriting
+name: Scriptwriting Camp
 centerNameRelation:
   - Marymount Manhattan College
 price: 5250
