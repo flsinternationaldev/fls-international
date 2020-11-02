@@ -9,6 +9,9 @@ carousel_settings:
   - copy: FLS HAS THE RIGHT OPTIONS FOR INTERNATIONAL STUDENTS
     carousel-image: /assets/home-carousel-3.jpeg
     title: FIND YOUR EDUCATIONAL FUTURE
+  - title: CAROUSEL ITEM WE WANT TO DELETE
+    copy: I live to be deleted!
+    carousel-image: /assets/academic-english.jpeg
 explore_your_world:
   title: EXPLORE YOUR WORLD
   subtitle: Study in the U.S.A.
