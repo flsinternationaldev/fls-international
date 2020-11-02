@@ -22,11 +22,14 @@ program-post-content: >-
 program-features-content: |-
   ### Program Features:
 
-  * $150 per week, four weeks minimum enrollment
-  * One-time curriculum fee
-  * 2 hours per day/ten hours per week
+  * 2 hours of study per day/ 10 hours per week
   * Start any Monday
   * For students in FLS level 12 and up
+
+  ### Price
+
+  * One-time curriculum fee
+  * $150 per week, four weeks minimum enrollment
 
   ### Study courses in:
 
