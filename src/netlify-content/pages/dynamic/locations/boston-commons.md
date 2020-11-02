@@ -10,57 +10,58 @@ quick-facts:
   - name: Campus Facilities
     icon: /assets/campus-facilities-icon.png
     items: |-
-      * The Gastronome Dining Hall
-      * Pollak Library
-      * Titan Shops
-      * Titan Student Union
-      * Clayes Performing Arts Center
-      * Titan Stadium
+      * Cafeteria
+      * Free Wifi
+      * Smartboards
+      * Student Lounge
   - name: Popular Majors
     icon: /assets/popular-majors-icon.png
-    items: |-
+    items: >-
+      Transfer to partner universities throughout Boston to study popular majors
+      such as:
+
+
       * Business
+
       * Communications
+
       * Health Professions
+
       * Psychology
+
       * Social Sciences
-  - name: Airport Pickup
+  - name: Airport Transfer
     icon: /assets/airport-pickup-icon.png
     items: |-
-      * Los Angeles International Airport (LAX)
-      * 67 kilometers
+      * Boston Logan International Airport (BOS)
+      * 6 kilometers
   - items: |-
-      * SPRING 21'C
-      * SUMMER 27'C
-      * FALL 19'C
-      * WINTER 18'C
+      * SPRING 13 C
+      * SUMMER 21 C
+      * FALL 11 C
+      * WINTER 6 C
     name: Average Temp
     icon: /assets/average-temp-icon.png
   - name: Enrollment
     icon: /assets/enrollment-icon.png
-    items: >-
-      * The university enrolls approximately 34,000 undergraduate students and
-      6,000 graduate students each semester. 
-
-      * In addition, the university operates a busy summer session and hosts numerous summer camp programs with American and international students.
+    items: Enrollment averages over 150 students throughout the year, with small
+      class sizes to encourage student interaction.
   - items: |-
-      * Explore California
-      * Explore California Jr.
-      * Cinema Camp
-      * Acting Camp
-      * Computer Science Camp
-      * Surf Camp
+      * Vacation English
+      * General English
+      * Intensive English
+      * Academic English
+      * High School Completion
+      * Test Preparation (TOEFL, SAT, IELTS)
     icon: /assets/programs-offered-icon.png
     name: Programs Offered
   - name: Distance to Major Attractions
     icon: /assets/major-attractions-icon.png
     items: |-
-      
-
-      * Disneyland - 7 miles
-      * Irvine Spectrum Center - 20 miles
-      * Huntington Beach - 22 miles
-      * Hollywood - 37 miles
+      * Harvard Square - 5 miles
+      * Bradford Ski Resort - 37 miles
+      * Cape Cod - 70 miles
+      * Six Flags New England - 97 miles
 carousel-images:
   - /assets/csu-fullerton-3.jpeg
   - /assets/csu-fullerton-2.jpeg
