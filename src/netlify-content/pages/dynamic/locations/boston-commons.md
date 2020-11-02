@@ -62,6 +62,14 @@ quick-facts:
       * Bradford Ski Resort - 37 miles
       * Cape Cod - 70 miles
       * Six Flags New England - 97 miles
+  - name: Local Transportation
+    icon: /assets/local-transportation-icon.png
+    items: |-
+      Subway - Steps away from the campus
+
+      Bus - Next to campus; covers the greater Boston area
+
+      Rail - Connects Boston to neighboring cities
 carousel-images:
   - /assets/csu-fullerton-3.jpeg
   - /assets/csu-fullerton-2.jpeg
