@@ -35,4 +35,8 @@ program-features-content: |-
   * Start any Monday 
   * Small class sizes
   * 2 Start times available: 3 PM Pacific Time or 3 AM Pacific Time
+
+    ### Price
+
+    * $110 per week
 ---
