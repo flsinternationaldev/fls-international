@@ -40,5 +40,5 @@ programDates:
     depart: Jan 8th, 2022
   - arrive: Dec 26th, 2021
     depart: Jan 15th, 2022
-sampleCalendar: /assets/discover-california-calendar.pdf
+sampleCalendar: /assets/tour-calendar-placeholder.pdf
 ---
