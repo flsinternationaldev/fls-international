@@ -32,5 +32,7 @@ features: |-
   * 18 lessons per week of English classes
   * 10 lessons per week of script writing
   * Dances, parties, games, and movies
-accommodations: .
+accommodations: |-
+  * Safe and secure shared residence halls 
+  * Full Board (meals not provided on optional excursions)
 ---
