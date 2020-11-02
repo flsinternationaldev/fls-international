@@ -36,7 +36,7 @@ program-features-content: |-
   * Daily 2-hour English lesson
   * Daily 1-hour guided online activity
   * One-to-one tutorial with your teacher
-  * FLS Completion Certificate
+  * FLS Attendance Certificate
 
   ### Activities include:
 
