@@ -70,5 +70,8 @@ activities-and-excursions: |-
 features: |-
   * 18 lessons of English per week
   * Optional excursions to theme parks and beaches
-accommodations: .
+accommodations: |-
+  * Twin room accommodation in carefully selected American families
+  * Half board
+  * Public Transportation Pass included in program fee
 ---
