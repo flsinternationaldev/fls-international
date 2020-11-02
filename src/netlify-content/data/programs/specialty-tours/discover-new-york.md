@@ -2,7 +2,7 @@
 name: Discover New York
 centerNameRelation:
   - Marymount Manhattan College
-price: 3500
+price: 5250
 duration: 3
 minimumAge: 15
 programDates:
