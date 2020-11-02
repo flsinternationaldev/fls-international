@@ -62,17 +62,10 @@ collections:
             label: 'About Us'
             name: 'aboutUs'
             fields:
-                - widget: 'object'
-                  name: 'programTypeDescriptions'
-                  label: 'Program Type Descriptions'
-                  hint: '1 - 3 sentences summarizing the program type. Will render, conditionally, on the /programs page'
-                  fields:
-                      - {
-                            label: 'About Us Page Content',
-                            name: 'pageContent',
-                            widget: 'markdown',
-                            hint: 'Any and all content entered here will be preserved when this CMS entry is fully integrated with the production site',
-                        }
+                - widget: 'markdown'
+                  label: 'About Us Page Content'
+                  name: 'pageContent'
+                  hint: 'Any and all content entered here will be preserved when this CMS entry is fully integrated with the production site'
     - name: 'navbar-item'
       label: 'Navbar Items'
       create: true
