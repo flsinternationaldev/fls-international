@@ -27,11 +27,13 @@ programDetails:
   minimumAge: 15
   duration: 3
   price: 4110
-specialty-tour-description: Come experience the best of exciting southern
-  California!  This popular program is hosted on the attractive campus of Citrus
-  College.  Citrus is located minutes from downtown Los Angeles in the
-  comfortable suburb of Glendora, and sits at the base of the San Gabriel
-  mountains.
+specialty-tour-description: Come spend your summer enjoying the best of exciting
+  southern California!  This popular program is hosted on the attractive campus
+  of Citrus College, and features added activities and events especially
+  selected for the summer months. Citrus is located minutes from downtown Los
+  Angeles in the comfortable suburb of Glendora, and sits at the base of the San
+  Gabriel mountains, and features easy access to shopping, theme parks, and
+  southern California's famous beaches!
 activities-and-excursions: |-
   * Hollywood
   * Beverly Hills
@@ -46,8 +48,6 @@ activities-and-excursions: |-
   * Griffith Observatory
   * LA Zoo
 
-
-
   ### Optional Tours include:
 
   * Disneyland
@@ -55,6 +55,8 @@ activities-and-excursions: |-
   * Knott's Berry Farm
   * Six Flags Magic Mountain
   * Santa Monica Beach
+  * Dance Party
+  * MLB Baseball Game
 features: |-
   * 18 lessons of English per week
   * Optional excursions to theme parks and beaches
