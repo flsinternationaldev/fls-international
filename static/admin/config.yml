@@ -63,9 +63,10 @@ collections:
             name: 'aboutUs'
             fields:
                 - widget: 'markdown'
-                  label: 'About Us Page Content'
-                  name: 'pageContent'
-                  hint: 'Any and all content entered here will be preserved when this CMS entry is fully integrated with the production site'
+                  label: 'About Us Page Content',
+                  name: 'pageContent',
+                  widget: 'markdown',
+                  hint: 'Any and all content entered here will be preserved when this CMS entry is fully integrated with the production site',
     - name: 'navbar-item'
       label: 'Navbar Items'
       create: true
