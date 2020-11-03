@@ -19,11 +19,13 @@ programDetails:
   minimumAge: 12
   duration: 3
   price: 4635
+  durationRelation: 3
 specialty-tour-description: As the home of Disneyland, the beach, and sunny
   weather, it's no surprise that California is popular with kids.  Our calendar
-  keeps campers active the trips to legendary beaches, famous sites, and some of
-  the best shopping malls around!  Students will need to get the cameras ready
-  for our visits to some of the top tourist attractions in Southern California.
+  keeps campers active with trips to legendary beaches, famous sites, and some
+  of the best shopping malls around!  Students will need to get the cameras
+  ready for our visits to some of the top tourist attractions in Southern
+  California.
 activities-and-excursions: |-
   * Hollywood
   * Huntington Beach
@@ -48,9 +50,8 @@ features: |-
   * 18 lessons of English each week with students from around the world
   * Evening activities, including dances, sports, and movies
 accommodations: >-
-  Students will stay in safe and secure on-campus residence halls, in shared
+  * Students will stay in safe and secure on-campus residence halls, in shared
   room accommodation.
 
-
-  Full board is included with the program.  (Meals not included on optional activities.)
+  * Includes three meals on weekdays, brunch on Saturdays and brunch & dinner on Sundays.
 ---
