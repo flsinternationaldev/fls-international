@@ -99,27 +99,43 @@ post-content: >-
   Located right in downtown Boston, our center offers a cosmopolitan experience in one of America's premiere cities.  The center's modern facilities offer students all the tools they need for an exceptional educational experience.  Our center overlooks the Boston Common public park, and is situated between the campuses of several colleges and universities.  Students will enjoy studying in our comfortable student lounge, or taking their textbooks outside for study groups on the expansive Boston Common lawn.
 
 
-  Housing Options
+  ## Housing Options
 
 
-
-
-  Homestay
+  ### Homestay
 
 
   A homestay is a great way to experience American culture while improving your English ability!  All of our centers offer homestay accommodation with American families individually selected by FLS.  With your host family you'll learn about American daily life, practice English on a regular basis, and participate in many aspects of American culture that visitors often don't get to see.  (Twin and Single options available).
 
 
-  International Guest House
+  ### International Guest House
 
 
   Located in Boston's historic Back Bay, just a few blocks from FLS, the International Guest House (IGH) offers shared accommodation with private bathrooms.  The is located near many of Boston's unique attractions, including Boston Common park, Newbury Street shopping, and the Boston Public Library.  The dining room provides a daily buffet-style breakfast and dinner.  Other common areas include a study room, TV room, and social room.
 
 
-  Area Profile
+  ## Area Profile
 
 
-  The Boston Experience
+  ### The Boston Experience
+
+
+  Known as America's Walking City, Boston provides all the excitement of a major city in a compact area that's easy to get around.  You'll never be bored with all the events and diversions awaiting you in this unique and picturesque city!
+
+
+  * Take a unique ride on the Duck Tour as amphibious vehicles drive you by the city's great sights and then plunge into the Charles River for a watery finale.
+
+  * Have an all-American day and see the world-championship Boston Red Sox at Fenway Park.
+
+  * Sample famous New England seafood at historic waterfront oyster bars or try authentic Boston clam chowder at Quincy Market.
+
+  * Visit the impressive collections at the Museum of Fine Arts, including major works of impressionism, Egyptian antiquities and modern American painting.
+
+  * Stroll along fashionable Newbury Street and go shopping at high-end boutiques or sip a cappuccino at an elegant sidewalk café.
+
+  * Spend a day touring the quaint villages and scenic beaches of Cape Cod where Boston's elite travel for summer getaways.
+
+
 
 
   Programs Offered:
