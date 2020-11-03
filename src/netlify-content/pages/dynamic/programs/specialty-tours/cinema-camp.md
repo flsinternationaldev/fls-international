@@ -10,8 +10,8 @@ programDates:
     depart: Aug 1st, 2021
 sampleCalendar: /assets/tour-calendar-placeholder.pdf
 carousel-images:
-  - /assets/cinema-camp-carousel-1.jpeg
-  - /assets/cinema-camp-carousel-2.jpeg
+  - /assets/cinema-camp-1.jpg
+  - /assets/cinema-camp-2.png
   - /assets/cinema-camp-carousel-3.jpeg
 programDetails:
   durationRelation: 3
