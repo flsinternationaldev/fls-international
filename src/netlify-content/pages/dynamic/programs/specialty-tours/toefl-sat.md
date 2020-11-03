@@ -11,10 +11,12 @@ programDates:
 sampleCalendar: /assets/tour-calendar-placeholder.pdf
 carousel-images:
   - /assets/ielts-preparation.jpeg
+  - /assets/masks-in-class1.jpeg
 programDetails:
   price: 4875
   duration: 3
   minimumAge: 15
+  durationRelation: 3
 specialty-tour-description: International students must overcome many obstacles
   when planning to attend an American college, including English fluency
   requirements, minimum standardized test scores, and knowledge of the US higher
