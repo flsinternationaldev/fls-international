@@ -19,8 +19,9 @@ programDetails:
   minimumAge: 15
   duration: 3
   price: 5250
+  durationRelation: 3
 specialty-tour-description: Experience the excitement of New York  City, one of
-  the world's cultural capitols, with our Discover New York program!  Based in
+  the world's cultural capitals, with our Discover New York program!  Based in
   the heart of New York City, our camp includes New York's greatest sights, from
   the hub of Times Square to the world-famous Statue of Liberty.  We'll also
   explore the Big Apple's many neighborhoods, including Lower Manhattan, Little
@@ -46,9 +47,8 @@ activities-and-excursions: |-
 features: |-
   * 18 English lessons per week
   * Dances, parties, games, and movies
-accommodations: |-
-  
-
+accommodations: >-
   * Safe and secure shared residence halls 
-  * Full Board (meals not provided on optional excursions)
+
+  * Includes three meals on weekdays, brunch on Saturdays and brunch & dinner on Sundays.
 ---
