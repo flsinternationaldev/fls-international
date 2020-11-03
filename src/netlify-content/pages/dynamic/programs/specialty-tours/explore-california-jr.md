@@ -14,7 +14,7 @@ programDates:
     depart: Jul 31st, 2021
 sampleCalendar: /assets/tour-calendar-placeholder.pdf
 carousel-images:
-  - /assets/discover-california-2.jpeg
+  - /assets/explore-ca-jr.-2.jpg
 programDetails:
   minimumAge: 12
   duration: 3
