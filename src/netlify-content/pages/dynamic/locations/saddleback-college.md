@@ -166,8 +166,6 @@ post-content: >-
 
   * High School Completion
 
-  * Concurrent Enrollment
-
 
   **English + Volunteering**
 
