@@ -10,8 +10,8 @@ programDates:
     depart: Jul 31st, 2021
 sampleCalendar: /assets/tour-calendar-placeholder.pdf
 carousel-images:
-  - /assets/ielts-preparation.jpeg
   - /assets/masks-in-class1.jpeg
+  - /assets/toefl-2.jpg
 programDetails:
   price: 4875
   duration: 3
