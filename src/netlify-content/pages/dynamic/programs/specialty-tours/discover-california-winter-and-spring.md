@@ -39,11 +39,13 @@ programDetails:
   minimumAge: 15
   duration: 3
   price: 3795
+  durationRelation: 3
 specialty-tour-description: Come experience the best of exciting southern
   California!  This popular program is hosted on the attractive campus of Citrus
   College.  Citrus is located minutes from downtown Los Angeles in the
   comfortable suburb of Glendora, and sits at the base of the San Gabriel
-  mountains.
+  mountains. You'll enjoy the ideal weather and our friendly guides as they take
+  you to the best attractions in the region.
 activities-and-excursions: |-
   * Hollywood
   * Beverly Hills
@@ -69,9 +71,9 @@ activities-and-excursions: |-
   * Santa Monica Beach
 features: |-
   * 18 lessons of English per week
-  * Optional excursions to theme parks and beaches
-accommodations: |-
-  * Twin room accommodation in carefully selected American families
-  * Half board
-  * Public Transportation Pass included in program fee
+  * 20 students or fewer per class
+accommodations: >-
+  * Twin room accommodation with carefully selected American families
+
+  * Includes two meals on weekdays, brunch on Saturdays and brunch & dinner on Sundays
 ---
