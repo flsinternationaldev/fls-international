@@ -10,11 +10,12 @@ programDates:
     depart: Jul 24th, 2021
 sampleCalendar: /assets/tour-calendar-placeholder.pdf
 carousel-images:
-  - /assets/home-carousel-1.jpeg
+  - /assets/stem-1.jpeg
 programDetails:
   minimumAge: 12
   duration: 2
   price: 4325
+  durationRelation: 3
 specialty-tour-description: >-
   Located in Cambridge, Harvard University is the oldest and most revered
   institution of higher education in the United States and the perfect
