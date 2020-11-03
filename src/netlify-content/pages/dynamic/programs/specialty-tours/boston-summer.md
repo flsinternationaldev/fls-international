@@ -21,6 +21,7 @@ programDetails:
   price: 4875
   duration: 3
   minimumAge: 12
+  durationRelation: 3
 specialty-tour-description: As one of America's oldest cities and the country's
   educational capitol, Boston is a unique pace to soak up American cultures
   while you sharpen your English skills.  Our ESL and activity program at
@@ -50,7 +51,8 @@ features: |-
   * 18 lessons of English per week
   * Evening games, parties, and activities
   * Airport Transfers to/from Boston Logan International Airport available
-accommodations: |-
+accommodations: >-
   * Safe and secure shared residence halls at Suffolk University
-  * Full Board (meals not provided on optional excursions)
+
+  * Includes three meals on weekdays, brunch on Saturdays and brunch & dinner on Sundays.
 ---
