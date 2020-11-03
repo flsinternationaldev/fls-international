@@ -15,6 +15,7 @@ programDetails:
   minimumAge: 15
   duration: 3
   price: 4450
+  durationRelation: 3
 specialty-tour-description: >-
   Take a journey to Hollywood - the home of the stars - and pursue your acting
   dreams.  The beautiful CSULB campus provides an ideal setting to work on your
@@ -22,10 +23,8 @@ specialty-tour-description: >-
   community.  
 
 
-  You'll joint students form the FLS Cinema Camp to create a short film.  Students must learn to act in front of a camera and hone skill in enunciation, character analysis, improvisation, and reacting to other characters in a scene.
+  You'll joint students form the FLS Cinema Camp to create a short film.  Students must learn to act in front of a camera and hone their skills in enunciation, character analysis, improvisation, and reacting to other characters in a scene.
 activities-and-excursions: |-
-  ### Activities and Excursions:
-
   * Hollywood
   * Beverly Hills
   * Makeup Workshop
@@ -33,8 +32,6 @@ activities-and-excursions: |-
   * Sony/MGM Studio
   * Paramount Studio
   * Dance Party
-
-
 
   ### Optional Tours Include:
 
