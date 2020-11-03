@@ -26,43 +26,30 @@ specialty-tour-description: This program introduces participants to the exciting
   skills with on-location shooting using a 4k professional digital cinema
   camera. Our program is rounded out with trips to major Hollywood studios and
   more must-see Los Angeles attractions!
-activities-and-excursions: >-
-  This program includes the following activities and excursions, with
-  supervision from trained FLS Activity Guides. (Optional activities are
-  available for an additional fee).
-
-
+activities-and-excursions: |-
   * Film Screening
-
   * Hollywood
-
   * Beverly Hills
-
   * Cinema Make-up Workshop
-
-  * Disneyland (optional)
-
-  * Universal Studios (optional)
-
   * DJ Dance Party
-
   * Farewell Party
-
   * Knott’s Berry Farm (optional)
-
   * Santa Monica Beach (optional)
-
   * MLB Baseball Game (optional)
-
 
   **STUDIO TOURS**
 
-
   * Warner Bros.
-
   * Sony/MGM
-
   * Paramount
+
+  ### Optional Tours Include:
+
+  * Disneyland 
+  * Universal Studios 
+  * Knott’s Berry Farm 
+  * Santa Monica Beach 
+  * MLB Baseball Game
 features: |-
   
 
