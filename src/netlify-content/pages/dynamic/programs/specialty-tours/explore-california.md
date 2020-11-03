@@ -14,11 +14,14 @@ programDates:
     depart: Jul 31st, 2021
 sampleCalendar: /assets/tour-calendar-placeholder.pdf
 carousel-images:
-  - /assets/csu-fullerton-3.jpeg
+  - /assets/explore-ca-regular-2.jpg
+  - /assets/explore-ca-regular-1.jpg
+  - /assets/location-preview-la.jpg
 programDetails:
   minimumAge: 15
   duration: 3
   price: 4475
+  durationRelation: 3
 specialty-tour-description: Improve your English skills on the campus of one of
   California's largest universities with instruction from our TEFL-certified
   instructors.  Then, enjoy afternoons and weekends with trips to iconic
