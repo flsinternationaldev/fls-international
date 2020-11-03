@@ -11,6 +11,7 @@ programDates:
 sampleCalendar: /assets/tour-calendar-placeholder.pdf
 carousel-images:
   - /assets/stem-1.jpeg
+  - /assets/stem-2.jpg
 programDetails:
   minimumAge: 12
   duration: 2
