@@ -10,7 +10,8 @@ programDates:
     depart: Jul 31st, 2021
 sampleCalendar: /assets/tour-calendar-placeholder.pdf
 carousel-images:
-  - /assets/elp-card-bg.jpeg
+  - /assets/computer-science-camp-1.jpg
+  - /assets/computer-science-2.jpg
 programDetails:
   minimumAge: 12
   duration: 3
