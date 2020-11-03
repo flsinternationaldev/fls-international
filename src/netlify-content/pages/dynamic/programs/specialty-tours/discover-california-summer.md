@@ -61,7 +61,8 @@ activities-and-excursions: |-
 features: |-
   * 18 lessons of English per week
   * 20 students or fewer per class
-accommodations: |-
-  * Twin room accommodation in carefully selected American families
-  * Half board
+accommodations: >-
+  * Twin room accommodation with carefully selected American families
+
+  * Includes two meals on weekdays, brunch on Saturdays and brunch & dinner on Sundays
 ---
