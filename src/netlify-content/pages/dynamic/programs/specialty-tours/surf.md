@@ -14,11 +14,13 @@ programDates:
     depart: Jul 31st, 2021
 sampleCalendar: /assets/tour-calendar-placeholder.pdf
 carousel-images:
-  - /assets/csu-fullerton-3.jpeg
+  - /assets/surf-camp-1.jpg
+  - /assets/what-to-bring-3.jpg
 programDetails:
   minimumAge: 15
   duration: 3
   price: 4475
+  durationRelation: 3
 specialty-tour-description: California State University, Long Beach is set in
   beautiful Orange County, near fabulous beaches and some of California's best
   attractions.  Surf lessons take place in nearby Huntington Beach, renowned as
