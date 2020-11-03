@@ -29,6 +29,9 @@ carousel-images:
   - /assets/citrus-college-1.jpeg
   - /assets/citrus-college-2.jpeg
 post-content: >-
+  # OPEN FOR IN-PERSON PROGRAMS!  HYBRID CLASSES HAVE STARTED.
+
+
   ## OVERVIEW
 
 
