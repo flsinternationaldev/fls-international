@@ -138,44 +138,53 @@ post-content: >-
 
 
 
-  Programs Offered:
+  ## Programs Offered:
 
 
-  Academic Programs:
+  ### Academic Programs:
 
 
-  Vacation English
+  * Vacation English
+
+  * General English
+
+  * Intensive English
+
+  * Academic English
+
+  * High School Completion
+
+  * TOEFL Preparation
+
+  * SAT Preparation
+
+  * IELTS Preparation
 
 
-  General English
+  ### Specialty Tours:
 
 
-  Intensive English
+  * Discover Boston
+
+  * English + Volunteering
 
 
-  Academic English
+  ### Optional Weekend and Evening Activities:
 
 
-  High School Completion
+  FLS offer ESL students memorable and educational tour experiences, and opportunities to visit the best attractions of the United States.  Students will have many opportunities to take part in excursions with the full supervision of our trained FLS staff.
 
 
-  TOEFL Preparation
+  Activities include:
 
 
-  SAT Preparation
+  * Harvard University and Harvard Square
 
+  * Six Flags New England
 
-  IELTS Preparation
+  * Museum of Fine Arts
 
+  * Boston Red Sox Games
 
-  Specialty Tours:
-
-
-  Discover Boston
-
-
-  English + Volunteering
-
-
-  FLS offer ESL students
+  * Newbury Street Shopping
 ---
