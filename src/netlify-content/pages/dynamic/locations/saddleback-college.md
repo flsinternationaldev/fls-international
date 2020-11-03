@@ -97,7 +97,7 @@ post-content: >-
   ### Campus Facilities
 
 
-  * **Learning Resouce Center**
+  * **Learning Resource Center**
     Housing computer stations, language lab, and campus library.
   * **McKinney Theater**
     Performing arts stage, with seating for 400, offering a variety of live entertainment events to students and the public.
