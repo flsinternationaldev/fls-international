@@ -47,7 +47,8 @@ activities-and-excursions: |-
 features: |-
   * 18 English lessons per week
   * Dances, parties, games, and movies
-accommodations: |-
+accommodations: >-
   * Safe and secure shared residence halls 
-  *
+
+  * Includes three meals on weekdays, brunch on Saturdays and brunch & dinner on Sundays.
 ---
