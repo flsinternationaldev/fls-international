@@ -11,9 +11,9 @@ programDates:
 sampleCalendar: /assets/discover-boston.pdf
 carousel-images:
   - /assets/discover-boston-3.png
-  - /assets/discover-boston-1.jpeg
+  - /assets/discover-boston-2.jpg
   - /assets/discover-boston-2.png
-  - /assets/discover-boston-4.jpeg
+  - /assets/discover-boston-1.jpg
   - /assets/discover-boston-5.jpeg
 programDetails:
   minimumAge: 15
