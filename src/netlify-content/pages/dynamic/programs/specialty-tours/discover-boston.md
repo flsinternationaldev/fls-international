@@ -38,15 +38,21 @@ activities-and-excursions: |-
   * Duck Tour
   * Revere Beach
   * Little Italy
+  * CambridgeSide Galleria
+  * Assembly Square Outlets
 
   ### Optional Activities:
 
   * Six Flags Amusement Park
   * New York City Weekend
-features: "* 18 English lessons per week"
-accommodations: |-
+features: |-
+  * 18 English lessons per week
+  * 20 students or fewer per class
+accommodations: >-
   * Twin room accommodation in carefully selected American families
-  * Half board
+
+  * Includes two meals on weekdays, brunch on Saturdays and brunch & dinner on Sundays
+
   * Public Transportation Pass included in program fee
 center: Boston Commons
 ---
