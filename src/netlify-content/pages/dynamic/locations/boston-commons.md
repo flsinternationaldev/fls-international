@@ -75,6 +75,9 @@ carousel-images:
   - /assets/csu-fullerton-2.jpeg
   - /assets/csu-fullerton-1.jpeg
 post-content: >-
+  # OPEN FOR IN-PERSON PROGRAMS!  HYBRID CLASSES HAVE STARTED.
+
+
   ##### Learn English in Boston, "The Cradle of American Liberty"
 
 
@@ -134,8 +137,6 @@ post-content: >-
   * Stroll along fashionable Newbury Street and go shopping at high-end boutiques or sip a cappuccino at an elegant sidewalk café.
 
   * Spend a day touring the quaint villages and scenic beaches of Cape Cod where Boston's elite travel for summer getaways.
-
-
 
 
   ## Programs Offered:
