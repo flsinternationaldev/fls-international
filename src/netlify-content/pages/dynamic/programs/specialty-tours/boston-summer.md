@@ -16,7 +16,7 @@ programDates:
     depart: Aug 7th, 2021
 sampleCalendar: /assets/tour-calendar-placeholder.pdf
 carousel-images:
-  - /assets/boston-commons-2.jpeg
+  - /assets/boston-summer-1.jpg
 programDetails:
   price: 4875
   duration: 3
