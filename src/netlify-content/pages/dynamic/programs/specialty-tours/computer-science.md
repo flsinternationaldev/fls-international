@@ -15,10 +15,11 @@ programDetails:
   minimumAge: 12
   duration: 3
   price: 4675
+  durationRelation: 3
 specialty-tour-description: Increase your computer knowledge using the latest
   technology at our camp in the innovative state of California!  Learn how to
   design your own website from scratch and develop skills that will help prepare
-  you for your future.  we'll also introduce you to various programming
+  you for your future.  We'll also introduce you to various programming
   languages such as Java, Python, HTML. and CSS.  Not to mention, you'll enjoy
   excursions to some of California's best attractions!
 activities-and-excursions: |-
@@ -41,9 +42,8 @@ features: |-
   * 6 computer science lessons each week
   * Evening activities, including dances, sports, and movies
 accommodations: >-
-  Students will stay in safe and secure on-campus residence halls, in shared
+  * Students will stay in safe and secure on-campus residence halls, in shared
   room accommodation.
 
-
-  Full board is included with the program.  (Meals not included on optional activities.)
+  * Includes three meals on weekdays, brunch on Saturdays and brunch & dinner on Sundays.
 ---
