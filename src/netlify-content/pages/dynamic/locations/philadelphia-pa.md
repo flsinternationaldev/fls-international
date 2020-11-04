@@ -66,9 +66,9 @@ quick-facts:
       * Gettysburg National Military Park - 134 miles
       * Washington, DC - 147 miles
 carousel-images:
-  - /assets/saddleback-2.jpeg
-  - /assets/saddleback-1.jpeg
-  - /assets/saddleback-3.jpeg
+  - /assets/chestnut-hill-college.jpeg
+  - /assets/intensive-english.jpeg
+  - /assets/academic-english.jpeg
 post-content: >-
   # Open for Summer, 2021
 
