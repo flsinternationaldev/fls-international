@@ -199,13 +199,11 @@ post-content: >-
   FLS offers ESL students a wonderful way to practice their new English skills while immersing themselves in American society by volunteering at local charities and community service centers. Join other FLS students as they perfect their conversational English while helping others! Here are some of the oportunities you will enjoy at FLS Saddleback College:
 
 
-  * Mission Viejo Library
+  * Teens, Inc.
 
-  * G.I. Joe Search and Rescue
+  * Chestnut Hill Elementary School
 
-  * Irvine Senior Services
-
-  * Boys & Girls Club of Laguna Beach
+  * Meadowview Rehabilitation Center
 
 
   **Optional Weekend and Evening Activities**
