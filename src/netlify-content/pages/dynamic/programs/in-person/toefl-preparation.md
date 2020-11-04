@@ -1,12 +1,11 @@
 ---
 path: toefl-preparation
 name: TOEFL Preparation
-hero-image: /assets/toefl-preparation.jpeg
+hero-image: /assets/dsc08818.jpg
 programDetails:
   lessonsPerWeek: 36
   hoursPerWeek: "30"
   minutesPerLesson: 50
-description: Take your TOEFL score to new heights with our proven preparation program!
 program-post-content: >-
   Take your TOEFL score to new heights with our proven preparation program!
 
@@ -53,5 +52,6 @@ program-details:
   hours-per-week: 30
   minutes-per-lesson: 50
 pageName: TOEFL Preparation
+description: Take your TOEFL score to new heights with our proven preparation program!
 programType: in-person
 ---
