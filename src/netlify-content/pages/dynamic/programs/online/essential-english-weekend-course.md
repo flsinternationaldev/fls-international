@@ -2,7 +2,7 @@
 path: ee-weekend
 name: Essential Weekend Course
 type: Online Essential Program
-hero-image: /assets/laika-notebooks-3i3ornntd5a-unsplash.jpg
+hero-image: /assets/adobestock_331412996.jpeg
 programDetails:
   lessonsPerWeek: 6
   hoursPerWeek: "4"
