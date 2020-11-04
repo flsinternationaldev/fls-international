@@ -75,7 +75,7 @@ carousel-images:
   - /assets/bostoncommons3.jpg
   - /assets/location-preview-bos.jpg
   - /assets/boston1.jpg
-  - /assets/discover-boston-5.jpeg
+  - /assets/our-programs-2.jpg
   - /assets/discover-boston-1.jpg
 post-content: >-
   # OPEN FOR IN-PERSON PROGRAMS!  HYBRID CLASSES HAVE STARTED.
