@@ -2,7 +2,7 @@
 path: weekend-toefl
 name: Weekend TOEFL
 type: Online Essential Program
-hero-image: /assets/acting-camp-2.jpeg
+hero-image: /assets/toefl-option-7.jpg
 programDetails:
   lessonsPerWeek: 5
   hoursPerWeek: "4"
