@@ -27,7 +27,9 @@ quick-facts:
       * Social Sciences
   - name: Airport Pickup
     icon: /assets/airport-pickup-icon.png
-    items: "* Los Angeles Int. Airport (LAX) - 91 kilometers"
+    items: |-
+      * Philadelphia International Airport (PHL) - 37 kilometers
+      * Newark International Airport (EWR) - 138 kilometers
   - name: Average Temp
     icon: /assets/average-temp-icon.png
     items: |-
