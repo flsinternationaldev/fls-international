@@ -2,7 +2,7 @@
 path: online-adademic
 name: Academic English
 type: Online Pathway Program
-hero-image: /assets/academic-english.jpeg
+hero-image: /assets/selective-focus-photo-of-man-using-laptop-1438081.jpg
 programDetails:
   lessonsPerWeek: 36
   hoursPerWeek: "30"
