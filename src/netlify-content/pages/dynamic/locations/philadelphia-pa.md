@@ -33,14 +33,13 @@ quick-facts:
   - name: Average Temp
     icon: /assets/average-temp-icon.png
     items: |-
-      * Spring - 23°C
-      * Summer - 26°C
-      * Fall - 22°C
-      * Winter - 20°C
+      * Spring - 18°C
+      * Summer - 27°C
+      * Fall - 20°C
+      * Winter - 5°C
   - name: Enrollment
     icon: /assets/enrollment-icon.png
-    items: "* Approximately 27,000 students, including 14,000 degree-seeking
-      undergraduates"
+    items: "* Approximately 1,500 full-time graduate and undergraduate students"
   - name: Programs Offered
     icon: /assets/programs-offered-icon.png
     items: |-
@@ -52,9 +51,13 @@ quick-facts:
       * High School Completion
   - name: Local Transportation
     icon: /assets/local-transportation-icon.png
-    items: |-
-      * Bus: OCTA stop on campus
-      * Light rail: Metrolink line, 1 mile from campus
+    items: >-
+      * Shuttle: Free campus shuttle system provides transportation to local
+      shopping and Philadelphia trains
+
+      * Bus: Bus service throughout the Philadelphia area
+
+      * Train: SEPTA provides rail service to Philadelphia and surrounding communities
   - name: Distance to Major Attractions
     icon: /assets/major-attractions-icon.png
     items: |-
