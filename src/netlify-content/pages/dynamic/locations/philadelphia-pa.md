@@ -82,10 +82,10 @@ post-content: >-
   Famous as the birthplace of the United States, Philadelphia is a divers, urban destination that preserves four centuries of American history and architecture, as well as fascinating museums and endless shopping.  While visiting "The City of Brotherly Love," students can see such historic attractions as the Liberty Bell and Independence Hall, then get a taste of some of Philadelphia's many culinary flavors, like the renowned Philly cheesesteak sandwich, from dozens of bakers, farmers, and restaurants at Reading Terminal Market.
 
 
-  ### Safe and Friendly Community
+  ### A Beautiful, Relaxing Campus Setting
 
 
-  The beautifully landscaped campus of Saddleback College is set on a hilltop surrounded by the gorgeous neighborhoods and shopping districts of Mission Viejo.  Known as one of California's safest cities, Mission Viejo provides comfortable surroundings near some of Southern California's greatest attractions.
+  A private Catholic school, Chestnut Hill College is located on the outskirts of the city in the beautiful Germantown area.  The college was founded in 1924 and its striking Gothic buildings have earned it a spot on the National Register of Historic Places.  The campus houses modern facilities integrated with its historic buildings to meet the needs of today's students.
 
 
   ### Orange County's Choice for Education
