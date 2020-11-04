@@ -20,11 +20,11 @@ quick-facts:
   - name: Popular Majors
     icon: /assets/popular-majors-icon.png
     items: |-
-      * Liberal Arts
-      * Health Sciences
       * Business
+      * Biology
+      * Health Sciences
       * Psychology
-      * Environmental Sciences
+      * Social Sciences
   - name: Airport Pickup
     icon: /assets/airport-pickup-icon.png
     items: "* Los Angeles Int. Airport (LAX) - 91 kilometers"
