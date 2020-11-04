@@ -2,7 +2,7 @@
 path: essential-english-3-day
 name: Essential English 3 Day
 type: Online Essential Program
-hero-image: /assets/boston-commons-1.jpeg
+hero-image: /assets/dsc08885.jpg
 programDetails:
   lessonsPerWeek: 3
   hoursPerWeek: "3"
