@@ -2,7 +2,7 @@
 path: online-core
 name: Core English
 type: Online Pathway Program
-hero-image: /assets/academic-english.jpeg
+hero-image: /assets/dsc08677.jpg
 programDetails:
   lessonsPerWeek: 18
   hoursPerWeek: "15"
