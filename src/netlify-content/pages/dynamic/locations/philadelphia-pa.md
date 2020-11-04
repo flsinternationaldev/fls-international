@@ -161,15 +161,15 @@ post-content: >-
 
   * Join other fantasy fans for the annual Wizards and Witches Festival, celebrating Harry Potter and other fantasy characters, in the Chestnut Hill community.
 
-  * Catch a musical performance at one of Philadelphia's many clubs and concert venues.
+  * Catch a musical performance at one of Philadelphia's many clubs and concert venues. 
 
   * Enjoy the many seasonal and holiday events and festivals throughout Philadelphia, including the nation's largest free concert celebrating America's Independence Day on July 4.
 
 
-  **Mission Viejo, CA**
+  **Philadelphia, PA**
 
 
-  Recently named the safest city in the United States, Mission Viejo is an affluent suburban community of nearly 100,000. The center of the city contains a large man-made lake and beautiful tree-lined streets overlooked by the Saddleback mountain range. Mission Viejo offers an ideal climate with a temperature range of 11-23 degrees Celsius year-round. Summers are sunny, warm and dry. Fall and winter bring occasional rain showers, with snow in the local mountains. Due to close proximity to the ocean, nighttime and morning clouds are common.
+  Students have a range of choices for their after-class activities.  Many students choose to spend time with their new friends or their host family.  Or take the free shuttle bus to explore Philadelphia, which offers Germantown shopping, movies, the Philadelphia Museum of Art, the Liberty Bell Center, and the Morris Arboretum.
 
 
   ## PROGRAMS OFFERED
