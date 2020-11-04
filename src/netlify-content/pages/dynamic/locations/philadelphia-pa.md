@@ -61,10 +61,10 @@ quick-facts:
   - name: Distance to Major Attractions
     icon: /assets/major-attractions-icon.png
     items: |-
-      * Laguna Beach - 11 miles
-      * Disneyland - 26 Miles
-      * Downtown Los Angeles - 52 miles
-      * San Diego - 70 miles
+      * Valley Forge - 14 miles
+      * Downtown Philadelphia - 15 miles
+      * Gettysburg National Military Park - 134 miles
+      * Washington, DC - 147 miles
 carousel-images:
   - /assets/saddleback-2.jpeg
   - /assets/saddleback-1.jpeg
