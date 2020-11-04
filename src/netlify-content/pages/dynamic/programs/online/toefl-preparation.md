@@ -2,7 +2,7 @@
 path: online-toefl-preparation
 name: TOEFL Preparation
 type: Online Essential Program
-hero-image: /assets/home-carousel-2.jpeg
+hero-image: /assets/hannah-olinger-nxiivnzbwz8-unsplash.jpg
 programDetails:
   lessonsPerWeek: 12
   hoursPerWeek: "10"
