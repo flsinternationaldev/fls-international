@@ -76,10 +76,10 @@ post-content: >-
   ## OVERVIEW
 
 
-  ### Enjoy the Great Weather and Surroundings of Orange County
+  ### Learn English in Philadelphia, "The City of Brotherly Love"
 
 
-  With 42 miles of world-famous beaches, legendary theme parks, and enough shopping destinations to satisfy even the most dedicated shopper, it's no wonder that visiting Orange County is the ultimate Southern California experience.  The "OC," as local residents call it, blends a casual, active lifestyle with laid-back sophistication.  This unique lifestyle was integral to the development and culture of professional surfing, and the perfect weather continues to bring millions of visitors every year.
+  Famous as the birthplace of the United States, Philadelphia is a divers, urban destination that preserves four centuries of American history and architecture, as well as fascinating museums and endless shopping.  While visiting "The City of Brotherly Love," students can see such historic attractions as the Liberty Bell and Independence Hall, then get a taste of some of Philadelphia's many culinary flavors, like the renowned Philly cheesesteak sandwich, from dozens of bakers, farmers, and restaurants at Reading Terminal Market.
 
 
   ### Safe and Friendly Community
