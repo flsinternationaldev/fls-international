@@ -1,13 +1,11 @@
 ---
-name: 'Extra Night: Homestay'
+name: "Extra Night: Homestay"
 centerNameRelation:
-    - Boston Commons
-    - Cal State Fullerton
-    - Citrus College
-    - Fisher College
-    - Chestnut Hill College
-    - Saddleback College
+  - Boston Commons
+  - Citrus College
+  - Saddleback College (Summer Only)
+  - Chestnut Hill College (from Summer, 2021)
 priceDetails:
-    - price: 55
-      payPeriod: Per Night
+  - price: 55
+    payPeriod: Per Night
 ---
