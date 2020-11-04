@@ -2,7 +2,7 @@
 path: virtual-winter-camp
 name: Virtual Winter Camp
 type: Online Summer Camp
-hero-image: /assets/vacation-english-hero.jpeg
+hero-image: /assets/adobestock_316253397.jpeg
 programDetails:
   lessonsPerWeek: 18
   hoursPerWeek: "15"
