@@ -1,13 +1,11 @@
 ---
 name: One-on-one Tutoring
 centerNameRelation:
-    - Boston Commons
-    - Cal State Fullerton
-    - Chestnut Hill College
-    - Citrus College
-    - Fisher College
-    - Saddleback College
+  - Boston Commons
+  - Citrus College
+  - Chestnut Hill College (from Summer, 2021)
+  - Saddleback College (Summer Only)
 priceDetails:
-    - price: 70
-      payPeriod: Per Lesson
+  - price: 70
+    payPeriod: Per Lesson
 ---
