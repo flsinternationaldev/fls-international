@@ -2,12 +2,12 @@
 carousel_settings:
   - title: FLS International
     copy: ENGLISH LANGUAGE PROGRAMS, PATHWAYS & SPECIALTY TOURS
-    carousel-image: /assets/university-tours-2.jpeg
+    carousel-image: /assets/dsc09147.jpg
   - title: Start Your Journey
     copy: FLS PROVIDES OUTSTANDING VALUES IN ENGLISH PROGRAMS.
     carousel-image: /assets/home-carousel-2.jpeg
   - copy: FLS HAS THE RIGHT OPTIONS FOR INTERNATIONAL STUDENTS
-    carousel-image: /assets/home-carousel-3.jpeg
+    carousel-image: /assets/our-programs-2.jpg
     title: FIND YOUR EDUCATIONAL FUTURE
 explore_your_world:
   title: EXPLORE YOUR WORLD
