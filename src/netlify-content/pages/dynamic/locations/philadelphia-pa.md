@@ -88,10 +88,10 @@ post-content: >-
   A private Catholic school, Chestnut Hill College is located on the outskirts of the city in the beautiful Germantown area.  The college was founded in 1924 and its striking Gothic buildings have earned it a spot on the National Register of Historic Places.  The campus houses modern facilities integrated with its historic buildings to meet the needs of today's students.
 
 
-  ### Orange County's Choice for Education
+  ### Extensive Opportunities to Pursue Educational Goals
 
 
-  Saddleback College has been the first choice for higher education in South Orange County since 1968.  Saddleback College offers more than 190 different degrees and certificates, giving students an excellent foundation to transfer to UC Irvine or other schools in the California State University or University of California systems.
+  The beautiful campus includes the picturesque St. Joseph Hall, a chapel, tennis courts, a soccer field, and complete fitness facilities.  Chestnut Hill College offers a rigorous liberal arts education with a mission of helping prepare the students for success in all areas of the life.  
 
 
   ## CAMPUS PROFILE
