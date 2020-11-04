@@ -1,13 +1,11 @@
 ---
 path: academic-english
 name: Academic English
-hero-image: /assets/academic-english.jpeg
+hero-image: /assets/dsc08615.jpg
 programDetails:
   lessonsPerWeek: 36
   hoursPerWeek: "30"
   minutesPerLesson: 50
-description: "Our high-powered Academic English program offers the fastest way
-  to develop your English. "
 program-post-content: >-
   Our high-powered Academic English program offers the fastest way to develop
   your English.
@@ -56,5 +54,7 @@ program-details:
   hours-per-week: 30
   minutes-per-lesson: 50
 pageName: Academic English
+description: "Our high-powered Academic English program offers the fastest way
+  to develop your English. "
 programType: in-person
 ---
