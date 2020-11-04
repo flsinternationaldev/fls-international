@@ -4,6 +4,6 @@ onlineProgramTypeRelation:
   - Online Essential Program
   - Online Pathway Program
 priceDetails:
-  - price: 70
+  - price: 55
     payPeriod: once
 ---
