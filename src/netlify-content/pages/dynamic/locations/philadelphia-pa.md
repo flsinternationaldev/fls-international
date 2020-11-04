@@ -97,22 +97,18 @@ post-content: >-
   ## CAMPUS PROFILE
 
 
-  Located in safe and sunny Orange County, Saddleback College has offered a wide range of programs since 1968 and currently enrolls more than 27,000 students. Many students go on to four-year degree programs at nearby California State University and University of California campuses.
+  FLS is located on the campus of Chestnut Hill College in northwest Philadelphia's quaint Germantown neighborhood.  A private Catholic school, the college was founded in 1924 and is listed on the National Register of Historic Places. The beautiful campus includes striking Gothic structures like St. Joseph Hall, a chapel, tennis courts, a soccer filed, and an indoor swimming pool.
 
 
   ### Campus Facilities
 
 
-  * **Learning Resource Center**
-    Housing computer stations, language lab, and campus library.
-  * **McKinney Theater**
-    Performing arts stage, with seating for 400, offering a variety of live entertainment events to students and the public.
-  * **Student Services Center**
-    Housing a student lounge and cafeteria providing a full range of food services.
-  * **Athletic Facilities**
-    Including tennis courts, golf driving range, gymnasium, baseball field and swimming pool.
-  * **KSBR Radio Station**
-    A commercial-free contemporary jazz and community information station serving Orange County. KSBR has won multiple awards and trains students enrolled in Saddleback’s Cinema/TV/Radio program.
+  * **Academic Computer Center**
+    Providing students with Internet access and word processing tools, our computer lab is perfect for students doing research for class or simply checking their email.
+  * **Logue Library**
+    Offering a selection of course-related books as well as books for casual reading, the library provides students additional space for reading and study after class.
+  * **Student Lounge**
+    With comfy sofas and plenty of table space, the student lounge is the perfect place to relax for some reading, have a quick snack, or catch up with your friends.
 
   ## HOUSING
 
