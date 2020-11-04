@@ -2,7 +2,7 @@
 path: online-intensive
 name: Intensive English
 type: Online Pathway Program
-hero-image: /assets/academic-english.jpeg
+hero-image: /assets/adobestock_219832523.jpeg
 programDetails:
   lessonsPerWeek: 30
   hoursPerWeek: "25"
