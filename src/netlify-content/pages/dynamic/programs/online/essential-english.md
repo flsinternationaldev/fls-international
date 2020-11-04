@@ -2,7 +2,7 @@
 path: essential-english
 name: Essential English
 type: Online Essential Program
-hero-image: /assets/elp-card-bg.jpeg
+hero-image: /assets/adobestock_352087154.jpeg
 programDetails:
   lessonsPerWeek: 9
   hoursPerWeek: "7.5"
