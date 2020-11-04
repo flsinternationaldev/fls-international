@@ -215,13 +215,13 @@ post-content: >-
   **Activities Include:**
 
 
-  * Disneyland
+  * Historic Philadelphia
 
-  * Six Flags Magic Mountain
+  * Philadelphia Museum of Art
 
-  * Soak City
+  * Six Flags Great Adventure
 
-  * Knott's Berry Farm
+  * Philadelphia Zoo
 
-  * San Diego
+  * Washington, DC
 ---
