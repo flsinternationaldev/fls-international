@@ -145,21 +145,25 @@ post-content: >-
   ## AREA PROFILE
 
 
-  **The Saddleback Experience**
+  **The Chestnut Hill Experience**
 
 
-  With great weather, access to amazing beaches and a picturesque location between Los Angeles and San Diego, Mission Viejo offers an unbeatable quality of life with easy freeway access to classic California attractions like Sea World and Disneyland!
+  Philadelphia is a major international city with a rich history extending back to America's founding.  Throughout the city you'll find reminders of America's past, such as Independence Hall and the Liberty Bell.  Today Philadelphia is a vigorous, modern metropolis with a full range of attractions from world-class museums to major sports teams to diverse ethnic neighborhoods.
 
 
-  * Visit Disneyland Resort including the original Disneyland theme park including Galaxy's Edge, and the expanded California Adventure park, featuring Cars Land and Ariel’s Undersea Adventure.
+  * Visit the shops in downtown Philadelphia then have a picnic lunch at Rittenhouse Square
 
-  * Relax on the sandy shores of Laguna Beach, considered one of the most beautiful beaches in California, and visit the many unique art galleries and cafes.
+  * Get your photo taken with Robert Indiana's famous LOVE sculpture at LOVE Park
 
-  * Spend a fun-filled day at Sea World and see Shamu, sea lions and otters in action and enjoy rides like Manta and Wild Arctic.
+  * Spend a day in natural splendor as you walk among the flowers and trees of Morris Arboretum
 
-  * Enjoy the best of shopping, entertainment and dining at the huge Irvine Spectrum Center, offering over 130 specialty stores and restaurants.
+  * Dine at one of the many superb restaurants in Philadelphia, or enjoy street-side dining as you grab a famous Philadelphia Cheesesteak while on the go.
 
-  * Take a surfing lesson on the shores of Huntington Beach, Surf City USA, the home of the annual US Open of Surf.
+  * Join other fantasy fans for the annual Wizards and Witches Festival, celebrating Harry Potter and other fantasy characters, in the Chestnut Hill community.
+
+  * Catch a musical performance at one of Philadelphia's many clubs and concert venues.
+
+  * Enjoy the many seasonal and holiday events and festivals throughout Philadelphia, including the nation's largest free concert celebrating America's Independence Day on July 4.
 
 
   **Mission Viejo, CA**
