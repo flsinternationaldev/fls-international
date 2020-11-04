@@ -1,4 +1,4 @@
 ---
 name: Long Beach, CA
-centerName: Cal State Long Beach
+centerName: Cal State Long Beach (Summer Only)
 ---
