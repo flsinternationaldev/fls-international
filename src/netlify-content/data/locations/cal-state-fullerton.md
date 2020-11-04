@@ -1,4 +1,4 @@
 ---
 name: Orange County, CA
-centerName: Saddleback College
+centerName: Saddleback College (Summer Only)
 ---
