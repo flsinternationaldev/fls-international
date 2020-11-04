@@ -26,8 +26,12 @@ quick-facts:
 
         Smartboards
 carousel-images:
+  - /assets/citrus-2-beach.jpg
+  - /assets/universal-globe.jpg
   - /assets/citrus-college-1.jpeg
-  - /assets/citrus-college-2.jpeg
+  - /assets/housing4.jpg
+  - /assets/disney-princess-photo.jpg
+  - /assets/colllege-auditing.jpg
 post-content: >-
   # OPEN FOR IN-PERSON PROGRAMS!  HYBRID CLASSES HAVE STARTED.
 
