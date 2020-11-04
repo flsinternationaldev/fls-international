@@ -1,7 +1,7 @@
 ---
 name: Airport Transfer
 centerNameRelation:
-  - Chestnut Hill College
+  - Chestnut Hill College (from Summer, 2021)
 priceDetails:
   - price: 150
     payPeriod: once
