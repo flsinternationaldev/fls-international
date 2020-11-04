@@ -2,7 +2,7 @@
 path: online-general
 name: General English
 type: Online Pathway Program
-hero-image: /assets/academic-english.jpeg
+hero-image: /assets/laika-notebooks-3i3ornntd5a-unsplash.jpg
 programDetails:
   lessonsPerWeek: 24
   hoursPerWeek: "20"
