@@ -2,7 +2,7 @@
 path: online-ielts-preparation
 name: IELTS Preparation
 type: Online Essential Program
-hero-image: /assets/home-carousel-2.jpeg
+hero-image: /assets/brooke-cagle-uwvwq8gf8pe-unsplash.jpg
 programDetails:
   lessonsPerWeek: 12
   hoursPerWeek: "10"
