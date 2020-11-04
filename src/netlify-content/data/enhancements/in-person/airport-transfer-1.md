@@ -1,7 +1,7 @@
 ---
 name: Airport Transfer
 centerNameRelation:
-  - Saddleback College
+  - Saddleback College (Summer Only)
 priceDetails:
   - price: 175
     payPeriod: once
