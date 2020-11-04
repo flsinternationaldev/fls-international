@@ -2,7 +2,7 @@
 path: online-business-english
 name: Business English
 type: Online Essential Program
-hero-image: /assets/discover-boston-1.jpeg
+hero-image: /assets/hunters-race-mybhn8kaaec-unsplash-2.jpg
 programDetails:
   lessonsPerWeek: 9
   minutesPerLesson: 50
