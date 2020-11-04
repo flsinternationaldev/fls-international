@@ -2,7 +2,7 @@
 path: orange-county-ca
 name: Orange County, CA
 centerNameRelation:
-  - Saddleback College
+  - Saddleback College (Summer Only)
 description: Located in sunny Orange County, Saddleback College has been a top
   choice in education since 1968 on a beautiful campus near picture-perfect
   beaches.
@@ -60,8 +60,11 @@ quick-facts:
       * Downtown Los Angeles - 52 miles
       * San Diego - 70 miles
 carousel-images:
-  - /assets/saddleback-2.jpeg
+  - /assets/location-preview-saddleback.jpg
+  - /assets/junior-beach.jpg
   - /assets/saddleback-1.jpeg
+  - /assets/saddleback-2.jpeg
+  - /assets/housing5.jpg
   - /assets/saddleback-3.jpeg
 post-content: >-
   # Open for Summer, 2021
