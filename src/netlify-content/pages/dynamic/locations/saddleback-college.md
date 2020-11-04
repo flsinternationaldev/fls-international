@@ -62,7 +62,7 @@ quick-facts:
 carousel-images:
   - /assets/location-preview-saddleback.jpg
   - /assets/junior-beach.jpg
-  - /assets/saddleback-1.jpeg
+  - /assets/saddleback-college-1.jpg
   - /assets/saddleback-2.jpeg
   - /assets/housing5.jpg
   - /assets/saddleback-3.jpeg
