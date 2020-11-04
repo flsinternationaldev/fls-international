@@ -119,6 +119,26 @@ post-content: >-
   A homestay is a great way to experience American culture while improving your English ability! All FLS centers offer homestay accommodation with American families individually selected by FLS. Learn about American daily life, practice English on a regular basis and participate in many aspects of American culture that visitors often don't get to see. (Twin and Single options available).
 
 
+
+
+  ### Residence Halls
+
+
+  Chestnut Hill College offers safe and secure student housing in traditional residence halls.  Each room provides shared accommodation for FLS students on the same floor as American students.  Students enjoy access to TV lounges and game rooms.  All residence halls are located a short distance from key campus facilities such as the dining hall, library, sports facilities, and break areas.  Students will have an accommodation experience identical to that of a typical American college student.  (Shared housing - fall and spring semesters only)
+
+
+  Residence in the dormitory requires proof of the following immunizations:
+
+
+  * Two doses of Varicella vaccine (Chicken Pox) or a history of infection
+
+  * Two doses of MMR (measles, mumps, and rubella) vaccine or a history of infection
+
+  * One dose of the DPT, Hepatitis B, and Meningitis vaccines
+
+  * TB test
+
+
   <iframe width="560" height="349" src="https://www.youtube.com/embed/cQJKGECy8i4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
 
 
