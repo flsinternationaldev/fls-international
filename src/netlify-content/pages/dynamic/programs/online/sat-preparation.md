@@ -2,7 +2,7 @@
 path: online-sat-preparation
 name: SAT Preparation
 type: Online Essential Program
-hero-image: /assets/home-carousel-2.jpeg
+hero-image: /assets/nick-morrison-fhnnjk1yj7y-unsplash.jpg
 programDetails:
   lessonsPerWeek: 12
   hoursPerWeek: "10"
