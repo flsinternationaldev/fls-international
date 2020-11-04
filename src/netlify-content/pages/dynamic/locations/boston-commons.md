@@ -71,9 +71,12 @@ quick-facts:
 
       Rail - Connects Boston to neighboring cities
 carousel-images:
-  - /assets/csu-fullerton-3.jpeg
-  - /assets/csu-fullerton-2.jpeg
-  - /assets/csu-fullerton-1.jpeg
+  - /assets/boston-summer-1.jpg
+  - /assets/bostoncommons3.jpg
+  - /assets/location-preview-bos.jpg
+  - /assets/boston1.jpg
+  - /assets/discover-boston-5.jpeg
+  - /assets/discover-boston-1.jpg
 post-content: >-
   # OPEN FOR IN-PERSON PROGRAMS!  HYBRID CLASSES HAVE STARTED.
 
