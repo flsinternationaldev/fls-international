@@ -1,7 +1,7 @@
 ---
 name: Computer Science
 centerNameRelation:
-  - Cal State Long Beach
+  - Cal State Long Beach (Summer Only)
 price: 4675
 duration: 3
 minimumAge: 12

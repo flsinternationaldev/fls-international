@@ -134,6 +134,8 @@ export default function InPersonInfoForm({
 			setPrices(removePrices(prices, ['program']));
 		}
 
+		console.log('center change value', centerChange.value);
+		console.log('programsData - specialty', programsData);
 		// Set program options to be the programs associated with the selected center
 		setProgramOptions(
 			programsData

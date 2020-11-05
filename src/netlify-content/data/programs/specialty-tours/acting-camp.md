@@ -1,7 +1,7 @@
 ---
 name: Acting Camp
 centerNameRelation:
-  - Cal State Long Beach
+  - Cal State Long Beach (Summer Only)
 price: 4450
 duration: 3
 minimumAge: 15

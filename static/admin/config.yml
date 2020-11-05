@@ -519,7 +519,7 @@ collections:
                 searchFields: ['name'],
                 hint: 'The type of online program this is e.g. Online Essential Program. Used similarly to "locations" for in-person programs.',
             }
-            - {
+          - {
                 # TODO: This new pattern for price details needs to be integrated into the other program types
                 label: 'Price Details',
                 name: 'priceDetails',
