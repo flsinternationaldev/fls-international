@@ -2,7 +2,7 @@
 path: acting-camp
 name: Acting Camp
 centerNameRelation:
-  - Cal State Long Beach
+  - Cal State Long Beach (Summer Only)
 programDates:
   - arrive: Jun 20th, 2021
     depart: Jul 10th, 2021
