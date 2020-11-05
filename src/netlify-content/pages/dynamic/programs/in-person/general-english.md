@@ -6,8 +6,10 @@ programDetails:
   lessonsPerWeek: 24
   hoursPerWeek: "20"
   minutesPerLesson: 50
+description: For students who want to balance English studies with exploring the
+  sights near our centers, our General English Program is the ideal choice.
 program-post-content: >-
-  For students who want to balance English studies with exploring the sights
+  ### For students who want to balance English studies with exploring the sights
   near our centers, our General English Program is the ideal choice.
 
 
@@ -37,7 +39,5 @@ program-details:
   hours-per-week: 4
   minutes-per-lesson: 50
 pageName: General English
-description: For students who want to balance English studies with exploring the
-  sights near our centers, our General English Program is the ideal choice.
 programType: in-person
 ---
