@@ -5,6 +5,10 @@ centerNameRelation:
 price: 4675
 duration: 3
 minimumAge: 12
+priceDetails:
+  package:
+    price: 4675
+    payPeriod: once
 programDates:
   - arrive: Jun 20th, 2021
     depart: Jul 10th, 2021

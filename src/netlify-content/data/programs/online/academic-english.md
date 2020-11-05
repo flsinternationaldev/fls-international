@@ -26,8 +26,8 @@ durationOptions:
           pricePerWeek: 300
     minWeeks: 1
 priceDetails:
-    - price: 0
-      payPeriod: weekly
+    price: 0
+    payPeriod: weekly
 hoursPerWeek: '30'
 lessonsPerWeek: 36
 minutesPerLesson: 50

@@ -1,24 +1,14 @@
-import React, { useState, Fragment } from 'react';
-import Select from 'react-select';
-import DatePicker from 'react-datepicker';
-import { RadioGroup, Radio } from 'react-radio-group';
+import React, { Fragment } from 'react';
 import ReactTooltip from 'react-tooltip';
 import { useStaticQuery, graphql } from 'gatsby';
-import Checkbox from 'rc-checkbox';
 
 import EstimatedPrices from 'src/components/application/EstimatedPrices';
 import InPersonInfoForm from 'src/components/application/InPersonInfoForm';
 import OnlineInfoForm from 'src/components/application/OnlineInfoForm';
+import SpecialtyToursInfoForm from 'src/components/application/SpecialtyToursInfoForm';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
-
-import {
-	kebabToCamel,
-	formatEdges,
-	updatePrices,
-	removePrices,
-} from 'src/utils/helpers';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 export default function AdditionalInfoForm({
 	calculatePrice,
@@ -59,7 +49,6 @@ export default function AdditionalInfoForm({
 					}
 				}
 			}
-
 			online: allMarkdownRemark(
 				limit: 1000
 				filter: {
@@ -94,7 +83,6 @@ export default function AdditionalInfoForm({
 					}
 				}
 			}
-
 			specialtyTours: allMarkdownRemark(
 				limit: 1000
 				filter: {
@@ -106,21 +94,26 @@ export default function AdditionalInfoForm({
 				edges {
 					node {
 						frontmatter {
-							name
-							programDetails {
-								lessonsPerWeek
-								hoursPerWeek
-							}
-							hero_image
-							durationOptions {
-								maxWeeks
-								weekThresholds {
-									pricePerWeek
-									thresholdMax
+							centerNameRelation
+							minimumAge
+							priceDetails {
+								package {
+									payPeriod
+									price
+								}
+								range {
+									maxWeeks
+									weekThresholds {
+										pricePerWeek
+										thresholdMax
+									}
 								}
 							}
-							lessonsPerWeek
-							minutesPerLesson
+							programDates {
+								arrive
+								depart
+							}
+							sampleCalendar
 						}
 					}
 				}
@@ -145,13 +138,37 @@ export default function AdditionalInfoForm({
 						<div className="column is-full">
 							<div className="application__header-container">
 								<h3 className="fls-post__title">
-									Additional Info
+									{/* TODO: This section, before the program specific info form component, needs to be DRYed */}
+									{`Additional Info - ${programType.replace(
+										/-/g,
+										' '
+									)}`}
 								</h3>
 
 								<h3 className="application__total-price">
 									Total Price: ${calculatePrice(prices)}
 								</h3>
 							</div>
+						</div>
+
+						<div className="column is-full">
+							<button
+								className="fls__button fls__button--half"
+								onClick={() => {
+									console.log('click me, daddy');
+									handleDataChange(
+										'programType',
+										'',
+										'application'
+									);
+								}}
+							>
+								<FontAwesomeIcon
+									className="fls-post__subhero-icon"
+									icon={faChevronLeft}
+								/>{' '}
+								Return to Program Type Selection
+							</button>
 						</div>
 
 						<InPersonInfoForm
@@ -208,12 +225,35 @@ export default function AdditionalInfoForm({
 						<div className="column is-full">
 							<div className="application__header-container">
 								<h3 className="fls-post__title">
-									Additional Info
+									{`Additional Info - ${programType.replace(
+										/-/g,
+										' '
+									)}`}
 								</h3>
 
 								<h3 className="application__total-price">
 									Total Price: ${calculatePrice(prices)}
 								</h3>
+							</div>
+
+							<div className="column is-full">
+								<button
+									className="fls__button fls__button--half"
+									onClick={() => {
+										console.log('click me, daddy');
+										handleDataChange(
+											'programType',
+											'',
+											'application'
+										);
+									}}
+								>
+									<FontAwesomeIcon
+										className="fls-post__subhero-icon"
+										icon={faChevronLeft}
+									/>{' '}
+									Return to Program Type Selection
+								</button>
 							</div>
 						</div>
 
@@ -225,6 +265,91 @@ export default function AdditionalInfoForm({
 							handleBatchInputChange={handleBatchInputChange}
 							prices={prices}
 							setPrices={setPrices}
+						/>
+
+						<EstimatedPrices prices={prices} />
+
+						<div className="column is-4">
+							<button
+								onClick={previousStep}
+								className="fls__button"
+							>
+								Previous
+							</button>
+						</div>
+
+						{/* TODO: This works for now... but it's probably not the best implementation */}
+						<div className="column is-4"></div>
+
+						<div className="column is-4">
+							<button
+								onClick={() => {
+									nextStep();
+								}}
+								className="fls__button"
+							>
+								Save & Continue
+							</button>
+						</div>
+					</div>
+				</Fragment>
+			);
+		} else if (programType === 'specialty-tours') {
+			return (
+				<Fragment>
+					<ReactTooltip
+						type="info"
+						effect="solid"
+						html={true}
+						multiline={true}
+						className="fls__tooltip"
+						clickable={true}
+					/>
+
+					<div className="columns is-multiline">
+						<div className="column is-full">
+							<div className="application__header-container">
+								<h3 className="fls-post__title">
+									{`Additional Info - ${programType.replace(
+										/-/g,
+										' '
+									)}`}
+								</h3>
+
+								<h3 className="application__total-price">
+									Total Price: ${calculatePrice(prices)}
+								</h3>
+							</div>
+						</div>
+
+						<div className="column is-full">
+							<button
+								className="fls__button fls__button--half"
+								onClick={() => {
+									handleDataChange(
+										'programType',
+										'',
+										'application'
+									);
+								}}
+							>
+								<FontAwesomeIcon
+									className="fls-post__subhero-icon"
+									icon={faChevronLeft}
+								/>{' '}
+								Return to Program Type Selection
+							</button>
+						</div>
+
+						<SpecialtyToursInfoForm
+							calculatePrice={calculatePrice}
+							handleDataChange={handleDataChange}
+							generalFeesData={generalFeesData}
+							handleBatchInputChange={handleBatchInputChange}
+							prices={prices}
+							setPrices={setPrices}
+							applicationData={applicationData}
+							programsData={programsData.specialtyTours}
 						/>
 
 						<EstimatedPrices prices={prices} />

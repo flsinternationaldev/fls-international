@@ -1,8 +1,8 @@
 ---
 name: High School Completion Course
 centerNameRelation:
-  - Boston Commons
+    - Boston Commons
 priceDetails:
-  - price: 1500
+    price: 1500
     payPeriod: per-four-weeks
 ---

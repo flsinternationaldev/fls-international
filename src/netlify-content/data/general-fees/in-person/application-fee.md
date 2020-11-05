@@ -1,15 +1,15 @@
 ---
 name: Application Fee
 centerNameRelation:
-  - Boston Commons
-  - Citrus College
-  - Saddleback College (Summer Only)
-  - Cal State Long Beach (Summer Only)
-  - Harvard University Campus
-  - Marymount Manhattan College
-  - Suffolk University
-  - Chestnut Hill College (from Summer, 2021)
+    - Boston Commons
+    - Citrus College
+    - Saddleback College (Summer Only)
+    - Cal State Long Beach (Summer Only)
+    - Harvard University Campus
+    - Marymount Manhattan College
+    - Suffolk University
+    - Chestnut Hill College (from Summer, 2021)
 priceDetails:
-  - price: 150
+    price: 150
     payPeriod: Once
 ---

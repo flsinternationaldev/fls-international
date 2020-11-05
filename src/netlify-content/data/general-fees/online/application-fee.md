@@ -1,6 +1,6 @@
 ---
 name: Application Fee
 priceDetails:
-  - price: 50
+    price: 50
     payPeriod: Once
 ---

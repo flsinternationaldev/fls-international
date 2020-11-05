@@ -1,10 +1,10 @@
 ---
 name: Airport Transfer
 centerNameRelation:
-  - Citrus College
+    - Citrus College
 priceDetails:
-  - price: 150
+    price: 150
     payPeriod: each-way
 notes:
-  - Los Angeles International Airport, LAX
+    - Los Angeles International Airport, LAX
 ---

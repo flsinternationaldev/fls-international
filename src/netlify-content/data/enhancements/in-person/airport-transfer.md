@@ -1,10 +1,10 @@
 ---
 name: Airport Transfer
 centerNameRelation:
-  - Chestnut Hill College (from Summer, 2021)
+    - Chestnut Hill College (from Summer, 2021)
 priceDetails:
-  - price: 150
+    price: 150
     payPeriod: once
 notes:
-  - Newark International Airport, EWR
+    - Newark International Airport, EWR
 ---

@@ -4,7 +4,7 @@ centerNameRelation:
     - Citrus College
     - Saddleback College
 priceDetails:
-    - price: 250
-      payPeriod: weekly
+    price: 250
+    payPeriod: weekly
 mealsPerWeek: 16
 ---

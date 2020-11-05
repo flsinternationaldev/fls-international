@@ -63,10 +63,9 @@ collections:
             name: 'aboutUs'
             fields:
                 - widget: 'markdown'
-                  label: 'About Us Page Content',
-                  name: 'pageContent',
-                  widget: 'markdown',
-                  hint: 'Any and all content entered here will be preserved when this CMS entry is fully integrated with the production site',
+                  label: 'About Us Page Content'
+                  name: 'pageContent'
+                  hint: 'Any and all content entered here will be preserved when this CMS entry is fully integrated with the production site'
     - name: 'navbar-item'
       label: 'Navbar Items'
       create: true
@@ -520,64 +519,78 @@ collections:
                 searchFields: ['name'],
                 hint: 'The type of online program this is e.g. Online Essential Program. Used similarly to "locations" for in-person programs.',
             }
-          - {
-                name: 'durationOptions',
-                label: 'Duration Options',
+            - {
+                # TODO: This new pattern for price details needs to be integrated into the other program types
+                label: 'Price Details',
+                name: 'priceDetails',
                 widget: 'object',
                 fields:
                     [
                         {
-                            label: 'Min Weeks',
-                            name: 'minWeeks',
-                            widget: 'number',
-                        },
-                        {
-                            label: 'Max Weeks',
-                            name: 'maxWeeks',
-                            widget: 'number',
-                        },
-                        {
-                            label: 'Exceed max weeks?',
-                            name: 'exceedMaxWeeks',
+                            label: 'Range',
                             required: false,
-                            hint: 'If "true", will render on website as "[maxWeekNumber]+" (e.g. if max weeks = 4, will render as "4+"',
-                            widget: 'boolean',
-                        },
-                        {
-                            label: 'Week Thresholds',
-                            name: 'weekThresholds',
-                            required: false,
-                            widget: 'list',
+                            hint: 'Use these fields if the specialty tour duration can be seleced by the student, and is not set ahead of time by the administrators. The student will be charged per week.',
+                            name: 'range',
+                            widget: 'object',
                             fields:
                                 [
                                     {
-                                        label: 'Threshold Max',
-                                        name: 'threshold-max',
+                                        label: 'Max Weeks',
+                                        name: 'maxWeeks',
                                         widget: 'number',
+                                        required: false,
                                     },
                                     {
-                                        label: 'Price Per Week',
-                                        name: 'pricePerWeek',
-                                        widget: 'number',
+                                        label: 'Exceed max weeks?',
+                                        name: 'exceedMaxWeeks',
+                                        required: false,
+                                        hint: 'If "true", will render on website as "[maxWeekNumber]+" (e.g. if max weeks = 4, will render as "4+"',
+                                        widget: 'boolean',
+                                    },
+                                    {
+                                        label: 'Week Thresholds',
+                                        name: 'weekThresholds',
+                                        required: false,
+                                        widget: 'list',
+                                        fields:
+                                            [
+                                                {
+                                                    label: 'Threshold Max',
+                                                    name: 'thresholdMax',
+                                                    widget: 'number',
+                                                },
+                                                {
+                                                    label: 'Price Per Week',
+                                                    name: 'pricePerWeek',
+                                                    widget: 'number',
+                                                },
+                                            ],
                                     },
                                 ],
                         },
-                    ],
-            }
-          - {
-                label: 'Price Details',
-                name: 'priceDetails',
-                widget: 'list',
-                required: false,
-                hint: 'If this field is left blank, it is expected that the weekly price is specified in the above "Week Thresholds" list',
-                fields:
-                    [
-                        { label: 'Price', name: 'price', widget: 'number' },
                         {
-                            label: 'Pay Period',
-                            name: 'payPeriod',
-                            widget: 'select',
-                            options: [{ label: 'Weekly', value: 'weekly' }],
+                            label: 'Package',
+                            name: 'package',
+                            required: false,
+                            hint: 'Use these fields if the specialty tour duration is set for the student, and not a range of weeks. The student will be charged a lump sum for the package.',
+                            widget: 'object',
+                            fields:
+                                [
+                                    {
+                                        label: 'Price',
+                                        name: 'price',
+                                        widget: 'number',
+                                        required: false,
+                                    },
+                                    {
+                                        label: 'Pay Period',
+                                        name: 'payPeriod',
+                                        widget: 'select',
+                                        required: false,
+                                        options:
+                                            [{ label: 'Once', value: 'once' }],
+                                    },
+                                ],
                         },
                     ],
             }
@@ -739,9 +752,82 @@ collections:
                 displayFields: ['centerName'],
                 multiple: true,
             }
-          - { name: 'price', label: 'Price', widget: 'number' }
-          - { name: 'duration', label: 'Duration (Weeks)', widget: 'number' }
           - { name: 'minimumAge', label: 'Minimum Age', widget: 'number' }
+          - {
+                # TODO: This new pattern for price details needs to be integrated into the other program types
+                label: 'Price Details',
+                name: 'priceDetails',
+                widget: 'object',
+                fields:
+                    [
+                        {
+                            label: 'Range',
+                            required: false,
+                            hint: 'Use these fields if the specialty tour duration can be seleced by the student, and is not set ahead of time by the administrators. The student will be charged per week.',
+                            name: 'range',
+                            widget: 'object',
+                            fields:
+                                [
+                                    {
+                                        label: 'Max Weeks',
+                                        name: 'maxWeeks',
+                                        widget: 'number',
+                                        required: false,
+                                    },
+                                    {
+                                        label: 'Exceed max weeks?',
+                                        name: 'exceedMaxWeeks',
+                                        required: false,
+                                        hint: 'If "true", will render on website as "[maxWeekNumber]+" (e.g. if max weeks = 4, will render as "4+"',
+                                        widget: 'boolean',
+                                    },
+                                    {
+                                        label: 'Week Thresholds',
+                                        name: 'weekThresholds',
+                                        required: false,
+                                        widget: 'list',
+                                        fields:
+                                            [
+                                                {
+                                                    label: 'Threshold Max',
+                                                    name: 'thresholdMax',
+                                                    widget: 'number',
+                                                },
+                                                {
+                                                    label: 'Price Per Week',
+                                                    name: 'pricePerWeek',
+                                                    widget: 'number',
+                                                },
+                                            ],
+                                    },
+                                ],
+                        },
+                        {
+                            label: 'Package',
+                            name: 'package',
+                            required: false,
+                            hint: 'Use these fields if the specialty tour duration is set for the student, and not a range of weeks. The student will be charged a lump sum for the package.',
+                            widget: 'object',
+                            fields:
+                                [
+                                    {
+                                        label: 'Price',
+                                        name: 'price',
+                                        widget: 'number',
+                                        required: false,
+                                    },
+                                    {
+                                        label: 'Pay Period',
+                                        name: 'payPeriod',
+                                        widget: 'select',
+                                        required: false,
+                                        options:
+                                            [{ label: 'Once', value: 'once' }],
+                                    },
+                                ],
+                        },
+                    ],
+            }
           - {
                 label: 'Program Dates',
                 name: 'programDates',
@@ -795,7 +881,7 @@ collections:
           - {
                 label: 'Price Details',
                 name: 'priceDetails',
-                widget: 'list',
+                widget: 'object',
                 fields:
                     [
                         { label: 'price', name: 'price', widget: 'number' },
@@ -827,7 +913,7 @@ collections:
           - {
                 label: 'Price Details',
                 name: 'priceDetails',
-                widget: 'list',
+                widget: 'object',
                 fields:
                     [
                         { label: 'price', name: 'price', widget: 'number' },
@@ -905,7 +991,7 @@ collections:
           - {
                 label: 'Price Details',
                 name: 'priceDetails',
-                widget: 'list',
+                widget: 'object',
                 required: false,
                 fields:
                     [
@@ -954,7 +1040,7 @@ collections:
           - {
                 label: 'Price Details',
                 name: 'priceDetails',
-                widget: 'list',
+                widget: 'object',
                 required: false,
                 fields:
                     [
@@ -1012,7 +1098,7 @@ collections:
           - {
                 label: 'Price Details',
                 name: 'priceDetails',
-                widget: 'list',
+                widget: 'object',
                 required: false,
                 fields:
                     [

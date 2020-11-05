@@ -378,6 +378,10 @@ a {
 	}
 }
 
+.fls__button--half {
+	width: 50% !important;
+}
+
 .fls__button--selected {
 	background-color: $fls-dark-blue !important;
 	border-color: $fls-dark-blue !important;

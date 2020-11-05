@@ -6,8 +6,8 @@ durationOptions:
     exceedMaxWeeks: true
     minWeeks: 1
 priceDetails:
-    - price: 85
-      payPeriod: weekly
+    price: 85
+    payPeriod: weekly
 hoursPerWeek: '4'
 lessonsPerWeek: 6
 minutesPerLesson: 50

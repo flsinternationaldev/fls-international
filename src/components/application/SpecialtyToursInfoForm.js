@@ -37,23 +37,6 @@ export default function InPersonInfoForm({
 					}
 				}
 			}
-			housing: allMarkdownRemark(
-				limit: 1000
-				filter: { fileAbsolutePath: { regex: "/data/housing/" } }
-			) {
-				edges {
-					node {
-						frontmatter {
-							name
-							centerNameRelation
-							priceDetails {
-								payPeriod
-								price
-							}
-						}
-					}
-				}
-			}
 			enhancements: allMarkdownRemark(
 				limit: 1000
 				filter: {
@@ -102,13 +85,10 @@ export default function InPersonInfoForm({
 
 	const centersData = formatEdges(data.locations);
 
-	const housingData = formatEdges(data.housing);
-
 	const enhancementsData = formatEdges(data.enhancements);
 
 	const [durationOptions, setDurationOptions] = useState([]);
 	const [programOptions, setProgramOptions] = useState([]);
-	const [housingOptions, setHousingOptions] = useState([]);
 	const [airportOptions, setAirportOptions] = useState([]);
 
 	// Prune out any centers that have no in person programs
@@ -148,11 +128,10 @@ export default function InPersonInfoForm({
 			if (applicationData.duration)
 				blankedApplicationData.duration = null;
 			if (applicationData.program) blankedApplicationData.program = null;
-			if (applicationData.housing) blankedApplicationData.housing = null;
 
 			handleBatchInputChange(blankedApplicationData, 'application');
 
-			setPrices(removePrices(prices, ['program', 'housing']));
+			setPrices(removePrices(prices, ['program']));
 		}
 
 		// Set program options to be the programs associated with the selected center
@@ -167,21 +146,6 @@ export default function InPersonInfoForm({
 					return {
 						value: program.name.toLowerCase().split(' ').join('-'),
 						label: program.name,
-					};
-				})
-		);
-
-		setHousingOptions(
-			housingData
-				.filter(housing => {
-					return housing.centerNameRelation.includes(
-						centerChange.value
-					);
-				})
-				.map(housing => {
-					return {
-						value: housing.name.toLowerCase().split(' ').join('-'),
-						label: housing.name,
 					};
 				})
 		);
@@ -270,16 +234,6 @@ export default function InPersonInfoForm({
 								(durationChange.value * 7 - 3)
 						);
 					})(),
-					housingCheckOutDate: (() => {
-						const clonedDate = new Date(
-							applicationData.housingCheckInDate
-						);
-
-						return clonedDate.setDate(
-							clonedDate.getDate() +
-								(durationChange.value * 7 - 1)
-						);
-					})(),
 				},
 				'application'
 			);
@@ -331,51 +285,7 @@ export default function InPersonInfoForm({
 			});
 		}
 
-		// Housing price is tied to duration, so we make sure to update it when the duraton changes;
-		updatedPrices = updatePrices(updatedPrices, 'housing', {
-			priceDetails: {
-				duration: durationChange.value,
-			},
-		});
-
 		setPrices(updatedPrices);
-	};
-
-	const handleHousingChange = housingChange => {
-		const currentHousing = housingData.find(
-			housing => housing.name === housingChange.label
-		);
-
-		handleDataChange('housing', currentHousing, 'application');
-
-		// TODO: This 'new price' logic is begging to be refactored & DRYed up
-		if (prices.find(priceItem => priceItem.type === 'housing')) {
-			prices = prices.map(priceItem => {
-				if (priceItem.type === 'housing') {
-					return {
-						...priceItem,
-						priceDetails: {
-							duration: applicationData.duration.value,
-							price: currentHousing.priceDetails[0].price,
-						},
-					};
-				}
-			});
-		} else {
-			prices.push({
-				type: 'housing',
-				label: `${currentHousing.name}`,
-				priceDetails: {
-					duration: applicationData.duration
-						? applicationData.duration.value
-						: 0,
-					price: currentHousing.priceDetails[0].price,
-					payPeriod: currentHousing.priceDetails[0].payPeriod,
-				},
-			});
-		}
-
-		setPrices(prices);
 	};
 
 	const handleAirportChange = airportChange => {
@@ -536,39 +446,6 @@ export default function InPersonInfoForm({
 				/>
 			</div>
 
-			<div className="column is-full-tablet is-half-desktop">
-				<div className="application__label-container">
-					<label className="label label--application">
-						Housing Type
-					</label>
-					{applicationData.center ? null : (
-						<span className="label label--application label--select-first fls--red">
-							Select a center first
-						</span>
-					)}
-				</div>
-
-				<Select
-					className={`fls__select-container ${
-						!applicationData.center
-							? 'fls__select-container--disabled'
-							: ''
-					}`}
-					classNamePrefix={'fls'}
-					value={{
-						label: applicationData.housing
-							? applicationData.housing.name
-							: 'Select your housing type.',
-						value: applicationData.housing
-							? applicationData.housing.name
-							: null,
-					}}
-					onChange={handleHousingChange}
-					options={housingOptions}
-					isDisabled={!applicationData.center}
-				/>
-			</div>
-
 			{/* TODO: This field needs some serious validation */}
 			<div className="column is-full-tablet is-half-desktop">
 				<div className="application__label-container">
@@ -603,25 +480,6 @@ export default function InPersonInfoForm({
 											(applicationData.duration.value *
 												7 -
 												3)
-									);
-								})(),
-								// Default check in date to suinday before start of program
-								housingCheckInDate: (() => {
-									const clonedDate = new Date(date);
-
-									return clonedDate.setDate(
-										clonedDate.getDate() - 1
-									);
-								})(),
-								// Default checkout date to saturday after end of program
-								housingCheckOutDate: (() => {
-									const clonedDate = new Date(date);
-
-									return clonedDate.setDate(
-										clonedDate.getDate() +
-											(applicationData.duration.value *
-												7 -
-												2)
 									);
 								})(),
 							},
@@ -659,80 +517,6 @@ export default function InPersonInfoForm({
 					placeholderText={'Program End Date'}
 					readOnly={true}
 				/>
-			</div>
-
-			<div className="column is-full-tablet is-half-desktop">
-				<div className="application__label-container">
-					<label className="label label--application">
-						Housing Check In Date
-						<FontAwesomeIcon
-							className="application__info-icon"
-							icon={faInfoCircle}
-							data-tip={`Check in is the Sunday before the program start date. If you need different accommodations, please select "Extra Nights of Housing Required" below.`}
-						/>
-					</label>
-
-					{applicationData.housing ? null : (
-						<span className="label label--application label--select-first fls--red">
-							Select a housing type first
-						</span>
-					)}
-				</div>
-
-				<DatePicker
-					selected={applicationData.housingCheckInDate}
-					wrapperClassName={`fls__date-wrapper fls__date-wrapper--read-only ${
-						!applicationData.housing
-							? 'fls__select-container--disabled'
-							: ''
-					}`}
-					className={'input fls__base-input'}
-					placeholderText={'Housing Check-in Date'}
-					readOnly={true}
-				/>
-			</div>
-
-			<div className="column is-full-tablet is-half-desktop">
-				<div className="application__label-container">
-					<label className="label label--application">
-						Housing Check Out Date
-						<FontAwesomeIcon
-							className="application__info-icon"
-							icon={faInfoCircle}
-							data-tip={`Check out is the Saturday after the program end date. If you need different accommodations, please select "Extra Nights of Housing Required" below.`}
-						/>
-					</label>
-				</div>
-
-				<DatePicker
-					selected={applicationData.housingCheckOutDate}
-					className={'input fls__base-input'}
-					wrapperClassName={`fls__date-wrapper fls__date-wrapper--read-only ${
-						!applicationData.housing
-							? 'fls__select-container--disabled'
-							: ''
-					}`}
-					placeholderText={'Housing Check Out Date'}
-					readOnly={true}
-				/>
-			</div>
-
-			<div className="column is-full">
-				<label className="label label--application">
-					Extra Nights of Housing Required?
-				</label>
-				<RadioGroup
-					name="extra-housing"
-					selectedValue={applicationData.extraNights}
-					onChange={value => {
-						handleDataChange('extraNights', value, 'application');
-					}}
-				>
-					<Radio value="needs-extra-housing" />
-					<span className="fls__radio-label">Yes</span>
-					<Radio value="no-extra-housing" />
-					<span className="fls__radio-label">No</span>
-				</RadioGroup>
 			</div>
 
 			{airportOptions.length ? (

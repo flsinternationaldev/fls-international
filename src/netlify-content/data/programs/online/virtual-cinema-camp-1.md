@@ -4,8 +4,8 @@ onlineProgramType: Online Summer Camp
 durationOptions:
     maxWeeks: 2
 priceDetails:
-    - price: 390
-      payPeriod: weekly
+    price: 390
+    payPeriod: weekly
 hoursPerWeek: '10'
 lessonsPerWeek: 9
 minutesPerLesson: 50
