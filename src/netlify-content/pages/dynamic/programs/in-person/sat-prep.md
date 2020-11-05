@@ -9,7 +9,7 @@ programDetails:
 description: Gain the edge in preparing for university admission with our
   thorough SAT Preparation Program!
 program-post-content: >-
-  Gain the edge in preparing for university admission with our thorough SAT
+  ### Gain the edge in preparing for university admission with our thorough SAT
   Preparation Program!
 
 
