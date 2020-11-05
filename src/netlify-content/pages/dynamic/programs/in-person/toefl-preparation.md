@@ -6,8 +6,9 @@ programDetails:
   lessonsPerWeek: 36
   hoursPerWeek: "30"
   minutesPerLesson: 50
+description: Take your TOEFL score to new heights with our proven preparation program!
 program-post-content: >-
-  Take your TOEFL score to new heights with our proven preparation program!
+  ### Take your TOEFL score to new heights with our proven preparation program!
 
 
   International students often face great challenges in order to enter American colleges and universities. These include the need to achieve English fluency and obtain high scores on standardized tests. The FLS TOEFL Preparation Program helps you meet those challenges. This popular program is specifically designed to give students a critical advantage in taking the most commonly accepted exam at American institutions.
@@ -52,6 +53,5 @@ program-details:
   hours-per-week: 30
   minutes-per-lesson: 50
 pageName: TOEFL Preparation
-description: Take your TOEFL score to new heights with our proven preparation program!
 programType: in-person
 ---
