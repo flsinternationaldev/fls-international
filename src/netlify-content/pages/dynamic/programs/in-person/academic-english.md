@@ -6,9 +6,11 @@ programDetails:
   lessonsPerWeek: 36
   hoursPerWeek: "30"
   minutesPerLesson: 50
+description: "Our high-powered Academic English program offers the fastest way
+  to develop your English. "
 program-post-content: >-
-  Our high-powered Academic English program offers the fastest way to develop
-  your English.
+  ### Our high-powered Academic English program offers the fastest way to
+  develop your English.
 
 
   The Academic English Program features six hours a day of quality language instruction, including a core class, your choice of two electives or one premium test preparation class, and a daily academic workshop. Designed for students who plan to transfer to an American college or university, the program is suitable for any student interested in gaining English fluency as quickly as possible.
@@ -54,7 +56,5 @@ program-details:
   hours-per-week: 30
   minutes-per-lesson: 50
 pageName: Academic English
-description: "Our high-powered Academic English program offers the fastest way
-  to develop your English. "
 programType: in-person
 ---
