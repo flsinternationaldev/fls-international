@@ -6,7 +6,7 @@ hero-image: /assets/adobestock_337256050.jpeg
 programDetails:
   lessonsPerWeek: 6
   hoursPerWeek: "3"
-  minutesPerLesson: 50
+  minutesPerLesson: 30
 description: Build an English foundation to last a lifetime!
 program-post-content: >-
   Learning a language at a young age is the best way to build a solid foundation
