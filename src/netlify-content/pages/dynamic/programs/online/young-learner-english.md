@@ -4,7 +4,7 @@ name: Young Learner English
 type: Online Essential Program
 hero-image: /assets/adobestock_337256050.jpeg
 programDetails:
-  lessonsPerWeek: 4
+  lessonsPerWeek: 6
   hoursPerWeek: "3"
   minutesPerLesson: 50
 description: Build an English foundation to last a lifetime!
