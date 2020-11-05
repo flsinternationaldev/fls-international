@@ -5,7 +5,7 @@ type: Online Essential Program
 hero-image: /assets/johnny-mcclung-rjdoqxj7-5k-unsplash.jpg
 programDetails:
   lessonsPerWeek: 5
-  hoursPerWeek: "8"
+  hoursPerWeek: "7.5"
   minutesPerLesson: 90
 description: English for a head start in academic success!
 program-post-content: >-
