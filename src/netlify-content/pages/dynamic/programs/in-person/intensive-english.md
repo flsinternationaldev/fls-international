@@ -9,8 +9,10 @@ programDetails:
 description: Our most popular program, the Intensive English Program includes 30
   lessons of instruction per week from qualified, native-speaking teachers.
 program-post-content: >-
-  Our most popular program, the Intensive English Program includes 30 lessons of
-  instruction per week from qualified, native-speaking teachers.
+  ### Our most popular program!
+
+
+  The Intensive English Program includes 30 lessons of instruction per week from qualified, native-speaking teachers.
 
 
   The Intensive English Program is a comprehensive approach to studying English. You'll have the advantage of three different classes: an integrated Core Class at one of 18 FLS levels, a focused elective class covering a specific skill or topic and an Academic Workshop to round out your school day.
