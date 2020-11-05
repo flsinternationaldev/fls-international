@@ -6,8 +6,10 @@ programDetails:
   lessonsPerWeek: 18
   hoursPerWeek: "15"
   minutesPerLesson: 50
+description: "Our Vacation English Program offers basic instruction in the
+  fundamental skills of English in a relaxed context. "
 program-post-content: >-
-  Our Vacation English Program offers basic instruction in the fundamental
+  ### Our Vacation English Program offers basic instruction in the fundamental
   skills of English in a relaxed context.
 
 
@@ -17,7 +19,7 @@ program-post-content: >-
   Our program places an exceptional emphasis on speaking. Students practice speaking skills frequently in class, receiving regular guidance and correction from their instructor.
 
 
-  (Please note that students on an F-1 visa are not eligible to take the Vacation English Program.)
+  *(Please note that students on an F-1 visa are not eligible to take the Vacation English Program.)*
 program-features-content: >-
   ## Program Features
 
@@ -53,7 +55,5 @@ program-details:
   hours-per-week: 15
   minutes-per-lesson: 50
 pageName: Vacation English
-description: "Our Vacation English Program offers basic instruction in the
-  fundamental skills of English in a relaxed context. "
 programType: in-person
 ---
