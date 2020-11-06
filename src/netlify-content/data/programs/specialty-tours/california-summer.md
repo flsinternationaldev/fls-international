@@ -9,7 +9,7 @@ priceDetails:
   range:
     maxWeeks: 3
     weekThresholds:
-      - thresholdMax: 1
+      - thresholdMax: 3
         pricePerWeek: 1495
 programDates:
   - arrive: Jun 20th, 2021
