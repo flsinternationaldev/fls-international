@@ -51,6 +51,8 @@ export default function BillingCheckout({
 			return accum;
 		}, {});
 
+		console.log('userData', userData);
+
 		handleBatchInputChange(batchedBillingData, 'billing');
 	};
 

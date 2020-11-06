@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import StepWizard from 'react-step-wizard';
+import useLocalStorageState from 'use-local-storage-state';
 
 import Layout from 'src/components/Layout';
 import Section from 'src/components/section/Section';
@@ -12,7 +13,7 @@ import MoreInfo from 'src/components/application/MoreInfo';
 import BillingCheckout from 'src/components/application/BillingCheckout';
 import NetlifyStaticForm from 'src/components/application/NetlifyStaticForm';
 
-import { formatEdges, calculatePrice } from 'src/utils/helpers';
+import { calculatePrice } from 'src/utils/helpers';
 
 export const ApplicationTemplate = () => {
 	const data = useStaticQuery(graphql`
@@ -38,51 +39,55 @@ export const ApplicationTemplate = () => {
 	`);
 
 	const [price, setPrice] = useState(0);
-	const [prices, setPrices] = useState([]);
-	const [userData, setUserData] = useState({
+	// TODO: Going to want to create a warning that states that if localStorage is disabled, the app will not work properly
+	const [prices, setPrices] = useLocalStorageState('prices', []);
+	const [userData, setUserData] = useLocalStorageState('userData', {
 		firstName: '',
 		lastName: '',
 		email: '',
 		phoneNumber: '',
 		gender: '',
 		birthDate: '',
-		citizenshipCountry: 'France',
-		birthCountry: 'France',
+		citizenshipCountry: '',
+		birthCountry: '',
 		address: '',
 		city: '',
 		stateProvince: '',
 		postalCode: '',
 		addressCountry: '',
 	});
-	const [applicationData, setApplicationData] = useState({
-		center: '',
-		duration: '',
-		programStartDate: '',
-		programEndDate: '',
-		housing: '',
-		program: '',
-		extraNights: '',
-		housingCheckInDate: '',
-		housingCheckOutDate: '',
-		airport: '',
-		airportPickUp: false,
-		airportDropOff: false,
-		requiresI20: false,
-		transferStudent: false,
-		buyingHealthInsurance: false,
-		expressMail: false,
-		processSEVISAppFee: false,
-		unaccompaniedMinorService: false,
-		howDidYouHearAboutFls: '',
-		specifyHowHeardAboutFls: '',
-		additionalComments: '',
-		termsAndConditions: false,
-		programType: '',
-		// TODO: Figure out passport photo & financial document image upload
-	});
+	const [applicationData, setApplicationData] = useLocalStorageState(
+		'applicationData',
+		{
+			center: '',
+			duration: '',
+			programStartDate: '',
+			programEndDate: '',
+			housing: '',
+			program: '',
+			extraNights: '',
+			housingCheckInDate: '',
+			housingCheckOutDate: '',
+			airport: '',
+			airportPickUp: false,
+			airportDropOff: false,
+			requiresI20: false,
+			transferStudent: false,
+			buyingHealthInsurance: false,
+			expressMail: false,
+			processSEVISAppFee: false,
+			unaccompaniedMinorService: false,
+			howDidYouHearAboutFls: '',
+			specifyHowHeardAboutFls: '',
+			additionalComments: '',
+			termsAndConditions: false,
+			programType: '',
+			// TODO: Figure out passport photo & financial document image upload
+		}
+	);
 
-	const [billingData, setBillingData] = useState({
-		billingAddressCountry: 'France',
+	const [billingData, setBillingData] = useLocalStorageState('billingData', {
+		billingAddressCountry: '',
 	});
 
 	const [currentCenter, setCurrentCenter] = useState(null);

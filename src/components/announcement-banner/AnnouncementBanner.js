@@ -14,8 +14,6 @@ export default function AnnouncementBanner() {
 			: true
 	);
 
-	console.log('locally stored');
-
 	const closeAnnouncementBanner = () => {
 		// localStorage.setItem('isAnnouncementBannerOpen', false);
 		setIsAnnouncementBannerOpen(false);

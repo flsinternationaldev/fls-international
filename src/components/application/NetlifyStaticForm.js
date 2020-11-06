@@ -1,6 +1,10 @@
 import React from 'react';
 import { navigate } from 'gatsby';
 
+import emailjs, { init } from 'emailjs-com';
+import { Elements } from '@stripe/react-stripe-js';
+init(process.env.EMAILJS_KEY);
+
 const encode = data => {
 	return Object.keys(data)
 		.map(
@@ -9,16 +13,31 @@ const encode = data => {
 		.join('&');
 };
 
-export const handleSubmission = data => {
+export const handleSubmission = (data, emailJsArgs, stripeInfo) => {
+	// stripeInfo.stripe
+	// 	.confirmCardPayment(stripeInfo.clientSecret, {
+	// 		card: stripeInfo.elements.getElement(stripeInfo.CardElement),
+	// 	})
+	// 	.then(() => {
 	fetch('/', {
 		method: 'POST',
-		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+		},
 		body: encode({ 'form-name': 'user-application', ...data }),
 	})
 		.then(() => {
-			navigate('/application/success');
+			console.log('emailJsArgs', emailJsArgs);
+			emailjs
+				.send(
+					process.env.EMAILJS_SERVICE_ID,
+					'template_wj9qfr6',
+					emailJsArgs
+				)
+				.finally(navigate('/application/success'));
 		})
 		.catch(error => alert(error));
+	// });
 };
 
 // TODO: Note that Netlify forms, apparently, have monthly limits. Look into that

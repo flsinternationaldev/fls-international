@@ -25,6 +25,7 @@
     "bulma": "^0.9.0",
     "bulma-o-steps": "^1.0.9",
     "country-list": "^2.2.0",
+    "emailjs-com": "^2.6.3",
     "gatsby": "^2.23.12",
     "gatsby-plugin-exclude": "^1.0.2",
     "gatsby-plugin-google-fonts": "^1.0.1",
@@ -51,7 +52,8 @@
     "react-step-wizard": "^5.3.2",
     "react-tooltip": "^4.2.10",
     "showdown": "^1.9.1",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "use-local-storage-state": "^6.0.0"
   },
   "devDependencies": {
     "gatsby-plugin-root-import": "^2.0.5",

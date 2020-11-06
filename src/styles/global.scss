@@ -933,6 +933,12 @@ a {
 	align-items: baseline;
 }
 
+.fls-success__container {
+	p {
+		margin-top: 16px;
+	}
+}
+
 /* TODO: These need finessing, carousel images might be cut off as is */
 .programs__post-carousel .slick-list,
 .fls__location-post-carousel .slick-list {
