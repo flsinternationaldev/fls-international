@@ -67,7 +67,9 @@ export default function InPersonInfoForm({
 			generalFees: allMarkdownRemark(
 				limit: 1000
 				filter: {
-					fileAbsolutePath: { regex: "/data/general-fees/in-person/" }
+					fileAbsolutePath: {
+						regex: "/data/general-fees/specialty-tours/"
+					}
 				}
 			) {
 				edges {
@@ -98,6 +100,30 @@ export default function InPersonInfoForm({
 	const [programOptions, setProgramOptions] = useState([]);
 	const [startDateOptions, setStartDateOptions] = useState([]);
 	const [airportOptions, setAirportOptions] = useState([]);
+
+	if (
+		!prices.find(priceItem =>
+			priceItem.label.toLowerCase().includes('application')
+		)
+	) {
+		const applicationFeeData = generalFeesData.find(generalFee =>
+			generalFee.name.toLowerCase().includes('application')
+		);
+
+		let updatedPrices = [...prices];
+
+		updatedPrices.push({
+			type: 'general fees',
+			label: applicationFeeData.name,
+			priceDetails: {
+				price: applicationFeeData.priceDetails.price,
+				// TODO: Is there a way to capture the payPeriod for programs in the CMS?
+				payPeriod: applicationFeeData.priceDetails.payPeriod,
+			},
+		});
+
+		setPrices(updatedPrices);
+	}
 
 	// Prune out any centers that have no in person programs
 	const centerOptions = centersData
@@ -377,9 +403,9 @@ export default function InPersonInfoForm({
 				type: 'enhancements',
 				label: `${currentAirport.notes[0]} - Pick Up`,
 				priceDetails: {
-					price: currentAirport.priceDetails[0].price,
+					price: currentAirport.priceDetails.price,
 					duration: 1,
-					payPeriod: currentAirport.priceDetails[0].payPeriod,
+					payPeriod: currentAirport.priceDetails.payPeriod,
 				},
 			});
 		}
@@ -398,9 +424,9 @@ export default function InPersonInfoForm({
 				type: 'general fees',
 				label: `${currentAirport.notes[0]} - Drop Off`,
 				priceDetails: {
-					price: currentAirport.priceDetails[0].price,
+					price: currentAirport.priceDetails.price,
 					duration: 1,
-					payPeriod: currentAirport.priceDetails[0].payPeriod,
+					payPeriod: currentAirport.priceDetails.payPeriod,
 				},
 			});
 		}
@@ -780,12 +806,11 @@ export default function InPersonInfoForm({
 											label: expressMailData.name,
 											priceDetails: {
 												price:
-													expressMailData
-														.priceDetails[0].price,
+													expressMailData.priceDetails
+														.price,
 												duration: 1,
 												payPeriod:
-													expressMailData
-														.priceDetails[0]
+													expressMailData.priceDetails
 														.payPeriod,
 											},
 										});
@@ -866,11 +891,11 @@ export default function InPersonInfoForm({
 											label: sevisAppData.name,
 											priceDetails: {
 												price:
-													sevisAppData.priceDetails[0]
+													sevisAppData.priceDetails
 														.price,
 												duration: 1,
 												payPeriod:
-													sevisAppData.priceDetails[0]
+													sevisAppData.priceDetails
 														.payPeriod,
 											},
 										});
@@ -952,12 +977,12 @@ export default function InPersonInfoForm({
 									label: healthInsuranceData.name,
 									priceDetails: {
 										price:
-											healthInsuranceData.priceDetails[0]
+											healthInsuranceData.priceDetails
 												.price,
 										duration:
 											applicationData.duration.value || 0,
 										payPeriod:
-											healthInsuranceData.priceDetails[0]
+											healthInsuranceData.priceDetails
 												.payPeriod,
 									},
 								});
@@ -1030,11 +1055,11 @@ export default function InPersonInfoForm({
 									priceDetails: {
 										price:
 											unaccompaniedMinorServiceData
-												.priceDetails[0].price,
+												.priceDetails.price,
 										duration: 1,
 										payPeriod:
 											unaccompaniedMinorServiceData
-												.priceDetails[0].payPeriod,
+												.priceDetails.payPeriod,
 									},
 								});
 

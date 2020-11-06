@@ -55,7 +55,9 @@ export function calculatePrice(prices) {
 	if (prices.length) {
 		return prices.reduce((total, priceItem) => {
 			total +=
-				priceItem.priceDetails.price * priceItem.priceDetails.duration;
+				// Default duration to 1 if not provided
+				priceItem.priceDetails.price *
+				(priceItem.priceDetails.duration || 1);
 			return total;
 		}, 0);
 	} else {

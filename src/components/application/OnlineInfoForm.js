@@ -100,6 +100,30 @@ export default function OnlineInfoForm({
 		};
 	});
 
+	if (
+		!prices.find(priceItem =>
+			priceItem.label.toLowerCase().includes('application')
+		)
+	) {
+		const applicationFeeData = generalFeesData.find(generalFee =>
+			generalFee.name.toLowerCase().includes('application')
+		);
+
+		let updatedPrices = [...prices];
+
+		updatedPrices.push({
+			type: 'general fees',
+			label: applicationFeeData.name,
+			priceDetails: {
+				price: applicationFeeData.priceDetails.price,
+				// TODO: Is there a way to capture the payPeriod for programs in the CMS?
+				payPeriod: applicationFeeData.priceDetails.payPeriod,
+			},
+		});
+
+		setPrices(updatedPrices);
+	}
+
 	const handleOnlineProgramTypesChange = onlineProgramTypesChange => {
 		// Set state operatons are async, so we'll use this non-async version for the below operations
 		const currentOnlineProgramType = onlineProgramTypesData.find(
@@ -162,19 +186,19 @@ export default function OnlineInfoForm({
 
 		let durationOptions = [];
 
-		for (let i = 0; i <= currentProgram.durationOptions.maxWeeks; i++) {
+		for (let i = 0; i <= currentProgram.priceDetails.range.maxWeeks; i++) {
 			const weekNum = i + 1;
 
 			// TODO: Likely need to make a special note during submission if they select more than the max weeks
 			if (
-				currentProgram.durationOptions.exceedMaxWeeks &&
-				i == currentProgram.durationOptions.maxWeeks
+				currentProgram.priceDetails.range.exceedMaxWeeks &&
+				i == currentProgram.priceDetails.range.maxWeeks
 			) {
 				durationOptions.push({
 					label: `${i}+ weeks`,
 					value: `${weekNum}+`,
 				});
-			} else if (i < currentProgram.durationOptions.maxWeeks) {
+			} else if (i < currentProgram.priceDetails.range.maxWeeks) {
 				durationOptions.push({
 					label: weekNum === 1 ? `${i + 1} week` : `${i + 1} weeks`,
 					value: weekNum,
@@ -227,7 +251,7 @@ export default function OnlineInfoForm({
 			);
 		}
 
-		let pricePerWeek = applicationData.program.durationOptions.weekThresholds.reduce(
+		let pricePerWeek = applicationData.program.priceDetails.range.weekThresholds.reduce(
 			(pricePerWeek, currentWeek, index, arr) => {
 				// If there are no previous thresholds, previous max defaults to 0. Otherwise, the minimum threshold value is last week's max threshold, plus one.
 				let thresholdMin =

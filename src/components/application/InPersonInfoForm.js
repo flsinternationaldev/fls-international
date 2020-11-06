@@ -111,6 +111,30 @@ export default function InPersonInfoForm({
 	const [housingOptions, setHousingOptions] = useState([]);
 	const [airportOptions, setAirportOptions] = useState([]);
 
+	if (
+		!prices.find(priceItem =>
+			priceItem.label.toLowerCase().includes('application')
+		)
+	) {
+		const applicationFeeData = generalFeesData.find(generalFee =>
+			generalFee.name.toLowerCase().includes('application')
+		);
+
+		let updatedPrices = [...prices];
+
+		updatedPrices.push({
+			type: 'general fees',
+			label: applicationFeeData.name,
+			priceDetails: {
+				price: applicationFeeData.priceDetails.price,
+				// TODO: Is there a way to capture the payPeriod for programs in the CMS?
+				payPeriod: applicationFeeData.priceDetails.payPeriod,
+			},
+		});
+
+		setPrices(updatedPrices);
+	}
+
 	// Prune out any centers that have no in person programs
 	const centerOptions = centersData
 		.map(center => {
@@ -356,7 +380,7 @@ export default function InPersonInfoForm({
 						...priceItem,
 						priceDetails: {
 							duration: applicationData.duration.value,
-							price: currentHousing.priceDetails[0].price,
+							price: currentHousing.priceDetails.price,
 						},
 					};
 				}
@@ -369,8 +393,8 @@ export default function InPersonInfoForm({
 					duration: applicationData.duration
 						? applicationData.duration.value
 						: 0,
-					price: currentHousing.priceDetails[0].price,
-					payPeriod: currentHousing.priceDetails[0].payPeriod,
+					price: currentHousing.priceDetails.price,
+					payPeriod: currentHousing.priceDetails.payPeriod,
 				},
 			});
 		}
@@ -414,9 +438,9 @@ export default function InPersonInfoForm({
 				type: 'enhancements',
 				label: `${currentAirport.notes[0]} - Pick Up`,
 				priceDetails: {
-					price: currentAirport.priceDetails[0].price,
+					price: currentAirport.priceDetails.price,
 					duration: 1,
-					payPeriod: currentAirport.priceDetails[0].payPeriod,
+					payPeriod: currentAirport.priceDetails.payPeriod,
 				},
 			});
 		}
@@ -435,9 +459,9 @@ export default function InPersonInfoForm({
 				type: 'general fees',
 				label: `${currentAirport.notes[0]} - Drop Off`,
 				priceDetails: {
-					price: currentAirport.priceDetails[0].price,
+					price: currentAirport.priceDetails.price,
 					duration: 1,
-					payPeriod: currentAirport.priceDetails[0].payPeriod,
+					payPeriod: currentAirport.priceDetails.payPeriod,
 				},
 			});
 		}
@@ -842,76 +866,173 @@ export default function InPersonInfoForm({
 			</div>
 
 			{applicationData.requiresI20 === 'yes' ? (
-				<div className="column is-full">
-					{/* TODO: Should have a helpful tooltip */}
-					<label className="label label--application">
-						Would you like your I-20 Form and acceptance documents
-						to be sent by Express Mail?
-					</label>
+				<Fragment>
+					<ReactTooltip
+						type="info"
+						effect="solid"
+						html={true}
+						multiline={true}
+						className="fls__tooltip"
+						clickable={true}
+					/>
 
-					<RadioGroup
-						selectedValue={applicationData.expressMail}
-						onChange={value => {
-							const expressMailData = generalFeesData.find(
-								generalFee =>
-									generalFee.name
-										.toLowerCase()
-										.includes('express')
-							);
+					<div className="column is-full">
+						{/* TODO: Should have a helpful tooltip */}
+						<label className="label label--application">
+							Would you like your I-20 Form and acceptance
+							documents to be sent by Express Mail?
+						</label>
 
-							if (value === 'yes') {
-								// TODO: Looking for the word 'health' in the name is far from the most robust way of finding this specific general fee
-								if (
-									!prices.find(
-										priceItem =>
-											priceItem.type === 'general fees' &&
-											priceItem.label
-												.toLowerCase()
-												.includes('express')
-									)
-								) {
-									prices.push({
-										type: 'general fees',
-										label: expressMailData.name,
-										priceDetails: {
-											price:
-												expressMailData.priceDetails[0]
-													.price,
-											duration: 1,
-											payPeriod:
-												expressMailData.priceDetails[0]
-													.payPeriod,
-										},
-									});
-
-									setPrices(prices);
-								}
-							} else if (value === 'no') {
-								setPrices(
-									removePrices(
-										prices,
-										['general fees'],
-										priceItem =>
-											!priceItem.label
-												.toLowerCase()
-												.includes('express')
-									)
+						<RadioGroup
+							selectedValue={applicationData.expressMail}
+							onChange={value => {
+								const expressMailData = generalFeesData.find(
+									generalFee =>
+										generalFee.name
+											.toLowerCase()
+											.includes('express')
 								);
-							}
 
-							handleDataChange(
-								'expressMail',
-								value,
-								'application'
-							);
-						}}
-					>
-						<Radio value="yes" />
-						<span className="fls__radio-label">Yes</span>
-						<Radio value="no" />
-						<span className="fls__radio-label">No</span>
-					</RadioGroup>
-				</div>
+								if (value === 'yes') {
+									// TODO: Looking for the word 'health' in the name is far from the most robust way of finding this specific general fee
+									if (
+										!prices.find(
+											priceItem =>
+												priceItem.type ===
+													'general fees' &&
+												priceItem.label
+													.toLowerCase()
+													.includes('express')
+										)
+									) {
+										prices.push({
+											type: 'general fees',
+											label: expressMailData.name,
+											priceDetails: {
+												price:
+													expressMailData.priceDetails
+														.price,
+												duration: 1,
+												payPeriod:
+													expressMailData.priceDetails
+														.payPeriod,
+											},
+										});
+
+										setPrices(prices);
+									}
+								} else if (value === 'no') {
+									setPrices(
+										removePrices(
+											prices,
+											['general fees'],
+											priceItem =>
+												!priceItem.label
+													.toLowerCase()
+													.includes('express')
+										)
+									);
+								}
+
+								handleDataChange(
+									'expressMail',
+									value,
+									'application'
+								);
+							}}
+						>
+							<Radio value="yes" />
+							<span className="fls__radio-label">Yes</span>
+							<Radio value="no" />
+							<span className="fls__radio-label">No</span>
+						</RadioGroup>
+					</div>
+
+					<div className="column is-full">
+						{/* TODO: Should have a helpful tooltip */}
+						<label className="label label--application">
+							{/* TODO: If chosen, should this actually add $350 to the final billing? */}
+							Would you like FLS to process the $350 SEVIS
+							Application Fee for you?
+							<FontAwesomeIcon
+								className="application__info-icon"
+								icon={faInfoCircle}
+								data-tip="This is only for students who need an student F-1 visa from the US Embassy. This fee will be charged by the U.S. Government, not by FLS International."
+							/>
+						</label>
+
+						<RadioGroup
+							selectedValue={applicationData.processSEVISAppFee}
+							onChange={value => {
+								handleDataChange(
+									'processSEVISAppFee',
+									value,
+									'application'
+								);
+							}}
+							onChange={value => {
+								const sevisAppData = generalFeesData.find(
+									generalFee =>
+										generalFee.name
+											.toLowerCase()
+											.includes('sevis')
+								);
+
+								if (value === 'yes') {
+									// TODO: Looking for the word 'SEVIS' in the name is far from the most robust way of finding this specific general fee
+									if (
+										!prices.find(
+											priceItem =>
+												priceItem.type ===
+													'general fees' &&
+												priceItem.label
+													.toLowerCase()
+													.includes('sevis')
+										)
+									) {
+										prices.push({
+											type: 'general fees',
+											label: sevisAppData.name,
+											priceDetails: {
+												price:
+													sevisAppData.priceDetails
+														.price,
+												duration: 1,
+												payPeriod:
+													sevisAppData.priceDetails
+														.payPeriod,
+											},
+										});
+
+										setPrices(prices);
+									}
+								} else if (value === 'no') {
+									setPrices(
+										removePrices(
+											prices,
+											['general fees'],
+											priceItem =>
+												!priceItem.label
+													.toLowerCase()
+													.includes('sevis')
+										)
+									);
+								}
+
+								handleDataChange(
+									'processSEVISAppFee',
+									value,
+									'application'
+								);
+							}}
+						>
+							<Radio value="yes" />
+							<span className="fls__radio-label">Yes</span>
+							<Radio value="no" />
+							<span className="fls__radio-label">No</span>
+						</RadioGroup>
+					</div>
+				</Fragment>
 			) : null}
 
 			<div className="column is-full">
@@ -940,6 +1061,11 @@ export default function InPersonInfoForm({
 				<div className="application__label-container">
 					<label className="label label--application">
 						Would you like to purchase health insurance through FLS?
+						<FontAwesomeIcon
+							className="application__info-icon"
+							icon={faInfoCircle}
+							data-tip="Health insurance is mandatory for all students. If not purchased through FLS International, you must purchase insurance in your home country."
+						/>
 					</label>
 					{applicationData.duration ? null : (
 						<span className="label label--application label--select-first fls--red">
@@ -977,12 +1103,12 @@ export default function InPersonInfoForm({
 									label: healthInsuranceData.name,
 									priceDetails: {
 										price:
-											healthInsuranceData.priceDetails[0]
+											healthInsuranceData.priceDetails
 												.price,
 										duration:
 											applicationData.duration.value || 0,
 										payPeriod:
-											healthInsuranceData.priceDetails[0]
+											healthInsuranceData.priceDetails
 												.payPeriod,
 									},
 								});
@@ -1019,82 +1145,13 @@ export default function InPersonInfoForm({
 			<div className="column is-full">
 				{/* TODO: Should have a helpful tooltip */}
 				<label className="label label--application">
-					{/* TODO: If chosen, should this actually add $350 to the final billing? */}
-					Would you like FLS to process the $350 SEVIS Application Fee
-					for you?
-				</label>
-
-				<RadioGroup
-					selectedValue={applicationData.processSEVISAppFee}
-					onChange={value => {
-						handleDataChange(
-							'processSEVISAppFee',
-							value,
-							'application'
-						);
-					}}
-					onChange={value => {
-						const sevisAppData = generalFeesData.find(generalFee =>
-							generalFee.name.toLowerCase().includes('sevis')
-						);
-
-						if (value === 'yes') {
-							// TODO: Looking for the word 'SEVIS' in the name is far from the most robust way of finding this specific general fee
-							if (
-								!prices.find(
-									priceItem =>
-										priceItem.type === 'general fees' &&
-										priceItem.label
-											.toLowerCase()
-											.includes('sevis')
-								)
-							) {
-								prices.push({
-									type: 'general fees',
-									label: sevisAppData.name,
-									priceDetails: {
-										price:
-											sevisAppData.priceDetails[0].price,
-										duration: 1,
-										payPeriod:
-											sevisAppData.priceDetails[0]
-												.payPeriod,
-									},
-								});
-
-								setPrices(prices);
-							}
-						} else if (value === 'no') {
-							setPrices(
-								removePrices(
-									prices,
-									['general fees'],
-									priceItem =>
-										!priceItem.label
-											.toLowerCase()
-											.includes('sevis')
-								)
-							);
-						}
-
-						handleDataChange(
-							'processSEVISAppFee',
-							value,
-							'application'
-						);
-					}}
-				>
-					<Radio value="yes" />
-					<span className="fls__radio-label">Yes</span>
-					<Radio value="no" />
-					<span className="fls__radio-label">No</span>
-				</RadioGroup>
-			</div>
-
-			<div className="column is-full">
-				{/* TODO: Should have a helpful tooltip */}
-				<label className="label label--application">
 					Would you like FLS to provide Unaccompanied Minor Service?
+					<FontAwesomeIcon
+						className="application__info-icon"
+						icon={faInfoCircle}
+						data-tip="Upon request, FLS will provide the name and contact information of a specific designated driver to the agent and airline
+                        for pick-up and provide chaperone service to airport security for airport drop-off."
+					/>
 				</label>
 
 				<RadioGroup
@@ -1124,11 +1181,11 @@ export default function InPersonInfoForm({
 									priceDetails: {
 										price:
 											unaccompaniedMinorServiceData
-												.priceDetails[0].price,
+												.priceDetails.price,
 										duration: 1,
 										payPeriod:
 											unaccompaniedMinorServiceData
-												.priceDetails[0].payPeriod,
+												.priceDetails.payPeriod,
 									},
 								});
 

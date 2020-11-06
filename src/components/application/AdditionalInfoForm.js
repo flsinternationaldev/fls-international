@@ -59,14 +59,12 @@ export default function AdditionalInfoForm({
 							name
 							onlineProgramType
 							priceDetails {
-								price
-								payPeriod
-							}
-							durationOptions {
-								maxWeeks
-								weekThresholds {
-									pricePerWeek
-									thresholdMax
+								range {
+									maxWeeks
+									weekThresholds {
+										pricePerWeek
+										thresholdMax
+									}
 								}
 							}
 							hoursPerWeek
@@ -131,6 +129,7 @@ export default function AdditionalInfoForm({
 						prices={prices}
 						handleDataChange={handleDataChange}
 						setApplicationData={setApplicationData}
+						setPrices={setPrices}
 					/>
 
 					<InPersonInfoForm
@@ -176,6 +175,7 @@ export default function AdditionalInfoForm({
 						prices={prices}
 						handleDataChange={handleDataChange}
 						setApplicationData={setApplicationData}
+						setPrices={setPrices}
 					/>
 
 					<OnlineInfoForm
@@ -220,6 +220,7 @@ export default function AdditionalInfoForm({
 						prices={prices}
 						handleDataChange={handleDataChange}
 						setApplicationData={setApplicationData}
+						setPrices={setPrices}
 					/>
 
 					<SpecialtyToursInfoForm

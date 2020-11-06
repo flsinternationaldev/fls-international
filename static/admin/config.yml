@@ -943,6 +943,48 @@ collections:
                         },
                     ],
             }
+    - name: 'specialtyToursGeneralFeesData'
+      label: 'Specialty Tours General Fees Data'
+      create: true
+      folder: 'src/netlify-content/data/general-fees/specialty-tours'
+      identifier_field: name
+      label_singular: 'general fee data'
+      summary: '{{name}} @ {{centerNameRelation}}'
+      fields:
+          - { name: 'name', label: 'Name', widget: 'string' }
+          - {
+                label: 'Center Name',
+                name: 'centerNameRelation',
+                widget: 'relation',
+                multiple: true,
+                hint: 'The center/s this general fee is associated with',
+                valueField: 'centerName',
+                searchFields: ['centerName'],
+                collection: 'locationsData',
+            }
+          - {
+                label: 'Price Details',
+                name: 'priceDetails',
+                widget: 'object',
+                fields:
+                    [
+                        { label: 'price', name: 'price', widget: 'number' },
+                        {
+                            label: 'Pay Period',
+                            name: 'payPeriod',
+                            widget: 'select',
+                            hint: 'How often should this fee be charged?',
+                            options:
+                                [
+                                    'Once',
+                                    'Per week',
+                                    'Per Lesson',
+                                    'Per Night',
+                                    'Included',
+                                ],
+                        },
+                    ],
+            }
     - name: 'locationsData'
       label: 'Locations Data'
       create: true
@@ -1032,6 +1074,64 @@ collections:
       label: 'In Person Enhancements Data'
       create: true
       folder: 'src/netlify-content/data/enhancements/in-person'
+      summary: '{{name}} @ {{centerNameRelation}}'
+      label_singular: 'enhancement data'
+      identifier_field: 'name'
+      fields:
+          - { label: 'Enhancement Name', name: 'name', widget: 'string' }
+          - {
+                label: 'Center Names',
+                name: 'centerNameRelation',
+                widget: 'relation',
+                multiple: true,
+                collection: 'locationsData',
+                searchFields: ['centerName'],
+                valueField: 'centerName',
+                hint: 'Should be the name of the center/centers associated with this enhancement.',
+            }
+          - {
+                label: 'Price Details',
+                name: 'priceDetails',
+                widget: 'object',
+                required: false,
+                fields:
+                    [
+                        { label: 'Price', name: 'price', widget: 'number' },
+                        {
+                            label: 'Pay Period',
+                            name: 'payPeriod',
+                            widget: 'select',
+                            options:
+                                [
+                                    { label: 'Weekly', value: 'weekly' },
+                                    { label: 'once', value: 'once' },
+                                    {
+                                        label: 'Per 3 Unit Class',
+                                        value: 'three-unit-class',
+                                    },
+                                    {
+                                        label: 'Per 4 Weeks',
+                                        value: 'per-four-weeks',
+                                    },
+                                    {
+                                        label: 'Each additional week',
+                                        value: 'additional-week',
+                                    },
+                                ],
+                        },
+                    ],
+            }
+          - {
+                label: 'Additional Notes',
+                name: 'notes',
+                widget: list,
+                required: false,
+                field: { label: 'note', name: 'note', widget: 'string' },
+            }
+    - name: 'specialtyToursEnhancementsData'
+      label: 'Specialty Tours Enhancements Data'
+      create: true
+      folder: 'src/netlify-content/data/enhancements/specialty-tours'
       summary: '{{name}} @ {{centerNameRelation}}'
       label_singular: 'enhancement data'
       identifier_field: 'name'

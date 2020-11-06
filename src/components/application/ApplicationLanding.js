@@ -10,6 +10,8 @@ import applicationStyles from './ApplicationLanding.module.scss';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
+import { calculatePrice } from 'src/utils/helpers';
+
 // TODO: Audit whether all these are necessary
 let currentCenter, currentProgram, currentHousing, currentDuration;
 
@@ -58,17 +60,6 @@ export default function Application() {
 	const [programType, setProgramType] = useState('on-location');
 
 	const [prices, setPrices] = useState([]);
-
-	const calculatePrice = prices => {
-		if (prices.length) {
-			return prices.reduce((total, price) => {
-				total += price.cost;
-				return total;
-			}, 0);
-		} else {
-			return 0;
-		}
-	};
 
 	const centerOptions = formattedData.map(center => {
 		return {

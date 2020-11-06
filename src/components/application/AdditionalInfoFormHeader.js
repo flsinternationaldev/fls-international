@@ -9,6 +9,7 @@ export default function AdditionalInfoFormHeader({
 	prices,
 	handleDataChange,
 	setApplicationData,
+	setPrices,
 }) {
 	return (
 		<Fragment>
@@ -41,6 +42,8 @@ export default function AdditionalInfoFormHeader({
 						handleDataChange('programType', '', 'application');
 
 						setApplicationData({});
+
+						setPrices([]);
 					}}
 				>
 					<FontAwesomeIcon

@@ -4,18 +4,24 @@ import { calculatePrice } from 'src/utils/helpers';
 
 export default function EstimatedPrices({ prices }) {
 	// TODO: This is a fragile implemnentation, but since general fees are the only prices that "nest", it should work fine for now
-	const formattedGeneralFees = prices.reduce(
-		(accum, priceItem) => {
-			if (priceItem.type === 'general fees') accum.items.push(priceItem);
+	let formattedGeneralFees,
+		formattedPrices = prices;
 
-			return accum;
-		},
-		{ type: 'general fees', items: [] }
-	);
+	if (prices.some(priceItem => priceItem.type === 'general fees')) {
+		formattedGeneralFees = prices.reduce(
+			(accum, priceItem) => {
+				if (priceItem.type === 'general fees')
+					accum.items.push(priceItem);
 
-	const formattedPrices = prices
-		.filter(priceItem => priceItem.type !== 'general fees')
-		.concat(formattedGeneralFees);
+				return accum;
+			},
+			{ type: 'general fees', items: [] }
+		);
+
+		formattedPrices = prices
+			.filter(priceItem => priceItem.type !== 'general fees')
+			.concat(formattedGeneralFees);
+	}
 
 	const renderPriceItem = priceItem => {
 		if (priceItem.items) {
