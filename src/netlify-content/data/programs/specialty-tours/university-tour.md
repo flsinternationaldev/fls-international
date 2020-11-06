@@ -7,7 +7,7 @@ duration: 3
 minimumAge: 15
 priceDetails:
   range:
-    maxWeeks: 1
+    maxWeeks: 3
     weekThresholds:
       - thresholdMax: 3
         pricePerWeek: 1625

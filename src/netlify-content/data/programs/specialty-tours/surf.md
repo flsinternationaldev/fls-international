@@ -1,7 +1,7 @@
 ---
 name: Surf
 centerNameRelation:
-  - Cal State Long Beach
+  - Cal State Long Beach (Summer Only)
 price: 4475
 duration: 3
 minimumAge: 15

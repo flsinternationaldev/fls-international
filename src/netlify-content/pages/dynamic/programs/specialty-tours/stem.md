@@ -16,7 +16,7 @@ programDetails:
   minimumAge: 12
   duration: 2
   price: 4325
-  durationRelation: 3
+  durationRelation: 2
 specialty-tour-description: >-
   Located in Cambridge, Harvard University is the oldest and most revered
   institution of higher education in the United States and the perfect
