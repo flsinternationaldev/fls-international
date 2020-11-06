@@ -15,6 +15,7 @@ programDetails:
   minimumAge: 15
   duration: 3
   price: 5250
+  durationRelation: 3
 specialty-tour-description: "Do you have an idea that could be the next Broadway
   play?  The best place to find out is New York City, the heart of the theater
   world!  Our camp for future playwrights introduces you to the key concepts of
