@@ -577,6 +577,12 @@ collections:
                             fields:
                                 [
                                     {
+                                        label: 'Duration',
+                                        name: 'duration',
+                                        widget: 'number',
+                                        required: false,
+                                    },
+                                    {
                                         label: 'Price',
                                         name: 'price',
                                         widget: 'number',
@@ -811,6 +817,12 @@ collections:
                             fields:
                                 [
                                     {
+                                        label: 'Duration',
+                                        name: 'duration',
+                                        widget: 'number',
+                                        required: false,
+                                    },
+                                    {
                                         label: 'Price',
                                         name: 'price',
                                         widget: 'number',
@@ -842,7 +854,6 @@ collections:
                             widget: 'datetime',
                             default: '',
                             time_format: false,
-                            format: 'MMM Do, YYYY',
                             picker_utc: false,
                             hint: 'This will only render the selected date on the site, and will totally ignore the time (e.g. 09/16/2020 9:00 AM will display as "Sep 16, 2020")',
                         },
@@ -852,7 +863,6 @@ collections:
                             widget: 'datetime',
                             default: '',
                             time_format: false,
-                            format: 'MMM Do, YYYY',
                             picker_utc: false,
                             hint: 'This will only render the selected date on the site, and will totally ignore the time (e.g. 09/16/2020 9:00 AM will display as "Sep 16, 2020")',
                         },

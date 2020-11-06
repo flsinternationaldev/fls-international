@@ -5,16 +5,22 @@ centerNameRelation:
 price: 4875
 duration: 3
 minimumAge: 15
+priceDetails:
+  range:
+    maxWeeks: 3
+    weekThresholds:
+      - thresholdMax: 3
+        pricePerWeek: 1625
 programDates:
-  - arrive: Jun 21st, 2021
-    depart: Jul 10th, 2021
-  - arrive: Jun 27th, 2021
-    depart: Jul 17th, 2021
-  - arrive: Jul 4th, 2021
-    depart: Jul 24th, 2021
-  - arrive: Jul 11th, 2021
-    depart: Jul 31st, 2021
-  - arrive: Jul 18th, 2021
-    depart: Aug 7th, 2021
+  - arrive: 2021-06-21T07:00:00.000Z
+    depart: 2021-07-10T07:00:00.000Z
+  - arrive: 2021-06-27T07:00:00.000Z
+    depart: 2021-07-17T07:00:00.000Z
+  - arrive: 2021-07-04T07:00:00.000Z
+    depart: 2021-07-24T07:00:00.000Z
+  - arrive: 2021-07-11T07:00:00.000Z
+    depart: 2021-07-31T07:00:00.000Z
+  - arrive: 2021-07-18T07:00:00.000Z
+    depart: 2021-08-07T07:00:00.000Z
 sampleCalendar: /assets/tour-calendar-placeholder.pdf
 ---

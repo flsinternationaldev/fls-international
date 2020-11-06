@@ -890,6 +890,10 @@ a {
 .fls-post__hero {
 	display: flex;
 	justify-content: center;
+
+	img {
+		max-width: 650px !important;
+	}
 }
 
 .fls-post__copy-container {

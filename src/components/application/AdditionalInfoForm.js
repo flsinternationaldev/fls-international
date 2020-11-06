@@ -94,12 +94,14 @@ export default function AdditionalInfoForm({
 				edges {
 					node {
 						frontmatter {
+							name
 							centerNameRelation
 							minimumAge
 							priceDetails {
 								package {
 									payPeriod
 									price
+									duration
 								}
 								range {
 									maxWeeks

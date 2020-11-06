@@ -10,7 +10,7 @@ priceDetails:
     maxWeeks: 2
     weekThresholds:
       - thresholdMax: 3
-        pricePerWeek: 1269
+        pricePerWeek: 1265
 programDates:
   - arrive: Dec 13th, 2020
     depart: Jan 2nd, 2021

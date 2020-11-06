@@ -5,6 +5,12 @@ centerNameRelation:
 price: 4635
 duration: 3
 minimumAge: 12
+priceDetails:
+  range:
+    maxWeeks: 3
+    weekThresholds:
+      - thresholdMax: 2
+        pricePerWeek: 1543
 programDates:
   - arrive: Jun 20th, 2021
     depart: Jul 10th, 2021

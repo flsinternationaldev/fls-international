@@ -2,14 +2,19 @@ import React, { useState, Fragment } from 'react';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import { RadioGroup, Radio } from 'react-radio-group';
-import ReactTooltip from 'react-tooltip';
 import { useStaticQuery, graphql } from 'gatsby';
 import Checkbox from 'rc-checkbox';
+import moment from 'moment';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
-import { formatEdges, updatePrices, removePrices } from 'src/utils/helpers';
+import {
+	formatEdges,
+	updatePrices,
+	removePrices,
+	generatePriceThresholds,
+} from 'src/utils/helpers';
 
 // TODO: Figure out a better way to implement this data
 let airportData;
@@ -89,6 +94,7 @@ export default function InPersonInfoForm({
 
 	const [durationOptions, setDurationOptions] = useState([]);
 	const [programOptions, setProgramOptions] = useState([]);
+	const [startDateOptions, setStartDateOptions] = useState([]);
 	const [airportOptions, setAirportOptions] = useState([]);
 
 	// Prune out any centers that have no in person programs
@@ -134,8 +140,6 @@ export default function InPersonInfoForm({
 			setPrices(removePrices(prices, ['program']));
 		}
 
-		console.log('center change value', centerChange.value);
-		console.log('programsData - specialty', programsData);
 		// Set program options to be the programs associated with the selected center
 		setProgramOptions(
 			programsData
@@ -184,31 +188,47 @@ export default function InPersonInfoForm({
 		// With some refactoring, we could probably change 'handleDataChange' to take a callback that can be passed to the state change
 		handleDataChange('program', currentProgram, 'application');
 
-		let durationOptions = [];
+		// TODO: Need to re-enter dates in the CMS for the new date format
+		const formattedDates = currentProgram.programDates.map(programDate => {
+			const parsedDateString = parseInt(programDate.arrive);
 
-		for (let i = 0; i <= currentProgram.durationOptions.maxWeeks; i++) {
-			const weekNum = i + 1;
+			return {
+				value: new Date(parsedDateString),
+				label: moment(parsedDateString).format('MMM Do, YY'),
+			};
+		});
 
-			// TODO: Likely need to make a special note during submission if they select more than the max weeks
-			if (
-				currentProgram.durationOptions.exceedMaxWeeks &&
-				i == currentProgram.durationOptions.maxWeeks
-			) {
-				durationOptions.push({
-					label: `${i}+ weeks`,
-					value: `${weekNum}+`,
-				});
-			} else if (i < currentProgram.durationOptions.maxWeeks) {
-				durationOptions.push({
-					label: weekNum === 1 ? `${i + 1} week` : `${i + 1} weeks`,
-					value: weekNum,
-				});
-			}
+		setStartDateOptions(formattedDates);
+
+		if (currentProgram.priceDetails.range) {
+			// TODO: This 'generatePriceThresholds' function should be distributed among the other program types
+			setDurationOptions(
+				generatePriceThresholds(
+					currentProgram.priceDetails.range.maxWeeks,
+					currentProgram.priceDetails.range.exceedMaxWeeks
+				)
+			);
+
+			handleDataChange('program', currentProgram, 'application');
+		} else if (currentProgram.priceDetails.package) {
+			setDurationOptions([
+				{
+					label: `${currentProgram.priceDetails.package.duration} weeks`,
+					value: currentProgram.priceDetails.package.duration,
+				},
+			]);
+
+			handleBatchInputChange(
+				{
+					program: currentProgram,
+					duration: {
+						label: `${currentProgram.priceDetails.package.duration} weeks`,
+						value: currentProgram.priceDetails.package.duration,
+					},
+				},
+				'application'
+			);
 		}
-
-		handleDataChange('program', currentProgram, 'application');
-
-		setDurationOptions(durationOptions);
 	};
 
 	const handleDurationChange = durationChange => {
@@ -241,7 +261,7 @@ export default function InPersonInfoForm({
 			);
 		}
 
-		let pricePerWeek = applicationData.program.durationOptions.weekThresholds.reduce(
+		let pricePerWeek = applicationData.program.priceDetails.range.weekThresholds.reduce(
 			(pricePerWeek, currentWeek, index, arr) => {
 				// If there are no previous thresholds, previous max defaults to 0. Otherwise, the minimum threshold value is last week's max threshold, plus one.
 				let thresholdMin =
@@ -288,6 +308,16 @@ export default function InPersonInfoForm({
 		}
 
 		setPrices(updatedPrices);
+	};
+
+	const handleStartDateChange = startDateChange => {
+		console.log('start date change', startDateChange);
+
+		handleDataChange(
+			'programStartDate',
+			startDateChange.value,
+			'application'
+		);
 	};
 
 	const handleAirportChange = airportChange => {
@@ -419,7 +449,20 @@ export default function InPersonInfoForm({
 
 			<div className="column is-full-tablet is-half-desktop">
 				<div className="application__label-container">
-					<label className="label label--application">Duration</label>
+					<label className="label label--application">
+						Duration
+						<FontAwesomeIcon
+							className={`application__info-icon ${
+								applicationData.program &&
+								applicationData.program.priceDetails.package
+									? ''
+									: 'fls__hide'
+							}`}
+							icon={faInfoCircle}
+							data-tip="This specialty tour has a fixed duraton."
+						/>
+					</label>
+
 					{applicationData.program ? null : (
 						<span className="label label--application label--select-first fls--red">
 							Select a program first
@@ -444,7 +487,10 @@ export default function InPersonInfoForm({
 					}}
 					onChange={handleDurationChange}
 					options={durationOptions}
-					isDisabled={!applicationData.program}
+					isDisabled={
+						!applicationData.program ||
+						applicationData.program.priceDetails.package
+					}
 				/>
 			</div>
 
@@ -467,7 +513,7 @@ export default function InPersonInfoForm({
 					)}
 				</div>
 
-				<DatePicker
+				{/* <DatePicker
 					selected={applicationData.programStartDate}
 					onChange={date => {
 						handleBatchInputChange(
@@ -498,6 +544,26 @@ export default function InPersonInfoForm({
 					placeholderText={'Choose Your Start Date'}
 					filterDate={isMonday}
 					readOnly={!applicationData.duration}
+				/> */}
+
+				<Select
+					className={`fls__select-container ${
+						!applicationData.program
+							? 'fls__select-container--disabled'
+							: ''
+					}`}
+					classNamePrefix={'fls'}
+					value={{
+						label: applicationData.programStartDate
+							? moment(applicationData.programStartDate).format(
+									'MMM Do, YY'
+							  )
+							: 'Select a start date.',
+						value: applicationData.programStartDate,
+					}}
+					onChange={handleStartDateChange}
+					options={startDateOptions}
+					isDisabled={!applicationData.program}
 				/>
 			</div>
 
@@ -604,7 +670,6 @@ export default function InPersonInfoForm({
 			) : null}
 
 			<div className="column is-full">
-				{/* TODO: Should have a helpful tooltip */}
 				<label className="label label--application">
 					Do you require an I-20 Form?
 					<FontAwesomeIcon

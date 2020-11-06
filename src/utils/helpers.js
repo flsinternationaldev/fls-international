@@ -62,3 +62,26 @@ export function calculatePrice(prices) {
 		return 0;
 	}
 }
+
+export function generatePriceThresholds(maxWeeks, exceedMaxWeeks) {
+	let durationOptions = [];
+
+	for (let i = 0; i <= maxWeeks; i++) {
+		const weekNum = i + 1;
+
+		// TODO: Likely need to make a special note during submission if they select more than the max weeks
+		if (exceedMaxWeeks && i == maxWeeks) {
+			durationOptions.push({
+				label: `${i}+ weeks`,
+				value: `${weekNum}+`,
+			});
+		} else if (i < maxWeeks) {
+			durationOptions.push({
+				label: weekNum === 1 ? `${i + 1} week` : `${i + 1} weeks`,
+				value: weekNum,
+			});
+		}
+	}
+
+	return durationOptions;
+}
