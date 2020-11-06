@@ -182,6 +182,7 @@ export const ApplicationTemplate = () => {
 					setCurrentCenter={setCurrentCenter}
 					currentProgram={currentProgram}
 					setCurrentProgram={setCurrentProgram}
+					setApplicationData={setApplicationData}
 				/>
 				<MoreInfo
 					hashKey={'more-info'}

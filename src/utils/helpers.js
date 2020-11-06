@@ -85,3 +85,10 @@ export function generatePriceThresholds(maxWeeks, exceedMaxWeeks) {
 
 	return durationOptions;
 }
+
+export function calculateDateOffset(programStartDate, timeExpression) {
+	const clonedDate = new Date(programStartDate);
+
+	// Each 'week' needs to end on a friday, hence this weird math
+	return clonedDate.setDate(clonedDate.getDate() + timeExpression);
+}
