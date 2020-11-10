@@ -25,6 +25,7 @@ export const SpecialtyTourPageTemplate = ({
 		infinite: true,
 	};
 
+	console.log('specialtytoursdata', specialtyTourData);
 	return (
 		<Section>
 			<div className="columns is-multiline">
@@ -81,7 +82,7 @@ export const SpecialtyTourPageTemplate = ({
 									className="fls-post__subhero-icon"
 									icon={faCalendarAlt}
 								/>{' '}
-								{`${specialtyTourData.programDetails.duration} weeks`}
+								{`${specialtyTourData.programDetails.durationRelation} weeks`}
 							</span>
 						</div>
 					</div>

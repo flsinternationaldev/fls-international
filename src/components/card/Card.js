@@ -5,6 +5,9 @@ import cardStyles from './Card.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBook, faClock, faUser } from '@fortawesome/free-solid-svg-icons';
 
+import lukePlaceholderImg from 'src/img/luke-icon.jpeg';
+import ceaLogoPlaceholder from 'src/img/cea-logo.png';
+
 export default function Card({
 	isLocation,
 	isCarouselLocation,
@@ -111,10 +114,10 @@ export default function Card({
 		);
 	} else if (isAffiliate) {
 		return (
-			<div className="column is-one-quarter">
+			<div className="column is-one-third">
 				<img
 					className={cardStyles.aboutUs__affiliateCardIcon}
-					src="../../img/cea-logo.png"
+					src={ceaLogoPlaceholder}
 					alt=""
 				/>
 
@@ -138,7 +141,7 @@ export default function Card({
 					<div className={cardStyles.aboutUs__contactCardDetails}>
 						<img
 							className={cardStyles.aboutUs__contactCardIcon}
-							src="../../img/luke-icon.jpeg"
+							src={lukePlaceholderImg}
 							alt=""
 						/>
 						<strong>Mr. Luke Frerichs</strong>

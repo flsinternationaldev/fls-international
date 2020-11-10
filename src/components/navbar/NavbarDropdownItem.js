@@ -84,8 +84,6 @@ export default function NavbarDropdownItem({ dropdownItem, rootNavPath }) {
 			</Link>
 		);
 	} else {
-		console.log('dropdownitem path', dropdownItem.path);
-		console.log('is external?', dropdownItem.isExternalLink);
 		renderedDropdownItem = dropdownItem.isExternalLink ? (
 			<a
 				className={`${navbarStyles.flsNav__dropdownItem}`}

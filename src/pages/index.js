@@ -74,8 +74,15 @@ export const HomePageTemplate = ({ data }) => {
 							</p>
 						</div>
 					</div>
-					<div className="column is-full-tablet is-half-desktop">
-						<img src={videoSampleImg} alt="" />
+					<div className="column is-full-tablet is-half-desktop fls__home-video">
+						{/* <img src={videoSampleImg} alt="" /> */}
+						<iframe
+							src="https://www.youtube.com/embed/DbmbJZC--h0"
+							frameborder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+							allowfullscreen
+						></iframe>
+						{/* https://www.youtube.com/watch?v=DbmbJZC--h0&ab_channel=FLSInternational */}
 					</div>
 				</div>
 			</Section>

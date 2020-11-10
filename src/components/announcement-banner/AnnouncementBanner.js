@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { graphql, useStaticQuery, navigate } from 'gatsby';
+import useLocalStorageState from 'use-local-storage-state';
 
 import announcementBannerStyles from './AnnouncementBanner.module.scss';
 import 'animate.css';
@@ -7,9 +8,33 @@ import 'animate.css';
 import { formatEdges } from 'src/utils/helpers';
 
 export default function AnnouncementBanner() {
-	const data = { allMarkdownRemark: { edges: [] } };
+	const data = useStaticQuery(graphql`
+		{
+			allMarkdownRemark(
+				limit: 1000
+				filter: {
+					fileAbsolutePath: { regex: "/netlify-content/components//" }
+				}
+			) {
+				edges {
+					node {
+						frontmatter {
+							path
+						}
+						fileAbsolutePath
+					}
+				}
+			}
+		}
+	`);
 
-	const formattedData = formatEdges(data.allMarkdownRemark);
+	// const formattedData = formatEdges(data.allMarkdownRemark);
+	const formattedData = {};
+
+	const [
+		hasClosedAnnouncementBanner,
+		setHasClosedAnnouncementBanner,
+	] = useLocalStorageState('hasClosedAnnouncementBanner');
 
 	// Love me a React Hook
 	const [isAnnouncementBannerOpen, setIsAnnouncementBannerOpen] = useState(
@@ -21,8 +46,8 @@ export default function AnnouncementBanner() {
 
 		// TODO: Dumb way to ensure the CSS animation has time to play
 		setTimeout(() => {
-			localStorage.setItem('hasClosedAnnouncementBanner', true);
-		}, 2000);
+			setHasClosedAnnouncementBanner(true);
+		}, 800);
 	};
 
 	const handleBannerClick = e => {
@@ -37,8 +62,7 @@ export default function AnnouncementBanner() {
 		});
 	};
 
-	return localStorage.getItem('hasClosedAnnouncementBanner') !== null ||
-		!formattedData.showBanner ? null : (
+	return hasClosedAnnouncementBanner ? null : (
 		<div
 			className={`${
 				announcementBannerStyles.fls__announcementBanner
@@ -66,7 +90,11 @@ export default function AnnouncementBanner() {
 						announcementBannerStyles.fls__announcementBannerCopy
 					}
 				>
-					{formattedData.pageContent}
+					{/* TODO: Some weird fucking bullshit is preventing the graphql
+					query from running here for reasons un-fucking-known */}
+					{/* {formattedData.copy} */}
+					Live FLS classes are now online. Study in the US or in your
+					home country. Click to read more!
 				</div>
 			</div>
 		</div>
