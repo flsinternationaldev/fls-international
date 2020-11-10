@@ -28,16 +28,17 @@ export const SpecialtyTourPageTemplate = ({
 	return (
 		<Section>
 			<div className="columns is-multiline">
-				{previewData ? null : (
+				{/* TODO: We want to implement testimonials, but not just yet  */}
+				{/* {previewData ? null : (
 					<Fragment>
 						<div className="column is-3-desktop is-full-tablet">
 							<PostNavbar data={allSpecialtyTourNavData} />
 							<Testimonial />
 						</div>
 					</Fragment>
-				)}
+				)} */}
 
-				<div className="column is-9-desktop is-full-tablet">
+				<div className="column is-full">
 					<div className="columns is-multiline">
 						<div className="column is-full">
 							{/* TODO: Again, these 'programs' classes need genericizing */}
@@ -128,7 +129,7 @@ export const SpecialtyTourPageTemplate = ({
 					<div className="column is-full">
 						<div className="fls-post__copy-container fls-post__copy-container--alt">
 							<h3 className="fls-post__subtitle">
-								Accommodatons
+								Accommodations
 							</h3>
 
 							<MarkdownContent

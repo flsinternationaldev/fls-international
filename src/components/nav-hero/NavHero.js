@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from 'gatsby';
 
 import Section from 'src/components/section/Section';
 
@@ -8,21 +9,31 @@ export default function NavHero({ pageTitle, hasNavButtons }) {
 	const handleNavButtons = () => {
 		return hasNavButtons ? (
 			<Fragment>
-				<div className="column is-one-third-desktop is-half-tablet">
+				{/* TODO: Might want to make this preload some data into the application */}
+				<Link
+					to={'/application'}
+					className="column is-one-third-desktop is-half-tablet"
+				>
 					<button className={navHeroStyles.fls__pageHeroButton}>
 						Apply Now
 					</button>
-				</div>
-				<div className="column is-one-third-desktop is-half-tablet">
+				</Link>
+				<Link
+					to={'/contact'}
+					className="column is-one-third-desktop is-half-tablet"
+				>
 					<button className={navHeroStyles.fls__pageHeroButton}>
 						Contact Us
 					</button>
-				</div>
-				<div className="column is-one-third-desktop is-full-tablet">
+				</Link>
+				<a
+					href="https://fls-international.web.app/"
+					className="column is-one-third-desktop is-full-tablet"
+				>
 					<button className={navHeroStyles.fls__pageHeroButton}>
 						English Proficiency Test
 					</button>
-				</div>
+				</a>
 			</Fragment>
 		) : null;
 	};

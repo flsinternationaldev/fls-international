@@ -1,26 +1,62 @@
 import React, { useState } from 'react';
+import { graphql, useStaticQuery, navigate } from 'gatsby';
+
 import announcementBannerStyles from './AnnouncementBanner.module.scss';
 import 'animate.css';
 
+import { formatEdges } from 'src/utils/helpers';
+
 export default function AnnouncementBanner() {
-	const lsIsAnnouncementBannerOpen = /*localStorage.getItem(
-		'isAnnouncementBannerOpen'
-	);*/ true;
+	const data = useStaticQuery(graphql`
+		{
+			allMarkdownRemark(
+				limit: 1000
+				filter: {
+					fileAbsolutePath: {
+						regex: "/pages/static/announcement-banner/"
+					}
+				}
+			) {
+				edges {
+					node {
+						frontmatter {
+							pageContent
+							path
+							showBanner
+						}
+						fileAbsolutePath
+					}
+				}
+			}
+		}
+	`);
+
+	const formattedData = formatEdges(data.allMarkdownRemark)[0];
 
 	// Love me a React Hook
 	const [isAnnouncementBannerOpen, setIsAnnouncementBannerOpen] = useState(
-		lsIsAnnouncementBannerOpen !== null
-			? lsIsAnnouncementBannerOpen == 'true'
-			: true
+		true
 	);
 
 	const closeAnnouncementBanner = () => {
-		// localStorage.setItem('isAnnouncementBannerOpen', false);
+		localStorage.setItem('hasClosedAnnouncementBanner', true);
 		setIsAnnouncementBannerOpen(false);
 	};
 
-	return (
-		// TODO: Might be nice to have some kind of session variable that keeps track of whether or not this has been closed
+	const handleBannerClick = e => {
+		// TODO: Not the most robust way to handle this nested event handler
+		e.target.classList.forEach(cssClass => {
+			if (cssClass.includes('fls__announcement-banner-close')) {
+				closeAnnouncementBanner();
+				return;
+			} else {
+				navigate(formattedData.path);
+			}
+		});
+	};
+
+	return localStorage.getItem('hasClosedAnnouncementBanner') !== null ||
+		!formattedData.showBanner ? null : (
 		<div
 			className={`${
 				announcementBannerStyles.fls__announcementBanner
@@ -29,6 +65,7 @@ export default function AnnouncementBanner() {
 					? 'animate__slideInUp'
 					: 'animate__slideOutDown'
 			}`}
+			onClick={handleBannerClick}
 		>
 			{/* TODO: Ensure this close button works on mobile */}
 			<span
@@ -47,8 +84,7 @@ export default function AnnouncementBanner() {
 						announcementBannerStyles.fls__announcementBannerCopy
 					}
 				>
-					Live FLS classes are now online. Study in the US or in your
-					home country. Click to read more!
+					{formattedData.pageContent}
 				</div>
 			</div>
 		</div>

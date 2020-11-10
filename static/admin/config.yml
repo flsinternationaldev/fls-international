@@ -66,6 +66,24 @@ collections:
                   label: 'About Us Page Content'
                   name: 'pageContent'
                   hint: 'Any and all content entered here will be preserved when this CMS entry is fully integrated with the production site'
+          - file: 'src/netlify-content/pages/static/announcement-banner.md'
+            label: 'Announcement Banner'
+            name: 'announcementBanner'
+            fields:
+                - widget: 'string'
+                  label: 'Announcement Banner Content'
+                  name: 'pageContent'
+                  hint: 'The text that will appear in the banner.'
+                - widget: 'string'
+                  label: 'Path'
+                  name: 'path'
+                  hint: 'The page to redirect to if the banner is clicked.'
+                  required: false
+                - widget: 'boolean'
+                  required: false
+                  name: 'showBanner'
+                  label: 'Show Banner'
+                  hint: 'Whether or not the banner should render on the site. Note that the banner is global, so, showing or hiding it will show or hide it on ALL pages.'
     - name: 'navbar-item'
       label: 'Navbar Items'
       create: true

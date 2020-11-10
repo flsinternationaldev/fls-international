@@ -17,16 +17,17 @@ export const InPersonProgramPageTemplate = ({
 	return (
 		<Section>
 			<div className="columns is-multiline">
-				<div className="column is-3-desktop is-full-tablet">
+				{/* TODO: We want to implement testimonials, but not just yet */}
+				{/* <div className="column is-3-desktop is-full-tablet">
 					{isPreview ? null : (
 						<Fragment>
 							<PostNavbar data={allProgramNavData} />
 							<Testimonial />
 						</Fragment>
 					)}
-				</div>
+				</div> */}
 
-				<div className="column is-9-desktop is-full-tablet">
+				<div className="column is-full is-full-tablet">
 					<div className="columns is-multiline">
 						<div className="column is-full">
 							{/* TODO: Again, these 'programs' classes need genericizing */}

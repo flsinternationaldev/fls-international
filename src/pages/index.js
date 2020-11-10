@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import Slick from 'react-slick';
 import { graphql, useStaticQuery, Link } from 'gatsby';
+import { formatEdges } from 'src/utils/helpers';
 
 import 'src/bulma/bulma.scss';
 import 'slick-carousel/slick/slick.css';
@@ -10,7 +11,7 @@ import Layout from 'src/components/Layout';
 import Hero from 'src/components/hero/Hero';
 import Section from 'src/components/section/Section';
 import Card from 'src/components/card/Card';
-import Application from 'src/components/application/ApplicationLanding';
+import Landing from 'src/components/application/landing/Landing';
 
 import videoSampleImg from 'src/img/video-sample.jpeg';
 
@@ -36,11 +37,7 @@ export const HomePageTemplate = ({ data }) => {
 		],
 	};
 
-	// TODO: This 'reduce' pattern repeats across the app. Think about creating a mixin of some kind
-	const homeCopy = data.homeCopy.edges.reduce(
-		(accum, edge) => Object.assign({}, edge.node.frontmatter),
-		{}
-	);
+	const homeCopy = formatEdges(data.homeCopy);
 
 	const programs = data.programs.edges.map(edge => edge.node.frontmatter);
 
@@ -109,7 +106,7 @@ export const HomePageTemplate = ({ data }) => {
 						</p>
 					</div>
 					<div className="column is-half-desktop is-full-tablet">
-						<Application
+						<Landing
 							isHome={true}
 							on_location_program_information={
 								homeCopy.on_location_program_information

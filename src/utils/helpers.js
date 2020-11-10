@@ -8,7 +8,14 @@ export function kebabToSnake(str) {
 
 // Takes the 'edges' array from a graphql, and returns a friendlier, flattened object
 export function formatEdges(queriedData) {
-	return queriedData.edges.map(edge => edge.node.frontmatter);
+	if (queriedData.edges.length > 1) {
+		return queriedData.edges.map(edge => edge.node.frontmatter);
+	} else if (queriedData.edges.length === 1) {
+		return queriedData.edges.reduce(
+			(accum, edge) => Object.assign({}, edge.node.frontmatter),
+			{}
+		);
+	}
 }
 
 export function updatePrices(prices, updateType, updates) {

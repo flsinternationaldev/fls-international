@@ -11,8 +11,8 @@ priceDetails:
     payPeriod: once
     duration: 3
 programDates:
-  - arrive: Jun 20th, 2021
-    depart: Jul 10th, 2021
+  - arrive: 2021-06-20T07:00:00.000Z
+    depart: 2021-07-10T07:00:00.000Z
   - arrive: Jul 11th, 2021
     depart: Aug 1st, 2021
 sampleCalendar: /assets/tour-calendar-placeholder.pdf

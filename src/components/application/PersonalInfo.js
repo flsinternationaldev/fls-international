@@ -4,7 +4,6 @@ import { getName, getCode } from 'country-list';
 import DatePicker from 'react-datepicker';
 import ReactFlagsSelect from 'react-flags-select';
 
-import applicationStyles from './ApplicationLanding.module.scss';
 import 'react-flags-select/scss/react-flags-select.scss';
 
 // TODO: Figure out how best to handle validation
@@ -178,9 +177,7 @@ export default function PersonalInfo({
 								}
 								value={userData.birthDate}
 								minDate={new Date()}
-								wrapperClassName={
-									applicationStyles.fls__dateWrapper
-								}
+								wrapperClassName="fls__date-wrapper"
 								className={'input fls__base-input'}
 								// TODO: This should auto format when typing the date
 								placeholderText={'Birthday (MM/DD/YY)'}

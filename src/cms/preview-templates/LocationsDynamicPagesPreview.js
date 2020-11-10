@@ -1,7 +1,7 @@
 import React from 'react';
 
-import LocationPageTemplate from '../../components/LocationPage';
-import { kebabToSnake } from '../../utils/helpers';
+import LocationPageTemplate from 'src/components/LocationPage';
+import { kebabToSnake } from 'src/utils/helpers';
 
 const LocationPagePreview = ({ entry }) => {
 	const data = entry.getIn(['data']).toJS();

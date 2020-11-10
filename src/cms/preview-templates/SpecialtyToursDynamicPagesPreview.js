@@ -1,7 +1,7 @@
 import React from 'react';
 
-import SpecialtyToursPageTemplate from '../../components/SpecialtyToursPage';
-import { kebabToSnake } from '../../utils/helpers';
+import SpecialtyToursPageTemplate from 'src/components/SpecialtyToursPage';
+import { kebabToSnake } from 'src/utils/helpers';
 
 const SpecialtyToursPagePreview = ({ entry }) => {
 	const data = entry.getIn(['data']).toJS();

@@ -84,6 +84,8 @@ $fls-light-blue: #a8dadc;
 	max-width: 200px;
 }
 
+// TODO: Ideally, the individual navbar items would expand, vertically, to contain the text.
+// For now, the text cuts off with an ellipsis
 .fls-nav__dropdown-item {
 	display: block;
 	padding: 8px;
@@ -92,6 +94,9 @@ $fls-light-blue: #a8dadc;
 	cursor: pointer;
 	transition: all 0.3s ease 0s;
 	font-size: 12px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 
 	&:hover {
 		background-color: $fls-light-blue;

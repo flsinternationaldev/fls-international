@@ -114,82 +114,92 @@ export default function MoreInfo({
 
 				{/* TODO: Need to see if there's a way to get this into Netlify */}
 				{applicationData.requiresI20 === 'yes' ? (
-					<div className="column is-full">
-						<div className="columns">
-							<div className="column is-half">
-								<label className="label">
-									Passport Photo (.jpg, .png, .pdf)(Max File
-									Size 5mb)
-									<FontAwesomeIcon
-										className="application__info-icon"
-										icon={faInfoCircle}
-										data-tip="A passport photo is not required now. This can be provided at a future date."
-									/>
-								</label>
-
-								<div className="file has-name">
-									<label className="file-label">
-										<input
-											className="file-input"
-											type="file"
-											name="passport"
+					<Fragment>
+						<ReactTooltip
+							type="info"
+							effect="solid"
+							html={true}
+							multiline={true}
+							className="fls__tooltip"
+							clickable={true}
+						/>
+						<div className="column is-full">
+							<div className="columns">
+								<div className="column is-half">
+									<label className="label">
+										Passport Photo (.jpg, .png, .pdf)(Max
+										File Size 5mb)
+										<FontAwesomeIcon
+											className="application__info-icon"
+											icon={faInfoCircle}
+											data-tip="A passport photo is not required now. This can be provided at a future date."
 										/>
-
-										<span className="file-cta">
-											<span className="file-icon">
-												<i className="fas fa-upload"></i>
-											</span>
-
-											<span className="file-label">
-												Choose a file…
-											</span>
-										</span>
-
-										<span className="file-name">
-											Screen Shot 2017-07-29 at
-											15.54.25.png
-										</span>
 									</label>
+
+									<div className="file has-name">
+										<label className="file-label">
+											<input
+												className="file-input"
+												type="file"
+												name="passport"
+											/>
+
+											<span className="file-cta">
+												<span className="file-icon">
+													<i className="fas fa-upload"></i>
+												</span>
+
+												<span className="file-label">
+													Choose a file…
+												</span>
+											</span>
+
+											<span className="file-name">
+												Screen Shot 2017-07-29 at
+												15.54.25.png
+											</span>
+										</label>
+									</div>
 								</div>
-							</div>
 
-							<div className="column is-half">
-								<label className="label">
-									Financial Document (.jpg, .png, .pdf)(Max
-									File Size 5mb)
-									<FontAwesomeIcon
-										className="application__info-icon"
-										icon={faInfoCircle}
-										data-tip="A financial document
+								<div className="column is-half">
+									<label className="label">
+										Financial Document (.jpg, .png,
+										.pdf)(Max File Size 5mb)
+										<FontAwesomeIcon
+											className="application__info-icon"
+											icon={faInfoCircle}
+											data-tip="A financial document
 									 is not required now. This can be provided at a future date."
-									/>
-								</label>
-								<div className="file has-name">
-									<label className="file-label">
-										<input
-											className="file-input"
-											type="file"
-											name="financial-document"
 										/>
-
-										<span className="file-cta">
-											<span className="file-icon">
-												<i className="fas fa-upload"></i>
-											</span>
-											<span className="file-label">
-												Choose a file…
-											</span>
-										</span>
-
-										<span className="file-name">
-											Screen Shot 2017-07-29 at
-											15.54.25.png
-										</span>
 									</label>
+									<div className="file has-name">
+										<label className="file-label">
+											<input
+												className="file-input"
+												type="file"
+												name="financial-document"
+											/>
+
+											<span className="file-cta">
+												<span className="file-icon">
+													<i className="fas fa-upload"></i>
+												</span>
+												<span className="file-label">
+													Choose a file…
+												</span>
+											</span>
+
+											<span className="file-name">
+												Screen Shot 2017-07-29 at
+												15.54.25.png
+											</span>
+										</label>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+					</Fragment>
 				) : null}
 
 				<div className="column is-full">

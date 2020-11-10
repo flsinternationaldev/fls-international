@@ -17,16 +17,17 @@ export const OnlineProgramPageTemplate = ({
 	return (
 		<Section>
 			<div className="columns is-multiline">
-				{previewData ? null : (
+				{/* TODO: We want to implement testimonials, but not just yet  */}
+				{/* {previewData ? null : (
 					<Fragment>
 						<div className="column is-3-desktop is-full-tablet">
 							<PostNavbar data={allProgramNavData} />
 							<Testimonial />
 						</div>
 					</Fragment>
-				)}
+				)} */}
 
-				<div className="column is-9-desktop is-full-tablet">
+				<div className="column is-full is-full-tablet">
 					<div className="columns is-multiline">
 						<div className="column is-full">
 							{/* TODO: Again, these 'programs' classes need genericizing */}

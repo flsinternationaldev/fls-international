@@ -28,8 +28,8 @@ export const LocationPageTemplate = ({ locationPageData }) => {
 					<PriceCalculator />
 
 					<QuickFacts data={locationPageData.quick_facts} />
-
-					<Testimonial />
+					{/* TODO: We want to implement testimonials, but not just yet  */}
+					{/* <Testimonial /> */}
 				</div>
 				<div className="column is-9-desktop is-full-tablet">
 					<div className="columns is-multiline">

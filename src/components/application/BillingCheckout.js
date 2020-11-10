@@ -1,22 +1,19 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import ReactFlagsSelect from 'react-flags-select';
+import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import {
-	CardElement,
-	Elements,
-	// useStripe,
-	// useElements,
-} from '@stripe/react-stripe-js';
+
 import { getName, getCode } from 'country-list';
 import { handleSubmission } from 'src/components/application/NetlifyStaticForm';
 
 import EstimatedPrices from './EstimatedPrices';
+import StripeForm from './StripeForm';
 
 import paymentOptionsImg from 'src/img/stripe-payments.png';
 import 'react-flags-select/scss/react-flags-select.scss';
 
 // TODO: We need our REAL stripe key
-const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+const stripePromise = loadStripe(process.env.STRIPE_API_KEY);
 
 export default function BillingCheckout({
 	previousStep,
@@ -51,10 +48,28 @@ export default function BillingCheckout({
 			return accum;
 		}, {});
 
-		console.log('userData', userData);
-
 		handleBatchInputChange(batchedBillingData, 'billing');
 	};
+
+	const [clientSecret, setClientSecret] = useState('');
+
+	useEffect(() => {
+		// Create PaymentIntent as soon as the page loads
+		window
+			.fetch('/create-payment-intent', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ items: [{ id: 'xl-tshirt' }] }),
+			})
+			.then(res => {
+				return res.json();
+			})
+			.then(data => {
+				setClientSecret(data.clientSecret);
+			});
+	}, []);
 
 	return (
 		<Fragment>
@@ -243,7 +258,7 @@ export default function BillingCheckout({
 							/>
 						</div>
 						<Elements stripe={stripePromise}>
-							<CardElement className="fls__base-input fls__base-input--payment" />
+							<StripeForm />
 						</Elements>
 					</div>
 				</div>
@@ -263,7 +278,25 @@ export default function BillingCheckout({
 				<div className="column is-4">
 					<button
 						onClick={() => {
-							handleSubmission();
+							// TODO: There is email copy here, and we likely want that to be controlled from the CMS, or somewhere else.
+							handleSubmission(
+								{
+									...applicationData,
+									...userData,
+									...billingData,
+								},
+								{
+									studentName: userData.firstName,
+									purchaseMessage:
+										'You have successfully purchased a course!',
+								}
+								// {
+								// 	clientSecret,
+								// 	stripe,
+								// 	elements,
+								// 	CardElement,
+								// }
+							);
 						}}
 						className="fls__button fls__button--yellow"
 					>

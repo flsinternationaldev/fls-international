@@ -1,7 +1,7 @@
 import React from 'react';
 
-import InPersonProgramPageTemplate from '../../components/InPersonProgramPage';
-import { kebabToSnake } from '../../utils/helpers';
+import InPersonProgramPageTemplate from 'src/components/InPersonProgramPage';
+import { kebabToSnake } from 'src/utils/helpers';
 
 const InPersonProgramPagePreview = ({ entry }) => {
 	const data = entry.getIn(['data']).toJS();

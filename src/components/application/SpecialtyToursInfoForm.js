@@ -541,6 +541,9 @@ export default function InPersonInfoForm({
 				/>
 			</div>
 
+			{/* TODO: There's a better way to take up this space */}
+			<div className="column is-half"></div>
+
 			{/* TODO: This field needs some serious validation */}
 			<div className="column is-full-tablet is-half-desktop">
 				<div className="application__label-container">

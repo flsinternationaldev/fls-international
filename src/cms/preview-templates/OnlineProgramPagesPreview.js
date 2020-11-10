@@ -1,7 +1,7 @@
 import React from 'react';
 
-import OnlineProgramPageTemplate from '../../components/OnlineProgramPage';
-import { kebabToSnake } from '../../utils/helpers';
+import OnlineProgramPageTemplate from 'src/components/OnlineProgramPage';
+import { kebabToSnake } from 'src/utils/helpers';
 
 const OnlineProgramPagePreview = ({ entry }) => {
 	const data = entry.getIn(['data']).toJS();

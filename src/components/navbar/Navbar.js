@@ -44,7 +44,7 @@ export default function Navbar(props) {
 
 	mainNavItems.sort((a, b) => a.order - b.order);
 
-	/* TODO: This is a less way to get the program category links (speciality tours, online, in-person) to
+	/* TODO: This is a silly way to get the program category links (speciality tours, online, in-person) to
 	 link to the /programs page using a "#" instead of "/". This is because I'm using hash routing on the 
 	 programs page so that the programs can be filtered in a "single page app" style. */
 	mainNavItems.forEach(mainNavItem => {
