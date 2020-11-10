@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
+import { RadioGroup, Radio } from 'react-radio-group';
 import useLocalStorageState from 'use-local-storage-state';
 
 import InPersonForm from 'src/components/application/landing/InPersonForm';
@@ -114,12 +115,11 @@ export default function Landing() {
 			programStartDate: '',
 			housing: '',
 			program: '',
-			programType: '',
+			programType: 'in-person',
 			// TODO: Figure out passport photo & financial document image upload
 		}
 	);
 
-	const [programType, setProgramType] = useState('on-location');
 	const [prices, setPrices] = useLocalStorageState('prices', []);
 
 	// TODO: This is a repeat of logic from the main application
@@ -130,19 +130,53 @@ export default function Landing() {
 		});
 	};
 
-	if (
-		applicationData.programType === 'on-location' ||
-		!applicationData.programType
-	) {
-		return (
-			<InPersonForm
-				applicationData={applicationData}
-				handleSetApplicationData={handleSetApplicationData}
-				setApplicationData={setApplicationData}
-				prices={prices}
-				setPrices={setPrices}
-				programsData={programsData.inPerson}
-			/>
-		);
-	}
+	const renderAppForms = () => {
+		if (applicationData.programType === 'in-person') {
+			return (
+				<InPersonForm
+					applicationData={applicationData}
+					handleSetApplicationData={handleSetApplicationData}
+					setApplicationData={setApplicationData}
+					prices={prices}
+					setPrices={setPrices}
+					programsData={programsData.inPerson}
+				/>
+			);
+		} else if (applicationData.programType === 'online') {
+			return <div></div>;
+		} else if (applicationData.programType === 'specialty-tour') {
+			return <div></div>;
+		}
+	};
+
+	return (
+		<div className="columns is-multiline">
+			<div className="column is-full control">
+				{/* TODO: Ensure you can click the label to select the radio */}
+				<RadioGroup
+					name="program-type"
+					selectedValue={applicationData.programType}
+					onChange={value => {
+						console.log('radio value', value);
+						handleSetApplicationData('programType', value);
+					}}
+				>
+					<Radio value="in-person" />
+					<span className="fls__radio-label">On Location</span>
+
+					<Radio value="online" />
+					<span className="fls__radio-label">Online</span>
+
+					<Radio value="specialty-tours" />
+					<span className="fls__radio-label">Specialty Tour</span>
+				</RadioGroup>
+			</div>
+
+			{renderAppForms()}
+
+			<Link to={'/application'} className="column is-half">
+				<button className="fls__button">Apply Now</button>
+			</Link>
+		</div>
+	);
 }

@@ -471,6 +471,8 @@ export default function InPersonInfoForm({
 
 	const isMonday = date => date.getDay() === 1;
 
+	console.log('applicaton data', applicationData);
+
 	return (
 		<Fragment>
 			<div className="column is-full-tablet is-half-desktop">
@@ -613,7 +615,7 @@ export default function InPersonInfoForm({
 				</div>
 
 				<DatePicker
-					selected={applicationData.programStartDate}
+					selected={new Date(applicationData.programStartDate)}
 					onChange={date => {
 						handleBatchInputChange(
 							{

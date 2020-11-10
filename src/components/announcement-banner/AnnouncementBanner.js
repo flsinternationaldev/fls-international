@@ -31,7 +31,7 @@ export default function AnnouncementBanner() {
 		}
 	`);
 
-	const formattedData = formatEdges(data.allMarkdownRemark)[0];
+	const formattedData = formatEdges(data.allMarkdownRemark);
 
 	// Love me a React Hook
 	const [isAnnouncementBannerOpen, setIsAnnouncementBannerOpen] = useState(
@@ -39,8 +39,12 @@ export default function AnnouncementBanner() {
 	);
 
 	const closeAnnouncementBanner = () => {
-		localStorage.setItem('hasClosedAnnouncementBanner', true);
 		setIsAnnouncementBannerOpen(false);
+
+		// TODO: Dumb way to ensure the CSS animation has time to play
+		setTimeout(() => {
+			localStorage.setItem('hasClosedAnnouncementBanner', true);
+		}, 2000);
 	};
 
 	const handleBannerClick = e => {

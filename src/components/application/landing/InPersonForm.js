@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { formatEdges } from 'src/utils/helpers';
 
@@ -7,7 +7,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 import DatePicker from 'react-datepicker';
 import Select from 'react-select';
-import { RadioGroup, Radio } from 'react-radio-group';
 import { calculatePrice, removePrices, updatePrices } from 'src/utils/helpers';
 
 export default function InPersonForm({
@@ -53,7 +52,6 @@ export default function InPersonForm({
 		}
 	`);
 
-	console.log('programsData', programsData);
 	programsData = formatEdges(programsData);
 	const centersData = formatEdges(data.locations);
 	const housingData = formatEdges(data.housing);
@@ -305,41 +303,7 @@ export default function InPersonForm({
 	const isMonday = date => date.getDay() === 1;
 
 	return (
-		<div className="columns is-multiline">
-			<div className="column is-full control">
-				{/* TODO: Ensure you can click the label to select the radio */}
-				<RadioGroup
-					name="program-type"
-					selectedValue={applicationData.programType}
-					onChange={value => {
-						console.log('radio value', value);
-						handleSetApplicationData('programType', value);
-					}}
-				>
-					<Radio value="on-location" />
-					<span className="fls__radio-label">On Location</span>
-
-					<Radio value="online" />
-					<span className="fls__radio-label">Online</span>
-
-					<Radio value="specialty-tour" />
-					<span className="fls__radio-label">Specialty Tour</span>
-				</RadioGroup>
-			</div>
-
-			<div className="column is-full">
-				<DatePicker
-					selected={applicationData.startDate}
-					onChange={() => {}}
-					minDate={new Date()}
-					wrapperClassName="fls__date-wrapper"
-					className={'input fls__base-input'}
-					// TODO: This should auto format when typing the date
-					placeholderText={'Choose Your Start Date (MM/DD/YY)'}
-					filterDate={isMonday}
-				/>
-			</div>
-
+		<Fragment>
 			<div className="column is-full">
 				<Select
 					className="fls__select-container"
@@ -361,21 +325,45 @@ export default function InPersonForm({
 
 			<div className="column is-full">
 				<Select
-					className="fls__select-container"
+					className={`fls__select-container ${
+						!applicationData.center
+							? 'fls__select-container--disabled'
+							: ''
+					}`}
 					classNamePrefix={'fls'}
-					value={''}
+					value={{
+						label: applicationData.program
+							? applicationData.program.name
+							: 'Select a program',
+						value: applicationData.program
+							? applicationData.program.name
+							: 'Select a program',
+					}}
 					onChange={handleProgramChange}
 					options={programOptions}
+					isDisabled={!applicationData.center}
 				/>
 			</div>
 
 			<div className="column is-full">
 				<Select
-					className="fls__select-container"
+					className={`fls__select-container ${
+						!applicationData.center
+							? 'fls__select-container--disabled'
+							: ''
+					}`}
 					classNamePrefix={'fls'}
-					value={''}
+					value={{
+						label: applicationData.housing
+							? applicationData.housing.name
+							: 'Select your housing type.',
+						value: applicationData.housing
+							? applicationData.housing.name
+							: null,
+					}}
 					onChange={handleHousingChange}
 					options={housingOptions}
+					isDisabled={!applicationData.center}
 				/>
 			</div>
 
@@ -383,11 +371,77 @@ export default function InPersonForm({
 			<div className="column is-full">
 				{/* TODO: These styles need finessing */}
 				<Select
-					className="fls__select-container"
+					className={`fls__select-container ${
+						!applicationData.program
+							? 'fls__select-container--disabled'
+							: ''
+					}`}
 					classNamePrefix={'fls'}
-					value={''}
+					value={{
+						label: applicationData.duration
+							? applicationData.duration.label
+							: 'Select a duration.',
+						value: applicationData.duration
+							? applicationData.duration.value
+							: null,
+					}}
 					onChange={handleDurationChange}
 					options={durationOptions}
+					isDisabled={!applicationData.program}
+				/>
+			</div>
+
+			<div className="column is-full">
+				<DatePicker
+					selected={applicationData.programStartDate}
+					onChange={date => {
+						setApplicationData({
+							...applicationData,
+							...{
+								programStartDate: date,
+								programEndDate: (() => {
+									const clonedDate = new Date(date);
+
+									// Each 'week' needs to end on a friday, hence this weird math
+									return clonedDate.setDate(
+										clonedDate.getDate() +
+											(applicationData.duration.value *
+												7 -
+												3)
+									);
+								})(),
+								// Default check in date to suinday before start of program
+								housingCheckInDate: (() => {
+									const clonedDate = new Date(date);
+
+									return clonedDate.setDate(
+										clonedDate.getDate() - 1
+									);
+								})(),
+								// Default checkout date to saturday after end of program
+								housingCheckOutDate: (() => {
+									const clonedDate = new Date(date);
+
+									return clonedDate.setDate(
+										clonedDate.getDate() +
+											(applicationData.duration.value *
+												7 -
+												2)
+									);
+								})(),
+							},
+						});
+					}}
+					minDate={new Date()}
+					wrapperClassName={`fls__date-wrapper ${
+						!applicationData.duration
+							? 'fls__select-container--disabled'
+							: ''
+					}`}
+					className={'input fls__base-input'}
+					placeholderText={'Choose Your Start Date'}
+					filterDate={isMonday}
+					readOnly={!applicationData.duration}
 				/>
 			</div>
 
@@ -396,10 +450,6 @@ export default function InPersonForm({
 					$ {calculatePrice(prices)} USD
 				</p>
 			</div>
-
-			<div className="column is-half">
-				<button className="fls__button">Apply Now</button>
-			</div>
-		</div>
+		</Fragment>
 	);
 }
