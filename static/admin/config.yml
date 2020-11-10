@@ -66,24 +66,6 @@ collections:
                   label: 'About Us Page Content'
                   name: 'pageContent'
                   hint: 'Any and all content entered here will be preserved when this CMS entry is fully integrated with the production site'
-          - file: 'src/netlify-content/pages/static/announcement-banner.md'
-            label: 'Announcement Banner'
-            name: 'announcementBanner'
-            fields:
-                - widget: 'string'
-                  label: 'Announcement Banner Content'
-                  name: 'pageContent'
-                  hint: 'The text that will appear in the banner.'
-                - widget: 'string'
-                  label: 'Path'
-                  name: 'path'
-                  hint: 'The page to redirect to if the banner is clicked.'
-                  required: false
-                - widget: 'boolean'
-                  required: false
-                  name: 'showBanner'
-                  label: 'Show Banner'
-                  hint: 'Whether or not the banner should render on the site. Note that the banner is global, so, showing or hiding it will show or hide it on ALL pages.'
     - name: 'navbar-item'
       label: 'Navbar Items'
       create: true
@@ -135,6 +117,13 @@ collections:
                             hint: 'If provided, the site will try and pull all the names & URLs from each entry of a particular collection. e.g. for "program-pages", the site will dynamically pull in the URLs & names for all entries in the Program Pages collection',
                         },
                         {
+                            label: 'Is External Link',
+                            name: 'isExternalLink',
+                            widget: 'boolean',
+                            required: false,
+                            hint: 'Like the name suggests, tick this if the link provided leads to a page that is not on the site',
+                        },
+                        {
                             label: 'Sublinks',
                             name: 'links',
                             widget: 'list',
@@ -157,6 +146,67 @@ collections:
                         },
                     ],
             }
+    - name: components
+      label: Components
+      files:
+          - file: 'src/netlify-content/components/footer.md'
+            label: 'Footer'
+            name: 'footer'
+            fields:
+                - widget: 'object'
+                  label: 'Contact Info'
+                  name: 'contactInfo'
+                  fields:
+                      - { label: 'Title', name: 'title', widget: 'string' }
+                      - { label: 'Address', name: 'address', widget: 'string' }
+                      - {
+                            label: 'Phone Number',
+                            name: 'phoneNumber',
+                            widget: 'string',
+                        }
+                      - { label: 'Email', name: 'email', widget: 'string' }
+                - widget: 'object'
+                  label: 'Information Links'
+                  name: 'informationLinks'
+                  fields:
+                      - { label: 'Title', name: 'title', widget: 'string' }
+                      - {
+                            label: 'Links',
+                            name: 'links',
+                            widget: 'list',
+                            label_singular: 'information link',
+                            fields:
+                                [
+                                    {
+                                        widget: 'string',
+                                        label: 'Link Name',
+                                        name: 'name',
+                                    },
+                                    {
+                                        widget: 'string',
+                                        label: 'Path',
+                                        name: 'path',
+                                    },
+                                ],
+                        }
+          - file: 'src/netlify-content/components/announcement-banner.md'
+            label: 'Announcement Banner'
+            name: 'announcementBanner'
+            fields:
+                - widget: 'string'
+                  label: 'Announcement Banner Content'
+                  name: 'pageContent'
+                  hint: 'The text that will appear in the banner.'
+                - widget: 'string'
+                  label: 'Path'
+                  name: 'path'
+                  hint: 'The page to redirect to if the banner is clicked.'
+                  required: false
+                - widget: 'boolean'
+                  required: false
+                  name: 'showBanner'
+                  label: 'Show Banner'
+                  hint: 'Whether or not the banner should render on the site. Note that the banner is global, so, showing or hiding it will show or hide it on ALL pages.'
     - name: 'locationsDynamicPages'
       label: 'Locations Dynamic Pages'
       create: true

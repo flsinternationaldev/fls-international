@@ -105,9 +105,7 @@ export default function OnlineInfoForm({
 			priceItem.label.toLowerCase().includes('application')
 		)
 	) {
-		const applicationFeeData = generalFeesData.find(generalFee =>
-			generalFee.name.toLowerCase().includes('application')
-		);
+		const applicationFeeData = generalFeesData;
 
 		let updatedPrices = [...prices];
 
@@ -420,7 +418,11 @@ export default function OnlineInfoForm({
 				</div>
 
 				<DatePicker
-					selected={applicationData.programStartDate}
+					selected={
+						applicationData.programStartDate
+							? new Date(applicationData.programStartDate)
+							: applicationData.programStartDate
+					}
 					onChange={date => {
 						handleBatchInputChange(
 							{

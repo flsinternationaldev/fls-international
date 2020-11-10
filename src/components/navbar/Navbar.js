@@ -26,6 +26,7 @@ export default function Navbar(props) {
 								collectionName
 								name
 								path
+								isExternalLink
 							}
 						}
 						fileAbsolutePath

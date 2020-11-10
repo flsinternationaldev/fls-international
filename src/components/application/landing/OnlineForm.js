@@ -19,32 +19,16 @@ export default function InPersonForm({
 }) {
 	const data = useStaticQuery(graphql`
 		{
-			locations: allMarkdownRemark(
+			onlineProgramTypes: allMarkdownRemark(
 				limit: 1000
-				filter: { fileAbsolutePath: { regex: "/data/locations/" } }
-			) {
-				edges {
-					node {
-						frontmatter {
-							name
-							centerName
-						}
-					}
+				filter: {
+					fileAbsolutePath: { regex: "/data/online-program-types/" }
 				}
-			}
-			housing: allMarkdownRemark(
-				limit: 1000
-				filter: { fileAbsolutePath: { regex: "/data/housing/" } }
 			) {
 				edges {
 					node {
 						frontmatter {
 							name
-							centerNameRelation
-							priceDetails {
-								payPeriod
-								price
-							}
 						}
 					}
 				}
@@ -53,112 +37,42 @@ export default function InPersonForm({
 	`);
 
 	programsData = formatEdges(programsData);
-	const centersData = formatEdges(data.locations);
-	const housingData = formatEdges(data.housing);
+	const onlineProgramTypesData = formatEdges(data.onlineProgramTypes);
 
 	const [programOptions, setProgramOptions] = useState([]);
-	const [housingOptions, setHousingOptions] = useState([]);
 	const [durationOptions, setDurationOptions] = useState([]);
 
-	const centerOptions = centersData
-		.map(center => {
-			return {
-				value: center.centerName,
-				label: `${center.centerName} @ ${center.name}`,
-			};
-		})
-		.filter(center =>
-			programsData.some(program =>
-				program.centerNameRelation.includes(center.value)
-			)
-		);
-
-	const handleCenterChange = centerChange => {
-		// Set state operatons are async, so we'll use this non-async version for the below operations
-		const currentCenter = centersData.find(
-			center => center.centerName === centerChange.value
-		);
-
-		handleSetApplicationData('center', currentCenter, 'application');
-
-		/*
-            If the duration or program is already selected, and the user picks a new center, this can cause complications with already selected programs
-            and durations. It seems easier, then, to just require them to reselect a program & duration.
-        */
-		if (applicationData.duration || applicationData.program) {
-			/*
-                Originally, this was two state changes in quick succession. This was causing problems, and though there may be a better way to handle it,
-                manually batching the state changes seems to solve the problem.
-            */
-			let blankedApplicationData = {};
-
-			if (applicationData.duration)
-				blankedApplicationData.duration = null;
-			if (applicationData.program) blankedApplicationData.program = null;
-			if (applicationData.housing) blankedApplicationData.housing = null;
-
-			setApplicationData({
-				...applicationData,
-				...blankedApplicationData,
-			});
-
-			setPrices(removePrices(prices, ['program', 'housing']));
-		}
-
-		// Set program options to be the programs associated with the selected center
-		setProgramOptions(
-			programsData
-				.filter(program => {
-					return program.centerNameRelation.includes(
-						centerChange.value
-					);
-				})
-				.map(program => {
-					return {
-						value: program.name.toLowerCase().split(' ').join('-'),
-						label: program.name,
-					};
-				})
-		);
-
-		setHousingOptions(
-			housingData
-				.filter(housing => {
-					return housing.centerNameRelation.includes(
-						centerChange.value
-					);
-				})
-				.map(housing => {
-					return {
-						value: housing.name.toLowerCase().split(' ').join('-'),
-						label: housing.name,
-					};
-				})
-		);
-	};
+	const onlineProgramTypesOptions = onlineProgramTypesData.map(program => {
+		return {
+			value: program.name,
+			label: program.name,
+		};
+	});
 
 	const handleProgramChange = programChange => {
 		const currentProgram = programsData.find(
 			program => program.name === programChange.label
 		);
 
+		// TODO: State changes are async, so we keep using 'currentProgram' inside this function scope
+		// With some refactoring, we could probably change 'handleDataChange' to take a callback that can be passed to the state change
 		handleSetApplicationData('program', currentProgram);
 
 		let durationOptions = [];
 
-		for (let i = 0; i <= currentProgram.durationOptions.maxWeeks; i++) {
+		for (let i = 0; i <= currentProgram.priceDetails.range.maxWeeks; i++) {
 			const weekNum = i + 1;
 
 			// TODO: Likely need to make a special note during submission if they select more than the max weeks
 			if (
-				currentProgram.durationOptions.exceedMaxWeeks &&
-				i == currentProgram.durationOptions.maxWeeks
+				currentProgram.priceDetails.range.exceedMaxWeeks &&
+				i == currentProgram.priceDetails.range.maxWeeks
 			) {
 				durationOptions.push({
 					label: `${i}+ weeks`,
 					value: `${weekNum}+`,
 				});
-			} else if (i < currentProgram.durationOptions.maxWeeks) {
+			} else if (i < currentProgram.priceDetails.range.maxWeeks) {
 				durationOptions.push({
 					label: weekNum === 1 ? `${i + 1} week` : `${i + 1} weeks`,
 					value: weekNum,
@@ -193,21 +107,11 @@ export default function InPersonForm({
 								(durationChange.value * 7 - 3)
 						);
 					})(),
-					housingCheckOutDate: (() => {
-						const clonedDate = new Date(
-							applicationData.housingCheckInDate
-						);
-
-						return clonedDate.setDate(
-							clonedDate.getDate() +
-								(durationChange.value * 7 - 1)
-						);
-					})(),
 				},
 			});
 		}
 
-		let pricePerWeek = applicationData.program.durationOptions.weekThresholds.reduce(
+		let pricePerWeek = applicationData.program.priceDetails.range.weekThresholds.reduce(
 			(pricePerWeek, currentWeek, index, arr) => {
 				// If there are no previous thresholds, previous max defaults to 0. Otherwise, the minimum threshold value is last week's max threshold, plus one.
 				let thresholdMin =
@@ -263,41 +167,57 @@ export default function InPersonForm({
 		setPrices(updatedPrices);
 	};
 
-	const handleHousingChange = housingChange => {
-		const currentHousing = housingData.find(
-			housing => housing.name === housingChange.label
+	const handleOnlineProgramTypesChange = onlineProgramTypesChange => {
+		// Set state operatons are async, so we'll use this non-async version for the below operations
+		const currentOnlineProgramType = onlineProgramTypesData.find(
+			onlineProgramType =>
+				onlineProgramType.name === onlineProgramTypesChange.value
 		);
 
-		handleSetApplicationData('housing', currentHousing);
+		handleSetApplicationData(
+			'onlineProgramType',
+			currentOnlineProgramType.name
+		);
 
-		// TODO: This 'new price' logic is begging to be refactored & DRYed up
-		if (prices.find(priceItem => priceItem.type === 'housing')) {
-			prices = prices.map(priceItem => {
-				if (priceItem.type === 'housing') {
-					return {
-						...priceItem,
-						priceDetails: {
-							duration: applicationData.duration.value,
-							price: currentHousing.priceDetails.price,
-						},
-					};
-				}
+		/*
+        If the duration or program is already selected, and the user picks a new online program type, this can cause complications with already selected programs
+        and durations. It seems easier, then, to just require them to reselect a program & duration.
+    */
+		if (applicationData.duration || applicationData.program) {
+			/*
+            Originally, this was two state changes in quick succession. This was causing problems, and though there may be a better way to handle it,
+            manually batching the state changes seems to solve the problem.
+        */
+			let blankedApplicationData = {};
+
+			if (applicationData.duration)
+				blankedApplicationData.duration = null;
+			if (applicationData.program) blankedApplicationData.program = null;
+			if (applicationData.housing) blankedApplicationData.housing = null;
+
+			handleSetApplicationData({
+				...applicationData,
+				...blankedApplicationData,
 			});
-		} else {
-			prices.push({
-				type: 'housing',
-				label: `${currentHousing.name}`,
-				priceDetails: {
-					duration: applicationData.duration
-						? applicationData.duration.value
-						: 0,
-					price: currentHousing.priceDetails.price,
-					payPeriod: currentHousing.priceDetails.payPeriod,
-				},
-			});
+
+			setPrices(removePrices(prices, ['program', 'housing']));
 		}
 
-		setPrices(prices);
+		// Set program options to be the programs associated with the selected online program type
+		setProgramOptions(
+			programsData
+				.filter(program => {
+					return program.onlineProgramType.includes(
+						onlineProgramTypesChange.value
+					);
+				})
+				.map(program => {
+					return {
+						value: program.name.toLowerCase().split(' ').join('-'),
+						label: program.name,
+					};
+				})
+		);
 	};
 
 	const isMonday = date => date.getDay() === 1;
@@ -309,24 +229,26 @@ export default function InPersonForm({
 					className="fls__select-container"
 					classNamePrefix={'fls'}
 					value={{
-						label: applicationData.center
-							? `${applicationData.center.centerName} @ ${applicationData.center.name}`
-							: 'Select a center.',
-						value: applicationData.center
-							? applicationData.center.centerName
+						label: applicationData.onlineProgramType
+							? applicationData.onlineProgramType
+							: 'Select an online program type.',
+						value: applicationData.onlineProgramType
+							? applicationData.onlineProgramType
 							: null,
 					}}
-					onChange={centerOption => {
-						handleCenterChange(centerOption);
+					onChange={onlineProgramTypesOption => {
+						handleOnlineProgramTypesChange(
+							onlineProgramTypesOption
+						);
 					}}
-					options={centerOptions}
+					options={onlineProgramTypesOptions}
 				/>
 			</div>
 
 			<div className="column is-full">
 				<Select
 					className={`fls__select-container ${
-						!applicationData.center
+						!applicationData.onlineProgramType
 							? 'fls__select-container--disabled'
 							: ''
 					}`}
@@ -341,35 +263,12 @@ export default function InPersonForm({
 					}}
 					onChange={handleProgramChange}
 					options={programOptions}
-					isDisabled={!applicationData.center}
-				/>
-			</div>
-
-			<div className="column is-full">
-				<Select
-					className={`fls__select-container ${
-						!applicationData.center
-							? 'fls__select-container--disabled'
-							: ''
-					}`}
-					classNamePrefix={'fls'}
-					value={{
-						label: applicationData.housing
-							? applicationData.housing.name
-							: 'Select your housing type.',
-						value: applicationData.housing
-							? applicationData.housing.name
-							: null,
-					}}
-					onChange={handleHousingChange}
-					options={housingOptions}
-					isDisabled={!applicationData.center}
+					isDisabled={!applicationData.onlineProgramType}
 				/>
 			</div>
 
 			{/* TODO: All fields besides dates and center should be disabled until you choose a center */}
 			<div className="column is-full">
-				{/* TODO: These styles need finessing */}
 				<Select
 					className={`fls__select-container ${
 						!applicationData.program
@@ -412,25 +311,6 @@ export default function InPersonForm({
 											(applicationData.duration.value *
 												7 -
 												3)
-									);
-								})(),
-								// Default check in date to suinday before start of program
-								housingCheckInDate: (() => {
-									const clonedDate = new Date(date);
-
-									return clonedDate.setDate(
-										clonedDate.getDate() - 1
-									);
-								})(),
-								// Default checkout date to saturday after end of program
-								housingCheckOutDate: (() => {
-									const clonedDate = new Date(date);
-
-									return clonedDate.setDate(
-										clonedDate.getDate() +
-											(applicationData.duration.value *
-												7 -
-												2)
 									);
 								})(),
 							},

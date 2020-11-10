@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from 'gatsby';
 
 import footerStyles from './Footer.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -54,8 +55,8 @@ const footer = () => {
 									className={`column is-half ${footerStyles.footer__listItem}`}
 								>
 									{/* TODO: Replace these chevrons with icons */}
-									<a
-										href="#"
+									<Link
+										to="/"
 										className="fls__link fls__link--alt"
 									>
 										<FontAwesomeIcon
@@ -63,7 +64,7 @@ const footer = () => {
 											icon={faAngleDoubleRight}
 										/>{' '}
 										<strong>Home</strong>
-									</a>
+									</Link>
 								</li>
 								<li
 									className={`column is-half ${footerStyles.footer__listItem}`}

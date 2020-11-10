@@ -84,7 +84,22 @@ export default function NavbarDropdownItem({ dropdownItem, rootNavPath }) {
 			</Link>
 		);
 	} else {
-		renderedDropdownItem = (
+		console.log('dropdownitem path', dropdownItem.path);
+		console.log('is external?', dropdownItem.isExternalLink);
+		renderedDropdownItem = dropdownItem.isExternalLink ? (
+			<a
+				className={`${navbarStyles.flsNav__dropdownItem}`}
+				key={dropdownItem.name}
+				href={dropdownItem.path}
+				target="_blank"
+				onClick={() => {
+					// TODO: This onClick is necessary because there are nested A tags here, and that is Very Dumb
+					window.open(dropdownItem.path, '_blank');
+				}}
+			>
+				<span>{dropdownItem.name}</span>
+			</a>
+		) : (
 			<Link
 				className={`${navbarStyles.flsNav__dropdownItem}`}
 				key={dropdownItem.name}

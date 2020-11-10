@@ -12,7 +12,6 @@ export default function AdditionalInfoForm({
 	nextStep,
 	previousStep,
 	handleDataChange,
-	generalFeesData,
 	handleBatchInputChange,
 	prices,
 	setPrices,
@@ -135,7 +134,6 @@ export default function AdditionalInfoForm({
 					<InPersonInfoForm
 						calculatePrice={calculatePrice}
 						handleDataChange={handleDataChange}
-						generalFeesData={generalFeesData}
 						handleBatchInputChange={handleBatchInputChange}
 						prices={prices}
 						setPrices={setPrices}
@@ -226,7 +224,6 @@ export default function AdditionalInfoForm({
 					<SpecialtyToursInfoForm
 						calculatePrice={calculatePrice}
 						handleDataChange={handleDataChange}
-						generalFeesData={generalFeesData}
 						handleBatchInputChange={handleBatchInputChange}
 						prices={prices}
 						setPrices={setPrices}

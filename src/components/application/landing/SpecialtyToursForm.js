@@ -1,13 +1,20 @@
 import React, { useState, Fragment } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { formatEdges } from 'src/utils/helpers';
+import moment from 'moment';
 
 import sectionStyles from 'src/components/section/Section.module.scss';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import DatePicker from 'react-datepicker';
 import Select from 'react-select';
-import { calculatePrice, removePrices, updatePrices } from 'src/utils/helpers';
+import {
+	calculatePrice,
+	calculateDateOffset,
+	removePrices,
+	updatePrices,
+	generatePriceThresholds,
+} from 'src/utils/helpers';
 
 export default function InPersonForm({
 	applicationData,
@@ -54,11 +61,10 @@ export default function InPersonForm({
 
 	programsData = formatEdges(programsData);
 	const centersData = formatEdges(data.locations);
-	const housingData = formatEdges(data.housing);
 
 	const [programOptions, setProgramOptions] = useState([]);
-	const [housingOptions, setHousingOptions] = useState([]);
 	const [durationOptions, setDurationOptions] = useState([]);
+	const [startDateOptions, setStartDateOptions] = useState([]);
 
 	const centerOptions = centersData
 		.map(center => {
@@ -120,21 +126,6 @@ export default function InPersonForm({
 					};
 				})
 		);
-
-		setHousingOptions(
-			housingData
-				.filter(housing => {
-					return housing.centerNameRelation.includes(
-						centerChange.value
-					);
-				})
-				.map(housing => {
-					return {
-						value: housing.name.toLowerCase().split(' ').join('-'),
-						label: housing.name,
-					};
-				})
-		);
 	};
 
 	const handleProgramChange = programChange => {
@@ -142,72 +133,86 @@ export default function InPersonForm({
 			program => program.name === programChange.label
 		);
 
+		// TODO: State changes are async, so we keep using 'currentProgram' inside this function scope
+		// With some refactoring, we could probably change 'handleDataChange' to take a callback that can be passed to the state change
 		handleSetApplicationData('program', currentProgram);
 
-		let durationOptions = [];
+		// TODO: Need to re-enter dates in the CMS for the new date format
+		const formattedDates = currentProgram.programDates.map(programDate => {
+			const parsedDateString = parseInt(programDate.arrive);
 
-		for (let i = 0; i <= currentProgram.durationOptions.maxWeeks; i++) {
-			const weekNum = i + 1;
+			return {
+				value: new Date(parsedDateString),
+				label: moment(parsedDateString).format('MMM Do, YY'),
+			};
+		});
 
-			// TODO: Likely need to make a special note during submission if they select more than the max weeks
-			if (
-				currentProgram.durationOptions.exceedMaxWeeks &&
-				i == currentProgram.durationOptions.maxWeeks
-			) {
-				durationOptions.push({
-					label: `${i}+ weeks`,
-					value: `${weekNum}+`,
-				});
-			} else if (i < currentProgram.durationOptions.maxWeeks) {
-				durationOptions.push({
-					label: weekNum === 1 ? `${i + 1} week` : `${i + 1} weeks`,
-					value: weekNum,
-				});
-			}
+		setStartDateOptions(formattedDates);
+
+		if (currentProgram.priceDetails.range) {
+			// TODO: This 'generatePriceThresholds' function should be distributed among the other program types
+			setDurationOptions(
+				generatePriceThresholds(
+					currentProgram.priceDetails.range.maxWeeks,
+					currentProgram.priceDetails.range.exceedMaxWeeks
+				)
+			);
+
+			handleSetApplicationData('program', currentProgram);
+		} else if (currentProgram.priceDetails.package) {
+			setDurationOptions([
+				{
+					label: `${currentProgram.priceDetails.package.duration} weeks`,
+					value: currentProgram.priceDetails.package.duration,
+				},
+			]);
+
+			setApplicationData({
+				...applicationData,
+				...{
+					program: currentProgram,
+					duration: {
+						label: `${currentProgram.priceDetails.package.duration} weeks`,
+						value: currentProgram.priceDetails.package.duration,
+					},
+				},
+			});
 		}
-
-		handleSetApplicationData('program', currentProgram);
-
-		setDurationOptions(durationOptions);
 	};
 
 	const handleDurationChange = durationChange => {
-		handleSetApplicationData('duration', {
-			label: durationChange.label,
-			value: durationChange.value,
-		});
-
 		// If programStartDate exists, we can be confident there's also a program end date & housing check in/check out dates
+		// TODO: Implement this new 'calculateDateOffset' helpers into the other program types
 		if (applicationData.programStartDate) {
 			setApplicationData({
 				...applicationData,
 				...{
-					programEndDate: (() => {
-						const clonedDate = new Date(
-							applicationData.programStartDate
-						);
-
-						// Each 'week' needs to end on a friday, hence this weird math
-						return clonedDate.setDate(
-							clonedDate.getDate() +
-								(durationChange.value * 7 - 3)
-						);
-					})(),
-					housingCheckOutDate: (() => {
-						const clonedDate = new Date(
-							applicationData.housingCheckInDate
-						);
-
-						return clonedDate.setDate(
-							clonedDate.getDate() +
-								(durationChange.value * 7 - 1)
-						);
-					})(),
+					programEndDate: calculateDateOffset(
+						applicationData.programStartDate,
+						durationChange.value * 7 - 3
+					),
+					duration: {
+						label: durationChange.label,
+						value: durationChange.value,
+					},
+					housingCheckInDate: calculateDateOffset(
+						applicationData.programStartDate,
+						-1
+					),
+					housingCheckOutDate: calculateDateOffset(
+						applicationData.programStartDate,
+						durationChange.value * 7 - 2
+					),
 				},
+			});
+		} else {
+			handleSetApplicationData('duration', {
+				label: durationChange.label,
+				value: durationChange.value,
 			});
 		}
 
-		let pricePerWeek = applicationData.program.durationOptions.weekThresholds.reduce(
+		let pricePerWeek = applicationData.program.priceDetails.range.weekThresholds.reduce(
 			(pricePerWeek, currentWeek, index, arr) => {
 				// If there are no previous thresholds, previous max defaults to 0. Otherwise, the minimum threshold value is last week's max threshold, plus one.
 				let thresholdMin =
@@ -253,51 +258,7 @@ export default function InPersonForm({
 			});
 		}
 
-		// Housing price is tied to duration, so we make sure to update it when the duraton changes;
-		updatedPrices = updatePrices(updatedPrices, 'housing', {
-			priceDetails: {
-				duration: durationChange.value,
-			},
-		});
-
 		setPrices(updatedPrices);
-	};
-
-	const handleHousingChange = housingChange => {
-		const currentHousing = housingData.find(
-			housing => housing.name === housingChange.label
-		);
-
-		handleSetApplicationData('housing', currentHousing);
-
-		// TODO: This 'new price' logic is begging to be refactored & DRYed up
-		if (prices.find(priceItem => priceItem.type === 'housing')) {
-			prices = prices.map(priceItem => {
-				if (priceItem.type === 'housing') {
-					return {
-						...priceItem,
-						priceDetails: {
-							duration: applicationData.duration.value,
-							price: currentHousing.priceDetails.price,
-						},
-					};
-				}
-			});
-		} else {
-			prices.push({
-				type: 'housing',
-				label: `${currentHousing.name}`,
-				priceDetails: {
-					duration: applicationData.duration
-						? applicationData.duration.value
-						: 0,
-					price: currentHousing.priceDetails.price,
-					payPeriod: currentHousing.priceDetails.payPeriod,
-				},
-			});
-		}
-
-		setPrices(prices);
 	};
 
 	const isMonday = date => date.getDay() === 1;
@@ -348,30 +309,6 @@ export default function InPersonForm({
 			<div className="column is-full">
 				<Select
 					className={`fls__select-container ${
-						!applicationData.center
-							? 'fls__select-container--disabled'
-							: ''
-					}`}
-					classNamePrefix={'fls'}
-					value={{
-						label: applicationData.housing
-							? applicationData.housing.name
-							: 'Select your housing type.',
-						value: applicationData.housing
-							? applicationData.housing.name
-							: null,
-					}}
-					onChange={handleHousingChange}
-					options={housingOptions}
-					isDisabled={!applicationData.center}
-				/>
-			</div>
-
-			{/* TODO: All fields besides dates and center should be disabled until you choose a center */}
-			<div className="column is-full">
-				{/* TODO: These styles need finessing */}
-				<Select
-					className={`fls__select-container ${
 						!applicationData.program
 							? 'fls__select-container--disabled'
 							: ''
@@ -387,7 +324,10 @@ export default function InPersonForm({
 					}}
 					onChange={handleDurationChange}
 					options={durationOptions}
-					isDisabled={!applicationData.program}
+					isDisabled={
+						!applicationData.program ||
+						applicationData.program.priceDetails.package
+					}
 				/>
 			</div>
 

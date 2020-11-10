@@ -615,7 +615,11 @@ export default function InPersonInfoForm({
 				</div>
 
 				<DatePicker
-					selected={new Date(applicationData.programStartDate)}
+					selected={
+						applicationData.programStartDate
+							? new Date(applicationData.programStartDate)
+							: applicationData.programStartDate
+					}
 					onChange={date => {
 						handleBatchInputChange(
 							{

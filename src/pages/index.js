@@ -133,15 +133,16 @@ export const HomePageTemplate = ({ data }) => {
 					</div>
 				</div>
 
-				<div className="columns is-multiline">
+				<div className="columns is-multiline is-centered">
 					{programs.map(program => {
 						return (
 							<div className="column is-one-quarter-desktop is-half-tablet is-full-mobile">
+								{/* TODO: These are hard coded to in-person programs, right now */}
 								<Link
 									className={
 										sectionStyles.popularPrograms__programContainer
 									}
-									to={`/programs/${program.programType}/${program.path}`}
+									to={`/programs/in-person/${program.path}`}
 								>
 									<img
 										className={
@@ -207,8 +208,8 @@ export const HomePageTemplate = ({ data }) => {
 							</li>
 						</ul>
 					</div>
-
-					<div className="column is-half-desktop is-full-tablet">
+					{/* TODO: This needs to be properly reinserted once the proficiency test is integrated into the app */}
+					{/* <div className="column is-half-desktop is-full-tablet">
 						<div className="columns is-multiline">
 							<div className="column is-half">
 								<div className="field">
@@ -284,6 +285,18 @@ export const HomePageTemplate = ({ data }) => {
 								</button>
 							</div>
 						</div>
+					</div> */}
+				</div>
+
+				<div className="columns is-centered">
+					<div className="column is-half">
+						<a
+							target="_blank"
+							href="https://fls-international.web.app/"
+							className="button fls__button"
+						>
+							Begin the Test
+						</a>
 					</div>
 				</div>
 			</Section>
@@ -297,7 +310,7 @@ export const HomePageTemplate = ({ data }) => {
 					</div>
 				</div>
 
-				<div className="columns is-multiline">
+				<div className="columns is-multiline is-centered">
 					{locations.map(location => (
 						<div className="column is-one-third">
 							<Card

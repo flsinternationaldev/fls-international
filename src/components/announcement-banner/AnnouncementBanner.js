@@ -7,29 +7,7 @@ import 'animate.css';
 import { formatEdges } from 'src/utils/helpers';
 
 export default function AnnouncementBanner() {
-	const data = useStaticQuery(graphql`
-		{
-			allMarkdownRemark(
-				limit: 1000
-				filter: {
-					fileAbsolutePath: {
-						regex: "/pages/static/announcement-banner/"
-					}
-				}
-			) {
-				edges {
-					node {
-						frontmatter {
-							pageContent
-							path
-							showBanner
-						}
-						fileAbsolutePath
-					}
-				}
-			}
-		}
-	`);
+	const data = { allMarkdownRemark: { edges: [] } };
 
 	const formattedData = formatEdges(data.allMarkdownRemark);
 

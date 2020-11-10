@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import { RadioGroup, Radio } from 'react-radio-group';
 import useLocalStorageState from 'use-local-storage-state';
 
 import InPersonForm from 'src/components/application/landing/InPersonForm';
+import OnlineForm from 'src/components/application/landing/OnlineForm';
+import SpecialtyToursForm from 'src/components/application/landing/SpecialtyToursForm';
 
 // TODO: Figure out how best to handle validation
 export default function Landing() {
@@ -115,6 +117,7 @@ export default function Landing() {
 			programStartDate: '',
 			housing: '',
 			program: '',
+			onlineProgramType: '',
 			programType: 'in-person',
 			// TODO: Figure out passport photo & financial document image upload
 		}
@@ -143,9 +146,27 @@ export default function Landing() {
 				/>
 			);
 		} else if (applicationData.programType === 'online') {
-			return <div></div>;
-		} else if (applicationData.programType === 'specialty-tour') {
-			return <div></div>;
+			return (
+				<OnlineForm
+					applicationData={applicationData}
+					handleSetApplicationData={handleSetApplicationData}
+					setApplicationData={setApplicationData}
+					prices={prices}
+					setPrices={setPrices}
+					programsData={programsData.online}
+				/>
+			);
+		} else if (applicationData.programType === 'specialty-tours') {
+			return (
+				<SpecialtyToursForm
+					applicationData={applicationData}
+					handleSetApplicationData={handleSetApplicationData}
+					setApplicationData={setApplicationData}
+					prices={prices}
+					setPrices={setPrices}
+					programsData={programsData.specialtyTours}
+				/>
+			);
 		}
 	};
 
@@ -157,8 +178,7 @@ export default function Landing() {
 					name="program-type"
 					selectedValue={applicationData.programType}
 					onChange={value => {
-						console.log('radio value', value);
-						handleSetApplicationData('programType', value);
+						setApplicationData({ programType: value });
 					}}
 				>
 					<Radio value="in-person" />
