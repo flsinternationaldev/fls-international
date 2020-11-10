@@ -5,7 +5,7 @@ order: 7
 links:
   - isExternalLink: true
     path: http://www.uppcolleges.com/
-    name: Student Placement
+    name: UPP
     links: []
   - path: https://flstutors.com/
     name: FLS Tutors
