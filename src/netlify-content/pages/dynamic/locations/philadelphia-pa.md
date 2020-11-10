@@ -122,8 +122,6 @@ post-content: >-
   A homestay is a great way to experience American culture while improving your English ability! All FLS centers offer homestay accommodation with American families individually selected by FLS. Learn about American daily life, practice English on a regular basis and participate in many aspects of American culture that visitors often don't get to see. (Twin and Single options available).
 
 
-
-
   ### Residence Halls
 
 
@@ -199,7 +197,7 @@ post-content: >-
   **English + Volunteering**
 
 
-  FLS offers ESL students a wonderful way to practice their new English skills while immersing themselves in American society by volunteering at local charities and community service centers. Join other FLS students as they perfect their conversational English while helping others! Here are some of the oportunities you will enjoy at FLS Saddleback College:
+  FLS offers ESL students a wonderful way to practice their new English skills while immersing themselves in American society by volunteering at local charities and community service centers. Join other FLS students as they perfect their conversational English while helping others! Here are some of the opportunities you will enjoy at FLS Chestnut Hill College:
 
 
   * Teens, Inc.
