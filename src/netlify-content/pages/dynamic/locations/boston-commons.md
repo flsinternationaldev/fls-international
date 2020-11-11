@@ -165,8 +165,6 @@ post-content: >-
   * IELTS Preparation
 
 
-
-
   ### Specialty Tours:
 
 
@@ -177,10 +175,27 @@ post-content: >-
 
 
 
+  English and Volunteering
+
+
+  FLS offers our students a wonderful way to practice their new English skills while immersing themselves in American society by volunteering at local charities and community service centers.  Join other FLS students as they perfect conversational English while helping others!  Here are some of the opportunities you will enjoy at FLS Boston Commons:
+
+
+  * Greater Boston Food Bank
+
+  * Haley House
+
+  * Community Servings
+
+
+
+
+
+
   ### Optional Weekend and Evening Activities:
 
 
-  FLS offer ESL students memorable and educational tour experiences, and opportunities to visit the best attractions of the United States.  Students will have many opportunities to take part in excursions with the full supervision of our trained FLS staff.
+  FLS offers ESL students memorable and educational tour experiences, and opportunities to visit the best attractions of the United States.  Students will have many opportunities to take part in excursions with the full supervision of our trained FLS staff.
 
 
   Activities include:
