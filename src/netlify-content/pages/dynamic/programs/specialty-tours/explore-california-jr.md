@@ -50,7 +50,7 @@ features: |-
   * 18 lessons of English each week with students from around the world
   * Evening activities, including dances, sports, and movies
 accommodations: >-
-  * Students will stay in safe and secure on-campus residence halls, in shared
+  * Students will stay in safe and secure on-campus residence halls in shared
   room accommodation.
 
   * Includes three meals on weekdays, brunch on Saturdays and brunch & dinner on Sundays.
