@@ -22,8 +22,9 @@ programDetails:
 specialty-tour-description: Boston combines unmatched cultural attractions,
   prestigious universities and colleges, and top-notch entertainment and dining
   opportunities. Students will experience East Coast American culture at its
-  finest, against the backdrop of Boston’s historic landmarks. With beaches and
-  rural scenery less than an hour away, Boston has something for everyone.
+  finest against the backdrop of Boston’s historic landmarks. Whether its a
+  visit to legendary Harvard University or a shopping trip to Newbury Street,
+  our program will introduce students to the essential Boston experiences!
 activities-and-excursions: |-
   * Newbury Street
   * Faneuil Hall and Quincy Market
