@@ -50,9 +50,10 @@ activities-and-excursions: |-
 features: |-
   * 18 lessons of English per week
   * 8 movie production lessons per week
-  * Evening dances, sports, games & movies
+  * Evening activities, including dances, sports, games & movies
 accommodations: >-
-  * Safe and secure on-campus residence halls provide shared housing.
+  * Students will stay in safe and secure on-campus residence halls in shared
+  room accommodation
 
-  * Includes three meals on weekdays, brunch on Saturdays and brunch & dinner on Sundays.
+  * Full-board meal plan included (Meals not included in optional excursions)
 ---
