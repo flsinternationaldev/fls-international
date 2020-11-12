@@ -23,14 +23,15 @@ programDetails:
   minimumAge: 12
   durationRelation: 3
 specialty-tour-description: As one of America's oldest cities and the country's
-  educational capitol, Boston is a unique pace to soak up American cultures
-  while you sharpen your English skills.  Our ESL and activity program at
-  Suffolk University is the perfect way for you to enjoy the best of Boston's
-  many highlights while working on your language abilities!
+  educational capital, Boston is a unique place to soak up American culture
+  while you sharpen your English skills.  Our ESL and activity program at is the
+  perfect way for you to enjoy the best of Boston's many highlights while
+  working on your language abilities! Our program is located on the campus of
+  Suffolk University, set in the vibrant heart of Boston!
 activities-and-excursions: |-
   * Newbury Street
-  * Faneuil Hall/Quincy Market
-  * Beacon Hill & the State House
+  * Faneuil Hall and Quincy Market
+  * Beacon Hill and the State House
   * Harvard University and Harvard Square
   * Prudential Center
   * New England Aquarium
@@ -41,8 +42,6 @@ activities-and-excursions: |-
   * Revere Beach
   * Little Italy
 
-
-
   ### Optional Tours available:
 
   * New York Weekend
@@ -50,9 +49,9 @@ activities-and-excursions: |-
 features: |-
   * 18 lessons of English per week
   * Evening games, parties, and activities
-  * Airport Transfers to/from Boston Logan International Airport available
 accommodations: >-
-  * Safe and secure shared residence halls at Suffolk University
+  * Students will stay in safe and secure on-campus residence halls in shared
+  room accommodation at Suffolk University
 
   * Includes three meals on weekdays, brunch on Saturdays and brunch & dinner on Sundays.
 ---
