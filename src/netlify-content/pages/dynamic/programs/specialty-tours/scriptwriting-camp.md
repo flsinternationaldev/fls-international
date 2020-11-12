@@ -17,10 +17,10 @@ programDetails:
   price: 5250
   durationRelation: 3
 specialty-tour-description: "Do you have an idea that could be the next Broadway
-  play?  The best place to find out is New York City, the heart of the theater
-  world!  Our camp for future playwrights introduces you to the key concepts of
+  play? The best place to find out is New York City, the heart of the theater
+  world! Our camp for future playwrights introduces you to the key concepts of
   creating a successful play: developing a great plot, creating memorable
-  characters, mastering the script format and more.  You'll also analyze great
+  characters, mastering the script format and more. You'll also analyze great
   scenes, see a live performance and have plenty of time for sightseeing!"
 activities-and-excursions: |-
   * Lower Manhattan Sightseeing
@@ -32,7 +32,7 @@ activities-and-excursions: |-
 features: |-
   * 18 lessons per week of English classes
   * 10 lessons per week of script writing
-  * Dances, parties, games, and movies
+  * Evening activities, including dances, parties, games, and movies
 accommodations: >-
   * Students will stay in safe and secure on-campus residence halls in shared
   room accommodation.
