@@ -18,11 +18,11 @@ programDetails:
   price: 4675
   durationRelation: 3
 specialty-tour-description: Increase your computer knowledge using the latest
-  technology at our camp in the innovative state of California!  Learn how to
+  technology at our camp in the innovative state of California! Learn how to
   design your own website from scratch and develop skills that will help prepare
-  you for your future.  We'll also introduce you to various programming
-  languages such as Java, Python, HTML. and CSS.  Not to mention, you'll enjoy
-  excursions to some of California's best attractions!
+  you for your future. We'll also introduce you to various programming languages
+  such as Java, Python, HTML. and CSS. Not to mention, you'll enjoy excursions
+  to some of California's best attractions!
 activities-and-excursions: |-
   * Discovery Cube
   * California Science Center
