@@ -21,11 +21,11 @@ programDetails:
   price: 4635
   durationRelation: 3
 specialty-tour-description: As the home of Disneyland, the beach, and sunny
-  weather, it's no surprise that California is popular with kids.  Our calendar
+  weather, it's no surprise that California is popular with kids. Our calendar
   keeps campers active with trips to legendary beaches, famous sites, and some
-  of the best shopping malls around!  Students will need to get the cameras
-  ready for our visits to some of the top tourist attractions in Southern
-  California.
+  of the best shopping malls around! After motivating English classes with our
+  friendly teachers, students will need to get their cameras ready for visits to
+  some of the top tourist attractions in Southern California.
 activities-and-excursions: |-
   * Hollywood
   * Huntington Beach
