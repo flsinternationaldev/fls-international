@@ -24,7 +24,7 @@ programDetails:
   durationRelation: 3
 specialty-tour-description: Improve your English skills on the beautiful campus
   of one of California's largest universities with instruction from our
-  TEFL-certified team of teachers.  Then, enjoy afternoons and weekends with
+  TEFL-certified team of teachers. Then, enjoy afternoons and weekends with
   trips to iconic attractions like Hollywood, Beverly Hills, beautiful beach
   cities, and fashionable shopping centers. You'll go back home with increased
   English skills and a summer full of California adventures to remember!
