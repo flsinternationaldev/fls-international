@@ -22,11 +22,12 @@ programDetails:
   duration: 3
   price: 4475
   durationRelation: 3
-specialty-tour-description: Improve your English skills on the campus of one of
-  California's largest universities with instruction from our TEFL-certified
-  instructors.  Then, enjoy afternoons and weekends with trips to iconic
-  attractions like Hollywood, Beverly Hills, beautiful beach cities, and
-  fashionable shopping centers.
+specialty-tour-description: Improve your English skills on the beautiful campus
+  of one of California's largest universities with instruction from our
+  TEFL-certified instructors.  Then, enjoy afternoons and weekends with trips to
+  iconic attractions like Hollywood, Beverly Hills, beautiful beach cities, and
+  fashionable shopping centers. You'll go back home with a summer full of
+  California adventures to remember!
 activities-and-excursions: |-
   * Hollywood
   * Huntington Beach
@@ -51,11 +52,10 @@ activities-and-excursions: |-
   * MLB Baseball Game
 features: |-
   * 18 lessons of English each week with students from around the world
-  * Evening activities, including dances, sports, and movies
+  * Evening activities, including dances, parties, sports, and movies
 accommodations: >-
-  Students will stay in safe and secure on-campus residence halls, in shared
+  * Students will stay in safe and secure on-campus residence halls, in shared
   room accommodation.
 
-
-  Full board is included with the program.  (Meals not included on optional activities.)
+  * Includes three meals on weekdays, brunch on Saturdays and brunch & dinner on Sundays.
 ---
