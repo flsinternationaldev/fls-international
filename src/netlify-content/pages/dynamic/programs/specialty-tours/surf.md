@@ -26,7 +26,8 @@ specialty-tour-description: California State University, Long Beach is set in
   attractions. Students will enjoy surf lessons at nearby Huntington Beach.
   Renowned as Surf City USA, it's home to the world-famous US Open and other
   surfing championships, as well as some of the best surf in the United States.
-  Students will learn the skills to enjoy the ultimate California sport!
+  Students will learn the skills to enjoy the ultimate California sport and see
+  some of California's most popular sights!
 activities-and-excursions: |-
   * Hollywood
   * Huntington Beach
