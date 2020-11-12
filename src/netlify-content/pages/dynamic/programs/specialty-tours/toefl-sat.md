@@ -20,20 +20,19 @@ programDetails:
 specialty-tour-description: International students must overcome many obstacles
   when planning to attend an American college, including English fluency
   requirements, minimum standardized test scores, and knowledge of the US higher
-  education system.  Developed especially for rising juniors and seniors in high
+  education system. Developed especially for rising juniors and seniors in high
   school, this camp immerses students in a combination of classes, workshops,
   and college visits with an advanced, content-based curriculum to prepare them
-  for college success.
+  for college success. At the same time, students will enjoy an introduction to
+  the great city of Boston, America's educational capital!
 activities-and-excursions: |-
   * Newbury Street
-  * Faneuil Hall/Quincy Market
-  * Beacon Hill & the State House
+  * Faneuil Hall and Quincy Market
+  * Beacon Hill and the State House
   * Museum of Fine Arts
   * Freedom Trail
   * Duck Tour
   * Revere Beach
-
-
 
   ### University Tours:
 
@@ -41,8 +40,6 @@ activities-and-excursions: |-
   * MIT
   * UMass Boston
   * Brown University (optional)
-
-
 
   ### Optional Tours available:
 
@@ -53,8 +50,9 @@ features: |-
   * 1 college preparation workshop per week
   * 4 university visits
   * Evening games, parties, and activities
-  * Airport Transfers to/from Boston Logan International Airport available
-accommodations: |-
-  * Safe and secure shared residence halls at Suffolk University
-  * Full Board (meals not provided on optional excursions)
+accommodations: >-
+  * Students will stay in safe and secure on-campus residence halls in shared
+  room accommodation at Suffolk University
+
+  * Includes three meals on weekdays, brunch on Saturdays and brunch & dinner on Sundays
 ---
