@@ -33,9 +33,6 @@ activities-and-excursions: |-
   * Cinema Make-up Workshop
   * DJ Dance Party
   * Farewell Party
-  * Knott’s Berry Farm (optional)
-  * Santa Monica Beach (optional)
-  * MLB Baseball Game (optional)
 
   **STUDIO TOURS**
 
@@ -51,17 +48,11 @@ activities-and-excursions: |-
   * Santa Monica Beach 
   * MLB Baseball Game
 features: |-
-  
-
   * 18 lessons of English per week
-  * 8 Movie production lessons per week
+  * 8 movie production lessons per week
   * Evening dances, sports, games & movies
 accommodations: >-
-  
-
   * Safe and secure on-campus residence halls provide shared housing.
 
   * Includes three meals on weekdays, brunch on Saturdays and brunch & dinner on Sundays.
-
-  * Roundtrip airport transfer from Los Angeles International Airport (LAX).
 ---
