@@ -48,11 +48,9 @@ activities-and-excursions: |-
 features: |-
   * 18 English lessons per week
   * 20 students or fewer per class
-accommodations: >-
-  * Twin room accommodation in carefully selected American families
-
-  * Includes two meals on weekdays, brunch on Saturdays and brunch & dinner on Sundays
-
+accommodations: |-
+  * Twin room accommodation with carefully selected American families
+  * Full-board meal plan included (Meals not included in optional excursions)
   * Public Transportation Pass included in program fee
 center: Boston Commons
 ---
