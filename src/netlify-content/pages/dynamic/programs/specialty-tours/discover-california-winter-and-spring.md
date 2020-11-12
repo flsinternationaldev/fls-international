@@ -41,11 +41,12 @@ programDetails:
   price: 3795
   durationRelation: 3
 specialty-tour-description: Come experience the best of exciting southern
-  California!  This popular program is hosted on the attractive campus of Citrus
-  College.  Citrus is located minutes from downtown Los Angeles in the
+  California! This popular program is hosted on the attractive campus of Citrus
+  College. Citrus is located minutes from downtown Los Angeles in the
   comfortable suburb of Glendora, and sits at the base of the San Gabriel
   mountains. You'll enjoy the ideal weather and our friendly guides as they take
-  you to the best attractions in the region.
+  you to the best attractions in the region and improve your English with our
+  highly qualified instructors!
 activities-and-excursions: |-
   * Hollywood
   * Beverly Hills
