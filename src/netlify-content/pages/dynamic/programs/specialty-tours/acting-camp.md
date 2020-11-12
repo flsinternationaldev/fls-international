@@ -23,7 +23,7 @@ specialty-tour-description: >-
   community.  
 
 
-  You'll joint students form the FLS Cinema Camp to create a short film.  Students must learn to act in front of a camera and hone their skills in enunciation, character analysis, improvisation, and reacting to other characters in a scene.
+  You'll join students form the FLS Cinema Camp to create a short film.  Students will learn to act in front of a camera and hone their skills in enunciation, character analysis, improvisation, and reacting to other characters in a scene.
 activities-and-excursions: |-
   * Hollywood
   * Beverly Hills
@@ -46,9 +46,8 @@ features: |-
   * Copy of the final film
   * Evening activities, including dances, sports, and movies
 accommodations: >-
-  Students will stay in safe and secure on-campus residence halls, in shared
+  * Students will stay in safe and secure on-campus residence halls, in shared
   room accommodation.
 
-
-  Full board is included with the program.  (Meals not included on optional activities.)
+  * Includes three meals on weekdays, brunch on Saturdays and brunch & dinner on Sundays.
 ---
