@@ -18,12 +18,15 @@ programDetails:
   durationRelation: 3
 specialty-tour-description: >-
   Take a journey to Hollywood - the home of the stars - and pursue your acting
-  dreams.  The beautiful CSULB campus provides an ideal setting to work on your
+  dreams. The beautiful CSULB campus provides an ideal setting to work on your
   acting style with expert teachers from Hollywood's unmatched acting
   community.  
 
 
-  You'll join students form the FLS Cinema Camp to create a short film.  Students will learn to act in front of a camera and hone their skills in enunciation, character analysis, improvisation, and reacting to other characters in a scene.
+  You'll join students form the FLS Cinema Camp to create a short film. Students will learn to act in front of a camera and hone their skills in enunciation, character analysis, improvisation, and reacting to other characters in a scene.
+
+
+  You'll round out your tour with visits to some of the legendary sites and studios of Los Angeles!
 activities-and-excursions: |-
   * Hollywood
   * Beverly Hills
@@ -49,5 +52,5 @@ accommodations: >-
   * Students will stay in safe and secure on-campus residence halls, in shared
   room accommodation.
 
-  * Includes three meals on weekdays, brunch on Saturdays and brunch & dinner on Sundays.
+  * Full-board meal plan included (Meals not included in optional excursions)
 ---
