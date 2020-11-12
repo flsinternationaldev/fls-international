@@ -49,10 +49,10 @@ features: |-
   * 18 lessons of English per week
   * 1 college preparation workshop per week
   * 4 university visits
-  * Evening games, parties, and activities
+  * Evening activities, including games, parties, and activities
 accommodations: >-
   * Students will stay in safe and secure on-campus residence halls in shared
   room accommodation at Suffolk University
 
-  * Includes three meals on weekdays, brunch on Saturdays and brunch & dinner on Sundays
+  * Full-board meal plan (Meals not included in optional excursions)
 ---
