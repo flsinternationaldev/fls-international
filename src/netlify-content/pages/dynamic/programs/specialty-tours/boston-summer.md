@@ -24,10 +24,10 @@ programDetails:
   durationRelation: 3
 specialty-tour-description: As one of America's oldest cities and the country's
   educational capital, Boston is a unique place to soak up American culture
-  while you sharpen your English skills.  Our ESL and activity program at is the
-  perfect way for you to enjoy the best of Boston's many highlights while
-  working on your language abilities! Our program is located on the campus of
-  Suffolk University, set in the vibrant heart of Boston!
+  while you sharpen your English skills. Our ESL and activity program is the
+  perfect way to enjoy the best of Boston's many highlights while working on
+  your language abilities! Our program is located on the campus of Suffolk
+  University, set in the vibrant heart of Boston!
 activities-and-excursions: |-
   * Newbury Street
   * Faneuil Hall and Quincy Market
@@ -48,10 +48,10 @@ activities-and-excursions: |-
   * Six Flags Amusement Park
 features: |-
   * 18 lessons of English per week
-  * Evening games, parties, and activities
+  * Evening activities including games, parties, and dances
 accommodations: >-
   * Students will stay in safe and secure on-campus residence halls in shared
   room accommodation at Suffolk University
 
-  * Includes three meals on weekdays, brunch on Saturdays and brunch & dinner on Sundays.
+  * Full-board meal plan included (Meals not included in optional excursions)
 ---
