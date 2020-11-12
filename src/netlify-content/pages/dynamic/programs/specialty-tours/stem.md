@@ -22,7 +22,8 @@ specialty-tour-description: >-
   institution of higher education in the United States and the perfect
   environment to inspire young people to excel academically. Our innovative STEM
   Camp gives students the invaluable opportunity to engage with these vibrant
-  fields at this exceptional location.  
+  fields at this exceptional location. Working closely with their teacher on
+  robotics projects, students will exercise a wide range of skills.
 
 
   Students will enjoy university dormitory accommodation in downtown Boston and benefit from an environment rich with historical and educational landmarks. Our camp is rounded off with stimulating visits to MIT, the Museum of Science, the New England Aquarium, and more.
