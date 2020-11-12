@@ -20,27 +20,21 @@ programDetails:
 specialty-tour-description: >-
   Located in Cambridge, Harvard University is the oldest and most revered
   institution of higher education in the United States and the perfect
-  environment to inspire young people to excel academically.  Our innovative
-  STEM Camp gives students the invaluable opportunity to engage with these
-  vibrant fields at this exceptional location.  
+  environment to inspire young people to excel academically. Our innovative STEM
+  Camp gives students the invaluable opportunity to engage with these vibrant
+  fields at this exceptional location.  
 
 
-
-
-  Students will enjoy university dormitory accommodation in downtown Boston and benefit from and environment rich with historical and educational landmarks.  Our camp is rounded off with stimulating visits to MIT, the Museum of Science, the New England Aquarium, and more.
+  Students will enjoy university dormitory accommodation in downtown Boston and benefit from an environment rich with historical and educational landmarks. Our camp is rounded off with stimulating visits to MIT, the Museum of Science, the New England Aquarium, and more.
 activities-and-excursions: |-
-  
-
   * Newbury Street
-  * Faneuil Hall/Quincy Market
-  * Beacon Hill & the State House
+  * Faneuil Hall and Quincy Market
+  * Beacon Hill and the State House
   * Harvard University and Harvard Square
   * New England Aquarium
   * MIT Tour
   * Freedom Trail
   * Duck Tour
-
-
 
   ### Optional Tours available:
 
@@ -48,9 +42,9 @@ activities-and-excursions: |-
 features: |-
   * 18 lessons on STEM topics each week
   * Evening games, sports, movies, and parties
-accommodations: |-
-  
+accommodations: >-
+  * Students will stay in safe and secure on-campus residence halls in shared
+  room accommodation at Suffolk University
 
-  * Safe and secure shared residence halls at Suffolk University
-  * Full Board (meals not provided on optional excursions)
+  * Includes three meals on weekdays, brunch on Saturdays and brunch & dinner on Sundays
 ---
