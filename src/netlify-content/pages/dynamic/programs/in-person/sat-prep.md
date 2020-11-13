@@ -26,6 +26,12 @@ program-post-content: >-
 
 
   Please note that students must possess an English fluency of FLS Level 13 or better to enter the SAT Program.
+
+
+  #### TEACHERS
+
+
+  All of our teachers are based in the United States and speak native-proficient level English. Every teacher has a TEFL Certificate or Master's Degree and extensive instructional experience.
 program-features-content: >-
   ## PROGRAM FEATURES
 
