@@ -41,8 +41,6 @@ program-features-content: >-
 
   * Readers and novels to increase reading comprehension and understanding of American culture (for High Beginner and above).
 
-  * Access to college computer facilities, libraries and labs.
-
   * Access to numerous free activities and specially priced excursions.
 
   * Certificate of Completion upon successful graduation from each level.
