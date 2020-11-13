@@ -53,5 +53,5 @@ accommodations: >-
   * Students will stay in safe and secure on-campus residence halls in shared
   room accommodation.
 
-  * Includes three meals on weekdays, brunch on Saturdays and brunch & dinner on Sundays.
+  * Full-board meal plan included (Meals not included in optional excursions)
 ---
