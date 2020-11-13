@@ -15,7 +15,7 @@ program-post-content: >-
   The Intensive English Program includes 30 lessons of instruction per week from qualified, native-speaking teachers.
 
 
-  The Intensive English Program is a comprehensive approach to studying English. You'll have the advantage of three different classes: an integrated Core Class at one of 18 FLS levels, a focused elective class covering a specific skill or topic and an Academic Workshop to round out your school day.
+  This program is a comprehensive approach to studying English, ensuring that students develop well-rounded English abilities. Students have the advantage of three different classes: an integrated Core Class at one of 18 FLS levels, a focused elective class covering a specific skill or topic and an Academic Workshop to round out the school day.
 
 
   Our program places an exceptional emphasis on speaking. Students practice speaking skills frequently in class, receiving regular guidance and correction from their instructor.
@@ -28,7 +28,7 @@ program-features-content: >-
 
   * Eighteen levels of study from low beginner to high advanced.
 
-  * Small class sizes of 15 or less, guaranteeing individual attention from your teacher.
+  * Small class sizes of 15 or fewer, guaranteeing individual attention from your teacher.
 
   * Core Class emphasizing the four key language skills: speaking, listening, reading and writing
 
@@ -43,8 +43,6 @@ program-features-content: >-
   * Language Extension Day (LED) activities once per term, encouraging students to use English in new settings and contexts.
 
   * Readers and novels to increase reading comprehension and understanding of American culture (for High Beginner and above).
-
-  * Access to college computer facilities, libraries and labs.
 
   * Access to numerous free activities and specially priced excursions.
 
