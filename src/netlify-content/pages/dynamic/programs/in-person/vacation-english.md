@@ -29,7 +29,7 @@ program-features-content: >-
 
   * Eighteen levels of study from low beginner to high advanced.
 
-  * Small class sizes of 15 or less, guaranteeing individual attention from your teacher.
+  * Small class sizes of 15 or fewer, guaranteeing individual attention from your teacher.
 
   * Core Class emphasizing the four key language skills: speaking, listening, reading and writing
 
