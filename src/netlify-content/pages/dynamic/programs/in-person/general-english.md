@@ -27,7 +27,8 @@ program-features-content: >-
   ## PROGRAM FEATURES
 
 
-  * All General English Program students enjoy these exceptional features:
+  All General English Program students enjoy these exceptional features:
+
 
   * Eighteen levels of study from low beginner to high advanced.
 
