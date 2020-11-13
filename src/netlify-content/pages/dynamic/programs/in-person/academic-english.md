@@ -26,11 +26,11 @@ program-features-content: >-
 
   * Eighteen levels of study from low beginner to high advanced.
 
-  * Small class sizes of 15 or less, guaranteeing individual attention from your teacher.
+  * Small class sizes of 15 or fewer, guaranteeing individual attention from your teacher.
 
   * Core Class emphasizing the four key language skills: speaking, listening, reading and writing
 
-  * Two Elective Classes devoted to a specific topic or skill, such as Slang, Business English, American Culture, Public Speaking, Grammar, or Composition. Or take one of our premium Test Preparation classes to prepare for the TOEFL, SAT, or IELTS.
+  * Two Elective Classes devoted to a specific topic or skill, such as Slang, Business English, American Culture, Public Speaking, Grammar, or Composition. Or One Premium Test Preparation class to prepare for the TOEFL, SAT, or IELTS.
 
   * Lab-style Academic Workshop offering a range of academic options each week, including Pronunciation Clinics, Conversation Clubs, Homework Labs, Computer Labs, and more.
 
@@ -41,8 +41,6 @@ program-features-content: >-
   * Language Extension Day (LED) activities once per term, encouraging students to use English in new settings and contexts.
 
   * Readers and novels to increase reading comprehension and understanding of American culture (for High Beginner and above).
-
-  * Access to college computer facilities, libraries and labs.
 
   * Access to numerous free activities and specially priced excursions.
 
