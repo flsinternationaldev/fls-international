@@ -18,6 +18,12 @@ program-post-content: >-
 
 
   Students work with an experienced instructor to hone their ability in the interrelated TOEFL skills of reading, writing, listening and speaking. Practice exams allow instructors to analyze students' abilities and familiarize students with the test format and strategies.
+
+
+  #### TEACHERS
+
+
+  All of our teachers are based in the United States and speak native-proficient level English. Every teacher has a TEFL Certificate or Master's Degree and extensive instructional experience.
 program-features-content: >-
   ## PROGRAM FEATURES
 
