@@ -17,6 +17,12 @@ program-post-content: >-
 
 
   Our program places an exceptional emphasis on speaking. Students practice speaking skills frequently in class, receiving regular guidance and correction from their instructor.
+
+
+  #### TEACHERS
+
+
+  All of our teachers are based in the United States and speak native-proficient level English. Every teacher has a TEFL Certificate or Master's Degree and extensive instructional experience.
 program-features-content: >-
   ## PROGRAM FEATURES
 
@@ -28,7 +34,7 @@ program-features-content: >-
 
   * Small class sizes of 15 or fewer, guaranteeing individual attention from your teacher.
 
-  * Core Class emphasizing the four key language skills: speaking, listening, reading and writing
+  * Core Class emphasizing the four key language skills: speaking, listening, reading and writing.
 
   * Two Elective Classes devoted to a specific topic or skill, such as Slang, Business English, American Culture, Public Speaking, Grammar, or Composition. Or One Premium Test Preparation class to prepare for the TOEFL, SAT, or IELTS.
 
