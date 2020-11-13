@@ -16,7 +16,7 @@ program-post-content: >-
   The Scholastic Aptitude Test, or SAT, is the most commonly used standard exam in undergraduate admissions for American colleges and universities. Throughout the United States, high school juniors and seniors prepare extensively for the exam, making it critical for non-native speaking international students to get an edge in their SAT test preparation.
 
 
-  The SAT is designed specifically to test skills that students have learned in the American high school system, putting students from other systems at a disadvantage. With our expertise in teaching international students, FLS is ideally suited to give you a solid foundation for SAT success!
+  The SAT is designed specifically to test skills that students have learned in the American high school system, putting students from other systems at a disadvantage. With our expertise in teaching international students, FLS is ideally suited to give students a solid foundation for SAT success!
 
 
   Our intensive program includes a total of 36 teacher-led lessons per week: 18 lessons of integrated study to improve all English skills; 12 lessons devoted to specific SAT strategies and skills and 6 lessons of Academic Workshops for additional language practice and skill development.
@@ -33,9 +33,9 @@ program-features-content: >-
   All SAT Preparation Program students enjoy these exceptional features:
 
 
-  * Small class sizes of 15 or less, guaranteeing individual attention from your teacher.
+  * Small class sizes of 15 or fewer, guaranteeing individual attention from your teacher.
 
-  * Core Class emphasizing the four key language skills: speaking, listening, reading and writing
+  * Core Class emphasizing the four key language skills: speaking, listening, reading and writing.
 
   * SAT Preparation class featuring practice tests, analytics, and concentrated practice in mathematics, reading comprehension, critical reasoning, and writing.
 
