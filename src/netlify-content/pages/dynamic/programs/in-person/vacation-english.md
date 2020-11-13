@@ -19,6 +19,12 @@ program-post-content: >-
   Our program places an exceptional emphasis on speaking. Students practice speaking skills frequently in class, receiving regular guidance and correction from their instructor.
 
 
+  #### TEACHERS
+
+
+  All of our teachers are based in the United States and speak native-proficient level English. Every teacher has a TEFL Certificate or Master's Degree and extensive instructional experience.
+
+
   *(Please note that students on an F-1 visa are not eligible to take the Vacation English Program.)*
 program-features-content: >-
   ## Program Features
@@ -31,7 +37,7 @@ program-features-content: >-
 
   * Small class sizes of 15 or fewer, guaranteeing individual attention from your teacher.
 
-  * Core Class emphasizing the four key language skills: speaking, listening, reading and writing
+  * Core Class emphasizing the four key language skills: speaking, listening, reading and writing.
 
   * Our exclusive English Everywhere program with weekly Hot Sheets, involving your host family, activity guides and FLS staff in your learning process.
 
