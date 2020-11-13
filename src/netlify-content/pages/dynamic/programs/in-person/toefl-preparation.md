@@ -25,9 +25,9 @@ program-features-content: >-
   All TOEFL Preparation Program students enjoy these exceptional features:
 
 
-  * Small class sizes of 15 or less, guaranteeing individual attention from your teacher.
+  * Small class sizes of 15 or fewer, guaranteeing individual attention from your teacher.
 
-  * Core Class emphasizing the four key language skills: speaking, listening, reading and writing
+  * Core Class emphasizing the four key language skills: speaking, listening, reading and writing.
 
   * TOEFL Preparation class featuring practice tests, analytics, and concentrated practice in reading comprehension, writing, and advanced listening skills.
 
