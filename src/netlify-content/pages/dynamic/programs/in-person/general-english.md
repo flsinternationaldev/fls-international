@@ -13,17 +13,19 @@ program-post-content: >-
   near our centers, our General English Program is the ideal choice.
 
 
-  The General English program combines our core class with a variety of academic and informal methods to take your English proficiency to new levels. Our academic workshops include pronunciation clinics, conversation clubs, homework assistance and more. Develop English rapidly with more skill practice and have fun at the same time! Our program places an exceptional emphasis on speaking. Students will practice speaking skills frequently in class, receiving continual guidance and correction from their instructor.
+  The General English program combines our core class with a variety of academic and informal methods to take your English proficiency to new levels. The core class thoroughly covers all fundamental aspects of English communication. Our academic workshops include pronunciation clinics, conversation clubs, homework assistance and more. Students will develop English rapidly with more skill practice and have fun at the same time! 
+
+
+  Our program places an exceptional emphasis on speaking. Students will practice speaking skills frequently in class, receiving continual guidance and correction from their instructor.
 program-features-content: >-
   ## PROGRAM FEATURES
 
 
-  All General English Program students enjoy these exceptional features:
-
+  * All General English Program students enjoy these exceptional features:
 
   * Eighteen levels of study from low beginner to high advanced.
 
-  * Small class sizes of 15 or less, guaranteeing individual attention from your teacher.
+  * Small class sizes of 15 or fewer, guaranteeing individual attention from your teacher.
 
   * Core Class emphasizing the four key language skills: speaking, listening, reading and writing
 
@@ -34,6 +36,16 @@ program-features-content: >-
   * Weekly English tests and individualized progress reports every four weeks.
 
   * Language Extension Day (LED) activities once per term, encouraging students to use English in new settings and contexts.
+
+  * Readers and novels to increase reading comprehension and understanding of American culture (for High Beginner and above).
+
+  * Access to numerous free activities and specially priced excursions.
+
+  * Certificate of Completion upon successful graduation from each level.
+
+  * Articulation agreements with numerous colleges allowing admission without a TOEFL score based on completion of the designated FLS level.
+
+  * Personalized counseling and academic assistance.
 program-details:
   lessons-per-week: 20
   hours-per-week: 4
