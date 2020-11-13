@@ -23,6 +23,12 @@ program-post-content: >-
 
 
   Please note that students must possess an English fluency of FLS Level 9 or better to enter the IELTS Preparation Program.
+
+
+  #### TEACHERS
+
+
+  All of our teachers are based in the United States and speak native-proficient level English. Every teacher has a TEFL Certificate or Master's Degree and extensive instructional experience.
 program-features-content: >-
   ## PROGRAM FEATURES
 
@@ -32,7 +38,7 @@ program-features-content: >-
 
   * Small class sizes of 15 or fewer, guaranteeing individual attention from your teacher.
 
-  * Core Class emphasizing the four key language skills: speaking, listening, reading and writing
+  * Core Class emphasizing the four key language skills: speaking, listening, reading and writing.
 
   * IELTS Preparation class featuring practice tests, analytics, and concentrated practice in reading comprehension, writing, and advanced listening skills.
 
