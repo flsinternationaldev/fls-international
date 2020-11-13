@@ -17,17 +17,24 @@ program-post-content: >-
 
 
   Our program places an exceptional emphasis on speaking. Students will practice speaking skills frequently in class, receiving continual guidance and correction from their instructor.
+
+
+  #### TEACHERS
+
+
+  All of our teachers are based in the United States and speak native-proficient level English. Every teacher has a TEFL Certificate or Master's Degree and extensive instructional experience.
 program-features-content: >-
   ## PROGRAM FEATURES
 
 
-  * All General English Program students enjoy these exceptional features:
+  All General English Program students enjoy these exceptional features:
+
 
   * Eighteen levels of study from low beginner to high advanced.
 
   * Small class sizes of 15 or fewer, guaranteeing individual attention from your teacher.
 
-  * Core Class emphasizing the four key language skills: speaking, listening, reading and writing
+  * Core Class emphasizing the four key language skills: speaking, listening, reading and writing.
 
   * Lab-style Academic Workshop offering a range of academic options each week, including Pronunciation Clinics, Conversation Clubs, Homework Labs, Computer Labs, and more.
 
