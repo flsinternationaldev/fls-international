@@ -42,13 +42,13 @@ post-content: >-
   ###### Enjoy the Southern California Lifestyle near the World's Entertainment Capital
 
 
-  Los Angeles is a trend-setting global metropolis with a fascinating history and rich cultural heritage. The "City of Angels" is home to picture-perfect beaches and 75 miles of sunny coastline. Regarded as the entertainment capital of the world, Los Angeles is home to legendary Hollywood movie studios, responsible for the most popular movies in the world. L.A. also boasts a thriving theater, music and gallery scene. Celebrities can often be seen shopping the streets of Beverly Hills, including the world-famous Rodeo Drive.
+  Los Angeles is a trend-setting global metropolis with a fascinating history and rich cultural heritage. The "City of Angels" is home to picture-perfect beaches and 75 miles of sunny coastline. Regarded as the entertainment capital of the world, Los Angeles is home to legendary Hollywood movie studios, responsible for the most popular movies anywhere. L.A. also boasts a thriving theater, music and gallery scene. Celebrities can often be seen shopping the streets of Beverly Hills, including the world-famous Rodeo Drive.
 
 
   ###### Comfortable, Suburban Environment
 
 
-  Located in Los Angeles County near the foothills of the San Gabriel Mountains, Citrus College offers a combination of suburban comfort along with access to all of L.A.'s attractions. The city of Glendora, known as the "Pride of the Foothills", offers a safe environment and the Glendora Village with dozens of shops, restaurants and cafes.
+  Located in Los Angeles County near the foothills of the San Gabriel Mountains, Citrus College offers a combination of suburban comfort along with access to all of L.A.'s attractions. The city of Glendora, known as the "Pride of the Foothills", offers a safe environment and Glendora Village with dozens of shops, restaurants and cafes.
 
 
   ###### Enjoy Access to Excellent Educational Opportunities
@@ -108,33 +108,6 @@ post-content: >-
   * Listen to world-famous artists in concert at the legendary Hollywood Bowl or at Disney Hall, an architectural landmark.
 
   * Visit one of the world’s most impressive museum complexes, the Getty Center, offering great views of the city and art from the Renaissance to contemporary times.
-
-
-  ## PROGRAMS OFFERED
-
-
-  ###### **Academic Programs**
-
-
-  * Academic English
-
-  * Intensive English
-
-  * General English
-
-  * Vacation English
-
-  * TOEFL Preparation
-
-  * High School Completion
-
-  * Concurrent Enrollment
-
-
-  ###### **Specialty Tours**
-
-
-  * Discover California
 
 
   ###### **English + Volunteering**
