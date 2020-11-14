@@ -76,7 +76,7 @@ post-content: >-
   ### Enjoy the Great Weather and Surroundings of Orange County
 
 
-  With 42 miles of world-famous beaches, legendary theme parks, and enough shopping destinations to satisfy even the most dedicated shopper, it's no wonder that visiting Orange County is the ultimate Southern California experience.  The "OC," as local residents call it, blends a casual, active lifestyle with laid-back sophistication.  This unique lifestyle was integral to the development and culture of professional surfing, and the perfect weather continues to bring millions of visitors every year.
+  With 42 miles of world-famous beaches, legendary theme parks, and enough shopping destinations to satisfy even the most dedicated shopper, it's no wonder that visiting Orange County is the ultimate Southern California experience. The "OC," as local residents call it, blends a casual, active lifestyle with laid-back sophistication. This unique lifestyle was integral to the development and culture of professional surfing, and the perfect weather continues to bring millions of visitors every year.
 
 
   ### Safe and Friendly Community
@@ -88,7 +88,7 @@ post-content: >-
   ### Orange County's Choice for Education
 
 
-  Saddleback College has been the first choice for higher education in South Orange County since 1968.  Saddleback College offers more than 190 different degrees and certificates, giving students an excellent foundation to transfer to UC Irvine or other schools in the California State University or University of California systems.
+  Saddleback College has been the first choice for higher education in South Orange County since 1968. The college offers more than 190 different degrees and certificates, giving students an excellent foundation to transfer to UC Irvine or other schools in the California State University or University of California systems.
 
 
   ## CAMPUS PROFILE
@@ -132,7 +132,7 @@ post-content: >-
   With great weather, access to amazing beaches and a picturesque location between Los Angeles and San Diego, Mission Viejo offers an unbeatable quality of life with easy freeway access to classic California attractions like Sea World and Disneyland!
 
 
-  * Visit Disneyland Resort including the original Disneyland theme park including Galaxy's Edge, and the expanded California Adventure park, featuring Cars Land and Ariel’s Undersea Adventure.
+  * Visit Disneyland Resort including the original Disneyland theme park, with Galaxy's Edge, and the expanded California Adventure park, featuring Cars Land and Ariel’s Undersea Adventure.
 
   * Relax on the sandy shores of Laguna Beach, considered one of the most beautiful beaches in California, and visit the many unique art galleries and cafes.
 
@@ -149,31 +149,10 @@ post-content: >-
   Recently named the safest city in the United States, Mission Viejo is an affluent suburban community of nearly 100,000. The center of the city contains a large man-made lake and beautiful tree-lined streets overlooked by the Saddleback mountain range. Mission Viejo offers an ideal climate with a temperature range of 11-23 degrees Celsius year-round. Summers are sunny, warm and dry. Fall and winter bring occasional rain showers, with snow in the local mountains. Due to close proximity to the ocean, nighttime and morning clouds are common.
 
 
-  ## PROGRAMS OFFERED
-
-
-  **Academic Programs**
-
-
-  * Academic Programs
-
-  * Vacation English
-
-  * General English
-
-  * Intensive English
-
-  * Academic English
-
-  * TOEFL Preparation
-
-  * High School Completion
-
-
   **English + Volunteering**
 
 
-  FLS offers ESL students a wonderful way to practice their new English skills while immersing themselves in American society by volunteering at local charities and community service centers. Join other FLS students as they perfect their conversational English while helping others! Here are some of the oportunities you will enjoy at FLS Saddleback College:
+  FLS offers ESL students a wonderful way to practice their new English skills while immersing themselves in American society by volunteering at local charities and community service centers. Join other FLS students as they perfect their conversational English while helping others! Here are some of the opportunities you will enjoy at FLS Saddleback College:
 
 
   * Mission Viejo Library
@@ -188,7 +167,7 @@ post-content: >-
   **Optional Weekend and Evening Activities**
 
 
-  FLS offers ESL students memorable and educational tour experiences, and opportunities to visit the best attractions of the United States. Students will have many opportunities to take part in excursions with the full supervision of our trained FLS staff.
+  FLS offers ESL students memorable and educational tour experiences, and opportunities to visit the best attractions of California. Students will have many chances to take part in excursions with the full supervision of our trained FLS staff.
 
 
   **Activities Include:**
