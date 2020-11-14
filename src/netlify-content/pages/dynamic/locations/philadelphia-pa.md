@@ -10,7 +10,7 @@ quick-facts:
     items: |-
       * Fournier Dining Hall
       * Academic Computer Center
-      * Griffen's Den Café
+      * Griffin's Den Café
       * Logue Library
       * Sports Facilities
       * Free WiFi
@@ -52,8 +52,8 @@ quick-facts:
   - name: Local Transportation
     icon: /assets/local-transportation-icon.png
     items: >-
-      * Shuttle: Free campus shuttle system provides transportation to local
-      shopping and Philadelphia trains
+      * Shuttle: Free campus shuttle provides transportation to local shopping
+      and Philadelphia trains
 
       * Bus: Bus service throughout the Philadelphia area
 
@@ -82,19 +82,19 @@ post-content: >-
   ### Learn English in Philadelphia, "The City of Brotherly Love"
 
 
-  Famous as the birthplace of the United States, Philadelphia is a divers, urban destination that preserves four centuries of American history and architecture, as well as fascinating museums and endless shopping.  While visiting "The City of Brotherly Love," students can see such historic attractions as the Liberty Bell and Independence Hall, then get a taste of some of Philadelphia's many culinary flavors, like the renowned Philly cheesesteak sandwich, from dozens of bakers, farmers, and restaurants at Reading Terminal Market.
+  Famous as the birthplace of the United States, Philadelphia is a diverse, urban destination that preserves four centuries of American history and architecture, as well as fascinating museums and endless shopping. While visiting "The City of Brotherly Love," students can see such historic attractions as the Liberty Bell and Independence Hall, then get a taste of some of Philadelphia's many culinary flavors, like the renowned Philly cheesesteak sandwich, from dozens of bakers, farmers, and restaurants at Reading Terminal Market.
 
 
   ### A Beautiful, Relaxing Campus Setting
 
 
-  A private Catholic school, Chestnut Hill College is located on the outskirts of the city in the beautiful Germantown area.  The college was founded in 1924 and its striking Gothic buildings have earned it a spot on the National Register of Historic Places.  The campus houses modern facilities integrated with its historic buildings to meet the needs of today's students.
+  A private Catholic school, Chestnut Hill College is located on the outskirts of the city in the beautiful Germantown area. The college was founded in 1924 and its striking Gothic buildings have earned it a spot on the National Register of Historic Places. The campus houses modern facilities integrated with its historic buildings to meet the needs of today's students.
 
 
   ### Extensive Opportunities to Pursue Educational Goals
 
 
-  The beautiful campus includes the picturesque St. Joseph Hall, a chapel, tennis courts, a soccer field, and complete fitness facilities.  Chestnut Hill College offers a rigorous liberal arts education with a mission of helping prepare the students for success in all areas of the life.  
+  The attractive campus includes the picturesque St. Joseph Hall, a chapel, tennis courts, a soccer field, and complete fitness facilities. Chestnut Hill College offers a rigorous liberal arts education with a mission of helping prepare students for success in all areas of life.  
 
 
   ## CAMPUS PROFILE
@@ -107,13 +107,13 @@ post-content: >-
 
 
   * **Academic Computer Center**
-    Providing students with Internet access and word processing tools, our computer lab is perfect for students doing research for class or simply checking their email.
+    Providing students with Internet access and word processing tools, the computer lab is perfect for students doing research for class or simply checking their email.
   * **Logue Library**
     Offering a selection of course-related books as well as books for casual reading, the library provides students additional space for reading and study after class.
   * **Student Lounge**
     With comfy sofas and plenty of table space, the student lounge is the perfect place to relax for some reading, have a quick snack, or catch up with your friends.
 
-  ## HOUSING
+  ## HOUSING OPTIONS
 
 
   ### Homestay
@@ -149,7 +149,7 @@ post-content: >-
   **The Chestnut Hill Experience**
 
 
-  Philadelphia is a major international city with a rich history extending back to America's founding.  Throughout the city you'll find reminders of America's past, such as Independence Hall and the Liberty Bell.  Today Philadelphia is a vigorous, modern metropolis with a full range of attractions from world-class museums to major sports teams to diverse ethnic neighborhoods.
+  Philadelphia is a major international city with a rich history extending back to America's founding. Throughout the city you'll find reminders of America's past, such as Independence Hall and the Liberty Bell. Today Philadelphia is a vigorous, modern metropolis with a full range of attractions from world-class museums to major sports teams to diverse ethnic neighborhoods.
 
 
   * Visit the shops in downtown Philadelphia then have a picnic lunch at Rittenhouse Square
@@ -158,40 +158,11 @@ post-content: >-
 
   * Spend a day in natural splendor as you walk among the flowers and trees of Morris Arboretum
 
-  * Dine at one of the many superb restaurants in Philadelphia, or enjoy street-side dining as you grab a famous Philadelphia Cheesesteak while on the go.
-
-  * Join other fantasy fans for the annual Wizards and Witches Festival, celebrating Harry Potter and other fantasy characters, in the Chestnut Hill community.
+  * Dine at one of the many superb restaurants in Philadelphia, or enjoy street-side dining as you grab a famous Philadelphia Cheesesteak sandwich while on the go.
 
   * Catch a musical performance at one of Philadelphia's many clubs and concert venues. 
 
   * Enjoy the many seasonal and holiday events and festivals throughout Philadelphia, including the nation's largest free concert celebrating America's Independence Day on July 4.
-
-
-  **Philadelphia, PA**
-
-
-  Students have a range of choices for their after-class activities.  Many students choose to spend time with their new friends or their host family.  Or take the free shuttle bus to explore Philadelphia, which offers Germantown shopping, movies, the Philadelphia Museum of Art, the Liberty Bell Center, and the Morris Arboretum.
-
-
-  ## PROGRAMS OFFERED
-
-
-  **Academic Programs**
-
-
-  * Academic Programs
-
-  * Vacation English
-
-  * General English
-
-  * Intensive English
-
-  * Academic English
-
-  * TOEFL Preparation
-
-  * High School Completion
 
 
   **English + Volunteering**
