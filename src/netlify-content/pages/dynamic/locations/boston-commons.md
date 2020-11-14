@@ -10,10 +10,13 @@ quick-facts:
   - name: Campus Facilities
     icon: /assets/campus-facilities-icon.png
     items: |-
-      * Cafeteria
-      * Free Wifi
-      * Smartboards
-      * Student Lounge
+      Free Wifi
+
+      Smartboards
+
+      Student Lounge
+
+      Cafes and Restaurants nearby
   - name: Popular Majors
     icon: /assets/popular-majors-icon.png
     items: >-
@@ -44,15 +47,22 @@ quick-facts:
     icon: /assets/average-temp-icon.png
   - name: Enrollment
     icon: /assets/enrollment-icon.png
-    items: Enrollment averages over 150 students throughout the year, with small
-      class sizes to encourage student interaction.
+    items: Enrollment averages approximately150 students throughout the year, with
+      small class sizes to encourage student interaction.
   - items: |-
-      * Vacation English
+      **Academic Programs**
+
+      * Core English
       * General English
       * Intensive English
       * Academic English
       * High School Completion
       * Test Preparation (TOEFL, SAT, IELTS)
+
+      **Specialty Tours**
+
+      * Discover Boston
+      * English + Volunteering
     icon: /assets/programs-offered-icon.png
     name: Programs Offered
   - name: Distance to Major Attractions
@@ -117,7 +127,7 @@ post-content: >-
   ### International Guest House
 
 
-  Located in Boston's historic Back Bay, just a few blocks from FLS, the International Guest House (IGH) offers shared accommodation with private bathrooms.  The is located near many of Boston's unique attractions, including Boston Common park, Newbury Street shopping, and the Boston Public Library.  The dining room provides a daily buffet-style breakfast and dinner.  Other common areas include a study room, TV room, and social room.
+  Located in Boston's historic Back Bay, just a few blocks from FLS, the International Guest House (IGH) offers shared accommodation with private bathrooms.  The IGH is located near many of Boston's unique attractions, including Boston Common park, Newbury Street shopping, and the Boston Public Library.  The dining room provides a daily buffet-style breakfast and dinner.  Other common areas include a study room, TV room, and social room.
 
 
   ## Area Profile
@@ -142,43 +152,10 @@ post-content: >-
   * Spend a day touring the quaint villages and scenic beaches of Cape Cod where Boston's elite travel for summer getaways.
 
 
-  ## Programs Offered:
-
-
-  ### Academic Programs:
-
-
-  * Vacation English
-
-  * General English
-
-  * Intensive English
-
-  * Academic English
-
-  * High School Completion
-
-  * TOEFL Preparation
-
-  * SAT Preparation
-
-  * IELTS Preparation
-
-
-  ### Specialty Tours:
-
-
-  * Discover Boston
-
-  * English + Volunteering
-
-
-
-
   ### English and Volunteering
 
 
-  FLS offers our students a wonderful way to practice their new English skills while immersing themselves in American society by volunteering at local charities and community service centers.  Join other FLS students as they perfect conversational English while helping others!  Here are some of the opportunities you will enjoy at FLS Boston Commons:
+  FLS offers our students a wonderful way to practice their new English skills while immersing themselves in American society by volunteering at local charities and community service centers.  Join other FLS students as they perfect their conversational English while helping others! Here are some of the opportunities you will enjoy at FLS Boston Commons:
 
 
   * Greater Boston Food Bank
@@ -186,10 +163,6 @@ post-content: >-
   * Haley House
 
   * Community Servings
-
-
-
-
 
 
   ### Optional Weekend and Evening Activities:
