@@ -47,15 +47,22 @@ quick-facts:
     icon: /assets/average-temp-icon.png
   - name: Enrollment
     icon: /assets/enrollment-icon.png
-    items: Enrollment averages over 150 students throughout the year, with small
-      class sizes to encourage student interaction.
+    items: Enrollment averages approximately150 students throughout the year, with
+      small class sizes to encourage student interaction.
   - items: |-
-      * Vacation English
+      **Academic Programs**
+
+      * Core English
       * General English
       * Intensive English
       * Academic English
       * High School Completion
       * Test Preparation (TOEFL, SAT, IELTS)
+
+      **Specialty Tours**
+
+      * Discover Boston
+      * English + Volunteering
     icon: /assets/programs-offered-icon.png
     name: Programs Offered
   - name: Distance to Major Attractions
@@ -143,37 +150,6 @@ post-content: >-
   * Stroll along fashionable Newbury Street and go shopping at high-end boutiques or sip a cappuccino at an elegant sidewalk café.
 
   * Spend a day touring the quaint villages and scenic beaches of Cape Cod where Boston's elite travel for summer getaways.
-
-
-  ## Programs Offered:
-
-
-  ### Academic Programs:
-
-
-  * Vacation English
-
-  * General English
-
-  * Intensive English
-
-  * Academic English
-
-  * High School Completion
-
-  * TOEFL Preparation
-
-  * SAT Preparation
-
-  * IELTS Preparation
-
-
-  ### Specialty Tours:
-
-
-  * Discover Boston
-
-  * English + Volunteering
 
 
   ### English and Volunteering
