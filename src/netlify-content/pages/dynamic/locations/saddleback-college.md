@@ -41,7 +41,7 @@ quick-facts:
   - name: Programs Offered
     icon: /assets/programs-offered-icon.png
     items: |-
-      * Vacation English
+      * Core English
       * General English
       * Intensive English
       * Academic English
