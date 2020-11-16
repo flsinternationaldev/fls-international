@@ -390,6 +390,14 @@ a {
 	}
 }
 
+// TODO: Disabled buttons should have no hover effects, but they currently inherit them from the base fls__button class
+.fls__button--disabled {
+	&:disabled {
+		opacity: 0.4;
+		cursor: not-allowed !important;
+	}
+}
+
 .fls__button--half {
 	width: 50% !important;
 }
@@ -590,6 +598,13 @@ a {
 // 		justify-content: flex-start;
 // 	}
 // }
+
+.fls__form-error {
+	height: 20px;
+	padding: 6px 0px;
+	font-size: 14px;
+	color: $fls-red;
+}
 
 .fls__pill {
 	display: inline-block;

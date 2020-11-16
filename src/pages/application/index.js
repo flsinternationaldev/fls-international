@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import StepWizard from 'react-step-wizard';
 import useLocalStorageState from 'use-local-storage-state';
+import { addValidationRule } from 'formsy-react';
 
 import Layout from 'src/components/Layout';
 import Section from 'src/components/section/Section';
@@ -14,6 +15,12 @@ import BillingCheckout from 'src/components/application/BillingCheckout';
 import NetlifyStaticForm from 'src/components/application/NetlifyStaticForm';
 
 import { calculatePrice } from 'src/utils/helpers';
+
+// Custom validator for React Select inputs
+addValidationRule(
+	'isSelected',
+	(values, value) => value.value.length > 0 && value.label.length > 0
+);
 
 export const ApplicationTemplate = () => {
 	const data = useStaticQuery(graphql`
@@ -136,9 +143,23 @@ export const ApplicationTemplate = () => {
 		}
 	};
 
+	const handleApplicationState = currentValues => {
+		for (const property in currentValues) {
+			/* This checks if an incoming state change came from a mutli select, and parses that into something that is more human readable for the final
+			submission, as well as for local storage */
+			if (
+				currentValues[property] &&
+				currentValues[property].hasOwnProperty('value') &&
+				currentValues[property].hasOwnProperty('label')
+			)
+				currentValues[property] = currentValues[property].value;
+		}
+
+		handleBatchInputChange(currentValues, 'user');
+	};
+
 	return (
-		// NOTE: There's a bug with stepwizard wherein it fails if you provide only one child
-		<Section sectionClasses={['section']} containerClasses={['container']}>
+		<Fragment>
 			<NetlifyStaticForm
 				formFields={[
 					...Object.keys(userData),
@@ -147,74 +168,82 @@ export const ApplicationTemplate = () => {
 				]}
 			/>
 
-			{/* TODO: For some reason, the hash has stepped rendering in the URL bar? */}
-			<StepWizard isHashEnabled={true} nav={<Steps stepsNum={5} />}>
-				<PersonalInfo
-					hashKey={'personal-info'}
-					handleDataChange={handleDataChange}
-					userData={userData}
-					prices={prices}
-					setPrices={setPrices}
-					price={price}
-					setPrice={setPrice}
-					calculatePrice={calculatePrice}
-				/>
-				<Address
-					hashKey={'address'}
-					userData={userData}
-					handleDataChange={handleDataChange}
-					handleBatchInputChange={handleBatchInputChange}
-					prices={prices}
-					setPrices={setPrices}
-					price={price}
-					setPrice={setPrice}
-					calculatePrice={calculatePrice}
-				/>
-				{/* TODO: Might want to consider unifying these two components, if
+			{/* // NOTE: There's a bug with stepwizard wherein it fails if you
+			provide only one child */}
+			<Section
+				sectionClasses={['section']}
+				containerClasses={['container']}
+			>
+				{/* TODO: For some reason, the hash has stepped rendering in the URL bar? */}
+				<StepWizard isHashEnabled={true} nav={<Steps stepsNum={5} />}>
+					<PersonalInfo
+						hashKey={'personal-info'}
+						handleDataChange={handleDataChange}
+						userData={userData}
+						prices={prices}
+						setPrices={setPrices}
+						price={price}
+						setPrice={setPrice}
+						calculatePrice={calculatePrice}
+						handleApplicationState={handleApplicationState}
+					/>
+					<Address
+						hashKey={'address'}
+						userData={userData}
+						handleDataChange={handleDataChange}
+						handleBatchInputChange={handleBatchInputChange}
+						prices={prices}
+						setPrices={setPrices}
+						price={price}
+						setPrice={setPrice}
+						calculatePrice={calculatePrice}
+					/>
+					{/* TODO: Might want to consider unifying these two components, if
 				the step wizard allows duplicates */}
-				<AdditionalInfo
-					hashKey={'additional-info'}
-					userData={userData}
-					handleDataChange={handleDataChange}
-					handleBatchInputChange={handleBatchInputChange}
-					prices={prices}
-					setPrices={setPrices}
-					price={price}
-					setPrice={setPrice}
-					calculatePrice={calculatePrice}
-					applicationData={applicationData}
-					currentCenter={currentCenter}
-					setCurrentCenter={setCurrentCenter}
-					currentProgram={currentProgram}
-					setCurrentProgram={setCurrentProgram}
-					setApplicationData={setApplicationData}
-				/>
-				<MoreInfo
-					hashKey={'more-info'}
-					userData={userData}
-					applicationData={applicationData}
-					handleDataChange={handleDataChange}
-					prices={prices}
-					setPrices={setPrices}
-					price={price}
-					setPrice={setPrice}
-					calculatePrice={calculatePrice}
-				/>
-				<BillingCheckout
-					hashKey={'billing-checkout'}
-					userData={userData}
-					billingData={billingData}
-					handleDataChange={handleDataChange}
-					handleBatchInputChange={handleBatchInputChange}
-					prices={prices}
-					setPrices={setPrices}
-					price={price}
-					setPrice={setPrice}
-					calculatePrice={calculatePrice}
-					applicationData={applicationData}
-				/>
-			</StepWizard>
-		</Section>
+					<AdditionalInfo
+						hashKey={'additional-info'}
+						userData={userData}
+						handleDataChange={handleDataChange}
+						handleBatchInputChange={handleBatchInputChange}
+						prices={prices}
+						setPrices={setPrices}
+						price={price}
+						setPrice={setPrice}
+						calculatePrice={calculatePrice}
+						applicationData={applicationData}
+						currentCenter={currentCenter}
+						setCurrentCenter={setCurrentCenter}
+						currentProgram={currentProgram}
+						setCurrentProgram={setCurrentProgram}
+						setApplicationData={setApplicationData}
+					/>
+					<MoreInfo
+						hashKey={'more-info'}
+						userData={userData}
+						applicationData={applicationData}
+						handleDataChange={handleDataChange}
+						prices={prices}
+						setPrices={setPrices}
+						price={price}
+						setPrice={setPrice}
+						calculatePrice={calculatePrice}
+					/>
+					<BillingCheckout
+						hashKey={'billing-checkout'}
+						userData={userData}
+						billingData={billingData}
+						handleDataChange={handleDataChange}
+						handleBatchInputChange={handleBatchInputChange}
+						prices={prices}
+						setPrices={setPrices}
+						price={price}
+						setPrice={setPrice}
+						calculatePrice={calculatePrice}
+						applicationData={applicationData}
+					/>
+				</StepWizard>
+			</Section>
+		</Fragment>
 	);
 };
 

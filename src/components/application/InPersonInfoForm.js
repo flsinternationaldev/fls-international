@@ -471,8 +471,6 @@ export default function InPersonInfoForm({
 
 	const isMonday = date => date.getDay() === 1;
 
-	console.log('applicaton data', applicationData);
-
 	return (
 		<Fragment>
 			<div className="column is-full-tablet is-half-desktop">

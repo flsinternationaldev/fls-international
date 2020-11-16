@@ -198,6 +198,7 @@ export default GoogleApiWrapper({
 											className="input fls__base-input"
 											type="text"
 											value={userData.city}
+											onChange={() => {}}
 										/>
 									</div>
 								</div>
@@ -213,6 +214,7 @@ export default GoogleApiWrapper({
 											className="input fls__base-input"
 											type="text"
 											value={userData.stateProvince}
+											onChange={() => {}}
 										/>
 									</div>
 								</div>
@@ -228,6 +230,7 @@ export default GoogleApiWrapper({
 											className="input fls__base-input"
 											type="text"
 											value={userData.postalCode}
+											onChange={() => {}}
 										/>
 									</div>
 								</div>
@@ -241,6 +244,7 @@ export default GoogleApiWrapper({
 											className="input fls__base-input"
 											type="text"
 											value={userData.addressCountry}
+											onChange={() => {}}
 										/>
 									</div>
 								</div>

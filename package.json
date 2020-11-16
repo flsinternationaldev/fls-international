@@ -26,6 +26,7 @@
     "bulma-o-steps": "^1.0.9",
     "country-list": "^2.2.0",
     "emailjs-com": "^2.6.3",
+    "formsy-react": "^2.2.1",
     "gatsby": "^2.23.12",
     "gatsby-plugin-exclude": "^1.0.2",
     "gatsby-plugin-google-fonts": "^1.0.1",
