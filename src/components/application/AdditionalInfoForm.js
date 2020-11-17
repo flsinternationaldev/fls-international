@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
+import Formsy from 'formsy-react';
 
 import EstimatedPrices from 'src/components/application/EstimatedPrices';
 import InPersonInfoForm from 'src/components/application/InPersonInfoForm';
@@ -17,6 +18,7 @@ export default function AdditionalInfoForm({
 	setPrices,
 	applicationData,
 	setApplicationData,
+	handleApplicationState,
 }) {
 	const programsData = useStaticQuery(graphql`
 		{
@@ -118,144 +120,143 @@ export default function AdditionalInfoForm({
 		}
 	`);
 
+	/* Although we're using Formsy elsewhere in the application for validation, something about the structure of this section of the application
+	is screwing with Formsy. Hence, this custom solution. */
+	// const validateForm = () => {
+	// 	let requiredFields;
+
+	// 	if (applicationData.programType === 'in-person') {
+	// 		requiredFields = [
+	// 			'center',
+	// 			'program',
+	// 			'duration',
+	// 			'housing',
+	// 			'programStartDate',
+	// 			'programEndDate',
+	// 			'housingCheckInDate',
+	// 			'housingCheckOutDate',
+	// 			'extraNights',
+	// 			'requiresI20',
+	// 			'transferStudent',
+	// 			'flsHealthInsurance',
+	// 			'unaccompaniedMinorService',
+	// 		];
+
+	// 		if (applicationData.requiresI20 === 'yes') {
+	// 			requiredFields.concat('expressMail', 'processSEVISAppFee');
+	// 		}
+
+	// 		// TODO: Make sure to include airport pick up options & special requests
+	// 		// if (
+	// 		// 	applicationData.airportPickUp ||
+	// 		// 	applicationData.airportDropOff
+	// 		// ) {
+	// 		// 	requiredFields.concat('');
+	// 		// }
+	// 	} else if (applicationData.programType === 'online') {
+	// 		requiredFields = [];
+	// 	} else if (applicationData.programType === 'speciality-tours') {
+	// 		requiredFields = [];
+	// 	}
+
+	// 	return requiredFields.every(
+	// 		requiredField => applicationData[requiredField]
+	// 	);
+	// };
+
+	const [isValidForm, setIsValidForm] = useState();
+
 	const renderFormViews = programType => {
 		if (programType === 'in-person') {
 			return (
-				<div className="columns is-multiline">
-					<AdditionalInfoFormHeader
-						programType={programType}
-						calculatePrice={calculatePrice}
-						prices={prices}
-						handleDataChange={handleDataChange}
-						setApplicationData={setApplicationData}
-						setPrices={setPrices}
-					/>
-
-					<InPersonInfoForm
-						calculatePrice={calculatePrice}
-						handleDataChange={handleDataChange}
-						handleBatchInputChange={handleBatchInputChange}
-						prices={prices}
-						setPrices={setPrices}
-						applicationData={applicationData}
-						programsData={programsData.inPerson}
-					/>
-
-					<EstimatedPrices prices={prices} />
-
-					<div className="column is-4">
-						<button onClick={previousStep} className="fls__button">
-							Previous
-						</button>
-					</div>
-
-					{/* TODO: This works for now... but it's probably not the best implementation */}
-					<div className="column is-4"></div>
-
-					<div className="column is-4">
-						<button
-							onClick={() => {
-								nextStep();
-							}}
-							className="fls__button"
-						>
-							Save & Continue
-						</button>
-					</div>
-				</div>
+				<InPersonInfoForm
+					calculatePrice={calculatePrice}
+					handleDataChange={handleDataChange}
+					handleBatchInputChange={handleBatchInputChange}
+					prices={prices}
+					setPrices={setPrices}
+					applicationData={applicationData}
+					programsData={programsData.inPerson}
+					setIsValidForm={setIsValidForm}
+					handleApplicationState={handleApplicationState}
+					setIsValidForm={setIsValidForm}
+				/>
 			);
 		} else if (programType === 'online') {
 			return (
-				<div className="columns is-multiline">
-					<AdditionalInfoFormHeader
-						programType={programType}
-						calculatePrice={calculatePrice}
-						prices={prices}
-						handleDataChange={handleDataChange}
-						setApplicationData={setApplicationData}
-						setPrices={setPrices}
-					/>
-
-					<OnlineInfoForm
-						programType={programType}
-						applicationData={applicationData}
-						programsData={programsData.online}
-						handleDataChange={handleDataChange}
-						handleBatchInputChange={handleBatchInputChange}
-						prices={prices}
-						setPrices={setPrices}
-					/>
-
-					<EstimatedPrices prices={prices} />
-
-					<div className="column is-4">
-						<button onClick={previousStep} className="fls__button">
-							Previous
-						</button>
-					</div>
-
-					{/* TODO: This works for now... but it's probably not the best implementation */}
-					<div className="column is-4"></div>
-
-					<div className="column is-4">
-						<button
-							onClick={() => {
-								nextStep();
-							}}
-							className="fls__button"
-						>
-							Save & Continue
-						</button>
-					</div>
-				</div>
+				<OnlineInfoForm
+					programType={programType}
+					applicationData={applicationData}
+					programsData={programsData.online}
+					handleDataChange={handleDataChange}
+					handleBatchInputChange={handleBatchInputChange}
+					prices={prices}
+					setPrices={setPrices}
+				/>
 			);
 		} else if (programType === 'specialty-tours') {
 			return (
-				<div className="columns is-multiline">
-					<AdditionalInfoFormHeader
-						programType={programType}
-						calculatePrice={calculatePrice}
-						prices={prices}
-						handleDataChange={handleDataChange}
-						setApplicationData={setApplicationData}
-						setPrices={setPrices}
-					/>
-
-					<SpecialtyToursInfoForm
-						calculatePrice={calculatePrice}
-						handleDataChange={handleDataChange}
-						handleBatchInputChange={handleBatchInputChange}
-						prices={prices}
-						setPrices={setPrices}
-						applicationData={applicationData}
-						programsData={programsData.specialtyTours}
-					/>
-
-					<EstimatedPrices prices={prices} />
-
-					<div className="column is-4">
-						<button onClick={previousStep} className="fls__button">
-							Previous
-						</button>
-					</div>
-
-					{/* TODO: This works for now... but it's probably not the best implementation */}
-					<div className="column is-4"></div>
-
-					<div className="column is-4">
-						<button
-							onClick={() => {
-								nextStep();
-							}}
-							className="fls__button"
-						>
-							Save & Continue
-						</button>
-					</div>
-				</div>
+				<SpecialtyToursInfoForm
+					calculatePrice={calculatePrice}
+					handleDataChange={handleDataChange}
+					handleBatchInputChange={handleBatchInputChange}
+					prices={prices}
+					setPrices={setPrices}
+					applicationData={applicationData}
+					programsData={programsData.specialtyTours}
+				/>
 			);
 		}
 	};
 
-	return renderFormViews(applicationData.programType);
+	return (
+		<Formsy
+			onChange={handleApplicationState}
+			onValid={() => {
+				// console.log(`form is good`);
+				setIsValidForm(true);
+			}}
+			onInvalid={() => {
+				// console.log(`form ain't good`);
+				setIsValidForm(false);
+			}}
+		>
+			<div className="columns is-multiline">
+				<AdditionalInfoFormHeader
+					programType={applicationData.programType}
+					calculatePrice={calculatePrice}
+					prices={prices}
+					handleDataChange={handleDataChange}
+					setApplicationData={setApplicationData}
+					setPrices={setPrices}
+				/>
+				{renderFormViews(applicationData.programType)}
+				<EstimatedPrices prices={prices} />
+				<div className="column is-4">
+					<button onClick={previousStep} className="fls__button">
+						Previous
+					</button>
+				</div>
+				{/* TODO: This works for now... but it's probably not the best implementation */}
+				<div className="column is-4"></div>
+
+				<div className="column is-4">
+					<button
+						onClick={() => {
+							nextStep();
+						}}
+						className="fls__button"
+						disabled={!isValidForm}
+						className={
+							isValidForm
+								? 'fls__button'
+								: 'fls__button fls__button--disabled'
+						}
+					>
+						Save & Continue
+					</button>
+				</div>
+			</div>
+		</Formsy>
+	);
 }

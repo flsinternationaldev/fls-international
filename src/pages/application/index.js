@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import StepWizard from 'react-step-wizard';
 import useLocalStorageState from 'use-local-storage-state';
 import { addValidationRule } from 'formsy-react';
+import _reduce from 'lodash.reduce';
 
 import Layout from 'src/components/Layout';
 import Section from 'src/components/section/Section';
@@ -19,7 +20,7 @@ import { calculatePrice } from 'src/utils/helpers';
 // Custom validator for React Select inputs
 addValidationRule(
 	'isSelected',
-	(values, value) => value.value.length > 0 && value.label.length > 0
+	(values, value) => !!value.value && !!value.label
 );
 
 export const ApplicationTemplate = () => {
@@ -45,34 +46,30 @@ export const ApplicationTemplate = () => {
 		}
 	`);
 
-	const [price, setPrice] = useState(0);
-	// TODO: Going to want to create a warning that states that if localStorage is disabled, the app will not work properly
-	const [prices, setPrices] = useLocalStorageState('prices', []);
-	const [userData, setUserData] = useLocalStorageState('userData', {
-		firstName: '',
-		lastName: '',
-		email: '',
-		phoneNumber: '',
-		gender: '',
-		birthDate: '',
-		citizenshipCountry: '',
-		birthCountry: '',
-		address: '',
-		city: '',
-		stateProvince: '',
-		postalCode: '',
-		addressCountry: '',
-	});
-	const [applicationData, setApplicationData] = useLocalStorageState(
-		'applicationData',
-		{
+	const applicationDefaults = {
+		user: {
+			firstName: '',
+			lastName: '',
+			email: '',
+			phoneNumber: '',
+			gender: '',
+			birthDate: '',
+			citizenshipCountry: '',
+			birthCountry: '',
+			address: '',
+			city: '',
+			stateProvince: '',
+			postalCode: '',
+			addressCountry: '',
+		},
+		application: {
 			center: '',
 			duration: '',
 			programStartDate: '',
 			programEndDate: '',
 			housing: '',
 			program: '',
-			extraNights: '',
+			extraNightsOfHousing: '',
 			housingCheckInDate: '',
 			housingCheckOutDate: '',
 			airport: '',
@@ -80,7 +77,7 @@ export const ApplicationTemplate = () => {
 			airportDropOff: false,
 			requiresI20: false,
 			transferStudent: false,
-			buyingHealthInsurance: false,
+			flsHealthInsurance: false,
 			expressMail: false,
 			processSEVISAppFee: false,
 			unaccompaniedMinorService: false,
@@ -90,12 +87,28 @@ export const ApplicationTemplate = () => {
 			termsAndConditions: false,
 			programType: '',
 			// TODO: Figure out passport photo & financial document image upload
-		}
+		},
+		billing: {
+			billingAddressCountry: '',
+		},
+	};
+
+	const [price, setPrice] = useState(0);
+	// TODO: Going to want to create a warning that states that if localStorage is disabled, the app will not work properly
+	const [prices, setPrices] = useLocalStorageState('prices', []);
+	const [userData, setUserData] = useLocalStorageState(
+		'userData',
+		applicationDefaults.user
+	);
+	const [applicationData, setApplicationData] = useLocalStorageState(
+		'applicationData',
+		applicationDefaults.application
 	);
 
-	const [billingData, setBillingData] = useLocalStorageState('billingData', {
-		billingAddressCountry: '',
-	});
+	const [billingData, setBillingData] = useLocalStorageState(
+		'billingData',
+		applicationDefaults.billing
+	);
 
 	const [currentCenter, setCurrentCenter] = useState(null);
 
@@ -124,7 +137,6 @@ export const ApplicationTemplate = () => {
 
 	const handleBatchInputChange = (values, type) => {
 		// TODO: This is a nonce function, to be replaced with a DRYer solution later
-
 		if (type === 'user') {
 			setUserData({
 				...userData,
@@ -144,18 +156,47 @@ export const ApplicationTemplate = () => {
 	};
 
 	const handleApplicationState = currentValues => {
+		console.log('incoming values', currentValues);
+		let applicationDataType;
+
 		for (const property in currentValues) {
+			// Using a lodash methods to make object iteration easier
+			if (!applicationDataType) {
+				applicationDataType = _reduce(
+					applicationDefaults,
+					(accum, appDefault, appDefaultKey) => {
+						if (!accum) {
+							// This has to be, without a doubt, the worst variable name I've ever come up with, and on that principle alone I am honorbound to use it
+							const isIncomingPropertyInCurrentAppDefault = Object.keys(
+								appDefault
+							).some(key => key === property);
+
+							accum = isIncomingPropertyInCurrentAppDefault
+								? appDefaultKey
+								: null;
+						}
+
+						return accum;
+					},
+					null
+				);
+			}
+
 			/* This checks if an incoming state change came from a mutli select, and parses that into something that is more human readable for the final
-			submission, as well as for local storage */
+			submission, as well as for local storage. */
 			if (
 				currentValues[property] &&
-				currentValues[property].hasOwnProperty('value') &&
-				currentValues[property].hasOwnProperty('label')
-			)
+				currentValues[property].hasOwnProperty('value')
+			) {
+				console.log('got in');
 				currentValues[property] = currentValues[property].value;
+			}
 		}
 
-		handleBatchInputChange(currentValues, 'user');
+		console.log('formatted current values', currentValues);
+		console.log('applicationDataType', applicationDataType);
+
+		handleBatchInputChange(currentValues, applicationDataType);
 	};
 
 	return (
@@ -197,12 +238,12 @@ export const ApplicationTemplate = () => {
 						price={price}
 						setPrice={setPrice}
 						calculatePrice={calculatePrice}
+						handleApplicationState={handleApplicationState}
 					/>
 					{/* TODO: Might want to consider unifying these two components, if
 				the step wizard allows duplicates */}
 					<AdditionalInfo
 						hashKey={'additional-info'}
-						userData={userData}
 						handleDataChange={handleDataChange}
 						handleBatchInputChange={handleBatchInputChange}
 						prices={prices}
@@ -216,6 +257,7 @@ export const ApplicationTemplate = () => {
 						currentProgram={currentProgram}
 						setCurrentProgram={setCurrentProgram}
 						setApplicationData={setApplicationData}
+						handleApplicationState={handleApplicationState}
 					/>
 					<MoreInfo
 						hashKey={'more-info'}

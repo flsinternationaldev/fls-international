@@ -412,7 +412,7 @@ export default function Navbar({ props }) {
 						value={{
 							label: applicationData.housing
 								? applicationData.housing.name
-								: 'Select your housing type.',
+								: 'Select your housing.',
 							value: applicationData.housing
 								? applicationData.housing.name
 								: null,

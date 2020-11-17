@@ -1,3 +1,5 @@
+import React from 'react';
+
 export function kebabToCamel(str) {
 	return str.replace(/-([a-z])/g, g => g[1].toUpperCase());
 }
@@ -100,4 +102,16 @@ export function calculateDateOffset(programStartDate, timeExpression) {
 
 	// Each 'week' needs to end on a friday, hence this weird math
 	return clonedDate.setDate(clonedDate.getDate() + timeExpression);
+}
+
+export function renderRequirement(requirement) {
+	if (requirement) {
+		return requirement.value ? null : (
+			<span className="label label--application label--select-first fls--red">
+				{requirement.label}
+			</span>
+		);
+	}
+
+	return null;
 }

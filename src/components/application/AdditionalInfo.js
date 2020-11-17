@@ -16,6 +16,7 @@ export default function AdditionalInfo({
 	currentProgram,
 	setCurrentProgram,
 	setApplicationData,
+	handleApplicationState,
 }) {
 	const handleRender = programType => {
 		if (!applicationData.programType) {
@@ -87,6 +88,7 @@ export default function AdditionalInfo({
 					setPrices={setPrices}
 					applicationData={applicationData}
 					setApplicationData={setApplicationData}
+					handleApplicationState={handleApplicationState}
 				/>
 			);
 		}

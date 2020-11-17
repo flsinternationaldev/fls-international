@@ -957,7 +957,7 @@ export default function InPersonInfoForm({
 							? 'fls-input__radio-group--disabled'
 							: ''
 					}`}
-					selectedValue={applicationData.buyingHealthInsurance}
+					selectedValue={applicationData.flsHealthInsurance}
 					onChange={value => {
 						const healthInsuranceData = generalFeesData.find(
 							generalFee =>
@@ -1006,7 +1006,7 @@ export default function InPersonInfoForm({
 						}
 
 						handleDataChange(
-							'buyingHealthInsurance',
+							'flsHealthInsurance',
 							value,
 							'application'
 						);

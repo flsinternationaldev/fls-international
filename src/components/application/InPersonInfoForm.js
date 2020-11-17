@@ -5,6 +5,11 @@ import { RadioGroup, Radio } from 'react-radio-group';
 import ReactTooltip from 'react-tooltip';
 import { useStaticQuery, graphql } from 'gatsby';
 import Checkbox from 'rc-checkbox';
+import _isNil from 'lodash.isnil';
+
+import SelectInput from 'src/components/application/form/SelectInput';
+import DateInput from 'src/components/application/form/DateInput';
+import RadioInput from 'src/components/application/form/RadioInput';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
@@ -139,25 +144,18 @@ export default function InPersonInfoForm({
 	const centerOptions = centersData
 		.map(center => {
 			return {
-				value: center.centerName,
+				value: center,
 				label: `${center.centerName} @ ${center.name}`,
 			};
 		})
 		.filter(center =>
 			programsData.some(program =>
-				program.centerNameRelation.includes(center.value)
+				program.centerNameRelation.includes(center.value.centerName)
 			)
 		);
 
 	// TODO: DRY up these functions
 	const handleCenterChange = centerChange => {
-		// Set state operatons are async, so we'll use this non-async version for the below operations
-		const currentCenter = centersData.find(
-			center => center.centerName === centerChange.value
-		);
-
-		handleDataChange('center', currentCenter, 'application');
-
 		/*
         If the duration or program is already selected, and the user picks a new center, this can cause complications with already selected programs
         and durations. It seems easier, then, to just require them to reselect a program & duration.
@@ -184,12 +182,12 @@ export default function InPersonInfoForm({
 			programsData
 				.filter(program => {
 					return program.centerNameRelation.includes(
-						centerChange.value
+						centerChange.value.centerName
 					);
 				})
 				.map(program => {
 					return {
-						value: program.name.toLowerCase().split(' ').join('-'),
+						value: program,
 						label: program.name,
 					};
 				})
@@ -199,12 +197,12 @@ export default function InPersonInfoForm({
 			housingData
 				.filter(housing => {
 					return housing.centerNameRelation.includes(
-						centerChange.value
+						centerChange.value.centerName
 					);
 				})
 				.map(housing => {
 					return {
-						value: housing.name.toLowerCase().split(' ').join('-'),
+						value: housing,
 						label: housing.name,
 					};
 				})
@@ -234,13 +232,11 @@ export default function InPersonInfoForm({
 	};
 
 	const handleProgramChange = programChange => {
-		const currentProgram = programsData.find(
-			program => program.name === programChange.label
-		);
+		const currentProgram = programChange.value;
 
 		// TODO: State changes are async, so we keep using 'currentProgram' inside this function scope
 		// With some refactoring, we could probably change 'handleDataChange' to take a callback that can be passed to the state change
-		handleDataChange('program', currentProgram, 'application');
+		// handleDataChange('program', currentProgram, 'application');
 
 		let durationOptions = [];
 
@@ -254,30 +250,25 @@ export default function InPersonInfoForm({
 			) {
 				durationOptions.push({
 					label: `${i}+ weeks`,
-					value: `${weekNum}+`,
+					value: { label: `${i}+ weeks`, value: `${weekNum}+` },
 				});
 			} else if (i < currentProgram.durationOptions.maxWeeks) {
 				durationOptions.push({
 					label: weekNum === 1 ? `${i + 1} week` : `${i + 1} weeks`,
-					value: weekNum,
+					value: {
+						label:
+							weekNum === 1 ? `${i + 1} week` : `${i + 1} weeks`,
+						value: weekNum,
+					},
 				});
 			}
 		}
-
-		handleDataChange('program', currentProgram, 'application');
 
 		setDurationOptions(durationOptions);
 	};
 
 	const handleDurationChange = durationChange => {
-		handleDataChange(
-			'duration',
-			{
-				label: durationChange.label,
-				value: durationChange.value,
-			},
-			'application'
-		);
+		const currentDuration = durationChange.value;
 
 		// If programStartDate exists, we can be confident there's also a program end date & housing check in/check out dates
 		if (applicationData.programStartDate) {
@@ -291,7 +282,7 @@ export default function InPersonInfoForm({
 						// Each 'week' needs to end on a friday, hence this weird math
 						return clonedDate.setDate(
 							clonedDate.getDate() +
-								(durationChange.value * 7 - 3)
+								(currentDuration.value * 7 - 3)
 						);
 					})(),
 					housingCheckOutDate: (() => {
@@ -301,7 +292,7 @@ export default function InPersonInfoForm({
 
 						return clonedDate.setDate(
 							clonedDate.getDate() +
-								(durationChange.value * 7 - 1)
+								(currentDuration.value * 7 - 1)
 						);
 					})(),
 				},
@@ -316,8 +307,8 @@ export default function InPersonInfoForm({
 					index === 0 ? 1 : arr[index - 1].thresholdMax + 1;
 
 				if (
-					durationChange.value >= thresholdMin &&
-					durationChange.value <= currentWeek.thresholdMax
+					currentDuration.value >= thresholdMin &&
+					currentDuration.value <= currentWeek.thresholdMax
 				) {
 					return currentWeek.pricePerWeek;
 				} else {
@@ -339,7 +330,7 @@ export default function InPersonInfoForm({
 				type: 'program',
 				label: `${applicationData.program.name} @ ${applicationData.center.centerName}`,
 				priceDetails: {
-					duration: durationChange.value,
+					duration: currentDuration.value,
 					price: pricePerWeek,
 					// TODO: Is there a way to capture the payPeriod for programs in the CMS?
 					payPeriod: 'Per Week',
@@ -349,7 +340,7 @@ export default function InPersonInfoForm({
 			// TODO: This function might be clearer if it supports chaining, or a way to pass in multiple changes as arguments
 			updatedPrices = updatePrices(updatedPrices, 'program', {
 				priceDetails: {
-					duration: durationChange.value,
+					duration: currentDuration.value,
 					price: pricePerWeek,
 				},
 			});
@@ -358,7 +349,7 @@ export default function InPersonInfoForm({
 		// Housing price is tied to duration, so we make sure to update it when the duraton changes;
 		updatedPrices = updatePrices(updatedPrices, 'housing', {
 			priceDetails: {
-				duration: durationChange.value,
+				duration: currentDuration.value,
 			},
 		});
 
@@ -366,11 +357,7 @@ export default function InPersonInfoForm({
 	};
 
 	const handleHousingChange = housingChange => {
-		const currentHousing = housingData.find(
-			housing => housing.name === housingChange.label
-		);
-
-		handleDataChange('housing', currentHousing, 'application');
+		const currentHousing = housingChange.value;
 
 		// TODO: This 'new price' logic is begging to be refactored & DRYed up
 		if (prices.find(priceItem => priceItem.type === 'housing')) {
@@ -403,6 +390,8 @@ export default function InPersonInfoForm({
 	};
 
 	const handleAirportChange = airportChange => {
+		// setIsValidForm(validateForm());
+
 		const currentAirport = airportData.find(airport =>
 			airport.notes.includes(airportChange.label)
 		);
@@ -474,151 +463,137 @@ export default function InPersonInfoForm({
 	return (
 		<Fragment>
 			<div className="column is-full-tablet is-half-desktop">
-				<div className="application__label-container">
-					<label className="label label--application">
-						FLS Center
-					</label>
-				</div>
-
-				<Select
-					className="fls__select-container"
-					classNamePrefix={'fls'}
+				<SelectInput
+					name="center"
+					label={'FLS Center'}
 					value={{
 						label: applicationData.center
 							? `${applicationData.center.centerName} @ ${applicationData.center.name}`
 							: 'Select a center.',
-						value: applicationData.center
-							? applicationData.center.centerName
-							: null,
-					}}
-					onChange={centerOption => {
-						handleCenterChange(centerOption);
+						value: applicationData.center,
 					}}
 					options={centerOptions}
+					onChangeCallback={handleCenterChange}
+					validations="isSelected"
+					required
 				/>
 			</div>
 
 			<div className="column is-full-tablet is-half-desktop">
-				<div className="application__label-container">
-					<label className="label label--application">Program</label>
-					{applicationData.center ? null : (
-						<span className="label label--application label--select-first fls--red">
-							Select a center first
-						</span>
-					)}
-				</div>
-
-				<Select
+				<SelectInput
+					name="program"
+					label={'Program'}
+					value={{
+						label: applicationData.program
+							? applicationData.program.name
+							: 'Select a program',
+						value: applicationData.program,
+					}}
+					onChangeCallback={handleProgramChange}
+					requirement={{
+						value: applicationData.center,
+						label: 'Select a center first',
+					}}
 					className={`fls__select-container ${
 						!applicationData.center
 							? 'fls__select-container--disabled'
 							: ''
 					}`}
-					classNamePrefix={'fls'}
-					value={{
-						label: applicationData.program
-							? applicationData.program.name
-							: 'Select a program',
-						value: applicationData.program
-							? applicationData.program.name
-							: 'Select a program',
-					}}
-					onChange={handleProgramChange}
 					options={programOptions}
 					isDisabled={!applicationData.center}
+					validations="isSelected"
+					required
 				/>
 			</div>
 
 			<div className="column is-full-tablet is-half-desktop">
-				<div className="application__label-container">
-					<label className="label label--application">Duration</label>
-					{applicationData.program ? null : (
-						<span className="label label--application label--select-first fls--red">
-							Select a program first
-						</span>
-					)}
-				</div>
-
-				<Select
+				<SelectInput
+					name="duration"
+					label={'Duration'}
+					value={{
+						label: applicationData.duration
+							? applicationData.duration.label
+							: 'Select a duration.',
+						value: applicationData.duration,
+					}}
+					onChangeCallback={handleDurationChange}
+					requirement={{
+						value: applicationData.program,
+						label: 'Select a program first',
+					}}
 					className={`fls__select-container ${
 						!applicationData.program
 							? 'fls__select-container--disabled'
 							: ''
 					}`}
-					classNamePrefix={'fls'}
-					value={{
-						label: applicationData.duration
-							? applicationData.duration.label
-							: 'Select a duration.',
-						value: applicationData.duration
-							? applicationData.duration.value
-							: null,
-					}}
-					onChange={handleDurationChange}
 					options={durationOptions}
 					isDisabled={!applicationData.program}
+					validations="isSelected"
+					required
 				/>
 			</div>
 
 			<div className="column is-full-tablet is-half-desktop">
-				<div className="application__label-container">
-					<label className="label label--application">
-						Housing Type
-					</label>
-					{applicationData.center ? null : (
-						<span className="label label--application label--select-first fls--red">
-							Select a center first
-						</span>
-					)}
-				</div>
-
-				<Select
+				<SelectInput
+					name="housing"
+					label={'Housing'}
+					value={{
+						label: applicationData.housing
+							? applicationData.housing.name
+							: 'Select your housing.',
+						value: applicationData.housing,
+					}}
+					onChangeCallback={handleHousingChange}
+					requirement={{
+						value: applicationData.center,
+						label: 'Select a center first',
+					}}
 					className={`fls__select-container ${
 						!applicationData.center
 							? 'fls__select-container--disabled'
 							: ''
 					}`}
-					classNamePrefix={'fls'}
-					value={{
-						label: applicationData.housing
-							? applicationData.housing.name
-							: 'Select your housing type.',
-						value: applicationData.housing
-							? applicationData.housing.name
-							: null,
-					}}
-					onChange={handleHousingChange}
 					options={housingOptions}
 					isDisabled={!applicationData.center}
+					validations="isSelected"
+					required
 				/>
 			</div>
 
-			{/* TODO: This field needs some serious validation */}
 			<div className="column is-full-tablet is-half-desktop">
-				<div className="application__label-container">
-					<label className="label label--application">
-						Program Start Date
+				<DateInput
+					validations="isExisty"
+					validationError="Please select a date."
+					label={'Program Start Date'}
+					selected={
+						!_isNil(applicationData.programStartDate)
+							? applicationData.programStartDate
+							: applicationData.programStartDate
+					}
+					name={'programStartDate'}
+					placeholderText={'Choose Your Start Date'}
+					requirement={{
+						value: applicationData.program,
+						label: 'Select a program first',
+					}}
+					className={'input fls__base-input'}
+					tooltip={
 						<FontAwesomeIcon
 							className="application__info-icon"
 							icon={faInfoCircle}
 							data-tip="In-person programs begin on Mondays."
 						/>
-					</label>
-
-					{applicationData.program ? null : (
-						<span className="label label--application label--select-first fls--red">
-							Select a program first
-						</span>
-					)}
-				</div>
-
-				<DatePicker
-					selected={
-						applicationData.programStartDate
-							? new Date(applicationData.programStartDate)
-							: applicationData.programStartDate
 					}
-					onChange={date => {
+					filterDate={isMonday}
+					readOnly={!applicationData.duration}
+					minDate={new Date()}
+					wrapperClassName={`fls__date-wrapper ${
+						!applicationData.duration
+							? 'fls__select-container--disabled'
+							: ''
+					}`}
+					filterDate={isMonday}
+					onChangeCallback={date => {
 						handleBatchInputChange(
 							{
 								programStartDate: date,
@@ -656,16 +631,7 @@ export default function InPersonInfoForm({
 							'application'
 						);
 					}}
-					minDate={new Date()}
-					wrapperClassName={`fls__date-wrapper ${
-						!applicationData.duration
-							? 'fls__select-container--disabled'
-							: ''
-					}`}
-					className={'input fls__base-input'}
-					placeholderText={'Choose Your Start Date'}
-					filterDate={isMonday}
-					readOnly={!applicationData.duration}
+					required
 				/>
 			</div>
 
@@ -702,7 +668,7 @@ export default function InPersonInfoForm({
 
 					{applicationData.housing ? null : (
 						<span className="label label--application label--select-first fls--red">
-							Select a housing type first
+							Select housing first
 						</span>
 					)}
 				</div>
@@ -746,21 +712,12 @@ export default function InPersonInfoForm({
 			</div>
 
 			<div className="column is-full">
-				<label className="label label--application">
-					Extra Nights of Housing Required?
-				</label>
-				<RadioGroup
-					name="extra-housing"
-					selectedValue={applicationData.extraNights}
-					onChange={value => {
-						handleDataChange('extraNights', value, 'application');
-					}}
-				>
-					<Radio value="needs-extra-housing" />
-					<span className="fls__radio-label">Yes</span>
-					<Radio value="no-extra-housing" />
-					<span className="fls__radio-label">No</span>
-				</RadioGroup>
+				<RadioInput
+					label={'Extra Nights of Housing Required?'}
+					name={'extraNightsOfHousing'}
+					selectedValue={applicationData.extraNightsOfHousing}
+					required
+				/>
 			</div>
 
 			{airportOptions.length ? (
@@ -773,13 +730,15 @@ export default function InPersonInfoForm({
 						<Checkbox
 							className="checkbox"
 							defaultChecked={applicationData.airportPickUp}
-							onChange={e =>
+							onChange={e => {
+								// setIsValidForm(validateForm());
+
 								handleDataChange(
 									'airportPickUp',
 									e.target.checked,
 									'application'
-								)
-							}
+								);
+							}}
 						/>
 						<span className="fls__radio-label">
 							Airport Pick Up
@@ -790,13 +749,15 @@ export default function InPersonInfoForm({
 						<Checkbox
 							className="checkbox"
 							defaultChecked={applicationData.airportDropOff}
-							onChange={e =>
+							onChange={e => {
+								// setIsValidForm(validateForm());
+
 								handleDataChange(
 									'airportDropOff',
 									e.target.checked,
 									'application'
-								)
-							}
+								);
+							}}
 						/>
 						<span className="fls__radio-label">
 							Airport Drop Off
@@ -846,27 +807,19 @@ export default function InPersonInfoForm({
 			) : null}
 
 			<div className="column is-full">
-				{/* TODO: Should have a helpful tooltip */}
-				<label className="label label--application">
-					Do you require an I-20 Form?
-					<FontAwesomeIcon
-						className="application__info-icon"
-						icon={faInfoCircle}
-						data-tip="As of July 1, 2016, the redesigned Form I-20 is required for all F and M nonimmigrant visa applications, entry into the United States, travel and applications for nonimmigrant benefits. The previous version of the Form I-20 (with a barcode) is now invalid."
-					/>
-				</label>
-
-				<RadioGroup
+				<RadioInput
+					label={'Do you require an I-20 Form?'}
+					name={'requiresI20'}
 					selectedValue={applicationData.requiresI20}
-					onChange={value => {
-						handleDataChange('requiresI20', value, 'application');
-					}}
-				>
-					<Radio value="yes" />
-					<span className="fls__radio-label">Yes</span>
-					<Radio value="no" />
-					<span className="fls__radio-label">No</span>
-				</RadioGroup>
+					tooltip={
+						<FontAwesomeIcon
+							className="application__info-icon"
+							icon={faInfoCircle}
+							data-tip="As of July 1, 2016, the redesigned Form I-20 is required for all F and M nonimmigrant visa applications, entry into the United States, travel and applications for nonimmigrant benefits. The previous version of the Form I-20 (with a barcode) is now invalid."
+						/>
+					}
+					required
+				/>
 			</div>
 
 			{applicationData.requiresI20 === 'yes' ? (
@@ -890,6 +843,8 @@ export default function InPersonInfoForm({
 						<RadioGroup
 							selectedValue={applicationData.expressMail}
 							onChange={value => {
+								// setIsValidForm(validateForm());
+
 								const expressMailData = generalFeesData.find(
 									generalFee =>
 										generalFee.name
@@ -968,6 +923,8 @@ export default function InPersonInfoForm({
 						<RadioGroup
 							selectedValue={applicationData.processSEVISAppFee}
 							onChange={value => {
+								// setIsValidForm(validateForm());
+
 								handleDataChange(
 									'processSEVISAppFee',
 									value,
@@ -975,6 +932,8 @@ export default function InPersonInfoForm({
 								);
 							}}
 							onChange={value => {
+								// setIsValidForm(validateForm());
+
 								const sevisAppData = generalFeesData.find(
 									generalFee =>
 										generalFee.name
@@ -1047,6 +1006,8 @@ export default function InPersonInfoForm({
 				<RadioGroup
 					selectedValue={applicationData.transferStudent}
 					onChange={value => {
+						// setIsValidForm(validateForm());
+
 						handleDataChange(
 							'transferStudent',
 							value,
@@ -1084,8 +1045,10 @@ export default function InPersonInfoForm({
 							? 'fls-input__radio-group--disabled'
 							: ''
 					}`}
-					selectedValue={applicationData.buyingHealthInsurance}
+					selectedValue={applicationData.flsHealthInsurance}
 					onChange={value => {
+						// setIsValidForm(validateForm());
+
 						const healthInsuranceData = generalFeesData.find(
 							generalFee =>
 								generalFee.name.toLowerCase().includes('health')
@@ -1133,7 +1096,7 @@ export default function InPersonInfoForm({
 						}
 
 						handleDataChange(
-							'buyingHealthInsurance',
+							'flsHealthInsurance',
 							value,
 							'application'
 						);
@@ -1161,6 +1124,8 @@ export default function InPersonInfoForm({
 				<RadioGroup
 					selectedValue={applicationData.unaccompaniedMinorService}
 					onChange={value => {
+						// setIsValidForm(validateForm());
+
 						const unaccompaniedMinorServiceData = enhancementsData.find(
 							generalFee =>
 								generalFee.name

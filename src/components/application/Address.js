@@ -1,14 +1,14 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
+import Formsy from 'formsy-react';
 import { GoogleApiWrapper } from 'google-maps-react';
-
 import PlacesAutocomplete, {
 	geocodeByAddress,
-	getLatLng,
 } from 'react-places-autocomplete';
+
+import TextInput from 'src/components/application/form/TextInput';
 
 const formatAddressComponents = addressComponents => {
 	const desiredComponentTypes = [
-			'street_number',
 			'locality',
 			'administrative_area_level_1',
 			'postal_code',
@@ -16,7 +16,6 @@ const formatAddressComponents = addressComponents => {
 		],
 		componentTypeMapping = {
 			locality: 'city',
-			street_number: 'streetNumber',
 			administrative_area_level_1: 'stateProvince',
 			postal_code: 'postalCode',
 			country: 'addressCountry',
@@ -32,7 +31,6 @@ const formatAddressComponents = addressComponents => {
 	}, {});
 };
 
-// TODO: Figure out how best to handle validation
 export default GoogleApiWrapper({
 	apiKey: process.env.GATSBY_GOOGLE_PLACE_API_KEY,
 })(
@@ -42,26 +40,8 @@ export default GoogleApiWrapper({
 		userData,
 		handleDataChange,
 		handleBatchInputChange,
-		calculatePrice,
-		prices,
-		google,
+		handleApplicationState,
 	}) => {
-		const mapStyles = {
-				position: 'relative',
-				width: '100%',
-				height: '100%',
-			},
-			mapContainerStyles = {
-				position: 'relative',
-				height: '292px',
-				width: '100%',
-			};
-
-		const [latLng, setLatLng] = useState({
-			lat: 40.854885,
-			lng: -88.081807,
-		});
-
 		const handleSelect = address => {
 			geocodeByAddress(address)
 				.then(results => {
@@ -69,24 +49,30 @@ export default GoogleApiWrapper({
 						results[0].address_components
 					);
 
-					handleBatchInputChange(
-						{
-							...formattedAddressComponents,
-							address,
-						},
-						'user'
-					);
+					// handleBatchInputChange(
+					// 	{
+					// 		...formattedAddressComponents,
+					// 		address,
+					// 	},
+					// 	'user'
+					// );
 
-					return getLatLng(results[0]);
-				})
-				.then(latLng => {
-					setLatLng(latLng);
+					handleApplicationState({
+						...formattedAddressComponents,
+						address,
+					});
 				})
 				.catch(error => console.error('Error', error));
 		};
 
+		const [isValidForm, setIsValidForm] = useState();
+
 		return (
-			<Fragment>
+			<Formsy
+				onChange={handleApplicationState}
+				onValid={() => setIsValidForm(true)}
+				onInvalid={() => setIsValidForm(false)}
+			>
 				<div className="columns is-multiline">
 					<div className="column is-full">
 						<div className="application__header-container">
@@ -175,79 +161,53 @@ export default GoogleApiWrapper({
 
 					<div className="column is-full">
 						<div className="columns is-multiline">
-							<div className="column is-full">
-								<div className="field">
-									<label className="label">
-										Street Number
-									</label>
-									<div className="control">
-										<input
-											className="input fls__base-input"
-											type="text"
-											value={userData.streetNumber}
-										/>
-									</div>
-								</div>
+							<div className="column is-half">
+								<TextInput
+									validations="isExisty"
+									validationError="Field cannot be blank"
+									name="city"
+									placeholder="City"
+									value={userData.city}
+									label={'City'}
+									required
+								/>
 							</div>
 
 							<div className="column is-half">
-								<div className="field">
-									<label className="label">City</label>
-									<div className="control">
-										<input
-											className="input fls__base-input"
-											type="text"
-											value={userData.city}
-											onChange={() => {}}
-										/>
-									</div>
-								</div>
+								<TextInput
+									validations="isExisty"
+									validationError="Field cannot be blank"
+									name="stateProvince"
+									placeholder="State/Province/Department"
+									value={userData.stateProvince}
+									label={'State/Province/Department'}
+									required
+								/>
 							</div>
 
 							<div className="column is-half">
-								<div className="field">
-									<label className="label">
-										State/Province/Department
-									</label>
-									<div className="control">
-										<input
-											className="input fls__base-input"
-											type="text"
-											value={userData.stateProvince}
-											onChange={() => {}}
-										/>
-									</div>
-								</div>
+								<TextInput
+									validations="isExisty"
+									validationError="Field cannot be blank"
+									name="stateProvince"
+									placeholder="Zip/Postal Code"
+									value={userData.postalCode}
+									label={'Zip/Postal Code'}
+									required
+								/>
 							</div>
 
 							<div className="column is-half">
-								<div className="field">
-									<label className="label">
-										Zip/Postal Code
-									</label>
-									<div className="control">
-										<input
-											className="input fls__base-input"
-											type="text"
-											value={userData.postalCode}
-											onChange={() => {}}
-										/>
-									</div>
-								</div>
-							</div>
-
-							<div className="column is-half">
-								<div className="field">
-									<label className="label">Country</label>
-									<div className="control">
-										<input
-											className="input fls__base-input"
-											type="text"
-											value={userData.addressCountry}
-											onChange={() => {}}
-										/>
-									</div>
-								</div>
+								{/* TODO: This should probably eventually be a CountryInput. It's more annoying than it should be to programatically set the country input based on local storage. */}
+								<TextInput
+									validations="isExisty"
+									validationError="Field cannot be blank"
+									name="addressCountry"
+									placeholder="Country"
+									value={userData.addressCountry}
+									label={'Country'}
+									required
+								/>
 							</div>
 						</div>
 					</div>
@@ -266,13 +226,18 @@ export default GoogleApiWrapper({
 							onClick={() => {
 								nextStep();
 							}}
-							className="fls__button"
+							disabled={!isValidForm}
+							className={
+								isValidForm
+									? 'fls__button'
+									: 'fls__button fls__button--disabled'
+							}
 						>
 							Save & Continue
 						</button>
 					</div>
 				</div>
-			</Fragment>
+			</Formsy>
 		);
 	}
 );
