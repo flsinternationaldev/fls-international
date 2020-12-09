@@ -1,6 +1,6 @@
 backend:
     name: github
-    repo: akingdebased/fls-international
+    repo: flsinternationaldev/fls-international
     branch: master # Branch to update (optional; defaults to master)
 
 local_backend: true # TODO: Check if this prohibits the CMS from running on Netlify (production)
