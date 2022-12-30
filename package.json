@@ -27,7 +27,7 @@
     "country-list": "^2.2.0",
     "emailjs-com": "^2.6.3",
     "formsy-react": "^2.2.1",
-    "gatsby": "^2.23.12",
+    "gatsby": "^2.32.13",
     "gatsby-plugin-exclude": "^1.0.2",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-netlify-cms": "^4.3.11",
